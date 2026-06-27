@@ -73,6 +73,10 @@
   .btn-ask{background:#fff;color:var(--green);border:1px solid var(--green)}
   .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#1c2419;color:#fff;
     padding:10px 16px;border-radius:10px;font-size:13px;z-index:60;max-width:88%;text-align:center;display:none}
+  .thumb{display:flex;align-items:center;justify-content:center;min-height:40px;border-radius:8px;
+    background:#eef1ea;color:var(--green);font-size:11px;font-weight:700;text-decoration:none;
+    margin-bottom:8px;padding:6px 8px;text-align:center;word-break:break-word}
+  .thumb span{color:#9aa291;font-weight:600}
 </style>
 </head>
 <body>
@@ -109,6 +113,35 @@ document.getElementById('cap').onchange=async(e)=>{
   }
   files.forEach(f=>{const a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=f.name;a.click()});
   toast("Saved. On iPhone: Share → Save to Files → _Cowork Inbox. Tip: name it like '4044M oil'.");
+};
+const URLS={
+"John Deere 4044M":"https://www.deere.com/en/tractors/compact-tractors/4-series-compact-tractors/4044m/",
+"1987 John Deere 2150":"https://www.deere.com",
+"John Deere X580 (54\")":"https://www.deere.com/en/riding-lawn-equipment/lawn-tractors/",
+"72\" Woods Mower (PTO)":"https://www.woodsequipment.com",
+"2024 John Deere Z530R":"https://www.deere.com/en/mowers/zero-turn-mowers/",
+"Toro 22\" Recycler Max":"https://www.toro.com",
+"Woods BB600-2 Box Blade":"https://www.woodsequipment.com",
+"Husqvarna CRT900 Tiller":"https://www.husqvarna.com",
+"Husqvarna 460 Rancher 24\"":"https://www.husqvarna.com",
+"Husqvarna 545 Mark II 20\"":"https://www.husqvarna.com",
+"Stihl MS 261 C-M":"https://www.stihlusa.com",
+"Stihl HT 131 Z Pole Pruner":"https://www.stihlusa.com",
+"Stihl KM 110 R-Z KombiSystem":"https://www.stihlusa.com",
+"Honda EU2000i Generator":"https://powerequipment.honda.com",
+"NorthStar Pressure Washer":"https://www.northerntool.com",
+"DR Power Leaf Cyclone":"https://www.drpower.com",
+"Arctic Cat Prowler Pro UTV":"https://www.arcticcat.com",
+"KTM 350 EXC-F":"https://www.ktm.com",
+"Yamaha TT-R110E":"https://www.yamahamotorsports.com",
+"Bambu Labs 3D Printer":"https://bambulab.com",
+"Rabaconda Tire Changer":"https://rabaconda.com",
+"Timber Tuff Chain Sharpener":"https://www.timbertuff.com",
+"Dyson Cordless #1 & #2":"https://www.dyson.com",
+"KitchenAid Fridge (20cf)":"https://www.kitchenaid.com",
+"LG Fridge (8.6cf)":"https://www.lg.com",
+"Litter-Robot 4 (×2)":"https://www.litter-robot.com",
+"NordicTrack X32i":"https://www.nordictrack.com"
 };
 const DATA = [
  {g:"Tractors & Loaders", items:[
@@ -173,8 +206,9 @@ function render(){
     sec.innerHTML=`<h2>${d.g}</h2>`;
     const grid=document.createElement('div');grid.className="grid";
     items.forEach(it=>{shown++;
-      const c=document.createElement('button');c.className="card";
-      c.innerHTML=`<div class="nm">${it.n}</div>
+      const c=document.createElement('div');c.className="card";
+      const u=URLS[it.n];
+      c.innerHTML=`<a class="thumb" ${u?`href="${u}" target="_blank" rel="noopener" onclick="event.stopPropagation()"`:``}>${u?`↗ ${new URL(u).hostname.replace(/^www\./,'')}`:`<span>no factory link</span>`}</a><div class="nm">${it.n}</div>
         <div class="tags">${[it.power,it.loc,it.basis].filter(x=>x&&x!=="—").map(t=>`<span class="t">${t}</span>`).join("")}</div>
         <div class="st ${it.st}"><span class="dot"></span>${STLABEL[it.st]}</div>`;
       c.onclick=()=>openDetail(it,d.g);
@@ -187,6 +221,8 @@ function render(){
 function openDetail(it,g){
   const p=document.getElementById('panel');
   let h=`<div class="ph"><div><h3>${it.n}</h3><div class="sub">${g} · ${[it.power,it.loc,it.basis].filter(x=>x&&x!=="—").join(" · ")}</div></div><button class="x" onclick="closeSheet()">✕</button></div>`;
+  const purl=URLS[it.n];
+  if(purl)h+=`<div class="sec"><h4>Factory product page</h4><a class="lk" href="${purl}" target="_blank" rel="noopener">${new URL(purl).hostname.replace(/^www\./,'')} ↗</a></div>`;
   if(it.specs){h+=`<div class="sec"><h4>Specs</h4>${it.specs.map(s=>`<div class="row"><span class="k">${s[0]}</span><span class="v">${s[1]}</span></div>`).join("")}</div>`}
   if(it.sched){h+=`<div class="sec"><h4>Maintenance</h4><table><tr><th>Task</th><th>Interval</th><th>Status</th></tr>${it.sched.map(s=>`<tr><td>${s[0]}</td><td>${s[1]}</td><td class="rag ${s[2]}">${s[3]}</td></tr>`).join("")}</table><div class="muted" style="margin-top:8px">Drop an hour-meter photo in <b>_Cowork Inbox</b> to set real due dates. <span class="verify">confirm vs manual</span></div></div>`}
   if(it.jobs){h+=`<div class="sec"><h4>Job Cards</h4>${it.jobs.map(j=>`<details><summary>${j.t}</summary><div class="jb"><ol>${j.s.map(x=>`<li>${x}</li>`).join("")}</ol></div></details>`).join("")}</div>`}

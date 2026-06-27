@@ -149,6 +149,7 @@ const DATA = [
      specs:[["Engine","Yanmar 4TNV88, 2.2L turbo diesel"],["Power","43 hp @ 2,600 rpm"],["Fuel","13.0 gal"],["Engine oil","1.4 gal w/ filter"],["Hydraulic","12 gal Hy-Gard (J20D)"],["Transmission","12/12 PowrReverser (confirm)"]],
      sched:[["Engine oil & filter (M806419)","200 hr","r","No hours set"],["Hyd/trans fluid & filter (RE45864)","400 hr","r","No hours set"],["50-hr checks","50 hr","r","No hours set"],["Daily pre-use","Daily","g","OK"]],
      manual:"iCloud · 1 PROJECTS/Farm Equipment/JD 4044M Manual.pdf",
+     doc:"4044m-service.html",
      jobs:[{t:"Engine Oil & Filter — 200 hr",s:["Warm oil, shut down, key out","Drain fully","Replace filter M806419 (oil gasket, ¾ turn)","Refill ~1.4 gal 15W-40 CK-4","Run, check leaks, recheck level"]},
            {t:"Hydraulic & Trans — 400 hr",s:["Level ground, implements down, relieve pressure","Drain case (12+ gal)","Replace filter RE45864, clean magnetic plug","Refill ~12 gal Hy-Gard J20D","Cycle hydraulics, recheck, check leaks"]}]},
    {n:"1987 John Deere 2150",power:"Diesel",loc:"Barn",basis:"Hours",st:"full"},
@@ -233,8 +234,8 @@ function openDetail(it,g){
   if(purl)h+=`<div class="sec"><h4>Factory product page</h4><a class="lk" href="${purl}" target="_blank" rel="noopener">${new URL(purl).hostname.replace(/^www\./,'')} ↗</a></div>`;
   if(it.specs){h+=`<div class="sec"><h4>Specs</h4>${it.specs.map(s=>`<div class="row"><span class="k">${s[0]}</span><span class="v">${s[1]}</span></div>`).join("")}</div>`}
   if(it.sched){h+=`<div class="sec"><h4>Maintenance</h4><table><tr><th>Task</th><th>Interval</th><th>Status</th></tr>${it.sched.map(s=>`<tr><td>${s[0]}</td><td>${s[1]}</td><td class="rag ${s[2]}">${s[3]}</td></tr>`).join("")}</table><div class="muted" style="margin-top:8px">Drop an hour-meter photo in <b>_Cowork Inbox</b> to set real due dates. <span class="verify">confirm vs manual</span></div></div>`}
-  if(it.jobs){h+=`<div class="sec"><h4>Job Cards</h4>${it.jobs.map(j=>`<details><summary>${j.t}</summary><div class="jb"><ol>${j.s.map(x=>`<li>${x}</li>`).join("")}</ol></div></details>`).join("")}</div>`}
-  if(it.manual){h+=`<div class="sec"><h4>Manual</h4><div class="muted">${it.manual}</div></div>`}
+  if(it.jobs){h+=`<div class="sec"><h4>Job Cards</h4>${it.jobs.map(j=>`<details><summary>${j.t}</summary><div class="jb"><ol>${j.s.map(x=>`<li>${x}</li>`).join("")}</ol></div></details>`).join("")}${it.doc?`<a class="lk" href="${it.doc}" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px">Open full service doc ↗</a>`:``}</div>`}
+  if(it.manual){h+=`<div class="sec"><h4>Manual</h4>${it.doc?`<a class="lk" href="${it.doc}" target="_blank" rel="noopener">Open 4044M service reference ↗</a><div class="muted" style="margin-top:6px">Full PDF: ${it.manual}</div>`:`<div class="muted">${it.manual}</div>`}</div>`}
   if(!it.specs){h+=`<div class="sec"><div class="muted">Card in progress — Claude is bringing this machine to full standard. ${it.manual?"Manual is on file.":""}</div></div>`}
   p.innerHTML=h;document.getElementById('sheet').classList.add('open');
 }

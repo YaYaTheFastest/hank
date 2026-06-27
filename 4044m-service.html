@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#367C2B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="4044M Manual">
+<title>John Deere 4044M · Service Reference</title>
+<style>
+  :root{--green:#367C2B;--green-d:#2a5f22;--ink:#1c2419;--muted:#6b7464;--line:#e4e7df;
+    --bg:#f6f7f3;--card:#fff;--red:#d24b3e;--amber:#e0a426;--ok:#3f9e4d;--chip:#eef1ea}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom);line-height:1.45}
+  header{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;
+    padding:calc(16px + env(safe-area-inset-top)) 18px 18px;position:sticky;top:0;z-index:10}
+  header .back{color:#fff;opacity:.9;text-decoration:none;font-size:13px;font-weight:600;display:inline-block;margin-bottom:8px}
+  header h1{margin:0;font-size:21px;letter-spacing:.2px}
+  header p{margin:3px 0 0;opacity:.85;font-size:12.5px}
+  main{max-width:680px;margin:0 auto;padding:0 16px 60px}
+  .sec{background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px;margin-top:14px}
+  .sec h2{margin:0 0 11px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--green)}
+  .row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .row:last-child{border:0}.row .k{color:var(--muted)}.row .v{font-weight:600;text-align:right}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;color:var(--muted);font-size:10.5px;text-transform:uppercase;padding:6px 4px;border-bottom:2px solid var(--line)}
+  td{padding:8px 4px;border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border:0}
+  .job{border:1px solid var(--line);border-radius:11px;margin-top:10px;background:#fff;overflow:hidden}
+  .job summary{padding:13px 14px;font-weight:700;font-size:14.5px;cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .job summary::-webkit-details-marker{display:none}
+  .job summary .iv{color:var(--muted);font-weight:600;font-size:12px;white-space:nowrap}
+  .job[open] summary{border-bottom:1px solid var(--line)}
+  .jb{padding:4px 14px 14px}.jb ol{margin:8px 0 6px 18px;padding:0}.jb li{margin:6px 0;font-size:14px}
+  .jb .ref{margin-top:8px;font-size:12.5px;color:var(--muted)}
+  .verify{background:#fff7df;border:1px solid #f0e2a8;color:#6a5a12;font-size:10px;font-weight:700;
+    padding:1px 6px;border-radius:5px;white-space:nowrap;vertical-align:middle}
+  .note{background:#fff7df;border:1px solid #f0e2a8;color:#6a5a12;border-radius:11px;padding:12px 14px;
+    margin-top:14px;font-size:13px}
+  .note b{color:#574a0e}
+  .lk{color:var(--green);font-weight:600;text-decoration:none}
+  .lk2{display:block;color:var(--green);font-weight:600;text-decoration:none;font-size:14px;padding:7px 0;border-bottom:1px solid var(--line)}
+  .lk2:last-child{border:0}
+  .muted{color:var(--muted);font-size:12.5px}
+  footer{padding:24px 16px;color:var(--muted);font-size:11.5px;text-align:center}
+  @media print{header{position:static}.job{break-inside:avoid}.note{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="index.html">‹ HANK · Equipment</a>
+  <h1>John Deere 4044M</h1>
+  <p>Service quick-reference · 4-Series compact tractor</p>
+</header>
+
+<main>
+
+  <div class="note">
+    <b>Read this first.</b> This is a working reference built from HANK's vault card — handy at the
+    tractor when you don't have the binder. It is <b>not</b> the official manual. Anything tagged
+    <span class="verify">confirm vs manual</span> has not yet been checked against the Operator's
+    Manual — verify before you rely on a number or part. The official Deere manual links are at the
+    bottom of this page.
+  </div>
+
+  <div class="sec">
+    <h2>Specs</h2>
+    <div class="row"><span class="k">Engine</span><span class="v">Yanmar 4TNV88, 2.2L turbo diesel</span></div>
+    <div class="row"><span class="k">Power</span><span class="v">43 hp @ 2,600 rpm</span></div>
+    <div class="row"><span class="k">Fuel capacity</span><span class="v">13.0 gal</span></div>
+    <div class="row"><span class="k">Engine oil</span><span class="v">1.4 gal w/ filter</span></div>
+    <div class="row"><span class="k">Hydraulic</span><span class="v">12 gal Hy-Gard (J20D)</span></div>
+    <div class="row"><span class="k">Transmission</span><span class="v">12/12 PowrReverser <span class="verify">confirm vs manual</span></span></div>
+  </div>
+
+  <div class="sec">
+    <h2>Maintenance schedule</h2>
+    <table>
+      <tr><th>Task</th><th>Interval</th><th>Part</th></tr>
+      <tr><td>Engine oil &amp; filter</td><td>200 hr</td><td>M806419 <span class="verify">confirm</span></td></tr>
+      <tr><td>Hyd / trans fluid &amp; filter</td><td>400 hr</td><td>RE45864 <span class="verify">confirm</span></td></tr>
+      <tr><td>50-hr break-in checks</td><td>50 hr</td><td>—</td></tr>
+      <tr><td>Daily pre-use walkaround</td><td>Daily</td><td>—</td></tr>
+    </table>
+    <div class="muted" style="margin-top:9px">Intervals and part numbers are starting points from the
+      vault card. Confirm against the Operator's Manual for your serial number before ordering parts.</div>
+  </div>
+
+  <div class="sec">
+    <h2>Job cards</h2>
+
+    <details class="job">
+      <summary>Engine Oil &amp; Filter <span class="iv">200 hr</span></summary>
+      <div class="jb">
+        <ol>
+          <li>Warm oil to operating temp, then shut down and remove the key.</li>
+          <li>Drain crankcase fully.</li>
+          <li>Replace filter <b>M806419</b> — oil the gasket, hand-tighten ¾ turn past contact. <span class="verify">confirm part vs manual</span></li>
+          <li>Refill ~1.4 gal 15W-40 CK-4.</li>
+          <li>Run, check for leaks, shut down, recheck level on the dipstick.</li>
+        </ol>
+        <div class="ref">Reference: Operator's Manual — Engine Oil &amp; Filter service.
+          <span class="verify">confirm page #</span></div>
+      </div>
+    </details>
+
+    <details class="job">
+      <summary>Hydraulic &amp; Transmission Fluid <span class="iv">400 hr</span></summary>
+      <div class="jb">
+        <ol>
+          <li>Park on level ground, lower all implements, relieve hydraulic pressure.</li>
+          <li>Drain the case (12+ gal).</li>
+          <li>Replace filter <b>RE45864</b>, clean the magnetic drain plug. <span class="verify">confirm part vs manual</span></li>
+          <li>Refill ~12 gal Hy-Gard J20D.</li>
+          <li>Cycle the hydraulics, recheck level, check for leaks.</li>
+        </ol>
+        <div class="ref">Reference: Operator's Manual — Transmission / Hydraulic service.
+          <span class="verify">confirm page #</span></div>
+      </div>
+    </details>
+
+    <details class="job">
+      <summary>Daily Pre-Use Walkaround <span class="iv">Daily</span></summary>
+      <div class="jb">
+        <ol>
+          <li>Check engine oil and coolant levels.</li>
+          <li>Check hydraulic reservoir level.</li>
+          <li>Look for leaks under the tractor and at the loader.</li>
+          <li>Check tire condition and pressure.</li>
+          <li>Test lights, horn, and that the seat-switch / safety start works.</li>
+        </ol>
+        <div class="ref">Reference: Operator's Manual — Daily / pre-start checks.
+          <span class="verify">confirm page #</span></div>
+      </div>
+    </details>
+
+  </div>
+
+  <div class="sec">
+    <h2>Official Deere manuals &amp; links</h2>
+    <a class="lk2" href="https://www.deere.com/en/tractors/compact-tractors/4-series-compact-tractors/4044m/" target="_blank" rel="noopener">4044M product page ↗</a>
+    <a class="lk2" href="https://www.deere.com/en/parts-and-service/manuals-and-training/" target="_blank" rel="noopener">Deere Manuals &amp; Training (look up by model / serial) ↗</a>
+    <a class="lk2" href="https://partscatalog.deere.com/" target="_blank" rel="noopener">Deere Parts Catalog (verify part numbers) ↗</a>
+    <div class="muted" style="margin-top:9px">Your full PDF lives in iCloud · 1 PROJECTS/Farm Equipment/JD 4044M Manual.pdf.
+      When you have a shareable link, drop it in and I'll wire it here too.</div>
+  </div>
+
+</main>
+
+<footer>HANK · service reference — not a substitute for the official Operator's Manual.</footer>
+
+</body>
+</html>

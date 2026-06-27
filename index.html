@@ -64,6 +64,15 @@
   .verify{background:#fff7df;border:1px solid #f0e2a8;color:#6a5a12;font-size:10px;font-weight:700;padding:1px 6px;border-radius:5px}
   .empty{padding:40px 16px;text-align:center;color:var(--muted)}
   footer{padding:20px 16px;color:var(--muted);font-size:11.5px;text-align:center}
+  body{padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+  .actionbar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(246,247,243,.96);
+    border-top:1px solid var(--line);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:40}
+  .actionbar button{flex:1;border:0;border-radius:12px;padding:13px;font-size:15px;font-weight:700}
+  .btn-send{background:var(--green);color:#fff}
+  .btn-ask{background:#fff;color:var(--green);border:1px solid var(--green)}
+  .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#1c2419;color:#fff;
+    padding:10px 16px;border-radius:10px;font-size:13px;z-index:60;max-width:88%;text-align:center;display:none}
 </style>
 </head>
 <body>
@@ -78,7 +87,29 @@
 
 <div class="sheet" id="sheet"><div class="panel" id="panel"></div></div>
 
+<div class="actionbar">
+  <button class="btn-ask" onclick="askHank()">Ask Hank</button>
+  <button class="btn-send" onclick="document.getElementById('cap').click()">Send to Hank</button>
+</div>
+<input id="cap" type="file" accept="image/*" multiple style="display:none">
+<div class="toast" id="toast"></div>
+
 <script>
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',5200)}
+const HANK_PRIME="You are HANK (Home And raNch Knowledge), Darren & his wife's household/ranch right-hand. Be true and honest above all — never invent specs/numbers; cite sources; flag uncertainty; admit mistakes. Voice: plainspoken, answer-first, concise, never naggy. If you can read the vault, load 00 Meta/Operating System/Project Hub.md for current state, then give a tight status. If not, say so and work from this.";
+async function askHank(){
+  try{await navigator.clipboard.writeText(HANK_PRIME);toast("Hank prime copied — paste it as your first message in Claude.");}
+  catch(e){toast("Open Claude and paste your Hank prime (iCloud → HANK).");}
+  setTimeout(()=>window.open("https://claude.ai/new","_blank"),900);
+}
+document.getElementById('cap').onchange=async(e)=>{
+  const files=[...e.target.files];if(!files.length)return;
+  if(navigator.canShare&&navigator.canShare({files})){
+    try{await navigator.share({files,title:"For Hank",text:"Save to Files → _Cowork Inbox. Add a word like '4044M oil'."});toast("Choose 'Save to Files' → _Cowork Inbox. Hank takes it from there.");return;}catch(err){}
+  }
+  files.forEach(f=>{const a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=f.name;a.click()});
+  toast("Saved. On iPhone: Share → Save to Files → _Cowork Inbox. Tip: name it like '4044M oil'.");
+};
 const DATA = [
  {g:"Tractors & Loaders", items:[
    {n:"John Deere 4044M",power:"Diesel",loc:"Barn",basis:"Hours",st:"full",

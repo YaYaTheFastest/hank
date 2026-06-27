@@ -19,6 +19,9 @@
     padding:calc(16px + env(safe-area-inset-top)) 18px 16px;position:sticky;top:0;z-index:10}
   header h1{margin:0;font-size:19px;letter-spacing:.2px}
   header p{margin:2px 0 0;opacity:.85;font-size:12.5px}
+  .tabs{display:flex;gap:6px;margin-top:12px}
+  .tabs a{color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:9px 14px;border-radius:10px 10px 0 0;opacity:.7}
+  .tabs a.active{background:var(--bg);color:var(--green);opacity:1}
   .search{margin:12px 16px 0;display:flex;gap:8px}
   .search input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:15px;background:#fff}
   .chips{display:flex;gap:7px;overflow-x:auto;padding:12px 16px 4px;-webkit-overflow-scrolling:touch}
@@ -83,6 +86,7 @@
 <header>
   <h1>HANK · Ranch Equipment</h1>
   <p id="count">Loading…</p>
+  <div class="tabs"><a class="active" href="./">Equipment</a><a href="projects.html">Projects</a></div>
 </header>
 <div class="search"><input id="q" type="search" placeholder="Search equipment…" autocomplete="off"></div>
 <div class="chips" id="chips"></div>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#367C2B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="HANK">
+<title>HANK · Projects</title>
+<style>
+  :root{--green:#367C2B;--green-d:#2a5f22;--ink:#1c2419;--muted:#6b7464;--line:#e4e7df;--bg:#f6f7f3;--card:#fff;
+    --active:#3f9e4d;--idea:#378ADD;--hold:#e0a426;--ship:#888780}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  header{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;padding:calc(16px + env(safe-area-inset-top)) 18px 0}
+  header h1{margin:0;font-size:19px}
+  header p{margin:2px 0 0;opacity:.85;font-size:12.5px}
+  .tabs{display:flex;gap:6px;margin-top:12px}
+  .tab{color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:9px 14px;border-radius:10px 10px 0 0;opacity:.7}
+  .tab.active{background:var(--bg);color:var(--green);opacity:1}
+  .board{display:flex;gap:12px;overflow-x:auto;padding:16px;-webkit-overflow-scrolling:touch;align-items:flex-start}
+  .col{flex:0 0 270px;max-width:270px}
+  @media(max-width:560px){.col{flex:0 0 82vw;max-width:82vw}}
+  .colhead{display:flex;align-items:center;justify-content:space-between;margin:0 2px 9px}
+  .colhead .nm{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:7px}
+  .colhead .dot{width:9px;height:9px;border-radius:50%}
+  .colhead .ct{font-size:12px;color:var(--muted);font-weight:600}
+  .card{background:var(--card);border:1px solid var(--line);border-left-width:3px;border-radius:11px;padding:12px 13px;margin-bottom:10px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .card .t{font-weight:700;font-size:14px;line-height:1.25}
+  .card .nx{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.35}
+  .card .tag{display:inline-block;margin-top:8px;background:#eef1ea;color:#46503c;border-radius:6px;padding:2px 8px;font-size:10.5px;font-weight:600}
+  footer{padding:8px 18px 40px;color:var(--muted);font-size:12px}
+  .a{border-left-color:var(--active)} .i{border-left-color:var(--idea)} .h{border-left-color:var(--hold)} .s{border-left-color:var(--ship)}
+</style>
+</head>
+<body>
+<header>
+  <h1>HANK · Projects</h1>
+  <p id="count">—</p>
+  <div class="tabs"><a class="tab" href="./">Equipment</a><a class="tab active" href="projects.html">Projects</a></div>
+</header>
+
+<div class="board" id="board"></div>
+<footer>Add a project: <b>/log it</b> or drop a line in <b>_Cowork Inbox</b> — Hank files it to the board. BJJ / "The Mat" lives in its own system.</footer>
+
+<script>
+const COLS=[
+ {key:"a",name:"Active",dot:"var(--active)",items:[
+   {t:"Shop – Ongoing",nx:"Keep equipment cards flowing to Full.",tag:"Ranch"},
+   {t:"Jorgenson Tower",nx:"Capture scope + milestones (layouts/appraisals on iCloud).",tag:"Build"},
+   {t:"RockinJ Ranch (LLC / ops)",nx:"Capture core operations & responsibilities.",tag:"Ranch"},
+   {t:"Tax Strategy 2026",nx:"Outline actions (finances are reference-only).",tag:"Finance"}]},
+ {key:"i",name:"Ideas / Dreaming",dot:"var(--idea)",items:[
+   {t:"Replace Barn with Amish Barn",nx:"Scope + rough budget.",tag:"Ranch"},
+   {t:"Rainwater Irrigation System",nx:"Sketch the catchment + use case.",tag:"Ranch"},
+   {t:"2026 Ram",nx:"Spec the build.",tag:"Vehicle"},
+   {t:"Home Organizing",nx:"Pick first room.",tag:"Home"},
+   {t:"Strava Workout Duration Tracking",nx:"Define what to track.",tag:"Fitness"}]},
+ {key:"h",name:"On Hold",dot:"var(--hold)",items:[
+   {t:"Kalshi Bot",nx:"Parked.",tag:"AI"}]},
+ {key:"s",name:"Shipped",dot:"var(--ship)",items:[
+   {t:"Shop Build",nx:"Done.",tag:"Ranch"},
+   {t:"Tax Strategy 2025",nx:"Done.",tag:"Finance"}]}
+];
+let total=0;COLS.forEach(c=>total+=c.items.length);
+document.getElementById('count').textContent=total+" projects · BJJ excluded";
+const board=document.getElementById('board');
+COLS.forEach(c=>{
+  const col=document.createElement('div');col.className="col";
+  col.innerHTML=`<div class="colhead"><span class="nm"><span class="dot" style="background:${c.dot}"></span>${c.name}</span><span class="ct">${c.items.length}</span></div>`;
+  c.items.forEach(it=>{
+    const card=document.createElement('div');card.className="card "+c.key;
+    card.innerHTML=`<div class="t">${it.t}</div><div class="nx">${it.nx}</div>${it.tag?`<span class="tag">${it.tag}</span>`:''}`;
+    col.appendChild(card);
+  });
+  board.appendChild(col);
+});
+</script>
+</body>
+</html>

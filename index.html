@@ -169,9 +169,17 @@ const DATA = [
  {g:"Power, Water & Cleaning", items:[
    {n:"Honda EU2000i Generator",power:"Gas",loc:"Shop",basis:"Seasonal",st:"part"},
    {n:"NorthStar Pressure Washer",power:"Gas",loc:"Shop",basis:"Seasonal",st:"part"},
-   {n:"DR Power Leaf Cyclone",power:"Gas",loc:"Yard",basis:"Seasonal",st:"todo",manual:"iCloud · 1 PROJECTS/Farm Equipment/DR POWER LEAF CYCLONE.pdf"}]},
+   {n:"DR Power Leaf Cyclone",power:"Gas",loc:"Yard",basis:"Seasonal",st:"full",
+     specs:[["Type","Gas leaf & lawn vacuum"],["Impeller","all-steel serrated, high mulch ratio"],["Model","confirm from spec plate"]],
+     sched:[["Check engine oil","each use","r","—"],["Clean impeller/screen/fins","after heavy use","g","OK"],["Air filter","seasonal","r","—"],["Engine oil change","per manual","r","—"]],
+     manual:"iCloud · 1 PROJECTS/Farm Equipment/DR POWER LEAF CYCLONE.pdf",
+     jobs:[{t:"Pre-Use & Cleaning",s:["Check engine oil level","Clear debris screen & impeller housing","Check/clean air filter","Empty & inspect collection bag"]}]}]},
  {g:"UTVs & Powersports", items:[
-   {n:"Arctic Cat Prowler Pro UTV",power:"Gas",loc:"Barn",basis:"Hours",st:"todo",manual:"iCloud · 1 PROJECTS/Motorcycles/2022 Prowler Pro Operator Manual.pdf"},
+   {n:"Arctic Cat Prowler Pro UTV",power:"Gas",loc:"Barn",basis:"Hours",st:"full",
+     specs:[["Engine","812cc inline-3 EFI, ~50 hp (confirm)"],["Oil","ACX 0W-40 synthetic, JASO MA2"],["Drive","CVT, 2WD/4WD"]],
+     sched:[["Engine oil & filter","per manual","r","set hours"],["Air filter","per manual","r","—"],["CVT belt — inspect","per manual","r","—"],["Grease fittings","per manual","r","—"]],
+     manual:"iCloud · 2022 Prowler Pro Operator Manual.pdf",
+     jobs:[{t:"Engine Oil & Filter",s:["Warm engine, shut off, key out","Drain fully","Replace oil filter","Refill ACX 0W-40 to level","Run, check leaks, recheck level"]}]},
    {n:"KTM 350 EXC-F",power:"4-Stroke",loc:"Shop",basis:"Hours",st:"part"},
    {n:"Yamaha TT-R110E",power:"4-Stroke",loc:"Shop",basis:"Hours",st:"part"}]},
  {g:"Shop & Bench", items:[

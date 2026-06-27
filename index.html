@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#367C2B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Ranch Gear">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>ROCKIN' J — Equipment Deck</title>
+<style>
+  :root{--green:#367C2B;--green-d:#2a5f22;--ink:#1c2419;--muted:#6b7464;--line:#e4e7df;
+    --bg:#f6f7f3;--card:#fff;--red:#d24b3e;--amber:#e0a426;--ok:#3f9e4d;--chip:#eef1ea}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom)}
+  header{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;
+    padding:calc(16px + env(safe-area-inset-top)) 18px 16px;position:sticky;top:0;z-index:10}
+  header h1{margin:0;font-size:19px;letter-spacing:.2px}
+  header p{margin:2px 0 0;opacity:.85;font-size:12.5px}
+  .search{margin:12px 16px 0;display:flex;gap:8px}
+  .search input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:15px;background:#fff}
+  .chips{display:flex;gap:7px;overflow-x:auto;padding:12px 16px 4px;-webkit-overflow-scrolling:touch}
+  .chip{white-space:nowrap;border:1px solid var(--line);background:#fff;color:var(--muted);
+    border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600}
+  .chip.active{background:var(--green);color:#fff;border-color:var(--green)}
+  .group{padding:6px 16px 0}
+  .group h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(min-width:620px){.grid{grid-template-columns:1fr 1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04);text-align:left;cursor:pointer}
+  .card .nm{font-weight:700;font-size:14px;line-height:1.2}
+  .card .tags{margin-top:7px;display:flex;flex-wrap:wrap;gap:4px}
+  .t{background:var(--chip);color:#46503c;border-radius:6px;padding:2px 7px;font-size:10.5px;font-weight:600}
+  .st{display:inline-flex;align-items:center;gap:5px;margin-top:9px;font-size:11px;font-weight:700}
+  .st .dot{width:8px;height:8px;border-radius:50%}
+  .full{color:var(--ok)}.full .dot{background:var(--ok)}
+  .part{color:var(--amber)}.part .dot{background:var(--amber)}
+  .todo{color:var(--muted)}.todo .dot{background:var(--muted)}
+  /* detail */
+  .sheet{position:fixed;inset:0;background:rgba(20,28,18,.4);display:none;z-index:50}
+  .sheet.open{display:block}
+  .panel{position:absolute;left:0;right:0;bottom:0;max-height:92vh;overflow-y:auto;background:var(--bg);
+    border-radius:18px 18px 0 0;padding:18px 18px calc(28px + env(safe-area-inset-bottom))}
+  @media(min-width:620px){.panel{left:50%;transform:translateX(-50%);max-width:560px;border-radius:18px;bottom:auto;top:50%;transform:translate(-50%,-50%)}}
+  .ph{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .ph h3{margin:0;font-size:20px}.ph .sub{color:var(--muted);font-size:13px;margin-top:2px}
+  .x{border:0;background:#fff;border:1px solid var(--line);border-radius:9px;width:34px;height:34px;font-size:17px;flex:none}
+  .sec{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;margin-top:12px}
+  .sec h4{margin:0 0 9px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--green)}
+  .row{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+  .row:last-child{border:0}.row .k{color:var(--muted)}.row .v{font-weight:600;text-align:right}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{text-align:left;color:var(--muted);font-size:10.5px;text-transform:uppercase;padding:5px 4px;border-bottom:2px solid var(--line)}
+  td{padding:7px 4px;border-bottom:1px solid var(--line)}tr:last-child td{border:0}
+  .rag{font-weight:700;font-size:11px}.rag.a{color:var(--amber)}.rag.g{color:var(--ok)}.rag.r{color:var(--red)}
+  details{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:#fff}
+  summary{padding:11px 13px;font-weight:600;font-size:13.5px;cursor:pointer}
+  .jb{padding:0 13px 13px;font-size:13px}.jb ol{margin:6px 0 6px 18px;padding:0}.jb li{margin:4px 0}
+  .lk{color:var(--green);font-weight:600;text-decoration:none;font-size:13.5px}
+  .muted{color:var(--muted);font-size:12.5px}
+  .verify{background:#fff7df;border:1px solid #f0e2a8;color:#6a5a12;font-size:10px;font-weight:700;padding:1px 6px;border-radius:5px}
+  .empty{padding:40px 16px;text-align:center;color:var(--muted)}
+  footer{padding:20px 16px;color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <h1>HANK · Ranch Equipment</h1>
+  <p id="count">Loading…</p>
+</header>
+<div class="search"><input id="q" type="search" placeholder="Search equipment…" autocomplete="off"></div>
+<div class="chips" id="chips"></div>
+<div id="list"></div>
+<footer>Tap a card for maintenance, manuals &amp; job steps. Add to Home Screen for app mode.<br>Data snapshot from the vault · status fills in as cards reach Full standard.</footer>
+
+<div class="sheet" id="sheet"><div class="panel" id="panel"></div></div>
+
+<script>
+const DATA = [
+ {g:"Tractors & Loaders", items:[
+   {n:"John Deere 4044M",power:"Diesel",loc:"Barn",basis:"Hours",st:"full",
+     specs:[["Engine","Yanmar 4TNV88, 2.2L turbo diesel"],["Power","43 hp @ 2,600 rpm"],["Fuel","13.0 gal"],["Engine oil","1.4 gal w/ filter"],["Hydraulic","12 gal Hy-Gard (J20D)"],["Transmission","12/12 PowrReverser (confirm)"]],
+     sched:[["Engine oil & filter (M806419)","200 hr","r","No hours set"],["Hyd/trans fluid & filter (RE45864)","400 hr","r","No hours set"],["50-hr checks","50 hr","r","No hours set"],["Daily pre-use","Daily","g","OK"]],
+     manual:"iCloud · 1 PROJECTS/Farm Equipment/JD 4044M Manual.pdf",
+     jobs:[{t:"Engine Oil & Filter — 200 hr",s:["Warm oil, shut down, key out","Drain fully","Replace filter M806419 (oil gasket, ¾ turn)","Refill ~1.4 gal 15W-40 CK-4","Run, check leaks, recheck level"]},
+           {t:"Hydraulic & Trans — 400 hr",s:["Level ground, implements down, relieve pressure","Drain case (12+ gal)","Replace filter RE45864, clean magnetic plug","Refill ~12 gal Hy-Gard J20D","Cycle hydraulics, recheck, check leaks"]}]},
+   {n:"1987 John Deere 2150",power:"Diesel",loc:"Barn",basis:"Hours",st:"full"},
+   {n:"John Deere X580 (54\")",power:"Gas",loc:"Shop",basis:"Hours",st:"part"}]},
+ {g:"Mowers & Cutting Decks", items:[
+   {n:"72\" Woods Mower (PTO)",power:"—",loc:"Barn",basis:"Hours",st:"part"},
+   {n:"2024 John Deere Z530R",power:"Gas",loc:"Shop",basis:"Hours",st:"part"},
+   {n:"Toro 22\" Recycler Max",power:"Gas",loc:"Shop",basis:"Seasonal",st:"part"}]},
+ {g:"Ground-Engaging Attachments", items:[
+   {n:"Woods BB600-2 Box Blade",power:"Manual",loc:"Barn",basis:"As-needed",st:"part"},
+   {n:"Husqvarna CRT900 Tiller",power:"Gas",loc:"Shop",basis:"Seasonal",st:"part"}]},
+ {g:"Chainsaws & Pole Tools", items:[
+   {n:"Husqvarna 460 Rancher 24\"",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"part"},
+   {n:"Husqvarna 545 Mark II 20\"",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"part"},
+   {n:"Stihl MS 261 C-M",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"part"},
+   {n:"Stihl HT 131 Z Pole Pruner",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"part"},
+   {n:"Stihl KM 110 R-Z KombiSystem",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"part"}]},
+ {g:"Power, Water & Cleaning", items:[
+   {n:"Honda EU2000i Generator",power:"Gas",loc:"Shop",basis:"Seasonal",st:"part"},
+   {n:"NorthStar Pressure Washer",power:"Gas",loc:"Shop",basis:"Seasonal",st:"part"},
+   {n:"DR Power Leaf Cyclone",power:"Gas",loc:"Yard",basis:"Seasonal",st:"todo",manual:"iCloud · 1 PROJECTS/Farm Equipment/DR POWER LEAF CYCLONE.pdf"}]},
+ {g:"UTVs & Powersports", items:[
+   {n:"Arctic Cat Prowler Pro UTV",power:"Gas",loc:"Barn",basis:"Hours",st:"todo",manual:"iCloud · 1 PROJECTS/Motorcycles/2022 Prowler Pro Operator Manual.pdf"},
+   {n:"KTM 350 EXC-F",power:"4-Stroke",loc:"Shop",basis:"Hours",st:"part"},
+   {n:"Yamaha TT-R110E",power:"4-Stroke",loc:"Shop",basis:"Hours",st:"part"}]},
+ {g:"Shop & Bench", items:[
+   {n:"Battery Charger",power:"Electric",loc:"Shop",basis:"As-needed",st:"todo"},
+   {n:"Bambu Labs 3D Printer",power:"Electric",loc:"Shop",basis:"As-needed",st:"todo"},
+   {n:"Rabaconda Tire Changer",power:"Manual",loc:"Shop",basis:"As-needed",st:"part"},
+   {n:"Timber Tuff Chain Sharpener",power:"Electric",loc:"Shop",basis:"As-needed",st:"part"}]},
+ {g:"Household", items:[
+   {n:"Dyson Cordless #1 & #2",power:"Battery",loc:"House",basis:"Seasonal",st:"part"},
+   {n:"KitchenAid Fridge (20cf)",power:"Electric",loc:"House",basis:"Seasonal",st:"part"},
+   {n:"LG Fridge (8.6cf)",power:"Electric",loc:"House",basis:"Seasonal",st:"part"},
+   {n:"Litter-Robot 4 (×2)",power:"Electric",loc:"House",basis:"Seasonal",st:"part"},
+   {n:"NordicTrack X32i",power:"Electric",loc:"House",basis:"Seasonal",st:"todo"}]}
+];
+const STLABEL={full:"Full",part:"Partial",todo:"To induct"};
+let filter="All", query="";
+const groups=["All",...DATA.map(d=>d.g)];
+const chips=document.getElementById('chips');
+groups.forEach(g=>{const b=document.createElement('button');b.className="chip"+(g==="All"?" active":"");b.textContent=g;b.onclick=()=>{filter=g;[...chips.children].forEach(c=>c.classList.remove('active'));b.classList.add('active');render()};chips.appendChild(b)});
+document.getElementById('q').oninput=e=>{query=e.target.value.toLowerCase();render()};
+
+let total=0;DATA.forEach(d=>total+=d.items.length);
+document.getElementById('count').textContent=total+" machines · "+DATA.length+" groups";
+
+function render(){
+  const list=document.getElementById('list');list.innerHTML="";let shown=0;
+  DATA.forEach(d=>{
+    if(filter!=="All"&&filter!==d.g)return;
+    const items=d.items.filter(it=>it.n.toLowerCase().includes(query));
+    if(!items.length)return;
+    const sec=document.createElement('div');sec.className="group";
+    sec.innerHTML=`<h2>${d.g}</h2>`;
+    const grid=document.createElement('div');grid.className="grid";
+    items.forEach(it=>{shown++;
+      const c=document.createElement('button');c.className="card";
+      c.innerHTML=`<div class="nm">${it.n}</div>
+        <div class="tags">${[it.power,it.loc,it.basis].filter(x=>x&&x!=="—").map(t=>`<span class="t">${t}</span>`).join("")}</div>
+        <div class="st ${it.st}"><span class="dot"></span>${STLABEL[it.st]}</div>`;
+      c.onclick=()=>openDetail(it,d.g);
+      grid.appendChild(c);
+    });
+    sec.appendChild(grid);list.appendChild(sec);
+  });
+  if(!shown)list.innerHTML='<div class="empty">No equipment matches.</div>';
+}
+function openDetail(it,g){
+  const p=document.getElementById('panel');
+  let h=`<div class="ph"><div><h3>${it.n}</h3><div class="sub">${g} · ${[it.power,it.loc,it.basis].filter(x=>x&&x!=="—").join(" · ")}</div></div><button class="x" onclick="closeSheet()">✕</button></div>`;
+  if(it.specs){h+=`<div class="sec"><h4>Specs</h4>${it.specs.map(s=>`<div class="row"><span class="k">${s[0]}</span><span class="v">${s[1]}</span></div>`).join("")}</div>`}
+  if(it.sched){h+=`<div class="sec"><h4>Maintenance</h4><table><tr><th>Task</th><th>Interval</th><th>Status</th></tr>${it.sched.map(s=>`<tr><td>${s[0]}</td><td>${s[1]}</td><td class="rag ${s[2]}">${s[3]}</td></tr>`).join("")}</table><div class="muted" style="margin-top:8px">Drop an hour-meter photo in <b>_Cowork Inbox</b> to set real due dates. <span class="verify">confirm vs manual</span></div></div>`}
+  if(it.jobs){h+=`<div class="sec"><h4>Job Cards</h4>${it.jobs.map(j=>`<details><summary>${j.t}</summary><div class="jb"><ol>${j.s.map(x=>`<li>${x}</li>`).join("")}</ol></div></details>`).join("")}</div>`}
+  if(it.manual){h+=`<div class="sec"><h4>Manual</h4><div class="muted">${it.manual}</div></div>`}
+  if(!it.specs){h+=`<div class="sec"><div class="muted">Card in progress — Claude is bringing this machine to full standard. ${it.manual?"Manual is on file.":""}</div></div>`}
+  p.innerHTML=h;document.getElementById('sheet').classList.add('open');
+}
+function closeSheet(){document.getElementById('sheet').classList.remove('open')}
+document.getElementById('sheet').onclick=e=>{if(e.target.id==="sheet")closeSheet()};
+render();
+</script>
+</body>
+</html>

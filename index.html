@@ -97,6 +97,13 @@
   .lk{color:var(--green);font-weight:600;text-decoration:none;font-size:13.5px}
   .muted{color:var(--muted);font-size:12.5px}
   .verify{background:#fff7df;border:1px solid #f0e2a8;color:#6a5a12;font-size:10px;font-weight:700;padding:1px 6px;border-radius:5px}
+  .logbtn{width:100%;margin-top:11px;border:0;border-radius:11px;padding:12px;background:var(--green);color:#fff;font-size:14px;font-weight:700;cursor:pointer}
+  .chk{display:flex;flex-direction:column;gap:2px}
+  .ck{display:flex;align-items:flex-start;gap:10px;padding:8px 2px;border-bottom:1px solid var(--line);font-size:13.5px;cursor:pointer}
+  .ck:last-child{border:0}.ck input{width:20px;height:20px;margin-top:1px;flex:none;accent-color:var(--green)}
+  .ck input:checked+span{color:var(--muted);text-decoration:line-through}
+  .figs{margin-top:10px}
+  .figimg{width:100%;border:1px solid var(--line);border-radius:8px;margin-top:8px;display:block}
   .empty{padding:40px 16px;text-align:center;color:var(--muted)}
   footer{padding:20px 16px;color:var(--muted);font-size:11.5px;text-align:center}
   .actionbar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;
@@ -257,7 +264,7 @@ const DATA = [
      jobs:[{t:"Engine Oil Change",s:["Warm 1–2 min, stop, fuel off","Open cover, tip to drain via fill","Drain fully, wipe neck","Refill ~0.42 qt 10W-30, don't overfill","Run, recheck level"]}]},
    {n:"NorthStar Pressure Washer",power:"Gas",loc:"Shop",basis:"Seasonal",st:"full",
      specs:[["Engine","Honda GC190, 187cc"],["Output","~3000–3100 PSI @ ~2.5 GPM (confirm model)"],["Engine oil","10W-30, ~0.58 L, no filter"],["Pump oil","non-detergent pump oil (per manual)"],["Plug","NGK BPR6ES (confirm)"]],
-     sched:[["Engine oil change","20 hr then 100 hr","r","—"],["Pump oil check/change","each use / ~50 hr","r","—"],["Air filter","25 hr/3 mo","r","—"],["Winterize pump (pump saver)","before freeze","r","CRITICAL"],["Pre-use (purge air, water on)","each use","g","OK"]],
+     sched:[["Engine oil change","20 hr then 100 hr","r","—"],["Pump oil check/change","each use / ~50 hr","r","—"],["Air filter","25 hr/3 mo","r","—"],["Winterize pump (pump saver)","before freeze","g","✓ Done 3/1/26"],["Pre-use (purge air, water on)","each use","g","OK"]],
      manual:"NorthStar manual (Northern Tool, by model #) + Honda GC190 manual",
      jobs:[{t:"Pump Service & Winterize",s:["Engine off, relieve pressure","Disconnect, drain water","Run pump saver through until it exits","Check/change pump oil (non-detergent)","Stabilize fuel, store dry/above freezing"]},
            {t:"Engine Oil Change (GC190)",s:["Warm, stop, fuel off","Drain via cutout/plug","Refill ~0.58 L 10W-30 to FULL","Run, recheck, check leaks"]}]},
@@ -276,7 +283,7 @@ const DATA = [
      specs:[["Engine","350cc DOHC 4-stroke, liquid-cooled"],["Engine oil","10W/50 full synth, 1.0 L"],["Coolant","0.95 L, to −25°C"],["Fuel","8.5 L, ROZ 95 premium"],["Plug","NGK LMAR9AI-10, gap 1.0mm"],["Drive","14:48, 520 chain; fork oil SAE 4, 175ml/leg"]],
      sched:[["Engine oil & filter","~15 h / 3000km","r","set hours"],["Air filter clean","each dusty ride","r","—"],["Chain clean/lube + sprockets","each ride","g","OK"],["Valve clearance check","~40–50 h","r","—"],["Brake/clutch fluid + fuel filter","6000km/24mo","r","—"]],
      manual:"KTM 350 EXC-F Operator's Manual (PDF)",manualUrl:"manuals/ktm-350-excf-owners-manual.pdf",
-     jobs:[{t:"Engine Oil & Filter — exact (manual §18.3, p.138–141)",s:["Warm to operating temp, shut off; bike upright on stand; remove skid plate (Championship Ed.)","Remove screw plug ① (oil screen)+O-rings; remove magnetic drain plug ② (with seal ring)","Remove screw plug ③ (O-ring) — do NOT remove screw ④; drain fully; clean screens & sealing surfaces","Refit plug ③ with NEW O-ring → torque 15 Nm (M20×1.5)","Push oil screen ⑤ fully home; refit plug ① with O-ring → 15 Nm","Refit magnetic drain plug ② with NEW seal ring → 20 Nm (M12×1.5)","Remove 6 cover screws, take off filter cover; pull cartridge filter ⑦ with lock-ring pliers (KTM 51012011000)","Lay bike on its side; fill filter housing ⅓ full with oil; insert new filter; oil the cover O-ring","Refit cover → screws 10 Nm (M6); stand upright; remove filler plug ⑨; add 1.0 L 10W/50 full synthetic","Refit filler plug; run briefly; check sight glass (engine off, wait 1 min); top up if below lower edge; refit skid plate"]},
+     jobs:[{t:"Engine Oil & Filter — exact (manual §18.3, p.138–141)",s:["Warm to operating temp, shut off; bike upright on stand; remove skid plate (Championship Ed.)","Remove screw plug ① (oil screen)+O-rings; remove magnetic drain plug ② (with seal ring)","Remove screw plug ③ (O-ring) — do NOT remove screw ④; drain fully; clean screens & sealing surfaces","Refit plug ③ with NEW O-ring → torque 15 Nm (M20×1.5)","Push oil screen ⑤ fully home; refit plug ① with O-ring → 15 Nm","Refit magnetic drain plug ② with NEW seal ring → 20 Nm (M12×1.5)","Remove 6 cover screws, take off filter cover; pull cartridge filter ⑦ with lock-ring pliers (KTM 51012011000)","Lay bike on its side; fill filter housing ⅓ full with oil; insert new filter; oil the cover O-ring","Refit cover → screws 10 Nm (M6); stand upright; remove filler plug ⑨; add 1.0 L 10W/50 full synthetic","Refit filler plug; run briefly; check sight glass (engine off, wait 1 min); top up if below lower edge; refit skid plate"],img:["manuals/img/ktm-oil-p139.png","manuals/img/ktm-oil-p140.png"]},
            {t:"Air Filter Service (manual §12.24–12.26, p.79–80)",s:["Remove air filter box cover (pull at area A, push forward)","Detach tab ①; remove the air filter with its support","Wash the filter in cleaner and dry fully — never run the engine without a filter","Grease the sealing edge (area A) with long-life grease","Mount filter on support; seat retaining pin in bushing; secure with the holding tab","Refit the air-box cover. Clean every dusty ride"]}]},
    {n:"Yamaha TT-R110E",power:"4-Stroke",loc:"Shop",basis:"Hours",st:"full",
      specs:[["Engine","Air-cooled 110cc 4-stroke, 2-valve"],["Trans","4-speed, automatic clutch, e-start"],["Engine oil","10W-40 JASO MA, ≈0.8 L (confirm)"],["Plug","NGK CR6HSA, gap .024–.028\""],["Carb","Mikuni VM16"]],
@@ -297,6 +304,27 @@ const DATA = [
    {n:"NordicTrack X32i",power:"Electric",loc:"House",basis:"Seasonal",st:"todo"}]}
 ];
 const STLABEL={full:"Full",part:"Partial",todo:"To induct"};
+
+// ---- pre-use / pre-ride checklists (per machine) ----
+const PREUSE={
+"John Deere 4044M":["Engine oil & coolant level","Hydraulic (Hy-Gard) level; look for leaks","Fuel level; drain water separator","Tires; loader pins & hitch secure","Lights, seat switch, ROPS & seatbelt","Grease points if due"],
+"1987 John Deere 2150":["Engine oil & coolant level","Fuel level; check for leaks","Hydraulic level","Tires; PTO guard & hitch","Brakes feel; seatbelt"],
+"John Deere X580 (54\")":["Engine oil level","Fuel level","Tire pressures","Deck blades & no debris buildup","Safety switches (seat, PTO, brake)","Clear deck & engine of debris"],
+"2024 John Deere Z530R":["Engine oil level & condition","Fuel level / freshness","Tire pressures","Blades sharp; clear deck debris","Safety switches (seat, PTO, brake)","Note hour meter (−10h offset)"],
+"Toro 22\" Recycler Max":["Engine oil level (SAE 30)","Fuel fresh","Blade condition; bail/brake works","Air filter clean","Clear underside before mowing"],
+"72\" Woods Mower (PTO)":["Driveline/PTO shield secure","Gearbox oil level; grease zerks","Blades & bolts tight","Deck for cracks/debris","Hitch pins & safety chain"],
+"Husqvarna 460 Rancher 24\"":["Fresh 50:1 mix; top bar oil","Chain tension & sharpness","Bar groove clean; oiler works","Test chain brake","Air filter clean; stop switch","Full PPE; clear escape path"],
+"Husqvarna 545 Mark II 20\"":["Fresh 50:1 mix; top bar oil","Chain tension & sharpness (.325)","Bar groove clean; oiler works","Test chain brake","Air filter clean","Full PPE; clear escape path"],
+"Stihl MS 261 C-M":["Fresh 50:1 mix; top bar oil","Chain tension & sharpness","Bar groove clean; oiler works","Test chain brake","HD2 air filter clean","Full PPE; clear escape path"],
+"Stihl HT 131 Z Pole Pruner":["Full PPE before fueling","Fresh 50:1; top bar oil","Chain sharp & tensioned; oiler works","Extension locks fully seated","Stop switch works (no chain brake)","Clear fall zone; spotter for high work"],
+"Stihl KM 110 R-Z KombiSystem":["Fresh 50:1; attachment locked on","Attachment guard & condition","Throttle & stop switch","Clear work area","Full PPE"],
+"Honda EU2000i Generator":["Engine oil level (dipstick)","Fuel level; vent open","Run outdoors only (CO)","Nothing plugged in at start","Eco-throttle as needed"],
+"NorthStar Pressure Washer":["Engine oil level","Pump oil sight glass","Water supply ON & flowing","Inlet screen clean","Purge air (trigger open, no nozzle) before start","Never run the pump dry"],
+"DR Power Leaf Cyclone":["Engine oil level","Clear debris screen & impeller","Air filter clean","Collection bag empty & sound","Eye & ear protection"],
+"Arctic Cat Prowler Pro UTV":["Engine oil & coolant level","Tire pressures & condition","Brakes & seatbelts","Lights; CVT intake clear","Cargo secured","Note hour meter"],
+"KTM 350 EXC-F":["Engine oil (sight glass) & coolant","Chain tension & lube","Tire pressure & condition; spokes","Front & rear brakes","Controls, cables, kill switch","Air filter clean; full PPE"],
+"Yamaha TT-R110E":["Engine oil level (dipstick)","Chain tension (~1–2cm) & lube","Tires & brakes","Throttle return & kill switch","Fuel fresh; no leaks","Helmet & PPE on rider"]
+};
 
 // ---- starter reorder reference (pulled from Full cards; quantities not tracked) ----
 const SUPPLIES=[
@@ -423,12 +451,30 @@ function openDetail(it,g){
   let h=`<div class="ph"><div><h3>${it.n}</h3><div class="sub">${g} · ${[it.power,it.loc,it.basis].filter(x=>x&&x!=="—").join(" · ")}</div></div><button class="x" onclick="closeSheet()">✕</button></div>`;
   const purl=URLS[it.n];
   if(purl)h+=`<div class="sec"><h4>Factory product page</h4><a class="lk" href="${purl}" target="_blank" rel="noopener">${new URL(purl).hostname.replace(/^www\./,'')} ↗</a></div>`;
+  const pu=PREUSE[it.n];
+  if(pu){h+=`<div class="sec"><h4>Pre-use checklist</h4><div class="chk">${pu.map(x=>`<label class="ck"><input type="checkbox"><span>${x}</span></label>`).join("")}</div></div>`}
   if(it.specs){h+=`<div class="sec"><h4>Specs</h4>${it.specs.map(s=>`<div class="row"><span class="k">${s[0]}</span><span class="v">${s[1]}</span></div>`).join("")}</div>`}
-  if(it.sched){h+=`<div class="sec"><h4>Maintenance</h4><table><tr><th>Task</th><th>Interval</th><th>Status</th></tr>${it.sched.map(s=>`<tr><td>${s[0]}</td><td>${s[1]}</td>${ragCell(s)}</tr>`).join("")}</table><div class="muted" style="margin-top:8px">Grey = waiting on a starting hour count. Drop an hour-meter photo in <b>_Cowork Inbox</b> to set real due dates. <span class="verify">confirm vs manual</span></div></div>`}
-  if(it.jobs){h+=`<div class="sec"><h4>Job Cards</h4>${it.jobs.map(j=>`<details><summary>${j.t}</summary><div class="jb"><ol>${j.s.map(x=>`<li>${x}</li>`).join("")}</ol></div></details>`).join("")}</div>`}
+  if(it.sched){h+=`<div class="sec"><h4>Maintenance</h4><table><tr><th>Task</th><th>Interval</th><th>Status</th></tr>${it.sched.map(s=>`<tr><td>${s[0]}</td><td>${s[1]}</td>${ragCell(s)}</tr>`).join("")}</table><button class="logbtn" onclick="logMaint('${it.n.replace(/'/g,"\\'")}')">✓ Log maintenance done</button><div class="muted" style="margin-top:8px">Grey = waiting on a starting hour count. Tap <b>Log maintenance done</b> (or drop an hour-meter photo in <b>_Cowork Inbox</b>) and Hank updates the card &amp; due dates on the next pass. <span class="verify">confirm vs manual</span></div></div>`}
+  if(it.jobs){h+=`<div class="sec"><h4>Job Cards</h4>${it.jobs.map(j=>`<details><summary>${j.t}</summary><div class="jb"><ol>${j.s.map(x=>`<li>${x}</li>`).join("")}</ol>${j.img?`<div class="figs">${j.img.map(src=>`<a href="${src}" target="_blank" rel="noopener"><img class="figimg" src="${src}" alt="manual figure — tap to enlarge" loading="lazy"></a>`).join("")}<div class="muted">Manual figures — tap to enlarge.</div></div>`:``}</div></details>`).join("")}</div>`}
   if(it.manual||it.manualUrl){h+=`<div class="sec"><h4>Manual</h4>`+(it.manualUrl?`<a class="lk" href="${it.manualUrl}" target="_blank" rel="noopener">📄 Open ${it.manual||'manual'} ↗</a>`:`<div class="muted">${it.manual}</div>`)+`</div>`}
   if(!it.specs){h+=`<div class="sec"><div class="muted">Card in progress — Hank is bringing this machine to full standard. ${it.manual?"Manual is on file.":""}</div></div>`}
   p.innerHTML=h;document.getElementById('sheet').classList.add('open');
+}
+async function logMaint(name){
+  const what=window.prompt("Log maintenance for "+name+"\n\nWhat did you do? Include a date or hours, e.g.:\n  • Winterized pump 3/1/26\n  • Oil & filter done at 12.3 h\n  • Blades sharpened today");
+  if(!what)return;
+  const today=new Date().toISOString().slice(0,10);
+  const note="MAINTENANCE DONE\nMachine: "+name+"\nWork: "+what+"\nLogged: "+today+"\n\n(Hank: append to this card's Service History, update the matching Maintenance row / due date, and clear any dashboard flag.)";
+  const fname=("done "+name+" "+what).replace(/[^a-z0-9]+/gi,"-").replace(/^-|-$/g,"").slice(0,48)+".txt";
+  try{
+    const file=new File([note],fname,{type:"text/plain"});
+    if(navigator.canShare&&navigator.canShare({files:[file]})){
+      await navigator.share({files:[file],title:"For Hank",text:"Save to Files → _Cowork Inbox. Hank logs it on the next pass."});
+      toast("Saved — Hank updates the card on its next pass.");return;
+    }
+  }catch(e){}
+  try{await navigator.clipboard.writeText(note);toast("Copied. Paste into _Cowork Inbox (or /log it) — Hank takes it from there.");}
+  catch(e){toast("Note ready: drop “"+name+": "+what+"” into _Cowork Inbox.");}
 }
 function closeSheet(){document.getElementById('sheet').classList.remove('open')}
 document.getElementById('sheet').onclick=e=>{if(e.target.id==="sheet")closeSheet()};

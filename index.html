@@ -196,7 +196,7 @@ const DATA = [
    {n:"John Deere 4044M",power:"Diesel",loc:"Barn",basis:"Hours",st:"full",
      specs:[["Engine","Yanmar 4TNV88, 2.2L turbo diesel"],["Power","43 hp @ 2,600 rpm"],["Fuel","13.0 gal"],["Engine oil","1.4 gal w/ filter"],["Hydraulic","12 gal Hy-Gard (J20D)"],["Transmission","12/12 PowrReverser (confirm)"]],
      sched:[["Engine oil & filter (M806419)","200 hr","r","No hours set"],["Hyd/trans fluid & filter (RE45864)","400 hr","r","No hours set"],["50-hr checks","50 hr","r","No hours set"],["Daily pre-use","Daily","g","OK"]],
-     manual:"iCloud · 1 PROJECTS/Farm Equipment/JD 4044M Manual.pdf",
+     manual:"JD 4044M Operator's Manual (PDF)",manualUrl:"manuals/jd-4044m-manual.pdf",
      jobs:[{t:"Engine Oil & Filter — 200 hr",s:["Warm oil, shut down, key out","Drain fully","Replace filter M806419 (oil gasket, ¾ turn)","Refill ~1.4 gal 15W-40 CK-4","Run, check leaks, recheck level"]},
            {t:"Hydraulic & Trans — 400 hr",s:["Level ground, implements down, relieve pressure","Drain case (12+ gal)","Replace filter RE45864, clean magnetic plug","Refill ~12 gal Hy-Gard J20D","Cycle hydraulics, recheck, check leaks"]}]},
    {n:"1987 John Deere 2150",power:"Diesel",loc:"Barn",basis:"Hours",st:"full"},
@@ -264,20 +264,20 @@ const DATA = [
    {n:"DR Power Leaf Cyclone",power:"Gas",loc:"Yard",basis:"Seasonal",st:"full",
      specs:[["Type","Gas leaf & lawn vacuum"],["Impeller","all-steel serrated, high mulch ratio"],["Model","confirm from spec plate"]],
      sched:[["Check engine oil","each use","r","—"],["Clean impeller/screen/fins","after heavy use","g","OK"],["Air filter","seasonal","r","—"],["Engine oil change","per manual","r","—"]],
-     manual:"iCloud · 1 PROJECTS/Farm Equipment/DR POWER LEAF CYCLONE.pdf",
+     manual:"DR Power Leaf Cyclone Manual (PDF)",manualUrl:"manuals/dr-power-leaf-cyclone.pdf",
      jobs:[{t:"Pre-Use & Cleaning",s:["Check engine oil level","Clear debris screen & impeller housing","Check/clean air filter","Empty & inspect collection bag"]}]}]},
  {g:"UTVs & Powersports", items:[
    {n:"Arctic Cat Prowler Pro UTV",power:"Gas",loc:"Barn",basis:"Hours",st:"full",
      specs:[["Engine","812cc inline-3 EFI, ~50 hp (confirm)"],["Oil","ACX 0W-40 synthetic, JASO MA2"],["Drive","CVT, 2WD/4WD"]],
      sched:[["Engine oil & filter","per manual","r","set hours"],["Air filter","per manual","r","—"],["CVT belt — inspect","per manual","r","—"],["Grease fittings","per manual","r","—"]],
-     manual:"iCloud · 2022 Prowler Pro Operator Manual.pdf",
+     manual:"2022 Prowler Pro Operator Manual (PDF)",manualUrl:"manuals/prowler-pro-manual.pdf",
      jobs:[{t:"Engine Oil & Filter",s:["Warm engine, shut off, key out","Drain fully","Replace oil filter","Refill ACX 0W-40 to level","Run, check leaks, recheck level"]}]},
    {n:"KTM 350 EXC-F",power:"4-Stroke",loc:"Shop",basis:"Hours",st:"full",
      specs:[["Engine","350cc DOHC 4-stroke, liquid-cooled"],["Engine oil","10W/50 full synth, 1.0 L"],["Coolant","0.95 L, to −25°C"],["Fuel","8.5 L, ROZ 95 premium"],["Plug","NGK LMAR9AI-10, gap 1.0mm"],["Drive","14:48, 520 chain; fork oil SAE 4, 175ml/leg"]],
      sched:[["Engine oil & filter","~15 h / 3000km","r","set hours"],["Air filter clean","each dusty ride","r","—"],["Chain clean/lube + sprockets","each ride","g","OK"],["Valve clearance check","~40–50 h","r","—"],["Brake/clutch fluid + fuel filter","6000km/24mo","r","—"]],
-     manual:"iCloud · 1 PROJECTS/Motorcycles/25_3240050_en_BA.pdf",
-     jobs:[{t:"Engine Oil & Filter",s:["Warm briefly, shut off (hot!), on stand","Drain plug(s), clean oil screens","6 cover screws, swap filter, oil O-rings","Torque cover 10 Nm","Refill 1.0 L 10W/50, run, recheck sight glass"]},
-           {t:"Air Filter Service",s:["Open air box, remove foam filter","Wash & dry per instructions","Re-oil foam evenly","Reseat, seal air box","Clean filter every dusty ride"]}]},
+     manual:"KTM 350 EXC-F Operator's Manual (PDF)",manualUrl:"manuals/ktm-350-excf-owners-manual.pdf",
+     jobs:[{t:"Engine Oil & Filter — exact (manual §18.3, p.138–141)",s:["Warm to operating temp, shut off; bike upright on stand; remove skid plate (Championship Ed.)","Remove screw plug ① (oil screen)+O-rings; remove magnetic drain plug ② (with seal ring)","Remove screw plug ③ (O-ring) — do NOT remove screw ④; drain fully; clean screens & sealing surfaces","Refit plug ③ with NEW O-ring → torque 15 Nm (M20×1.5)","Push oil screen ⑤ fully home; refit plug ① with O-ring → 15 Nm","Refit magnetic drain plug ② with NEW seal ring → 20 Nm (M12×1.5)","Remove 6 cover screws, take off filter cover; pull cartridge filter ⑦ with lock-ring pliers (KTM 51012011000)","Lay bike on its side; fill filter housing ⅓ full with oil; insert new filter; oil the cover O-ring","Refit cover → screws 10 Nm (M6); stand upright; remove filler plug ⑨; add 1.0 L 10W/50 full synthetic","Refit filler plug; run briefly; check sight glass (engine off, wait 1 min); top up if below lower edge; refit skid plate"]},
+           {t:"Air Filter Service (manual §12.24–12.26, p.79–80)",s:["Remove air filter box cover (pull at area A, push forward)","Detach tab ①; remove the air filter with its support","Wash the filter in cleaner and dry fully — never run the engine without a filter","Grease the sealing edge (area A) with long-life grease","Mount filter on support; seat retaining pin in bushing; secure with the holding tab","Refit the air-box cover. Clean every dusty ride"]}]},
    {n:"Yamaha TT-R110E",power:"4-Stroke",loc:"Shop",basis:"Hours",st:"full",
      specs:[["Engine","Air-cooled 110cc 4-stroke, 2-valve"],["Trans","4-speed, automatic clutch, e-start"],["Engine oil","10W-40 JASO MA, ≈0.8 L (confirm)"],["Plug","NGK CR6HSA, gap .024–.028\""],["Carb","Mikuni VM16"]],
      sched:[["Engine oil change","20 hr/monthly","r","—"],["Carb clean/drain","50 hr/seasonal","r","ethanol gums it"],["Chain & sprockets","10–20 hr","g","OK"],["Spark plug","per schedule","r","—"],["Valve clearance","per manual","r","confirm spec"]],
@@ -426,7 +426,7 @@ function openDetail(it,g){
   if(it.specs){h+=`<div class="sec"><h4>Specs</h4>${it.specs.map(s=>`<div class="row"><span class="k">${s[0]}</span><span class="v">${s[1]}</span></div>`).join("")}</div>`}
   if(it.sched){h+=`<div class="sec"><h4>Maintenance</h4><table><tr><th>Task</th><th>Interval</th><th>Status</th></tr>${it.sched.map(s=>`<tr><td>${s[0]}</td><td>${s[1]}</td>${ragCell(s)}</tr>`).join("")}</table><div class="muted" style="margin-top:8px">Grey = waiting on a starting hour count. Drop an hour-meter photo in <b>_Cowork Inbox</b> to set real due dates. <span class="verify">confirm vs manual</span></div></div>`}
   if(it.jobs){h+=`<div class="sec"><h4>Job Cards</h4>${it.jobs.map(j=>`<details><summary>${j.t}</summary><div class="jb"><ol>${j.s.map(x=>`<li>${x}</li>`).join("")}</ol></div></details>`).join("")}</div>`}
-  if(it.manual){h+=`<div class="sec"><h4>Manual</h4><div class="muted">${it.manual}</div></div>`}
+  if(it.manual||it.manualUrl){h+=`<div class="sec"><h4>Manual</h4>`+(it.manualUrl?`<a class="lk" href="${it.manualUrl}" target="_blank" rel="noopener">📄 Open ${it.manual||'manual'} ↗</a>`:`<div class="muted">${it.manual}</div>`)+`</div>`}
   if(!it.specs){h+=`<div class="sec"><div class="muted">Card in progress — Hank is bringing this machine to full standard. ${it.manual?"Manual is on file.":""}</div></div>`}
   p.innerHTML=h;document.getElementById('sheet').classList.add('open');
 }

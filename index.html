@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="theme-color" content="#367C2B">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="HANK">
@@ -14,26 +17,27 @@
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom)}
+    -webkit-font-smoothing:antialiased;padding-bottom:calc(82px + env(safe-area-inset-bottom))}
   header{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;
-    padding:calc(16px + env(safe-area-inset-top)) 18px 16px;position:sticky;top:0;z-index:10}
+    padding:calc(16px + env(safe-area-inset-top)) 18px 0;position:sticky;top:0;z-index:10}
   header h1{margin:0;font-size:19px;letter-spacing:.2px}
   header p{margin:2px 0 0;opacity:.85;font-size:12.5px}
   .tabs{display:flex;gap:6px;margin-top:12px}
-  .tabs a{color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:9px 14px;border-radius:10px 10px 0 0;opacity:.7}
+  .tabs a{color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:9px 14px;border-radius:10px 10px 0 0;opacity:.7;cursor:pointer}
   .tabs a.active{background:var(--bg);color:var(--green);opacity:1}
   .search{margin:12px 16px 0;display:flex;gap:8px}
   .search input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:15px;background:#fff}
   .chips{display:flex;gap:7px;overflow-x:auto;padding:12px 16px 4px;-webkit-overflow-scrolling:touch}
   .chip{white-space:nowrap;border:1px solid var(--line);background:#fff;color:var(--muted);
-    border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600}
+    border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600;cursor:pointer}
   .chip.active{background:var(--green);color:#fff;border-color:var(--green)}
   .group{padding:6px 16px 0}
   .group h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px}
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   @media(min-width:620px){.grid{grid-template-columns:1fr 1fr 1fr}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;
+  .card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:14px;padding:12px;
     box-shadow:0 1px 2px rgba(0,0,0,.04);text-align:left;cursor:pointer}
+  .card.full{border-left-color:var(--ok)}.card.part{border-left-color:var(--amber)}.card.todo{border-left-color:#c7ccc0}
   .card .nm{font-weight:700;font-size:14px;line-height:1.2}
   .card .tags{margin-top:7px;display:flex;flex-wrap:wrap;gap:4px}
   .t{background:var(--chip);color:#46503c;border-radius:6px;padding:2px 7px;font-size:10.5px;font-weight:600}
@@ -42,6 +46,34 @@
   .full{color:var(--ok)}.full .dot{background:var(--ok)}
   .part{color:var(--amber)}.part .dot{background:var(--amber)}
   .todo{color:var(--muted)}.todo .dot{background:var(--muted)}
+  .hint{margin-top:6px;font-size:11px;color:var(--muted);line-height:1.3}
+  /* dashboard */
+  .dash{padding:14px 16px 0}
+  .dsec{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:12px}
+  .dsec h3{margin:0 0 4px;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--green)}
+  .dsec .lead{color:var(--muted);font-size:12.5px;margin:0 0 12px}
+  .stats{display:flex;gap:8px;text-align:center}
+  .stat{flex:1;background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:10px 6px}
+  .stat b{display:block;font-size:22px;line-height:1.1}
+  .stat span{font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+  .stat.g b{color:var(--ok)}.stat.a b{color:var(--amber)}.stat.m b{color:var(--muted)}
+  .bar{height:9px;border-radius:6px;background:var(--line);overflow:hidden;margin:12px 0 6px;display:flex}
+  .bar i{display:block;height:100%}
+  .bar .bg{background:var(--ok)}.bar .ba{background:var(--amber)}.bar .bm{background:#c7ccc0}
+  .barlbl{font-size:11.5px;color:var(--muted)}
+  .att{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .att:last-child{border:0}
+  .att .ic{width:9px;height:9px;border-radius:50%;margin-top:5px;flex:none}
+  .att .ic.r{background:var(--red)}.att .ic.a{background:var(--amber)}.att .ic.n{background:#c7ccc0}
+  .att .body{flex:1;font-size:13px}.att .body b{font-weight:700}
+  .att .body .sub{color:var(--muted);font-size:11.5px;margin-top:1px}
+  .att .go{color:var(--green);font-weight:700;font-size:12px;white-space:nowrap;cursor:pointer}
+  .cta{display:flex;gap:9px;margin-top:4px}
+  .cta button{flex:1;border:0;border-radius:11px;padding:12px;font-size:13.5px;font-weight:700;cursor:pointer}
+  .cta .p{background:var(--green);color:#fff}.cta .s{background:var(--bg);color:var(--green);border:1px solid var(--green)}
+  .sup{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .sup:last-child{border:0}.sup .k{font-weight:600}.sup .v{color:var(--muted);text-align:right;font-size:12px}
+  .note{font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.4}
   /* detail */
   .sheet{position:fixed;inset:0;background:rgba(20,28,18,.4);display:none;z-index:50}
   .sheet.open{display:block}
@@ -58,7 +90,7 @@
   table{width:100%;border-collapse:collapse;font-size:12.5px}
   th{text-align:left;color:var(--muted);font-size:10.5px;text-transform:uppercase;padding:5px 4px;border-bottom:2px solid var(--line)}
   td{padding:7px 4px;border-bottom:1px solid var(--line)}tr:last-child td{border:0}
-  .rag{font-weight:700;font-size:11px}.rag.a{color:var(--amber)}.rag.g{color:var(--ok)}.rag.r{color:var(--red)}
+  .rag{font-weight:700;font-size:11px}.rag.a{color:var(--amber)}.rag.g{color:var(--ok)}.rag.r{color:var(--red)}.rag.n{color:var(--muted)}
   details{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:#fff}
   summary{padding:11px 13px;font-weight:600;font-size:13.5px;cursor:pointer}
   .jb{padding:0 13px 13px;font-size:13px}.jb ol{margin:6px 0 6px 18px;padding:0}.jb li{margin:4px 0}
@@ -67,7 +99,6 @@
   .verify{background:#fff7df;border:1px solid #f0e2a8;color:#6a5a12;font-size:10px;font-weight:700;padding:1px 6px;border-radius:5px}
   .empty{padding:40px 16px;text-align:center;color:var(--muted)}
   footer{padding:20px 16px;color:var(--muted);font-size:11.5px;text-align:center}
-  body{padding-bottom:calc(82px + env(safe-area-inset-bottom))}
   .actionbar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;
     padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(246,247,243,.96);
     border-top:1px solid var(--line);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:40}
@@ -80,18 +111,30 @@
     background:#eef1ea;color:var(--green);font-size:11px;font-weight:700;text-decoration:none;
     margin-bottom:8px;padding:6px 8px;text-align:center;word-break:break-word}
   .thumb span{color:#9aa291;font-weight:600}
+  .hide{display:none}
 </style>
 </head>
 <body>
 <header>
   <h1>HANK · Ranch Equipment</h1>
   <p id="count">Loading…</p>
-  <div class="tabs"><a class="active" href="./">Equipment</a><a href="projects.html">Projects</a></div>
+  <div class="tabs">
+    <a id="tabDash" class="active" onclick="showView('dash')">Dashboard</a>
+    <a id="tabEquip" onclick="showView('equip')">Equipment</a>
+    <a href="projects.html">Projects</a>
+  </div>
 </header>
-<div class="search"><input id="q" type="search" placeholder="Search equipment…" autocomplete="off"></div>
-<div class="chips" id="chips"></div>
-<div id="list"></div>
-<footer>Tap a card for maintenance, manuals &amp; job steps. Add to Home Screen for app mode.<br>Data snapshot from the vault · status fills in as cards reach Full standard.</footer>
+
+<!-- DASHBOARD VIEW -->
+<div id="dashView"><div class="dash" id="dash"></div></div>
+
+<!-- EQUIPMENT VIEW -->
+<div id="equipView" class="hide">
+  <div class="search"><input id="q" type="search" placeholder="Search equipment…" autocomplete="off"></div>
+  <div class="chips" id="chips"></div>
+  <div id="list"></div>
+  <footer>Tap a card for specs, maintenance &amp; job steps. Add to Home Screen for app mode.</footer>
+</div>
 
 <div class="sheet" id="sheet"><div class="panel" id="panel"></div></div>
 
@@ -103,6 +146,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
+const BUILD_DATE="2026-06-28";
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',5200)}
 const HANK_PRIME="You are HANK (Home And raNch Knowledge), Darren & his wife's household/ranch right-hand. Be true and honest above all — never invent specs/numbers; cite sources; flag uncertainty; admit mistakes. Voice: plainspoken, answer-first, concise, never naggy. If you can read the vault, load 00 Meta/Operating System/Project Hub.md for current state, then give a tight status. If not, say so and work from this.";
 async function askHank(){
@@ -113,7 +157,7 @@ async function askHank(){
 document.getElementById('cap').onchange=async(e)=>{
   const files=[...e.target.files];if(!files.length)return;
   if(navigator.canShare&&navigator.canShare({files})){
-    try{await navigator.share({files,title:"For Hank",text:"Save to Files → _Cowork Inbox. Add a word like '4044M oil'."});toast("Choose 'Save to Files' → _Cowork Inbox. Hank takes it from there.");return;}catch(err){}
+    try{await navigator.share({files,title:"For Hank",text:"Save to Files → _Cowork Inbox. Add a word like '4044M oil' or 'Z530R hours'."});toast("Choose 'Save to Files' → _Cowork Inbox. Hank takes it from there.");return;}catch(err){}
   }
   files.forEach(f=>{const a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=f.name;a.click()});
   toast("Saved. On iPhone: Share → Save to Files → _Cowork Inbox. Tip: name it like '4044M oil'.");
@@ -192,7 +236,12 @@ const DATA = [
      manual:"Husqvarna 545 Mark II Operator's Manual (husqvarna.com/digital)",
      jobs:[{t:"Chain Filing & Sharpening",s:["Brake on, engine off, clamp bar","Use .325\" .050\" file guide (not the 460's 3/8\")","Equal strokes per cutter, both sides","Lower depth gauges (rakers)","Re-tension, oil bar"]},
            {t:"Bar/Air Filter + Winterize",s:["Clean air filter (AutoTune needs airflow)","Remove bar, clean groove & oiler, flip","Check plug NGK CMR6H, gap .020\"","Reinstall, tension, oil","Storage: stabilize/drain fuel, run dry"]}]},
-   {n:"Stihl MS 261 C-M",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"part"},
+   {n:"Stihl MS 261 C-M",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"full",
+     specs:[["Engine","STIHL 50.2cc 2-stroke, M-Tronic"],["Bar/chain","~20\", .325\" / 3/8\" .050\" (confirm pitch on saw)"],["Fuel mix","50:1 fresh"],["Plug","NGK per STIHL spec (confirm)"],["Air filter","HD2 filter"]],
+     sched:[["Chain file/sharpen","1–3 tanks","g","OK"],["Air filter (HD2) clean","5–10 hr","r","—"],["Bar groove/rails + flip","each sharpen","g","OK"],["Plug + fuel filter","25–50 hr","r","—"],["Chain brake test","each use","g","OK"]],
+     manual:"STIHL MS 261 C-M Instruction Manual (stihlusa.com/digital)",
+     jobs:[{t:"Chain Filing & Sharpening",s:["Stop, chain brake on, clamp bar","Match factory pitch file guide & angle","Equal strokes per cutter, both sides","Lower depth gauges (rakers)","Re-tension, oil bar"]},
+           {t:"Air Filter (HD2) + Winterize",s:["Clean/replace HD2 air filter","Clean bar groove & oiler, flip bar","Check plug, fuel filter","Reinstall, tension, oil","Storage: stabilize/drain fuel, run dry"]}]},
    {n:"Stihl HT 131 Z Pole Pruner",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"full",
      specs:[["Engine","STIHL 4-MIX 36.3cc (runs 50:1, has valves)"],["Fuel/oil tanks","fuel 18.0 oz · bar oil 7.4 oz"],["Bar/chain","14\", 3/8\" PICCO PMM3 low-kickback"],["Plug","NGK CMR6H (confirm)"],["Note","No chain brake; 4-MIX needs valve checks"]],
      sched:[["Chain sharpen","each use","g","OK"],["Bar clean/oiler","each sharpen","g","OK"],["Air filter","as needed","r","—"],["Valve clearance (4-MIX)","per schedule","r","if hard start"],["Pre-use (high-reach safety)","each use","g","OK"]],
@@ -248,15 +297,98 @@ const DATA = [
    {n:"NordicTrack X32i",power:"Electric",loc:"House",basis:"Seasonal",st:"todo"}]}
 ];
 const STLABEL={full:"Full",part:"Partial",todo:"To induct"};
+
+// ---- starter reorder reference (pulled from Full cards; quantities not tracked) ----
+const SUPPLIES=[
+ ["2-stroke mix oil (50:1)","Husqvarna 460 & 545, Stihl MS 261, HT 131, KM 110"],
+ ["Bar & chain oil","All chainsaws + HT 131 pole pruner"],
+ ["Engine oil 15W-40 CK-4","JD 4044M, JD 2150 (diesel)"],
+ ["Engine oil 10W-30","X580, Z530R, EU2000i, NorthStar"],
+ ["Engine oil SAE 30","Toro 22\" Recycler"],
+ ["Engine oil 10W-40 JASO MA","Yamaha TT-R110E (wet clutch — MA only)"],
+ ["Engine oil 10W/50 full synth","KTM 350 EXC-F"],
+ ["ACX 0W-40 synthetic","Arctic Cat Prowler Pro"],
+ ["Hy-Gard J20D hydraulic","JD 4044M"],
+ ["Spark plugs","BPMR7A (460), CMR6H (545/HT131), CR5HSB (EU2000i), LMAR9AI-10 (KTM), CR6HSA (TTR110)"],
+ ["Oil filters","M806419 + RE45864 (4044M), Kawasaki 49065-7007 (X580/Z530R — confirm), KTM filter"],
+ ["Air filters","Husq 537 25 57 (460), 590 45 88 (545)"],
+ ["Saw chains","3/8 .050 84DL (460), .325 .050 80DL (545), 3/8 PICCO PMM3 (HT131)"]
+];
+
+// ---- helpers ----
+function counts(){let f=0,p=0,t=0,tot=0;DATA.forEach(g=>g.items.forEach(it=>{tot++;if(it.st==="full")f++;else if(it.st==="part")p++;else t++;}));return{f,p,t,tot};}
+function isSetup(txt){txt=(txt||"").toLowerCase();return !txt||txt==="—"||txt.includes("no hours")||txt.includes("set hours")||txt.includes("confirm")||txt.includes("offset");}
+// gather attention items across the fleet
+function attention(){
+  const crit=[],seasonal=[];let needHours=0;const needHoursList=[];
+  DATA.forEach(g=>g.items.forEach(it=>{
+    if(it.basis==="Hours"&&it.specs){const hasUnset=(it.sched||[]).some(r=>isSetup(r[3]));if(hasUnset){needHours++;needHoursList.push(it.n);}}
+    (it.sched||[]).forEach(r=>{
+      const flag=(r[3]||"").toLowerCase();
+      if(flag.includes("critical"))crit.push({n:it.n,task:r[0],sub:r[3],it});
+      else if((r[1]||"").toLowerCase().includes("freeze")||(r[0]||"").toLowerCase().includes("winter"))seasonal.push({n:it.n,task:r[0],sub:r[1],it});
+    });
+  }));
+  return{crit,seasonal,needHours,needHoursList};
+}
+
+// ---- views ----
+function showView(v){
+  const d=document.getElementById('dashView'),e=document.getElementById('equipView');
+  document.getElementById('tabDash').classList.toggle('active',v==="dash");
+  document.getElementById('tabEquip').classList.toggle('active',v==="equip");
+  d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");
+  window.scrollTo(0,0);
+}
+
+function renderDash(){
+  const c=counts(),a=attention();const pct=Math.round(c.f/c.tot*100);
+  const wF=c.f/c.tot*100,wP=c.p/c.tot*100,wT=c.t/c.tot*100;
+  let h="";
+  // build status
+  h+=`<div class="dsec"><h3>Build status</h3><p class="lead">How much of the fleet is at the full 2026-05 card standard.</p>
+    <div class="stats">
+      <div class="stat g"><b>${c.f}</b><span>Full</span></div>
+      <div class="stat a"><b>${c.p}</b><span>Partial</span></div>
+      <div class="stat m"><b>${c.t}</b><span>To induct</span></div>
+      <div class="stat"><b>${pct}%</b><span>Complete</span></div>
+    </div>
+    <div class="bar"><i class="bg" style="width:${wF}%"></i><i class="ba" style="width:${wP}%"></i><i class="bm" style="width:${wT}%"></i></div>
+    <div class="barlbl">${c.f} of ${c.tot} machines fully built · Hank is driving the rest to Full.</div></div>`;
+  // needs attention
+  h+=`<div class="dsec"><h3>Needs attention</h3><p class="lead">Flagged tasks and what's blocking live due-dates.</p>`;
+  if(a.crit.length){a.crit.forEach(x=>{h+=`<div class="att"><span class="ic r"></span><div class="body"><b>${x.n}</b> — ${x.task}<div class="sub">${x.sub}</div></div><span class="go" onclick="openByName('${x.n.replace(/'/g,"\\'")}')">Open ›</span></div>`;});}
+  // seasonal context (June = mowing season; winterize not due)
+  h+=`<div class="att"><span class="ic a"></span><div class="body"><b>Mowing season is on</b><div class="sub">Keep deck blades sharp/balanced on the Z530R & X580. Winterize tasks (saws, pressure washer) aren't due until fall.</div></div></div>`;
+  // set hours
+  h+=`<div class="att"><span class="ic n"></span><div class="body"><b>${a.needHours} hour-based machines need a meter reading</b><div class="sub">Due-dates stay grey until Hank has a starting hour count. Snap the hour meter and send it.</div></div></div>`;
+  h+=`<div class="cta"><button class="p" onclick="document.getElementById('cap').click()">📷 Send hour-meter photo</button><button class="s" onclick="askHank()">Ask Hank</button></div></div>`;
+  // supplies
+  h+=`<div class="dsec"><h3>Supplies · reorder reference</h3><p class="lead">Consumables pulled from the Full cards — a shopping reference for the shop.</p>`;
+  SUPPLIES.forEach(s=>{h+=`<div class="sup"><span class="k">${s[0]}</span><span class="v">${s[1]}</span></div>`;});
+  h+=`<div class="note">Quantities aren't tracked yet. When something runs low, snap it and send it — Hank adds it to a quantified reorder list for the shared shopping Reminders. <span class="verify">confirm fitment before buying</span></div></div>`;
+  document.getElementById('dash').innerHTML=h;
+}
+function openByName(n){let found=null,grp="";DATA.forEach(g=>g.items.forEach(it=>{if(it.n===n){found=it;grp=g.g;}}));if(found){showView('equip');openDetail(found,grp);}}
+
+// ---- equipment list ----
 let filter="All", query="";
-const groups=["All",...DATA.map(d=>d.g)];
 const chips=document.getElementById('chips');
-groups.forEach(g=>{const b=document.createElement('button');b.className="chip"+(g==="All"?" active":"");b.textContent=g;b.onclick=()=>{filter=g;[...chips.children].forEach(c=>c.classList.remove('active'));b.classList.add('active');render()};chips.appendChild(b)});
+["All",...DATA.map(d=>d.g)].forEach(g=>{const b=document.createElement('button');b.className="chip"+(g==="All"?" active":"");b.textContent=g;b.onclick=()=>{filter=g;[...chips.children].forEach(c=>c.classList.remove('active'));b.classList.add('active');render()};chips.appendChild(b)});
 document.getElementById('q').oninput=e=>{query=e.target.value.toLowerCase();render()};
 
 let total=0;DATA.forEach(d=>total+=d.items.length);
-document.getElementById('count').textContent=total+" machines · "+DATA.length+" groups";
+document.getElementById('count').textContent=total+" machines · updated "+BUILD_DATE;
 
+function tileHint(it){
+  if(it.st==="todo")return "Queued to induct";
+  if(it.st==="part")return "Card in progress";
+  // full: surface the most useful glance line
+  const crit=(it.sched||[]).find(r=>(r[3]||"").toLowerCase().includes("critical"));
+  if(crit)return "⚠ "+crit[0];
+  if(it.basis==="Hours")return "Set hours to start clock";
+  return "Ready · tap for job steps";
+}
 function render(){
   const list=document.getElementById('list');list.innerHTML="";let shown=0;
   DATA.forEach(d=>{
@@ -267,11 +399,12 @@ function render(){
     sec.innerHTML=`<h2>${d.g}</h2>`;
     const grid=document.createElement('div');grid.className="grid";
     items.forEach(it=>{shown++;
-      const c=document.createElement('div');c.className="card";
+      const c=document.createElement('div');c.className="card "+it.st;
       const u=URLS[it.n];
       c.innerHTML=`<a class="thumb" ${u?`href="${u}" target="_blank" rel="noopener" onclick="event.stopPropagation()"`:``}>${u?`↗ ${new URL(u).hostname.replace(/^www\./,'')}`:`<span>no factory link</span>`}</a><div class="nm">${it.n}</div>
         <div class="tags">${[it.power,it.loc,it.basis].filter(x=>x&&x!=="—").map(t=>`<span class="t">${t}</span>`).join("")}</div>
-        <div class="st ${it.st}"><span class="dot"></span>${STLABEL[it.st]}</div>`;
+        <div class="st ${it.st}"><span class="dot"></span>${STLABEL[it.st]}</div>
+        <div class="hint">${tileHint(it)}</div>`;
       c.onclick=()=>openDetail(it,d.g);
       grid.appendChild(c);
     });
@@ -279,20 +412,28 @@ function render(){
   });
   if(!shown)list.innerHTML='<div class="empty">No equipment matches.</div>';
 }
+function ragCell(r){
+  // r = [task, interval, rag, statusText]; show neutral instead of alarming red for "not set up yet"
+  if(isSetup(r[3]))return `<td class="rag n">Set hours</td>`;
+  if((r[3]||"").toLowerCase().includes("critical"))return `<td class="rag r">${r[3]}</td>`;
+  return `<td class="rag ${r[2]}">${r[3]}</td>`;
+}
 function openDetail(it,g){
   const p=document.getElementById('panel');
   let h=`<div class="ph"><div><h3>${it.n}</h3><div class="sub">${g} · ${[it.power,it.loc,it.basis].filter(x=>x&&x!=="—").join(" · ")}</div></div><button class="x" onclick="closeSheet()">✕</button></div>`;
   const purl=URLS[it.n];
   if(purl)h+=`<div class="sec"><h4>Factory product page</h4><a class="lk" href="${purl}" target="_blank" rel="noopener">${new URL(purl).hostname.replace(/^www\./,'')} ↗</a></div>`;
   if(it.specs){h+=`<div class="sec"><h4>Specs</h4>${it.specs.map(s=>`<div class="row"><span class="k">${s[0]}</span><span class="v">${s[1]}</span></div>`).join("")}</div>`}
-  if(it.sched){h+=`<div class="sec"><h4>Maintenance</h4><table><tr><th>Task</th><th>Interval</th><th>Status</th></tr>${it.sched.map(s=>`<tr><td>${s[0]}</td><td>${s[1]}</td><td class="rag ${s[2]}">${s[3]}</td></tr>`).join("")}</table><div class="muted" style="margin-top:8px">Drop an hour-meter photo in <b>_Cowork Inbox</b> to set real due dates. <span class="verify">confirm vs manual</span></div></div>`}
+  if(it.sched){h+=`<div class="sec"><h4>Maintenance</h4><table><tr><th>Task</th><th>Interval</th><th>Status</th></tr>${it.sched.map(s=>`<tr><td>${s[0]}</td><td>${s[1]}</td>${ragCell(s)}</tr>`).join("")}</table><div class="muted" style="margin-top:8px">Grey = waiting on a starting hour count. Drop an hour-meter photo in <b>_Cowork Inbox</b> to set real due dates. <span class="verify">confirm vs manual</span></div></div>`}
   if(it.jobs){h+=`<div class="sec"><h4>Job Cards</h4>${it.jobs.map(j=>`<details><summary>${j.t}</summary><div class="jb"><ol>${j.s.map(x=>`<li>${x}</li>`).join("")}</ol></div></details>`).join("")}</div>`}
   if(it.manual){h+=`<div class="sec"><h4>Manual</h4><div class="muted">${it.manual}</div></div>`}
-  if(!it.specs){h+=`<div class="sec"><div class="muted">Card in progress — Claude is bringing this machine to full standard. ${it.manual?"Manual is on file.":""}</div></div>`}
+  if(!it.specs){h+=`<div class="sec"><div class="muted">Card in progress — Hank is bringing this machine to full standard. ${it.manual?"Manual is on file.":""}</div></div>`}
   p.innerHTML=h;document.getElementById('sheet').classList.add('open');
 }
 function closeSheet(){document.getElementById('sheet').classList.remove('open')}
 document.getElementById('sheet').onclick=e=>{if(e.target.id==="sheet")closeSheet()};
+
+renderDash();
 render();
 </script>
 </body>

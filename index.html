@@ -195,7 +195,7 @@ const URLS={
 "Timber Tuff Chain Sharpener":"https://www.timbertuff.com",
 "Dyson Cordless #1 & #2":"https://www.dyson.com",
 "KitchenAid Fridge (20cf)":"https://www.kitchenaid.com",
-"LG Fridge (8.6cf)":"https://www.lg.com",
+"LG Fridge (top-freezer)":"https://www.lg.com/us/refrigerators/lg-lt09s2000w-top-freezer-refrigerator",
 "Litter-Robot 4 (×2)":"https://www.litter-robot.com",
 "NordicTrack X32i":"https://www.nordictrack.com"
 };
@@ -298,15 +298,41 @@ const DATA = [
      jobs:[{t:"Engine Oil Change",s:["Warm ~5 min, on stand","Remove crankcase drain bolt, drain","Reinstall bolt to spec","Refill ≈0.8 L 10W-40 JASO MA","Run, recheck to FULL (MA oil = no clutch slip)"]},
            {t:"Carb Cleaning (Mikuni VM16)",s:["Fuel petcock off, remove carb (4 screws)","Drop float bowl, clean jets w/ cleaner+air","Reassemble, set idle per manual","Reinstall, test run","Drain bowl if storing to prevent gumming"]}]}]},
  {g:"Shop & Bench", items:[
-   {n:"Battery Charger",power:"Electric",loc:"Shop",basis:"As-needed",st:"todo"},
+   {n:"Battery Charger",power:"Electric",loc:"Shop",basis:"As-needed",st:"full",
+     specs:[["Type","Automatic 6V/12V charger + engine starter"],["Battery types","STD · AGM · GEL (lead-acid)"],["Charge rates","2 / 6 / 8 / 10 A + Boost + Engine Start"],["Display","Voltage / Amps / Battery %"],["Output cable","6-ga (AWG), per manual"],["Model #","confirm from label (man. 0099002329E-00)"]],
+     sched:[["Clean clamps","each use","g","OK"],["Inspect cords & plug","each use","g","OK"],["Wipe case / clear vents","as needed","g","OK"],["Store upright, clamps free","each use","g","OK"]],
+     manual:"Automatic Battery Charger Owner's Manual (PDF)",manualUrl:"manuals/battery-charger-manual.pdf",
+     jobs:[{t:"Charge / Maintain a Battery (manual p.7–9)",s:["Ventilated area, eye protection; ON/OFF to OFF; clean terminals","Connect + clamp first, then ground AWAY from the battery; plug in AC after","Set Boost/Charge-Maintain; pick battery type (STD/AGM/GEL) + rate (2/6/8/10A)","Press START — under 12.7V it auto-Boosts then finishes on Charge/Maintain","Green Charged/Maintaining LED = full (holds float); STOP → OFF → unplug → remove clamps"],img:["manuals/img/batterycharger-panel-p7.png","manuals/img/batterycharger-charge-p9.png"]},
+           {t:"Boost & Engine Start / Jump (manual p.9–10)",s:["Battery MUST be installed in the vehicle (no-battery start damages the electrical system)","Boost: Rate Selection → Boost LED; for cold/near-dead, boost 10–15 min first","Engine Start: switch to Engine Start; '0.0' = check connection; pick Engine Start rate","Press START → wait for 'Rdy', crank ≤5 s, then wait 45 s between tries (180 s cool-down after 3 min)","After start: STOP → OFF → unplug AC → disconnect clamps; if it cranks but won't start, stop & diagnose elsewhere"],img:["manuals/img/batterycharger-charge-p9.png"]},
+           {t:"Care, Cleaning & Storage (manual §12)",s:["Unplug from AC first (controls-off isn't enough)","Clean clamps each use; wipe off battery fluid to stop corrosion","Wipe the case; coil cords neatly","Store unplugged, upright, indoors, cool & dry","Never store clamps clipped together, on metal, or on the handle"]}]},
    {n:"Bambu Labs 3D Printer",power:"Electric",loc:"Shop",basis:"As-needed",st:"todo"},
    {n:"Rabaconda Tire Changer",power:"Manual",loc:"Shop",basis:"As-needed",st:"part"},
    {n:"Timber Tuff Chain Sharpener",power:"Electric",loc:"Shop",basis:"As-needed",st:"part"}]},
  {g:"Household", items:[
-   {n:"Dyson Cordless #1 & #2",power:"Battery",loc:"House",basis:"Seasonal",st:"part"},
-   {n:"KitchenAid Fridge (20cf)",power:"Electric",loc:"House",basis:"Seasonal",st:"part"},
-   {n:"LG Fridge (8.6cf)",power:"Electric",loc:"House",basis:"Seasonal",st:"part"},
-   {n:"Litter-Robot 4 (×2)",power:"Electric",loc:"House",basis:"Seasonal",st:"part"},
+   {n:"Dyson Cordless #1 & #2",power:"Battery",loc:"House",basis:"Seasonal",st:"full",
+     specs:[["Type","Cordless cyclonic stick (V-series), ×2"],["Washable parts","Filter + fluffy/soft-roller brush bar ONLY"],["Battery","Removable Li-ion (model-dependent)"],["Model","confirm from label (V8/V10/V11/V15…)"]],
+     sched:[["Wash filter","~monthly","r","warm water, dry ≥24h"],["Clear brush bar (hair)","as needed","g","OK"],["Check/clear blockages","suction drop","g","OK"],["Empty bin","at max line","g","OK"],["Replace filter set","~12–24 mo","r","confirm part #"]],
+     manual:"Dyson support — clean your Dyson vacuum",manualUrl:"https://www.dyson.com/discover/insights/cleaning/tips/how-to-clean-your-dyson-vacuum-cleaner",
+     jobs:[{t:"Wash the Filter (~monthly)",s:["Remove the filter from the machine","Rinse under WARM tap water; squeeze; repeat until water runs clear","Shake out excess; dry COMPLETELY ≥24 h in good airflow (no heat source)","Refit only when fully dry — a damp filter causes mold + motor damage","Still weak? Check wand/head/bin for a blockage"]},
+           {t:"Brush Bar & Blockage Clearing",s:["Remove the head; release the brush bar per your model","Cut/pull hair & fiber off the bar","Only the fluffy/soft-roller bar may be washed — COLD water, dry upright fully","Check bin (empty at max line), wand, and head inlets for clogs","Wipe head/bin/wand clean — do NOT wash these parts"],video:"https://www.dyson.com/discover/insights/cleaning/tips/how-to-clean-your-dyson-vacuum-cleaner"}]},
+   {n:"KitchenAid Fridge (20cf)",power:"Electric",loc:"House",basis:"Seasonal",st:"full",
+     specs:[["Model","KitchenAid KRFC136RPS, French door, counter-depth"],["Capacity","~20 cu ft; interior water dispenser"],["Water filter","EveryDrop EDRARXD1 (confirm from label)"],["Air filter","FreshFlow (confirm part #)"]],
+     sched:[["Replace water filter","~6 mo / filter light","r","flush 3–4 gal after"],["Clean condenser / grille","~6 mo","r","unplug first"],["Clean & check door gaskets","periodic","g","OK"],["Replace FreshFlow air filter","per indicator","r","confirm #"],["Clean drip pan / under-unit","periodic","g","OK"]],
+     manual:"KitchenAid Owners Center — KRFC136RPS",manualUrl:"https://www.kitchenaid.com/owners-center-pdp.KRFC136RPS.html",
+     jobs:[{t:"Water Filter Replacement (~6 mo)",s:["Locate the filter (interior — confirm location in manual)","Release/turn out the old filter (minor spill is normal)","Insert + lock the new EveryDrop filter (EDRARXD1 — confirm #)","FLUSH ~3–4 gallons through the dispenser to clear carbon fines + air","Reset the filter indicator; check for leaks + clean taste"]},
+           {t:"Condenser / Grille Clean + Seal Check",s:["Unplug or switch off at the breaker","Remove the base grille; vacuum/brush dust from condenser/coils + fan","Wipe the drip pan if accessible; confirm vents are clear","Clean door gaskets (warm soapy water); check tight seal/close","Refit grille; restore power. (Confirm if coils are accessible vs sealed)"]}]},
+   {n:"LG Fridge (top-freezer)",power:"Electric",loc:"House",basis:"Seasonal",st:"full",
+     specs:[["Model","LG LT09S2000W, compact top-freezer"],["Capacity","LG lists 9.0 cu ft (Index 8.6 — confirm)"],["Water","No dispenser / no filter"],["Defrost","Manual defrost (per LG guide)"]],
+     sched:[["Clean condenser / rear coils","~6 mo","r","unplug first"],["Clean & check door gasket","periodic","g","OK"],["Manual defrost","frost buildup","r","let melt — no sharp tools"],["Check level + interior clean","periodic","g","OK"]],
+     manual:"LG support — LT09S2000W (manual + defrost guide)",manualUrl:"https://www.lg.com/us/support/product/lg-LT09S2000W.ASWCNA0",
+     jobs:[{t:"Manual Defrost (LG guide)",s:["Move food to a cooler","Turn off and UNPLUG the refrigerator","Open doors; let frost MELT naturally — towels to catch water","Do NOT chip ice with knives/picks (can puncture the liner/coil)","Wipe interior dry; plug in; reach temp before reloading food"],video:"https://www.lg.com/us/support/help-library/lg-refrigerator-how-to-manually-defrost--20152275056930"},
+           {t:"Condenser / Coil Clean + Seal Check",s:["Unplug; pull the unit out to reach the back","Vacuum/brush dust off the rear condenser coils; clear vents","Wipe the gasket; check the seal; confirm the unit is level","Restore power"]}]},
+   {n:"Litter-Robot 4 (×2)",power:"Electric",loc:"House",basis:"Seasonal",st:"full",
+     specs:[["Model","Whisker Litter-Robot 4, ×2 (Wi-Fi app)"],["Washable","Globe + bonnet + drawer (NOT base/control panel)"],["Litter","Clumping clay; fill to line, not above"],["Odor","Carbon filter (~1 mo; optional for function)"]],
+     sched:[["Empty waste drawer","every 1–2 days","g","OK"],["Replace carbon filter","~monthly","g","OK"],["Globe basic clean","monthly","g","OK"],["Deep clean (globe + sensors)","≥ every 3 mo","g","OK"],["Clean laser sensors","cycle faults","g","OK"]],
+     manual:"Litter-Robot 4 — Use & Care (Whisker support)",manualUrl:"https://www.litter-robot.com/support/article/litter-robot-4-use-and-care/",
+     jobs:[{t:"Deep Clean (globe + sensors + base wipe)",s:["Turn off + unplug; empty all litter from the globe","Remove bonnet, globe, and waste drawer","Wash the GLOBE with Cleaner Spray/Wipes or mild soap + water; rinse, dry fully","Lean unit back; clean each bezel LASER SENSOR with a dry cotton swab / compressed air","Wipe the BASE with a damp cloth — NEVER spray or soak it; reassemble dry + test cycle"]},
+           {t:"Laser Sensor Cleaning (cycle faults)",s:["Turn off + unplug","Remove globe, bonnet, and waste drawer","Lean the unit backward to see the sensors in the bezel holes","Clean each sensor surface with a clean DRY cotton swab (or compressed air)","Reassemble + run a clean cycle to confirm the fault clears"],video:"https://www.litter-robot.com/support/article/litter-robot-4-laser-sensor-cleaning-instructions/"}]},
    {n:"NordicTrack X32i",power:"Electric",loc:"House",basis:"Seasonal",st:"todo"}]}
 ];
 const STLABEL={full:"Full",part:"Partial",todo:"To induct"};
@@ -329,7 +355,12 @@ const PREUSE={
 "DR Power Leaf Cyclone":["Engine oil level","Clear debris screen & impeller","Air filter clean","Collection bag empty & sound","Eye & ear protection"],
 "Arctic Cat Prowler Pro UTV":["Engine oil & coolant level","Tire pressures & condition","Brakes & seatbelts","Lights; CVT intake clear","Cargo secured","Note hour meter"],
 "KTM 350 EXC-F":["Engine oil (sight glass) & coolant","Chain tension & lube","Tire pressure & condition; spokes","Front & rear brakes","Controls, cables, kill switch","Air filter clean; full PPE"],
-"Yamaha TT-R110E":["Engine oil level (dipstick)","Chain tension (~1–2cm) & lube","Tires & brakes","Throttle return & kill switch","Fuel fresh; no leaks","Helmet & PPE on rider"]
+"Yamaha TT-R110E":["Engine oil level (dipstick)","Chain tension (~1–2cm) & lube","Tires & brakes","Throttle return & kill switch","Fuel fresh; no leaks","Helmet & PPE on rider"],
+"Battery Charger":["Well-ventilated area; eye protection","ON/OFF switch OFF before connecting","Clean terminals; confirm 6V/12V & type (STD/AGM/GEL)","Connect + first, then ground AWAY from the battery","Plug in AC after clamps are on","Keep clamps apart (they spark when energized)"],
+"Dyson Cordless #1 & #2":["Battery charged (check gauge)","Filter clean, dry & seated","Bin below max line; airway clear","Correct head/attachment fitted"],
+"KitchenAid Fridge (20cf)":["Doors seal fully; gaskets clean","Water filter light not lit; water tastes clean","Grille/vents clear for airflow","Temps holding (~37°F / ~0°F — confirm)"],
+"LG Fridge (top-freezer)":["Door seals fully; gasket supple","Rear coils/vents clear of dust","No excessive frost in freezer","Unit level; temps holding"],
+"Litter-Robot 4 (×2)":["Drawer not full (check app/light)","Litter at the fill line (not above)","Globe path clear; no litter on sensors","Unit level, plugged in, app connected"]
 };
 
 // ---- starter reorder reference (pulled from Full cards; quantities not tracked) ----

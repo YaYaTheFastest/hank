@@ -57,6 +57,17 @@
   .tile .ic{font-size:23px}
   .tile .tt{font-weight:700;font-size:15px;margin-top:8px}
   .tile .ds{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.35}
+  /* chat */
+  .chatlog{padding:14px 16px;min-height:46vh}
+  .cmsg{margin-bottom:10px;display:flex}
+  .cmsg.user{justify-content:flex-end}
+  .cmsg .bub{max-width:84%;padding:9px 12px;border-radius:14px;font-size:14px;line-height:1.45;white-space:pre-wrap;word-wrap:break-word}
+  .cmsg.user .bub{background:var(--green);color:#fff;border-bottom-right-radius:4px}
+  .cmsg.assistant .bub{background:#fff;border:1px solid var(--line);border-bottom-left-radius:4px}
+  .chatbar{display:flex;gap:8px;padding:10px 16px;position:sticky;bottom:calc(82px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line)}
+  .chatbar input{flex:1;border:1px solid var(--line);border-radius:20px;padding:10px 14px;font-size:15px;background:#fff}
+  .chatbar button{background:var(--green);color:#fff;border:none;border-radius:20px;padding:0 18px;font-weight:700;font-size:14px;cursor:pointer}
+  .chatbar button:disabled{opacity:.5}
   /* dashboard */
   .dash{padding:14px 16px 0}
   .dsec{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:12px}
@@ -138,6 +149,7 @@
   <p id="count">Loading…</p>
   <div class="tabs">
     <a id="tabHome" class="active" onclick="showView('home')">Home</a>
+    <a id="tabChat" onclick="showView('chat')">Chat</a>
     <a id="tabDash" onclick="showView('dash')">Status</a>
     <a id="tabEquip" onclick="showView('equip')">Equipment</a>
     <a href="projects.html">Projects</a>
@@ -151,6 +163,7 @@
   <div class="home">
     <div class="hhero"><h2>HANK</h2><p>Home &amp; Ranch OS — pick an area.</p></div>
     <div class="hgrid">
+      <a class="tile" onclick="showView('chat')"><div class="ic">💬</div><div class="tt">Ask Hank</div><div class="ds">chat with your system</div></a>
       <a class="tile" onclick="showView('equip')"><div class="ic">🚜</div><div class="tt">Equipment</div><div class="ds" id="hEquip">machines, by category</div></a>
       <a class="tile" href="projects.html"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Castle Fund + ranch builds</div></a>
       <a class="tile" onclick="showView('dash')"><div class="ic">📊</div><div class="tt">Status</div><div class="ds">Build progress, maintenance, supplies</div></a>
@@ -199,6 +212,15 @@
       </div>
       <div class="muted" style="margin-top:10px">Updated 2026-06-29. Hank keeps this current each build pass.</div>
     </div>
+  </div>
+</div>
+
+<!-- CHAT VIEW -->
+<div id="chatView" class="hide">
+  <div id="chatLog" class="chatlog"></div>
+  <div class="chatbar">
+    <input id="chatInput" placeholder="Ask Hank…" autocomplete="off" onkeydown="if(event.key==='Enter')sendChat()">
+    <button id="chatSend" onclick="sendChat()">Send</button>
   </div>
 </div>
 
@@ -526,15 +548,40 @@ function attention(){
 
 // ---- views ----
 function showView(v){
-  const ho=document.getElementById('homeView'),d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView');
+  const ho=document.getElementById('homeView'),d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
   document.getElementById('tabHome').classList.toggle('active',v==="home");
+  document.getElementById('tabChat').classList.toggle('active',v==="chat");
   document.getElementById('tabDash').classList.toggle('active',v==="dash");
   document.getElementById('tabEquip').classList.toggle('active',v==="equip");
   document.getElementById('tabBrief').classList.toggle('active',v==="brief");
   document.getElementById('tabSetup').classList.toggle('active',v==="setup");
-  ho.classList.toggle('hide',v!=="home");d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");
+  ho.classList.toggle('hide',v!=="home");d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
   if(v==="setup"){try{document.getElementById('hankKey').value=localStorage.getItem('hankKey')||"";}catch(err){}}
+  if(v==="chat"){if(!chatMsgs.length){chatMsgs.push({role:"assistant",content:"Hey Darren — Hank here. Ask me about the fleet, a project, or what's due. (I capture anything you want filed for the next loop pass.)"});renderChat();}setTimeout(()=>{var ci=document.getElementById('chatInput');if(ci)ci.focus();},50);}
   window.scrollTo(0,0);
+}
+let chatMsgs=[];
+function escapeHtml(s){return (s||"").replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+function renderChat(){
+  const l=document.getElementById('chatLog');
+  l.innerHTML=chatMsgs.map(m=>`<div class="cmsg ${m.role}"><div class="bub">${escapeHtml(m.content)}</div></div>`).join("");
+  l.scrollTop=l.scrollHeight;
+}
+async function sendChat(){
+  const inp=document.getElementById('chatInput');const text=(inp.value||"").trim();if(!text)return;
+  let key="";try{key=localStorage.getItem('hankKey')||"";}catch(e){}
+  if(!key){toast("Set your password in Setup first.");showView('setup');return;}
+  chatMsgs.push({role:"user",content:text});inp.value="";renderChat();
+  const send=document.getElementById('chatSend');send.disabled=true;send.textContent="…";
+  try{
+    const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json','X-Hank-Key':key},body:JSON.stringify({messages:chatMsgs})});
+    const j=await r.json().catch(()=>({}));
+    if(j&&j.ok)chatMsgs.push({role:"assistant",content:j.reply});
+    else if(j&&j.error==="no-anthropic-key")chatMsgs.push({role:"assistant",content:"My API key isn't set yet — add ANTHROPIC_API_KEY in Cloudflare (Setup tab has the steps)."});
+    else if(r.status===401)chatMsgs.push({role:"assistant",content:"Password not recognized — open Setup and re-enter it."});
+    else chatMsgs.push({role:"assistant",content:"Couldn't reach me right now ("+((j&&j.error)||r.status)+"). Try again in a moment."});
+  }catch(e){chatMsgs.push({role:"assistant",content:"Network hiccup — try again."});}
+  send.disabled=false;send.textContent="Send";renderChat();
 }
 function saveKey(){
   try{localStorage.setItem('hankKey',(document.getElementById('hankKey').value||"").trim());toast("Password saved on this device.");}

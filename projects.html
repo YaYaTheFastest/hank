@@ -25,12 +25,25 @@
   .colhead .nm{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:7px}
   .colhead .dot{width:9px;height:9px;border-radius:50%}
   .colhead .ct{font-size:12px;color:var(--muted);font-weight:600}
-  .card{background:var(--card);border:1px solid var(--line);border-left-width:3px;border-radius:11px;padding:12px 13px;margin-bottom:10px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .card{background:var(--card);border:1px solid var(--line);border-left-width:3px;border-radius:11px;padding:12px 13px;margin-bottom:10px;box-shadow:0 1px 2px rgba(0,0,0,.04);cursor:pointer}
   .card .t{font-weight:700;font-size:14px;line-height:1.25}
   .card .nx{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.35}
   .card .tag{display:inline-block;margin-top:8px;background:#eef1ea;color:#46503c;border-radius:6px;padding:2px 8px;font-size:10.5px;font-weight:600}
+  .card .more{display:inline-block;margin-top:8px;margin-left:6px;font-size:10.5px;font-weight:700;color:var(--idea)}
   footer{padding:8px 18px 40px;color:var(--muted);font-size:12px}
   .a{border-left-color:var(--active)} .i{border-left-color:var(--idea)} .h{border-left-color:var(--hold)} .s{border-left-color:var(--ship)}
+  /* detail sheet */
+  .sheet{position:fixed;inset:0;background:rgba(20,28,18,.45);display:none;z-index:30;align-items:flex-end;justify-content:center}
+  .sheet.open{display:flex}
+  .panel{background:var(--bg);width:100%;max-width:640px;max-height:92vh;overflow-y:auto;border-radius:18px 18px 0 0;-webkit-overflow-scrolling:touch}
+  .ph{position:sticky;top:0;background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .ph h3{margin:0;font-size:17px} .ph .sub{font-size:12px;opacity:.85;margin-top:3px}
+  .x{background:rgba(255,255,255,.18);border:none;color:#fff;font-size:17px;width:32px;height:32px;border-radius:50%;cursor:pointer;flex:none}
+  .sec{background:#fff;border:1px solid var(--line);border-radius:13px;margin:12px;padding:14px}
+  .sec h4{margin:0 0 8px;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--green)}
+  .sec p{margin:0 0 8px;font-size:13.5px;line-height:1.5}
+  .sec ul{margin:0;padding-left:18px} .sec li{font-size:13.5px;line-height:1.5;margin-bottom:4px}
+  .muted{color:var(--muted);font-size:12.5px;line-height:1.45}
 </style>
 </head>
 <body>
@@ -41,40 +54,88 @@
 </header>
 
 <div class="board" id="board"></div>
-<footer>Add a project: <b>/log it</b> or drop a line in <b>_Cowork Inbox</b> — Hank files it to the board. BJJ / "The Mat" lives in its own system.</footer>
+<footer>Tap a project to open its requirements &amp; design. Add a project: drop a line in <b>_Cowork Inbox</b> — Hank files it. BJJ / "The Mat" lives in its own system.</footer>
+
+<div class="sheet" id="sheet"><div class="panel" id="panel"></div></div>
 
 <script>
 const COLS=[
  {key:"a",name:"Active",dot:"var(--active)",items:[
-   {t:"Shop – Ongoing",nx:"Keep equipment cards flowing to Full.",tag:"Ranch"},
-   {t:"Jorgenson Tower",nx:"Capture scope + milestones (layouts/appraisals on iCloud).",tag:"Build"},
-   {t:"RockinJ Ranch (LLC / ops)",nx:"Capture core operations & responsibilities.",tag:"Ranch"},
-   {t:"Tax Strategy 2026",nx:"Outline actions (finances are reference-only).",tag:"Finance"}]},
+   {t:"Castle Fund — Earn-Toward-Reward",nx:"v1 shipped (single-kid). Building v2: approval loop + 2 kids.",tag:"Family",
+     detail:{
+       status:"Active · v1 shipped, v2 in design",
+       summary:"A reusable family system where the kids earn toward rewards by completing parent-approved chores. A parent defines a chore and its value; the kid does it and logs it; that triggers a parent approval; on approval the amount posts to the kid's balance. The LEGO Hogwarts Castle ($250) is the current reward for our son — the system outlives any single prize. Built on Barkley's ADHD principle: externalize the goal and pull the reward into 'now.'",
+       requirements:[
+         "Core loop: Define (parents set chore + value) → Do/Log (kid taps, posts Pending) → Approve (parent approves/declines) → Post (amount adds to balance, goal art advances).",
+         "Once per day per chore, resets each morning.",
+         "Balance reflects only APPROVED entries; pending shows 'waiting on Mom/Dad.'",
+         "Two kid profiles (son ~10–12, daughter 9) — own balance, goal, chore catalog, reward art; same engine.",
+         "Reward is swappable; when earned, set the next goal.",
+         "Decline is gentle (no punishment, optional note)."],
+       design:[
+         "Integrated as HANK's Family/Kids module — same backbone, same honesty rules.",
+         "Source of truth = vault ledgers per kid (append-only); balance is always DERIVED from approved entries, never hand-edited (audit-safe).",
+         "Approvals surface on the HANK dashboard; PIN-gated parent view; default either parent.",
+         "Morning scheduled task resets daily eligibility, recomputes balances, rolls streaks.",
+         "v1 = single-file React artifact (filling-castle art, log button, milestones). v2 gap: approval loop, multi-device kid/parent roles, parent-managed chore catalog, second profile."],
+       open:[
+         "Approval: one parent or both? (default either)",
+         "Daily reset time — midnight or morning? (proposed ~4am)",
+         "Earned vs. gifted framing — be explicit with the kids.",
+         "Sibling visibility — separate or a little shared (test it).",
+         "Chore $ calibration — watch week one.",
+         "Deadline vs open-ended (avoid pressure-collapse)."],
+       resolved:"HANK binding: Castle Fund IS this HANK's Family module (confirmed 2026-06-29). No second HANK; the v2 app build is still Darren's call.",
+       doc:"40 Projects/Active/Castle Fund — Earn-Toward-Reward.md (§11 = full design)"}},
+   {t:"Shop – Ongoing",nx:"Drive equipment cards to Verified (manual-first).",tag:"Ranch",
+     detail:{status:"Active · ongoing",summary:"Keep the ranch equipment system at the manual-first Verified standard; run the daily loop.",requirements:["Every machine manual-backed and cited.","Needs-From-You items surfaced cleanly to Darren."],design:["Vault cards + the HANK app; daily build/maintenance loop."],open:[],doc:"00 Meta/Operating System/Equipment Card Build Protocol.md"}},
+   {t:"Jorgenson Tower",nx:"Capture scope + milestones (layouts/appraisals on iCloud).",tag:"Build",
+     detail:{status:"Active · capture stage",summary:"Tower build project.",requirements:[],design:[],open:["Scope, budget, and milestones not yet captured."],note:"Requirements & design pending — drop notes/photos in _Cowork Inbox and Hank will build this out.",doc:""}},
+   {t:"RockinJ Ranch (LLC / ops)",nx:"Capture core operations & responsibilities.",tag:"Ranch",
+     detail:{status:"Active · capture stage",summary:"Ranch LLC operations & responsibilities.",requirements:[],design:[],open:["Core ops + responsibilities not yet captured."],note:"Requirements & design pending — capture via _Cowork Inbox.",doc:""}},
+   {t:"Tax Strategy 2026",nx:"Outline actions (finances are reference-only).",tag:"Finance",
+     detail:{status:"Active · outline",summary:"2026 tax strategy. Finances are reference-only in this system (not ingested).",requirements:[],design:[],open:["Action list to outline."],note:"Reference-only; Hank outlines actions but doesn't ingest financial data.",doc:""}}]},
  {key:"i",name:"Ideas / Dreaming",dot:"var(--idea)",items:[
-   {t:"Replace Barn with Amish Barn",nx:"Scope + rough budget.",tag:"Ranch"},
-   {t:"Rainwater Irrigation System",nx:"Sketch the catchment + use case.",tag:"Ranch"},
-   {t:"2026 Ram",nx:"Spec the build.",tag:"Vehicle"},
-   {t:"Home Organizing",nx:"Pick first room.",tag:"Home"},
-   {t:"Strava Workout Duration Tracking",nx:"Define what to track.",tag:"Fitness"}]},
+   {t:"Replace Barn with Amish Barn",nx:"Scope + rough budget.",tag:"Ranch",detail:{status:"Idea",summary:"Replace the existing barn with an Amish-built barn.",requirements:[],design:[],open:["Scope + rough budget."],note:"Early idea — capture details in _Cowork Inbox.",doc:""}},
+   {t:"Rainwater Irrigation System",nx:"Sketch the catchment + use case.",tag:"Ranch",detail:{status:"Idea",summary:"Rainwater catchment for irrigation.",requirements:[],design:[],open:["Catchment + use case sketch."],note:"Early idea.",doc:""}},
+   {t:"2026 Ram",nx:"Spec the build.",tag:"Vehicle",detail:{status:"Idea",summary:"2026 Ram build spec.",requirements:[],design:[],open:["Spec the build."],note:"Early idea.",doc:""}},
+   {t:"Home Organizing",nx:"Pick first room.",tag:"Home",detail:{status:"Idea",summary:"Whole-home organizing effort.",requirements:[],design:[],open:["Pick the first room."],note:"Early idea.",doc:""}},
+   {t:"Strava Workout Duration Tracking",nx:"Define what to track.",tag:"Fitness",detail:{status:"Idea",summary:"Track workout duration via Strava.",requirements:[],design:[],open:["Define what to track."],note:"Early idea.",doc:""}}]},
  {key:"h",name:"On Hold",dot:"var(--hold)",items:[
-   {t:"Kalshi Bot",nx:"Parked.",tag:"AI"}]},
+   {t:"Kalshi Bot",nx:"Parked.",tag:"AI",detail:{status:"On hold",summary:"Trading/automation bot — parked.",requirements:[],design:[],open:[],note:"Parked.",doc:""}}]},
  {key:"s",name:"Shipped",dot:"var(--ship)",items:[
-   {t:"Shop Build",nx:"Done.",tag:"Ranch"},
-   {t:"Tax Strategy 2025",nx:"Done.",tag:"Finance"}]}
+   {t:"Shop Build",nx:"Done.",tag:"Ranch",detail:{status:"Shipped",summary:"Shop / pole barn build — complete.",requirements:[],design:[],open:[],note:"Done.",doc:""}},
+   {t:"Tax Strategy 2025",nx:"Done.",tag:"Finance",detail:{status:"Shipped",summary:"2025 tax strategy — complete.",requirements:[],design:[],open:[],note:"Done.",doc:""}}]}
 ];
 let total=0;COLS.forEach(c=>total+=c.items.length);
-document.getElementById('count').textContent=total+" projects · BJJ excluded";
+document.getElementById('count').textContent=total+" projects · tap to open · BJJ excluded";
 const board=document.getElementById('board');
 COLS.forEach(c=>{
   const col=document.createElement('div');col.className="col";
   col.innerHTML=`<div class="colhead"><span class="nm"><span class="dot" style="background:${c.dot}"></span>${c.name}</span><span class="ct">${c.items.length}</span></div>`;
   c.items.forEach(it=>{
     const card=document.createElement('div');card.className="card "+c.key;
-    card.innerHTML=`<div class="t">${it.t}</div><div class="nx">${it.nx}</div>${it.tag?`<span class="tag">${it.tag}</span>`:''}`;
+    card.innerHTML=`<div class="t">${it.t}</div><div class="nx">${it.nx}</div>${it.tag?`<span class="tag">${it.tag}</span>`:''}<span class="more">Open ›</span>`;
+    card.onclick=()=>openDetail(it);
     col.appendChild(card);
   });
   board.appendChild(col);
 });
+function list(arr){return arr&&arr.length?`<ul>${arr.map(x=>`<li>${x}</li>`).join("")}</ul>`:"";}
+function openDetail(it){
+  const d=it.detail||{};const p=document.getElementById('panel');
+  let h=`<div class="ph"><div><h3>${it.t}</h3><div class="sub">${d.status||""}</div></div><button class="x" onclick="closeSheet()">✕</button></div>`;
+  if(d.summary)h+=`<div class="sec"><h4>Summary</h4><p>${d.summary}</p></div>`;
+  if(d.resolved)h+=`<div class="sec" style="border-color:var(--active)"><h4 style="color:var(--active)">Decision</h4><p>${d.resolved}</p></div>`;
+  if(d.requirements&&d.requirements.length)h+=`<div class="sec"><h4>Requirements</h4>${list(d.requirements)}</div>`;
+  if(d.design&&d.design.length)h+=`<div class="sec"><h4>Design</h4>${list(d.design)}</div>`;
+  if(d.open&&d.open.length)h+=`<div class="sec"><h4>Open questions</h4>${list(d.open)}</div>`;
+  if(d.note)h+=`<div class="sec"><p class="muted">${d.note}</p></div>`;
+  if(d.doc)h+=`<div class="sec"><p class="muted"><b>Source doc:</b> ${d.doc}</p></div>`;
+  p.innerHTML=h;document.getElementById('sheet').classList.add('open');
+}
+function closeSheet(){document.getElementById('sheet').classList.remove('open');}
+document.getElementById('sheet').onclick=e=>{if(e.target.id==="sheet")closeSheet();};
 </script>
 </body>
 </html>

@@ -155,6 +155,14 @@
 
 <script>
 const BUILD_DATE="2026-06-29";
+// Needs From You — only items that require Darren physically (a photo / a decision). Hank's homework never appears here.
+const NEEDS=[
+ {eq:"NorthStar Pressure Washer",ask:"Photo of the cart spec label (model # — 157121 vs 157123)",why:"Sets exact PSI/GPM and the correct pump-oil spec"},
+ {eq:"John Deere X580",ask:"Photo of the engine label (FR730V vs FS730V)",why:"Confirms engine + exact oil capacity / filter part #"},
+ {eq:"Toro 22\" Recycler Max",ask:"Photo of the engine label (Briggs EXi 163cc vs Toro 159cc)",why:"Changes the oil-change rule and the spark-plug part #"},
+ {eq:"Husqvarna 460 Rancher",ask:"Photo of the bar stamp (drive-link count, 24\" bar)",why:"Pins the exact replacement chain"},
+ {eq:"Fleet — manuals",ask:"Any paper/PDF manuals in a drawer or email?",why:"Lets Hank build those to Verified instead of web-Provisional"}
+];
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',5200)}
 const HANK_PRIME="You are HANK (Home And raNch Knowledge), Darren & his wife's household/ranch right-hand. Be true and honest above all — never invent specs/numbers; cite sources; flag uncertainty; admit mistakes. Voice: plainspoken, answer-first, concise, never naggy. If you can read the vault, load 00 Meta/Operating System/Project Hub.md for current state, then give a tight status. If not, say so and work from this.";
 async function askHank(){
@@ -458,6 +466,12 @@ function renderDash(){
   const c=counts(),a=attention();const pct=Math.round(c.f/c.tot*100);
   const wF=c.f/c.tot*100,wP=c.p/c.tot*100,wT=c.t/c.tot*100;
   let h="";
+  // needs from you — top of dashboard
+  if(NEEDS.length){
+    h+=`<div class="dsec" style="border:1px solid var(--amber)"><h3 style="color:var(--amber)">Needs from you · ${NEEDS.length}</h3><p class="lead">Quick things only you can grab — a photo clears each one. Drop it in <b>_Cowork Inbox</b> and Hank takes it from there.</p>`;
+    NEEDS.forEach(x=>{h+=`<div class="att"><span class="ic n"></span><div class="body"><b>${x.eq}</b> — ${x.ask}<div class="sub">${x.why}</div></div></div>`;});
+    h+=`<div class="cta"><button class="p" onclick="document.getElementById('cap').click()">📷 Send a photo</button></div></div>`;
+  }
   // build status
   h+=`<div class="dsec"><h3>Build status</h3><p class="lead">How much of the fleet is at the full 2026-05 card standard.</p>
     <div class="stats">

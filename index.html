@@ -157,12 +157,9 @@
 const BUILD_DATE="2026-06-29";
 // Needs From You — only items that require Darren physically (a photo / a decision). Hank's homework never appears here.
 const NEEDS=[
- {eq:"NorthStar Pressure Washer",ask:"Photo of the cart spec label (model # — 157121 vs 157123)",why:"Sets exact PSI/GPM and the correct pump-oil spec"},
- {eq:"John Deere X580",ask:"Photo of the engine label (FR730V vs FS730V)",why:"Confirms engine + exact oil capacity / filter part #"},
- {eq:"Toro 22\" Recycler Max",ask:"Photo of the engine label (Briggs EXi 163cc vs Toro 159cc)",why:"Changes the oil-change rule and the spark-plug part #"},
- {eq:"Husqvarna 460 Rancher",ask:"Photo of the bar stamp (drive-link count, 24\" bar)",why:"Pins the exact replacement chain"},
- {eq:"Fleet — manuals",ask:"Any paper/PDF manuals in a drawer or email?",why:"Lets Hank build those to Verified instead of web-Provisional"}
+ {eq:"Husqvarna 460 Rancher",ask:"Photo of the bar stamp + one drive link of the current chain",why:"Confirm gauge (.050\" vs .058\") + pitch on the 2013 bar before ordering chain"}
 ];
+// Resolved 2026-06-29 from Darren's Notion equipment fleet: NorthStar (model 157121, Comet DWD pump), X580 (Kawasaki FR730V), Toro 21485 (B&S 725EXi 163cc), fleet manual links catalogued.
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',5200)}
 const HANK_PRIME="You are HANK (Home And raNch Knowledge), Darren & his wife's household/ranch right-hand. Be true and honest above all — never invent specs/numbers; cite sources; flag uncertainty; admit mistakes. Voice: plainspoken, answer-first, concise, never naggy. If you can read the vault, load 00 Meta/Operating System/Project Hub.md for current state, then give a tight status. If not, say so and work from this.";
 async function askHank(){

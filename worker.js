@@ -37,7 +37,67 @@ async function handleApi(request, env, url) {
     });
   }
 
-  // Everything below requires the correct password.
+  // ---- Castle Fund (kids' chore→reward) ----
+  // Kid actions (read state, log a chore) need NO login — a logged chore is only "pending" and
+  // moves no money. Parent approve/decline are gated by a simple 4-digit PIN (set once, stored in KV).
+  if (url.pathname === "/api/castle" && request.method === "GET") {
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const list = await env.STATE.list({ prefix: "castle:e:" });
+    const entries = [];
+    for (const k of list.keys) { const v = await env.STATE.get(k.name); if (v) entries.push({ key: k.name, ...JSON.parse(v) }); }
+    entries.sort((a, b) => b.ts - a.ts);
+    return json({ ok: true, entries });
+  }
+  if (url.pathname === "/api/castle/log" && request.method === "POST") {
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const b = await request.json().catch(() => ({}));
+    if (!b.kid || !b.chore) return json({ ok: false, error: "missing-fields" }, 400);
+    const day = new Date().toISOString().slice(0, 10);
+    const qty = Number(b.qty) || 1;
+    const list = await env.STATE.list({ prefix: "castle:e:" });
+    let used = 0;
+    for (const k of list.keys) { const v = await env.STATE.get(k.name); if (!v) continue; const e = JSON.parse(v); if (e.kid === b.kid && e.chore === b.chore && e.day === day && e.status !== "declined") used++; }
+    if (used >= qty) return json({ ok: false, error: "daily-limit", used, qty }, 409);
+    const id = "castle:e:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
+    const entry = { kid: b.kid, chore: b.chore, amount: Number(b.amount) || 0, status: "pending", ts: Date.now(), day };
+    await env.STATE.put(id, JSON.stringify(entry));
+    return json({ ok: true, id, entry });
+  }
+  // Is a parent PIN set yet?
+  if (url.pathname === "/api/castle/pinset" && request.method === "GET") {
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const p = await env.STATE.get("castle:pin");
+    return json({ ok: true, set: !!p });
+  }
+  // Set the PIN once (first run). Won't overwrite an existing PIN.
+  if (url.pathname === "/api/castle/setpin" && request.method === "POST") {
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const b = await request.json().catch(() => ({}));
+    const pin = String(b.pin || "");
+    if (!/^\d{4}$/.test(pin)) return json({ ok: false, error: "bad-pin-format" }, 400);
+    if (await env.STATE.get("castle:pin")) return json({ ok: false, error: "pin-already-set" }, 409);
+    await env.STATE.put("castle:pin", pin);
+    return json({ ok: true, set: true });
+  }
+  // Parent decision — gated by the 4-digit PIN. Either parent may approve.
+  if ((url.pathname === "/api/castle/approve" || url.pathname === "/api/castle/decline") && request.method === "POST") {
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const b = await request.json().catch(() => ({}));
+    const savedPin = await env.STATE.get("castle:pin");
+    if (!savedPin) return json({ ok: false, error: "no-pin-set" }, 409);
+    if (String(b.pin || "") !== savedPin) return json({ ok: false, error: "bad-pin" }, 401);
+    const v = b.key ? await env.STATE.get(b.key) : null;
+    if (!v) return json({ ok: false, error: "not-found" }, 404);
+    const e = JSON.parse(v);
+    e.status = url.pathname.endsWith("approve") ? "approved" : "declined";
+    e.approver = "parent";
+    e.decidedTs = Date.now();
+    if (b.note) e.note = b.note;
+    await env.STATE.put(b.key, JSON.stringify(e));
+    return json({ ok: true, entry: e });
+  }
+
+  // Everything below requires the correct HANK password (chat + tap-to-answer).
   if (!authed) return json({ ok: false, error: configured ? "wrong-password" : "no-password-set" }, 401);
   if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
 

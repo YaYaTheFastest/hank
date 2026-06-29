@@ -166,6 +166,8 @@
       <a class="tile" onclick="showView('chat')"><div class="ic">💬</div><div class="tt">Ask Hank</div><div class="ds">chat with your system</div></a>
       <a class="tile" onclick="showView('equip')"><div class="ic">🚜</div><div class="tt">Equipment</div><div class="ds" id="hEquip">machines, by category</div></a>
       <a class="tile" href="projects.html"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Castle Fund + ranch builds</div></a>
+      <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores & reward</div></a>
+      <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores & $100 goal</div></a>
       <a class="tile" onclick="showView('dash')"><div class="ic">📊</div><div class="tt">Status</div><div class="ds">Build progress, maintenance, supplies</div></a>
       <a class="tile" onclick="showView('dash')"><div class="ic">❓</div><div class="tt">Needs / Questions</div><div class="ds" id="hNeeds">things waiting on you</div></a>
       <a class="tile" onclick="showView('brief')"><div class="ic">🧭</div><div class="tt">Brief</div><div class="ds">copy context for a new chat</div></a>
@@ -402,6 +404,12 @@ const DATA = [
      manual:"DR Power Leaf Cyclone Manual (PDF)",manualUrl:"manuals/dr-power-leaf-cyclone.pdf",
      jobs:[{t:"Pre-Use & Cleaning",s:["Check engine oil level","Clear debris screen & impeller housing","Check/clean air filter","Empty & inspect collection bag"]}]}]},
  {g:"UTVs & Powersports", items:[
+   {n:"Honda CRF110F",power:"4-Stroke",loc:"Shop",basis:"Hours",st:"full",
+     specs:[["Engine","Air-cooled 109cc 4-stroke, 2-valve SOHC"],["Trans","4-speed, automatic clutch, e+kick start"],["Engine oil","10W-30 JASO MA, ~1.0 L (confirm change qty)"],["Plug","NGK CPR6EA-9S, gap .031–.035\""],["Valve clr","0.10 mm (.004\") in & ex, cold"],["Fuel","regular unleaded; keep fresh"]],
+     sched:[["Engine oil change","~10h rec / 600mi / 6mo","r","set hours"],["Valve clearance inspect","~20 h","r","0.10mm cold"],["Air filter clean/replace","per service","r","—"],["Chain & sprockets","10–20 h","g","OK"],["Spark plug","per schedule","r","CPR6EA-9S"],["Pre-ride","each ride","g","OK"]],
+     manual:"Honda CRF110F Owner's Manual + Service Manual Ch.3",manualUrl:"https://cdn.powersports.honda.com/documentum/MWOM/ml.remawmom.akyk2424omen.pdf",
+     jobs:[{t:"Engine Oil Change (~10 h)",s:["Warm ~5 min; on stand, level","Remove crankcase drain bolt; drain fully","Replace sealing washer; reinstall to spec","Refill ~1.0 L 10W-30 JASO MA to FULL — don't overfill","Run, check leaks, recheck level"]},
+           {t:"Valve Clearance Inspect (~20 h)",s:["Engine COLD; open valve-cover access per manual","Rotate to TDC compression (both valves closed)","Measure intake & exhaust — spec 0.10 mm (.004\") both","Adjust at tappet adjusters if out of spec; re-check","Refit cover; run; confirm clean idle"]}]},
    {n:"Arctic Cat Prowler Pro UTV",power:"Gas",loc:"Barn",basis:"Hours",st:"full",
      specs:[["Engine","812cc inline-3 EFI, ~50 hp (confirm)"],["Oil","ACX 0W-40 synthetic, JASO MA2"],["Drive","CVT, 2WD/4WD"]],
      sched:[["Engine oil & filter","per manual","r","set hours"],["Air filter","per manual","r","—"],["CVT belt — inspect","per manual","r","—"],["Grease fittings","per manual","r","—"]],
@@ -478,6 +486,35 @@ const DATA = [
      manual:"NordicTrack X32i User's Manual (NTL39221)",manualUrl:"https://www.nordictrack.com/support",
      jobs:[{t:"Belt Centering & Tension (manual p.30)",s:["Remove key + UNPLUG cord; use stored hex key","Centering: belt drifted LEFT → left idler screw CW ½ turn; RIGHT → CCW ½ turn (don't overtighten)","Tension too tight (belt slows): both idler screws CCW ¼ turn; slipping: both CW ¼ turn","Correct tension = lift each belt edge 3–4 in (8–10 cm) off the platform","Plug in, key in, walk a few min, re-check; repeat. NEVER lubricate the belt"]},
            {t:"Clean, Storage Recovery & Console Maint.",s:["Power off + UNPLUG; wipe belt/frame with damp cloth + mild soap, dry (never spray the unit)","Inspect/tighten hardware; check belt for stiffness/fraying","After storage: check belt centering + tension; confirm breaker set (tripped→wait 5 min, press in)","Console ≡ → Settings → Maintenance: update firmware + calibrate incline","Slow test walk on the handrails; confirm tracking + incline"]}]}]}
+,
+ {g:"Wood Processing", items:[
+   {n:"CountyLine 40-Ton Log Splitter",power:"Gas",loc:"Barn",basis:"As-needed",st:"full",
+     specs:[["Engine","Kohler Command PRO 14 hp, 429cc"],["Engine oil","SAE 10W-30 (confirm qty)"],["Pump","~25 GPM two-stage, ~3,800 PSI"],["Cylinder","5\" bore"],["Hydraulic fluid","AW46, reservoir ~10 gal"],["Filter","spin-on hydraulic (field-replaceable)"]],
+     sched:[["Engine oil & filter","first 5–8h, then 50h","r","10W-30"],["Hydraulic fluid + filter","first 30h, then 100h","r","AW46 ~10gal"],["Engine air filter","per Kohler","r","—"],["Hoses/fittings & wedge inspect","each use","r","high-pressure"],["Pre-use","each use","g","OK"]],
+     manual:"CountyLine 40-Ton Operator's Manual + Kohler engine manual",manualUrl:"https://www.tractorsupply.com/tsc/product/countyline-40-ton-log-splitter",
+     jobs:[{t:"Hydraulic Fluid & Filter (30h/100h)",s:["Cycle ram to warm; STOP engine & relieve ALL pressure; controls to neutral","Drain pan under reservoir; drain ~10 gal","Spin off old hydraulic filter; oil new gasket; spin on hand-tight + spec turn","Refill AW46 to the level mark","Bleed: cycle ram several full strokes (no log); re-check level; inspect for leaks"]},
+           {t:"Engine Oil & Pre-Use (Kohler 14hp)",s:["Pre-use: engine oil + fuel; hydraulic level; scan for leaks","Inspect wedge edge + beam/lock pins for the mode","Oil change: warm, stop, fuel off; drain via plug; reinstall","Refill 10W-30 to dipstick FULL (confirm qty)","Check/clean air filter; run, recheck, check leaks"]}]}]},
+ {g:"Power Tools", items:[
+   {n:"Milwaukee M18 Kit",power:"Battery",loc:"Shop",basis:"As-needed",st:"full",
+     specs:[["Platform","M18 18V Li-Ion (REDLINK PLUS)"],["Charger","48-59-1808 rapid (no serviceable parts)"],["Chainsaw","2727-20 M18 FUEL 16\", auto oiler"],["Other","blower 2724-20 · vac 0970-20 · impact 2953-20"],["Chainsaw oil","standard bar & chain oil, reservoir >¼ full"],["Battery","Li-Ion, no memory; store 40–80%"]],
+     sched:[["Chainsaw — check bar/chain oil","before every cut","r",">¼ full; never dry"],["Chainsaw — sharpen & re-tension","as it dulls","g","OK"],["Bar groove & oiler clean + flip bar","each sharpen","g","OK"],["Vac filter clean/replace","suction drop","g","OK"],["Battery/charger care","ongoing","g","store 40–80%, vents clear"]],
+     manual:"Milwaukee 2727-20 + 48-59-1808 Operator's Manuals",manualUrl:"https://documents.milwaukeetool.com/54-40-2770.pdf",
+     jobs:[{t:"Chainsaw Bar & Chain Service (2727-20)",s:["REMOVE the battery","Check/refill bar & chain oil (>¼ full; never run dry)","Sharpen chain to factory angle; lower depth gauges as cutters shorten","Clean bar groove + oiler port; flip bar to even wear","Re-tension (turns freely by hand); reinstall battery; test cut"]},
+           {t:"Battery, Charger & Tool Care",s:["Charge on 48-59-1808, ventilated, 15–25°C, vents clear","Li-Ion: top off anytime; no need to fully discharge","Store idle batteries ~40–80%, cool/dry","Clean tool intakes after dusty work; vac filter when suction drops","Inspect for damage; never charge a damaged pack"]}]}]},
+ {g:"Home & Property Infrastructure", items:[
+   {n:"LiftMaster Wall-Mount Openers",power:"Electric",loc:"Garage",basis:"As-needed",st:"full",
+     specs:[["Type","Wall-mount (jackshaft) DC, battery backup, Wi-Fi"],["98032","Premium HD DC battery-backup"],["98022","Elite DC battery-backup (no Cable Tension Monitor)"],["Safety","photo-eyes + mechanical safety reversal"],["Backup","replaceable battery (confirm part #)"],["Control","myQ app / remotes / wall control"]],
+     sched:[["Safety-reversal test (2×4)","monthly","r","must reverse on contact"],["Photo-eye test + alignment","monthly","r","LEDs steady = aligned"],["Lubricate door hardware","~2×/yr","g","rollers/hinges/springs, not tracks"],["Backup battery check/replace","6mo / 1–3yr","r","confirm part #"],["Door balance & hardware","annual","g","OK"]],
+     manual:"LiftMaster 98032 / 98022 Owner's Manuals",manualUrl:"https://www.liftmaster.com/customer-support",
+     jobs:[{t:"Monthly Safety Test & Lubrication",s:["Safety reversal: 2×4 flat on floor, close — door must REVERSE on contact","Photo-eyes: wave object through beam closing — must reverse; re-aim until LEDs steady","Lubricate rollers/hinges/springs (NOT the tracks); wipe excess","Cycle several times; confirm smooth, quiet travel","If a test fails: adjust force/travel per manual or service"]},
+           {t:"Backup Battery & Photo-Eye Service",s:["Check backup-battery status in myQ / on the unit","If it won't hold, order correct battery (confirm # per model)","Power down per manual; swap battery; restore power; verify indicator clears","Wipe + re-aim photo-eyes until LEDs steady","Re-run safety tests; inspect door cables (98022 dropped the tension monitor)"]}]}]},
+ {g:"Firearms", items:[
+   {n:"Heckler & Koch MR556A1",power:"Manual",loc:"Secure",basis:"As-needed",st:"full",
+     specs:[["Caliber","5.56×45 / .223"],["System","HK gas piston (piston + solid pusher rod)"],["Platform","AR-style semi-auto, removable mag"],["Cleaning","standard HK 5.56 kit; no special cleaner/lube"],["Records","log model + serial for insurance (store securely)"]],
+     sched:[["Clear & safety-check","every handling","r","mag out, bolt back, chamber empty"],["Field strip, clean & lube","after each session","r","piston/pusher rod + bolt; light lube"],["Detailed clean & inspect","periodic / high round count","r","piston, rings, springs"],["Function check (unloaded)","after reassembly","g","safety, bolt, trigger reset"],["Storage check","ongoing","g","secured, unloaded, dry"]],
+     manual:"HK MR556A1 Operator's Manual (hk-usa.com)",manualUrl:"https://hk-usa.com/wp-content/uploads/2025/01/MR556A1-Operators-Manual.pdf",
+     jobs:[{t:"Field Strip, Clean & Lube",s:["CLEAR the rifle — mag out, bolt back, chamber visually + physically empty; no ammo in area","Field strip per manual (upper/lower; bolt carrier; piston/operating rod)","Clean bore with solvent + brush/patches until clean; wipe chamber","Clean bolt, carrier & piston/pusher rod of carbon (HK kit, nylon brush)","LIGHTLY lube per manual; reassemble; function-check UNLOADED"]},
+           {t:"Safe-Handling & Storage Checklist",s:["Treat as loaded; muzzle safe; finger off trigger","Remove magazine; lock bolt back; check chamber empty","Store UNLOADED in a secured safe","Control humidity; periodic light wipe-down vs corrosion","Keep serial record secured for insurance; comply with all laws"]}]}]}
 ];
 const STLABEL={full:"Full",part:"Partial",todo:"To induct"};
 
@@ -510,7 +547,12 @@ const PREUSE={
 "Rabaconda Tire Changer":["Post/arm/base free of nicks & burrs","Correct spindle fitted (20mm / 12mm small hub)","Rim protectors ready (alloy wheels)","Tire lube + good tire irons on hand","Base feet planted; stable footing"],
 "Timber Tuff Chain Sharpener":["Eye/face protection + gloves on","Grinding wheel sound — no cracks/glaze/out-of-round","Wheel thickness matches the chain pitch","Top-plate angle (~30°) + depth/length stop set","Cord/plug + guard + work light OK"],
 "Bambu Labs 3D Printer":["Build plate clean (IPA/washed) & seated","Filament loaded, dry; AMS desiccant OK","Nozzle clear; plate/wiper free of debris","Firmware + slicer profile current; correct plate type selected","Motion system clear of obstructions"],
-"NordicTrack X32i":["On a surge suppressor; breaker set; safety key in + clip on","Belt centered & tracking straight; no fraying","Belt + deck clean and dry","Touchscreen boots; incline responds","Clear space front and behind the unit"]
+"NordicTrack X32i":["On a surge suppressor; breaker set; safety key in + clip on","Belt centered & tracking straight; no fraying","Belt + deck clean and dry","Touchscreen boots; incline responds","Clear space front and behind the unit"],
+"Honda CRF110F":["Engine oil level (dipstick FULL)","Chain tension & lube; sprockets","Tires & brakes","Throttle return, kill switch, limiter set for rider","Fuel fresh; no leaks","Helmet & PPE on rider"],
+"CountyLine 40-Ton Log Splitter":["Engine oil + fuel level","Hydraulic fluid level; scan for leaks","Hoses/fittings + wedge edge OK","Controls return to neutral; mode pins set","Bystanders clear of both ends; level footing"],
+"Milwaukee M18 Kit":["Chainsaw bar/chain oil > ¼ full","Chain sharp & tensioned; brake works","Battery charged & seated; vents clear","Full PPE; clear fall zone"],
+"LiftMaster Wall-Mount Openers":["Door runs smooth/quiet, no binding","Safety reversal (2×4) reverses on contact","Photo-eyes reverse on beam break; LEDs steady","Backup battery holding (app/indicator)"],
+"Heckler & Koch MR556A1":["Treat as loaded; muzzle safe; finger off trigger","Magazine out","Bolt locked back","Chamber checked visually AND physically empty","No ammunition in the work area"]
 };
 
 // ---- starter reorder reference (pulled from Full cards; quantities not tracked) ----

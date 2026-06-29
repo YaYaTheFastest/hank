@@ -609,10 +609,20 @@ function copyBrief(){
   navigator.clipboard.writeText(t).then(()=>toast("Hank brief copied — paste it into a new Claude chat.")).catch(()=>toast("Couldn't copy — select the text manually."));
 }
 function pickAns(id,val){QA[id]=val;renderDash();}
-function copyAnswers(){
+async function submitAnswers(){
+  const payload=QUESTIONS.map(q=>({id:q.id,q:q.q,answer:QA[q.id]||null}));
+  let key="";try{key=localStorage.getItem('hankKey')||"";}catch(e){}
+  if(key){
+    try{
+      const r=await fetch('/api/answer',{method:'POST',headers:{'Content-Type':'application/json','X-Hank-Key':key},body:JSON.stringify({type:"question-answers",answers:payload})});
+      const j=await r.json().catch(()=>({}));
+      if(j&&j.ok){toast("Sent to Hank — the next daily run will apply your answers.");return;}
+      if(r.status===401){toast("Password not recognized — open Setup.");return;}
+    }catch(e){}
+  }
+  // fallback: copy to clipboard if backend unreachable or no password set
   const lines=QUESTIONS.map(q=>`${q.id}. ${q.q}\n   → ${QA[q.id]||"(no answer)"}`).join("\n");
-  const txt="Hank — my answers to the equipment photo questions:\n\n"+lines;
-  navigator.clipboard.writeText(txt).then(()=>toast("Answers copied — drop into _Cowork Inbox or paste to Hank.")).catch(()=>toast("Couldn't copy — select the text manually."));
+  navigator.clipboard.writeText("Hank — my answers:\n\n"+lines).then(()=>toast(key?"Couldn't reach the backend — copied instead; drop into _Cowork Inbox.":"Set your password in Setup to send. Copied for now.")).catch(()=>toast("Couldn't copy — select the text manually."));
 }
 
 function renderDash(){
@@ -628,7 +638,7 @@ function renderDash(){
         `</div></div></div>`;
     });
     const ansd=Object.keys(QA).length;
-    h+=`<div class="cta"><button class="p" onclick="copyAnswers()">⧉ Copy my answers (${ansd}/${QUESTIONS.length})</button></div></div>`;
+    h+=`<div class="cta"><button class="p" onclick="submitAnswers()">Send answers to Hank (${ansd}/${QUESTIONS.length})</button></div></div>`;
   }
   // needs from you — top of dashboard
   if(NEEDS.length){

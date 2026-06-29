@@ -47,6 +47,16 @@
   .part{color:var(--amber)}.part .dot{background:var(--amber)}
   .todo{color:var(--muted)}.todo .dot{background:var(--muted)}
   .hint{margin-top:6px;font-size:11px;color:var(--muted);line-height:1.3}
+  /* home */
+  .home{padding:16px}
+  .hhero{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;border-radius:16px;padding:18px;margin-bottom:14px}
+  .hhero h2{margin:0;font-size:19px;letter-spacing:.3px}.hhero p{margin:5px 0 0;opacity:.9;font-size:13px}
+  .hgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .tile{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;text-align:left;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.04);text-decoration:none;color:var(--ink);display:block}
+  .tile:active{transform:scale(.99)}
+  .tile .ic{font-size:23px}
+  .tile .tt{font-weight:700;font-size:15px;margin-top:8px}
+  .tile .ds{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.35}
   /* dashboard */
   .dash{padding:14px 16px 0}
   .dsec{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:12px}
@@ -127,15 +137,31 @@
   <h1>HANK · Ranch Equipment</h1>
   <p id="count">Loading…</p>
   <div class="tabs">
-    <a id="tabDash" class="active" onclick="showView('dash')">Dashboard</a>
+    <a id="tabHome" class="active" onclick="showView('home')">Home</a>
+    <a id="tabDash" onclick="showView('dash')">Status</a>
     <a id="tabEquip" onclick="showView('equip')">Equipment</a>
     <a href="projects.html">Projects</a>
     <a id="tabBrief" onclick="showView('brief')">Brief</a>
   </div>
 </header>
 
+<!-- HOME VIEW -->
+<div id="homeView">
+  <div class="home">
+    <div class="hhero"><h2>HANK</h2><p>Home &amp; Ranch OS — pick an area.</p></div>
+    <div class="hgrid">
+      <a class="tile" onclick="showView('equip')"><div class="ic">🚜</div><div class="tt">Equipment</div><div class="ds" id="hEquip">machines, by category</div></a>
+      <a class="tile" href="projects.html"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Castle Fund + ranch builds</div></a>
+      <a class="tile" onclick="showView('dash')"><div class="ic">📊</div><div class="tt">Status</div><div class="ds">Build progress, maintenance, supplies</div></a>
+      <a class="tile" onclick="showView('dash')"><div class="ic">❓</div><div class="tt">Needs / Questions</div><div class="ds" id="hNeeds">things waiting on you</div></a>
+      <a class="tile" onclick="showView('brief')"><div class="ic">🧭</div><div class="tt">Brief</div><div class="ds">copy context for a new chat</div></a>
+      <a class="tile" onclick="document.getElementById('cap').click()"><div class="ic">📷</div><div class="tt">Send to Hank</div><div class="ds">drop a photo to the inbox</div></a>
+    </div>
+  </div>
+</div>
+
 <!-- DASHBOARD VIEW -->
-<div id="dashView"><div class="dash" id="dash"></div></div>
+<div id="dashView" class="hide"><div class="dash" id="dash"></div></div>
 
 <!-- EQUIPMENT VIEW -->
 <div id="equipView" class="hide">
@@ -186,19 +212,11 @@
 <script>
 const BUILD_DATE="2026-06-29";
 // Needs From You — only items that require Darren physically (a photo / a decision). Hank's homework never appears here.
-const NEEDS=[];
-// All Needs-From-You resolved 2026-06-29 (Husqvarna gauge confirmed .050" from bar-stamp photo IMG_1107).
-// Open questions — tap to answer in-app (front end; backend auto-apply is the next build).
-const QUESTIONS=[
- {id:1,q:"Track firearms? (the H&K MR556A1 \"receiver\")",opts:["Yes — private Firearms area","No / skip"]},
- {id:2,q:"Frigidaire fridge GRMG2272CF",opts:["Owned — make a card","Was just shopping"]},
- {id:3,q:"Whirlpool upright freezer",opts:["Owned — I'll send a plate photo","Not owned"]},
- {id:4,q:"Induct HVAC: Home A/C + DELLA mini-split?",opts:["Yes — new HVAC area","No / later"]},
- {id:5,q:"Power-tool inventory (Milwaukee/DeWalt)?",opts:["Yes — track them","Manuals only"]},
- {id:6,q:"LiftMaster garage openers — make a card?",opts:["Yes","No"]},
- {id:7,q:"Fitness gear (cold plunge, Hypervolt)?",opts:["Track in Fitness","Leave out"]},
- {id:8,q:"Promote any 'reference' items to cards?",opts:["Yes — I'll note which","No"]}
+const NEEDS=[
+ {eq:"Whirlpool upright freezer",ask:"Photo of the model/serial plate",why:"To induct it — you confirmed it's owned"}
 ];
+// All 8 photo questions answered 2026-06-29; inductions (Firearms, HVAC, power tools, fitness, appliances, openers) queued for the loop.
+const QUESTIONS=[];
 let QA={};
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',5200)}
 const HANK_PRIME="You are HANK (Home And raNch Knowledge), Darren & his wife's household/ranch right-hand. Be true and honest above all — never invent specs/numbers; cite sources; flag uncertainty; admit mistakes. Voice: plainspoken, answer-first, concise, never naggy. If you can read the vault, load 00 Meta/Operating System/Project Hub.md for current state, then give a tight status. If not, say so and work from this.";
@@ -492,11 +510,12 @@ function attention(){
 
 // ---- views ----
 function showView(v){
-  const d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView');
+  const ho=document.getElementById('homeView'),d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView');
+  document.getElementById('tabHome').classList.toggle('active',v==="home");
   document.getElementById('tabDash').classList.toggle('active',v==="dash");
   document.getElementById('tabEquip').classList.toggle('active',v==="equip");
   document.getElementById('tabBrief').classList.toggle('active',v==="brief");
-  d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");
+  ho.classList.toggle('hide',v!=="home");d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");
   window.scrollTo(0,0);
 }
 function copyBrief(){
@@ -565,6 +584,8 @@ document.getElementById('q').oninput=e=>{query=e.target.value.toLowerCase();rend
 
 let total=0;DATA.forEach(d=>total+=d.items.length);
 document.getElementById('count').textContent=total+" machines · updated "+BUILD_DATE;
+(function(){const he=document.getElementById('hEquip');if(he)he.textContent=total+" machines, by category";
+ const hn=document.getElementById('hNeeds');if(hn)hn.textContent=NEEDS.length?(NEEDS.length+" waiting on you"):"nothing waiting — all clear";})();
 
 function tileHint(it){
   if(it.st==="todo")return "Queued to induct";

@@ -142,6 +142,7 @@
     <a id="tabEquip" onclick="showView('equip')">Equipment</a>
     <a href="projects.html">Projects</a>
     <a id="tabBrief" onclick="showView('brief')">Brief</a>
+    <a id="tabSetup" onclick="showView('setup')">Setup</a>
   </div>
 </header>
 
@@ -156,6 +157,7 @@
       <a class="tile" onclick="showView('dash')"><div class="ic">❓</div><div class="tt">Needs / Questions</div><div class="ds" id="hNeeds">things waiting on you</div></a>
       <a class="tile" onclick="showView('brief')"><div class="ic">🧭</div><div class="tt">Brief</div><div class="ds">copy context for a new chat</div></a>
       <a class="tile" onclick="document.getElementById('cap').click()"><div class="ic">📷</div><div class="tt">Send to Hank</div><div class="ds">drop a photo to the inbox</div></a>
+      <a class="tile" onclick="showView('setup')"><div class="ic">🔌</div><div class="tt">Setup</div><div class="ds" id="hSetup">connect the backend</div></a>
     </div>
   </div>
 </div>
@@ -196,6 +198,20 @@
 <p><b>ANCHORS (vault):</b> Project Hub · Action Log · Equipment Index · Equipment Card Build Protocol · Equipment Induction Process · Needs From You · Notion Fleet Harvest 2026-06 · Photo Harvest 2026-06-29 · AGENTS.md (contract).</p>
       </div>
       <div class="muted" style="margin-top:10px">Updated 2026-06-29. Hank keeps this current each build pass.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SETUP VIEW -->
+<div id="setupView" class="hide">
+  <div class="dash">
+    <div class="dsec">
+      <h3>Setup — connect the backend</h3>
+      <p class="lead">Enter the same password you set in Cloudflare (the <b>HANK_PASSWORD</b> secret). It unlocks tap-to-answer and (soon) the in-app chat. Stored only on this device.</p>
+      <input id="hankKey" type="password" placeholder="HANK password" autocomplete="off" style="width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-size:15px;background:#fff;margin-bottom:10px">
+      <div class="cta"><button class="p" onclick="saveKey()">Save password</button><button class="s" onclick="checkConn()">Check connection</button></div>
+      <div id="connStatus" style="margin-top:12px;font-size:13.5px;line-height:1.7"></div>
+      <div class="muted" style="margin-top:12px">How to set the password in Cloudflare: Workers &amp; Pages → <b>hank</b> → Settings → Variables and Secrets → Add → type <b>Secret</b>, name <b>HANK_PASSWORD</b>, your value → Save.</div>
     </div>
   </div>
 </div>
@@ -510,13 +526,36 @@ function attention(){
 
 // ---- views ----
 function showView(v){
-  const ho=document.getElementById('homeView'),d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView');
+  const ho=document.getElementById('homeView'),d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView');
   document.getElementById('tabHome').classList.toggle('active',v==="home");
   document.getElementById('tabDash').classList.toggle('active',v==="dash");
   document.getElementById('tabEquip').classList.toggle('active',v==="equip");
   document.getElementById('tabBrief').classList.toggle('active',v==="brief");
-  ho.classList.toggle('hide',v!=="home");d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");
+  document.getElementById('tabSetup').classList.toggle('active',v==="setup");
+  ho.classList.toggle('hide',v!=="home");d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");
+  if(v==="setup"){try{document.getElementById('hankKey').value=localStorage.getItem('hankKey')||"";}catch(err){}}
   window.scrollTo(0,0);
+}
+function saveKey(){
+  try{localStorage.setItem('hankKey',(document.getElementById('hankKey').value||"").trim());toast("Password saved on this device.");}
+  catch(e){toast("Couldn't save on this device.");}
+}
+async function checkConn(){
+  const s=document.getElementById('connStatus');
+  const key=(document.getElementById('hankKey').value||"").trim();
+  s.innerHTML="Checking…";
+  try{
+    const r=await fetch('/api/health',{headers:{'X-Hank-Key':key}});
+    const j=await r.json();
+    const row=(ok,txt)=>`<div>${ok?"✅":"❌"} ${txt}</div>`;
+    const good=j.passwordMatches&&j.kvConnected;
+    s.innerHTML=row(j.passwordSetInCloudflare,"Password set in Cloudflare")+
+      row(j.passwordMatches,"Your password matches")+
+      row(j.kvConnected,"Storage (KV) connected")+
+      `<div style="margin-top:6px;font-weight:700;color:${good?'var(--ok)':'var(--amber)'}">${good?"All good — backend connected.":"Not fully connected — see above."}</div>`;
+  }catch(e){
+    s.innerHTML='<div>❌ Couldn\'t reach the backend API.</div><div class="muted">If the app just deployed it may not be live yet — try again shortly.</div>';
+  }
 }
 function copyBrief(){
   const t=document.getElementById('briefBody').innerText;

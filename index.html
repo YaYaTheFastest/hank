@@ -187,7 +187,19 @@
 const BUILD_DATE="2026-06-29";
 // Needs From You — only items that require Darren physically (a photo / a decision). Hank's homework never appears here.
 const NEEDS=[];
-// All Needs-From-You resolved 2026-06-29 (Husqvarna gauge confirmed .050" from bar-stamp photo IMG_1107). New decisions from the photo drop were sent as a Gmail draft.
+// All Needs-From-You resolved 2026-06-29 (Husqvarna gauge confirmed .050" from bar-stamp photo IMG_1107).
+// Open questions — tap to answer in-app (front end; backend auto-apply is the next build).
+const QUESTIONS=[
+ {id:1,q:"Track firearms? (the H&K MR556A1 \"receiver\")",opts:["Yes — private Firearms area","No / skip"]},
+ {id:2,q:"Frigidaire fridge GRMG2272CF",opts:["Owned — make a card","Was just shopping"]},
+ {id:3,q:"Whirlpool upright freezer",opts:["Owned — I'll send a plate photo","Not owned"]},
+ {id:4,q:"Induct HVAC: Home A/C + DELLA mini-split?",opts:["Yes — new HVAC area","No / later"]},
+ {id:5,q:"Power-tool inventory (Milwaukee/DeWalt)?",opts:["Yes — track them","Manuals only"]},
+ {id:6,q:"LiftMaster garage openers — make a card?",opts:["Yes","No"]},
+ {id:7,q:"Fitness gear (cold plunge, Hypervolt)?",opts:["Track in Fitness","Leave out"]},
+ {id:8,q:"Promote any 'reference' items to cards?",opts:["Yes — I'll note which","No"]}
+];
+let QA={};
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',5200)}
 const HANK_PRIME="You are HANK (Home And raNch Knowledge), Darren & his wife's household/ranch right-hand. Be true and honest above all — never invent specs/numbers; cite sources; flag uncertainty; admit mistakes. Voice: plainspoken, answer-first, concise, never naggy. If you can read the vault, load 00 Meta/Operating System/Project Hub.md for current state, then give a tight status. If not, say so and work from this.";
 async function askHank(){
@@ -491,11 +503,28 @@ function copyBrief(){
   const t=document.getElementById('briefBody').innerText;
   navigator.clipboard.writeText(t).then(()=>toast("Hank brief copied — paste it into a new Claude chat.")).catch(()=>toast("Couldn't copy — select the text manually."));
 }
+function pickAns(id,val){QA[id]=val;renderDash();}
+function copyAnswers(){
+  const lines=QUESTIONS.map(q=>`${q.id}. ${q.q}\n   → ${QA[q.id]||"(no answer)"}`).join("\n");
+  const txt="Hank — my answers to the equipment photo questions:\n\n"+lines;
+  navigator.clipboard.writeText(txt).then(()=>toast("Answers copied — drop into _Cowork Inbox or paste to Hank.")).catch(()=>toast("Couldn't copy — select the text manually."));
+}
 
 function renderDash(){
   const c=counts(),a=attention();const pct=Math.round(c.f/c.tot*100);
   const wF=c.f/c.tot*100,wP=c.p/c.tot*100,wT=c.t/c.tot*100;
   let h="";
+  // open questions — tap to answer
+  if(typeof QUESTIONS!=="undefined" && QUESTIONS.length){
+    h+=`<div class="dsec" style="border:1px solid var(--green)"><h3 style="color:var(--green)">Open questions · ${QUESTIONS.length}</h3><p class="lead">Tap an answer for each, then <b>Copy</b> and drop it in _Cowork Inbox (or paste to Hank). No typing.</p>`;
+    QUESTIONS.forEach(q=>{
+      h+=`<div class="att" style="display:block"><div class="body" style="width:100%"><b>${q.id}. ${q.q}</b><div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px">`+
+        q.opts.map(o=>`<button class="chip${QA[q.id]===o?' active':''}" onclick="pickAns(${q.id},'${o.replace(/'/g,"\\'")}')">${o}</button>`).join("")+
+        `</div></div></div>`;
+    });
+    const ansd=Object.keys(QA).length;
+    h+=`<div class="cta"><button class="p" onclick="copyAnswers()">⧉ Copy my answers (${ansd}/${QUESTIONS.length})</button></div></div>`;
+  }
   // needs from you — top of dashboard
   if(NEEDS.length){
     h+=`<div class="dsec" style="border:1px solid var(--amber)"><h3 style="color:var(--amber)">Needs from you · ${NEEDS.length}</h3><p class="lead">Quick things only you can grab — a photo clears each one. Drop it in <b>_Cowork Inbox</b> and Hank takes it from there.</p>`;

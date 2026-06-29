@@ -130,6 +130,7 @@
     <a id="tabDash" class="active" onclick="showView('dash')">Dashboard</a>
     <a id="tabEquip" onclick="showView('equip')">Equipment</a>
     <a href="projects.html">Projects</a>
+    <a id="tabBrief" onclick="showView('brief')">Brief</a>
   </div>
 </header>
 
@@ -142,6 +143,35 @@
   <div class="chips" id="chips"></div>
   <div id="list"></div>
   <footer>Tap a card for specs, maintenance &amp; job steps. Add to Home Screen for app mode.</footer>
+</div>
+
+<!-- BRIEF VIEW -->
+<div id="briefView" class="hide">
+  <div class="dash">
+    <div class="dsec">
+      <h3>Hank — Brief &amp; Resume</h3>
+      <p class="lead">The key points from our build so far, so nothing's lost. Tap <b>Copy</b>, then paste into a new Claude chat to continue with full context.</p>
+      <button class="p" onclick="copyBrief()" style="margin-bottom:6px">⧉ Copy brief to clipboard</button>
+      <div id="briefBody" style="font-size:13px;line-height:1.55">
+<p><b>PRIME —</b> You are HANK (Home And raNch Knowledge), Darren &amp; Deane's household/ranch right-hand. Be true and honest above all — never invent specs; cite sources; flag uncertainty; admit mistakes. Voice: plainspoken, answer-first, concise, never naggy.</p>
+<p><b>ONE SYSTEM (no others):</b> the Obsidian vault = backend (Hank's, Darren does NOT open it) · this app = Darren's front door · iCloud <b>_Cowork Inbox</b> = capture (drop a photo/note). BJJ is a separate system; never merge.</p>
+<p><b>LOCKED RULES Darren set:</b></p>
+<ul>
+<li><b>Manual-first.</b> Every machine must have a confirmed manual; Hank finds it, builds the card from it, cites it. Tiers: ✅Verified / 🌐Provisional / ❓Needs-Info. <b>Hank owns correctness.</b></li>
+<li><b>Surface gaps cleanly, never via Obsidian.</b> Things only Darren can supply appear on the app dashboard + an email digest ("Needs From You"). Capacities/torques are Hank's homework, not Darren's.</li>
+<li><b>Notion = one-time harvest, now retired</b> for equipment. New equipment = a photo (VIN/plate/manual) into _Cowork Inbox.</li>
+<li><b>Induction = one-pass intake + learn from misses.</b> Capture every field first time; each card carries a Verification stamp; every re-ask becomes a logged "miss" that grows the intake checklist.</li>
+<li><b>Versioned saves (v2/v3) = signal</b> of added info → merge into the existing item, don't fork.</li>
+<li><b>No batches for Darren.</b> Hank drives multi-item work to completion; progress lives in the Action Log. <b>Claude continually evolves the system to stay frictionless.</b></li>
+</ul>
+<p><b>CASTLE FUND</b> = HANK's Family/Kids module. Loop: parents define chore+amount → kid logs → Pending → parent approves → posts to balance. Vault ledgers = source of truth; app has a project page with requirements/design.</p>
+<p><b>IN FLIGHT:</b> (1) Gmail label <b>HANK-Equipment</b> → tag an email and the daily loop auto-inducts it. (2) In-app "chat with Hank" via Claude API (Mac+iOS) — planned. (3) Friction layer: talk to Hank → it captures project input → the loop files it.</p>
+<p><b>OPEN — waiting on Darren</b> (sent as a Gmail draft, "HANK — questions on your equipment photos"): "receivers" = a firearm (H&K MR556A1) — track firearms, where? · Frigidaire fridge + Whirlpool freezer owned or shopping? · induct Home A/C + DELLA mini-split (new HVAC)? · power-tool inventory (Milwaukee/DeWalt)? · LiftMaster openers? · fitness gear (cold plunge, Hypervolt)?</p>
+<p><b>ANCHORS (vault):</b> Project Hub · Action Log · Equipment Index · Equipment Card Build Protocol · Equipment Induction Process · Needs From You · Notion Fleet Harvest 2026-06 · Photo Harvest 2026-06-29 · AGENTS.md (contract).</p>
+      </div>
+      <div class="muted" style="margin-top:10px">Updated 2026-06-29. Hank keeps this current each build pass.</div>
+    </div>
+  </div>
 </div>
 
 <div class="sheet" id="sheet"><div class="panel" id="panel"></div></div>
@@ -450,11 +480,16 @@ function attention(){
 
 // ---- views ----
 function showView(v){
-  const d=document.getElementById('dashView'),e=document.getElementById('equipView');
+  const d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView');
   document.getElementById('tabDash').classList.toggle('active',v==="dash");
   document.getElementById('tabEquip').classList.toggle('active',v==="equip");
-  d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");
+  document.getElementById('tabBrief').classList.toggle('active',v==="brief");
+  d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");
   window.scrollTo(0,0);
+}
+function copyBrief(){
+  const t=document.getElementById('briefBody').innerText;
+  navigator.clipboard.writeText(t).then(()=>toast("Hank brief copied — paste it into a new Claude chat.")).catch(()=>toast("Couldn't copy — select the text manually."));
 }
 
 function renderDash(){

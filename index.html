@@ -218,7 +218,13 @@ const DATA = [
      jobs:[{t:"Engine Oil & Filter — 100 hr",s:["Warm, park level, PTO off, key out","Drain via valve/plug","Replace spin-on filter, oil gasket","Refill ~2.0 qt 10W-30 to FULL","Run, check leaks, recheck"]},
            {t:"Mower Deck & Blade Service",s:["Key out, PTO off, pull plug leads","Remove 3 blades, sharpen & balance","Check spindles + deck belt","Torque blades to spec","Re-level deck per manual"]}]}]},
  {g:"Mowers & Cutting Decks", items:[
-   {n:"72\" Woods Mower (PTO)",power:"—",loc:"Barn",basis:"Hours",st:"part"},
+   {n:"72\" Woods Mower (PTO)",power:"—",loc:"Barn",basis:"Hours",st:"full",
+     specs:[["Type","72\" rear-discharge finish mower, 3 spindles"],["Model","likely Woods RD7200 / RD7200-2 (confirm from plate)"],["Drive","tractor PTO 540 rpm → gearbox → belt"],["Gearbox oil","SAE 80W or 90W gear lube (80W-90)"],["Grease","spindle zerks + driveline U-joints/slip yoke"]],
+     sched:[["Grease spindles + driveline","8 hr","r","—"],["Blade sharpen & balance","20–25 hr","g","OK"],["Gearbox oil level (80W-90)","seasonal","r","watch vent for weeping"],["Belt & shields inspect","seasonal","g","OK"],["Pre-use walk-around","each use","g","OK"]],
+     manual:"Woods RD6000-2/RD7200-2/RD8400-2 Operator's Manual",manualUrl:"https://cdn-assets.colemanequip.com/manuals/Woods-RD6000-2_RD7200-2_RD8400-2.pdf",
+     jobs:[{t:"Grease & Driveline (8 hr)",s:["Lower deck or block; tractor off, PTO disengaged","Grease all 3 spindle zerks","Grease driveline U-joints + slip yoke","Check driveline shield spins free","Check blade bolts + hardware tight"]},
+           {t:"Blade Sharpen & Balance (20–25 hr)",s:["Block deck; remove the 3 blades","Sharpen to original bevel","Balance each blade — unbalanced kills spindles","Reinstall, torque blade bolts to spec (confirm)","Spin-check; confirm no contact"]},
+           {t:"Gearbox Oil Check & Winterize (seasonal)",s:["Park level; clean around the gearbox","Check level at the level/breather plug — top up SAE 80W/90W","If vent weeps oil, replace breather/level plug (known issue)","Clean deck underside; touch up bare metal","Grease all fittings; store deck-down on blocks"]}]},
    {n:"2024 John Deere Z530R",power:"Gas",loc:"Shop",basis:"Hours",st:"full",
      specs:[["Engine","Kawasaki FR730V V-twin, 726cc, 24hp @3600"],["Engine oil","10W-30, ~2.1 qt w/ filter"],["Deck","54\" Accel Deep, 3 blades"],["Trans","Dual hydrostatic"],["Plugs","2× per Kawasaki FR730V (confirm)"],["Note","Maint. logged 10 h behind meter"]],
      sched:[["Engine oil & filter","50 hr","r","−10h offset"],["Air filter","100 hr","r","—"],["Blade sharpen & balance","seasonal","g","OK"],["Spark plugs + fuel filter","200 hr","r","—"],["Daily pre-use","Daily","g","OK"]],
@@ -232,8 +238,18 @@ const DATA = [
      jobs:[{t:"Blade Service & Deck Cleaning",s:["Run fuel low, pull plug lead","Tip air-filter side UP","Remove blade (sail up), sharpen & balance","Scrape deck underside","Torque bolt, reconnect lead"]},
            {t:"Engine Oil & Seasonal Storage",s:["Warm, stop, pull lead","Drain/extract, refill ~18–20oz SAE 30","Stabilize or run fuel dry","Fog cylinder ~1oz oil, pull slowly","Clean deck, store dry"]}]}]},
  {g:"Ground-Engaging Attachments", items:[
-   {n:"Woods BB600-2 Box Blade",power:"Manual",loc:"Barn",basis:"As-needed",st:"part"},
-   {n:"Husqvarna CRT900 Tiller",power:"Gas",loc:"Shop",basis:"Seasonal",st:"part"}]},
+   {n:"Woods BB600-2 Box Blade",power:"Manual",loc:"Barn",basis:"As-needed",st:"full",
+     specs:[["Type","3-pt box blade — front+rear cutting edges + scarifier shanks"],["Width","6 ft / 7 ft family (confirm from plate)"],["Hitch","Cat. 1 three-point"],["Wear items","reversible cutting edges; replaceable scarifier points"],["Fluids","none — no engine"]],
+     sched:[["Inspect edges/shanks + hardware","each use","g","OK"],["Re-torque edge/shank bolts","after first sessions","r","they seat & loosen"],["Flip/replace cutting edges","when rounded","g","OK"],["Replace scarifier points","when worn","g","keep spares"],["Clean + oil edges (storage)","seasonal","g","OK"]],
+     manual:"Woods box-blade parts/manual (Messick's BB600-2)",manualUrl:"https://www.messicks.com/catalogs/woods/bb600-2-box-blade",
+     jobs:[{t:"Mount & Pre-Use",s:["Back tractor square to the blade","Connect lower arms + lynch pins","Connect top link; set length for level vs. dig","Confirm all pins seated","Check edges/shanks tight; raise to transport"]},
+           {t:"Cutting Edge & Scarifier Service",s:["Lower/block the blade; tractor off","Flip reversible edges if rounded one side; replace if both worn","Re-torque edge bolts; re-check next session","Replace worn scarifier points; set depth","Wire-wheel rust, oil edges for storage"]}]},
+   {n:"Husqvarna CRT900 Tiller",power:"Gas",loc:"Shop",basis:"Seasonal",st:"full",
+     specs:[["Type","counter-rotating rear-tine tiller (CRT)"],["Engine oil","SAE 30 (>32°F), API SG–SL; ~0.6 L / 20 oz (confirm)"],["Fuel","~3 qt (2.8 L) fresh unleaded"],["Engine","Briggs-class OHV — confirm model from plate"],["Tine gearbox oil","type & qty — confirm from manual"]],
+     sched:[["Check engine oil","each use","r","SAE 30"],["Break-in oil change","first 5 hr","r","—"],["Air filter clean/replace","25 hr/seasonal","r","—"],["Tine gearbox oil level","seasonal","r","confirm spec"],["Stabilize fuel + annual oil","yearly","g","gums easily"]],
+     manual:"Husqvarna CRT900 Owner's Manual",manualUrl:"https://www.husqvarna.com/us/support/crt900/",
+     jobs:[{t:"Engine Oil Change",s:["Warm, shut off, disconnect spark plug","Drain fully (plug or tip-drain per engine manual)","Reinstall drain plug","Refill SAE 30 to FULL (~0.6 L/20 oz — confirm)","Reconnect plug; run; recheck; check leaks"]},
+           {t:"Pre-Use & Seasonal Service",s:["Pre-use: oil level, fresh fuel, tines clear, belt cover on","Air filter: clean or replace — never run without it","Spark plug: inspect/clean/replace; gap per manual (confirm)","Drive belt: inspect; tine gearbox: check oil level (confirm spec)","Storage: stabilize fuel or run carb dry; oil bare metal"]}]}]},
  {g:"Chainsaws & Pole Tools", items:[
    {n:"Husqvarna 460 Rancher 24\"",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"full",
      specs:[["Engine","60.3cc X-Torq 2-stroke, ~3.62 hp"],["Bar/chain","24\", 3/8\" pitch, .050\" gauge (84 DL)"],["Fuel mix","50:1 fresh"],["Plug","NGK BPMR7A (gap ~0.5mm)"],["Air filter","Husq 537 25 57-01/-03"]],
@@ -259,7 +275,13 @@ const DATA = [
      manual:"STIHL HT 131 Instruction Manual (stihlusa.com/digital)",
      jobs:[{t:"Chain/Bar/Air Filter Service",s:["Stop switch off, engine cool","File chain 3/8 PICCO at factory angle","Lower depth gauges as cutters shorten","Clean bar groove & oiler, check sprocket","Clean/replace air filter, re-tension chain"]},
            {t:"Valve Check & Winterize (4-MIX)",s:["Engine cool; remove valve cover per manual","Set TDC compression, measure intake/exhaust","Adjust only if equipped, else log + dealer","Winterize: stabilize or drain fuel, run dry","Hard start in spring = check valves first"]}]},
-   {n:"Stihl KM 110 R-Z KombiSystem",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"part"}]},
+   {n:"Stihl KM 110 R-Z KombiSystem",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"full",
+     specs:[["Engine","STIHL 4-MIX (4-stroke on mix), 31.4 cc, ~1.0 kW"],["Fuel","50:1 STIHL mix — no separate oil fill"],["Tank","~530 cc (18 oz)"],["Valve clearance","0.10 ± 0.02 mm in & ex (confirm)"],["Plug","NGK CMR6H, gap ~0.5mm (confirm)"]],
+     sched:[["Air filter clean/replace","monthly/25 hr","r","—"],["Spark plug","yearly","r","CMR6H confirm"],["Valve clearance check","yearly/per sched","r","0.10mm — it has valves"],["Fuel filter (in tank)","yearly","r","—"],["Grease attachment gearheads","25 hr/seasonal","g","OK"]],
+     manual:"Stihl KM 110 R Instruction Manual (PDF)",manualUrl:"https://cdnassets.stihlusa.com/1625862904-stihl-km-110-r-owners-instruction-manual.pdf",
+     jobs:[{t:"Valve Clearance Check (4-MIX)",s:["Engine COLD; remove attachment + valve cover","Rotate to TDC compression (both valves closed)","Measure intake & exhaust: 0.10 ± 0.02 mm (confirm)","Adjust at rocker nut in ¼-turn steps, re-check each time","Refit cover + gasket; run; confirm smooth idle"],video:"https://www.youtube.com/watch?v=3x4tVC1vib8"},
+           {t:"Air Filter, Plug & Fuel Filter",s:["Clean around filter cover; remove + clean/replace filter","Never run without the air filter","Plug: inspect, clean/replace (CMR6H confirm), set gap","Replace in-tank fuel filter yearly","Always run fresh 50:1; stabilize for storage"]},
+           {t:"Attachment Change & Gearhead Grease",s:["Engine off; loosen coupler wing screw","Press lock button; pull attachment shaft out","Insert new attachment until it clicks + locks","Tighten clamp; tug to confirm; fit correct guard","Grease attachment gearhead (Stihl gear grease) ~25 hr"]}]}]},
  {g:"Power, Water & Cleaning", items:[
    {n:"Honda EU2000i Generator",power:"Gas",loc:"Shop",basis:"Seasonal",st:"full",
      specs:[["Engine","Honda GX100, 98.5cc OHV"],["Output","2000W max / 1600W rated, 120V"],["Fuel","1.1 gal"],["Engine oil","10W-30, 0.42 qt, no filter"],["Plug","NGK CR5HSB"]],
@@ -306,7 +328,12 @@ const DATA = [
            {t:"Boost & Engine Start / Jump (manual p.9–10)",s:["Battery MUST be installed in the vehicle (no-battery start damages the electrical system)","Boost: Rate Selection → Boost LED; for cold/near-dead, boost 10–15 min first","Engine Start: switch to Engine Start; '0.0' = check connection; pick Engine Start rate","Press START → wait for 'Rdy', crank ≤5 s, then wait 45 s between tries (180 s cool-down after 3 min)","After start: STOP → OFF → unplug AC → disconnect clamps; if it cranks but won't start, stop & diagnose elsewhere"],img:["manuals/img/batterycharger-charge-p9.png"]},
            {t:"Care, Cleaning & Storage (manual §12)",s:["Unplug from AC first (controls-off isn't enough)","Clean clamps each use; wipe off battery fluid to stop corrosion","Wipe the case; coil cords neatly","Store unplugged, upright, indoors, cool & dry","Never store clamps clipped together, on metal, or on the handle"]}]},
    {n:"Bambu Labs 3D Printer",power:"Electric",loc:"Shop",basis:"As-needed",st:"todo"},
-   {n:"Rabaconda Tire Changer",power:"Manual",loc:"Shop",basis:"As-needed",st:"part"},
+   {n:"Rabaconda Tire Changer",power:"Manual",loc:"Shop",basis:"As-needed",st:"full",
+     specs:[["Type","manual tire changer — bead breaker + drop-center post"],["Works on","tubeless, mousse, Tubliss, tube"],["Spindle","20 mm standard; 12 mm for small hubs"],["Gen","Gen4+ (rubber feet, post-2017)"],["Fluids","none — manual tool; lifetime warranty"]],
+     sched:[["Wipe down / clean grit","each use","g","OK"],["Inspect post/arm for nicks & burrs","each use","r","dress any found"],["Light oil bead-breaker pivot","as needed","g","OK"],["Use rim protectors (alloy)","each use","g","OK"],["Store dry indoors","always","g","OK"]],
+     manual:"Rabaconda USA — FAQ & how-to",manualUrl:"https://us.rabaconda.com/pages/faq",
+     jobs:[{t:"Tire Change Procedure",s:["Deflate fully; remove valve core","Mount wheel on post (right spindle; rim protectors for alloy)","Break both beads with the arm — steady, not jerky","Lube beads; keep far bead in the DROP-CENTER; lever near bead off","Mount new tire (drop-center again); seat beads, set PSI, refit core"]},
+           {t:"Care, Inspection & Storage",s:["Wipe post/arm/base clean of grit + soap each use","Inspect contact surfaces for nicks/burrs; dress with fine file","Light oil on the bead-breaker pivot; check it swings free","Confirm hardware tight; correct spindle on hand","Store indoors, dry; keep rim protectors with it"]}]},
    {n:"Timber Tuff Chain Sharpener",power:"Electric",loc:"Shop",basis:"As-needed",st:"part"}]},
  {g:"Household", items:[
    {n:"Dyson Cordless #1 & #2",power:"Battery",loc:"House",basis:"Seasonal",st:"full",
@@ -360,7 +387,10 @@ const PREUSE={
 "Dyson Cordless #1 & #2":["Battery charged (check gauge)","Filter clean, dry & seated","Bin below max line; airway clear","Correct head/attachment fitted"],
 "KitchenAid Fridge (20cf)":["Doors seal fully; gaskets clean","Water filter light not lit; water tastes clean","Grille/vents clear for airflow","Temps holding (~37°F / ~0°F — confirm)"],
 "LG Fridge (top-freezer)":["Door seals fully; gasket supple","Rear coils/vents clear of dust","No excessive frost in freezer","Unit level; temps holding"],
-"Litter-Robot 4 (×2)":["Drawer not full (check app/light)","Litter at the fill line (not above)","Globe path clear; no litter on sensors","Unit level, plugged in, app connected"]
+"Litter-Robot 4 (×2)":["Drawer not full (check app/light)","Litter at the fill line (not above)","Globe path clear; no litter on sensors","Unit level, plugged in, app connected"],
+"Woods BB600-2 Box Blade":["Cutting edges present; not rounded; bolts tight","Scarifier shanks/points present & secured","All frame hardware tight; no cracks","3-pt pins + lynch pins in; top link set","Area clear of people & obstacles"],
+"Husqvarna CRT900 Tiller":["Engine oil level (SAE 30)","Fuel fresh; cap vented","Tines clear of roots/wire; belt cover on","Clutch/controls move freely","Clear work area; solid footing"],
+"Rabaconda Tire Changer":["Post/arm/base free of nicks & burrs","Correct spindle fitted (20mm / 12mm small hub)","Rim protectors ready (alloy wheels)","Tire lube + good tire irons on hand","Base feet planted; stable footing"]
 };
 
 // ---- starter reorder reference (pulled from Full cards; quantities not tracked) ----

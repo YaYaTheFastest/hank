@@ -21,7 +21,7 @@
   };
   var BASE = {
     Dagvald: { dob: "2015-09-17", reward: "LEGO Hogwarts Castle", goal: 250, seed: 85, interestPct: 5, interestOn: false, theme: "castle", color: "#7c3aed" },
-    Davikja: { dob: "2017-01-20", reward: "$100 reward (TBD)",    goal: 100, seed: 0,  interestPct: 5, interestOn: false, theme: "jar",    color: "#db2777" }
+    Davikja: { dob: "2017-01-20", reward: "$100 reward (TBD)",    goal: 100, seed: 20, interestPct: 5, interestOn: false, theme: "jar",    color: "#db2777" }
   };
 
   var KID = window.CASTLE_KID;

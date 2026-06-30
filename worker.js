@@ -46,7 +46,13 @@ async function handleApi(request, env, url) {
     const entries = [];
     for (const k of list.keys) { const v = await env.STATE.get(k.name); if (v) entries.push({ key: k.name, ...JSON.parse(v) }); }
     entries.sort((a, b) => b.ts - a.ts);
-    return json({ ok: true, entries });
+    const catalogs = {};
+    const cl = await env.STATE.list({ prefix: "castle:cat:" });
+    for (const k of cl.keys) { const v = await env.STATE.get(k.name); if (v) catalogs[k.name.slice(11)] = JSON.parse(v); }
+    const configs = {};
+    const gl = await env.STATE.list({ prefix: "castle:cfg:" });
+    for (const k of gl.keys) { const v = await env.STATE.get(k.name); if (v) configs[k.name.slice(11)] = JSON.parse(v); }
+    return json({ ok: true, entries, catalogs, configs });
   }
   if (url.pathname === "/api/castle/log" && request.method === "POST") {
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
@@ -95,6 +101,41 @@ async function handleApi(request, env, url) {
     if (b.note) e.note = b.note;
     await env.STATE.put(b.key, JSON.stringify(e));
     return json({ ok: true, entry: e });
+  }
+
+  // Parent edits the chore list or settings (goal/reward/interest) — PIN-gated.
+  if ((url.pathname === "/api/castle/catalog" || url.pathname === "/api/castle/config") && request.method === "POST") {
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const b = await request.json().catch(() => ({}));
+    const savedPin = await env.STATE.get("castle:pin");
+    if (!savedPin) return json({ ok: false, error: "no-pin-set" }, 409);
+    if (String(b.pin || "") !== savedPin) return json({ ok: false, error: "bad-pin" }, 401);
+    if (!b.kid) return json({ ok: false, error: "missing-kid" }, 400);
+    if (url.pathname.endsWith("catalog")) {
+      if (!Array.isArray(b.catalog)) return json({ ok: false, error: "missing-catalog" }, 400);
+      await env.STATE.put("castle:cat:" + b.kid, JSON.stringify(b.catalog));
+    } else {
+      if (typeof b.config !== "object" || !b.config) return json({ ok: false, error: "missing-config" }, 400);
+      await env.STATE.put("castle:cfg:" + b.kid, JSON.stringify(b.config));
+    }
+    return json({ ok: true });
+  }
+
+  // Parent-paid interest. Authorized by the parent PIN (in-app, no loop needed) OR the HANK password (loop).
+  // Idempotent per kid+period so repeated calls in a month don't double-credit.
+  if (url.pathname === "/api/castle/accrue" && request.method === "POST") {
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const b = await request.json().catch(() => ({}));
+    const savedPin = await env.STATE.get("castle:pin");
+    const pinOk = savedPin && String(b.pin || "") === savedPin;
+    if (!authed && !pinOk) return json({ ok: false, error: "bad-pin" }, 401);
+    if (!b.kid || b.amount == null || !b.period) return json({ ok: false, error: "missing-fields" }, 400);
+    const list = await env.STATE.list({ prefix: "castle:e:" });
+    for (const k of list.keys) { const v = await env.STATE.get(k.name); if (!v) continue; const e = JSON.parse(v); if (e.kind === "interest" && e.kid === b.kid && e.period === b.period) return json({ ok: true, skipped: "already-accrued" }); }
+    const id = "castle:e:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
+    const entry = { kid: b.kid, chore: "Interest · " + b.period, amount: Number(b.amount) || 0, status: "approved", approver: "Bank of Mom & Dad", kind: "interest", period: b.period, ts: Date.now(), day: new Date().toISOString().slice(0, 10) };
+    await env.STATE.put(id, JSON.stringify(entry));
+    return json({ ok: true, entry });
   }
 
   // Everything below requires the correct HANK password (chat + tap-to-answer).

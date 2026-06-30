@@ -210,11 +210,11 @@
 </ul>
 <p><b>CASTLE FUND</b> = HANK's Family/Kids module. Loop: parents define chore+amount → kid logs → Pending → parent approves → posts to balance. Vault ledgers = source of truth; app has a project page with requirements/design.</p>
 <p><b>LIVE:</b> In-app <b>Ask Hank</b> chat (Claude API, password-gated). Setup tab + Check-connection. Tap-to-answer + chat capture to KV → the daily loop files into the vault. Gmail label <b>HANK-Equipment</b> → tag an email and the loop auto-inducts it (create the label once in Gmail).</p>
-<p><b>INDUCTING (loop, from the 2026-06-29 photos):</b> Firearms (H&K MR556A1, new nested area) · Frigidaire fridge + Whirlpool freezer · HVAC (Nordyne air handler + DELLA mini-split) · power tools w/ job cards (Milwaukee M18, DeWalt) · LiftMaster openers · fitness (cold plunge, Hypervolt) · reference items → cards.</p>
+<p><b>FLEET INDUCTED:</b> all cataloged machines are at the Full standard except the <b>Whirlpool upright freezer</b> (blocked — needs a model/serial plate photo). Latest to Full (2026-06-30): BoxPlunge cold plunge · Square D load center · Ceiling fans (HVLS + Merwry SW1422-BN).</p>
 <p><b>OPEN — waiting on Darren:</b> a photo of the <b>Whirlpool freezer</b> model/serial plate (the only Need). Deferred: money-aggregator app choice.</p>
 <p><b>ANCHORS (vault):</b> Project Hub · Action Log · Equipment Index · Equipment Card Build Protocol · Equipment Induction Process · Needs From You · Notion Fleet Harvest 2026-06 · Photo Harvest 2026-06-29 · AGENTS.md (contract).</p>
       </div>
-      <div class="muted" style="margin-top:10px">Updated 2026-06-29. Hank keeps this current each build pass.</div>
+      <div class="muted" style="margin-top:10px">Updated 2026-06-30. Hank keeps this current each build pass.</div>
     </div>
   </div>
 </div>
@@ -252,7 +252,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-06-29";
+const BUILD_DATE="2026-06-30";
 // Needs From You — only items that require Darren physically (a photo / a decision). Hank's homework never appears here.
 const NEEDS=[
  {eq:"Whirlpool upright freezer",ask:"Photo of the model/serial plate",why:"To induct it — you confirmed it's owned"}
@@ -504,7 +504,13 @@ const DATA = [
      sched:[["Charge (supplied charger only)","as needed","g","no overnight/unattended"],["Wipe device + heads after use","each use","g","power off, damp cloth"],["Inspect heads & threads","monthly","g","seat fully; replace cracked"],["Store cool/dry, off charger","ongoing","g","out of direct sun"]],
      manual:"Hyperice Hypervolt 2 Pro manual",manualUrl:"https://manuals.plus/hyperice/hypervolt-2-pro-massager-gun-manual",
      jobs:[{t:"Charging & Battery Care",s:["Use ONLY the supplied Hyperice charger (confirm model for your variant)","First charge up to ~4 h before first use","Do NOT charge overnight or leave unattended while charging/running","Store at partial charge if idle long; recharge before use","End of life: recycle the battery at e-waste (never open/incinerate)"]},
-           {t:"Cleaning & Storage",s:["Power OFF; remove the charger","Wipe body + attachment head with a damp, clean cloth (no submerging/solvents)","Let dry; reseat or remove the head","Store clean, cool, dry, out of direct sun; not on the charger long-term","Observe the ~1 h duty cycle — rest 30 min before reusing"]}]}]}
+           {t:"Cleaning & Storage",s:["Power OFF; remove the charger","Wipe body + attachment head with a damp, clean cloth (no submerging/solvents)","Let dry; reseat or remove the head","Store clean, cool, dry, out of direct sun; not on the charger long-term","Observe the ~1 h duty cycle — rest 30 min before reusing"]}]},
+   {n:"BoxPlunge Cold Plunge",power:"Electric",loc:"House",basis:"Seasonal",st:"full",
+     specs:[["Type","Cold plunge w/ integrated chiller + skimmer + circulation pump"],["Filter cartridge","standard 2.5\" × 10\" cartridge"],["Pre-filter","removable skimmer (can hold mineral/pH media)"],["Chiller","electric, continuous-run (confirm HP/voltage from label)"],["Sanitation","ozone + hydrogen peroxide (H₂O₂) recommended"],["Safety","on a GFCI; UNPLUG before plunging"]],
+     sched:[["Rinse pre-filter / skimmer","weekly","g","quick rinse"],["Replace 2.5\"×10\" cartridge","~monthly","r","clarity + flow"],["Sanitize (H₂O₂ / ozone)","ongoing","g","shower first"],["Clean chiller coil / airflow","monthly","r","keep clearance"],["Full water change + deep clean","every few months","g","fresh cartridge"]],
+     manual:"BoxPlunge — official site + filtration product page",manualUrl:"https://www.boxplunge.com/",
+     jobs:[{t:"Filter & Water Care",s:["Pre-use: water clear, skimmer seated, showered, unit on GFCI (unplug before plunging)","Weekly: slip out the pre-filter/skimmer basket, rinse, reseat","Monthly (or if flow drops/clouds): swap the 2.5\"×10\" cartridge","Clean skimmer housing + cartridge with H₂O₂ for crystal-clear water","Maintain sanitation (ozone + peroxide); shower before every plunge"]},
+           {t:"Chiller Care & Water Change",s:["UNPLUG the unit (off the GFCI) before any service","Dust the chiller condenser coil; confirm airflow clearance","Full change: drain tub, wipe shell, clean skimmer/pump inlet","Install fresh 2.5\"×10\" cartridge; refill clean water; restore GFCI power","Re-establish sanitation; circulate before first use (refrigerant = pro only)"]}]}]}
 ,
  {g:"Wood Processing", items:[
    {n:"CountyLine 40-Ton Log Splitter",power:"Gas",loc:"Barn",basis:"As-needed",st:"full",
@@ -543,7 +549,18 @@ const DATA = [
      sched:[["Safety-reversal test (2×4)","monthly","r","must reverse on contact"],["Photo-eye test + alignment","monthly","r","LEDs steady = aligned"],["Lubricate door hardware","~2×/yr","g","rollers/hinges/springs, not tracks"],["Backup battery check/replace","6mo / 1–3yr","r","confirm part #"],["Door balance & hardware","annual","g","OK"]],
      manual:"LiftMaster 98032 / 98022 Owner's Manuals",manualUrl:"https://www.liftmaster.com/customer-support",
      jobs:[{t:"Monthly Safety Test & Lubrication",s:["Safety reversal: 2×4 flat on floor, close — door must REVERSE on contact","Photo-eyes: wave object through beam closing — must reverse; re-aim until LEDs steady","Lubricate rollers/hinges/springs (NOT the tracks); wipe excess","Cycle several times; confirm smooth, quiet travel","If a test fails: adjust force/travel per manual or service"]},
-           {t:"Backup Battery & Photo-Eye Service",s:["Check backup-battery status in myQ / on the unit","If it won't hold, order correct battery (confirm # per model)","Power down per manual; swap battery; restore power; verify indicator clears","Wipe + re-aim photo-eyes until LEDs steady","Re-run safety tests; inspect door cables (98022 dropped the tension monitor)"]}]}]},
+           {t:"Backup Battery & Photo-Eye Service",s:["Check backup-battery status in myQ / on the unit","If it won't hold, order correct battery (confirm # per model)","Power down per manual; swap battery; restore power; verify indicator clears","Wipe + re-aim photo-eyes until LEDs steady","Re-run safety tests; inspect door cables (98022 dropped the tension monitor)"]}]},
+   {n:"Square D Load Center",power:"Electric",loc:"Shop/House",basis:"As-needed",st:"full",
+     specs:[["Make","Square D (Schneider) load center — confirm QO vs Homeline + amperage from label"],["Devices","standard + GFCI + AFCI + Dual-Function breakers (each has a TEST button)"],["Maintenance","virtually maintenance-free — testing + inspection only"],["AFCI codes","newer Square D AFCI/DF breakers blink a trip-code"],["Breakers","series-specific — QO ≠ Homeline (confirm before buying)"],["Rule","deadfront stays LIVE even with the main off — electrician only"]],
+     sched:[["GFCI/AFCI breaker test-button check","monthly","r","must trip; reset"],["Test downstream GFCI receptacles","monthly","r","Test→off, Reset→on"],["Visual/odor inspection (heat/buzz/scorch)","monthly","r","any = electrician"],["Verify clearance + directory","quarterly","g","30\"+ clear; legible"],["Pro inspection / lug-torque","as needed","r","electrician only"]],
+     manual:"Square D / Schneider — load center + breaker docs",manualUrl:"https://www.se.com/us/en/work/products/explore/dual-function-circuit-breakers/",
+     jobs:[{t:"Monthly GFCI/AFCI Test & Inspection",s:["Open the panel DOOR only — never the deadfront (bus + lugs live even with main off)","Press TEST on each GFCI/AFCI/Dual-Function breaker — it should trip; push OFF then ON to reset","Test each downstream GFCI receptacle: Test (power cuts) → Reset (power returns)","Inspect/listen/smell: no buzzing, warmth, discoloration, scorch, or burning odor; no moisture","Won't trip/reset, or heat/scorch/odor → leave OFF and call a licensed electrician"]}]},
+   {n:"Ceiling Fans (HVLS + Merwry)",power:"Electric",loc:"Shop/House",basis:"As-needed",st:"full",
+     specs:[["HVLS","high-volume/low-speed shop fan — confirm brand/model/diameter; usually sealed gearbox"],["Merwry","Home Decorators SW1422-BN, 52\" LED, 120V, dimmable, remote"],["Merwry speeds","Low ~15W/94CFM · Med ~28W/136CFM · High ~52W/176CFM"],["Merwry mount","downrod 4.5\"–72\"; slope ≤18°; NO flush mount"],["HVLS maint","annual inspect; lube bearings only if maker specifies"],["Safety","power off at breaker; HVLS mount + balance are high-consequence"]],
+     sched:[["Dust/clean blades (both)","seasonal","g","even = no wobble"],["Check mount + blade hardware","seasonal","r","wobble = loose/imbalance"],["Merwry — seasonal direction + test remote","2×/yr","g","down/CCW cool, up warm"],["HVLS — full annual inspection","annual","r","blades/hub/mount/safety cable"],["HVLS — gearbox/bearing per maker","per maker","g","often sealed — don't grease"]],
+     manual:"Merwry SW1422 Use & Care Guide (Home Depot) + HVLS maker manual",manualUrl:"https://images.thdstatic.com/catalog/pdfImages/6f/6f8fb4e7-1bb4-437b-83f3-4cdf7882ae57.pdf",
+     jobs:[{t:"Seasonal Clean & Mount Check (both fans)",s:["POWER OFF at the breaker/wall; wait for full stop","Dust/wipe each blade EVENLY (uneven dust → wobble)","Check downrod/mount + blade-arm hardware — snug anything loose","Merwry: set seasonal direction (summer down/CCW, winter up); test remote + LED dimming; new battery if dead","Run on low; if it wobbles, balance before normal use (Merwry: no flush mount; use LED-compatible wall control)"]},
+           {t:"HVLS Annual Inspection — Shop Fan",s:["LOCK OUT power at the breaker; confirm fully stopped; use proper lift/fall protection","Inspect blades + hub for cracks; clean accumulated dust (weight = imbalance risk)","Verify mounting structure, all bolts/brackets, and the safety cable are secure + un-corroded","Listen/feel for grinding or play in the motor/gearbox","Lube bearings ONLY if the maker specifies (many are sealed); check controller; log it"]}]}]},
  {g:"Firearms", items:[
    {n:"Heckler & Koch MR556A1",power:"Manual",loc:"Secure",basis:"As-needed",st:"full",
      specs:[["Caliber","5.56×45 / .223"],["System","HK gas piston (piston + solid pusher rod)"],["Platform","AR-style semi-auto, removable mag"],["Cleaning","standard HK 5.56 kit; no special cleaner/lube"],["Records","log model + serial for insurance (store securely)"]],
@@ -594,7 +611,10 @@ const PREUSE={
 "Hyperice Hypervolt":["Battery charged (check indicator)","Desired head fully seated","Surfaces clean; charger detached","Stay under the ~1 h duty limit"],
 "DeWalt 20V Saws":["Battery charged & seated; vents clear","Correct, sharp blade; arbor bolt tight","Guard returns freely (circular) / fence + clamp set (miter)","Eye + ear PPE; clear cut path"],
 "Home A/C — Nordyne Air Handler":["Return-air filter clean (arrow toward unit)","Condensate drain flows; pan dry","Outdoor unit clear of leaves/grass","Thermostat responds; system produces conditioned air"],
-"DELLA Mini-Split":["Mesh filters washed & fully dry","Indoor coil/blower clean (no musty smell)","Outdoor coil clear; ~2 ft clearance","Remote responds; head cools/heats"]
+"DELLA Mini-Split":["Mesh filters washed & fully dry","Indoor coil/blower clean (no musty smell)","Outdoor coil clear; ~2 ft clearance","Remote responds; head cools/heats"],
+"BoxPlunge Cold Plunge":["Water clear; no film/debris","Pre-filter / skimmer basket seated","Chiller holding target temp","Showered before getting in","On a GFCI — UNPLUG before plunging"],
+"Square D Load Center":["Panel DOOR only — never open the deadfront","Directory legible & current","30\"+ clear working space in front","No buzzing, warmth, scorch, or burning smell","No moisture near the panel"],
+"Ceiling Fans (HVLS + Merwry)":["Power off at breaker before any blade/mount work","Blades fully stopped before touching","No wobble; blades dusted evenly","Mount + blade hardware tight","HVLS: safety cable + mounting secure"]
 };
 
 // ---- starter reorder reference (pulled from Full cards; quantities not tracked) ----

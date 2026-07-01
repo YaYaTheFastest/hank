@@ -257,6 +257,12 @@ const BUILD_DATE="2026-06-30";
 const NEEDS=[
  {eq:"Whirlpool upright freezer",ask:"Photo of the model/serial plate",why:"To induct it — you confirmed it's owned"}
 ];
+// Manuals needed — a card can't reach Full without its manual PDF on file (real figures via pdftoppm).
+// Hank finds the direct link; you just save it. Tap the link → Save to Files → _Cowork Inbox, and the next loop builds the card to Full.
+// gated:true means the link needs a one-time "I agree" tap before the download button appears.
+const MANUALS_NEEDED=[
+ {eq:"Honda CRF110F",url:"https://cdn.powersports.honda.com/documentum/MWOM/ml.remawmom.akyk2424omen.pdf",note:"2024 US owner's manual (direct PDF, ~11 MB). Priority rebuild — has no figures on file yet.",gated:false}
+];
 // All 8 photo questions answered 2026-06-29; inductions (Firearms, HVAC, power tools, fitness, appliances, openers) queued for the loop.
 const QUESTIONS=[];
 let QA={};
@@ -755,6 +761,12 @@ function renderDash(){
     NEEDS.forEach(x=>{h+=`<div class="att"><span class="ic n"></span><div class="body"><b>${x.eq}</b> — ${x.ask}<div class="sub">${x.why}</div></div></div>`;});
     h+=`<div class="cta"><button class="p" onclick="document.getElementById('cap').click()">📷 Send a photo</button></div></div>`;
   }
+  // manuals needed — tap the link, save the PDF to _Cowork Inbox, Hank builds the card to Full
+  if(typeof MANUALS_NEEDED!=="undefined" && MANUALS_NEEDED.length){
+    h+=`<div class="dsec" style="border:1px solid var(--green)"><h3 style="color:var(--green)">Manuals needed · ${MANUALS_NEEDED.length}</h3><p class="lead">A card can't reach Full without its manual PDF on file. Hank found the link — just save it: <b>tap → Save to Files → _Cowork Inbox</b>, and the next loop builds the card with real figures.</p>`;
+    MANUALS_NEEDED.forEach(x=>{h+=`<div class="att"><span class="ic n"></span><div class="body"><b>${x.eq}</b> — <a class="lk" href="${x.url}" target="_blank" rel="noopener">📄 Open manual PDF ↗</a><div class="sub">${x.note}${x.gated?' <span class="verify">needs a one-time “I agree” tap first</span>':''}</div></div></div>`;});
+    h+=`</div>`;
+  }
   // build status
   h+=`<div class="dsec"><h3>Build status</h3><p class="lead">How much of the fleet is at the full 2026-05 card standard.</p>
     <div class="stats">
@@ -790,7 +802,7 @@ document.getElementById('q').oninput=e=>{query=e.target.value.toLowerCase();rend
 let total=0;DATA.forEach(d=>total+=d.items.length);
 document.getElementById('count').textContent=total+" machines · updated "+BUILD_DATE;
 (function(){const he=document.getElementById('hEquip');if(he)he.textContent=total+" machines, by category";
- const hn=document.getElementById('hNeeds');if(hn)hn.textContent=NEEDS.length?(NEEDS.length+" waiting on you"):"nothing waiting — all clear";})();
+ const hn=document.getElementById('hNeeds');const mn=(typeof MANUALS_NEEDED!=="undefined")?MANUALS_NEEDED.length:0;const wn=NEEDS.length+mn;if(hn)hn.textContent=wn?(wn+" waiting on you"):"nothing waiting — all clear";})();
 
 function tileHint(it){
   if(it.st==="todo")return "Queued to induct";

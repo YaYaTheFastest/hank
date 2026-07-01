@@ -3,7 +3,7 @@
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",
-  "assets": { "directory": ".", "binding": "ASSETS" },
+  "assets": { "directory": ".", "binding": "ASSETS", "run_worker_first": true },
   "kv_namespaces": [
     { "binding": "STATE", "id": "6671002bc7cb48c38d81fb49bf1b7bd8" }
   ]

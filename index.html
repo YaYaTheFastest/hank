@@ -261,20 +261,20 @@ const NEEDS=[
 // Hank finds the direct link; you just save it. Tap the link → Save to Files → _Cowork Inbox, and the next loop builds the card to Full.
 // gated:true means the link needs a one-time "I agree" tap before the download button appears.
 const MANUALS_NEEDED=[
- // Honda CRF110F — DONE 2026-07-01. Below: audit 2026-07-01 backlog with resolved direct links (Hank fetches these zero-touch when on Mac+Chrome).
- {eq:"Yamaha TT-R110E",url:"http://www.yamaha-motor.com/assets/service/manuals/2008/LIT-11626-21-48_TTR110E_1472.pdf",note:"Yamaha US owner's/service manual (LIT-11626-21-48).",gated:false},
- {eq:"Stihl MS 261 C-M",url:"https://cdnassets.stihlusa.com/1625860367-stihl-ms-261-c-m-owners-instruction-manual.pdf",note:"Stihl USA CDN, exact model.",gated:false},
- {eq:"Stihl HT 131",url:"https://cdnassets.stihlusa.com/1654020589-stihl-ht-131-owners-instruction-manual.pdf",note:"Stihl USA CDN.",gated:false},
- {eq:"Honda EU2000i generator",url:"http://cdn.powerequipment.honda.com/pe/pdf/manuals/00X31Z396030.pdf",note:"Honda power-equipment CDN.",gated:false},
- {eq:"NorthStar washer — Honda GC190 engine",url:"https://cdn.powerequipment.honda.com/engines/pdf/manuals/00X37Z8A0032.pdf",note:"Honda GC160/GC190 engine manual.",gated:false},
- {eq:"Husqvarna 460 Rancher",url:"http://pdf.lowes.com/operatingguides/024761034968_oper.pdf",note:"Official 455/460 Rancher OM (Lowe's CDN).",gated:false},
- {eq:"Husqvarna 545 Mark II",url:"https://pdf.lowes.com/productdocuments/e25b3b21-4cec-427d-9cf5-56cd8735c5bf/12030427.pdf",note:"Husqvarna OM doc 12030427 (Lowe's CDN).",gated:false},
- {eq:"John Deere Z530R",url:"https://pdf.lowes.com/productdocuments/8b67957e-04d6-4772-adb1-22d2c18bdefa/42730785.pdf",note:"JD OM covers Z530R (Lowe's CDN).",gated:false},
- {eq:"Toro 22\" Recycler (21485)",url:"https://images.thdstatic.com/catalog/pdfImages/53/5352cb09-599b-4cf2-83ad-0729b37f3362.pdf",note:"Toro 22\" Recycler OM (verify form # vs unit).",gated:false},
- {eq:"CountyLine splitter — Kohler CH440",url:"https://resources.kohler.com/power/kohler/enginesUS/pdf/17_590_20_EN.pdf",note:"Kohler CH440 owner's manual (confirm engine plate).",gated:false},
- {eq:"Milwaukee M18 chainsaw 2727-20",url:"https://www.chainsawsdirect.com/manuals/milwaukee-636ba8d3b742c8aee43a8c61f36c4d26.pdf",note:"Verified verbatim 2727-20 operator's manual.",gated:false},
- {eq:"DeWalt DCS391 circular saw",url:"https://www.dewalt.com/GLOBALBOM/QU/DCS391B/1/Instruction_Manual/EN/N382847_DCS391.pdf",note:"DeWalt.com direct PDF.",gated:false},
- {eq:"Litter-Robot 4",url:"https://www.litter-robot.com/manual_pdf/Litter-Robot-4-Manual.pdf",note:"Whisker direct PDF.",gated:false},
+ // Honda CRF110F — DONE 2026-07-01 (built to Full). Below: audit backlog. Links VERIFIED to return a real PDF 2026-07-01 (tap → Save to Files → _Cowork Inbox works). Hank fetches these one-per-session on Mac+Chrome (Chrome blocks bulk auto-downloads).
+ {eq:"NorthStar washer — Honda GC190 engine",url:"https://cdn.powerequipment.honda.com/engines/pdf/manuals/00X37Z8A0032.pdf",note:"✔ verified PDF — Honda GC160/GC190 engine manual.",gated:false},
+ {eq:"Honda EU2000i generator",url:"http://cdn.powerequipment.honda.com/pe/pdf/manuals/00X31Z396030.pdf",note:"✔ verified PDF — Honda power-equipment CDN.",gated:false},
+ {eq:"Husqvarna 460 Rancher",url:"http://pdf.lowes.com/operatingguides/024761034968_oper.pdf",note:"✔ verified PDF — 455/460 Rancher OM.",gated:false},
+ {eq:"Husqvarna 545 Mark II",url:"https://pdf.lowes.com/productdocuments/e25b3b21-4cec-427d-9cf5-56cd8735c5bf/12030427.pdf",note:"✔ verified PDF — Husqvarna OM 12030427.",gated:false},
+ {eq:"John Deere Z530R",url:"https://pdf.lowes.com/productdocuments/8b67957e-04d6-4772-adb1-22d2c18bdefa/42730785.pdf",note:"✔ verified PDF — JD OM covers Z530R.",gated:false},
+ {eq:"Toro 22\" Recycler (21485)",url:"https://images.thdstatic.com/catalog/pdfImages/53/5352cb09-599b-4cf2-83ad-0729b37f3362.pdf",note:"✔ verified PDF — Toro 22\" Recycler OM (verify form #).",gated:false},
+ {eq:"CountyLine splitter — Kohler CH440",url:"https://resources.kohler.com/power/kohler/enginesUS/pdf/17_590_20_EN.pdf",note:"✔ verified PDF — Kohler CH440 (confirm engine plate).",gated:false},
+ {eq:"Litter-Robot 4",url:"https://www.litter-robot.com/manual_pdf/Litter-Robot-4-Manual.pdf",note:"✔ verified PDF — Whisker LR4 manual.",gated:false},
+ {eq:"Stihl MS 261 C-M",url:"https://www.stihlusa.com/products/chain-saws/professional-saws/ms261cm/",note:"⚠ direct CDN link 403s the browser — needs a working source; Stihl product page for now.",gated:true},
+ {eq:"Stihl HT 131",url:"https://www.stihlusa.com/products/pole-pruners/professional-pole-pruners/ht131/",note:"⚠ direct CDN link 403s — needs a working source.",gated:true},
+ {eq:"Yamaha TT-R110E",url:"https://www.yamahamotorsports.com/owners-manuals",note:"⚠ prior direct link 404'd — resolve current-year TT-R110E OM.",gated:true},
+ {eq:"Milwaukee M18 chainsaw 2727-20",url:"https://www.milwaukeetool.com/Products/Power-Tools/2727-20",note:"⚠ prior link redirected — resolve real operator's-manual PDF.",gated:true},
+ {eq:"DeWalt DCS391 circular saw",url:"https://www.dewalt.com/product/dcs391b",note:"⚠ prior link redirected — resolve real instruction-manual PDF.",gated:true},
  {eq:"John Deere X580",url:"http://manuals.deere.com/omview/OMM174377_19/toc.html",note:"JD serves a viewer only — no direct PDF.",gated:true},
  {eq:"Hyperice Hypervolt 2",url:"https://www.manualslib.com/manual/2483483/Hyperice-Hypervolt-2.html",note:"No ungated mfr PDF; ManualsLib viewer.",gated:true}
 ];

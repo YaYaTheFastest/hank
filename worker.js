@@ -8,22 +8,75 @@ const CORS = {
 const json = (o, status = 200) =>
   new Response(JSON.stringify(o), { status, headers: { ...CORS, "Content-Type": "application/json" } });
 
+async function sha256hex(s) {
+  const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+  return [...new Uint8Array(b)].map((x) => x.toString(16).padStart(2, "0")).join("");
+}
+function getCookie(request, name) {
+  const h = request.headers.get("Cookie") || "";
+  for (const c of h.split(";")) {
+    const i = c.indexOf("=");
+    if (i > -1 && c.slice(0, i).trim() === name) return c.slice(i + 1).trim();
+  }
+  return "";
+}
+function loginPage(toPath, wrong) {
+  const to = encodeURIComponent(toPath || "/");
+  const body = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HANK — sign in</title>
+<style>body{font-family:-apple-system,system-ui,sans-serif;background:#f6f7f3;color:#1c2419;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0}
+.card{background:#fff;border:1px solid #e4e7df;border-radius:14px;padding:28px;max-width:340px;width:90%;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+h1{font-size:20px;margin:0 0 4px;color:#367C2B}p{color:#6b7464;font-size:14px;margin:0 0 18px}
+input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #cfd6c8;border-radius:9px;font-size:16px;margin-bottom:12px}
+button{width:100%;padding:12px;border:0;border-radius:9px;background:#367C2B;color:#fff;font-size:16px;font-weight:600}
+.err{color:#d24b3e;font-size:13px;margin:-6px 0 12px}</style></head>
+<body><form class="card" method="POST" action="/__login?to=${to}">
+<h1>HANK</h1><p>Home &amp; Ranch. Enter the family password to continue.</p>
+${wrong ? '<div class="err">Wrong password — try again.</div>' : ""}
+<input type="password" name="pw" placeholder="Password" autofocus autocomplete="current-password">
+<button type="submit">Enter</button></form></body></html>`;
+  return new Response(body, { status: wrong ? 401 : 200, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" } });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (url.pathname.startsWith("/api/")) return handleApi(request, env, url);
-    // everything else = the static app (index.html, projects.html, etc.)
+    if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
+
+    // Family password gate (protects pages + manuals + kids' data). Cookie lasts 30 days per device.
+    const gateToken = env.HANK_PASSWORD ? await sha256hex("hankgate:" + env.HANK_PASSWORD) : "";
+    const siteAuthed = !env.HANK_PASSWORD || getCookie(request, "hank_site") === gateToken;
+
+    if (url.pathname === "/__login" && request.method === "POST") {
+      const form = await request.formData().catch(() => null);
+      const pw = form ? String(form.get("pw") || "") : "";
+      const to = url.searchParams.get("to") || "/";
+      const dest = to.startsWith("/") ? to : "/";
+      if (env.HANK_PASSWORD && pw === env.HANK_PASSWORD) {
+        return new Response(null, { status: 302, headers: {
+          "Set-Cookie": `hank_site=${gateToken}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax`,
+          "Location": dest,
+        } });
+      }
+      return loginPage(dest, true);
+    }
+
+    if (url.pathname.startsWith("/api/")) return handleApi(request, env, url, siteAuthed);
+
+    // static app + manuals — require the family password
+    if (!siteAuthed) return loginPage(url.pathname + url.search, false);
     return env.ASSETS.fetch(request);
   },
 };
 
-async function handleApi(request, env, url) {
+async function handleApi(request, env, url, siteAuthed) {
   if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
 
   const provided = request.headers.get("X-Hank-Key") || url.searchParams.get("key") || "";
   const expected = env.HANK_PASSWORD || "";
   const configured = expected.length > 0;
   const authed = configured && provided === expected;
+  // Castle data is readable/writable by the loop (key) OR a signed-in family device (site cookie), never anonymously.
+  const familyOrLoop = authed || !!siteAuthed;
   const kv = !!env.STATE;
 
   // Health/check-connection — safe to call without auth; reports what's working.
@@ -38,9 +91,10 @@ async function handleApi(request, env, url) {
   }
 
   // ---- Castle Fund (kids' chore→reward) ----
-  // Kid actions (read state, log a chore) need NO login — a logged chore is only "pending" and
-  // moves no money. Parent approve/decline are gated by a simple 4-digit PIN (set once, stored in KV).
+  // Read state + log a chore require a signed-in family device (site cookie) or the loop key — never anonymous
+  // (this keeps the kids' names/balances private). Parent approve/decline are additionally gated by the 4-digit PIN.
   if (url.pathname === "/api/castle" && request.method === "GET") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const list = await env.STATE.list({ prefix: "castle:e:" });
     const entries = [];
@@ -55,6 +109,7 @@ async function handleApi(request, env, url) {
     return json({ ok: true, entries, catalogs, configs });
   }
   if (url.pathname === "/api/castle/log" && request.method === "POST") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const b = await request.json().catch(() => ({}));
     if (!b.kid || !b.chore) return json({ ok: false, error: "missing-fields" }, 400);

@@ -255,21 +255,14 @@
 const BUILD_DATE="2026-06-30";
 // Needs From You — only items that require Darren physically (a photo / a decision). Hank's homework never appears here.
 const NEEDS=[
- {eq:"Whirlpool upright freezer",ask:"Photo of the model/serial plate",why:"To induct it — you confirmed it's owned"}
+ // Whirlpool freezer inducted 2026-07-01 from the nameplate photo (WZF34X20DW07 / UE4506196). No open Needs.
 ];
 // Manuals needed — a card can't reach Full without its manual PDF on file (real figures via pdftoppm).
 // Hank finds the direct link; you just save it. Tap the link → Save to Files → _Cowork Inbox, and the next loop builds the card to Full.
 // gated:true means the link needs a one-time "I agree" tap before the download button appears.
 const MANUALS_NEEDED=[
  // Honda CRF110F — DONE 2026-07-01 (built to Full). Below: audit backlog. Links VERIFIED to return a real PDF 2026-07-01 (tap → Save to Files → _Cowork Inbox works). Hank fetches these one-per-session on Mac+Chrome (Chrome blocks bulk auto-downloads).
- {eq:"NorthStar washer — Honda GC190 engine",url:"https://cdn.powerequipment.honda.com/engines/pdf/manuals/00X37Z8A0032.pdf",note:"✔ verified PDF — Honda GC160/GC190 engine manual.",gated:false},
- {eq:"Honda EU2000i generator",url:"http://cdn.powerequipment.honda.com/pe/pdf/manuals/00X31Z396030.pdf",note:"✔ verified PDF — Honda power-equipment CDN.",gated:false},
- {eq:"Husqvarna 460 Rancher",url:"http://pdf.lowes.com/operatingguides/024761034968_oper.pdf",note:"✔ verified PDF — 455/460 Rancher OM.",gated:false},
- {eq:"Husqvarna 545 Mark II",url:"https://pdf.lowes.com/productdocuments/e25b3b21-4cec-427d-9cf5-56cd8735c5bf/12030427.pdf",note:"✔ verified PDF — Husqvarna OM 12030427.",gated:false},
- {eq:"John Deere Z530R",url:"https://pdf.lowes.com/productdocuments/8b67957e-04d6-4772-adb1-22d2c18bdefa/42730785.pdf",note:"✔ verified PDF — JD OM covers Z530R.",gated:false},
- {eq:"Toro 22\" Recycler (21485)",url:"https://images.thdstatic.com/catalog/pdfImages/53/5352cb09-599b-4cf2-83ad-0729b37f3362.pdf",note:"✔ verified PDF — Toro 22\" Recycler OM (verify form #).",gated:false},
- {eq:"CountyLine splitter — Kohler CH440",url:"https://resources.kohler.com/power/kohler/enginesUS/pdf/17_590_20_EN.pdf",note:"✔ verified PDF — Kohler CH440 (confirm engine plate).",gated:false},
- {eq:"Litter-Robot 4",url:"https://www.litter-robot.com/manual_pdf/Litter-Robot-4-Manual.pdf",note:"✔ verified PDF — Whisker LR4 manual.",gated:false},
+ // ON FILE as of 2026-07-01 (Darren saved to _Cowork Inbox → hosted in deck): Honda GC190/NorthStar, Honda EU2000i, Husqvarna 460, Husqvarna 545, JD Z530R, Toro 21485, CountyLine/Kohler CH440, Litter-Robot 4. Cards now queued for manual-first rebuild by the loop.
  {eq:"Stihl MS 261 C-M",url:"https://www.stihlusa.com/products/chain-saws/professional-saws/ms261cm/",note:"⚠ direct CDN link 403s the browser — needs a working source; Stihl product page for now.",gated:true},
  {eq:"Stihl HT 131",url:"https://www.stihlusa.com/products/pole-pruners/professional-pole-pruners/ht131/",note:"⚠ direct CDN link 403s — needs a working source.",gated:true},
  {eq:"Yamaha TT-R110E",url:"https://www.yamahamotorsports.com/owners-manuals",note:"⚠ prior direct link 404'd — resolve current-year TT-R110E OM.",gated:true},
@@ -354,13 +347,13 @@ const DATA = [
    {n:"2024 John Deere Z530R",power:"Gas",loc:"Shop",basis:"Hours",st:"full",
      specs:[["Engine","Kawasaki FR730V V-twin, 726cc, 24hp @3600"],["Engine oil","10W-30, ~2.1 qt w/ filter"],["Deck","54\" Accel Deep, 3 blades"],["Trans","Dual hydrostatic"],["Plugs","2× per Kawasaki FR730V (confirm)"],["Note","Maint. logged 10 h behind meter"]],
      sched:[["Engine oil & filter","50 hr","r","−10h offset"],["Air filter","100 hr","r","—"],["Blade sharpen & balance","seasonal","g","OK"],["Spark plugs + fuel filter","200 hr","r","—"],["Daily pre-use","Daily","g","OK"]],
-     manual:"JD Z530R Operator's Manual + Kawasaki FR730V manual (digital)",
+     manual:"JD Z515E/Z530R Operator's Manual (PDF, on file)",manualUrl:"manuals/jd-z530r.pdf",
      jobs:[{t:"Engine Oil & Filter — 50 hr",s:["Warm oil, park brake, PTO off, key out","Drain via valve/plug","Spin-on filter, oil gasket, ¾ turn","Refill ~2.1 qt 10W-30 to FULL","Run, check leaks; log at meter −10h"]},
            {t:"Blade Sharpen & Deck Clean",s:["Key out, PTO off, pull plug leads, block deck","Remove 3 blades, note sail direction","Sharpen to bevel, balance each","Scrape deck, check spindles & belt","Reinstall, anti-seize, torque to spec"]}]},
    {n:"Toro 22\" Recycler Max",power:"Gas",loc:"Shop",basis:"Seasonal",st:"full",
      specs:[["Model","21485, Personal Pace self-propel"],["Cut","22\" Recycler mulch deck"],["Engine","B&S EXi 163cc or Toro 159cc (confirm label)"],["Engine oil","SAE 30, ~18–20 oz, no filter"],["Plug","Toro 130-8167 (EXi build)"],["Air filter","paper + foam pre-cleaner"]],
      sched:[["Engine oil check/change","per engine","r","confirm engine"],["Air filter","season/25 hr","r","—"],["Blade sharpen & balance","seasonal","g","OK"],["Spark plug","yearly","r","—"],["Pre-use (bail stops blade)","each use","g","OK"]],
-     manual:"Toro 21485 Operator's Manual (toro.com) + engine manual",
+     manual:"Toro 22\" Recycler Operator's Manual (PDF, on file)",manualUrl:"manuals/toro-21485.pdf",
      jobs:[{t:"Blade Service & Deck Cleaning",s:["Run fuel low, pull plug lead","Tip air-filter side UP","Remove blade (sail up), sharpen & balance","Scrape deck underside","Torque bolt, reconnect lead"]},
            {t:"Engine Oil & Seasonal Storage",s:["Warm, stop, pull lead","Drain/extract, refill ~18–20oz SAE 30","Stabilize or run fuel dry","Fog cylinder ~1oz oil, pull slowly","Clean deck, store dry"]}]}]},
  {g:"Ground-Engaging Attachments", items:[
@@ -380,13 +373,13 @@ const DATA = [
    {n:"Husqvarna 460 Rancher 24\"",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"full",
      specs:[["Engine","60.3cc X-Torq 2-stroke, ~3.62 hp"],["Bar/chain","24\", 3/8\" pitch, .050\" gauge (84 DL)"],["Fuel mix","50:1 fresh"],["Plug","NGK BPMR7A (gap ~0.5mm)"],["Air filter","Husq 537 25 57-01/-03"]],
      sched:[["Chain file/sharpen","1–3 tanks","g","OK"],["Air filter clean","5–10 hr","r","—"],["Bar groove/rails","each sharpen","g","OK"],["Plug + fuel filter","25–50 hr","r","—"],["Chain brake test","each use","g","OK"]],
-     manual:"Husqvarna 460 Rancher Operator's Manual (husqvarna.com/digital)",
+     manual:"Husqvarna 455/460 Rancher Operator's Manual (PDF, on file)",manualUrl:"manuals/husqvarna-460.pdf",
      jobs:[{t:"Chain Filing & Sharpening",s:["Brake on, engine off, clamp bar","Use 3/8\" .050\" file guide, ~30° angle","Equal strokes per cutter, both sides","Lower depth gauges (rakers)","Re-tension, oil bar"]},
            {t:"Bar & Chain Maint + Winterize",s:["Remove bar/chain, clean groove & oiler","Dress rails square, flip bar","Clean/replace air filter, check plug","Reinstall, tension, oil","Storage: drain/stabilize fuel, run dry"]}]},
    {n:"Husqvarna 545 Mark II 20\"",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"full",
      specs:[["Engine","50.1cc X-Torq, 3.6 hp, AutoTune"],["Bar/chain","20\", .325\" pitch, .050\" gauge (80 DL) — NOT 3/8"],["Fuel mix","50:1 fresh"],["Plug","NGK CMR6H (Husq 574 51 96-01), gap .020\""],["Air filter","Husq 590 45 88-0x (confirm mesh)"]],
      sched:[["Chain file/sharpen","1–3 tanks","g","OK"],["Air filter clean","5–10 hr","r","—"],["Bar groove/rails + flip","each sharpen","g","OK"],["Plug + fuel filter","25–50 hr","r","—"],["Chain brake test","each use","g","OK"]],
-     manual:"Husqvarna 545 Mark II Operator's Manual (husqvarna.com/digital)",
+     manual:"Husqvarna 545 Mark II Operator's Manual (PDF, on file)",manualUrl:"manuals/husqvarna-545.pdf",
      jobs:[{t:"Chain Filing & Sharpening",s:["Brake on, engine off, clamp bar","Use .325\" .050\" file guide (not the 460's 3/8\")","Equal strokes per cutter, both sides","Lower depth gauges (rakers)","Re-tension, oil bar"]},
            {t:"Bar/Air Filter + Winterize",s:["Clean air filter (AutoTune needs airflow)","Remove bar, clean groove & oiler, flip","Check plug NGK CMR6H, gap .020\"","Reinstall, tension, oil","Storage: stabilize/drain fuel, run dry"]}]},
    {n:"Stihl MS 261 C-M",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"full",
@@ -412,12 +405,12 @@ const DATA = [
    {n:"Honda EU2000i Generator",power:"Gas",loc:"Shop",basis:"Seasonal",st:"full",
      specs:[["Engine","Honda GX100, 98.5cc OHV"],["Output","2000W max / 1600W rated, 120V"],["Fuel","1.1 gal"],["Engine oil","10W-30, 0.42 qt, no filter"],["Plug","NGK CR5HSB"]],
      sched:[["Engine oil change","20 hr then 100 hr","r","No hours set"],["Air filter clean","100 hr","r","—"],["Spark plug","100/200 hr","r","—"],["Pre-use (oil, CO clearance)","each use","g","OK"],["Stabilize/drain for storage",">30 days","r","—"]],
-     manual:"Honda EU2000i Owner's Manual (00X31Z07-6230), digital",
+     manual:"Honda EU2000i Owner's Manual (PDF, on file)",manualUrl:"manuals/honda-eu2000i.pdf",
      jobs:[{t:"Engine Oil Change",s:["Warm 1–2 min, stop, fuel off","Open cover, tip to drain via fill","Drain fully, wipe neck","Refill ~0.42 qt 10W-30, don't overfill","Run, recheck level"]}]},
    {n:"NorthStar Pressure Washer",power:"Gas",loc:"Shop",basis:"Seasonal",st:"full",
      specs:[["Engine","Honda GC190, 187cc"],["Output","~3000–3100 PSI @ ~2.5 GPM (confirm model)"],["Engine oil","10W-30, ~0.58 L, no filter"],["Pump oil","non-detergent pump oil (per manual)"],["Plug","NGK BPR6ES (confirm)"]],
      sched:[["Engine oil change","20 hr then 100 hr","r","—"],["Pump oil check/change","each use / ~50 hr","r","—"],["Air filter","25 hr/3 mo","r","—"],["Winterize pump (pump saver)","before freeze","g","✓ Done 3/1/26"],["Pre-use (purge air, water on)","each use","g","OK"]],
-     manual:"NorthStar manual (Northern Tool, by model #) + Honda GC190 manual",
+     manual:"Honda GC190 Engine Owner's Manual (PDF, on file) + NorthStar model manual",manualUrl:"manuals/honda-gc190.pdf",
      jobs:[{t:"Pump Service & Winterize",s:["Engine off, relieve pressure","Disconnect, drain water","Run pump saver through until it exits","Check/change pump oil (non-detergent)","Stabilize fuel, store dry/above freezing"]},
            {t:"Engine Oil Change (GC190)",s:["Warm, stop, fuel off","Drain via cutout/plug","Refill ~0.58 L 10W-30 to FULL","Run, recheck, check leaks"]}]},
    {n:"DR Power Leaf Cyclone",power:"Gas",loc:"Yard",basis:"Hours",st:"full",
@@ -506,7 +499,7 @@ const DATA = [
    {n:"Litter-Robot 4 (×2)",power:"Electric",loc:"House",basis:"Seasonal",st:"full",
      specs:[["Model","Whisker Litter-Robot 4, ×2 (Wi-Fi app)"],["Washable","Globe + bonnet + drawer (NOT base/control panel)"],["Litter","Clumping clay; fill to line, not above"],["Odor","Carbon filter (~1 mo; optional for function)"]],
      sched:[["Empty waste drawer","every 1–2 days","g","OK"],["Replace carbon filter","~monthly","g","OK"],["Globe basic clean","monthly","g","OK"],["Deep clean (globe + sensors)","≥ every 3 mo","g","OK"],["Clean laser sensors","cycle faults","g","OK"]],
-     manual:"Litter-Robot 4 — Use & Care (Whisker support)",manualUrl:"https://www.litter-robot.com/support/article/litter-robot-4-use-and-care/",
+     manual:"Litter-Robot 4 Instruction Manual (PDF, on file)",manualUrl:"manuals/litter-robot-4.pdf",
      jobs:[{t:"Deep Clean (globe + sensors + base wipe)",s:["Turn off + unplug; empty all litter from the globe","Remove bonnet, globe, and waste drawer","Wash the GLOBE with Cleaner Spray/Wipes or mild soap + water; rinse, dry fully","Lean unit back; clean each bezel LASER SENSOR with a dry cotton swab / compressed air","Wipe the BASE with a damp cloth — NEVER spray or soak it; reassemble dry + test cycle"]},
            {t:"Laser Sensor Cleaning (cycle faults)",s:["Turn off + unplug","Remove globe, bonnet, and waste drawer","Lean the unit backward to see the sensors in the bezel holes","Clean each sensor surface with a clean DRY cotton swab (or compressed air)","Reassemble + run a clean cycle to confirm the fault clears"],video:"https://www.litter-robot.com/support/article/litter-robot-4-laser-sensor-cleaning-instructions/"}]},
    {n:"NordicTrack X32i",power:"Electric",loc:"House",basis:"Seasonal",st:"full",
@@ -521,6 +514,12 @@ const DATA = [
      manual:"Frigidaire Owner Center — GRMG2272CF",manualUrl:"https://support.frigidaire.com/Owner-Center/Product-Support/GRMG2272CF",
      jobs:[{t:"Water & Air Filter Replacement (~6 mo)",s:["Water filter: release the interior cartridge; pull the old one","Insert + lock the new PWF-2 / FPPWFU02 (confirm #)","FLUSH 2–3 gallons through the dispenser to clear air + carbon fines","Reset the water-filter indicator (hold filter/reset per manual)","Air filter: open PureAir housing, swap carbon filter, reset its indicator; log date"]},
            {t:"Condenser, Seals & Ice-Maker Care",s:["Unplug or breaker off","Remove toe grille; vacuum/brush condenser coils + fan (more with pets)","Wipe door gaskets (warm soapy water); dollar-bill drag test the seal","Confirm water supply valve open; check fill line for kinks/drips","Restore power; verify cooling + ice over 24h (blocked toe grille = #1 'runs warm')"]}]},
+   {n:"Whirlpool Upright Freezer",power:"Electric",loc:"House",basis:"Seasonal",st:"full",
+     specs:[["Model","Whirlpool WZF34X20DW07 (UL 20UFCR6), ~20 cu ft upright, white"],["Serial","UE4506196 · mfg 2025-11"],["Type","Frost-free (auto-defrost, 160W heater) — no manual defrost"],["Electrical","115 VAC, 60 Hz, 3 A"],["Refrigerant","R600a (flammable — sealed system = pro only)"],["Clearance","3\" sides/top, 1\" rear"]],
+     sched:[["Clean condenser coils","6–12 mo","r","unplug; keep clear of ignition"],["Door gasket check (dollar-bill test)","seasonal","g","OK"],["Level check (slight rear tilt)","seasonal","g","OK"],["Interior clean / defrost-drain verify","annual","g","OK"],["Vent clearance","ongoing","g","3\"/1\""]],
+     manual:"Whirlpool Owner Center — WZF34X20DW07",manualUrl:"https://www.whirlpool.com/services/manuals.html",
+     jobs:[{t:"Coil Clean & Gasket Care",s:["Unplug (R600a is flammable — no sealed-system work)","Access condenser coils (rear/base grille); vacuum + brush dust","Dollar-bill test the door gasket; clean/replace if not sealing","Set slight rearward tilt so the door self-closes","Confirm 3\" side/top + 1\" rear clearance; restore power"]},
+           {t:"Interior Clean & Defrost Verify (annual)",s:["Empty + unplug; wipe interior with mild solution","Confirm auto-defrost drain is clear (no standing water/ice at base)","Restore power; let it return to temp before reloading"]}]},
    {n:"Primo Water Dispenser",power:"Electric",loc:"House",basis:"As-needed",st:"full",
      specs:[["Type","Bottom-loading hot/cold, 5-gal bottle (item 4141740)"],["Tanks","Separate hot + cold; rear hot/cold switches"],["Hygiene","Wipe probe + spouts each bottle swap"],["Safety","Scalding hot tap — keep child lock on"],["Model","confirm exact line (Deluxe / Home Series)"]],
      sched:[["Wipe probe, spouts & surrounds","every bottle change","r","food-grade sanitizer"],["Empty & clean drip tray","weekly / as needed","g","prevents overflow"],["Descale / deep-sanitize tanks","~3 mo","r","citric/vinegar; rinse well"],["Self-sanitization cycle (if equipped)","per indicator","g","confirm this unit"],["Wipe exterior","as needed","g","damp cloth only"]],
@@ -544,7 +543,7 @@ const DATA = [
    {n:"CountyLine 40-Ton Log Splitter",power:"Gas",loc:"Barn",basis:"As-needed",st:"full",
      specs:[["Engine","Kohler Command PRO 14 hp, 429cc"],["Engine oil","SAE 10W-30 (confirm qty)"],["Pump","~25 GPM two-stage, ~3,800 PSI"],["Cylinder","5\" bore"],["Hydraulic fluid","AW46, reservoir ~10 gal"],["Filter","spin-on hydraulic (field-replaceable)"]],
      sched:[["Engine oil & filter","first 5–8h, then 50h","r","10W-30"],["Hydraulic fluid + filter","first 30h, then 100h","r","AW46 ~10gal"],["Engine air filter","per Kohler","r","—"],["Hoses/fittings & wedge inspect","each use","r","high-pressure"],["Pre-use","each use","g","OK"]],
-     manual:"CountyLine 40-Ton Operator's Manual + Kohler engine manual",manualUrl:"https://www.tractorsupply.com/tsc/product/countyline-40-ton-log-splitter",
+     manual:"CountyLine 40-Ton Owner's Manual (SKU 1261519, PDF on file)",manualUrl:"manuals/countyline-40ton.pdf",
      jobs:[{t:"Hydraulic Fluid & Filter (30h/100h)",s:["Cycle ram to warm; STOP engine & relieve ALL pressure; controls to neutral","Drain pan under reservoir; drain ~10 gal","Spin off old hydraulic filter; oil new gasket; spin on hand-tight + spec turn","Refill AW46 to the level mark","Bleed: cycle ram several full strokes (no log); re-check level; inspect for leaks"]},
            {t:"Engine Oil & Pre-Use (Kohler 14hp)",s:["Pre-use: engine oil + fuel; hydraulic level; scan for leaks","Inspect wedge edge + beam/lock pins for the mode","Oil change: warm, stop, fuel off; drain via plug; reinstall","Refill 10W-30 to dipstick FULL (confirm qty)","Check/clean air filter; run, recheck, check leaks"]}]}]},
  {g:"Power Tools", items:[
@@ -635,6 +634,7 @@ const PREUSE={
 "LiftMaster Wall-Mount Openers":["Door runs smooth/quiet, no binding","Safety reversal (2×4) reverses on contact","Photo-eyes reverse on beam break; LEDs steady","Backup battery holding (app/indicator)"],
 "Heckler & Koch MR556A1":["Treat as loaded; muzzle safe; finger off trigger","Magazine out","Bolt locked back","Chamber checked visually AND physically empty","No ammunition in the work area"],
 "Frigidaire Fridge (22.1cf)":["Doors seal fully; gaskets clean","Filter indicator not lit; water tastes clean","Toe grille/vents clear for airflow","Temps holding (~37°F / ~0°F — confirm)"],
+"Whirlpool Upright Freezer":["Door seals fully (gasket clean)","Coils/vents clear (3\" sides/top, 1\" rear)","Holding temp (~0°F); no frost on gasket","Not overfilled past airflow"],
 "Primo Water Dispenser":["Bottle has water; probe seated","Both taps flow (prime if needed)","Probe + spouts wiped clean","Drip tray empty; child lock on the hot tap"],
 "Hyperice Hypervolt":["Battery charged (check indicator)","Desired head fully seated","Surfaces clean; charger detached","Stay under the ~1 h duty limit"],
 "DeWalt 20V Saws":["Battery charged & seated; vents clear","Correct, sharp blade; arbor bolt tight","Guard returns freely (circular) / fence + clamp set (miter)","Eye + ear PPE; clear cut path"],

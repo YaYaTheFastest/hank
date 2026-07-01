@@ -35,8 +35,10 @@
   function approved() { return mine().filter(function (e) { return e.status === "approved"; }); }
   function pending() { return mine().filter(function (e) { return e.status === "pending"; }); }
   function balance() { var b = cfg().seed; approved().forEach(function (e) { b += e.amount; }); return b; }
-  function today() { return new Date().toISOString().slice(0, 10); }
-  function usedToday(name) { return mine().filter(function (e) { return e.chore === name && e.day === today() && e.status !== "declined"; }).length; }
+  // Local "chore day" with a ~4am rollover (so a late-evening chore counts for the right day, not UTC's next day).
+  function choreDay() { var d = new Date(Date.now() - 4 * 3600 * 1000); function p(n) { return (n < 10 ? "0" : "") + n; } return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()); }
+  function usedToday(name) { return mine().filter(function (e) { return e.chore === name && e.day === choreDay() && e.status !== "declined"; }).length; }
+  function usedEver(name) { return mine().filter(function (e) { return e.chore === name && e.status !== "declined"; }).length; }
   function monthlyContribution() {
     var earn = approved().filter(function (e) { return e.kind !== "interest"; });
     if (!earn.length) return 40;
@@ -74,6 +76,7 @@
     ".inp{border:1px solid var(--line);border-radius:10px;padding:10px 11px;font-size:15px;background:#fff;width:100%}" +
     ".crow{display:grid;grid-template-columns:1fr 66px 46px 30px;gap:6px;margin-bottom:6px;align-items:center}.crow .full{grid-column:1/-1}.cdel{background:#fff;border:1px solid var(--line);border-radius:8px;font-size:14px;cursor:pointer;height:38px}" +
     ".lab{font-size:13px;color:var(--muted);margin:8px 2px 4px;display:block}" +
+    ".onelab{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;margin:2px 0 10px}" +
     ".toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#1d2733;color:#fff;padding:10px 16px;border-radius:99px;font-size:14px;opacity:0;transition:.2s;z-index:60;pointer-events:none}.toast.on{opacity:1}" +
     ".spark{animation:pop .5s ease}@keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1)}}";
   var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
@@ -143,16 +146,21 @@
     // Growth chart
     html += '<div class="h">If you keep saving</div><div class="card">' + growthChart() + "</div>";
 
-    // Chores
-    html += '<div class="h">Choose a chore</div>';
-    catalog().forEach(function (c) {
-      var used = usedToday(c.name), left = (c.qty || 1) - used, done = left <= 0;
-      var sub = (c.steps || "") + ((c.qty || 1) > 1 ? "  ·  " + left + " of " + c.qty + " left today" : "");
-      html += '<button class="chore" ' + (done ? "disabled" : "") + ' data-chore="' + esc(c.name) + '" data-amt="' + c.price + '" data-qty="' + (c.qty || 1) + '">' +
-        '<span class="em">' + (c.emoji || "✅") + "</span>" +
+    // Chores — split into one-time "Special" + recurring daily
+    function choreBtn(c, once) {
+      var done, sub;
+      if (once) { done = usedEver(c.name) > 0; sub = c.steps || ""; }
+      else { var left = (c.qty || 1) - usedToday(c.name); done = left <= 0; sub = (c.steps || "") + ((c.qty || 1) > 1 ? "  ·  " + left + " of " + c.qty + " left today" : ""); }
+      return '<button class="chore" ' + (done ? "disabled" : "") + ' data-chore="' + esc(c.name) + '" data-amt="' + c.price + '" data-qty="' + (c.qty || 1) + '" data-once="' + (once ? 1 : 0) + '">' +
+        '<span class="em">' + (c.emoji || (once ? "⭐" : "✅")) + "</span>" +
         '<span class="ct"><span class="cn">' + esc(c.name) + (done ? " ✓" : "") + '</span><span class="cs">' + esc(sub) + "</span></span>" +
         '<span class="cp">' + money(c.price) + (c.per ? "/" + c.per : "") + "</span></button>";
-    });
+    }
+    var oneoff = catalog().filter(function (c) { return c.once && usedEver(c.name) === 0; });
+    var recurring = catalog().filter(function (c) { return !c.once; });
+    if (oneoff.length) { html += '<div class="h">⭐ Special — just for you</div>'; oneoff.forEach(function (c) { html += choreBtn(c, true); }); }
+    html += '<div class="h">Choose a chore</div>';
+    recurring.forEach(function (c) { html += choreBtn(c, false); });
 
     // Pending
     html += '<div class="h">Waiting on Mom or Dad</div>';
@@ -169,7 +177,7 @@
     document.getElementById("app").innerHTML = html;
 
     Array.prototype.forEach.call(document.querySelectorAll(".chore"), function (b) {
-      b.addEventListener("click", function () { logChore(b.dataset.chore, +b.dataset.amt, +b.dataset.qty); });
+      b.addEventListener("click", function () { logChore(b.dataset.chore, +b.dataset.amt, +b.dataset.qty, b.dataset.once === "1", b); });
     });
     document.getElementById("parentBtn").addEventListener("click", function () { openParent(); });
     document.getElementById("pmClose").addEventListener("click", function () { lastPin = ""; editCat = null; document.getElementById("pm").classList.remove("on"); });
@@ -194,14 +202,16 @@
   function toast(msg) { var t = document.getElementById("toast"); if (!t) return; t.textContent = msg; t.classList.add("on"); setTimeout(function () { t.classList.remove("on"); }, 2200); }
 
   // ---- Kid action ----
-  function logChore(chore, amt, qty) {
-    fetch("/api/castle/log", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kid: KID, chore: chore, amount: amt, qty: qty }) })
+  function logChore(chore, amt, qty, once, btn) {
+    if (btn) btn.disabled = true;  // prevent double-tap double-log
+    fetch("/api/castle/log", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kid: KID, chore: chore, amount: amt, qty: qty, once: once, day: choreDay() }) })
       .then(function (r) { return r.json(); })
       .then(function (j) {
-        if (j.ok) { toast("✨ Logged! " + chore + " — waiting on Mom/Dad."); return load(); }
-        if (j.error === "daily-limit") { toast("That one's done for today 👍"); return load(); }
-        toast("Couldn't log — check connection.");
-      }).catch(function () { toast("Offline — couldn't log right now."); });
+        if (j.ok) { toast("✨ Logged! " + chore + " — waiting on Mom/Dad."); return load(true); }
+        if (j.error === "daily-limit") { toast("That one's done for today 👍"); return load(true); }
+        if (j.error === "once-done") { toast("Already sent that one 👍"); return load(true); }
+        toast("Couldn't log — check connection."); if (btn) btn.disabled = false;
+      }).catch(function () { toast("Offline — couldn't log right now."); if (btn) btn.disabled = false; });
   }
 
   // ---- Parent sheet: PIN -> approvals + manage chores + settings ----
@@ -241,9 +251,9 @@
       body.innerHTML = h;
       var pinEl = document.getElementById("pin"); if (pinEl && lastPin) pinEl.value = lastPin;
       Array.prototype.forEach.call(document.querySelectorAll("#pmBody [data-act]"), function (b) { b.addEventListener("click", function () { decide(b.dataset.k, b.dataset.act); }); });
-      editCat = catalog().map(function (c) { return { name: c.name, price: c.price, qty: c.qty || 1, steps: c.steps || "", emoji: c.emoji || "", per: c.per || "" }; });
+      editCat = catalog().map(function (c) { return { name: c.name, price: c.price, qty: c.qty || 1, steps: c.steps || "", once: !!c.once, emoji: c.emoji || "", per: c.per || "" }; });
       renderCatRows();
-      document.getElementById("addChore").addEventListener("click", function () { syncCat(); editCat.push({ name: "", price: 5, qty: 1, steps: "", emoji: "✅", per: "" }); renderCatRows(); });
+      document.getElementById("addChore").addEventListener("click", function () { syncCat(); editCat.push({ name: "", price: 5, qty: 1, steps: "", once: false, emoji: "", per: "" }); renderCatRows(); });
       document.getElementById("saveCat").addEventListener("click", saveCat);
       document.getElementById("saveSet").addEventListener("click", saveSettings);
     }).catch(function () { toast("Couldn't reach Hank."); });
@@ -254,9 +264,11 @@
       return '<div class="crow" data-i="' + i + '">' +
         '<input class="inp f-name" placeholder="Chore" value="' + esc(c.name) + '">' +
         '<input class="inp f-price" type="number" placeholder="$" value="' + c.price + '">' +
-        '<input class="inp f-qty" type="number" placeholder="x" value="' + c.qty + '">' +
+        '<input class="inp f-qty" type="number" placeholder="x/day" value="' + c.qty + '">' +
         '<button class="cdel" data-i="' + i + '">✕</button>' +
-        '<input class="inp full f-steps" placeholder="Instructions" value="' + esc(c.steps) + '"></div>';
+        '<input class="inp full f-steps" placeholder="Instructions" value="' + esc(c.steps) + '">' +
+        '<label class="full onelab"><input type="checkbox" class="f-once" ' + (c.once ? "checked" : "") + '> One-time only — shows in ⭐ Special, disappears once approved</label>' +
+        "</div>";
     }).join("");
     var box = document.getElementById("catRows"); box.innerHTML = html;
     Array.prototype.forEach.call(box.querySelectorAll(".cdel"), function (b) { b.addEventListener("click", function () { syncCat(); editCat.splice(+b.dataset.i, 1); renderCatRows(); }); });
@@ -264,8 +276,10 @@
   function syncCat() {
     var rows = document.querySelectorAll("#catRows .crow");
     editCat = Array.prototype.map.call(rows, function (r) {
+      var o = r.querySelector(".f-once");
       return { name: r.querySelector(".f-name").value.trim(), price: Number(r.querySelector(".f-price").value) || 0,
-        qty: Number(r.querySelector(".f-qty").value) || 1, steps: r.querySelector(".f-steps").value.trim(), emoji: "✅", per: "" };
+        qty: Number(r.querySelector(".f-qty").value) || 1, steps: r.querySelector(".f-steps").value.trim(),
+        once: o ? o.checked : false, emoji: "", per: "" };
     }).filter(function (c) { return c.name; });
   }
   function saveCat() {
@@ -331,12 +345,19 @@
     return Promise.all(jobs);
   }
 
-  // ---- Load ----
-  function load() {
+  // ---- Load + auto-refresh (keeps every device in sync; skips re-render when nothing changed or a parent is editing) ----
+  var lastSig = "", loadedOnce = false;
+  function modalOpen() { var pm = document.getElementById("pm"); return !!(pm && pm.classList.contains("on")); }
+  function sig() { return entries.map(function (e) { return e.key + e.status + e.amount; }).join("|") + "#" + JSON.stringify(apiCat[KID] || "") + "#" + JSON.stringify(apiCfg[KID] || ""); }
+  function load(force) {
     return fetch("/api/castle").then(function (r) { return r.json(); }).then(function (j) {
-      entries = (j && j.entries) || []; apiCat = (j && j.catalogs) || {}; apiCfg = (j && j.configs) || {}; render();
-    }).catch(function () { entries = []; render(); toast("Couldn't reach Hank — showing defaults."); });
+      entries = (j && j.entries) || []; apiCat = (j && j.catalogs) || {}; apiCfg = (j && j.configs) || {};
+      loadedOnce = true;
+      var s = sig(); if (!force && s === lastSig) return; lastSig = s; render();
+    }).catch(function () { if (!loadedOnce) { render(); toast("Couldn't reach Hank — showing defaults."); } });
   }
+  document.addEventListener("visibilitychange", function () { if (!document.hidden && !modalOpen()) load(); });
+  setInterval(function () { if (!document.hidden && !modalOpen()) load(); }, 30000);
   var root = document.createElement("div"); root.id = "app"; document.body.appendChild(root);
-  load();
+  load(true);
 })();

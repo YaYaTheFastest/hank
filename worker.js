@@ -58,14 +58,21 @@ async function handleApi(request, env, url) {
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const b = await request.json().catch(() => ({}));
     if (!b.kid || !b.chore) return json({ ok: false, error: "missing-fields" }, 400);
-    const day = new Date().toISOString().slice(0, 10);
+    // "day" is the kid's LOCAL chore-day (client-computed with a ~4am rollover); fall back to UTC.
+    const day = (typeof b.day === "string" && b.day) ? b.day : new Date().toISOString().slice(0, 10);
+    const once = !!b.once;
     const qty = Number(b.qty) || 1;
+    // Limit: one-time chores are once EVER; recurring chores are `qty` per chore-day. Enforced server-side.
     const list = await env.STATE.list({ prefix: "castle:e:" });
     let used = 0;
-    for (const k of list.keys) { const v = await env.STATE.get(k.name); if (!v) continue; const e = JSON.parse(v); if (e.kid === b.kid && e.chore === b.chore && e.day === day && e.status !== "declined") used++; }
-    if (used >= qty) return json({ ok: false, error: "daily-limit", used, qty }, 409);
+    for (const k of list.keys) {
+      const v = await env.STATE.get(k.name); if (!v) continue; const e = JSON.parse(v);
+      if (e.kid !== b.kid || e.chore !== b.chore || e.status === "declined") continue;
+      if (once ? e.once : e.day === day) used++;
+    }
+    if (used >= (once ? 1 : qty)) return json({ ok: false, error: once ? "once-done" : "daily-limit", used }, 409);
     const id = "castle:e:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
-    const entry = { kid: b.kid, chore: b.chore, amount: Number(b.amount) || 0, status: "pending", ts: Date.now(), day };
+    const entry = { kid: b.kid, chore: b.chore, amount: Number(b.amount) || 0, status: "pending", ts: Date.now(), day, once };
     await env.STATE.put(id, JSON.stringify(entry));
     return json({ ok: true, id, entry });
   }

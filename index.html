@@ -262,12 +262,7 @@ const NEEDS=[
 // gated:true means the link needs a one-time "I agree" tap before the download button appears.
 const MANUALS_NEEDED=[
  // Honda CRF110F — DONE 2026-07-01 (built to Full). Below: audit backlog. Links VERIFIED to return a real PDF 2026-07-01 (tap → Save to Files → _Cowork Inbox works). Hank fetches these one-per-session on Mac+Chrome (Chrome blocks bulk auto-downloads).
- // ON FILE as of 2026-07-01 (Darren saved to _Cowork Inbox → hosted in deck): Honda GC190/NorthStar, Honda EU2000i, Husqvarna 460, Husqvarna 545, JD Z530R, Toro 21485, CountyLine/Kohler CH440, Litter-Robot 4. Cards now queued for manual-first rebuild by the loop.
- {eq:"Stihl MS 261 C-M",url:"https://www.stihlusa.com/products/chain-saws/professional-saws/ms261cm/",note:"⚠ direct CDN link 403s the browser — needs a working source; Stihl product page for now.",gated:true},
- {eq:"Stihl HT 131",url:"https://www.stihlusa.com/products/pole-pruners/professional-pole-pruners/ht131/",note:"⚠ direct CDN link 403s — needs a working source.",gated:true},
- {eq:"Yamaha TT-R110E",url:"https://www.yamahamotorsports.com/owners-manuals",note:"⚠ prior direct link 404'd — resolve current-year TT-R110E OM.",gated:true},
- {eq:"Milwaukee M18 chainsaw 2727-20",url:"https://www.milwaukeetool.com/Products/Power-Tools/2727-20",note:"⚠ prior link redirected — resolve real operator's-manual PDF.",gated:true},
- {eq:"DeWalt DCS391 circular saw",url:"https://www.dewalt.com/product/dcs391b",note:"⚠ prior link redirected — resolve real instruction-manual PDF.",gated:true},
+ // ON FILE as of 2026-07-01 (Darren saved → hosted in deck): Honda GC190/NorthStar, Honda EU2000i, Husq 460, Husq 545, JD Z530R, Toro 21485, CountyLine/Kohler, Litter-Robot 4, Milwaukee 2727-20, Yamaha TT-R110E, Stihl HT 131, DeWalt DCS391. Cards queued for manual-first rebuild by the loop. Stihl MS 261 C-M REMOVED (Darren doesn't own it).
  {eq:"John Deere X580",url:"http://manuals.deere.com/omview/OMM174377_19/toc.html",note:"JD serves a viewer only — no direct PDF.",gated:true},
  {eq:"Hyperice Hypervolt 2",url:"https://www.manualslib.com/manual/2483483/Hyperice-Hypervolt-2.html",note:"No ungated mfr PDF; ManualsLib viewer.",gated:true}
 ];
@@ -300,7 +295,6 @@ const URLS={
 "Husqvarna CRT900 Tiller":"https://www.husqvarna.com",
 "Husqvarna 460 Rancher 24\"":"https://www.husqvarna.com",
 "Husqvarna 545 Mark II 20\"":"https://www.husqvarna.com",
-"Stihl MS 261 C-M":"https://www.stihlusa.com",
 "Stihl HT 131 Z Pole Pruner":"https://www.stihlusa.com",
 "Stihl KM 110 R-Z KombiSystem":"https://www.stihlusa.com",
 "Honda EU2000i Generator":"https://powerequipment.honda.com",
@@ -384,16 +378,10 @@ const DATA = [
      jobs:[{t:"Maintenance Schedule — daily/weekly/monthly (man. p.21)",s:["DAILY: clean saw (no oil on handles); check throttle trigger & lockout, vibration dampers, chain brake & chain catcher","WEEKLY: clean cooling system (p.31); check starter/rope/spring; lubricate needle bearing (p.29); deburr guide bar (p.30); clean spark-arrestor mesh","MONTHLY: check brake band (p.23), clutch centre/drum/spring; clean spark plug (p.26); clean carburettor externals; check fuel filter & hose","Winter (<-5°C/23°F): fit winter cover P/N 595 96 76-01; remove above -5°C"],img:["manuals/img/husq545-maint-p21.png"]},
            {t:"Air Filter & Spark Plug (man. p.26)",s:["Engine cool, chain brake engaged, remove spark-plug cap","Air filter: remove cover, lift mesh filter; clean; refit so it seals — keep clean (AutoTune reads fueling)","Spark plug: check NGK CMR6H, gap 0.5 mm; replace if fouled — wrong plug can damage piston/cylinder","Reassemble; verify stop switch & throttle before use"],img:["manuals/img/husq545-airfilter-p26.png"]},
            {t:"Chain Filing & Sharpening + Bar (man. p.27–30)",s:["Brake on, engine off, clamp bar","Use .325\" .050\" round file + Husqvarna file gauge (not the 460's 3/8\")","Equal strokes per cutter, both sides; keep filing angle","Lower depth gauges (rakers) as cutters shorten","Deburr bar rails, clean groove & oiler, flip bar; re-tension, oil"]}]},
-   {n:"Stihl MS 261 C-M",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"full",
-     specs:[["Engine","STIHL 50.2cc 2-stroke, M-Tronic"],["Bar/chain","~20\", .325\" / 3/8\" .050\" (confirm pitch on saw)"],["Fuel mix","50:1 fresh"],["Plug","NGK per STIHL spec (confirm)"],["Air filter","HD2 filter"]],
-     sched:[["Chain file/sharpen","1–3 tanks","g","OK"],["Air filter (HD2) clean","5–10 hr","r","—"],["Bar groove/rails + flip","each sharpen","g","OK"],["Plug + fuel filter","25–50 hr","r","—"],["Chain brake test","each use","g","OK"]],
-     manual:"STIHL MS 261 C-M Instruction Manual (stihlusa.com/digital)",
-     jobs:[{t:"Chain Filing & Sharpening",s:["Stop, chain brake on, clamp bar","Match factory pitch file guide & angle","Equal strokes per cutter, both sides","Lower depth gauges (rakers)","Re-tension, oil bar"]},
-           {t:"Air Filter (HD2) + Winterize",s:["Clean/replace HD2 air filter","Clean bar groove & oiler, flip bar","Check plug, fuel filter","Reinstall, tension, oil","Storage: stabilize/drain fuel, run dry"]}]},
    {n:"Stihl HT 131 Z Pole Pruner",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"full",
      specs:[["Engine","STIHL 4-MIX 36.3cc (runs 50:1, has valves)"],["Fuel/oil tanks","fuel 18.0 oz · bar oil 7.4 oz"],["Bar/chain","14\", 3/8\" PICCO PMM3 low-kickback"],["Plug","NGK CMR6H (confirm)"],["Note","No chain brake; 4-MIX needs valve checks"]],
      sched:[["Chain sharpen","each use","g","OK"],["Bar clean/oiler","each sharpen","g","OK"],["Air filter","as needed","r","—"],["Valve clearance (4-MIX)","per schedule","r","if hard start"],["Pre-use (high-reach safety)","each use","g","OK"]],
-     manual:"STIHL HT 131 Instruction Manual (stihlusa.com/digital)",
+     manual:"STIHL HT 131 Instruction Manual (PDF, on file)",manualUrl:"manuals/stihl-ht131.pdf",
      jobs:[{t:"Chain/Bar/Air Filter Service",s:["Stop switch off, engine cool","File chain 3/8 PICCO at factory angle","Lower depth gauges as cutters shorten","Clean bar groove & oiler, check sprocket","Clean/replace air filter, re-tension chain"]},
            {t:"Valve Check & Winterize (4-MIX)",s:["Engine cool; remove valve cover per manual","Set TDC compression, measure intake/exhaust","Adjust only if equipped, else log + dealer","Winterize: stabilize or drain fuel, run dry","Hard start in spring = check valves first"]}]},
    {n:"Stihl KM 110 R-Z KombiSystem",power:"2-Stroke",loc:"Shop",basis:"As-needed",st:"full",
@@ -450,7 +438,7 @@ const DATA = [
    {n:"Yamaha TT-R110E",power:"4-Stroke",loc:"Shop",basis:"Hours",st:"full",
      specs:[["Engine","Air-cooled 110cc 4-stroke, 2-valve"],["Trans","4-speed, automatic clutch, e-start"],["Engine oil","10W-40 JASO MA, ≈0.8 L (confirm)"],["Plug","NGK CR6HSA, gap .024–.028\""],["Carb","Mikuni VM16"]],
      sched:[["Engine oil change","20 hr/monthly","r","—"],["Carb clean/drain","50 hr/seasonal","r","ethanol gums it"],["Chain & sprockets","10–20 hr","g","OK"],["Spark plug","per schedule","r","—"],["Valve clearance","per manual","r","confirm spec"]],
-     manual:"Yamaha TT-R110E Owner's Manual (B51-28199), digital",
+     manual:"Yamaha TT-R110E 2020 Owner's Manual (PDF, on file)",manualUrl:"manuals/yamaha-ttr110e.pdf",
      jobs:[{t:"Engine Oil Change",s:["Warm ~5 min, on stand","Remove crankcase drain bolt, drain","Reinstall bolt to spec","Refill ≈0.8 L 10W-40 JASO MA","Run, recheck to FULL (MA oil = no clutch slip)"]},
            {t:"Carb Cleaning (Mikuni VM16)",s:["Fuel petcock off, remove carb (4 screws)","Drop float bowl, clean jets w/ cleaner+air","Reassemble, set idle per manual","Reinstall, test run","Drain bowl if storing to prevent gumming"]}]}]},
  {g:"Shop & Bench", items:[
@@ -552,13 +540,13 @@ const DATA = [
    {n:"Milwaukee M18 Kit",power:"Battery",loc:"Shop",basis:"As-needed",st:"full",
      specs:[["Platform","M18 18V Li-Ion (REDLINK PLUS)"],["Charger","48-59-1808 rapid (no serviceable parts)"],["Chainsaw","2727-20 M18 FUEL 16\", auto oiler"],["Other","blower 2724-20 · vac 0970-20 · impact 2953-20"],["Chainsaw oil","standard bar & chain oil, reservoir >¼ full"],["Battery","Li-Ion, no memory; store 40–80%"]],
      sched:[["Chainsaw — check bar/chain oil","before every cut","r",">¼ full; never dry"],["Chainsaw — sharpen & re-tension","as it dulls","g","OK"],["Bar groove & oiler clean + flip bar","each sharpen","g","OK"],["Vac filter clean/replace","suction drop","g","OK"],["Battery/charger care","ongoing","g","store 40–80%, vents clear"]],
-     manual:"Milwaukee 2727-20 + 48-59-1808 Operator's Manuals",manualUrl:"https://documents.milwaukeetool.com/54-40-2770.pdf",
+     manual:"Milwaukee M18 FUEL 2727-20 Chainsaw Operator's Manual (PDF, on file)",manualUrl:"manuals/milwaukee-2727-manual.pdf",
      jobs:[{t:"Chainsaw Bar & Chain Service (2727-20)",s:["REMOVE the battery","Check/refill bar & chain oil (>¼ full; never run dry)","Sharpen chain to factory angle; lower depth gauges as cutters shorten","Clean bar groove + oiler port; flip bar to even wear","Re-tension (turns freely by hand); reinstall battery; test cut"]},
            {t:"Battery, Charger & Tool Care",s:["Charge on 48-59-1808, ventilated, 15–25°C, vents clear","Li-Ion: top off anytime; no need to fully discharge","Store idle batteries ~40–80%, cool/dry","Clean tool intakes after dusty work; vac filter when suction drops","Inspect for damage; never charge a damaged pack"]}]},
    {n:"DeWalt 20V Saws",power:"Battery",loc:"Shop",basis:"As-needed",st:"full",
      specs:[["Circular saw","DCS391/393 — 6-1/2\" (165mm), ~5,150 RPM, 0–50° bevel"],["Miter saw","DCS361 — 7-1/4\" (184mm) sliding compound"],["Platform","20V MAX Li-ion (DeWalt-only packs)"],["Motors","Brushed (carbon brushes — replaceable; confirm #)"],["Cleaning","Damp cloth + mild soap on non-metal; never liquid inside"]],
      sched:[["Check/replace blade (sharp, correct type)","as it dulls","r","battery out first"],["Clear vents, guards & sawdust","after dusty use","g","never liquid inside"],["Check cut accuracy (square/bevel)","periodic / if drift","g","recalibrate stops"],["Inspect/replace carbon brushes","sparking / power drop","r","confirm brush #"],["Battery & charger care","ongoing","g","store 40–80%, vents clear"]],
-     manual:"DeWalt DCS391/393 + DCS361 manuals",manualUrl:"https://pdf.lowes.com/productdocuments/cef572c8-3719-49a5-9aa1-7a343e8d3d9f/04064842.pdf",
+     manual:"DeWalt DCS391 Instruction Manual (N382847, PDF on file)",manualUrl:"manuals/dewalt-dcs391.pdf",
      jobs:[{t:"Blade Change & Cut-Accuracy Check",s:["REMOVE the battery","Engage spindle lock; loosen arbor bolt (note thread direction); remove blade","Fit new blade, teeth in correct rotation; tighten arbor bolt firmly","Confirm guard returns freely (circular) / clears fence + table (miter)","Square blade to base/table 90°; check bevel + miter stops; test on scrap"]},
            {t:"Battery, Brush & Cleaning Care",s:["Battery out. Blow sawdust from vents, guards + bevel/miter mechanism","Wipe non-metal parts with mild soapy water; NEVER let liquid inside","Heavy sparking / power loss → inspect carbon brushes; replace as a pair (confirm #)","Charge packs ventilated; store idle ~40–80%, cool/dry","Inspect for damage; never charge a damaged pack (keep miter detents clear = true 'square')"]}]}]},
  {g:"HVAC", items:[
@@ -610,7 +598,6 @@ const PREUSE={
 "72\" Woods Mower (PTO)":["Driveline/PTO shield secure","Gearbox oil level; grease zerks","Blades & bolts tight","Deck for cracks/debris","Hitch pins & safety chain"],
 "Husqvarna 460 Rancher 24\"":["Fresh 50:1 mix; top bar oil","Chain tension & sharpness","Bar groove clean; oiler works","Test chain brake","Air filter clean; stop switch","Full PPE; clear escape path"],
 "Husqvarna 545 Mark II 20\"":["Fresh 50:1 mix; top bar oil","Chain tension & sharpness (.325)","Bar groove clean; oiler works","Test chain brake","Air filter clean","Full PPE; clear escape path"],
-"Stihl MS 261 C-M":["Fresh 50:1 mix; top bar oil","Chain tension & sharpness","Bar groove clean; oiler works","Test chain brake","HD2 air filter clean","Full PPE; clear escape path"],
 "Stihl HT 131 Z Pole Pruner":["Full PPE before fueling","Fresh 50:1; top bar oil","Chain sharp & tensioned; oiler works","Extension locks fully seated","Stop switch works (no chain brake)","Clear fall zone; spotter for high work"],
 "Stihl KM 110 R-Z KombiSystem":["Fresh 50:1; attachment locked on","Attachment guard & condition","Throttle & stop switch","Clear work area","Full PPE"],
 "Honda EU2000i Generator":["Engine oil level (dipstick)","Fuel level; vent open","Run outdoors only (CO)","Nothing plugged in at start","Eco-throttle as needed"],
@@ -649,7 +636,7 @@ const PREUSE={
 
 // ---- starter reorder reference (pulled from Full cards; quantities not tracked) ----
 const SUPPLIES=[
- ["2-stroke mix oil (50:1)","Husqvarna 460 & 545, Stihl MS 261, HT 131, KM 110"],
+ ["2-stroke mix oil (50:1)","Husqvarna 460 & 545, Stihl HT 131, KM 110"],
  ["Bar & chain oil","All chainsaws + HT 131 pole pruner"],
  ["Engine oil 15W-40 CK-4","JD 4044M, JD 2150 (diesel)"],
  ["Engine oil 10W-30","X580, Z530R, EU2000i, NorthStar"],

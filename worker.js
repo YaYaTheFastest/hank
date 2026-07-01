@@ -190,24 +190,33 @@ async function handleApi(request, env, url) {
     return json({ ok: true, reply });
   }
 
-  // List pending answers (the daily loop reads + clears these).
+  // List pending captures (the daily loop reads + clears these): tapped answers (ans:) AND in-app chat turns (chat:).
   if (url.pathname === "/api/answers" && request.method === "GET") {
-    const list = await env.STATE.list({ prefix: "ans:" });
+    const al = await env.STATE.list({ prefix: "ans:" });
     const answers = [];
-    for (const k of list.keys) {
+    for (const k of al.keys) {
       const v = await env.STATE.get(k.name);
       if (v) answers.push({ key: k.name, ...JSON.parse(v) });
     }
-    return json({ ok: true, count: answers.length, answers });
+    const cl = await env.STATE.list({ prefix: "chat:" });
+    const chat = [];
+    for (const k of cl.keys) {
+      const v = await env.STATE.get(k.name);
+      if (v) chat.push({ key: k.name, ...JSON.parse(v) });
+    }
+    return json({ ok: true, count: answers.length + chat.length, answers, chat });
   }
 
-  // Clear one or all answers (used by the loop after ingesting).
+  // Clear captures (used by the loop after ingesting): a single key, or ALL ans: + chat:.
   if (url.pathname === "/api/clear" && request.method === "POST") {
     const body = await request.json().catch(() => ({}));
     if (body.key) { await env.STATE.delete(body.key); return json({ ok: true, cleared: body.key }); }
-    const list = await env.STATE.list({ prefix: "ans:" });
-    for (const k of list.keys) await env.STATE.delete(k.name);
-    return json({ ok: true, clearedAll: list.keys.length });
+    let n = 0;
+    for (const p of ["ans:", "chat:"]) {
+      const list = await env.STATE.list({ prefix: p });
+      for (const k of list.keys) { await env.STATE.delete(k.name); n++; }
+    }
+    return json({ ok: true, clearedAll: n });
   }
 
   return json({ ok: false, error: "not-found" }, 404);

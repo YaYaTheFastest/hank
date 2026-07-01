@@ -263,8 +263,7 @@ const NEEDS=[
 const MANUALS_NEEDED=[
  // Honda CRF110F — DONE 2026-07-01 (built to Full). Below: audit backlog. Links VERIFIED to return a real PDF 2026-07-01 (tap → Save to Files → _Cowork Inbox works). Hank fetches these one-per-session on Mac+Chrome (Chrome blocks bulk auto-downloads).
  // ON FILE as of 2026-07-01 (Darren saved → hosted in deck): Honda GC190/NorthStar, Honda EU2000i, Husq 460, Husq 545, JD Z530R, Toro 21485, CountyLine/Kohler, Litter-Robot 4, Milwaukee 2727-20, Yamaha TT-R110E, Stihl HT 131, DeWalt DCS391. Cards queued for manual-first rebuild by the loop. Stihl MS 261 C-M REMOVED (Darren doesn't own it).
- {eq:"John Deere X580",url:"http://manuals.deere.com/omview/OMM174377_19/toc.html",note:"JD serves a viewer only — no direct PDF.",gated:true},
- {eq:"Hyperice Hypervolt 2",url:"https://www.manualslib.com/manual/2483483/Hyperice-Hypervolt-2.html",note:"No ungated mfr PDF; ManualsLib viewer.",gated:true}
+ {eq:"Hyperice Hypervolt 2",url:"https://www.manualslib.com/manual/2483483/Hyperice-Hypervolt-2.html",note:"No ungated mfr PDF; ManualsLib viewer (only item left — massager, low priority).",gated:true}
 ];
 // All 8 photo questions answered 2026-06-29; inductions (Firearms, HVAC, power tools, fitness, appliances, openers) queued for the loop.
 const QUESTIONS=[];
@@ -327,7 +326,7 @@ const DATA = [
    {n:"John Deere X580 (54\")",power:"Gas",loc:"Shop",basis:"Hours",st:"full",
      specs:[["Engine","Kawasaki V-twin 726cc, 24 hp (FR730V; confirm label)"],["Engine oil","10W-30, ~2.0 qt w/ filter (confirm)"],["Fuel","4.4 gal"],["Deck","54\" Accel Deep, 3 blades"],["Trans","K72 hydrostatic (sealed)"],["Plugs","2× per Kawasaki spec"]],
      sched:[["Engine oil & filter","100 hr","r","No hours set"],["Air filter","25/100 hr","r","—"],["Deck blades & belt","seasonal","g","OK"],["Spark plugs","100 hr","r","—"],["Daily pre-use","Daily","g","OK"]],
-     manual:"JD X580 Operator's Manual + Kawasaki engine manual (dealer/digital)",
+     manual:"JD Select Series X580 Operator's Manual (OMM174377, PDF on file)",manualUrl:"manuals/jd-x580.pdf",
      jobs:[{t:"Engine Oil & Filter — 100 hr",s:["Warm, park level, PTO off, key out","Drain via valve/plug","Replace spin-on filter, oil gasket","Refill ~2.0 qt 10W-30 to FULL","Run, check leaks, recheck"]},
            {t:"Mower Deck & Blade Service",s:["Key out, PTO off, pull plug leads","Remove 3 blades, sharpen & balance","Check spindles + deck belt","Torque blades to spec","Re-level deck per manual"]}]}]},
  {g:"Mowers & Cutting Decks", items:[
@@ -652,7 +651,7 @@ const SUPPLIES=[
 ];
 
 // ---- helpers ----
-function counts(){let f=0,p=0,t=0,tot=0;DATA.forEach(g=>g.items.forEach(it=>{tot++;if(it.st==="full")f++;else if(it.st==="part")p++;else t++;}));return{f,p,t,tot};}
+function counts(){let f=0,p=0,t=0,tot=0,ver=0;DATA.forEach(g=>g.items.forEach(it=>{tot++;if(it.st==="full")f++;else if(it.st==="part")p++;else t++;const hasFig=(it.jobs||[]).some(j=>Array.isArray(j.img)&&j.img.length);const localMan=typeof it.manualUrl==="string"&&it.manualUrl.indexOf("manuals/")===0;if(hasFig&&localMan)ver++;}));return{f,p,t,tot,ver};}
 function isSetup(txt){txt=(txt||"").toLowerCase();return !txt||txt==="—"||txt.includes("no hours")||txt.includes("set hours")||txt.includes("confirm")||txt.includes("offset");}
 // gather attention items across the fleet
 function attention(){
@@ -775,15 +774,15 @@ function renderDash(){
     h+=`</div>`;
   }
   // build status
-  h+=`<div class="dsec"><h3>Build status</h3><p class="lead">How much of the fleet is at the full 2026-05 card standard.</p>
+  h+=`<div class="dsec"><h3>Build status</h3><p class="lead">Every machine has a card (<b>inducted</b>). <b>Manual-backed</b> = rebuilt from the machine's own manual with real specs, torques &amp; embedded figures. The rest are <b>provisional</b> (web-sourced), being upgraded by the loop as manuals land.</p>
     <div class="stats">
-      <div class="stat g"><b>${c.f}</b><span>Full</span></div>
-      <div class="stat a"><b>${c.p}</b><span>Partial</span></div>
-      <div class="stat m"><b>${c.t}</b><span>To induct</span></div>
-      <div class="stat"><b>${pct}%</b><span>Complete</span></div>
+      <div class="stat g"><b>${c.ver}</b><span>Manual-backed</span></div>
+      <div class="stat a"><b>${c.tot-c.ver}</b><span>Provisional</span></div>
+      <div class="stat"><b>${c.tot}</b><span>Inducted</span></div>
+      <div class="stat"><b>${Math.round(c.ver/c.tot*100)}%</b><span>Verified</span></div>
     </div>
-    <div class="bar"><i class="bg" style="width:${wF}%"></i><i class="ba" style="width:${wP}%"></i><i class="bm" style="width:${wT}%"></i></div>
-    <div class="barlbl">${c.f} of ${c.tot} machines fully built · Hank is driving the rest to Full.</div></div>`;
+    <div class="bar"><i class="bg" style="width:${c.ver/c.tot*100}%"></i><i class="ba" style="width:${(c.tot-c.ver)/c.tot*100}%"></i></div>
+    <div class="barlbl">${c.ver} of ${c.tot} machines manual-backed (real specs + figures) · Hank is rebuilding the rest from their manuals.</div></div>`;
   // needs attention
   h+=`<div class="dsec"><h3>Needs attention</h3><p class="lead">Flagged tasks and what's blocking live due-dates.</p>`;
   if(a.crit.length){a.crit.forEach(x=>{h+=`<div class="att"><span class="ic r"></span><div class="body"><b>${x.n}</b> — ${x.task}<div class="sub">${x.sub}</div></div><span class="go" onclick="openByName('${x.n.replace(/'/g,"\\'")}')">Open ›</span></div>`;});}

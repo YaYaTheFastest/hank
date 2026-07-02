@@ -18,10 +18,17 @@
   p.sub{color:#7c8694;font-size:14px;margin:0 4px 16px}
   .kid{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #e7e9ee;border-radius:20px;padding:18px;margin-bottom:12px;text-decoration:none;color:inherit;box-shadow:0 1px 3px rgba(0,0,0,.05)}
   .kid:active{transform:scale(.99)}
-  .av{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;font-weight:800}
-  .kn{font-weight:800;font-size:19px}.kd{font-size:13px;color:#7c8694;margin-top:2px}
-  .chev{margin-left:auto;color:#c2c8d0;font-size:22px}
+  .av{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;font-weight:800;flex-shrink:0}
+  .kbody{flex:1;min-width:0}
+  .kn{font-weight:800;font-size:19px}
+  .kd{font-size:13px;color:#7c8694;margin-top:2px}
+  .kbal{font-weight:800;font-size:16px;margin-top:6px}
+  .kbal .togo{font-weight:600;font-size:13px;color:#7c8694}
+  .bar{height:7px;border-radius:99px;background:#eceef2;margin-top:8px;overflow:hidden}
+  .bar>span{display:block;height:100%;border-radius:99px}
+  .chev{margin-left:6px;color:#c2c8d0;font-size:22px;flex-shrink:0}
   .note{font-size:12.5px;color:#7c8694;background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:13px 14px;margin-top:8px;line-height:1.5}
+  .stale{font-size:11.5px;color:#b7791f;margin:0 4px 12px}
 </style>
 </head>
 <body>
@@ -32,19 +39,74 @@
 </header>
 <div class="wrap">
   <p class="sub">Do a chore → tap to log it → Mom or Dad approves → it adds to your balance.</p>
-
-  <a class="kid" href="dagvald.html">
-    <div class="av" style="background:#7c3aed">D</div>
-    <div><div class="kn">Dagvald</div><div class="kd">Goal: LEGO Hogwarts Castle ($250)</div></div>
-    <div class="chev">›</div>
-  </a>
-  <a class="kid" href="davikja.html">
-    <div class="av" style="background:#db2777">D</div>
-    <div><div class="kn">Davikja</div><div class="kd">Goal: $100 reward (TBD)</div></div>
-    <div class="chev">›</div>
-  </a>
-
+  <div id="kids"></div>
   <div class="note"><b>Parents:</b> open either kid's page and tap <b>🔑 Parent</b>. Enter your <b>4-digit PIN</b> (set it the first time) to <b>approve chores</b> (both kids), <b>edit that kid's chore list</b>, and set their <b>goal &amp; interest rate</b>. Each kid's page also shows a savings-growth chart and full transaction history. Either parent can approve.</div>
 </div>
+
+<script>
+/* Overview reads the SAME live source as the kid pages (castle.js): GET /api/castle -> {entries, configs}.
+   BASE defaults, the config merge, and the balance formula are kept identical to castle.js so this
+   summary always matches each child's page. If you change BASE/balance in castle.js, mirror it here. */
+(function () {
+  "use strict";
+
+  // ---- Kept in lockstep with castle.js BASE (order = display order) ----
+  var BASE = {
+    Dagvald: { page: "dagvald.html", reward: "LEGO Hogwarts Castle", goal: 250, seed: 85, color: "#7c3aed", av: "D" },
+    Davikja: { page: "davikja.html", reward: "$100 reward (TBD)",    goal: 100, seed: 20, color: "#db2777", av: "D" }
+  };
+
+  function money(n) {
+    var s = (n < 0 ? "-" : "") + "$" + Math.abs(Math.round(n * 100) / 100).toFixed(Math.abs(n) % 1 ? 2 : 0);
+    return s.replace(/\.00$/, "");
+  }
+  function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+
+  // cfg(kid): BASE merged with KV config overrides — same precedence as castle.js cfg().
+  function cfg(kid, configs) {
+    var o = {}, b = BASE[kid]; for (var k in b) o[k] = b[k];
+    var a = (configs && configs[kid]) || {}; for (var k2 in a) o[k2] = a[k2];
+    return o;
+  }
+  // balance(kid): seed + sum of that kid's APPROVED amounts — identical formula to castle.js balance().
+  function balance(kid, C, entries) {
+    var bal = C.seed;
+    (entries || []).forEach(function (e) { if (e.kid === kid && e.status === "approved") bal += e.amount; });
+    return bal;
+  }
+
+  function render(configs, entries, stale) {
+    var box = document.getElementById("kids"), html = "";
+    if (stale) html += '<p class="stale">⚠︎ Couldn\'t reach Hank — showing starting balances. Pull to refresh.</p>';
+    Object.keys(BASE).forEach(function (kid) {
+      var C = cfg(kid, configs), bal = balance(kid, C, entries), goal = C.goal || 0;
+      var pct = goal ? Math.max(0, Math.min(1, bal / goal)) : 0;
+      var togo = Math.max(0, goal - bal);
+      html += '<a class="kid" href="' + BASE[kid].page + '">' +
+        '<div class="av" style="background:' + BASE[kid].color + '">' + BASE[kid].av + '</div>' +
+        '<div class="kbody">' +
+          '<div class="kn">' + esc(kid) + '</div>' +
+          '<div class="kd">Goal: ' + esc(C.reward || "Saving up") + (goal ? ' (' + money(goal) + ')' : '') + '</div>' +
+          '<div class="kbal">' + money(bal) + (goal ? ' <span class="togo">of ' + money(goal) + ' · ' + money(togo) + ' to go</span>' : ' <span class="togo">saved</span>') + '</div>' +
+          (goal ? '<div class="bar"><span style="width:' + Math.round(pct * 100) + '%;background:' + BASE[kid].color + '"></span></div>' : '') +
+        '</div>' +
+        '<div class="chev">›</div>' +
+      '</a>';
+    });
+    box.innerHTML = html;
+  }
+
+  function load() {
+    fetch("/api/castle").then(function (r) { return r.json(); }).then(function (j) {
+      render((j && j.configs) || {}, (j && j.entries) || [], false);
+    }).catch(function () { render({}, [], true); });
+  }
+
+  render({}, [], false);           // instant paint with defaults
+  load();                           // then live numbers
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) load(); });
+  setInterval(function () { if (!document.hidden) load(); }, 30000);
+})();
+</script>
 </body>
 </html>

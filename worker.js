@@ -93,8 +93,27 @@ async function handleApi(request, env, url, siteAuthed) {
   // ---- Castle Fund (kids' chore→reward) ----
   // Read state + log a chore require a signed-in family device (site cookie) or the loop key — never anonymous
   // (this keeps the kids' names/balances private). Parent approve/decline are additionally gated by the 4-digit PIN.
-  if (url.pathname === "/api/castle" && request.method === "GET") {
+
+  // Read-only token (2026-07-02): lets the autonomous loop (which can't send auth headers) sync Castle data
+  // via GET /api/castle?rt=<token>. Scope = this ONE read endpoint. It can never approve, log, edit, or read
+  // anything else, and it is NOT the family password. Stored in KV (castle:readtoken).
+  // Set/rotate: POST /api/castle/readtoken from a signed-in family device or with the HANK key.
+  if (url.pathname === "/api/castle/readtoken" && request.method === "POST") {
     if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const b = await request.json().catch(() => ({}));
+    const token = (typeof b.token === "string" && b.token.length >= 24)
+      ? b.token
+      : [...crypto.getRandomValues(new Uint8Array(24))].map((x) => x.toString(16).padStart(2, "0")).join("");
+    await env.STATE.put("castle:readtoken", token);
+    return json({ ok: true, token });
+  }
+
+  if (url.pathname === "/api/castle" && request.method === "GET") {
+    let rtOk = false;
+    const rt = url.searchParams.get("rt") || "";
+    if (rt && kv) { const saved = await env.STATE.get("castle:readtoken"); rtOk = !!saved && rt === saved; }
+    if (!familyOrLoop && !rtOk) return json({ ok: false, error: "auth" }, 401);
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const list = await env.STATE.list({ prefix: "castle:e:" });
     const entries = [];

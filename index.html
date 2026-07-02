@@ -255,7 +255,7 @@
 const BUILD_DATE="2026-06-30";
 // Needs From You — only items that require Darren physically (a photo / a decision). Hank's homework never appears here.
 const NEEDS=[
- // Whirlpool freezer inducted 2026-07-01 from the nameplate photo (WZF34X20DW07 / UE4506196). No open Needs.
+ // Whirlpool freezer inducted 2026-07-01 from the nameplate photo (WZF34X20DW07 / UE4506196). No open physical Needs (Toro is a wrong-manual issue → MANUALS_NEEDED below).
 ];
 // Manuals needed — a card can't reach Full without its manual PDF on file (real figures via pdftoppm).
 // Hank finds the direct link; you just save it. Tap the link → Save to Files → _Cowork Inbox, and the next loop builds the card to Full.
@@ -263,7 +263,8 @@ const NEEDS=[
 const MANUALS_NEEDED=[
  // Honda CRF110F — DONE 2026-07-01 (built to Full). Below: audit backlog. Links VERIFIED to return a real PDF 2026-07-01 (tap → Save to Files → _Cowork Inbox works). Hank fetches these one-per-session on Mac+Chrome (Chrome blocks bulk auto-downloads).
  // ON FILE as of 2026-07-01 (Darren saved → hosted in deck): Honda GC190/NorthStar, Honda EU2000i, Husq 460, Husq 545, JD Z530R, Toro 21485, CountyLine/Kohler, Litter-Robot 4, Milwaukee 2727-20, Yamaha TT-R110E, Stihl HT 131, DeWalt DCS391. Cards queued for manual-first rebuild by the loop. Stihl MS 261 C-M REMOVED (Darren doesn't own it).
- {eq:"Hyperice Hypervolt 2",url:"https://www.manualslib.com/manual/2483483/Hyperice-Hypervolt-2.html",note:"No ungated mfr PDF; ManualsLib viewer (only item left — massager, low priority).",gated:true}
+ {eq:"Hyperice Hypervolt 2",url:"https://www.manualslib.com/manual/2483483/Hyperice-Hypervolt-2.html",note:"No ungated mfr PDF; ManualsLib viewer (massager, low priority).",gated:true},
+ {eq:"Toro 22\" Recycler Max (21485)",url:"https://manuals.toro.com/268899/index.html",note:"WRONG manual on file — toro-21485.pdf is actually the Model 21445 (Toro engine). This machine is 21485 w/ Briggs 725EXi 163cc. This is the correct Recycler Max manual (Toro viewer); loop to pull the direct getpub PDF on a Chrome pass, then rebuild the card manual-first."}
 ];
 // All 8 photo questions answered 2026-06-29; inductions (Firearms, HVAC, power tools, fitness, appliances, openers) queued for the loop.
 const QUESTIONS=[];
@@ -344,9 +345,9 @@ const DATA = [
      jobs:[{t:"Engine Oil & Filter — 50 hr",s:["Warm oil, park brake, PTO off, key out","Drain via valve/plug","Spin-on filter, oil gasket, ¾ turn","Refill ~2.1 qt 10W-30 to FULL","Run, check leaks; log at meter −10h"]},
            {t:"Blade Sharpen & Deck Clean",s:["Key out, PTO off, pull plug leads, block deck","Remove 3 blades, note sail direction","Sharpen to bevel, balance each","Scrape deck, check spindles & belt","Reinstall, anti-seize, torque to spec"]}]},
    {n:"Toro 22\" Recycler Max",power:"Gas",loc:"Shop",basis:"Seasonal",st:"full",
-     specs:[["Model","21485, Personal Pace self-propel"],["Cut","22\" Recycler mulch deck"],["Engine","B&S EXi 163cc or Toro 159cc (confirm label)"],["Engine oil","SAE 30, ~18–20 oz, no filter"],["Plug","Toro 130-8167 (EXi build)"],["Air filter","paper + foam pre-cleaner"]],
-     sched:[["Engine oil check/change","per engine","r","confirm engine"],["Air filter","season/25 hr","r","—"],["Blade sharpen & balance","seasonal","g","OK"],["Spark plug","yearly","r","—"],["Pre-use (bail stops blade)","each use","g","OK"]],
-     manual:"Toro 22\" Recycler Operator's Manual (PDF, on file)",manualUrl:"manuals/toro-21485.pdf",
+     specs:[["Model","21485, Personal Pace self-propel (S/N 416586324)"],["Cut","22\" Recycler mulch deck"],["Engine","Briggs & Stratton 725EXi 163cc"],["Engine oil","SAE 30 (10W-30 OK), ~18 oz, no filter"],["Plug","Toro 130-8167"],["Air filter","paper + foam pre-cleaner"]],
+     sched:[["Engine oil check/change","per engine (~50 hr/yr)","r","SAE 30, ~18 oz"],["Air filter","season/25 hr","r","—"],["Blade sharpen & balance","seasonal","g","OK"],["Spark plug","yearly","r","130-8167"],["Pre-use (bail stops blade)","each use","g","OK"]],
+     manual:"Toro 22\" Recycler Max (21485) manual — on-file PDF is wrong model (21445); use correct online manual",manualUrl:"https://manuals.toro.com/268899/index.html",
      jobs:[{t:"Blade Service & Deck Cleaning",s:["Run fuel low, pull plug lead","Tip air-filter side UP","Remove blade (sail up), sharpen & balance","Scrape deck underside","Torque bolt, reconnect lead"]},
            {t:"Engine Oil & Seasonal Storage",s:["Warm, stop, pull lead","Drain/extract, refill ~18–20oz SAE 30","Stabilize or run fuel dry","Fog cylinder ~1oz oil, pull slowly","Clean deck, store dry"]}]}]},
  {g:"Ground-Engaging Attachments", items:[
@@ -439,11 +440,14 @@ const DATA = [
            {t:"Chain & Sprocket — clean/lube/tension (manual §12.35–12.38, p.88–91)",s:["On lift stand: rinse loose dirt (gentle jet); remove old grease with chain cleaner; dry","Apply off-road chain spray; wipe excess — keep off tires & brake discs","Check tension at the lower run: target 58–61 mm; measure at several spots (uneven wear)","If out of spec: loosen axle, turn adjusters EQUALLY (watch alignment marks), reset 58–61 mm, torque axle","Inspect chain, rear + front sprocket and chain guide for wear; replace as a set if worn"],img:["manuals/img/ktm-chain-p90.png","manuals/img/ktm-chain-p91.png"]},
            {t:"Valve Clearance Check (~40–50 h) — video + workshop spec",s:["Engine COLD (overnight); remove seat/tank/shrouds to reach the valve cover","Remove valve cover; rotate to TDC on compression (cam lobes off the valves)","Measure intake & exhaust with feeler gauges; RECORD each reading","Compare to the KTM Repair-Manual spec — NOT printed in the operator manual (confirm; don't guess)","If out of spec → shim adjustment (workshop job); refit cover w/ gasket, torque, check leaks"],video:"https://www.youtube.com/watch?v=rMDbPnq0ByA"}]},
    {n:"Yamaha TT-R110E",power:"4-Stroke",loc:"Shop",basis:"Hours",st:"full",
-     specs:[["Engine","Air-cooled 110cc 4-stroke, 2-valve"],["Trans","4-speed, automatic clutch, e-start"],["Engine oil","10W-40 JASO MA, ≈0.8 L (confirm)"],["Plug","NGK CR6HSA, gap .024–.028\""],["Carb","Mikuni VM16"]],
-     sched:[["Engine oil change","20 hr/monthly","r","—"],["Carb clean/drain","50 hr/seasonal","r","ethanol gums it"],["Chain & sprockets","10–20 hr","g","OK"],["Spark plug","per schedule","r","—"],["Valve clearance","per manual","r","confirm spec"]],
-     manual:"Yamaha TT-R110E 2020 Owner's Manual (PDF, on file)",manualUrl:"manuals/yamaha-ttr110e.pdf",
-     jobs:[{t:"Engine Oil Change",s:["Warm ~5 min, on stand","Remove crankcase drain bolt, drain","Reinstall bolt to spec","Refill ≈0.8 L 10W-40 JASO MA","Run, recheck to FULL (MA oil = no clutch slip)"]},
-           {t:"Carb Cleaning (Mikuni VM16)",s:["Fuel petcock off, remove carb (4 screws)","Drop float bowl, clean jets w/ cleaner+air","Reassemble, set idle per manual","Reinstall, test run","Drain bowl if storing to prevent gumming"]}]}]},
+     specs:[["Engine","Air-cooled 110cc 4-stroke SOHC, 51×54mm, 9.3:1"],["Trans","4-speed, wet auto centrifugal clutch (no lever), e-start"],["Engine oil","YAMALUBE 10W-40 API SG+/JASO MA · 0.80 L change · drain 20 N·m"],["Plug","NGK CR6HSA, gap 0.6–0.7mm (.024–.028\"), 13 N·m"],["Carb","Mikuni VM16, idle 1600–1800 rpm"],["Tires","15 psi F/R (cold)"],["Chain slack","40–56 mm"],["Fuel","Regular/E10 · 3.8 L tank"]],
+     sched:[["Engine oil change","init 30h, then 90h/6mo","r","0.80 L 10W-40 MA · 20 N·m"],["Air filter clean/oil","90h/6mo","r","wet foam element"],["Chain — slack/lube","every ride","g","40–56 mm"],["Spark plug","per schedule","r","CR6HSA .024–.028\""],["Carb clean/drain","90h/seasonal","r","ethanol gums it"],["Valve clearance (dealer)","per schedule, cold","r","OM omits value — confirm"]],
+     manual:"Yamaha TT-R110E Owner's Manual UB5115E0 (B51-28199-15, PDF on file)",manualUrl:"manuals/yamaha-ttr110e.pdf",
+     jobs:[{t:"Engine Oil Change (manual p.7-9)",s:["Warm engine, then off; oil pan under crankcase","Remove filler cap + drain bolt ① and gasket ②; drain","New gasket; torque drain bolt 20 N·m (15 lb·ft)","Refill 0.80 L YAMALUBE 10W-40 (API SG+/JASO MA)","Idle & check leaks; dipstick to max engine off — MA oil only (wet clutch)"],img:["manuals/img/ttr110e-oil-p41.png"]},
+           {t:"Air Filter Cleaning (manual p.7-10)",s:["Remove panel A; remove air-filter case cover ① (screws ②)","Pull sponge ① and mesh ② out","Clean mesh with solvent, wipe off; clean+squeeze sponge","Re-oil sponge with Yamaha foam air-filter oil; squeeze out excess","Reinstall; clean more often in wet/dusty riding"],img:["manuals/img/ttr110e-airfilter-p42.png"]},
+           {t:"Drive Chain Maintenance (manual p.7-21)",s:["Sidestand, neutral, no weight on bike","Measure slack ① mid-run: spec 40.0–56.0 mm (1.57–2.20 in)","Clean + lube chain thoroughly; wipe excess","Adjust (dealer-advised): loosen axle nut ①/locknut ②, turn adjuster ③ equally L/R","Push wheel forward, re-torque, verify alignment marks"],img:["manuals/img/ttr110e-chain-p53.png"]},
+           {t:"Pre-Ride Inspection + Plug (manual p.7-7)",s:["Tires 15 psi F/R cold; chain 40–56 mm; oil to dipstick FULL","Throttle free play 4–6 mm, snaps closed; drum brakes F/R firm","No clutch lever — automatic clutch; kill switch works","Fuel fresh (E10 OK), petcock on, no leaks","If hard-starting: check plug NGK CR6HSA gap 0.6–0.7 mm"],img:["manuals/img/ttr110e-plug-p39.png"]},
+           {t:"Carb Cleaning (Mikuni VM16)",s:["Fuel petcock off, remove carb","Drop float bowl, clean jets w/ cleaner+air","Reassemble, set idle 1600–1800 rpm","Reinstall, test run","Drain bowl if storing to prevent gumming"]}]}]},
  {g:"Shop & Bench", items:[
    {n:"Battery Charger",power:"Electric",loc:"Shop",basis:"As-needed",st:"full",
      specs:[["Type","Automatic 6V/12V charger + engine starter"],["Battery types","STD · AGM · GEL (lead-acid)"],["Charge rates","2 / 6 / 8 / 10 A + Boost + Engine Start"],["Display","Voltage / Amps / Battery %"],["Output cable","6-ga (AWG), per manual"],["Model #","confirm from label (man. 0099002329E-00)"]],
@@ -608,7 +612,7 @@ const PREUSE={
 "DR Power Leaf Cyclone":["Engine oil level","Clear debris screen & impeller","Air filter clean","Collection bag empty & sound","Eye & ear protection"],
 "Arctic Cat Prowler Pro UTV":["Engine oil & coolant (cold, halfway) level","Tire pressures: F 12 / R 14 psi (16 w/cargo)","Brakes firm; fluid OK; seatbelts","Steering free; shift in PARK","Lights/horn; CVT intake clear","Cargo secured (≤1500 lb); note hour meter"],
 "KTM 350 EXC-F":["Engine oil (sight glass) & coolant","Chain tension & lube","Tire pressure & condition; spokes","Front & rear brakes","Controls, cables, kill switch","Air filter clean; full PPE"],
-"Yamaha TT-R110E":["Engine oil level (dipstick)","Chain tension (~1–2cm) & lube","Tires & brakes","Throttle return & kill switch","Fuel fresh; no leaks","Helmet & PPE on rider"],
+"Yamaha TT-R110E":["Engine oil to dipstick FULL (10W-40 MA)","Chain slack 40–56 mm & lube","Tires 15 psi F/R cold; drum brakes firm","Throttle free play 4–6 mm & kill switch","Fuel fresh (E10 OK); no leaks","Helmet & PPE on rider (auto clutch — no lever)"],
 "Battery Charger":["Well-ventilated area; eye protection","ON/OFF switch OFF before connecting","Clean terminals; confirm 6V/12V & type (STD/AGM/GEL)","Connect + first, then ground AWAY from the battery","Plug in AC after clamps are on","Keep clamps apart (they spark when energized)"],
 "Dyson Cordless #1 & #2":["Battery charged (check gauge)","Filter clean, dry & seated","Bin below max line; airway clear","Correct head/attachment fitted"],
 "KitchenAid Fridge (20cf)":["Doors seal fully; gaskets clean","Water filter light not lit; water tastes clean","Grille/vents clear for airflow","Temps holding (~37°F / ~0°F — confirm)"],

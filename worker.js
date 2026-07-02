@@ -106,7 +106,10 @@ async function handleApi(request, env, url, siteAuthed) {
     const configs = {};
     const gl = await env.STATE.list({ prefix: "castle:cfg:" });
     for (const k of gl.keys) { const v = await env.STATE.get(k.name); if (v) configs[k.name.slice(11)] = JSON.parse(v); }
-    return json({ ok: true, entries, catalogs, configs });
+    const wishlists = {};
+    const wl = await env.STATE.list({ prefix: "castle:wish:" });
+    for (const k of wl.keys) { const v = await env.STATE.get(k.name); if (v) wishlists[k.name.slice(12)] = JSON.parse(v); }
+    return json({ ok: true, entries, catalogs, configs, wishlists });
   }
   if (url.pathname === "/api/castle/log" && request.method === "POST") {
     if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
@@ -147,13 +150,28 @@ async function handleApi(request, env, url, siteAuthed) {
     await env.STATE.put("castle:pin", pin);
     return json({ ok: true, set: true });
   }
-  // Parent decision — gated by the 4-digit PIN. Either parent may approve.
+  // helper: split an approved earning into Save/Spend/Give per the kid's allocation (default all Spend).
+  async function bucketsFor(kid, amt) {
+    let al = { save: 0, spend: 100, give: 0 };
+    const c = await env.STATE.get("castle:cfg:" + kid);
+    if (c) { const cf = JSON.parse(c); if (cf.alloc) al = cf.alloc; }
+    const save = Math.round(amt * (al.save || 0)) / 100;
+    const give = Math.round(amt * (al.give || 0)) / 100;
+    const spend = Math.round((amt - save - give) * 100) / 100;
+    return { save, spend, give };
+  }
+  async function pinOkFor(b) { const sp = await env.STATE.get("castle:pin"); return authed || (sp && String(b.pin || "") === sp); }
+  function newCastleEntry(kid, chore, amount, extra) {
+    return Object.assign({ kid, chore, amount, status: "approved", approver: "parent", ts: Date.now(), day: new Date().toISOString().slice(0, 10) }, extra || {});
+  }
+
+  // Parent decision — gated by the 4-digit PIN. Approving splits an earning into buckets.
   if ((url.pathname === "/api/castle/approve" || url.pathname === "/api/castle/decline") && request.method === "POST") {
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const b = await request.json().catch(() => ({}));
     const savedPin = await env.STATE.get("castle:pin");
     if (!savedPin) return json({ ok: false, error: "no-pin-set" }, 409);
-    if (String(b.pin || "") !== savedPin) return json({ ok: false, error: "bad-pin" }, 401);
+    if (String(b.pin || "") !== savedPin && !authed) return json({ ok: false, error: "bad-pin" }, 401);
     const v = b.key ? await env.STATE.get(b.key) : null;
     if (!v) return json({ ok: false, error: "not-found" }, 404);
     const e = JSON.parse(v);
@@ -161,8 +179,63 @@ async function handleApi(request, env, url, siteAuthed) {
     e.approver = "parent";
     e.decidedTs = Date.now();
     if (b.note) e.note = b.note;
+    if (e.status === "approved" && !e.buckets && (e.amount || 0) > 0 && e.kind !== "interest") e.buckets = await bucketsFor(e.kid, e.amount);
     await env.STATE.put(b.key, JSON.stringify(e));
     return json({ ok: true, entry: e });
+  }
+
+  // Manual deduction / penalty (PIN) — negative entry against the Spend bucket.
+  if (url.pathname === "/api/castle/deduct" && request.method === "POST") {
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const b = await request.json().catch(() => ({}));
+    if (!(await pinOkFor(b))) return json({ ok: false, error: "bad-pin" }, 401);
+    const amt = Math.abs(Number(b.amount) || 0);
+    if (!b.kid || !amt) return json({ ok: false, error: "missing-fields" }, 400);
+    const id = "castle:e:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
+    const entry = newCastleEntry(b.kid, "Deduction" + (b.reason ? ": " + b.reason : ""), -amt, { kind: "deduction", buckets: { save: 0, spend: -amt, give: 0 } });
+    await env.STATE.put(id, JSON.stringify(entry));
+    return json({ ok: true, entry });
+  }
+
+  // Parent sets a kid's wishlist array (PIN): [{id,name,price,url,goal,purchased}]
+  if (url.pathname === "/api/castle/wishlist" && request.method === "POST") {
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const b = await request.json().catch(() => ({}));
+    if (!(await pinOkFor(b))) return json({ ok: false, error: "bad-pin" }, 401);
+    if (!b.kid || !Array.isArray(b.wishlist)) return json({ ok: false, error: "missing-fields" }, 400);
+    await env.STATE.put("castle:wish:" + b.kid, JSON.stringify(b.wishlist));
+    return json({ ok: true });
+  }
+
+  // Kid stars one wishlist item as the active goal (no PIN — low-stakes).
+  if (url.pathname === "/api/castle/star" && request.method === "POST") {
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const b = await request.json().catch(() => ({}));
+    const raw = await env.STATE.get("castle:wish:" + b.kid);
+    if (!raw) return json({ ok: false, error: "no-wishlist" }, 404);
+    const arr = JSON.parse(raw);
+    arr.forEach(function (it) { it.goal = (it.id === b.id && !it.purchased); });
+    await env.STATE.put("castle:wish:" + b.kid, JSON.stringify(arr));
+    return json({ ok: true, wishlist: arr });
+  }
+
+  // Parent marks a wishlist item purchased (PIN) — negative Spend entry + flag it.
+  if (url.pathname === "/api/castle/purchase" && request.method === "POST") {
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const b = await request.json().catch(() => ({}));
+    if (!(await pinOkFor(b))) return json({ ok: false, error: "bad-pin" }, 401);
+    const raw = await env.STATE.get("castle:wish:" + b.kid);
+    if (!raw) return json({ ok: false, error: "no-wishlist" }, 404);
+    const arr = JSON.parse(raw);
+    const it = arr.find(function (x) { return x.id === b.id; });
+    if (!it) return json({ ok: false, error: "not-found" }, 404);
+    const price = Number(it.price) || 0;
+    const id = "castle:e:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
+    const entry = newCastleEntry(b.kid, "Bought: " + it.name, -price, { kind: "purchase", buckets: { save: 0, spend: -price, give: 0 } });
+    await env.STATE.put(id, JSON.stringify(entry));
+    it.purchased = true; it.goal = false;
+    await env.STATE.put("castle:wish:" + b.kid, JSON.stringify(arr));
+    return json({ ok: true, entry });
   }
 
   // Parent edits the chore list or settings (goal/reward/interest) — PIN-gated.

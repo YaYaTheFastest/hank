@@ -27,7 +27,7 @@
   var KID = window.CASTLE_KID;
   if (!BASE[KID]) { document.body.innerHTML = "<p style='padding:24px;font-family:system-ui'>Unknown kid.</p>"; return; }
 
-  var entries = [], apiCat = {}, apiCfg = {}, lastPin = "", editCat = null;
+  var entries = [], apiCat = {}, apiCfg = {}, apiWish = {}, lastPin = "", editCat = null, editWish = null;
   function cfg() { var o = {}; var b = BASE[KID]; for (var k in b) o[k] = b[k]; var a = apiCfg[KID] || {}; for (var k2 in a) o[k2] = a[k2]; return o; }
   function catalog() { return (apiCat[KID] && apiCat[KID].length) ? apiCat[KID] : DEFAULT_CAT[KID]; }
   function money(n) { var s = (n < 0 ? "-" : "") + "$" + Math.abs(Math.round(n * 100) / 100).toFixed(Math.abs(n) % 1 ? 2 : 0); return s.replace(/\.00$/, ""); }
@@ -45,6 +45,48 @@
     var first = Math.min.apply(null, earn.map(function (e) { return e.ts; }));
     var months = Math.max(0.5, (Date.now() - first) / 2592e6);
     return Math.max(10, Math.round(earn.reduce(function (s, e) { return s + e.amount; }, 0) / months));
+  }
+  function r2(n) { return Math.round(n * 100) / 100; }
+  // Buckets: seed + legacy earnings + deductions/purchases -> Spend; interest -> Save; new earnings split per stored e.buckets.
+  function buckets() {
+    var b = { save: 0, spend: cfg().seed, give: 0 };
+    approved().forEach(function (e) {
+      if (e.buckets) { b.save += e.buckets.save || 0; b.spend += e.buckets.spend || 0; b.give += e.buckets.give || 0; }
+      else if (e.kind === "interest") { b.save += e.amount; }
+      else { b.spend += e.amount; }
+    });
+    if (b.spend < 0) { var d = -b.spend, fs = Math.min(d, b.save); b.save -= fs; d -= fs; var fg = Math.min(d, b.give); b.give -= fg; d -= fg; b.spend = -d; }
+    b.save = r2(b.save); b.spend = r2(b.spend); b.give = r2(b.give); return b;
+  }
+  function wishlist() { return apiWish[KID] || []; }
+  function activeGoal() { var w = wishlist().filter(function (it) { return it.goal && !it.purchased; })[0]; var C = cfg(); return w ? { reward: w.name, goal: Number(w.price) || 0, item: w } : { reward: C.reward, goal: C.goal, item: null }; }
+  function streak() {
+    var days = {}; approved().forEach(function (e) { if ((e.amount || 0) > 0 && e.kind !== "interest" && e.day) days[e.day] = 1; });
+    function ds(dt) { function p(x) { return (x < 10 ? "0" : "") + x; } return dt.getFullYear() + "-" + p(dt.getMonth() + 1) + "-" + p(dt.getDate()); }
+    var d = new Date(Date.now() - 4 * 3600 * 1000), n = 0;
+    if (!days[ds(d)]) d.setDate(d.getDate() - 1);
+    while (days[ds(d)]) { n++; d.setDate(d.getDate() - 1); }
+    return n;
+  }
+  function badges() {
+    var earned = approved().filter(function (e) { return e.amount > 0 && e.kind !== "interest"; }).reduce(function (s, e) { return s + e.amount; }, 0);
+    var b = balance(), st = streak(), ag = activeGoal(), bk = buckets();
+    return [
+      { label: "First $50", icon: "🏆", on: earned >= 50 || b >= 50 },
+      { label: "5-day streak", icon: "🔥", on: st >= 5 },
+      { label: "Super saver", icon: "🐷", on: bk.save >= 25 },
+      { label: "Goal reached", icon: "⭐", on: !!ag.goal && b >= ag.goal }
+    ];
+  }
+  function confetti() {
+    var root = document.getElementById("app"); if (!root) return;
+    var cols = [BASE[KID].color, "#367C2B", "#EF9F27", "#378ADD", "#1D9E75"];
+    for (var i = 0; i < 26; i++) {
+      var s = document.createElement("span"); s.className = "conf";
+      s.style.left = (18 + Math.random() * 64) + "%"; s.style.background = cols[i % cols.length];
+      s.style.animation = "fall " + (0.9 + Math.random() * 0.7) + "s ease-in forwards";
+      root.appendChild(s); (function (el) { setTimeout(function () { el.remove(); }, 1700); })(s);
+    }
   }
 
   // ---- Styles ----
@@ -78,6 +120,14 @@
     ".lab{font-size:13px;color:var(--muted);margin:8px 2px 4px;display:block}" +
     ".onelab{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;margin:2px 0 10px}" +
     ".toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#1d2733;color:#fff;padding:10px 16px;border-radius:99px;font-size:14px;opacity:0;transition:.2s;z-index:60;pointer-events:none}.toast.on{opacity:1}" +
+    ".bks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0}" +
+    ".bk{border-radius:12px;padding:10px;text-align:center}.bk .bv{font-size:16px;font-weight:800;margin-top:2px}.bk .bl{font-size:11px;margin-top:1px}.bk .be{font-size:18px}" +
+    ".chip{display:inline-flex;align-items:center;gap:6px;background:#fde7c9;color:#854F0B;border-radius:99px;padding:6px 11px;font-size:13px;font-weight:700}" +
+    ".badges{display:flex;gap:12px;flex-wrap:wrap}.bg{display:flex;flex-direction:column;align-items:center;gap:4px;width:58px;text-align:center}.bgc{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;background:#f1efe8;filter:grayscale(1);opacity:.45}.bg.on .bgc{filter:none;opacity:1;background:#fbeaf0}.bg .bgl{font-size:10px;color:#5f5e5a;line-height:1.15}" +
+    ".witem{display:flex;align-items:center;gap:11px;border-top:1px solid var(--line);padding:11px 2px}.witem:first-child{border-top:0}.witem .wn{font-weight:700;font-size:14px}.witem .wp{font-size:12px;color:var(--muted)}.star{font-size:20px;cursor:pointer;background:none;border:0}.wlink{font-size:12px;color:#185FA5;text-decoration:none;white-space:nowrap}.afford{color:#1f8a4c;font-weight:700;font-size:12px}" +
+    ".deduct{background:#fff;border:1px solid #f0c4c4;border-radius:13px;padding:12px;margin-top:6px}.deduct h5{margin:0 0 4px;font-size:13.5px;font-weight:700;color:#A32D2D}.db{background:#A32D2D;color:#fff;border:0;border-radius:10px;padding:9px 13px;font-weight:700;font-size:13px;cursor:pointer;width:100%;margin-top:9px}" +
+    ".alloc{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:4px}.alloc label{font-size:11px;color:var(--muted);text-align:center}" +
+    ".conf{position:absolute;top:110px;width:9px;height:13px;border-radius:2px;z-index:70;pointer-events:none}@keyframes fall{to{transform:translateY(380px) rotate(340deg);opacity:0}}" +
     ".spark{animation:pop .5s ease}@keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1)}}";
   var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
 
@@ -124,8 +174,8 @@
 
   // ---- Render ----
   function render() {
-    var C = cfg(), bal = balance(), goal = C.goal, pct = goal ? Math.min(1, bal / goal) : 0;
-    var pend = pending();
+    var C = cfg(), bal = balance(), ag = activeGoal(), goal = ag.goal, pct = goal ? Math.min(1, bal / goal) : 0;
+    var pend = pending(), bk = buckets();
     var html = '<header class="chead"><div class="cbar"><h1>HANK · ' + KID + '</h1>' +
       '<button id="parentBtn" class="pbtn">🔑 Parent</button></div>' +
       '<p class="csub">Castle Fund — chores &amp; reward</p>' +
@@ -136,12 +186,30 @@
     html += C.theme === "castle" ? castleArt(pct) : jarArt(bal, goal);
     html += '<div class="bal">' + money(bal) + "</div>";
     if (goal) {
-      html += '<div class="sub">' + money(bal) + " of " + money(goal) + " · " + C.reward + " · " + money(goal - bal) + " to go</div>";
+      html += '<div class="sub">' + money(bal) + " of " + money(goal) + " · " + esc(ag.reward) + " · " + money(Math.max(0, goal - bal)) + " to go</div>";
       html += '<div class="mile">';
       for (var m = 1; m <= 5; m++) html += '<div class="dot ' + (pct >= m / 5 ? "on" : "") + '"></div>';
       html += "</div>";
-    } else { html += '<div class="sub">Bank balance — saving up.</div>'; }
+    } else { html += '<div class="sub">Bank balance — saving up. Star a wishlist item to set a goal.</div>'; }
     html += "</div>";
+
+    // Buckets (Save / Spend / Give)
+    html += '<div class="bks">' +
+      '<div class="bk" style="background:#e7f5ee"><div class="be">🐷</div><div class="bv" style="color:#0F6E56">' + money(bk.save) + '</div><div class="bl" style="color:#0F6E56">Save</div></div>' +
+      '<div class="bk" style="background:#faeeda"><div class="be">🛒</div><div class="bv" style="color:#854F0B">' + money(bk.spend) + '</div><div class="bl" style="color:#854F0B">Spend</div></div>' +
+      '<div class="bk" style="background:#fbeaf0"><div class="be">🎁</div><div class="bv" style="color:#993556">' + money(bk.give) + '</div><div class="bl" style="color:#993556">Give</div></div></div>';
+
+    // Streak + badges
+    var st = streak();
+    html += '<div style="display:flex;align-items:center;gap:10px;margin:8px 2px 4px">';
+    html += st > 0 ? '<span class="chip">🔥 ' + st + '-day streak</span><span class="cap" style="margin:0">keep it going!</span>' : '<span class="cap" style="margin:0">Do a chore today to start a streak 🔥</span>';
+    html += '</div>';
+    html += '<div class="h">Badges</div><div class="badges">';
+    badges().forEach(function (bd) { html += '<div class="bg ' + (bd.on ? "on" : "") + '"><div class="bgc">' + (bd.on ? bd.icon : "🔒") + '</div><span class="bgl">' + bd.label + '</span></div>'; });
+    html += '</div>';
+
+    // Wishlist
+    html += wishlistSection(bal);
 
     // Growth chart
     html += '<div class="h">If you keep saving</div><div class="card">' + growthChart() + "</div>";
@@ -179,8 +247,9 @@
     Array.prototype.forEach.call(document.querySelectorAll(".chore"), function (b) {
       b.addEventListener("click", function () { logChore(b.dataset.chore, +b.dataset.amt, +b.dataset.qty, b.dataset.once === "1", b); });
     });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-star]"), function (b) { b.addEventListener("click", function () { star(b.dataset.star); }); });
     document.getElementById("parentBtn").addEventListener("click", function () { openParent(); });
-    document.getElementById("pmClose").addEventListener("click", function () { lastPin = ""; editCat = null; document.getElementById("pm").classList.remove("on"); });
+    document.getElementById("pmClose").addEventListener("click", function () { lastPin = ""; editCat = null; editWish = null; document.getElementById("pm").classList.remove("on"); });
   }
 
   function historyRows() {
@@ -201,13 +270,37 @@
   function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function toast(msg) { var t = document.getElementById("toast"); if (!t) return; t.textContent = msg; t.classList.add("on"); setTimeout(function () { t.classList.remove("on"); }, 2200); }
 
+  function wishlistSection(bal) {
+    var w = wishlist().filter(function (it) { return !it.purchased; });
+    var got = wishlist().filter(function (it) { return it.purchased; });
+    var h = '<div class="h">My wishlist</div>';
+    if (!w.length) h += '<div class="empty">No items yet — ask a parent to add things you want, with a link.</div>';
+    else {
+      h += '<div class="card">';
+      w.forEach(function (it) {
+        var price = Number(it.price) || 0, can = bal >= price;
+        h += '<div class="witem"><button class="star" data-star="' + esc(it.id) + '">' + (it.goal ? "⭐" : "☆") + '</button>' +
+          '<div class="rl"><div class="wn">' + esc(it.name) + '</div><div class="wp">' + money(price) + (it.goal ? ' · saving for this' : '') + (can ? ' · <span class="afford">you can get this!</span>' : '') + '</div></div>' +
+          (it.url ? '<a class="wlink" href="' + esc(it.url) + '" target="_blank" rel="noopener">View</a>' : '') + '</div>';
+      });
+      h += '</div>';
+    }
+    if (got.length) h += '<div class="cap" style="margin-top:6px">Got it: ' + got.map(function (it) { return esc(it.name); }).join(", ") + ' 🎉</div>';
+    return h;
+  }
+  function star(id) {
+    fetch("/api/castle/star", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kid: KID, id: id }) })
+      .then(function (r) { return r.json(); }).then(function (j) { if (j.ok) { toast("Saving for that now ⭐"); return load(true); } toast("Couldn't update."); })
+      .catch(function () { toast("Offline."); });
+  }
+
   // ---- Kid action ----
   function logChore(chore, amt, qty, once, btn) {
     if (btn) btn.disabled = true;  // prevent double-tap double-log
     fetch("/api/castle/log", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kid: KID, chore: chore, amount: amt, qty: qty, once: once, day: choreDay() }) })
       .then(function (r) { return r.json(); })
       .then(function (j) {
-        if (j.ok) { toast("✨ Logged! " + chore + " — waiting on Mom/Dad."); return load(true); }
+        if (j.ok) { confetti(); toast("✨ Logged! " + chore + " — waiting on Mom/Dad."); return load(true); }
         if (j.error === "daily-limit") { toast("That one's done for today 👍"); return load(true); }
         if (j.error === "once-done") { toast("Already sent that one 👍"); return load(true); }
         toast("Couldn't log — check connection."); if (btn) btn.disabled = false;
@@ -241,13 +334,26 @@
       // Manage chores (this kid)
       h += '<div class="h2">' + KID + "'s chores</div><div id=\"catRows\"></div>" +
         '<div style="display:flex;gap:8px;margin-top:6px"><button class="btns" id="addChore">+ Add chore</button><button class="btnp" id="saveCat">Save chores</button></div>';
-      // Settings
+      // Settings + allocation
+      var al = C.alloc || { save: 0, spend: 100, give: 0 };
       h += '<div class="h2">' + KID + "'s goal &amp; interest</div>" +
-        '<label class="lab">Reward</label><input id="setReward" class="inp" value="' + esc(C.reward || "") + '">' +
-        '<label class="lab">Goal $</label><input id="setGoal" class="inp" type="number" value="' + (C.goal || 0) + '">' +
+        '<label class="lab">Reward (or a starred wishlist item overrides this)</label><input id="setReward" class="inp" value="' + esc(C.reward || "") + '">' +
+        '<label class="lab">Goal $ (used when no wishlist item is starred)</label><input id="setGoal" class="inp" type="number" value="' + (C.goal || 0) + '">' +
         '<label class="lab">Interest %/month (Bank of Mom &amp; Dad)</label><input id="setInt" class="inp" type="number" value="' + (C.interestPct || 0) + '">' +
         '<label class="lab" style="display:flex;align-items:center;gap:8px;margin-top:8px"><input type="checkbox" id="setIntOn" ' + (C.interestOn ? "checked" : "") + '> Actually pay interest each month</label>' +
-        '<button class="btnp" id="saveSet" style="margin-top:10px">Save goal &amp; interest</button>';
+        '<label class="lab">Split of new earnings (must add to 100)</label>' +
+        '<div class="alloc"><div><input id="alSave" class="inp" type="number" value="' + (al.save || 0) + '"><label>Save %</label></div><div><input id="alSpend" class="inp" type="number" value="' + (al.spend != null ? al.spend : 100) + '"><label>Spend %</label></div><div><input id="alGive" class="inp" type="number" value="' + (al.give || 0) + '"><label>Give %</label></div></div>' +
+        '<div class="cap">Default 100% Spend — nothing splits until you change this. Applies to future chores; existing money stays in Spend.</div>' +
+        '<button class="btnp" id="saveSet" style="margin-top:10px">Save goal, interest &amp; split</button>';
+      // Deduction / penalty
+      h += '<div class="h2">Deduct / penalty</div><div class="deduct"><h5>Remove from ' + esc(KID) + "'s balance</h5>" +
+        '<span class="cap" style="margin:0">Comes out of Spend. Shows in history in red.</span>' +
+        '<label class="lab">Amount $</label><input id="dedAmt" class="inp" type="number" placeholder="$">' +
+        '<label class="lab">Reason</label><input id="dedRsn" class="inp" placeholder="e.g. broke a house rule">' +
+        '<button class="db" id="dedApply">− Apply deduction</button></div>';
+      // Wishlist manager
+      h += '<div class="h2">' + esc(KID) + "'s wishlist</div><div id=\"wishRows\"></div>" +
+        '<div style="display:flex;gap:8px;margin-top:6px"><button class="btns" id="addWish">+ Add item</button><button class="btnp" id="saveWish">Save wishlist</button></div>';
       body.innerHTML = h;
       var pinEl = document.getElementById("pin"); if (pinEl && lastPin) pinEl.value = lastPin;
       Array.prototype.forEach.call(document.querySelectorAll("#pmBody [data-act]"), function (b) { b.addEventListener("click", function () { decide(b.dataset.k, b.dataset.act); }); });
@@ -256,6 +362,11 @@
       document.getElementById("addChore").addEventListener("click", function () { syncCat(); editCat.push({ name: "", price: 5, qty: 1, steps: "", once: false, emoji: "", per: "" }); renderCatRows(); });
       document.getElementById("saveCat").addEventListener("click", saveCat);
       document.getElementById("saveSet").addEventListener("click", saveSettings);
+      document.getElementById("dedApply").addEventListener("click", applyDeduct);
+      editWish = wishlist().map(function (it) { return { id: it.id, name: it.name, price: it.price, url: it.url || "", goal: !!it.goal, purchased: !!it.purchased }; });
+      renderWishRows();
+      document.getElementById("addWish").addEventListener("click", function () { syncWish(); editWish.push({ id: "w" + Date.now().toString(36), name: "", price: 0, url: "", goal: false, purchased: false }); renderWishRows(); });
+      document.getElementById("saveWish").addEventListener("click", saveWish);
     }).catch(function () { toast("Couldn't reach Hank."); });
   }
 
@@ -294,15 +405,73 @@
   }
   function saveSettings() {
     var pin = getPin(); if (!/^\d{4}$/.test(pin)) { toast("Enter the 4-digit PIN."); return; }
+    var sv = Math.max(0, Number(document.getElementById("alSave").value) || 0), sp = Math.max(0, Number(document.getElementById("alSpend").value) || 0), gv = Math.max(0, Number(document.getElementById("alGive").value) || 0);
+    if (sv + sp + gv !== 100) { toast("Split must add to 100 (now " + (sv + sp + gv) + ")."); return; }
     lastPin = pin;
     var conf = { goal: Number(document.getElementById("setGoal").value) || 0, reward: document.getElementById("setReward").value.trim(),
-      interestPct: Number(document.getElementById("setInt").value) || 0, interestOn: document.getElementById("setIntOn").checked };
+      interestPct: Number(document.getElementById("setInt").value) || 0, interestOn: document.getElementById("setIntOn").checked, alloc: { save: sv, spend: sp, give: gv } };
     fetch("/api/castle/config", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kid: KID, pin: pin, config: conf }) })
       .then(function (r) { return r.json(); }).then(function (j) {
-        if (j.ok) { toast("Goal & interest saved."); return load().then(function () { return maybeAccrue(pin); }).then(load).then(openParent); }
+        if (j.ok) { toast("Saved."); return load().then(function () { return maybeAccrue(pin); }).then(load).then(openParent); }
         if (j.error === "bad-pin") { toast("Wrong PIN."); return; }
         toast("Couldn't save settings.");
       }).catch(function () { toast("Offline — couldn't save."); });
+  }
+  function applyDeduct() {
+    var pin = getPin(); if (!/^\d{4}$/.test(pin)) { toast("Enter the 4-digit PIN."); return; }
+    var amt = Math.abs(Number(document.getElementById("dedAmt").value) || 0); if (!amt) { toast("Enter an amount."); return; }
+    var rsn = document.getElementById("dedRsn").value.trim(); lastPin = pin;
+    fetch("/api/castle/deduct", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kid: KID, pin: pin, amount: amt, reason: rsn }) })
+      .then(function (r) { return r.json(); }).then(function (j) {
+        if (j.ok) { toast("Deducted −" + money(amt)); return load(true).then(openParent); }
+        if (j.error === "bad-pin") { toast("Wrong PIN."); return; }
+        toast("Couldn't apply.");
+      }).catch(function () { toast("Offline."); });
+  }
+  function renderWishRows() {
+    var bal = balance();
+    var html = editWish.map(function (it, i) {
+      var price = Number(it.price) || 0, can = bal >= price;
+      return '<div class="crow" data-i="' + i + '" style="grid-template-columns:1fr 66px 30px">' +
+        '<input class="inp w-name" placeholder="Item" value="' + esc(it.name) + '">' +
+        '<input class="inp w-price" type="number" placeholder="$" value="' + price + '">' +
+        '<button class="cdel" data-i="' + i + '">✕</button>' +
+        '<input class="inp full w-url" placeholder="Link (Amazon, etc.)" value="' + esc(it.url || "") + '">' +
+        (it.purchased ? '<div class="full cap">✓ purchased</div>'
+          : '<div class="full" style="display:flex;gap:8px;align-items:center"><span class="cap" style="margin:0">' + (it.goal ? "⭐ goal" : "") + (can ? " · affordable" : "") + '</span><button class="btns w-buy" data-i="' + i + '" style="margin-left:auto;padding:6px 10px;font-size:12px">Mark purchased</button></div>') +
+        "</div>";
+    }).join("");
+    var box = document.getElementById("wishRows"); box.innerHTML = html;
+    Array.prototype.forEach.call(box.querySelectorAll(".cdel"), function (b) { b.addEventListener("click", function () { syncWish(); editWish.splice(+b.dataset.i, 1); renderWishRows(); }); });
+    Array.prototype.forEach.call(box.querySelectorAll(".w-buy"), function (b) { b.addEventListener("click", function () { markPurchased(editWish[+b.dataset.i]); }); });
+  }
+  function syncWish() {
+    var rows = document.querySelectorAll("#wishRows .crow");
+    editWish = Array.prototype.map.call(rows, function (r, i) {
+      var prev = editWish[i] || {};
+      return { id: prev.id || ("w" + Date.now().toString(36) + i), name: r.querySelector(".w-name").value.trim(), price: Number(r.querySelector(".w-price").value) || 0, url: r.querySelector(".w-url").value.trim(), goal: !!prev.goal, purchased: !!prev.purchased };
+    }).filter(function (it) { return it.name; });
+  }
+  function saveWish() {
+    var pin = getPin(); if (!/^\d{4}$/.test(pin)) { toast("Enter the 4-digit PIN."); return; }
+    syncWish(); lastPin = pin;
+    fetch("/api/castle/wishlist", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kid: KID, pin: pin, wishlist: editWish }) })
+      .then(function (r) { return r.json(); }).then(function (j) {
+        if (j.ok) { toast("Wishlist saved."); return load(true).then(openParent); }
+        if (j.error === "bad-pin") { toast("Wrong PIN."); return; }
+        toast("Couldn't save.");
+      }).catch(function () { toast("Offline."); });
+  }
+  function markPurchased(it) {
+    var pin = getPin(); if (!/^\d{4}$/.test(pin)) { toast("Enter the 4-digit PIN."); return; }
+    if (!it.id || !wishlist().some(function (x) { return x.id === it.id; })) { toast("Save the wishlist first, then mark purchased."); return; }
+    lastPin = pin;
+    fetch("/api/castle/purchase", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kid: KID, pin: pin, id: it.id }) })
+      .then(function (r) { return r.json(); }).then(function (j) {
+        if (j.ok) { toast("Purchased — posted a Spend entry."); return load(true).then(openParent); }
+        if (j.error === "bad-pin") { toast("Wrong PIN."); return; }
+        toast("Couldn't complete.");
+      }).catch(function () { toast("Offline."); });
   }
   function savePin() {
     var pin = (document.getElementById("newpin").value || "").trim();
@@ -348,16 +517,16 @@
   // ---- Load + auto-refresh (keeps every device in sync; skips re-render when nothing changed or a parent is editing) ----
   var lastSig = "", loadedOnce = false;
   function modalOpen() { var pm = document.getElementById("pm"); return !!(pm && pm.classList.contains("on")); }
-  function sig() { return entries.map(function (e) { return e.key + e.status + e.amount; }).join("|") + "#" + JSON.stringify(apiCat[KID] || "") + "#" + JSON.stringify(apiCfg[KID] || ""); }
+  function sig() { return entries.map(function (e) { return e.key + e.status + e.amount; }).join("|") + "#" + JSON.stringify(apiCat[KID] || "") + "#" + JSON.stringify(apiCfg[KID] || "") + "#" + JSON.stringify(apiWish[KID] || ""); }
   function load(force) {
     return fetch("/api/castle").then(function (r) { return r.json(); }).then(function (j) {
-      entries = (j && j.entries) || []; apiCat = (j && j.catalogs) || {}; apiCfg = (j && j.configs) || {};
+      entries = (j && j.entries) || []; apiCat = (j && j.catalogs) || {}; apiCfg = (j && j.configs) || {}; apiWish = (j && j.wishlists) || {};
       loadedOnce = true;
       var s = sig(); if (!force && s === lastSig) return; lastSig = s; render();
     }).catch(function () { if (!loadedOnce) { render(); toast("Couldn't reach Hank — showing defaults."); } });
   }
   document.addEventListener("visibilitychange", function () { if (!document.hidden && !modalOpen()) load(); });
   setInterval(function () { if (!document.hidden && !modalOpen()) load(); }, 30000);
-  var root = document.createElement("div"); root.id = "app"; document.body.appendChild(root);
+  var root = document.createElement("div"); root.id = "app"; root.style.position = "relative"; document.body.appendChild(root);
   load(true);
 })();

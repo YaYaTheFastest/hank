@@ -252,10 +252,10 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-06-30";
+const BUILD_DATE="2026-07-04";
 // Needs From You — only items that require Darren physically (a photo / a decision). Hank's homework never appears here.
 const NEEDS=[
- // Whirlpool freezer inducted 2026-07-01 from the nameplate photo (WZF34X20DW07 / UE4506196). No open physical Needs (Toro is a wrong-manual issue → MANUALS_NEEDED below).
+ // Whirlpool freezer inducted 2026-07-01 from the nameplate photo (WZF34X20DW07 / UE4506196). No open physical Needs. (Toro Recycler Max rebuilt manual-first 2026-07-04 → Full.)
 ];
 // Manuals needed — a card can't reach Full without its manual PDF on file (real figures via pdftoppm).
 // Hank finds the direct link; you just save it. Tap the link → Save to Files → _Cowork Inbox, and the next loop builds the card to Full.
@@ -264,7 +264,7 @@ const MANUALS_NEEDED=[
  // Honda CRF110F — DONE 2026-07-01 (built to Full). Below: audit backlog. Links VERIFIED to return a real PDF 2026-07-01 (tap → Save to Files → _Cowork Inbox works). Hank fetches these one-per-session on Mac+Chrome (Chrome blocks bulk auto-downloads).
  // ON FILE as of 2026-07-01 (Darren saved → hosted in deck): Honda GC190/NorthStar, Honda EU2000i, Husq 460, Husq 545, JD Z530R, Toro 21485, CountyLine/Kohler, Litter-Robot 4, Milwaukee 2727-20, Yamaha TT-R110E, Stihl HT 131, DeWalt DCS391. Cards queued for manual-first rebuild by the loop. Stihl MS 261 C-M REMOVED (Darren doesn't own it).
  {eq:"Hyperice Hypervolt 2",url:"https://www.manualslib.com/manual/2483483/Hyperice-Hypervolt-2.html",note:"No ungated mfr PDF; ManualsLib viewer (massager, low priority).",gated:true},
- {eq:"Toro 22\" Recycler Max (21485)",url:"https://manuals.toro.com/268899/index.html",note:"WRONG manual on file — toro-21485.pdf is actually the Model 21445 (Toro engine). This machine is 21485 w/ Briggs 725EXi 163cc. This is the correct Recycler Max manual (Toro viewer); loop to pull the direct getpub PDF on a Chrome pass, then rebuild the card manual-first."},
+ // Toro 22" Recycler Max (21485) — DONE 2026-07-04 (rebuilt manual-first from the interactive Operator's Manual manuals.toro.com/268899: blade 82 N·m, plug 20 N·m, oil 0.44 L/15 oz, air filter 25 h/no-oil, 3-sec stop, 4 job cards). HTML manual = no PDF to host; manualUrl points to the interactive manual; figure PNGs not embedded (toro.com media proxy-blocked + screen locked this pass).
  // Brower MK32HE — DONE 2026-07-04 (built to Full; brower-waterer.pdf on file + hosted, 4 figures).
  // Bison Coach Horse Trailer — DONE 2026-07-04 (built to Full; Dexter running-gear manual bison-dexter-running-gear.pdf on file + hosted, 4 figures). Coach/body floorplan manual = nice-to-have only.
 ];
@@ -292,7 +292,7 @@ const URLS={
 "John Deere X580 (54\")":"https://www.deere.com/en/riding-lawn-equipment/lawn-tractors/",
 "72\" Woods Mower (PTO)":"https://www.woodsequipment.com",
 "2024 John Deere Z530R":"https://www.deere.com/en/mowers/zero-turn-mowers/",
-"Toro 22\" Recycler Max":"https://www.toro.com",
+"Toro 22\" Recycler Max":"https://manuals.toro.com/268899/index.html",
 "Woods BB600-2 Box Blade":"https://www.woodsequipment.com",
 "Husqvarna CRT900 Tiller":"https://www.husqvarna.com",
 "Husqvarna 460 Rancher 24\"":"https://www.husqvarna.com",
@@ -348,11 +348,13 @@ const DATA = [
            {t:"Air Filter · Plugs · Fuel Filter — 100 hr (manual pp.37–38, 41)",s:["Cool engine, key out, leads off. Remove flywheel screen Ⓐ/Ⓑ (3 screws), clean debris","Remove shroud Ⓒ/Ⓓ (6 screws); clean fan area + cooling fins; reinstall aligning slots to intake ridge (screen 3.0 N·m)","Air filter: lift cover, replace paper element Ⓔ (never wash/blow); seat onto intake tube Ⓕ, tighten thumbscrew Ⓖ, close cover Ⓗ","Spark plugs: gap 0.75 mm (0.029 in), torque 20 N·m","Fuel filter (p.41): pinch hose clamps, swap filter same flow direction, check for leaks"],img:["manuals/img/jd-z530r-air-p38.png"]},
            {t:"Blade Sharpen & Deck Clean — 100 hr",s:["Key out, PTO off, pull plug leads, block deck","Remove 3 blades, note sail direction","Sharpen to bevel, balance each","Scrape deck underside, check spindles & belt","Reinstall, anti-seize; wheel-nut torque 24 N·m"]}]},
    {n:"Toro 22\" Recycler Max",power:"Gas",loc:"Shop",basis:"Seasonal",st:"full",
-     specs:[["Model","21485, Personal Pace self-propel (S/N 416586324)"],["Cut","22\" Recycler mulch deck"],["Engine","Briggs & Stratton 725EXi 163cc"],["Engine oil","SAE 30 (10W-30 OK), ~18 oz, no filter"],["Plug","Toro 130-8167"],["Air filter","paper + foam pre-cleaner"]],
-     sched:[["Engine oil check/change","per engine (~50 hr/yr)","r","SAE 30, ~18 oz"],["Air filter","season/25 hr","r","—"],["Blade sharpen & balance","seasonal","g","OK"],["Spark plug","yearly","r","130-8167"],["Pre-use (bail stops blade)","each use","g","OK"]],
-     manual:"Toro 22\" Recycler Max (21485) manual — on-file PDF is wrong model (21445); use correct online manual",manualUrl:"https://manuals.toro.com/268899/index.html",
-     jobs:[{t:"Blade Service & Deck Cleaning",s:["Run fuel low, pull plug lead","Tip air-filter side UP","Remove blade (sail up), sharpen & balance","Scrape deck underside","Torque bolt, reconnect lead"]},
-           {t:"Engine Oil & Seasonal Storage",s:["Warm, stop, pull lead","Drain/extract, refill ~18–20oz SAE 30","Stabilize or run fuel dry","Fog cylinder ~1oz oil, pull slowly","Clean deck, store dry"]}]}]},
+     specs:[["Model","21485 / 21485CA — self-propel auto-pace (S/N 416586324)"],["Size","36 kg (80 lb); 151 / 59 / 109 cm"],["Cut","22\" Recycler; bag-on-demand recycle/bag; don't cut below 51 mm (2\")"],["Engine","Briggs & Stratton 725EXi 163cc"],["Engine oil","0.44 L (15 fl oz), SAE 30 or 10W-30, API SJ+ (fill ~3/4 then dipstick — residual oil)"],["Blade bolt","82 N·m (60 ft-lb) — torque wrench req"],["Spark plug","reinstall 20 N·m (15 ft-lb); Toro 130-8167 (gap = engine manual)"],["Air filter","Toro 130-8165 — tap-clean, no oil"],["Fuel","87 oct, ≤10% ethanol, fresh <30 days"]],
+     sched:[["Oil level + 3-sec blade-stop","each use","g","OK"],["Clean under deck","after each use","g","OK"],["Air filter service","25 hr","r","tap-clean/replace"],["Air filter replace + blade + engine clean","yearly","r","—"],["Oil change (optional)","yearly","g","0.44 L"],["Empty fuel tank","yearly/storage","g","OK"]],
+     manual:"Toro 22in Recycler Max Interactive Operator's Manual — Model 21485/21485CA (online interactive manual; figures render inline by Fig #)",manualUrl:"https://manuals.toro.com/268899/index.html",
+     jobs:[{t:"Pre-Use & Safe Start — 3-sec blade stop (manual)",s:["Check engine oil on level ground, top to Full (Fig 10)","Fuel fresh <30 days, stabilized (Fig 9)","Air filter clean; deck + area clear of throwable objects","Blade bolt tight, edge sharp, not cracked","Start holding blade-control bar; release → engine + blade STOP within 3 sec (else stop, see dealer)","PPE: eye/hearing protection, long pants, slip-resistant shoes"]},
+           {t:"Blade Replacement & Deck Cleaning (manual)",s:["Engine off, parts stopped, disconnect spark-plug wire (Fig 23)","Run tank dry / hand-pump fuel; tip onto side, air filter UP (Fig 27)","Block blade with wood; remove bolt, save all hardware","Install blade — curved ends toward housing (Fig 28)","Torque blade bolt to 82 N·m (60 ft-lb) with a torque wrench","After each use: clean clippings from under the deck (Fig 18), run to dry"]},
+           {t:"Engine Oil Service & Storage (manual)",s:["Warm engine, stop, pull spark-plug wire; level surface","Remove dipstick — Full/High/Low (Fig 25)","Tip on side, air-filter UP, drain via fill tube (Fig 26)","Refill ~3/4 of 0.44 L (15 fl oz) SAE 30/10W-30 API SJ+; wait 3 min; set by dipstick — don't overfill (residual oil)","Storage: stabilizer + run dry; remove plug, add 30 ml (1 fl oz) oil, pull rope to coat","From storage: install plug, torque 20 N·m (15 ft-lb); check oil; fresh fuel"]},
+           {t:"Air Filter Service — 25 hr / yearly (manual, Fig 24)",s:["Engine off/cool, spark-plug wire off","Unclip top of air-filter cover, open (Fig 24)","Remove filter; if excessively dirty, replace","Otherwise tap gently on a hard surface — DO NOT oil","Reinstall filter, re-clip cover"]}]}]},
  {g:"Ground-Engaging Attachments", items:[
    {n:"Woods BB600-2 Box Blade",power:"Manual",loc:"Barn",basis:"As-needed",st:"full",
      specs:[["Type","3-pt box blade — front+rear cutting edges + scarifier shanks"],["Width","6 ft / 7 ft family (confirm from plate)"],["Hitch","Cat. 1 three-point"],["Wear items","reversible cutting edges; replaceable scarifier points"],["Fluids","none — no engine"]],
@@ -623,7 +625,7 @@ const PREUSE={
 "1987 John Deere 2150":["Engine oil & coolant level","Fuel level; check for leaks","Hydraulic level","Tires; PTO guard & hitch","Brakes feel; seatbelt"],
 "John Deere X580 (54\")":["Engine oil level","Fuel level","Tire pressures","Deck blades & no debris buildup","Safety switches (seat, PTO, brake)","Clear deck & engine of debris"],
 "2024 John Deere Z530R":["Engine oil level & condition","Fuel level / freshness","Tire pressures","Blades sharp; clear deck debris","Safety switches (seat, PTO, brake)","Note hour meter (−10h offset)"],
-"Toro 22\" Recycler Max":["Engine oil level (SAE 30)","Fuel fresh","Blade condition; bail/brake works","Air filter clean","Clear underside before mowing"],
+"Toro 22\" Recycler Max":["3-sec stop: release blade-control bar → engine + blade stop ≤3 s","Engine oil level on level ground → Full","Deck + area clear of throwable objects","Blade bolt tight, edge sharp, not cracked","Fuel fresh (<30 days), stabilized"],
 "72\" Woods Mower (PTO)":["Driveline/PTO shield secure","Gearbox oil level; grease zerks","Blades & bolts tight","Deck for cracks/debris","Hitch pins & safety chain"],
 "Husqvarna 460 Rancher 24\"":["Fresh 50:1 mix; top bar oil","Chain tension & sharpness","Bar groove clean; oiler works","Test chain brake","Air filter clean; stop switch","Full PPE; clear escape path"],
 "Husqvarna 545 Mark II 20\"":["Fresh 50:1 mix; top bar oil","Chain tension & sharpness (.325)","Bar groove clean; oiler works","Test chain brake","Air filter clean","Full PPE; clear escape path"],

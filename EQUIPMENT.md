@@ -1,0 +1,1 @@
+Populated: Full list from Hank manuals + visuals integrated.

@@ -239,6 +239,11 @@
       <div id="connStatus" style="margin-top:12px;font-size:13.5px;line-height:1.7"></div>
       <div class="muted" style="margin-top:12px">How to set the password in Cloudflare: Workers &amp; Pages → <b>hank</b> → Settings → Variables and Secrets → Add → type <b>Secret</b>, name <b>HANK_PASSWORD</b>, your value → Save.</div>
     </div>
+    <div class="dsec" id="setupManualsSec" style="border:1px solid var(--green)">
+      <h3 style="color:var(--green)">📄 Manuals to find</h3>
+      <p class="lead">The specific manuals still needed to take these cards to <b>Full</b> (real specs + figures). For each: <b>tap → Save to Files → <code>_Cowork Inbox</code></b>, and the next loop builds the card. This is the same list as the dashboard's "Manuals needed," kept here so it's easy to work through in one sitting.</p>
+      <div id="setupManuals"></div>
+    </div>
   </div>
 </div>
 
@@ -718,6 +723,12 @@ function attention(){
 }
 
 // ---- views ----
+function renderSetupManuals(){
+  const el=document.getElementById('setupManuals');const sec=document.getElementById('setupManualsSec');
+  if(!el)return;
+  if(typeof MANUALS_NEEDED==="undefined"||!MANUALS_NEEDED.length){el.innerHTML='<p class="muted">✅ Nothing outstanding — every card has its manual on file.</p>';return;}
+  el.innerHTML=MANUALS_NEEDED.map((x,i)=>`<div class="att"><span class="ic n"></span><div class="body"><b>${i+1}. ${x.eq}</b> — <a class="lk" href="${x.url}" target="_blank" rel="noopener">📄 Open manual PDF ↗</a><div class="sub">${x.note}${x.gated?' <span class="verify">needs a one-time “I agree” tap first</span>':''}</div></div></div>`).join("");
+}
 function showView(v){
   const ho=document.getElementById('homeView'),d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
   document.getElementById('tabHome').classList.toggle('active',v==="home");
@@ -727,7 +738,7 @@ function showView(v){
   document.getElementById('tabBrief').classList.toggle('active',v==="brief");
   document.getElementById('tabSetup').classList.toggle('active',v==="setup");
   ho.classList.toggle('hide',v!=="home");d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
-  if(v==="setup"){try{document.getElementById('hankKey').value=localStorage.getItem('hankKey')||"";}catch(err){}}
+  if(v==="setup"){try{document.getElementById('hankKey').value=localStorage.getItem('hankKey')||"";}catch(err){}renderSetupManuals();}
   if(v==="chat"){if(!chatMsgs.length){chatMsgs.push({role:"assistant",content:"Hey Darren — Hank here. Ask me about the fleet, a project, or what's due. (I capture anything you want filed for the next loop pass.)"});renderChat();}setTimeout(()=>{var ci=document.getElementById('chatInput');if(ci)ci.focus();},50);}
   window.scrollTo(0,0);
 }

@@ -483,11 +483,26 @@
         else { toast("Couldn't set the PIN."); }
       }).catch(function () { toast("Offline — couldn't set the PIN."); });
   }
+  function mergeEntry(row) {
+    if (!row || !row.key) return;
+    var i, found = -1;
+    for (i = 0; i < entries.length; i++) { if (entries[i].key === row.key) { found = i; break; } }
+    if (found >= 0) entries[found] = row;
+    else entries.unshift(row);
+    lastSig = "";
+    render();
+  }
   function decide(entryKey, act) {
     var pin = getPin(); if (!/^\d{4}$/.test(pin)) { toast("Enter the 4-digit PIN."); return; }
     fetch("/api/castle/" + act, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ key: entryKey, pin: pin }) })
       .then(function (r) { return r.json(); }).then(function (j) {
-        if (j.ok) { lastPin = pin; toast(act === "approve" ? "Approved ✓ posted to balance" : "Declined"); return maybeAccrue(pin).then(load).then(openParent); }
+        if (j.ok) {
+          lastPin = pin;
+          if (typeof j.v === "number") castleV = j.v;
+          if (j.entry) mergeEntry(j.entry);
+          toast(act === "approve" ? "Approved ✓ posted to balance" : "Declined");
+          return maybeAccrue(pin).then(function () { return load(true); }).then(openParent);
+        }
         if (j.error === "bad-pin") { toast("Wrong PIN — try again."); return; }
         if (j.error === "no-pin-set") { toast("Set a PIN first."); return openParent(); }
         toast("Couldn't update.");
@@ -514,19 +529,25 @@
     return Promise.all(jobs);
   }
 
-  // ---- Load + auto-refresh (keeps every device in sync; skips re-render when nothing changed or a parent is editing) ----
-  var lastSig = "", loadedOnce = false;
+  // ---- Load + sync (version check = 1 KV read, no list ops; approve merges instantly) ----
+  var lastSig = "", loadedOnce = false, castleV = 0;
   function modalOpen() { var pm = document.getElementById("pm"); return !!(pm && pm.classList.contains("on")); }
   function sig() { return entries.map(function (e) { return e.key + e.status + e.amount; }).join("|") + "#" + JSON.stringify(apiCat[KID] || "") + "#" + JSON.stringify(apiCfg[KID] || "") + "#" + JSON.stringify(apiWish[KID] || ""); }
+  function applyCastlePayload(j, force) {
+    if (j && j.unchanged) return;
+    entries = (j && j.entries) || []; apiCat = (j && j.catalogs) || {}; apiCfg = (j && j.configs) || {}; apiWish = (j && j.wishlists) || {};
+    if (typeof j.v === "number") castleV = j.v;
+    loadedOnce = true;
+    var s = sig(); if (!force && s === lastSig) return; lastSig = s; render();
+  }
   function load(force) {
-    return fetch("/api/castle").then(function (r) { return r.json(); }).then(function (j) {
-      entries = (j && j.entries) || []; apiCat = (j && j.catalogs) || {}; apiCfg = (j && j.configs) || {}; apiWish = (j && j.wishlists) || {};
-      loadedOnce = true;
-      var s = sig(); if (!force && s === lastSig) return; lastSig = s; render();
+    var url = "/api/castle" + (castleV && !force ? "?v=" + castleV : "");
+    return fetch(url).then(function (r) { return r.json(); }).then(function (j) {
+      applyCastlePayload(j, force);
     }).catch(function () { if (!loadedOnce) { render(); toast("Couldn't reach Hank — showing defaults."); } });
   }
-  document.addEventListener("visibilitychange", function () { if (!document.hidden && !modalOpen()) load(); });
-  setInterval(function () { if (!document.hidden && !modalOpen()) load(); }, 30000);
+  document.addEventListener("visibilitychange", function () { if (!document.hidden && !modalOpen()) load(true); });
+  setInterval(function () { if (!document.hidden && !modalOpen()) load(false); }, 30000);
   var root = document.createElement("div"); root.id = "app"; root.style.position = "relative"; document.body.appendChild(root);
   load(true);
 })();

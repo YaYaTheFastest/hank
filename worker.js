@@ -12,6 +12,86 @@ async function sha256hex(s) {
   const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
   return [...new Uint8Array(b)].map((x) => x.toString(16).padStart(2, "0")).join("");
 }
+
+// Castle Fund: one KV snapshot (castle:bundle) — avoids prefix list() on every read (free tier = 1000 lists/day).
+const CASTLE_BUNDLE_KEY = "castle:bundle";
+
+function emptyCastleBundle() {
+  return { v: 0, entries: [], catalogs: {}, configs: {}, wishlists: {} };
+}
+
+function castleBundleResponse(bundle) {
+  const entries = [...bundle.entries].sort((a, b) => (b.ts || 0) - (a.ts || 0));
+  return { ok: true, v: bundle.v || 0, entries, catalogs: bundle.catalogs || {}, configs: bundle.configs || {}, wishlists: bundle.wishlists || {} };
+}
+
+async function migrateCastleBundle(env) {
+  const bundle = emptyCastleBundle();
+  const el = await env.STATE.list({ prefix: "castle:e:" });
+  for (const k of el.keys) {
+    const v = await env.STATE.get(k.name);
+    if (v) bundle.entries.push({ key: k.name, ...JSON.parse(v) });
+  }
+  const cl = await env.STATE.list({ prefix: "castle:cat:" });
+  for (const k of cl.keys) {
+    const v = await env.STATE.get(k.name);
+    if (v) bundle.catalogs[k.name.slice(11)] = JSON.parse(v);
+  }
+  const gl = await env.STATE.list({ prefix: "castle:cfg:" });
+  for (const k of gl.keys) {
+    const v = await env.STATE.get(k.name);
+    if (v) bundle.configs[k.name.slice(11)] = JSON.parse(v);
+  }
+  const wl = await env.STATE.list({ prefix: "castle:wish:" });
+  for (const k of wl.keys) {
+    const v = await env.STATE.get(k.name);
+    if (v) bundle.wishlists[k.name.slice(12)] = JSON.parse(v);
+  }
+  bundle.v = 1;
+  await env.STATE.put(CASTLE_BUNDLE_KEY, JSON.stringify(bundle));
+  return bundle;
+}
+
+async function loadCastleBundle(env) {
+  const raw = await env.STATE.get(CASTLE_BUNDLE_KEY);
+  if (raw) return JSON.parse(raw);
+  return migrateCastleBundle(env);
+}
+
+async function saveCastleBundle(env, bundle) {
+  bundle.v = (bundle.v || 0) + 1;
+  await env.STATE.put(CASTLE_BUNDLE_KEY, JSON.stringify(bundle));
+  return bundle;
+}
+
+async function persistCastleEntry(env, bundle, key, entry) {
+  const row = { ...entry, key };
+  const i = bundle.entries.findIndex((e) => e.key === key);
+  if (i >= 0) bundle.entries[i] = row;
+  else bundle.entries.push(row);
+  await env.STATE.put(key, JSON.stringify(entry));
+  await saveCastleBundle(env, bundle);
+  return row;
+}
+
+function choreUsedCount(bundle, kid, chore, day, once) {
+  let used = 0;
+  for (const e of bundle.entries) {
+    if (e.kid !== kid || e.chore !== chore || e.status === "declined") continue;
+    if (once ? e.once : e.day === day) used++;
+  }
+  return used;
+}
+
+function bucketsForCfg(configs, kid, amt) {
+  let al = { save: 0, spend: 100, give: 0 };
+  const cf = configs[kid];
+  if (cf && cf.alloc) al = cf.alloc;
+  const save = Math.round(amt * (al.save || 0)) / 100;
+  const give = Math.round(amt * (al.give || 0)) / 100;
+  const spend = Math.round((amt - save - give) * 100) / 100;
+  return { save, spend, give };
+}
 function getCookie(request, name) {
   const h = request.headers.get("Cookie") || "";
   for (const c of h.split(";")) {
@@ -115,43 +195,26 @@ async function handleApi(request, env, url, siteAuthed) {
     if (rt && kv) { const saved = await env.STATE.get("castle:readtoken"); rtOk = !!saved && rt === saved; }
     if (!familyOrLoop && !rtOk) return json({ ok: false, error: "auth" }, 401);
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
-    const list = await env.STATE.list({ prefix: "castle:e:" });
-    const entries = [];
-    for (const k of list.keys) { const v = await env.STATE.get(k.name); if (v) entries.push({ key: k.name, ...JSON.parse(v) }); }
-    entries.sort((a, b) => b.ts - a.ts);
-    const catalogs = {};
-    const cl = await env.STATE.list({ prefix: "castle:cat:" });
-    for (const k of cl.keys) { const v = await env.STATE.get(k.name); if (v) catalogs[k.name.slice(11)] = JSON.parse(v); }
-    const configs = {};
-    const gl = await env.STATE.list({ prefix: "castle:cfg:" });
-    for (const k of gl.keys) { const v = await env.STATE.get(k.name); if (v) configs[k.name.slice(11)] = JSON.parse(v); }
-    const wishlists = {};
-    const wl = await env.STATE.list({ prefix: "castle:wish:" });
-    for (const k of wl.keys) { const v = await env.STATE.get(k.name); if (v) wishlists[k.name.slice(12)] = JSON.parse(v); }
-    return json({ ok: true, entries, catalogs, configs, wishlists });
+    const bundle = await loadCastleBundle(env);
+    const clientV = parseInt(url.searchParams.get("v") || "0", 10);
+    if (clientV > 0 && clientV === bundle.v) return json({ ok: true, unchanged: true, v: bundle.v });
+    return json(castleBundleResponse(bundle));
   }
   if (url.pathname === "/api/castle/log" && request.method === "POST") {
     if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const b = await request.json().catch(() => ({}));
     if (!b.kid || !b.chore) return json({ ok: false, error: "missing-fields" }, 400);
-    // "day" is the kid's LOCAL chore-day (client-computed with a ~4am rollover); fall back to UTC.
     const day = (typeof b.day === "string" && b.day) ? b.day : new Date().toISOString().slice(0, 10);
     const once = !!b.once;
     const qty = Number(b.qty) || 1;
-    // Limit: one-time chores are once EVER; recurring chores are `qty` per chore-day. Enforced server-side.
-    const list = await env.STATE.list({ prefix: "castle:e:" });
-    let used = 0;
-    for (const k of list.keys) {
-      const v = await env.STATE.get(k.name); if (!v) continue; const e = JSON.parse(v);
-      if (e.kid !== b.kid || e.chore !== b.chore || e.status === "declined") continue;
-      if (once ? e.once : e.day === day) used++;
-    }
+    const bundle = await loadCastleBundle(env);
+    const used = choreUsedCount(bundle, b.kid, b.chore, day, once);
     if (used >= (once ? 1 : qty)) return json({ ok: false, error: once ? "once-done" : "daily-limit", used }, 409);
     const id = "castle:e:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
     const entry = { kid: b.kid, chore: b.chore, amount: Number(b.amount) || 0, status: "pending", ts: Date.now(), day, once };
-    await env.STATE.put(id, JSON.stringify(entry));
-    return json({ ok: true, id, entry });
+    const row = await persistCastleEntry(env, bundle, id, entry);
+    return json({ ok: true, id, entry: row, v: bundle.v });
   }
   // Is a parent PIN set yet?
   if (url.pathname === "/api/castle/pinset" && request.method === "GET") {
@@ -169,16 +232,6 @@ async function handleApi(request, env, url, siteAuthed) {
     await env.STATE.put("castle:pin", pin);
     return json({ ok: true, set: true });
   }
-  // helper: split an approved earning into Save/Spend/Give per the kid's allocation (default all Spend).
-  async function bucketsFor(kid, amt) {
-    let al = { save: 0, spend: 100, give: 0 };
-    const c = await env.STATE.get("castle:cfg:" + kid);
-    if (c) { const cf = JSON.parse(c); if (cf.alloc) al = cf.alloc; }
-    const save = Math.round(amt * (al.save || 0)) / 100;
-    const give = Math.round(amt * (al.give || 0)) / 100;
-    const spend = Math.round((amt - save - give) * 100) / 100;
-    return { save, spend, give };
-  }
   async function pinOkFor(b) { const sp = await env.STATE.get("castle:pin"); return authed || (sp && String(b.pin || "") === sp); }
   function newCastleEntry(kid, chore, amount, extra) {
     return Object.assign({ kid, chore, amount, status: "approved", approver: "parent", ts: Date.now(), day: new Date().toISOString().slice(0, 10) }, extra || {});
@@ -191,16 +244,20 @@ async function handleApi(request, env, url, siteAuthed) {
     const savedPin = await env.STATE.get("castle:pin");
     if (!savedPin) return json({ ok: false, error: "no-pin-set" }, 409);
     if (String(b.pin || "") !== savedPin && !authed) return json({ ok: false, error: "bad-pin" }, 401);
-    const v = b.key ? await env.STATE.get(b.key) : null;
-    if (!v) return json({ ok: false, error: "not-found" }, 404);
-    const e = JSON.parse(v);
+    const bundle = await loadCastleBundle(env);
+    const hit = bundle.entries.find((e) => e.key === b.key);
+    if (!hit) return json({ ok: false, error: "not-found" }, 404);
+    const e = { ...hit };
+    delete e.key;
     e.status = url.pathname.endsWith("approve") ? "approved" : "declined";
     e.approver = "parent";
     e.decidedTs = Date.now();
     if (b.note) e.note = b.note;
-    if (e.status === "approved" && !e.buckets && (e.amount || 0) > 0 && e.kind !== "interest") e.buckets = await bucketsFor(e.kid, e.amount);
-    await env.STATE.put(b.key, JSON.stringify(e));
-    return json({ ok: true, entry: e });
+    if (e.status === "approved" && !e.buckets && (e.amount || 0) > 0 && e.kind !== "interest") {
+      e.buckets = bucketsForCfg(bundle.configs, e.kid, e.amount);
+    }
+    const row = await persistCastleEntry(env, bundle, b.key, e);
+    return json({ ok: true, entry: row, v: bundle.v });
   }
 
   // Manual deduction / penalty (PIN) — negative entry against the Spend bucket.
@@ -210,10 +267,11 @@ async function handleApi(request, env, url, siteAuthed) {
     if (!(await pinOkFor(b))) return json({ ok: false, error: "bad-pin" }, 401);
     const amt = Math.abs(Number(b.amount) || 0);
     if (!b.kid || !amt) return json({ ok: false, error: "missing-fields" }, 400);
+    const bundle = await loadCastleBundle(env);
     const id = "castle:e:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
     const entry = newCastleEntry(b.kid, "Deduction" + (b.reason ? ": " + b.reason : ""), -amt, { kind: "deduction", buckets: { save: 0, spend: -amt, give: 0 } });
-    await env.STATE.put(id, JSON.stringify(entry));
-    return json({ ok: true, entry });
+    const row = await persistCastleEntry(env, bundle, id, entry);
+    return json({ ok: true, entry: row, v: bundle.v });
   }
 
   // Parent sets a kid's wishlist array (PIN): [{id,name,price,url,goal,purchased}]
@@ -222,20 +280,24 @@ async function handleApi(request, env, url, siteAuthed) {
     const b = await request.json().catch(() => ({}));
     if (!(await pinOkFor(b))) return json({ ok: false, error: "bad-pin" }, 401);
     if (!b.kid || !Array.isArray(b.wishlist)) return json({ ok: false, error: "missing-fields" }, 400);
+    const bundle = await loadCastleBundle(env);
+    bundle.wishlists[b.kid] = b.wishlist;
     await env.STATE.put("castle:wish:" + b.kid, JSON.stringify(b.wishlist));
-    return json({ ok: true });
+    await saveCastleBundle(env, bundle);
+    return json({ ok: true, v: bundle.v });
   }
 
   // Kid stars one wishlist item as the active goal (no PIN — low-stakes).
   if (url.pathname === "/api/castle/star" && request.method === "POST") {
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const b = await request.json().catch(() => ({}));
-    const raw = await env.STATE.get("castle:wish:" + b.kid);
-    if (!raw) return json({ ok: false, error: "no-wishlist" }, 404);
-    const arr = JSON.parse(raw);
-    arr.forEach(function (it) { it.goal = (it.id === b.id && !it.purchased); });
+    const bundle = await loadCastleBundle(env);
+    const arr = bundle.wishlists[b.kid];
+    if (!arr) return json({ ok: false, error: "no-wishlist" }, 404);
+    arr.forEach((it) => { it.goal = (it.id === b.id && !it.purchased); });
     await env.STATE.put("castle:wish:" + b.kid, JSON.stringify(arr));
-    return json({ ok: true, wishlist: arr });
+    await saveCastleBundle(env, bundle);
+    return json({ ok: true, wishlist: arr, v: bundle.v });
   }
 
   // Parent marks a wishlist item purchased (PIN) — negative Spend entry + flag it.
@@ -243,18 +305,18 @@ async function handleApi(request, env, url, siteAuthed) {
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const b = await request.json().catch(() => ({}));
     if (!(await pinOkFor(b))) return json({ ok: false, error: "bad-pin" }, 401);
-    const raw = await env.STATE.get("castle:wish:" + b.kid);
-    if (!raw) return json({ ok: false, error: "no-wishlist" }, 404);
-    const arr = JSON.parse(raw);
-    const it = arr.find(function (x) { return x.id === b.id; });
+    const bundle = await loadCastleBundle(env);
+    const arr = bundle.wishlists[b.kid];
+    if (!arr) return json({ ok: false, error: "no-wishlist" }, 404);
+    const it = arr.find((x) => x.id === b.id);
     if (!it) return json({ ok: false, error: "not-found" }, 404);
     const price = Number(it.price) || 0;
     const id = "castle:e:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
     const entry = newCastleEntry(b.kid, "Bought: " + it.name, -price, { kind: "purchase", buckets: { save: 0, spend: -price, give: 0 } });
-    await env.STATE.put(id, JSON.stringify(entry));
     it.purchased = true; it.goal = false;
+    const row = await persistCastleEntry(env, bundle, id, entry);
     await env.STATE.put("castle:wish:" + b.kid, JSON.stringify(arr));
-    return json({ ok: true, entry });
+    return json({ ok: true, entry: row, v: bundle.v });
   }
 
   // Parent edits the chore list or settings (goal/reward/interest) — PIN-gated.
@@ -265,14 +327,18 @@ async function handleApi(request, env, url, siteAuthed) {
     if (!savedPin) return json({ ok: false, error: "no-pin-set" }, 409);
     if (String(b.pin || "") !== savedPin) return json({ ok: false, error: "bad-pin" }, 401);
     if (!b.kid) return json({ ok: false, error: "missing-kid" }, 400);
+    const bundle = await loadCastleBundle(env);
     if (url.pathname.endsWith("catalog")) {
       if (!Array.isArray(b.catalog)) return json({ ok: false, error: "missing-catalog" }, 400);
+      bundle.catalogs[b.kid] = b.catalog;
       await env.STATE.put("castle:cat:" + b.kid, JSON.stringify(b.catalog));
     } else {
       if (typeof b.config !== "object" || !b.config) return json({ ok: false, error: "missing-config" }, 400);
+      bundle.configs[b.kid] = b.config;
       await env.STATE.put("castle:cfg:" + b.kid, JSON.stringify(b.config));
     }
-    return json({ ok: true });
+    await saveCastleBundle(env, bundle);
+    return json({ ok: true, v: bundle.v });
   }
 
   // Parent-paid interest. Authorized by the parent PIN (in-app, no loop needed) OR the HANK password (loop).
@@ -284,12 +350,14 @@ async function handleApi(request, env, url, siteAuthed) {
     const pinOk = savedPin && String(b.pin || "") === savedPin;
     if (!authed && !pinOk) return json({ ok: false, error: "bad-pin" }, 401);
     if (!b.kid || b.amount == null || !b.period) return json({ ok: false, error: "missing-fields" }, 400);
-    const list = await env.STATE.list({ prefix: "castle:e:" });
-    for (const k of list.keys) { const v = await env.STATE.get(k.name); if (!v) continue; const e = JSON.parse(v); if (e.kind === "interest" && e.kid === b.kid && e.period === b.period) return json({ ok: true, skipped: "already-accrued" }); }
+    const bundle = await loadCastleBundle(env);
+    if (bundle.entries.some((e) => e.kind === "interest" && e.kid === b.kid && e.period === b.period)) {
+      return json({ ok: true, skipped: "already-accrued", v: bundle.v });
+    }
     const id = "castle:e:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
     const entry = { kid: b.kid, chore: "Interest · " + b.period, amount: Number(b.amount) || 0, status: "approved", approver: "Bank of Mom & Dad", kind: "interest", period: b.period, ts: Date.now(), day: new Date().toISOString().slice(0, 10) };
-    await env.STATE.put(id, JSON.stringify(entry));
-    return json({ ok: true, entry });
+    const row = await persistCastleEntry(env, bundle, id, entry);
+    return json({ ok: true, entry: row, v: bundle.v });
   }
 
   // Everything below requires the correct HANK password (chat + tap-to-answer).

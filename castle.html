@@ -96,16 +96,22 @@
     box.innerHTML = html;
   }
 
-  function load() {
-    fetch("/api/castle").then(function (r) { return r.json(); }).then(function (j) {
-      render((j && j.configs) || {}, (j && j.entries) || [], false);
+  var castleV = 0, lastEntries = [], lastConfigs = {};
+  function load(force) {
+    var url = "/api/castle" + (castleV && !force ? "?v=" + castleV : "");
+    fetch(url).then(function (r) { return r.json(); }).then(function (j) {
+      if (j && j.unchanged) return;
+      if (typeof j.v === "number") castleV = j.v;
+      lastConfigs = (j && j.configs) || {};
+      lastEntries = (j && j.entries) || [];
+      render(lastConfigs, lastEntries, false);
     }).catch(function () { render({}, [], true); });
   }
 
-  render({}, [], false);           // instant paint with defaults
-  load();                           // then live numbers
-  document.addEventListener("visibilitychange", function () { if (!document.hidden) load(); });
-  setInterval(function () { if (!document.hidden) load(); }, 30000);
+  render({}, [], false);
+  load(true);
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) load(true); });
+  setInterval(function () { if (!document.hidden) load(false); }, 30000);
 })();
 </script>
 </body>

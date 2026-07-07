@@ -1,6 +1,6 @@
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
-  // deploy-trigger: 2026-07-07T3 — Grok full deck push + live-verify retry
+  // deploy-trigger: 2026-07-07T4 — Grok supplemental live-verify retry (still stale)
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",

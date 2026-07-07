@@ -98,6 +98,46 @@ function bucketsForCfg(configs, kid, amt) {
   const spend = Math.round((amt - save - give) * 100) / 100;
   return { save, spend, give };
 }
+
+// Capture queue: one KV snapshot — avoids list() on GET /api/answers (same free-tier limit as Castle).
+const CAPTURE_BUNDLE_KEY = "capture:bundle";
+
+function emptyCaptureBundle() {
+  return { v: 0, answers: [], chat: [] };
+}
+
+async function migrateCaptureBundle(env) {
+  const bundle = emptyCaptureBundle();
+  const al = await env.STATE.list({ prefix: "ans:" });
+  for (const k of al.keys) {
+    const v = await env.STATE.get(k.name);
+    if (v) bundle.answers.push({ key: k.name, ...JSON.parse(v) });
+  }
+  const cl = await env.STATE.list({ prefix: "chat:" });
+  for (const k of cl.keys) {
+    const v = await env.STATE.get(k.name);
+    if (v) bundle.chat.push({ key: k.name, ...JSON.parse(v) });
+  }
+  bundle.v = 1;
+  await env.STATE.put(CAPTURE_BUNDLE_KEY, JSON.stringify(bundle));
+  return bundle;
+}
+
+async function loadCaptureBundle(env) {
+  const raw = await env.STATE.get(CAPTURE_BUNDLE_KEY);
+  if (raw) return JSON.parse(raw);
+  try {
+    return await migrateCaptureBundle(env);
+  } catch (e) {
+    return emptyCaptureBundle();
+  }
+}
+
+async function saveCaptureBundle(env, bundle) {
+  bundle.v = (bundle.v || 0) + 1;
+  await env.STATE.put(CAPTURE_BUNDLE_KEY, JSON.stringify(bundle));
+  return bundle;
+}
 function getCookie(request, name) {
   const h = request.headers.get("Cookie") || "";
   for (const c of h.split(";")) {
@@ -399,7 +439,11 @@ async function handleApi(request, env, url, siteAuthed) {
   if (url.pathname === "/api/answer" && request.method === "POST") {
     const body = await request.json().catch(() => ({}));
     const id = "ans:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
-    await env.STATE.put(id, JSON.stringify({ ...body, ts: Date.now() }));
+    const row = { ...body, ts: Date.now() };
+    await env.STATE.put(id, JSON.stringify(row));
+    const bundle = await loadCaptureBundle(env);
+    bundle.answers.push({ key: id, ...row });
+    await saveCaptureBundle(env, bundle);
     return json({ ok: true, stored: id });
   }
 
@@ -418,7 +462,14 @@ async function handleApi(request, env, url, siteAuthed) {
     // log Darren's latest turn so the daily loop can file any action items
     try {
       const last = messages[messages.length - 1];
-      if (last && last.role === "user") await env.STATE.put("chat:" + Date.now(), JSON.stringify({ text: last.content, ts: Date.now() }));
+      if (last && last.role === "user") {
+        const id = "chat:" + Date.now();
+        const row = { text: last.content, ts: Date.now() };
+        await env.STATE.put(id, JSON.stringify(row));
+        const cb = await loadCaptureBundle(env);
+        cb.chat.push({ key: id, ...row });
+        await saveCaptureBundle(env, cb);
+      }
     } catch (e) {}
     let aj;
     try {
@@ -438,30 +489,27 @@ async function handleApi(request, env, url, siteAuthed) {
 
   // List pending captures (the daily loop reads + clears these): tapped answers (ans:) AND in-app chat turns (chat:).
   if (url.pathname === "/api/answers" && request.method === "GET") {
-    const al = await env.STATE.list({ prefix: "ans:" });
-    const answers = [];
-    for (const k of al.keys) {
-      const v = await env.STATE.get(k.name);
-      if (v) answers.push({ key: k.name, ...JSON.parse(v) });
-    }
-    const cl = await env.STATE.list({ prefix: "chat:" });
-    const chat = [];
-    for (const k of cl.keys) {
-      const v = await env.STATE.get(k.name);
-      if (v) chat.push({ key: k.name, ...JSON.parse(v) });
-    }
-    return json({ ok: true, count: answers.length + chat.length, answers, chat });
+    const bundle = await loadCaptureBundle(env);
+    const answers = bundle.answers || [];
+    const chat = bundle.chat || [];
+    return json({ ok: true, count: answers.length + chat.length, answers, chat, v: bundle.v || 0 });
   }
 
   // Clear captures (used by the loop after ingesting): a single key, or ALL ans: + chat:.
   if (url.pathname === "/api/clear" && request.method === "POST") {
     const body = await request.json().catch(() => ({}));
-    if (body.key) { await env.STATE.delete(body.key); return json({ ok: true, cleared: body.key }); }
-    let n = 0;
-    for (const p of ["ans:", "chat:"]) {
-      const list = await env.STATE.list({ prefix: p });
-      for (const k of list.keys) { await env.STATE.delete(k.name); n++; }
+    const bundle = await loadCaptureBundle(env);
+    if (body.key) {
+      await env.STATE.delete(body.key);
+      bundle.answers = bundle.answers.filter((r) => r.key !== body.key);
+      bundle.chat = bundle.chat.filter((r) => r.key !== body.key);
+      await saveCaptureBundle(env, bundle);
+      return json({ ok: true, cleared: body.key });
     }
+    const n = (bundle.answers || []).length + (bundle.chat || []).length;
+    bundle.answers = [];
+    bundle.chat = [];
+    await saveCaptureBundle(env, bundle);
     return json({ ok: true, clearedAll: n });
   }
 

@@ -55,8 +55,14 @@ async function migrateCastleBundle(env) {
 async function loadCastleBundle(env) {
   const raw = await env.STATE.get(CASTLE_BUNDLE_KEY);
   if (raw) return JSON.parse(raw);
-  return migrateCastleBundle(env);
+  try {
+    return await migrateCastleBundle(env);
+  } catch (e) {
+    return null;
+  }
 }
+
+const castleMissing = () => json({ ok: false, error: "castle-bundle-missing", hint: "POST /api/castle/seed-bundle (loop key) or wait for KV list quota reset" }, 503);
 
 async function saveCastleBundle(env, bundle) {
   bundle.v = (bundle.v || 0) + 1;
@@ -189,6 +195,22 @@ async function handleApi(request, env, url, siteAuthed) {
     return json({ ok: true, token });
   }
 
+  // Loop-only: seed bundle without KV list() — use when list quota exhausted or first deploy.
+  if (url.pathname === "/api/castle/seed-bundle" && request.method === "POST") {
+    if (!authed) return json({ ok: false, error: "auth" }, 401);
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const b = await request.json().catch(() => ({}));
+    const bundle = {
+      v: Number(b.v) || 1,
+      entries: Array.isArray(b.entries) ? b.entries : [],
+      catalogs: (b.catalogs && typeof b.catalogs === "object") ? b.catalogs : {},
+      configs: (b.configs && typeof b.configs === "object") ? b.configs : {},
+      wishlists: (b.wishlists && typeof b.wishlists === "object") ? b.wishlists : {},
+    };
+    await env.STATE.put(CASTLE_BUNDLE_KEY, JSON.stringify(bundle));
+    return json({ ok: true, seeded: true, v: bundle.v, entries: bundle.entries.length });
+  }
+
   if (url.pathname === "/api/castle" && request.method === "GET") {
     let rtOk = false;
     const rt = url.searchParams.get("rt") || "";
@@ -196,6 +218,7 @@ async function handleApi(request, env, url, siteAuthed) {
     if (!familyOrLoop && !rtOk) return json({ ok: false, error: "auth" }, 401);
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const bundle = await loadCastleBundle(env);
+    if (!bundle) return castleMissing();
     const clientV = parseInt(url.searchParams.get("v") || "0", 10);
     if (clientV > 0 && clientV === bundle.v) return json({ ok: true, unchanged: true, v: bundle.v });
     return json(castleBundleResponse(bundle));
@@ -209,6 +232,7 @@ async function handleApi(request, env, url, siteAuthed) {
     const once = !!b.once;
     const qty = Number(b.qty) || 1;
     const bundle = await loadCastleBundle(env);
+    if (!bundle) return castleMissing();
     const used = choreUsedCount(bundle, b.kid, b.chore, day, once);
     if (used >= (once ? 1 : qty)) return json({ ok: false, error: once ? "once-done" : "daily-limit", used }, 409);
     const id = "castle:e:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
@@ -245,6 +269,7 @@ async function handleApi(request, env, url, siteAuthed) {
     if (!savedPin) return json({ ok: false, error: "no-pin-set" }, 409);
     if (String(b.pin || "") !== savedPin && !authed) return json({ ok: false, error: "bad-pin" }, 401);
     const bundle = await loadCastleBundle(env);
+    if (!bundle) return castleMissing();
     const hit = bundle.entries.find((e) => e.key === b.key);
     if (!hit) return json({ ok: false, error: "not-found" }, 404);
     const e = { ...hit };
@@ -268,6 +293,7 @@ async function handleApi(request, env, url, siteAuthed) {
     const amt = Math.abs(Number(b.amount) || 0);
     if (!b.kid || !amt) return json({ ok: false, error: "missing-fields" }, 400);
     const bundle = await loadCastleBundle(env);
+    if (!bundle) return castleMissing();
     const id = "castle:e:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
     const entry = newCastleEntry(b.kid, "Deduction" + (b.reason ? ": " + b.reason : ""), -amt, { kind: "deduction", buckets: { save: 0, spend: -amt, give: 0 } });
     const row = await persistCastleEntry(env, bundle, id, entry);
@@ -281,6 +307,7 @@ async function handleApi(request, env, url, siteAuthed) {
     if (!(await pinOkFor(b))) return json({ ok: false, error: "bad-pin" }, 401);
     if (!b.kid || !Array.isArray(b.wishlist)) return json({ ok: false, error: "missing-fields" }, 400);
     const bundle = await loadCastleBundle(env);
+    if (!bundle) return castleMissing();
     bundle.wishlists[b.kid] = b.wishlist;
     await env.STATE.put("castle:wish:" + b.kid, JSON.stringify(b.wishlist));
     await saveCastleBundle(env, bundle);
@@ -292,6 +319,7 @@ async function handleApi(request, env, url, siteAuthed) {
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const b = await request.json().catch(() => ({}));
     const bundle = await loadCastleBundle(env);
+    if (!bundle) return castleMissing();
     const arr = bundle.wishlists[b.kid];
     if (!arr) return json({ ok: false, error: "no-wishlist" }, 404);
     arr.forEach((it) => { it.goal = (it.id === b.id && !it.purchased); });
@@ -306,6 +334,7 @@ async function handleApi(request, env, url, siteAuthed) {
     const b = await request.json().catch(() => ({}));
     if (!(await pinOkFor(b))) return json({ ok: false, error: "bad-pin" }, 401);
     const bundle = await loadCastleBundle(env);
+    if (!bundle) return castleMissing();
     const arr = bundle.wishlists[b.kid];
     if (!arr) return json({ ok: false, error: "no-wishlist" }, 404);
     const it = arr.find((x) => x.id === b.id);
@@ -328,6 +357,7 @@ async function handleApi(request, env, url, siteAuthed) {
     if (String(b.pin || "") !== savedPin) return json({ ok: false, error: "bad-pin" }, 401);
     if (!b.kid) return json({ ok: false, error: "missing-kid" }, 400);
     const bundle = await loadCastleBundle(env);
+    if (!bundle) return castleMissing();
     if (url.pathname.endsWith("catalog")) {
       if (!Array.isArray(b.catalog)) return json({ ok: false, error: "missing-catalog" }, 400);
       bundle.catalogs[b.kid] = b.catalog;
@@ -351,6 +381,7 @@ async function handleApi(request, env, url, siteAuthed) {
     if (!authed && !pinOk) return json({ ok: false, error: "bad-pin" }, 401);
     if (!b.kid || b.amount == null || !b.period) return json({ ok: false, error: "missing-fields" }, 400);
     const bundle = await loadCastleBundle(env);
+    if (!bundle) return castleMissing();
     if (bundle.entries.some((e) => e.kind === "interest" && e.kid === b.kid && e.period === b.period)) {
       return json({ ok: true, skipped: "already-accrued", v: bundle.v });
     }

@@ -212,6 +212,7 @@ async function handleApi(request, env, url, siteAuthed) {
       passwordSetInCloudflare: configured,
       passwordMatches: authed,
       kvConnected: kv,
+      xaiApiKeySet: !!(env.XAI_API_KEY && String(env.XAI_API_KEY).length > 0),
       time: new Date().toISOString(),
     });
   }
@@ -447,19 +448,17 @@ async function handleApi(request, env, url, siteAuthed) {
     return json({ ok: true, stored: id });
   }
 
-  // In-app Hank chat — calls the Anthropic API with the context bundle as the system prompt.
+  // In-app Hank chat — xAI Grok API; context bundle = system prompt (refreshed on deploy).
   if (url.pathname === "/api/chat" && request.method === "POST") {
-    if (!env.ANTHROPIC_API_KEY) return json({ ok: false, error: "no-anthropic-key" }, 400);
+    if (!env.XAI_API_KEY) return json({ ok: false, error: "no-xai-key" }, 400);
     const body = await request.json().catch(() => ({}));
     const messages = Array.isArray(body.messages) ? body.messages.slice(-20) : [];
     if (!messages.length) return json({ ok: false, error: "no-messages" }, 400);
-    // load the context bundle (refreshed by the loop on each deploy)
     let system = "You are HANK, Darren's home & ranch assistant. Be true and honest, answer-first, concise.";
     try {
       const c = await env.ASSETS.fetch(new Request(new URL("/hank-context.md", request.url)));
       if (c.ok) system = await c.text();
     } catch (e) {}
-    // log Darren's latest turn so the daily loop can file any action items
     try {
       const last = messages[messages.length - 1];
       if (last && last.role === "user") {
@@ -471,19 +470,26 @@ async function handleApi(request, env, url, siteAuthed) {
         await saveCaptureBundle(env, cb);
       }
     } catch (e) {}
+    const xaiMessages = [{ role: "system", content: system }, ...messages.filter((m) => m && m.role && m.content)];
     let aj;
     try {
-      const ar = await fetch("https://api.anthropic.com/v1/messages", {
+      const ar = await fetch("https://api.x.ai/v1/chat/completions", {
         method: "POST",
-        headers: { "x-api-key": env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-        body: JSON.stringify({ model: "claude-sonnet-4-6", max_tokens: 1024, system, messages }),
+        headers: { Authorization: "Bearer " + env.XAI_API_KEY, "content-type": "application/json" },
+        body: JSON.stringify({
+          model: "grok-4-fast-non-reasoning",
+          messages: xaiMessages,
+          max_completion_tokens: 1024,
+          temperature: 0.3,
+        }),
       });
       aj = await ar.json();
-      if (!ar.ok) return json({ ok: false, error: "anthropic-error", detail: aj }, 502);
+      if (!ar.ok) return json({ ok: false, error: "xai-error", detail: aj }, 502);
     } catch (e) {
-      return json({ ok: false, error: "anthropic-fetch-failed" }, 502);
+      return json({ ok: false, error: "xai-fetch-failed" }, 502);
     }
-    const reply = (aj.content && aj.content[0] && aj.content[0].text) || "(no reply)";
+    const reply =
+      (aj.choices && aj.choices[0] && aj.choices[0].message && aj.choices[0].message.content) || "(no reply)";
     return json({ ok: true, reply });
   }
 

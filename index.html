@@ -209,7 +209,7 @@
 <li><b>No batches for Darren.</b> Hank drives multi-item work to completion; progress lives in the Action Log. <b>Claude continually evolves the system to stay frictionless.</b></li>
 </ul>
 <p><b>CASTLE FUND</b> = HANK's Family/Kids module. Loop: parents define chore+amount → kid logs → Pending → parent approves → posts to balance. Vault ledgers = source of truth; app has a project page with requirements/design.</p>
-<p><b>LIVE:</b> In-app <b>Ask Hank</b> chat (Claude API, password-gated). Setup tab + Check-connection. Tap-to-answer + chat capture to KV → the daily loop files into the vault. Gmail label <b>HANK-Equipment</b> → tag an email and the loop auto-inducts it (create the label once in Gmail).</p>
+<p><b>LIVE:</b> In-app <b>Ask Hank</b> chat (xAI Grok API, password-gated). Setup tab + Check-connection. Tap-to-answer + chat capture to KV → the Grok loop files into the vault. Gmail label <b>HANK-Equipment</b> → tag an email and the loop auto-inducts it (create the label once in Gmail).</p>
 <p><b>FLEET INDUCTED:</b> all cataloged machines are at the Full standard except the <b>Whirlpool upright freezer</b> (blocked — needs a model/serial plate photo). Latest to Full (2026-06-30): BoxPlunge cold plunge · Square D load center · Ceiling fans (HVLS + Merwry SW1422-BN).</p>
 <p><b>OPEN — waiting on Darren:</b> a photo of the <b>Whirlpool freezer</b> model/serial plate (the only Need). Deferred: money-aggregator app choice.</p>
 <p><b>ANCHORS (vault):</b> Project Hub · Action Log · Equipment Index · Equipment Card Build Protocol · Equipment Induction Process · Needs From You · Notion Fleet Harvest 2026-06 · Photo Harvest 2026-06-29 · AGENTS.md (contract).</p>
@@ -237,7 +237,7 @@
       <input id="hankKey" type="password" placeholder="HANK password" autocomplete="off" style="width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-size:15px;background:#fff;margin-bottom:10px">
       <div class="cta"><button class="p" onclick="saveKey()">Save password</button><button class="s" onclick="checkConn()">Check connection</button></div>
       <div id="connStatus" style="margin-top:12px;font-size:13.5px;line-height:1.7"></div>
-      <div class="muted" style="margin-top:12px">How to set the password in Cloudflare: Workers &amp; Pages → <b>hank</b> → Settings → Variables and Secrets → Add → type <b>Secret</b>, name <b>HANK_PASSWORD</b>, your value → Save.</div>
+      <div class="muted" style="margin-top:12px">Cloudflare secrets (Workers &amp; Pages → <b>hank</b> → Settings → Variables and Secrets):<br>① <b>HANK_PASSWORD</b> — family app password (you already have this).<br>② <b>XAI_API_KEY</b> — from <a href="https://console.x.ai" target="_blank" rel="noopener">console.x.ai</a> → API Keys (same key as Mac loop). Ask Hank chat uses this.<br>You can remove <b>ANTHROPIC_API_KEY</b> after chat works.</div>
     </div>
     <div class="dsec" id="setupManualsSec" style="border:1px solid var(--green)">
       <h3 style="color:var(--green)">📄 Manuals to find</h3>
@@ -257,7 +257,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-07";
+const BUILD_DATE="2026-07-08";
 // Needs From You — only items that require Darren physically (a photo / a decision). Hank's homework never appears here.
 const NEEDS=[
  // Whirlpool freezer inducted 2026-07-01 from the nameplate photo (WZF34X20DW07 / UE4506196). No open physical Needs. (Toro Recycler Max rebuilt manual-first 2026-07-04 → Full.)
@@ -283,9 +283,8 @@ let QA={};
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',5200)}
 const HANK_PRIME="You are HANK (Home And raNch Knowledge), Darren & his wife's household/ranch right-hand. Be true and honest above all — never invent specs/numbers; cite sources; flag uncertainty; admit mistakes. Voice: plainspoken, answer-first, concise, never naggy. If you can read the vault, load 00 Meta/Operating System/Project Hub.md for current state, then give a tight status. If not, say so and work from this.";
 async function askHank(){
-  try{await navigator.clipboard.writeText(HANK_PRIME);toast("Hank prime copied — paste it as your first message in Claude.");}
-  catch(e){toast("Open Claude and paste your Hank prime (iCloud → HANK).");}
-  setTimeout(()=>window.open("https://claude.ai/new","_blank"),900);
+  try{await navigator.clipboard.writeText(HANK_PRIME);toast("Hank prime copied — paste into Grok Build on your Mac, or use in-app Chat.");}
+  catch(e){toast("Use in-app Chat tab, or Grok Build on the vault.");}
 }
 document.getElementById('cap').onchange=async(e)=>{
   const files=[...e.target.files];if(!files.length)return;
@@ -761,7 +760,7 @@ async function sendChat(){
     const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json','X-Hank-Key':key},body:JSON.stringify({messages:chatMsgs})});
     const j=await r.json().catch(()=>({}));
     if(j&&j.ok)chatMsgs.push({role:"assistant",content:j.reply});
-    else if(j&&j.error==="no-anthropic-key")chatMsgs.push({role:"assistant",content:"My API key isn't set yet — add ANTHROPIC_API_KEY in Cloudflare (Setup tab has the steps)."});
+    else if(j&&(j.error==="no-xai-key"||j.error==="no-anthropic-key"))chatMsgs.push({role:"assistant",content:"My xAI key isn't set yet — add XAI_API_KEY in Cloudflare (Setup tab has the steps)."});
     else if(r.status===401)chatMsgs.push({role:"assistant",content:"Password not recognized — open Setup and re-enter it."});
     else chatMsgs.push({role:"assistant",content:"Couldn't reach me right now ("+((j&&j.error)||r.status)+"). Try again in a moment."});
   }catch(e){chatMsgs.push({role:"assistant",content:"Network hiccup — try again."});}
@@ -779,10 +778,11 @@ async function checkConn(){
     const r=await fetch('/api/health',{headers:{'X-Hank-Key':key}});
     const j=await r.json();
     const row=(ok,txt)=>`<div>${ok?"✅":"❌"} ${txt}</div>`;
-    const good=j.passwordMatches&&j.kvConnected;
+    const good=j.passwordMatches&&j.kvConnected&&j.xaiApiKeySet;
     s.innerHTML=row(j.passwordSetInCloudflare,"Password set in Cloudflare")+
       row(j.passwordMatches,"Your password matches")+
       row(j.kvConnected,"Storage (KV) connected")+
+      row(j.xaiApiKeySet,"xAI API key set (Ask Hank chat)")+
       `<div style="margin-top:6px;font-weight:700;color:${good?'var(--ok)':'var(--amber)'}">${good?"All good — backend connected.":"Not fully connected — see above."}</div>`;
   }catch(e){
     s.innerHTML='<div>❌ Couldn\'t reach the backend API.</div><div class="muted">If the app just deployed it may not be live yet — try again shortly.</div>';
@@ -790,7 +790,7 @@ async function checkConn(){
 }
 function copyBrief(){
   const t=document.getElementById('briefBody').innerText;
-  navigator.clipboard.writeText(t).then(()=>toast("Hank brief copied — paste it into a new Claude chat.")).catch(()=>toast("Couldn't copy — select the text manually."));
+  navigator.clipboard.writeText(t).then(()=>toast("Hank brief copied — paste into Grok Build, or say Prime Hank.")).catch(()=>toast("Couldn't copy — select the text manually."));
 }
 function pickAns(id,val){QA[id]=val;renderDash();}
 async function submitAnswers(){

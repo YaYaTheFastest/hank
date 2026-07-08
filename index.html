@@ -141,6 +141,35 @@
     margin-bottom:8px;padding:6px 8px;text-align:center;word-break:break-word}
   .thumb span{color:#9aa291;font-weight:600}
   .hide{display:none}
+  .today{background:#fff;border:2px solid var(--green);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 6px rgba(54,124,43,.12)}
+  .today h2{margin:0 0 10px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--green)}
+  .today .scan{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .today .pill{flex:1;min-width:72px;background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:10px 8px;text-align:center;cursor:pointer}
+  .today .pill b{display:block;font-size:20px;line-height:1.1}
+  .today .pill span{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase}
+  .today .pill.warn b{color:var(--amber)}.today .pill.alert b{color:var(--red)}.today .pill.ok b{color:var(--ok)}
+  .today .line{font-size:13.5px;line-height:1.45;margin:0}
+  .today .line+.line{margin-top:6px}
+  .today .acts{display:flex;gap:8px;margin-top:12px}
+  .today .acts button{flex:1;border:0;border-radius:11px;padding:11px;font-size:13px;font-weight:700;cursor:pointer}
+  .today .acts .p{background:var(--green);color:#fff}
+  .today .acts .s{background:var(--bg);color:var(--green);border:1px solid var(--green)}
+  .more-wrap{margin-top:10px}
+  .more-wrap summary{list-style:none;padding:12px 14px;font-weight:700;font-size:14px;color:var(--green);background:#fff;border:1px solid var(--line);border-radius:14px;cursor:pointer}
+  .more-wrap summary::-webkit-details-marker{display:none}
+  .more-wrap[open] summary{border-radius:14px 14px 0 0;border-bottom:0}
+  .more-wrap .more-in{background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 14px 14px}
+  .more-wrap .more-in .hgrid{padding:0 14px 14px}
+  .chat-starters{display:flex;gap:7px;overflow-x:auto;padding:10px 16px 4px;-webkit-overflow-scrolling:touch}
+  .chat-starters .chip{background:var(--chip);border-color:var(--line)}
+  .scanrow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .scanrow .pill{flex:1;min-width:76px;background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:11px 8px;text-align:center;cursor:pointer}
+  .scanrow .pill b{display:block;font-size:24px;line-height:1}
+  .scanrow .pill span{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase}
+  .scanrow .pill.warn b{color:var(--amber)}.scanrow .pill.alert b{color:var(--red)}.scanrow .pill.ok b{color:var(--ok)}
+  .actionbar.hide{display:none}
+  body.no-bar{padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+  body.no-bar .chatbar{bottom:env(safe-area-inset-bottom)}
 </style>
 </head>
 <body>
@@ -150,30 +179,47 @@
   <div class="tabs">
     <a id="tabHome" class="active" onclick="showView('home')">Home</a>
     <a id="tabChat" onclick="showView('chat')">Chat</a>
-    <a id="tabDash" onclick="showView('dash')">Status</a>
     <a id="tabEquip" onclick="showView('equip')">Equipment</a>
-    <a href="projects.html">Projects</a>
-    <a href="castle.html">Kids</a>
-    <a id="tabBrief" onclick="showView('brief')">Brief</a>
-    <a id="tabSetup" onclick="showView('setup')">Setup</a>
+    <a id="tabMore" onclick="showView('more')">More</a>
   </div>
 </header>
 
 <!-- HOME VIEW -->
 <div id="homeView">
   <div class="home">
-    <div class="hhero"><h2>HANK</h2><p>Home &amp; Ranch OS — pick an area.</p></div>
+    <div id="todayCard" class="today"></div>
     <div class="hgrid">
       <a class="tile" onclick="showView('chat')"><div class="ic">💬</div><div class="tt">Ask Hank</div><div class="ds">chat with your system</div></a>
       <a class="tile" onclick="showView('equip')"><div class="ic">🚜</div><div class="tt">Equipment</div><div class="ds" id="hEquip">machines, by category</div></a>
-      <a class="tile" href="projects.html"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Castle Fund + ranch builds</div></a>
-      <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores & reward</div></a>
-      <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores & $100 goal</div></a>
-      <a class="tile" onclick="showView('dash')"><div class="ic">📊</div><div class="tt">Status</div><div class="ds">Build progress, maintenance, supplies</div></a>
-      <a class="tile" onclick="showView('dash')"><div class="ic">❓</div><div class="tt">Needs / Questions</div><div class="ds" id="hNeeds">things waiting on you</div></a>
-      <a class="tile" onclick="showView('brief')"><div class="ic">🧭</div><div class="tt">Brief</div><div class="ds">copy context for a new chat</div></a>
       <a class="tile" onclick="document.getElementById('cap').click()"><div class="ic">📷</div><div class="tt">Send to Hank</div><div class="ds">drop a photo to the inbox</div></a>
-      <a class="tile" onclick="showView('setup')"><div class="ic">🔌</div><div class="tt">Setup</div><div class="ds" id="hSetup">connect the backend</div></a>
+    </div>
+    <details class="more-wrap">
+      <summary>More areas</summary>
+      <div class="more-in">
+        <div class="hgrid">
+          <a class="tile" href="projects.html"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Castle Fund + ranch builds</div></a>
+          <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
+          <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
+          <a class="tile" onclick="showView('dash')"><div class="ic">📊</div><div class="tt">Status</div><div class="ds">build, maintenance, supplies</div></a>
+          <a class="tile" onclick="showView('brief')"><div class="ic">🧭</div><div class="tt">Brief</div><div class="ds">copy context for Grok Build</div></a>
+          <a class="tile" onclick="showView('setup')"><div class="ic">🔌</div><div class="tt">Setup</div><div class="ds" id="hSetup">connect the backend</div></a>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- MORE VIEW -->
+<div id="moreView" class="hide">
+  <div class="home">
+    <div class="hgrid">
+      <a class="tile" onclick="showView('dash')"><div class="ic">📊</div><div class="tt">Status</div><div class="ds" id="hNeeds">build, maintenance, supplies</div></a>
+      <a class="tile" onclick="showView('brief')"><div class="ic">🧭</div><div class="tt">Brief</div><div class="ds">copy context for Grok Build</div></a>
+      <a class="tile" onclick="showView('setup')"><div class="ic">🔌</div><div class="tt">Setup</div><div class="ds">password &amp; connection</div></a>
+      <a class="tile" href="projects.html"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Castle Fund + ranch builds</div></a>
+      <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
+      <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
+      <a class="tile" onclick="document.getElementById('cap').click()"><div class="ic">📷</div><div class="tt">Send to Hank</div><div class="ds">drop a photo to the inbox</div></a>
     </div>
   </div>
 </div>
@@ -194,7 +240,7 @@
   <div class="dash">
     <div class="dsec">
       <h3>Hank — Brief &amp; Resume</h3>
-      <p class="lead">The key points from our build so far, so nothing's lost. Tap <b>Copy</b>, then paste into a new Claude chat to continue with full context.</p>
+      <p class="lead">Key points from the build — tap <b>Copy</b>, then paste into Grok Build on the vault (or say Prime Hank).</p>
       <button class="p" onclick="copyBrief()" style="margin-bottom:6px">⧉ Copy brief to clipboard</button>
       <div id="briefBody" style="font-size:13px;line-height:1.55">
 <p><b>PRIME —</b> You are HANK (Home And raNch Knowledge), Darren &amp; Deane's household/ranch right-hand. Be true and honest above all — never invent specs; cite sources; flag uncertainty; admit mistakes. Voice: plainspoken, answer-first, concise, never naggy.</p>
@@ -222,6 +268,7 @@
 <!-- CHAT VIEW -->
 <div id="chatView" class="hide">
   <div id="chatLog" class="chatlog"></div>
+  <div class="chat-starters" id="chatStarters"></div>
   <div class="chatbar">
     <input id="chatInput" placeholder="Ask Hank…" autocomplete="off" onkeydown="if(event.key==='Enter')sendChat()">
     <button id="chatSend" onclick="sendChat()">Send</button>
@@ -249,8 +296,7 @@
 
 <div class="sheet" id="sheet"><div class="panel" id="panel"></div></div>
 
-<div class="actionbar">
-  <button class="btn-ask" onclick="askHank()">Ask Hank</button>
+<div class="actionbar hide" id="actionbar">
   <button class="btn-send" onclick="document.getElementById('cap').click()">Send to Hank</button>
 </div>
 <input id="cap" type="file" accept="image/*" multiple style="display:none">
@@ -258,6 +304,8 @@
 
 <script>
 const BUILD_DATE="2026-07-08";
+const LIVE_STATE={refreshed:"2026-07-08",nextDomain:"Finance",rotation:"Recipes → Fitness → Finance",dagvald:75,davikja:65,fleetTotal:45,fleetFull:44,fleetPart:1,inbox:"Clean"};
+const CHAT_STARTERS=["What's due on the fleet?","What's the domain rotation?","Castle balances?","What manuals are still needed?","Job search update?"];
 // Needs From You — only items that require Darren physically (a photo / a decision). Hank's homework never appears here.
 const NEEDS=[
  // Whirlpool freezer inducted 2026-07-01 from the nameplate photo (WZF34X20DW07 / UE4506196). No open physical Needs. (Toro Recycler Max rebuilt manual-first 2026-07-04 → Full.)
@@ -709,6 +757,17 @@ const SUPPLIES=[
 // ---- helpers ----
 function counts(){let f=0,p=0,t=0,tot=0,ver=0;DATA.forEach(g=>g.items.forEach(it=>{tot++;if(it.st==="full")f++;else if(it.st==="part")p++;else t++;const hasFig=(it.jobs||[]).some(j=>Array.isArray(j.img)&&j.img.length);const localMan=typeof it.manualUrl==="string"&&it.manualUrl.indexOf("manuals/")===0;if(hasFig&&localMan)ver++;}));return{f,p,t,tot,ver};}
 function isSetup(txt){txt=(txt||"").toLowerCase();return !txt||txt==="—"||txt.includes("no hours")||txt.includes("set hours")||txt.includes("confirm")||txt.includes("offset");}
+function dueSoon(it){
+  if(it.st==="part"||it.st==="todo")return true;
+  if(it.basis==="Hours"&&(it.sched||[]).some(r=>isSetup(r[3])))return true;
+  return (it.sched||[]).some(r=>{
+    const flag=(r[3]||"").toLowerCase();
+    if(flag.includes("critical"))return true;
+    if(r[2]==="r"&&!isSetup(r[3]))return true;
+    return false;
+  });
+}
+function dueSoonCount(){let n=0;DATA.forEach(g=>g.items.forEach(it=>{if(dueSoon(it))n++;}));return n;}
 // gather attention items across the fleet
 function attention(){
   const crit=[],seasonal=[];let needHours=0;const needHoursList=[];
@@ -731,18 +790,43 @@ function renderSetupManuals(){
   el.innerHTML=MANUALS_NEEDED.map((x,i)=>`<div class="att"><span class="ic n"></span><div class="body"><b>${i+1}. ${x.eq}</b> — <a class="lk" href="${x.url}" target="_blank" rel="noopener">📄 Open manual PDF ↗</a><div class="sub">${x.note}${x.gated?' <span class="verify">needs a one-time “I agree” tap first</span>':''}</div></div></div>`).join("");
 }
 function showView(v){
-  const ho=document.getElementById('homeView'),d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
+  const ho=document.getElementById('homeView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
+  const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup";
   document.getElementById('tabHome').classList.toggle('active',v==="home");
   document.getElementById('tabChat').classList.toggle('active',v==="chat");
-  document.getElementById('tabDash').classList.toggle('active',v==="dash");
   document.getElementById('tabEquip').classList.toggle('active',v==="equip");
-  document.getElementById('tabBrief').classList.toggle('active',v==="brief");
-  document.getElementById('tabSetup').classList.toggle('active',v==="setup");
-  ho.classList.toggle('hide',v!=="home");d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
+  document.getElementById('tabMore').classList.toggle('active',moreTab);
+  ho.classList.toggle('hide',v!=="home");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
+  document.getElementById('actionbar').classList.toggle('hide',!(v==="equip"||v==="more"));
+  document.body.classList.toggle('no-bar',v==="home"||v==="chat");
+  if(v==="home")renderToday();
   if(v==="setup"){try{document.getElementById('hankKey').value=localStorage.getItem('hankKey')||"";}catch(err){}renderSetupManuals();}
+  if(v==="dash")renderDash();
   if(v==="chat"){if(!chatMsgs.length){chatMsgs.push({role:"assistant",content:"Hey Darren — Hank here. Ask me about the fleet, a project, or what's due. (I capture anything you want filed for the next loop pass.)"});renderChat();}setTimeout(()=>{var ci=document.getElementById('chatInput');if(ci)ci.focus();},50);}
   window.scrollTo(0,0);
 }
+function renderToday(){
+  const a=attention(),mn=(typeof MANUALS_NEEDED!=="undefined")?MANUALS_NEEDED.length:0,wn=NEEDS.length,due=dueSoonCount();
+  const el=document.getElementById('todayCard');if(!el)return;
+  el.innerHTML=`<h2>Today</h2>
+    <div class="scan">
+      <div class="pill ${wn?'warn':''}" onclick="showView('dash')"><b>${wn}</b><span>Needs</span></div>
+      <div class="pill ${mn?'warn':''}" onclick="showView('dash')"><b>${mn}</b><span>Manuals</span></div>
+      <div class="pill" onclick="goDueSoon()"><b>${due}</b><span>Due soon</span></div>
+      <div class="pill ${a.crit.length?'alert':''}" onclick="showView('dash')"><b>${a.crit.length}</b><span>Critical</span></div>
+    </div>
+    <p class="line"><b>Next:</b> ${LIVE_STATE.nextDomain} pass (${LIVE_STATE.rotation})</p>
+    <p class="line"><b>Castle:</b> Dagvald $${LIVE_STATE.dagvald} · Davikja $${LIVE_STATE.davikja}</p>
+    <p class="line"><b>Fleet:</b> ${LIVE_STATE.fleetFull} Full · ${LIVE_STATE.fleetPart} in progress · inbox ${LIVE_STATE.inbox.toLowerCase()}</p>
+    <div class="acts"><button class="p" onclick="showView('chat')">Ask Hank</button><button class="s" onclick="showView('equip')">Equipment</button></div>`;
+}
+function initChatStarters(){
+  const el=document.getElementById('chatStarters');if(!el)return;
+  el.innerHTML=CHAT_STARTERS.map(t=>`<button class="chip" onclick="starterChat('${t.replace(/'/g,"\\'")}')">${t}</button>`).join("");
+}
+function starterChat(t){document.getElementById('chatInput').value=t;sendChat();}
+function goDueSoon(){filter="Due soon";syncChips();showView('equip');render();}
+function syncChips(){[...chips.children].forEach(c=>c.classList.toggle('active',c.textContent===filter));}
 let chatMsgs=[];
 function escapeHtml(s){return (s||"").replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
 function renderChat(){
@@ -810,34 +894,40 @@ async function submitAnswers(){
 }
 
 function renderDash(){
-  const c=counts(),a=attention();const pct=Math.round(c.f/c.tot*100);
-  const wF=c.f/c.tot*100,wP=c.p/c.tot*100,wT=c.t/c.tot*100;
-  let h="";
-  // open questions — tap to answer
+  const c=counts(),a=attention(),mn=MANUALS_NEEDED.length,wn=NEEDS.length,due=dueSoonCount();
+  let h=`<div class="scanrow">
+    <div class="pill ${wn?'warn':''}"><b>${wn}</b><span>Needs you</span></div>
+    <div class="pill ${mn?'warn':''}"><b>${mn}</b><span>Manuals</span></div>
+    <div class="pill" onclick="goDueSoon()"><b>${due}</b><span>Due soon</span></div>
+    <div class="pill ${a.needHours?'warn':''}"><b>${a.needHours}</b><span>Need hours</span></div>
+    <div class="pill ${a.crit.length?'alert':''}"><b>${a.crit.length}</b><span>Critical</span></div>
+  </div>`;
   if(typeof QUESTIONS!=="undefined" && QUESTIONS.length){
-    h+=`<div class="dsec" style="border:1px solid var(--green)"><h3 style="color:var(--green)">Open questions · ${QUESTIONS.length}</h3><p class="lead">Tap an answer for each, then <b>Copy</b> and drop it in _Cowork Inbox (or paste to Hank). No typing.</p>`;
+    h+=`<div class="dsec" style="border:1px solid var(--green)"><h3 style="color:var(--green)">Open questions · ${QUESTIONS.length}</h3>`;
     QUESTIONS.forEach(q=>{
       h+=`<div class="att" style="display:block"><div class="body" style="width:100%"><b>${q.id}. ${q.q}</b><div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px">`+
         q.opts.map(o=>`<button class="chip${QA[q.id]===o?' active':''}" onclick="pickAns(${q.id},'${o.replace(/'/g,"\\'")}')">${o}</button>`).join("")+
         `</div></div></div>`;
     });
     const ansd=Object.keys(QA).length;
-    h+=`<div class="cta"><button class="p" onclick="submitAnswers()">Send answers to Hank (${ansd}/${QUESTIONS.length})</button></div></div>`;
+    h+=`<div class="cta"><button class="p" onclick="submitAnswers()">Send answers (${ansd}/${QUESTIONS.length})</button></div></div>`;
   }
-  // needs from you — top of dashboard
   if(NEEDS.length){
-    h+=`<div class="dsec" style="border:1px solid var(--amber)"><h3 style="color:var(--amber)">Needs from you · ${NEEDS.length}</h3><p class="lead">Quick things only you can grab — a photo clears each one. Drop it in <b>_Cowork Inbox</b> and Hank takes it from there.</p>`;
+    h+=`<div class="dsec" style="border:1px solid var(--amber)"><h3 style="color:var(--amber)">Needs from you · ${NEEDS.length}</h3>`;
     NEEDS.forEach(x=>{h+=`<div class="att"><span class="ic n"></span><div class="body"><b>${x.eq}</b> — ${x.ask}<div class="sub">${x.why}</div></div></div>`;});
     h+=`<div class="cta"><button class="p" onclick="document.getElementById('cap').click()">📷 Send a photo</button></div></div>`;
   }
-  // manuals needed — tap the link, save the PDF to _Cowork Inbox, Hank builds the card to Full
-  if(typeof MANUALS_NEEDED!=="undefined" && MANUALS_NEEDED.length){
-    h+=`<div class="dsec" style="border:1px solid var(--green)"><h3 style="color:var(--green)">Manuals needed · ${MANUALS_NEEDED.length}</h3><p class="lead">A card can't reach Full without its manual PDF on file. Hank found the link — just save it: <b>tap → Save to Files → _Cowork Inbox</b>, and the next loop builds the card with real figures.</p>`;
-    MANUALS_NEEDED.forEach(x=>{h+=`<div class="att"><span class="ic n"></span><div class="body"><b>${x.eq}</b> — <a class="lk" href="${x.url}" target="_blank" rel="noopener">📄 Open manual PDF ↗</a><div class="sub">${x.note}${x.gated?' <span class="verify">needs a one-time “I agree” tap first</span>':''}</div></div></div>`;});
+  h+=`<div class="dsec"><h3>Maintenance</h3>`;
+  if(a.crit.length){a.crit.forEach(x=>{h+=`<div class="att"><span class="ic r"></span><div class="body"><b>${x.n}</b> — ${x.task}<div class="sub">${x.sub}</div></div><span class="go" onclick="openByName('${x.n.replace(/'/g,"\\'")}')">Open ›</span></div>`;});}
+  h+=`<div class="att"><span class="ic a"></span><div class="body"><b>Mowing season</b><div class="sub">Sharpen/balance Z530R &amp; X580 decks. Winterize not due until fall.</div></div></div>`;
+  h+=`<div class="att"><span class="ic n"></span><div class="body"><b>${a.needHours} machines need hour meters</b><div class="sub">Due-dates stay grey until a starting count is logged.</div></div></div>`;
+  h+=`<div class="cta"><button class="p" onclick="document.getElementById('cap').click()">📷 Hour-meter photo</button><button class="s" onclick="goDueSoon()">Due soon list</button></div></div>`;
+  if(mn){
+    h+=`<div class="dsec" style="border:1px solid var(--green)"><h3 style="color:var(--green)">Manuals needed · ${mn}</h3><p class="lead">Tap link → Save to Files → <b>_Cowork Inbox</b>.</p>`;
+    MANUALS_NEEDED.forEach(x=>{h+=`<div class="att"><span class="ic n"></span><div class="body"><b>${x.eq}</b> — <a class="lk" href="${x.url}" target="_blank" rel="noopener">📄 Open PDF ↗</a><div class="sub">${x.note}${x.gated?' <span class="verify">tap “I agree” first</span>':''}</div></div></div>`;});
     h+=`</div>`;
   }
-  // build status
-  h+=`<div class="dsec"><h3>Build status</h3><p class="lead">Every machine has a card (<b>inducted</b>). <b>Manual-backed</b> = rebuilt from the machine's own manual with real specs, torques &amp; embedded figures. The rest are <b>provisional</b> (web-sourced), being upgraded by the loop as manuals land.</p>
+  h+=`<div class="dsec"><h3>Build</h3>
     <div class="stats">
       <div class="stat g"><b>${c.ver}</b><span>Manual-backed</span></div>
       <div class="stat a"><b>${c.tot-c.ver}</b><span>Provisional</span></div>
@@ -845,35 +935,25 @@ function renderDash(){
       <div class="stat"><b>${Math.round(c.ver/c.tot*100)}%</b><span>Verified</span></div>
     </div>
     <div class="bar"><i class="bg" style="width:${c.ver/c.tot*100}%"></i><i class="ba" style="width:${(c.tot-c.ver)/c.tot*100}%"></i></div>
-    <div class="barlbl">${c.ver} of ${c.tot} machines manual-backed (real specs + figures) · Hank is rebuilding the rest from their manuals.</div></div>`;
-  // job search — weekly one-liner (refreshed by the Monday loop pass)
-  h+=`<div class="dsec"><h3>Job search · weekly</h3><p class="lead"><b>Wk of 2026-07-06:</b> ADUSA is the live cluster — <b>Director, Network Strategy &amp; Optimization</b> (Salisbury) is still open, and ADUSA just broke ground on an <b>$860M Burlington DC</b> (~25 min away → DC-ops leadership pipeline). The April <b>ITG VP</b> role looks filled. <b>Next:</b> apply to ADUSA Network Strategy + a warm note to CSCO Sanja Krajnovic.</p></div>`;
-  // needs attention
-  h+=`<div class="dsec"><h3>Needs attention</h3><p class="lead">Flagged tasks and what's blocking live due-dates.</p>`;
-  if(a.crit.length){a.crit.forEach(x=>{h+=`<div class="att"><span class="ic r"></span><div class="body"><b>${x.n}</b> — ${x.task}<div class="sub">${x.sub}</div></div><span class="go" onclick="openByName('${x.n.replace(/'/g,"\\'")}')">Open ›</span></div>`;});}
-  // seasonal context (June = mowing season; winterize not due)
-  h+=`<div class="att"><span class="ic a"></span><div class="body"><b>Mowing season is on</b><div class="sub">Keep deck blades sharp/balanced on the Z530R & X580. Winterize tasks (saws, pressure washer) aren't due until fall.</div></div></div>`;
-  // set hours
-  h+=`<div class="att"><span class="ic n"></span><div class="body"><b>${a.needHours} hour-based machines need a meter reading</b><div class="sub">Due-dates stay grey until Hank has a starting hour count. Snap the hour meter and send it.</div></div></div>`;
-  h+=`<div class="cta"><button class="p" onclick="document.getElementById('cap').click()">📷 Send hour-meter photo</button><button class="s" onclick="askHank()">Ask Hank</button></div></div>`;
-  // supplies
-  h+=`<div class="dsec"><h3>Supplies · reorder reference</h3><p class="lead">Consumables pulled from the Full cards — a shopping reference for the shop.</p>`;
+    <div class="barlbl">${c.ver}/${c.tot} manual-backed · loop upgrades the rest.</div></div>`;
+  h+=`<div class="dsec"><h3>Job search</h3><p class="lead"><b>Wk 07-06:</b> ADUSA <b>Director, Network Strategy</b> (Salisbury) open · $860M Burlington DC breaking ground. <b>Next:</b> apply + warm note to CSCO Sanja Krajnovic.</p></div>`;
+  h+=`<div class="dsec"><h3>Supplies</h3><p class="lead">Shop reorder reference from Full cards.</p>`;
   SUPPLIES.forEach(s=>{h+=`<div class="sup"><span class="k">${s[0]}</span><span class="v">${s[1]}</span></div>`;});
-  h+=`<div class="note">Quantities aren't tracked yet. When something runs low, snap it and send it — Hank adds it to a quantified reorder list for the shared shopping Reminders. <span class="verify">confirm fitment before buying</span></div></div>`;
+  h+=`<div class="note">Quantities not tracked — snap when low. <span class="verify">confirm fitment</span></div></div>`;
   document.getElementById('dash').innerHTML=h;
 }
 function openByName(n){let found=null,grp="";DATA.forEach(g=>g.items.forEach(it=>{if(it.n===n){found=it;grp=g.g;}}));if(found){showView('equip');openDetail(found,grp);}}
 
 // ---- equipment list ----
-let filter="All", query="";
+let filter="Due soon", query="";
 const chips=document.getElementById('chips');
-["All",...DATA.map(d=>d.g)].forEach(g=>{const b=document.createElement('button');b.className="chip"+(g==="All"?" active":"");b.textContent=g;b.onclick=()=>{filter=g;[...chips.children].forEach(c=>c.classList.remove('active'));b.classList.add('active');render()};chips.appendChild(b)});
+["Due soon","All",...DATA.map(d=>d.g)].forEach(g=>{const b=document.createElement('button');b.className="chip"+(g==="Due soon"?" active":"");b.textContent=g;b.onclick=()=>{filter=g;syncChips();render()};chips.appendChild(b)});
 document.getElementById('q').oninput=e=>{query=e.target.value.toLowerCase();render()};
 
 let total=0;DATA.forEach(d=>total+=d.items.length);
 document.getElementById('count').textContent=total+" machines · updated "+BUILD_DATE;
-(function(){const he=document.getElementById('hEquip');if(he)he.textContent=total+" machines, by category";
- const hn=document.getElementById('hNeeds');const mn=(typeof MANUALS_NEEDED!=="undefined")?MANUALS_NEEDED.length:0;const wn=NEEDS.length+mn;if(hn)hn.textContent=wn?(wn+" waiting on you"):"nothing waiting — all clear";})();
+(function(){const he=document.getElementById('hEquip');if(he)he.textContent=total+" machines · Due soon default";
+ const hn=document.getElementById('hNeeds');const mn=(typeof MANUALS_NEEDED!=="undefined")?MANUALS_NEEDED.length:0;const wn=NEEDS.length+mn;if(hn)hn.textContent=wn?(wn+" waiting on you"):"all clear";})();
 
 function tileHint(it){
   if(it.st==="todo")return "Queued to induct";
@@ -888,7 +968,8 @@ function render(){
   const list=document.getElementById('list');list.innerHTML="";let shown=0;
   DATA.forEach(d=>{
     if(filter!=="All"&&filter!==d.g)return;
-    const items=d.items.filter(it=>it.n.toLowerCase().includes(query));
+    let items=d.items.filter(it=>it.n.toLowerCase().includes(query));
+    if(filter==="Due soon")items=items.filter(dueSoon);
     if(!items.length)return;
     const sec=document.createElement('div');sec.className="group";
     sec.innerHTML=`<h2>${d.g}</h2>`;
@@ -946,8 +1027,11 @@ async function logMaint(name){
 function closeSheet(){document.getElementById('sheet').classList.remove('open')}
 document.getElementById('sheet').onclick=e=>{if(e.target.id==="sheet")closeSheet()};
 
+renderToday();
+initChatStarters();
 renderDash();
 render();
+showView('home');
 </script>
 </body>
 </html>

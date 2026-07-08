@@ -1,6 +1,6 @@
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
-  // deploy-trigger: 2026-07-08T2 — hank-context LIVE STATE refresh (domain rotation, Castle, fleet)
+  // deploy-trigger: 2026-07-08T3 — ADHD layout (4 tabs, Today card, Due soon, chat starters)
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",

@@ -14,7 +14,7 @@ DOMAIN DEEPENING ROTATION (one cited pass per loop): **Recipes → Fitness → F
 
 CASTLE FUND (LIVE): kids chore → Pending → parent PIN approve → balance. Dagvald and Davikja — balances in LIVE STATE.
 
-THE APP: Cloudflare Worker + KV. xAI Grok (`grok-4-fast-non-reasoning`). Tabs: Home · Ask Hank · Equipment · Projects · Status · Brief · Setup.
+THE APP: Cloudflare Worker + KV. xAI Grok (`grok-4-fast-non-reasoning`). Tabs: Home · Chat · Equipment · More (Status, Brief, Setup, Projects/Kids inside More).
 
 ---
 
@@ -34,7 +34,7 @@ THE APP: Cloudflare Worker + KV. xAI Grok (`grok-4-fast-non-reasoning`). Tabs: H
 
 **Readwise:** 967 ledgered, pending **0** (full compile done).
 
-**App deploy:** `b602440`, BUILD_DATE 2026-07-08. In-app chat = xAI.
+**App deploy:** ADHD layout (4 tabs, Today card, Due soon default, chat starters). BUILD_DATE 2026-07-08. In-app chat = xAI.
 
 **Open Needs From You:** DR Leaf Vacuum engine plate photo (oil grade + plug #). Finance: entity structure + money aggregator choice (Monarch/Copilot/YNAB) — deferred until Finance pass.
 

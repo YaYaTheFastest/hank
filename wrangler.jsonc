@@ -1,6 +1,6 @@
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
-  // deploy-trigger: 2026-07-08T1 — in-app Ask Hank chat → xAI Grok API (XAI_API_KEY)
+  // deploy-trigger: 2026-07-08T2 — hank-context LIVE STATE refresh (domain rotation, Castle, fleet)
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",

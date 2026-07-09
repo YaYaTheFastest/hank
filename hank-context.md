@@ -18,25 +18,25 @@ THE APP: Cloudflare Worker + KV. xAI Grok (`grok-4-fast-non-reasoning`). Tabs: H
 
 ---
 
-## LIVE STATE (refreshed 2026-07-08 — Grok loop updates this on each deploy)
+## LIVE STATE (refreshed 2026-07-09 — Grok loop updates this on each deploy)
 
 **Operator:** Grok sole. Claude retired.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness.
+**Next domain (rotation):** **Recipes** — then Fitness → Finance.
 
-**Recent domain work (07-08):** Fitness — Easy Strength (Pavel & Dan John) principle note. Recipes — Rick Bayless Carnitas ◐→●. Finance pass queued next.
+**Recent domain work (07-09):** Finance — E-Myth Systems — Work ON the Ranch (Gerber, Readwise-cited). (07-08: Fitness Easy Strength; Recipes Carnitas.)
 
 **Inbox:** Clean (vault + _Cowork Inbox). No maintenance-done pending.
 
-**Fleet:** 45 machines = 44 ●Full + 1 ◐ (Frontier AP10F). Manual-backed ≈ 22.
+**Fleet:** 45 machines = 44 ●Full + 1 ◐ (Frontier AP10F — 36" tines confirmed, still needs OM). DCS361 miter manual-backed 07-09. Hypervolt 2 Black locked (no OM required). Manual-backed ≈ 22+.
 
 **Castle balances (KV):** Dagvald **$75**, Davikja **$65**. Queues **empty**.
 
-**Readwise:** 967 ledgered, pending **0** (full compile done).
+**Readwise:** 967 ledgered, pending **0**.
 
-**App deploy:** ADHD layout (4 tabs, Today card, Due soon default, chat starters). BUILD_DATE 2026-07-08. In-app chat = xAI.
+**App deploy:** BUILD_DATE 2026-07-09. In-app chat = xAI.
 
-**Open Needs From You:** DR Leaf Vacuum engine plate photo (oil grade + plug #). Finance: entity structure + money aggregator choice (Monarch/Copilot/YNAB) — deferred until Finance pass.
+**Open Needs From You:** DR Leaf Vacuum engine plate photo. Finance: entity structure + money aggregator (Monarch/Copilot/YNAB) still deferred. Bison VIN owner packet (nice-to-have). AP10F operator manual (PC13380).
 
 **Job search:** Active — weekly refresh Mondays (next ~07-13).
 

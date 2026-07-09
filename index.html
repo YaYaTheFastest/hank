@@ -305,7 +305,13 @@
 <script>
 const BUILD_DATE="2026-07-09";
 const LIVE_STATE={refreshed:"2026-07-08",nextDomain:"Finance",rotation:"Recipes → Fitness → Finance",dagvald:75,davikja:65,fleetTotal:45,fleetFull:44,fleetPart:1,inbox:"Clean"};
-const CHAT_STARTERS=["What's due on the fleet?","What's the domain rotation?","Castle balances?","What manuals are still needed?","Job search update?"];
+const CHAT_STARTERS=[
+  {label:"Paste Grok session — file it",text:"From Grok — file this:\n\n",send:false},
+  "What's due on the fleet?",
+  "What's the domain rotation?",
+  "Castle balances?",
+  "What manuals are still needed?"
+];
 // Needs From You — only items that require Darren physically (a photo / a decision). Hank's homework never appears here.
 const NEEDS=[
  // Whirlpool freezer inducted 2026-07-01 from the nameplate photo (WZF34X20DW07 / UE4506196). No open physical Needs. (Toro Recycler Max rebuilt manual-first 2026-07-04 → Full.)
@@ -821,9 +827,17 @@ function renderToday(){
 }
 function initChatStarters(){
   const el=document.getElementById('chatStarters');if(!el)return;
-  el.innerHTML=CHAT_STARTERS.map(t=>`<button class="chip" onclick="starterChat('${t.replace(/'/g,"\\'")}')">${t}</button>`).join("");
+  el.innerHTML=CHAT_STARTERS.map((s,i)=>{
+    const label=typeof s==="string"?s:s.label;
+    return `<button class="chip" onclick="starterChat(${i})">${label}</button>`;
+  }).join("");
 }
-function starterChat(t){document.getElementById('chatInput').value=t;sendChat();}
+function starterChat(i){
+  const s=CHAT_STARTERS[i];const text=typeof s==="string"?s:s.text;const send=typeof s==="string"||s.send!==false;
+  const inp=document.getElementById('chatInput');inp.value=text;
+  if(send)sendChat();
+  else{inp.focus();inp.setSelectionRange(text.length,text.length);toast("Paste your Grok session, then Send.");}
+}
 function goDueSoon(){filter="Due soon";syncChips();showView('equip');render();}
 function syncChips(){[...chips.children].forEach(c=>c.classList.toggle('active',c.textContent===filter));}
 let chatMsgs=[];

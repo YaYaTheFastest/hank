@@ -195,6 +195,21 @@
   .vchip b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
   .vchip.do b{color:var(--ok)}.vchip.wait b{color:var(--amber)}.vchip.done b{color:var(--muted)}
   .site-foot{text-align:center;padding:8px 16px 4px;font-size:10.5px;color:var(--muted);opacity:.85}
+  .graph-wrap{display:flex;flex-direction:column;height:calc(100vh - 120px);min-height:420px}
+  .graph-toolbar{padding:10px 16px 6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .graph-toolbar .back{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font-size:13px;font-weight:700;color:var(--green);cursor:pointer}
+  .graph-chips{display:flex;gap:6px;overflow-x:auto;flex:1;-webkit-overflow-scrolling:touch}
+  .graph-chips button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap;cursor:pointer}
+  .graph-chips button.on{background:var(--green);color:#fff;border-color:var(--green)}
+  .graph-canvas-wrap{flex:1;position:relative;margin:0 12px 8px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;touch-action:none}
+  .graph-canvas-wrap canvas{display:block;width:100%;height:100%}
+  .graph-foot{padding:0 16px 12px;font-size:11.5px;color:var(--muted);line-height:1.4}
+  .graph-detail{background:#fff;border:1px solid var(--line);border-radius:14px;margin:0 16px 12px;padding:12px 14px;display:none}
+  .graph-detail.open{display:block}
+  .graph-detail h4{margin:0 0 4px;font-size:15px}
+  .graph-detail p{margin:0 0 10px;font-size:12.5px;color:var(--muted);line-height:1.4}
+  .graph-detail .cta{display:flex;gap:8px}
+  .graph-detail .cta button{flex:1;border:0;border-radius:10px;padding:10px;font-size:13px;font-weight:700;cursor:pointer}
 </style>
 </head>
 <body>
@@ -246,6 +261,20 @@
   <div id="workBody" class="work-body"></div>
 </div>
 
+<!-- GRAPH VIEW (domain network mock) -->
+<div id="graphView" class="hide">
+  <div class="mock-ribbon">Graph preview — scoped domain network (not full vault). Loop will publish graph-*.json later.</div>
+  <div class="graph-wrap">
+    <div class="graph-toolbar">
+      <button class="back" onclick="graphBack()">← Back</button>
+      <div class="graph-chips" id="graphDomainChips"></div>
+    </div>
+    <div class="graph-canvas-wrap" id="graphCanvasWrap"><canvas id="graphCanvas"></canvas></div>
+    <p class="graph-foot" id="graphHint">Drag to pan · tap a node · hub = Reference Hub or project center</p>
+    <div class="graph-detail" id="graphDetail"></div>
+  </div>
+</div>
+
 <!-- MORE VIEW -->
 <div id="moreView" class="hide">
   <div class="home">
@@ -257,6 +286,7 @@
       <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
       <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
       <a class="tile" onclick="document.getElementById('cap').click()"><div class="ic">📷</div><div class="tt">Send to Hank</div><div class="ds">drop a photo to the inbox</div></a>
+      <a class="tile" onclick="openGraph('finance','more')"><div class="ic">🕸️</div><div class="tt">Connections</div><div class="ds">domain graph preview</div></a>
     </div>
   </div>
 </div>
@@ -343,6 +373,38 @@
 <script>
 const BUILD_DATE="2026-07-09";
 const ANNOUNCE={id:"phase2-mock-2026-07-09",title:"Phase 2 preview is ready",body:"Tap Work for Projects + Doing — a mock-up of your command center verbs. Preview only; tell Hank in Chat to change anything.",cta:"Open Work"};
+const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections, or Work → Explore links.",cta:"Open graph"};
+const GRAPH_DOMAINS={
+  finance:{
+    label:"Finance",count:9,
+    nodes:[
+      {id:"hub",label:"Finance Reference Hub",type:"hub",desc:"Front door to finance knowledge — links protocols & sources.",links:4},
+      {id:"emyth",label:"E-Myth — Work ON the Ranch",type:"note",desc:"Gerber principle note (07-09 loop). Work ON the business.",links:2},
+      {id:"source",label:"E-Myth Mastery",type:"source",desc:"Readwise source stub — 10 highlights.",links:1},
+      {id:"tax",label:"Tax Strategy 2026",type:"project",desc:"Active project — outline actions.",links:2},
+      {id:"plain",label:"Plainfield Rd Purchase",type:"project",desc:"Property/finance crossover — trust vs probate.",links:2},
+      {id:"map",label:"Concept Map — Finance",type:"index",desc:"24 Readwise sources clustered.",links:3},
+      {id:"job",label:"2026 Job Search",type:"project",desc:"Career domain — weekly refresh Mondays.",links:1},
+      {id:"agg",label:"Money aggregator choice",type:"open",desc:"Open decision — Monarch / Copilot / YNAB.",links:1},
+      {id:"ranch",label:"RockinJ Ranch LLC",type:"note",desc:"Entity + ops — finance boundary.",links:1}
+    ],
+    edges:[["hub","emyth"],["hub","tax"],["hub","map"],["hub","agg"],["emyth","source"],["emyth","hub"],["tax","plain"],["plain","hub"],["map","source"],["map","hub"],["job","hub"],["agg","hub"],["ranch","tax"]]
+  },
+  bison:{
+    label:"Bison project",count:7,
+    nodes:[
+      {id:"hub",label:"Rodent Exclusion",type:"hub",desc:"Active project — inspect → seal → materials.",links:4},
+      {id:"card",label:"Bison Coach Trailer",type:"equip",desc:"Equipment card VIN …4517, ◐ Provisional.",links:3},
+      {id:"manuals",label:"Manuals & LQ Practices",type:"note",desc:"Dexter running gear + brochure filed 07-09.",links:2},
+      {id:"index",label:"Equipment Index",type:"index",desc:"Trailers group — fleet noun layer.",links:2},
+      {id:"inbox",label:"_Cowork Inbox",type:"capture",desc:"Capture lane — photos & PDFs.",links:2},
+      {id:"needs",label:"VIN owner packet",type:"open",desc:"Nice-to-have — floorplan/LQ detail.",links:2},
+      {id:"job",label:"Seal-by-location job",type:"note",desc:"Future job card — materials TBD.",links:1}
+    ],
+    edges:[["hub","card"],["hub","manuals"],["hub","job"],["card","index"],["card","manuals"],["manuals","inbox"],["needs","card"],["needs","hub"],["inbox","card"]]
+  }
+};
+let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
 const LIVE_STATE={refreshed:"2026-07-09",now:"Recipes domain pass + equipment quality audit",nextDomain:"Recipes",rotation:"Recipes → Fitness → Finance",dagvald:75,davikja:65,fleetTotal:45,fleetFull:44,fleetPart:1,inbox:"Clean",
   doing:["Equipment quality audit","Reference Hub browse surfaces"],
   waiting:["Projects interaction design","Home domain tiles layout"]};
@@ -853,18 +915,19 @@ function renderSetupManuals(){
   el.innerHTML=MANUALS_NEEDED.map((x,i)=>`<div class="att"><span class="ic n"></span><div class="body"><b>${i+1}. ${x.eq}</b> — <a class="lk" href="${x.url}" target="_blank" rel="noopener">📄 Open manual PDF ↗</a><div class="sub">${x.note}${x.gated?' <span class="verify">needs a one-time “I agree” tap first</span>':''}</div></div></div>`).join("");
 }
 function showView(v){
-  const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
-  const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup";
+  const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),go=document.getElementById('graphView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
+  const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup"||v==="graph";
   document.getElementById('tabHome').classList.toggle('active',v==="home");
   document.getElementById('tabWork').classList.toggle('active',v==="work");
   document.getElementById('tabChat').classList.toggle('active',v==="chat");
   document.getElementById('tabEquip').classList.toggle('active',v==="equip");
   document.getElementById('tabMore').classList.toggle('active',moreTab);
-  ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
+  ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");go.classList.toggle('hide',v!=="graph");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
   document.getElementById('actionbar').classList.toggle('hide',!(v==="equip"||v==="more"));
-  document.body.classList.toggle('no-bar',v==="home"||v==="chat"||v==="work");
+  document.body.classList.toggle('no-bar',v==="home"||v==="chat"||v==="work"||v==="graph");
   if(v==="home"){renderToday();renderAnnounce();}
   if(v==="work"){markAnnounceSeen();renderWork();}
+  if(v==="graph"){markGraphAnnounceSeen();initGraphView();}
   if(v==="setup"){try{document.getElementById('hankKey').value=localStorage.getItem('hankKey')||"";}catch(err){}renderSetupManuals();}
   if(v==="dash")renderDash();
   if(v==="chat"){if(!chatMsgs.length){chatMsgs.push({role:"assistant",content:"Hey Darren — Hank here. Ask me about the fleet, a project, or what's due. (I capture anything you want filed for the next loop pass.)"});renderChat();}setTimeout(()=>{var ci=document.getElementById('chatInput');if(ci)ci.focus();},50);}
@@ -876,14 +939,91 @@ function markAnnounceSeen(){try{localStorage.setItem(announceKey(),"1");}catch(e
 function dismissAnnounce(){markAnnounceSeen();renderAnnounce();toast("Got it — Work tab has the Phase 2 preview.");}
 function renderAnnounce(){
   const el=document.getElementById('announceBanner');if(!el)return;
-  if(announceSeen()){el.classList.add('hide');el.innerHTML="";return;}
-  el.classList.remove('hide');
-  el.innerHTML=`<button class="xbtn" onclick="dismissAnnounce()" aria-label="Dismiss">×</button><b>${ANNOUNCE.title}</b><p>${ANNOUNCE.body}</p><div class="go"><button class="p" onclick="showView('work')">${ANNOUNCE.cta}</button><button class="s" onclick="dismissAnnounce()">Later</button></div>`;
-  const b=document.getElementById('workBadge');if(b)b.classList.remove('hide');
+  if(!announceSeen()){
+    el.classList.remove('hide');
+    el.innerHTML=`<button class="xbtn" onclick="dismissAnnounce()" aria-label="Dismiss">×</button><b>${ANNOUNCE.title}</b><p>${ANNOUNCE.body}</p><div class="go"><button class="p" onclick="showView('work')">${ANNOUNCE.cta}</button><button class="s" onclick="dismissAnnounce()">Later</button></div>`;
+    const b=document.getElementById('workBadge');if(b)b.classList.remove('hide');
+    return;
+  }
+  if(!graphAnnounceSeen()){
+    el.classList.remove('hide');
+    el.innerHTML=`<button class="xbtn" onclick="dismissGraphAnnounce()" aria-label="Dismiss">×</button><b>${GRAPH_ANNOUNCE.title}</b><p>${GRAPH_ANNOUNCE.body}</p><div class="go"><button class="p" onclick="openGraph('finance','home')">${GRAPH_ANNOUNCE.cta}</button><button class="s" onclick="dismissGraphAnnounce()">Later</button></div>`;
+    return;
+  }
+  el.classList.add('hide');el.innerHTML="";
 }
+function graphAnnounceKey(){return"hankSeenAnnounce:"+GRAPH_ANNOUNCE.id;}
+function graphAnnounceSeen(){try{return localStorage.getItem(graphAnnounceKey())==="1";}catch(e){return false;}}
+function markGraphAnnounceSeen(){try{localStorage.setItem(graphAnnounceKey(),"1");}catch(e){}}
+function dismissGraphAnnounce(){markGraphAnnounceSeen();renderAnnounce();toast("Graph preview — More → Connections or Work → Explore.");}
 function checkAnnounceOnLoad(){
   renderAnnounce();
   if(!announceSeen())setTimeout(()=>toast(ANNOUNCE.title+" — tap Work or the banner."),900);
+  else if(!graphAnnounceSeen())setTimeout(()=>toast(GRAPH_ANNOUNCE.title+" — More → Connections."),2400);
+}
+function openGraph(domain,ret){graphDomain=domain||"finance";graphReturnTo=ret||"more";graphPan={x:0,y:0};graphSel=null;showView("graph");}
+function graphBack(){showView(graphReturnTo||"more");}
+function initGraphView(){
+  const chips=document.getElementById("graphDomainChips");if(!chips)return;
+  chips.innerHTML=Object.keys(GRAPH_DOMAINS).map(k=>`<button class="${k===graphDomain?'on':''}" onclick="graphSwitchDomain('${k}')">${GRAPH_DOMAINS[k].label}</button>`).join("");
+  document.getElementById("graphDetail").classList.remove("open");
+  layoutGraphPositions();drawGraph();bindGraphCanvas();
+}
+function graphSwitchDomain(k){graphDomain=k;graphPan={x:0,y:0};graphSel=null;initGraphView();}
+function layoutGraphPositions(){
+  const g=GRAPH_DOMAINS[graphDomain];if(!g)return;
+  const wrap=document.getElementById("graphCanvasWrap");const w=wrap?wrap.clientWidth:320,h=wrap?wrap.clientHeight:360;
+  const cx=w/2+graphPan.x, cy=h/2+graphPan.y, hub=g.nodes.find(n=>n.type==="hub"), rest=g.nodes.filter(n=>n.type!=="hub");
+  if(hub){hub.x=cx;hub.y=cy;hub.r=hub.type==="hub"?22:16;}
+  rest.forEach((n,i)=>{const a=2*Math.PI*i/rest.length-Math.PI/2,r=Math.min(w,h)*0.34;n.x=cx+r*Math.cos(a);n.y=cy+r*Math.sin(a);n.r=n.type==="project"||n.type==="equip"?18:14;});
+}
+function graphColor(t){
+  if(t==="hub")return"#367C2B";if(t==="project")return"#2a5f22";if(t==="equip")return"#3f9e4d";
+  if(t==="source"||t==="index")return"#6b8f71";if(t==="open")return"#e0a426";if(t==="capture")return"#6b7464";return"#8aa38c";
+}
+function drawGraph(){
+  const c=document.getElementById("graphCanvas"),wrap=document.getElementById("graphCanvasWrap"),g=GRAPH_DOMAINS[graphDomain];
+  if(!c||!wrap||!g)return;
+  const dpr=window.devicePixelRatio||1,w=wrap.clientWidth,h=wrap.clientHeight;
+  c.width=w*dpr;c.height=h*dpr;c.style.width=w+"px";c.style.height=h+"px";
+  const ctx=c.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
+  const byId={};g.nodes.forEach(n=>{byId[n.id]=n;});
+  ctx.lineWidth=1.5;ctx.strokeStyle="#d8ddd0";
+  g.edges.forEach(([a,b])=>{const A=byId[a],B=byId[b];if(!A||!B)return;ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();});
+  g.nodes.forEach(n=>{
+    const sel=graphSel===n.id;ctx.beginPath();ctx.arc(n.x,n.y,n.r+(sel?3:0),0,Math.PI*2);
+    ctx.fillStyle=graphColor(n.type);ctx.fill();if(sel){ctx.strokeStyle="#1c2419";ctx.lineWidth=2;ctx.stroke();}
+    ctx.fillStyle="#1c2419";ctx.font=(sel?"bold 11px":"10px")+" -apple-system,sans-serif";ctx.textAlign="center";
+    const lines=n.label.split(" — ");const lbl=lines.length>1?lines[0]:n.label.length>18?n.label.slice(0,16)+"…":n.label;
+    ctx.fillText(lbl,n.x,n.y+n.r+14);
+  });
+}
+function graphHit(mx,my){
+  const g=GRAPH_DOMAINS[graphDomain];for(let i=g.nodes.length-1;i>=0;i--){const n=g.nodes[i],dx=mx-n.x,dy=my-n.y;if(dx*dx+dy*dy<=(n.r+8)*(n.r+8))return n;}
+  return null;
+}
+function showGraphNode(n){
+  graphSel=n.id;drawGraph();
+  const el=document.getElementById("graphDetail");
+  el.classList.add("open");
+  el.innerHTML=`<h4>${escapeHtml(n.label)}</h4><p><span class="verify">${escapeHtml(n.type)}</span> · ${n.links} links (mock) — ${escapeHtml(n.desc)}</p>
+    <div class="cta"><button class="p" style="background:var(--green);color:#fff" onclick="graphAskHank('${n.label.replace(/'/g,"\\'")}')">Ask Hank</button>
+    <button class="s" style="background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="graphDirective('${n.label.replace(/'/g,"\\'")}')">Directive</button></div>`;
+}
+function graphAskHank(label){document.getElementById('chatInput').value="Tell me about "+label+" and how it connects in "+GRAPH_DOMAINS[graphDomain].label+".";showView('chat');document.getElementById('chatInput').focus();}
+function graphDirective(label){document.getElementById('chatInput').value="Directive — "+label+" ("+GRAPH_DOMAINS[graphDomain].label+" graph):\n\n";showView('chat');document.getElementById('chatInput').focus();}
+let graphBound=false;
+function bindGraphCanvas(){
+  if(graphBound)return;graphBound=true;
+  const wrap=document.getElementById("graphCanvasWrap"),c=document.getElementById("graphCanvas");
+  function pt(ev){const r=c.getBoundingClientRect();const t=ev.touches?ev.touches[0]:ev;return{x:t.clientX-r.left,y:t.clientY-r.top};}
+  wrap.addEventListener("mousedown",e=>{graphDrag={...pt(e),ox:graphPan.x,oy:graphPan.y};});
+  wrap.addEventListener("mousemove",e=>{if(!graphDrag)return;const p=pt(e);graphPan.x=graphDrag.ox+(p.x-graphDrag.x);graphPan.y=graphDrag.oy+(p.y-graphDrag.y);layoutGraphPositions();drawGraph();});
+  wrap.addEventListener("mouseup",e=>{if(!graphDrag)return;const p=pt(e);if(Math.abs(p.x-graphDrag.x)<6&&Math.abs(p.y-graphDrag.y)<6){const n=graphHit(p.x,p.y);if(n)showGraphNode(n);}graphDrag=null;});
+  wrap.addEventListener("touchstart",e=>{graphDrag={...pt(e),ox:graphPan.x,oy:graphPan.y};},{passive:true});
+  wrap.addEventListener("touchmove",e=>{if(!graphDrag)return;const p=pt(e);graphPan.x=graphDrag.ox+(p.x-graphDrag.x);graphPan.y=graphDrag.oy+(p.y-graphDrag.y);layoutGraphPositions();drawGraph();},{passive:true});
+  wrap.addEventListener("touchend",e=>{if(!graphDrag)return;const p=pt(e.changedTouches?{touches:e.changedTouches}:e);if(Math.abs(p.x-graphDrag.x)<10&&Math.abs(p.y-graphDrag.y)<10){const n=graphHit(p.x,p.y);if(n)showGraphNode(n);}graphDrag=null;});
+  window.addEventListener("resize",()=>{if(!document.getElementById("graphView").classList.contains("hide")){layoutGraphPositions();drawGraph();}});
 }
 function setWorkSeg(s){workSeg=s;document.getElementById('segProjects').classList.toggle('on',s==="projects");document.getElementById('segDoing').classList.toggle('on',s==="doing");renderWork();}
 function renderWork(){
@@ -897,7 +1037,10 @@ function renderWork(){
   el.innerHTML=`<h2>▶ Active</h2>${PROJECTS_MOCK.active.map(p=>card(p,"")).join("")}
     <h2>💡 Ideas</h2>${PROJECTS_MOCK.ideas.map(p=>card(p,"idea")).join("")}
     <h2>⏸ On hold</h2>${PROJECTS_MOCK.hold.map(p=>card(p,"hold")).join("")}
-    <p class="muted" style="margin-top:10px">Tap a project — preview detail + change via Chat (vault wiring in a later pass).</p>`;
+    <h2>Explore</h2>
+    <div class="pcard" onclick="openGraph('finance','work')"><div class="pt">Finance connections</div><div class="pn">Reference Hub + projects + sources — 9 nodes</div><div class="pm">Graph preview</div></div>
+    <div class="pcard" onclick="openGraph('bison','work')"><div class="pt">Bison rodent exclusion</div><div class="pn">Project + equipment card + capture path — 7 nodes</div><div class="pm">Graph preview</div></div>
+    <p class="muted" style="margin-top:10px">Tap a project for detail. Graph = how this area connects (Obsidian-style, scoped).</p>`;
 }
 function findProject(n){
   for(const k of ["active","ideas","hold"]){const f=PROJECTS_MOCK[k].find(p=>p.n===n);if(f)return{...f,status:k};}

@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="HANK">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>HANK · Ranch Equipment</title>
+<title>HANK</title>
 <style>
   :root{--green:#367C2B;--green-d:#2a5f22;--ink:#1c2419;--muted:#6b7464;--line:#e4e7df;
     --bg:#f6f7f3;--card:#fff;--red:#d24b3e;--amber:#e0a426;--ok:#3f9e4d;--chip:#eef1ea}
@@ -170,16 +170,42 @@
   .actionbar.hide{display:none}
   body.no-bar{padding-bottom:calc(16px + env(safe-area-inset-bottom))}
   body.no-bar .chatbar{bottom:env(safe-area-inset-bottom)}
+  .ann{background:linear-gradient(135deg,#2a5f22,#367C2B);color:#fff;border-radius:14px;padding:14px 16px;margin-bottom:14px;position:relative;box-shadow:0 2px 8px rgba(54,124,43,.25)}
+  .ann b{display:block;font-size:14px;margin-bottom:4px}
+  .ann p{margin:0;font-size:12.5px;opacity:.92;line-height:1.4}
+  .ann .go{margin-top:10px;display:flex;gap:8px}
+  .ann .go button{flex:1;border:0;border-radius:10px;padding:10px;font-size:13px;font-weight:700;cursor:pointer}
+  .ann .go .p{background:#fff;color:var(--green)}.ann .go .s{background:rgba(255,255,255,.2);color:#fff}
+  .ann .xbtn{position:absolute;top:8px;right:10px;border:0;background:rgba(255,255,255,.25);color:#fff;width:28px;height:28px;border-radius:8px;font-size:16px;cursor:pointer}
+  .tab-badge{display:inline-block;background:#fff;color:var(--green);font-size:9px;font-weight:800;padding:2px 5px;border-radius:6px;margin-left:4px;vertical-align:middle}
+  .mock-ribbon{background:#fff7df;border:1px solid #f0e2a8;color:#6a5a12;font-size:11px;font-weight:700;text-align:center;padding:8px 12px;margin:12px 16px 0;border-radius:10px}
+  .seg{display:flex;gap:8px;padding:12px 16px 4px}
+  .seg button{flex:1;border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer}
+  .seg button.on{background:var(--green);color:#fff;border-color:var(--green)}
+  .work-body{padding:8px 16px 20px}
+  .work-body h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px}
+  .pcard{background:#fff;border:1px solid var(--line);border-left:3px solid var(--green);border-radius:13px;padding:12px 13px;margin-bottom:9px;cursor:pointer}
+  .pcard.idea{border-left-color:var(--amber)}.pcard.hold{border-left-color:#c7ccc0}
+  .pcard .pt{font-weight:700;font-size:14px;line-height:1.25}
+  .pcard .pn{color:var(--muted);font-size:12px;margin-top:5px;line-height:1.35}
+  .pcard .pm{font-size:10.5px;font-weight:700;text-transform:uppercase;color:var(--green);margin-top:7px}
+  .vrow{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:6px}
+  .vchip{background:#fff;border:1px solid var(--line);border-radius:11px;padding:9px 12px;font-size:13px;line-height:1.35;cursor:pointer;flex:1;min-width:46%}
+  .vchip.do{border-left:3px solid var(--ok)}.vchip.wait{border-left:3px solid var(--amber)}.vchip.done{border-left:3px solid #c7ccc0;color:var(--muted)}
+  .vchip b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+  .vchip.do b{color:var(--ok)}.vchip.wait b{color:var(--amber)}.vchip.done b{color:var(--muted)}
+  .site-foot{text-align:center;padding:8px 16px 4px;font-size:10.5px;color:var(--muted);opacity:.85}
 </style>
 </head>
 <body>
 <header>
-  <h1>HANK · Ranch Equipment</h1>
-  <p id="count">Loading…</p>
+  <h1>HANK</h1>
+  <p id="count">Command center</p>
   <div class="tabs">
     <a id="tabHome" class="active" onclick="showView('home')">Home</a>
+    <a id="tabWork" onclick="showView('work')">Work<span id="workBadge" class="tab-badge hide">NEW</span></a>
     <a id="tabChat" onclick="showView('chat')">Chat</a>
-    <a id="tabEquip" onclick="showView('equip')">Equipment</a>
+    <a id="tabEquip" onclick="showView('equip')">Equip</a>
     <a id="tabMore" onclick="showView('more')">More</a>
   </div>
 </header>
@@ -187,6 +213,7 @@
 <!-- HOME VIEW -->
 <div id="homeView">
   <div class="home">
+    <div id="announceBanner" class="hide"></div>
     <div id="todayCard" class="today"></div>
     <div class="hgrid">
       <a class="tile" onclick="showView('chat')"><div class="ic">💬</div><div class="tt">Ask Hank</div><div class="ds">chat with your system</div></a>
@@ -207,6 +234,16 @@
       </div>
     </details>
   </div>
+</div>
+
+<!-- WORK VIEW (Phase 2 mock) -->
+<div id="workView" class="hide">
+  <div class="mock-ribbon">Phase 2 preview — mock data from vault; not live-synced yet. Change anything via Chat.</div>
+  <div class="seg">
+    <button id="segProjects" class="on" onclick="setWorkSeg('projects')">Projects</button>
+    <button id="segDoing" onclick="setWorkSeg('doing')">Doing</button>
+  </div>
+  <div id="workBody" class="work-body"></div>
 </div>
 
 <!-- MORE VIEW -->
@@ -300,11 +337,32 @@
   <button class="btn-send" onclick="document.getElementById('cap').click()">Send to Hank</button>
 </div>
 <input id="cap" type="file" accept="image/*" multiple style="display:none">
+<div class="site-foot">powered by Grok</div>
 <div class="toast" id="toast"></div>
 
 <script>
 const BUILD_DATE="2026-07-09";
-const LIVE_STATE={refreshed:"2026-07-08",nextDomain:"Finance",rotation:"Recipes → Fitness → Finance",dagvald:75,davikja:65,fleetTotal:45,fleetFull:44,fleetPart:1,inbox:"Clean"};
+const ANNOUNCE={id:"phase2-mock-2026-07-09",title:"Phase 2 preview is ready",body:"Tap Work for Projects + Doing — a mock-up of your command center verbs. Preview only; tell Hank in Chat to change anything.",cta:"Open Work"};
+const LIVE_STATE={refreshed:"2026-07-09",now:"Recipes domain pass + equipment quality audit",nextDomain:"Recipes",rotation:"Recipes → Fitness → Finance",dagvald:75,davikja:65,fleetTotal:45,fleetFull:44,fleetPart:1,inbox:"Clean",
+  doing:["Equipment quality audit","Reference Hub browse surfaces"],
+  waiting:["Projects interaction design","Home domain tiles layout"]};
+const PROJECTS_MOCK={
+  active:[
+    {n:"Bison Trailer — Rodent Exclusion",next:"Night daylight inspection — mark gaps (don't block vents)",domain:"Ranch"},
+    {n:"Plainfield Rd Land Purchase",next:"Resolve trust-vs-probate; engage NC attorney",domain:"Property"},
+    {n:"2026 Job Search",next:"Weekly refresh Mon 07-13",domain:"Career"},
+    {n:"Shop – Ongoing",next:"Keep equipment cards flowing to Full",domain:"Shop"},
+    {n:"Castle Fund",next:"Standing sync + enhancements per roadmap",domain:"Family"},
+    {n:"Tax Strategy 2026",next:"Outline actions (finance reference-only)",domain:"Finance"}
+  ],
+  ideas:[
+    {n:"Replace Barn with Amish Barn",next:"Dreaming — drop a line in Chat to activate",domain:"Ranch"},
+    {n:"Rainwater Irrigation System",next:"Dreaming",domain:"Ranch"},
+    {n:"Home Organizing",next:"Dreaming",domain:"Home"}
+  ],
+  hold:[{n:"Kalshi Bot",next:"Resume vs archive — decision parked",domain:"Finance"}]
+};
+let workSeg="projects";
 const CHAT_STARTERS=[
   {label:"Paste Grok session — file it",text:"From Grok — file this:\n\n",send:false},
   "What's due on the fleet?",
@@ -795,35 +853,91 @@ function renderSetupManuals(){
   el.innerHTML=MANUALS_NEEDED.map((x,i)=>`<div class="att"><span class="ic n"></span><div class="body"><b>${i+1}. ${x.eq}</b> — <a class="lk" href="${x.url}" target="_blank" rel="noopener">📄 Open manual PDF ↗</a><div class="sub">${x.note}${x.gated?' <span class="verify">needs a one-time “I agree” tap first</span>':''}</div></div></div>`).join("");
 }
 function showView(v){
-  const ho=document.getElementById('homeView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
+  const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
   const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup";
   document.getElementById('tabHome').classList.toggle('active',v==="home");
+  document.getElementById('tabWork').classList.toggle('active',v==="work");
   document.getElementById('tabChat').classList.toggle('active',v==="chat");
   document.getElementById('tabEquip').classList.toggle('active',v==="equip");
   document.getElementById('tabMore').classList.toggle('active',moreTab);
-  ho.classList.toggle('hide',v!=="home");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
+  ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
   document.getElementById('actionbar').classList.toggle('hide',!(v==="equip"||v==="more"));
-  document.body.classList.toggle('no-bar',v==="home"||v==="chat");
-  if(v==="home")renderToday();
+  document.body.classList.toggle('no-bar',v==="home"||v==="chat"||v==="work");
+  if(v==="home"){renderToday();renderAnnounce();}
+  if(v==="work"){markAnnounceSeen();renderWork();}
   if(v==="setup"){try{document.getElementById('hankKey').value=localStorage.getItem('hankKey')||"";}catch(err){}renderSetupManuals();}
   if(v==="dash")renderDash();
   if(v==="chat"){if(!chatMsgs.length){chatMsgs.push({role:"assistant",content:"Hey Darren — Hank here. Ask me about the fleet, a project, or what's due. (I capture anything you want filed for the next loop pass.)"});renderChat();}setTimeout(()=>{var ci=document.getElementById('chatInput');if(ci)ci.focus();},50);}
   window.scrollTo(0,0);
 }
+function announceKey(){return"hankSeenAnnounce:"+ANNOUNCE.id;}
+function announceSeen(){try{return localStorage.getItem(announceKey())==="1";}catch(e){return false;}}
+function markAnnounceSeen(){try{localStorage.setItem(announceKey(),"1");}catch(e){}const b=document.getElementById('workBadge');if(b)b.classList.add('hide');renderAnnounce();}
+function dismissAnnounce(){markAnnounceSeen();renderAnnounce();toast("Got it — Work tab has the Phase 2 preview.");}
+function renderAnnounce(){
+  const el=document.getElementById('announceBanner');if(!el)return;
+  if(announceSeen()){el.classList.add('hide');el.innerHTML="";return;}
+  el.classList.remove('hide');
+  el.innerHTML=`<button class="xbtn" onclick="dismissAnnounce()" aria-label="Dismiss">×</button><b>${ANNOUNCE.title}</b><p>${ANNOUNCE.body}</p><div class="go"><button class="p" onclick="showView('work')">${ANNOUNCE.cta}</button><button class="s" onclick="dismissAnnounce()">Later</button></div>`;
+  const b=document.getElementById('workBadge');if(b)b.classList.remove('hide');
+}
+function checkAnnounceOnLoad(){
+  renderAnnounce();
+  if(!announceSeen())setTimeout(()=>toast(ANNOUNCE.title+" — tap Work or the banner."),900);
+}
+function setWorkSeg(s){workSeg=s;document.getElementById('segProjects').classList.toggle('on',s==="projects");document.getElementById('segDoing').classList.toggle('on',s==="doing");renderWork();}
+function renderWork(){
+  const el=document.getElementById('workBody');if(!el)return;
+  if(workSeg==="doing"){
+    const mk=(st,list)=>list.map(t=>`<div class="vchip ${st}" onclick="workDirective('${st}','${t.replace(/'/g,"\\'")}')"><b>${st}</b>${escapeHtml(t)}</div>`).join("");
+    el.innerHTML=`<h2>Doing</h2><div class="vrow">${mk("do",LIVE_STATE.doing)}</div><h2>Waiting</h2><div class="vrow">${mk("wait",LIVE_STATE.waiting)}</div><p class="muted" style="margin-top:12px">Tap a verb to tell Hank in Chat. Done items will appear here once wired to the vault.</p>`;
+    return;
+  }
+  const card=(p,cls)=>`<div class="pcard ${cls}" onclick="openProjectMock('${p.n.replace(/'/g,"\\'")}','${cls}')"><div class="pt">${escapeHtml(p.n)}</div><div class="pn">${escapeHtml(p.next)}</div><div class="pm">${escapeHtml(p.domain)}</div></div>`;
+  el.innerHTML=`<h2>▶ Active</h2>${PROJECTS_MOCK.active.map(p=>card(p,"")).join("")}
+    <h2>💡 Ideas</h2>${PROJECTS_MOCK.ideas.map(p=>card(p,"idea")).join("")}
+    <h2>⏸ On hold</h2>${PROJECTS_MOCK.hold.map(p=>card(p,"hold")).join("")}
+    <p class="muted" style="margin-top:10px">Tap a project — preview detail + change via Chat (vault wiring in a later pass).</p>`;
+}
+function findProject(n){
+  for(const k of ["active","ideas","hold"]){const f=PROJECTS_MOCK[k].find(p=>p.n===n);if(f)return{...f,status:k};}
+  return null;
+}
+function openProjectMock(n,cls){
+  const p=findProject(n);if(!p)return;
+  const st=p.status==="active"?"Active":p.status==="ideas"?"Idea":"On hold";
+  document.getElementById('panel').innerHTML=`<div class="ph"><div><h3>${escapeHtml(p.n)}</h3><div class="sub">${st} · ${escapeHtml(p.domain)} · <span class="verify">Phase 2 mock</span></div></div><button class="x" onclick="closeSheet()">×</button></div>
+    <div class="sec"><h4>Next</h4><p style="margin:0;font-size:14px;line-height:1.45">${escapeHtml(p.next)}</p></div>
+    <div class="sec"><h4>Change this project</h4><p class="muted" style="margin:0 0 10px">Not wired to vault yet — tell Hank what to update.</p>
+      <button class="logbtn" onclick="closeSheet();projectChat('${p.n.replace(/'/g,"\\'")}','status')">Change status / priority</button>
+      <button class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="closeSheet();projectChat('${p.n.replace(/'/g,"\\'")}','next')">Update next step</button>
+    </div>`;
+  document.getElementById('sheet').classList.add('open');
+}
+function projectChat(name,kind){
+  const pre=kind==="next"?"Project directive — update next step for "+name+":\n\n":"Project directive — change status/priority for "+name+":\n\n";
+  document.getElementById('chatInput').value=pre;showView('chat');document.getElementById('chatInput').focus();
+  toast("Tell Hank what to change — loop files it.");
+}
+function workDirective(st,text){
+  document.getElementById('chatInput').value="Directive — "+text+":\n\n";showView('chat');document.getElementById('chatInput').focus();
+  toast("Captured as a directive for the loop.");
+}
 function renderToday(){
   const a=attention(),mn=(typeof MANUALS_NEEDED!=="undefined")?MANUALS_NEEDED.length:0,wn=NEEDS.length,due=dueSoonCount();
   const el=document.getElementById('todayCard');if(!el)return;
-  el.innerHTML=`<h2>Today</h2>
+  const doing=(LIVE_STATE.doing||[]).slice(0,2).map(t=>escapeHtml(t)).join(" · ")||"—";
+  el.innerHTML=`<h2>Today — Have · Do · Matter</h2>
     <div class="scan">
       <div class="pill ${wn?'warn':''}" onclick="showView('dash')"><b>${wn}</b><span>Needs</span></div>
       <div class="pill ${mn?'warn':''}" onclick="showView('dash')"><b>${mn}</b><span>Manuals</span></div>
       <div class="pill" onclick="goDueSoon()"><b>${due}</b><span>Due soon</span></div>
-      <div class="pill ${a.crit.length?'alert':''}" onclick="showView('dash')"><b>${a.crit.length}</b><span>Critical</span></div>
+      <div class="pill" onclick="showView('work')"><b>${PROJECTS_MOCK.active.length}</b><span>Projects</span></div>
     </div>
-    <p class="line"><b>Next:</b> ${LIVE_STATE.nextDomain} pass (${LIVE_STATE.rotation})</p>
-    <p class="line"><b>Castle:</b> Dagvald $${LIVE_STATE.dagvald} · Davikja $${LIVE_STATE.davikja}</p>
-    <p class="line"><b>Fleet:</b> ${LIVE_STATE.fleetFull} Full · ${LIVE_STATE.fleetPart} in progress · inbox ${LIVE_STATE.inbox.toLowerCase()}</p>
-    <div class="acts"><button class="p" onclick="showView('chat')">Ask Hank</button><button class="s" onclick="showView('equip')">Equipment</button></div>`;
+    <p class="line"><b>Now:</b> ${escapeHtml(LIVE_STATE.now||LIVE_STATE.nextDomain)}</p>
+    <p class="line"><b>Doing:</b> ${doing}</p>
+    <p class="line"><b>Have:</b> Fleet ${LIVE_STATE.fleetFull} Full · Castle $${LIVE_STATE.dagvald}/$${LIVE_STATE.davikja} · inbox ${LIVE_STATE.inbox.toLowerCase()}</p>
+    <div class="acts"><button class="p" onclick="showView('work')">Work</button><button class="s" onclick="showView('chat')">Ask Hank</button></div>`;
 }
 function initChatStarters(){
   const el=document.getElementById('chatStarters');if(!el)return;
@@ -1044,6 +1158,7 @@ renderToday();
 initChatStarters();
 renderDash();
 render();
+checkAnnounceOnLoad();
 showView('home');
 </script>
 </body>

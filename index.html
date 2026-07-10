@@ -372,6 +372,12 @@
 
 <script>
 const BUILD_DATE="2026-07-10";
+// Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
+const LOOP_HEALTH={
+  status:"ok",tier:"E0",component:"full-pass",error:"",proposed_fix:"",owner:"grok",
+  summary:"Last pass 10 Jul — queues drained, Gmail filed, Castle synced.",
+  last_attempt:"2026-07-10T12:25:33Z",last_success:"2026-07-10T12:32:00Z",open_issues:[]
+};
 const ANNOUNCE={id:"phase2-mock-2026-07-09",title:"Phase 2 preview is ready",body:"Tap Work for Projects + Doing — a mock-up of your command center verbs. Preview only; tell Hank in Chat to change anything.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections, or Work → Explore links.",cta:"Open graph"};
 const GRAPH_DOMAINS={
@@ -405,9 +411,10 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-07-09",now:"Recipes domain pass + equipment quality audit",nextDomain:"Recipes",rotation:"Recipes → Fitness → Finance",dagvald:75,davikja:65,fleetTotal:45,fleetFull:44,fleetPart:1,inbox:"Clean",
-  doing:["Equipment quality audit","Reference Hub browse surfaces"],
-  waiting:["Projects interaction design","Home domain tiles layout"]};
+const LIVE_STATE={refreshed:"2026-07-10",now:"Handgun fleet ◐ + Ranch Chores project",nextDomain:"Fitness",rotation:"Fitness → Finance → Recipes",dagvald:80,davikja:70,fleetTotal:51,fleetFull:44,fleetPart:7,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"Last pass 10 Jul — queues drained, Gmail filed, Castle synced."},
+  doing:["Equipment quality audit","Handgun manuals/serials","Ranch Chores as Profit Center"],
+  waiting:["Projects interaction design","Home domain tiles layout","Profit-center metric pick"]};
 const PROJECTS_MOCK={
   active:[
     {n:"Bison Trailer — Rodent Exclusion",next:"Night daylight inspection — mark gaps (don't block vents)",domain:"Ranch"},
@@ -1205,9 +1212,54 @@ async function submitAnswers(){
   navigator.clipboard.writeText("Hank — my answers:\n\n"+lines).then(()=>toast(key?"Couldn't reach the backend — copied instead; drop into _Cowork Inbox.":"Set your password in Setup to send. Copied for now.")).catch(()=>toast("Couldn't copy — select the text manually."));
 }
 
-function renderDash(){
+function loopHealthFmt(iso){
+  if(!iso)return "—";
+  const d=new Date(iso);
+  if(isNaN(d))return iso.slice(0,10);
+  return d.toLocaleDateString(undefined,{month:"short",day:"numeric"});
+}
+function loopHealthSection(lh){
+  const st=(lh&&lh.status)||"ok",tier=(lh&&lh.tier)||"E0",sum=(lh&&lh.summary)||"";
+  const fix=(lh&&lh.proposed_fix)||"",err=(lh&&lh.error)||"",own=(lh&&lh.owner)||"grok";
+  const issues=(lh&&lh.open_issues)||[];
+  const darrenIssue=issues.find(i=>(i.owner||"")==="darren")||((own==="darren"&&err)?{error:err,proposed_fix:fix,tier}:null);
+  let border="",h3="Loop operator",h3c="var(--green)",lead="";
+  if(st==="blocked"||tier==="E3"){
+    border="border:1px solid var(--red);";h3="Loop blocked";h3c="var(--red)";
+    lead=fix||"Grok could not start the scheduled pass — see proposed fix below.";
+  }else if(st==="degraded"||tier==="E2"){
+    border="border:1px solid var(--amber);";h3="Loop degraded";h3c="var(--amber)";
+    lead=fix||sum||"Some capture work is still queued — Grok retries on the next pass.";
+  }else if(st==="running"){
+    border="border:1px solid var(--amber);";h3="Loop running";h3c="var(--amber)";
+    lead=sum||"Grok pass in progress on your Mac.";
+  }else{
+    border="border:1px solid var(--line);";
+    lead=sum||("Last success "+loopHealthFmt(lh&&lh.last_success));
+  }
+  let h=`<div class="dsec" style="${border}"><h3 style="color:${h3c}">${h3}</h3><p class="lead">${lead}</p>`;
+  if(err&&st!=="ok")h+=`<div class="att"><span class="ic n"></span><div class="body"><b>Issue</b><div class="sub">${err}</div></div></div>`;
+  if(darrenIssue&&darrenIssue.proposed_fix){
+    h+=`<div class="att"><span class="ic n"></span><div class="body"><b>Your action</b><div class="sub">${darrenIssue.proposed_fix}</div></div></div>`;
+  }
+  h+=`<div class="sup"><span class="k">Tier</span><span class="v">${tier}</span></div>`;
+  h+=`<div class="sup"><span class="k">Last pass</span><span class="v">${loopHealthFmt(lh&&lh.last_success)}</span></div>`;
+  h+=`<div class="sup"><span class="k">Schedule</span><span class="v">7:00 · 13:00 · 19:00 + chat queue</span></div>`;
+  h+=`</div>`;
+  return h;
+}
+async function loadLoopHealth(){
+  try{
+    const r=await fetch("loop-health.json?"+Date.now(),{cache:"no-store"});
+    if(r.ok)return await r.json();
+  }catch(e){}
+  return LOOP_HEALTH;
+}
+async function renderDash(){
+  const lh=await loadLoopHealth();
   const c=counts(),a=attention(),mn=MANUALS_NEEDED.length,wn=NEEDS.length,due=dueSoonCount();
-  let h=`<div class="scanrow">
+  let h=loopHealthSection(lh);
+  h+=`<div class="scanrow">
     <div class="pill ${wn?'warn':''}"><b>${wn}</b><span>Needs you</span></div>
     <div class="pill ${mn?'warn':''}"><b>${mn}</b><span>Manuals</span></div>
     <div class="pill" onclick="goDueSoon()"><b>${due}</b><span>Due soon</span></div>

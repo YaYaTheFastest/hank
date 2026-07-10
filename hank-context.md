@@ -36,6 +36,8 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Inbox:** Clean.
 
+**Loop:** OK (E0) — last pass 10 Jul; queues drained, Gmail filed, Castle synced. Status tab in app mirrors this.
+
 **Fleet:** 51 = 44 Full + 7 ◐ (AP10F + 6 handgun cards: P365XL, P365 X-MACRO, P365XC, G45, G19, G44×2). Manual-backed ≈ 22+. H&K MR556A1 rifle already ●.
 
 **Castle (KV):** Dagvald **$80**, Davikja **$70**. Queues **empty**.

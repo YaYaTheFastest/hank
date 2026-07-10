@@ -22,29 +22,29 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-09)
+## LIVE STATE (refreshed 2026-07-10)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live — tap Work to preview Projects + Doing.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live — tap Work to preview Projects + Doing. Handgun fleet inventory added ◐.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance.
+**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-10: Greek Pork Skewers ● + 15 popular stubs.)
 
-**Doing (verbs):** Equipment quality audit (KTM/JD4044M bar) · Reference Hub browse surfaces (Finance/Recipes/Fitness).
+**Doing (verbs):** Equipment quality audit (KTM/JD4044M bar) · Handgun manuals/serials · Ranch Chores as Profit Center project · Reference Hub browse.
 
-**Waiting:** Projects interaction design (change project from app) · Home domain tiles layout (Darren undecided).
+**Waiting:** Projects interaction design (change project from app) · Home domain tiles layout (Darren undecided) · Profit-center metric pick (avoided $ vs DIY rate).
 
 **Inbox:** Clean.
 
-**Fleet:** 45 = 44 Full + 1 ◐ (AP10F). Manual-backed ≈ 22+.
+**Fleet:** 51 = 44 Full + 7 ◐ (AP10F + 6 handgun cards: P365XL, P365 X-MACRO, P365XC, G45, G19, G44×2). Manual-backed ≈ 22+. H&K MR556A1 rifle already ●.
 
-**Castle (KV):** Dagvald **$75**, Davikja **$65**. Queues **empty**.
+**Castle (KV):** Dagvald **$80**, Davikja **$70**. Queues **empty**.
 
 **Readwise:** 967, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-09. Phase 2 mock in app.
+**Deploy:** BUILD_DATE 2026-07-10. Phase 2 mock in app.
 
-**Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM.
+**Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Handgun OMs + serials when convenient.
 
 **Job search:** Active — weekly Monday (~07-13).
 

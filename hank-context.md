@@ -22,27 +22,27 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-10)
+## LIVE STATE (refreshed 2026-07-10 evening)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live — tap Work to preview Projects + Doing. Handgun fleet inventory added ◐.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. Shop cat-door research filed (Ideas). Handgun fleet ◐.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-10: Greek Pork Skewers ● + 15 popular stubs.)
+**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-10 evening: Racing Weight principle.)
 
-**Doing (verbs):** Equipment quality audit (KTM/JD4044M bar) · Handgun manuals/serials · Ranch Chores as Profit Center project · Reference Hub browse.
+**Doing (verbs):** Equipment quality audit (KTM/JD4044M bar) · Handgun manuals/serials · Ranch Chores as Profit Center · Shop cat door (research done — pick/order) · Reference Hub browse.
 
-**Waiting:** Projects interaction design (change project from app) · Home domain tiles layout (Darren undecided) · Profit-center metric pick (avoided $ vs DIY rate).
+**Waiting:** Projects interaction design · Home domain tiles · Profit-center metric pick · Dagvald Castle 7/8 Clean Room if still needed (not in KV — enter in Kids tab).
 
-**Inbox:** Clean.
+**Inbox:** Vault clean. iCloud `_Cowork Inbox` list timed out this pass (retry next). Gmail new **0**.
 
-**Loop:** OK (E0) — last pass 10 Jul; queues drained, Gmail filed, Castle synced. Status tab in app mirrors this.
+**Loop:** OK (E0) — evening pass: 3 chats filed/cleared, Castle +5 entries, Fitness + Readwise full, deploy if deck shipped.
 
-**Fleet:** 51 = 44 Full + 7 ◐ (AP10F + 6 handgun cards: P365XL, P365 X-MACRO, P365XC, G45, G19, G44×2). Manual-backed ≈ 22+. H&K MR556A1 rifle already ●.
+**Fleet:** 51 = 44 Full + 7 ◐ (AP10F + 6 handgun cards). Manual-backed ≈ 22+. H&K MR556A1 ●.
 
-**Castle (KV):** Dagvald **$80**, Davikja **$70**. Queues **empty**.
+**Castle (KV):** Dagvald **$115**, Davikja **$75**. Queues **empty**.
 
-**Readwise:** 967, pending **0**.
+**Readwise:** 968, pending **0**.
 
 **Deploy:** BUILD_DATE 2026-07-10. Phase 2 mock in app.
 

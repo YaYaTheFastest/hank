@@ -22,31 +22,31 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-10 evening)
+## LIVE STATE (refreshed 2026-07-10 night)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. Shop cat-door research filed (Ideas). Handgun fleet ◐.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Glock 19/45/44 manuals hosted → ● Full.** Sig handguns still ◐ (portal OMs). Shop cat-door research filed (Ideas).
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-10 evening: Racing Weight principle.)
+**Next domain (rotation):** **Recipes** — then Fitness → Finance. (Finance done 07-10 night: MECE / Don't Boil the Ocean.)
 
-**Doing (verbs):** Equipment quality audit (KTM/JD4044M bar) · Handgun manuals/serials · Ranch Chores as Profit Center · Shop cat door (research done — pick/order) · Reference Hub browse.
+**Doing (verbs):** Equipment quality audit (KTM/JD4044M bar) · Sig OMs + all handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order).
 
 **Waiting:** Projects interaction design · Home domain tiles · Profit-center metric pick · Dagvald Castle 7/8 Clean Room if still needed (not in KV — enter in Kids tab).
 
-**Inbox:** Vault clean. iCloud `_Cowork Inbox` list timed out this pass (retry next). Gmail new **0**.
+**Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only (Glock PDFs hosted + deleted this pass). Gmail new **0**.
 
-**Loop:** OK (E0) — evening pass: 3 chats filed/cleared, Castle +5 entries, Fitness + Readwise full, deploy if deck shipped.
+**Loop:** OK (E0) — night pass: Glock OMs hosted, 1 chat filed/cleared, Castle 0 new, Finance MECE, Readwise 968/0.
 
-**Fleet:** 51 = 44 Full + 7 ◐ (AP10F + 6 handgun cards). Manual-backed ≈ 22+. H&K MR556A1 ●.
+**Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
 **Castle (KV):** Dagvald **$115**, Davikja **$75**. Queues **empty**.
 
 **Readwise:** 968, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-10. Phase 2 mock in app.
+**Deploy:** BUILD_DATE 2026-07-10-night (this pass).
 
-**Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Handgun OMs + serials when convenient.
+**Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 
 **Job search:** Active — weekly Monday (~07-13).
 

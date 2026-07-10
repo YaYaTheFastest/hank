@@ -390,12 +390,12 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-10-adhd";
+const BUILD_DATE="2026-07-10-night";
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",error:"",proposed_fix:"",owner:"grok",
-  summary:"Evening pass 10 Jul — 3 chats filed, Castle $115/$75, Fitness + Readwise 968/0.",
-  last_attempt:"2026-07-10T17:15:00Z",last_success:"2026-07-10T17:20:00Z",open_issues:[]
+  summary:"Night pass 10 Jul — Glock manuals hosted ●, 1 chat filed, Castle $115/$75, Finance MECE, 47 full + 4 ◐.",
+  last_attempt:"2026-07-10T23:05:00Z",last_success:"2026-07-10T23:10:00Z",open_issues:[]
 };
 const ANNOUNCE={id:"phase2-mock-2026-07-09",title:"Phase 2 preview is ready",body:"Tap Work for Projects + Doing — a mock-up of your command center verbs. Preview only; tell Hank in Chat to change anything.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections, or Work → Explore links.",cta:"Open graph"};
@@ -430,9 +430,9 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-07-10",now:"Handgun fleet ◐ + Ranch Chores project",nextDomain:"Fitness",rotation:"Fitness → Finance → Recipes",dagvald:80,davikja:70,fleetTotal:51,fleetFull:44,fleetPart:7,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"Last pass 10 Jul — queues drained, Gmail filed, Castle synced."},
-  doing:["Equipment quality audit","Handgun manuals/serials","Ranch Chores as Profit Center"],
+const LIVE_STATE={refreshed:"2026-07-10",now:"Glock OMs hosted ●; Sig OMs still portal",nextDomain:"Recipes",rotation:"Recipes → Fitness → Finance",dagvald:115,davikja:75,fleetTotal:51,fleetFull:47,fleetPart:4,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"Night pass 10 Jul — Glocks Full, queues cleared, Castle current, Finance MECE."},
+  doing:["Equipment quality audit","Sig handgun OMs + serials","Ranch Chores as Profit Center"],
   waiting:["Projects interaction design","Home domain tiles layout","Profit-center metric pick"]};
 const PROJECTS_MOCK={
   active:[
@@ -472,8 +472,8 @@ const MANUALS_NEEDED=[
  // Hyperice Hypervolt 2 Black — Darren 2026-07-09: no manual required; product URL on card.
  {eq:"Frontier AP10F Pallet Fork",url:"https://www.deere.com/en/parts-and-service/manuals-and-training/",note:"Spec sheet ON FILE 2026-07-09 (manuals/frontier-ap10f-specsheet.pdf) — tine length 36.0 in confirmed. Still need the AP10F/AP11F Operator's Manual (PC13380) for grease points + set-screw torque + OM figures. No ungated OM PDF; get via JD Parts by PIN or dealer → _Cowork Inbox. Card remains ◐Provisional until OM.",gated:true},
  {eq:"Bison Coach — coach/body owner packet",url:"https://bisontrailer.com/",note:"Running gear (Dexter) ON FILE + built. 2022 brochure hosted 2026-07-09 (sales only, not unit OM). Still missing VIN owner packet for 51Y3C6J23F2004517 (floorplan/LQ, appliances). No public PDF — dealer/Bison factory VIN lookup → _Cowork Inbox. Nice-to-have, not a running-gear blocker.",gated:true},
- {eq:"Glock 19 / Glock 45 — Owner's Manual G17–G48",url:"https://eu-assets.contentstack.com/v3/assets/bltf7171cc1cfc1a31f/bltebc27f0f8099f9f4/6a3bd649918bcf1447c2f9f6/54774_Instructions-for-use_Relaunch_Standard_g17-48-BT01_02a_062026-GLOCK-Inc.pdf",note:"OEM PDF found 2026-07-10 (manual hunt). Covers G17–G48 family — confirm generation on slide. Tap → Save to Files → _Cowork Inbox; loop hosts under manuals/ → cards to Full.",gated:false},
- {eq:"Glock 44 — Owner's Manual (×2 units)",url:"https://eu-assets.contentstack.com/v3/assets/bltf7171cc1cfc1a31f/blt29d9c64476a83e35/69ce9b9322f82c5a1bf5dcbc/Instructions-for-use_Relaunch_G44V_032026-en.pdf",note:"OEM G44 PDF found 2026-07-10. One save covers both G44s. Host → Full on both cards.",gated:false},
+ // Glock 19/45 G17–G48 OM — DONE 2026-07-10 night (hosted manuals/glock-g17-g48-owners-manual.pdf; cards ● Full).
+ // Glock 44 OM — DONE 2026-07-10 night (hosted manuals/glock-g44-owners-manual.pdf compressed; full in _HANK Media/firearms-manuals/).
  {eq:"Sig Sauer P365XL — model OM PDF",url:"https://www.sigsauer.com/owner-manuals.html",note:"Factory linked; portal only (no direct ungated PDF). Download P365XL manual from portal → _Cowork Inbox → host → Full.",gated:true},
  {eq:"Sig Sauer P365 X-MACRO — model OM PDF",url:"https://www.sigsauer.com/owner-manuals.html",note:"Factory linked; portal only. Download X-MACRO manual → _Cowork Inbox → host → Full.",gated:true},
  {eq:"Sig Sauer P365XC — model OM PDF",url:"https://www.sigsauer.com/owner-manuals.html",note:"Factory linked; confirm SKU on slide, then download matching P365 manual from portal → _Cowork Inbox → host → Full.",gated:true},
@@ -849,24 +849,24 @@ const DATA = [
      manual:"Sig Owner Manuals portal (🌐 — confirm P365XC PDF)",manualUrl:"https://www.sigsauer.com/owner-manuals.html",
      jobs:[{t:"Safe-Handling & Storage",s:["Treat as loaded; muzzle safe; finger off trigger","Mag out; slide locked; chamber empty","Store UNLOADED in secured safe"]},
            {t:"Field Strip, Clean & Lube",s:["CLEAR first","Field strip only per official OM","Clean + light lube; function-check unloaded"]}]},
-   {n:"Glock 45",power:"Manual",loc:"Secure",basis:"As-needed",st:"part",
-     specs:[["Caliber","9mm"],["Type","handgun · Glock 45"],["Qty","1"],["Factory","us.glock.com → G45"],["Tier","◐ Provisional — OEM PDF linked"],["Needs","confirm Gen; host PDF → Full; serial; mags"]],
-     sched:[["Clear & safety-check","every handling","r","mag out, slide back, chamber empty"],["Field strip, clean & lube","after each session","r","per G17–G48 OM"],["Storage check","ongoing","g","secured, unloaded, dry"]],
-     manual:"GLOCK Owner's Manual G17–G48 (🌐 OEM PDF — confirm generation)",manualUrl:"https://eu-assets.contentstack.com/v3/assets/bltf7171cc1cfc1a31f/bltebc27f0f8099f9f4/6a3bd649918bcf1447c2f9f6/54774_Instructions-for-use_Relaunch_Standard_g17-48-BT01_02a_062026-GLOCK-Inc.pdf",
-     jobs:[{t:"Safe-Handling & Storage",s:["Treat as loaded; muzzle safe; finger off trigger","Mag out; slide locked; chamber empty","Store UNLOADED in secured safe"]},
-           {t:"Field Strip, Clean & Lube",s:["CLEAR first","Field strip only per official OM","Clean + light lube; function-check unloaded"]}]},
-   {n:"Glock 19",power:"Manual",loc:"Secure",basis:"As-needed",st:"part",
-     specs:[["Caliber","9mm"],["Type","handgun · Glock 19"],["Qty","1"],["Factory","us.glock.com → G19"],["Tier","◐ Provisional — OEM PDF linked"],["Needs","confirm Gen; host PDF → Full; serial; mags"]],
-     sched:[["Clear & safety-check","every handling","r","mag out, slide back, chamber empty"],["Field strip, clean & lube","after each session","r","per G17–G48 OM"],["Storage check","ongoing","g","secured, unloaded, dry"]],
-     manual:"GLOCK Owner's Manual G17–G48 (🌐 OEM PDF — confirm generation)",manualUrl:"https://eu-assets.contentstack.com/v3/assets/bltf7171cc1cfc1a31f/bltebc27f0f8099f9f4/6a3bd649918bcf1447c2f9f6/54774_Instructions-for-use_Relaunch_Standard_g17-48-BT01_02a_062026-GLOCK-Inc.pdf",
-     jobs:[{t:"Safe-Handling & Storage",s:["Treat as loaded; muzzle safe; finger off trigger","Mag out; slide locked; chamber empty","Store UNLOADED in secured safe"]},
-           {t:"Field Strip, Clean & Lube",s:["CLEAR first","Field strip only per official OM","Clean + light lube; function-check unloaded"]}]},
-   {n:"Glock 44",power:"Manual",loc:"Secure",basis:"As-needed",st:"part",
-     specs:[["Caliber",".22 LR"],["Type","handgun · Glock 44"],["Qty","2"],["Factory","us.glock.com → G44"],["Tier","◐ Provisional — OEM PDF linked"],["Needs","host PDF → Full; both serials; mags"]],
-     sched:[["Clear & safety-check","every handling","r","mag out, slide back, chamber empty"],["Field strip, clean & lube","after each session","r","per G44 OM"],["Storage check","ongoing","g","secured, unloaded, dry"]],
-     manual:"GLOCK Owner's Manual Model G44 (🌐 OEM PDF)",manualUrl:"https://eu-assets.contentstack.com/v3/assets/bltf7171cc1cfc1a31f/blt29d9c64476a83e35/69ce9b9322f82c5a1bf5dcbc/Instructions-for-use_Relaunch_G44V_032026-en.pdf",
-     jobs:[{t:"Safe-Handling & Storage",s:["Treat as loaded; muzzle safe; finger off trigger","Mag out; slide locked; chamber empty","Store UNLOADED in secured safe"]},
-           {t:"Field Strip, Clean & Lube",s:["CLEAR first","Field strip only per official OM","Clean + light lube; function-check unloaded"]}]}]}
+   {n:"Glock 45",power:"Manual",loc:"Secure",basis:"As-needed",st:"full",
+     specs:[["Caliber","9×19"],["Type","handgun · Glock 45 Compact Crossover"],["Qty","1"],["Factory","us.glock.com → G45"],["Barrel (OM p.55)","~102 mm / 4.02 in"],["Mag capacity (OM)","17 std"],["Weight empty mag (OM)","~694 g / 24.5 oz"],["Trigger","Safe Action® — no manual safety; ~26 N"],["Needs","serial; mags/holster/optics on hand"]],
+     sched:[["Clear & safety-check","every handling","r","mag out, slide lock open, visual+physical chamber"],["Field strip, clean & lube","after each session","r","OM Ch. IX–X; light lube only"],["Detailed inspect","high round / annual","r","sights, mags, springs"],["Storage check","ongoing","g","unloaded, cable lock, safe"]],
+     manual:"GLOCK Instructions for Use G17–G48 (ON FILE)",manualUrl:"manuals/glock-g17-g48-owners-manual.pdf",
+     jobs:[{t:"Safe-Handling & Storage",s:["Treat as loaded; muzzle safe; finger off trigger","Mag out; slide locked open; chamber empty visual+physical","Store UNLOADED + cable lock in secured safe","Serial on file for insurance (secure)"]},
+           {t:"Field Strip, Clean & Lube",s:["CLEAR first — no ammo in area; safety glasses","Mag out → eject → lock open → visual+physical chamber + mag well","Trigger rear; retract slide ~1/8 in; slide lock down both sides; slide off","Recoil spring + barrel out; stop (no further strip)","Clean bore from chamber end; light lube rails/hood; function-check unloaded"],img:["manuals/img/glock-g17-g48-p19.png"]}]},
+   {n:"Glock 19",power:"Manual",loc:"Secure",basis:"As-needed",st:"full",
+     specs:[["Caliber","9×19"],["Type","handgun · Glock 19 compact"],["Qty","1"],["Factory","us.glock.com → G19"],["Barrel (OM p.54)","~102 mm / 4.02 in"],["Mag capacity (OM)","15 std"],["Weight empty mag (OM)","~670–675 g"],["Trigger","Safe Action® — no manual safety"],["Needs","confirm Gen on slide; serial; mags/holster/optics"]],
+     sched:[["Clear & safety-check","every handling","r","mag out, slide lock open, visual+physical chamber"],["Field strip, clean & lube","after each session","r","OM Ch. IX–X; light lube only"],["Detailed inspect","high round / annual","r","sights, mags, springs"],["Storage check","ongoing","g","unloaded, cable lock, safe"]],
+     manual:"GLOCK Instructions for Use G17–G48 (ON FILE)",manualUrl:"manuals/glock-g17-g48-owners-manual.pdf",
+     jobs:[{t:"Safe-Handling & Storage",s:["Treat as loaded; muzzle safe; finger off trigger","Mag out; slide locked open; chamber empty visual+physical","Store UNLOADED + cable lock in secured safe","Serial on file for insurance (secure)"]},
+           {t:"Field Strip, Clean & Lube",s:["CLEAR first — no ammo in area; safety glasses","Mag out → eject → lock open → visual+physical chamber + mag well","Trigger rear; retract slide ~1/8 in; slide lock down both sides; slide off","Recoil spring + barrel out; stop (no further strip)","Clean bore from chamber end; light lube rails/hood; function-check unloaded"],img:["manuals/img/glock-g17-g48-p19.png","manuals/img/glock-g17-g48-p17.png"]}]},
+   {n:"Glock 44",power:"Manual",loc:"Secure",basis:"As-needed",st:"full",
+     specs:[["Caliber",".22 LR commercial only"],["Type","handgun · Glock 44 V blowback ×2"],["Qty","2"],["Factory","us.glock.com → G44"],["Ammo","no reloads/handloads (OM)"],["Mag load","assist tabs; one round at a time"],["Trigger","Safe Action® — no manual safety"],["Needs","both serials; mags on hand"]],
+     sched:[["Clear & safety-check","every handling","r","mag out, slide lock open, visual+physical chamber"],["Field strip, clean & lube","after each session","r","G44 V OM; dry bore before fire"],["Detailed inspect","high round / annual","r","sights, mags, springs"],["Storage check","ongoing","g","unloaded, cable lock, safe"]],
+     manual:"GLOCK Instructions for Use G44 V (ON FILE)",manualUrl:"manuals/glock-g44-owners-manual.pdf",
+     jobs:[{t:"Safe-Handling & Storage",s:["Treat as loaded; muzzle safe; finger off trigger","Mag out; slide locked open; chamber empty visual+physical","Store UNLOADED + cable lock in secured safe","Both serials on file for insurance (secure)"]},
+           {t:"Field Strip, Clean & Lube",s:["CLEAR first — no ammo; safety glasses; .22 LR commercial only","Mag out → eject → lock open → visual+physical chamber + mag well","Trigger rear; retract ~1/8 in; slide lock down; slide off; spring + barrel out","Clean bore from chamber end; dry until no oil before fire","Light lube only; function-check unloaded"],img:["manuals/img/glock-g44-p18.png","manuals/img/glock-g44-p16.png"]}]}]}
 ,
  {g:"Trailers", items:[
    {n:"Bison Coach Horse Trailer",power:"—",loc:"Yard",basis:"As-needed",st:"full",

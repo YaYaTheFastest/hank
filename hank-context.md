@@ -22,21 +22,21 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-10 night)
+## LIVE STATE (refreshed 2026-07-11 morning)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Glock 19/45/44 manuals hosted → ● Full.** Sig handguns still ◐ (portal OMs). Shop cat-door research filed (Ideas).
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Projects UI preferred model filed** (hierarchical + chat per project). **Blackstone Smash Burgers ●**. Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance. (Finance done 07-10 night: MECE / Don't Boil the Ocean.)
+**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-11 morning: Smash Burgers ●.)
 
-**Doing (verbs):** Equipment quality audit (KTM/JD4044M bar) · Sig OMs + all handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order).
+**Doing (verbs):** Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order).
 
-**Waiting:** Projects interaction design · Home domain tiles · Profit-center metric pick · Dagvald Castle 7/8 Clean Room if still needed (not in KV — enter in Kids tab).
+**Waiting:** Home domain tiles · Profit-center metric pick · Dagvald Castle 7/8 Clean Room if still needed (not in KV — enter in Kids tab).
 
-**Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only (Glock PDFs hosted + deleted this pass). Gmail new **0**.
+**Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. Gmail new **0**.
 
-**Loop:** OK (E0) — night pass: Glock OMs hosted, 1 chat filed/cleared, Castle 0 new, Finance MECE, Readwise 968/0.
+**Loop:** OK (E0) — morning pass: 3 chats filed/cleared, Castle 0 new, Recipes smash burgers ●, Readwise 968/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
@@ -44,7 +44,7 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Readwise:** 968, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-10-night (this pass).
+**Deploy:** BUILD_DATE 2026-07-11-morning (this pass).
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

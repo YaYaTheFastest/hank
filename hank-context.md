@@ -22,21 +22,21 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-11 afternoon)
+## LIVE STATE (refreshed 2026-07-11 evening)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Kitchen Sink → Basement Shower Backup** project filed. **Lost Art of Running** Fitness principle. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr** (filed under Shop - Ongoing). **Kitchen Sink → Basement Shower Backup** still open. Finance principle **80/20 · key drivers · hit singles** filed. Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-11 afternoon: elastic gait / Benzie.)
+**Next domain (rotation):** **Recipes** — then Fitness → Finance. (Finance done 07-11 evening: 80/20 Key Drivers & Hit Singles.)
 
-**Doing (verbs):** Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order).
+**Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order).
 
 **Waiting:** Home domain tiles · Profit-center metric pick · Dagvald Clean Room **pending** in Kids tab (await parent approve).
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. Gmail new **0**.
 
-**Loop:** OK (E0) — afternoon pass: 1 chat filed/cleared, Castle 1 pending, Fitness elastic gait, Readwise 971/0.
+**Loop:** OK (E0) — evening pass: 2 chats filed/cleared (shop/Deane), Castle 0 new ($115/$75 +1 pending), Finance 80/20, Readwise 971/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
@@ -44,7 +44,7 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Readwise:** 971, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-11-afternoon (this pass).
+**Deploy:** BUILD_DATE 2026-07-11-evening (this pass).
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

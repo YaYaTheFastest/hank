@@ -22,29 +22,29 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-11 morning)
+## LIVE STATE (refreshed 2026-07-11 afternoon)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Projects UI preferred model filed** (hierarchical + chat per project). **Blackstone Smash Burgers ●**. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Kitchen Sink → Basement Shower Backup** project filed. **Lost Art of Running** Fitness principle. Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-11 morning: Smash Burgers ●.)
+**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-11 afternoon: elastic gait / Benzie.)
 
-**Doing (verbs):** Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order).
+**Doing (verbs):** Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order).
 
-**Waiting:** Home domain tiles · Profit-center metric pick · Dagvald Castle 7/8 Clean Room if still needed (not in KV — enter in Kids tab).
+**Waiting:** Home domain tiles · Profit-center metric pick · Dagvald Clean Room **pending** in Kids tab (await parent approve).
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. Gmail new **0**.
 
-**Loop:** OK (E0) — morning pass: 3 chats filed/cleared, Castle 0 new, Recipes smash burgers ●, Readwise 968/0.
+**Loop:** OK (E0) — afternoon pass: 1 chat filed/cleared, Castle 1 pending, Fitness elastic gait, Readwise 971/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
-**Castle (KV):** Dagvald **$115**, Davikja **$75**. Queues **empty**.
+**Castle (KV):** Dagvald **$115**, Davikja **$75** (1 pending Clean Room $5 — not counted). Queues **empty**.
 
-**Readwise:** 968, pending **0**.
+**Readwise:** 971, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-11-morning (this pass).
+**Deploy:** BUILD_DATE 2026-07-11-afternoon (this pass).
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

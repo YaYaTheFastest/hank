@@ -22,13 +22,13 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-12 morning)
+## LIVE STATE (refreshed 2026-07-12 afternoon)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed (Tier 1 operators → network strategy). **4044M full 50-hr service** logged. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. **4044M full 50-hr service** logged. Fitness: Champion's Mind win-the-day note. Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-12 morning: Blackstone Hibachi Chicken Fried Rice ●.)
+**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-12 afternoon: Champion's Mind — Win the Day.)
 
 **Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar.
 
@@ -36,7 +36,7 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. Gmail new **0**.
 
-**Loop:** OK (E0) — morning pass: 2 chats filed/cleared (Fortna leadership; 4044M 50hr), Castle 0 new ($115/$75 +1 pending), Recipes Hibachi ●, Readwise 971/0.
+**Loop:** OK (E0) — afternoon pass: inbox/queues empty; Castle 0 new ($115/$75 +1 pending); Fitness Champion's Mind; Readwise 971/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
@@ -44,7 +44,7 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Readwise:** 971, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-12-morning (this pass).
+**Deploy:** BUILD_DATE 2026-07-12-afternoon (this pass).
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

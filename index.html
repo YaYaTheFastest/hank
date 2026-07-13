@@ -413,24 +413,24 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-13-afternoon";
+const BUILD_DATE="2026-07-13-evening";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-07-13T17:15:00Z",
+  updated:"2026-07-13T23:06:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+    {id:"2026-07-13_190004",started:"2026-07-13T19:00:04",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Monday evening pass complete. Loop health → OK (E0).",domain:"Finance: Elevator Test Prewire & Ship",chats_cleared:0,deploy:"pending"},
     {id:"2026-07-13_130004",started:"2026-07-13T13:00:04",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Monday afternoon pass complete. Loop health → OK (E0).",domain:"Fitness: Can't Hurt Me — 40% Rule & Calloused Mind",chats_cleared:0,deploy:"2953e29"},
     {id:"2026-07-13_070004",started:"2026-07-13T07:00:04",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Monday morning pass complete. Loop health → OK (E0).",domain:"Recipes: Blackstone Philly Cheesesteak ●",chats_cleared:0,deploy:"1c63073"},
     {id:"2026-07-12_190004",started:"2026-07-12T19:00:04",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Evening loop pass complete. Loop health → OK (E0).",domain:"Readwise: 971 / pending 0",chats_cleared:0,deploy:"cdd7416"},
-    {id:"2026-07-12_130005",started:"2026-07-12T13:00:05",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Afternoon loop complete — E0 OK.",domain:"Fitness: Champion's Mind — Win the Day",chats_cleared:0,deploy:"4fb87e1"},
-    {id:"2026-07-12_070005",started:"2026-07-12T07:00:05",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Loop pass complete — E0 OK.",domain:"Recipes: Hibachi Chicken Fried Rice ●",chats_cleared:2,deploy:"b0d336a"}
+    {id:"2026-07-12_130005",started:"2026-07-12T13:00:05",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Afternoon loop complete — E0 OK.",domain:"Fitness: Champion's Mind — Win the Day",chats_cleared:0,deploy:"4fb87e1"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",error:"",proposed_fix:"",owner:"grok",
-  summary:"Monday afternoon 13 Jul — inbox/queues empty, Castle $115/$75 +1 pending, Fitness Can't Hurt Me 40% Rule, 47 full + 4 ◐.",
-  last_attempt:"2026-07-13T17:15:00Z",last_success:"2026-07-13T17:15:00Z",open_issues:[]
+  summary:"Monday evening 13 Jul — inbox/queues empty, Castle $115/$75 +1 pending, Finance Elevator Test Prewire & Ship, 47 full + 4 ◐.",
+  last_attempt:"2026-07-13T23:06:00Z",last_success:"2026-07-13T23:06:00Z",open_issues:[]
 };
 const ANNOUNCE={id:"phase2-mock-2026-07-09",title:"Phase 2 preview is ready",body:"Tap Work for Projects + Doing — a mock-up of your command center verbs. Preview only; tell Hank in Chat to change anything.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections, or Work → Explore links.",cta:"Open graph"};

@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-13T17:05:36Z",
+  "updated": "2026-07-13T23:22:09Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-13_190004",
+      "started": "2026-07-13T19:00:04",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Monday evening pass complete. Loop health \u2192 OK (E0).",
+      "domain": "Finance: Elevator Test Prewire & Ship",
+      "chats_cleared": 0,
+      "deploy": "cf4bc10",
+      "log": "logs/loop-2026-07-13_190004.log"
+    },
     {
       "id": "2026-07-13_130004",
       "started": "2026-07-13T13:00:04",
@@ -57,20 +71,6 @@
       "chats_cleared": 0,
       "deploy": "4fb87e1",
       "log": "logs/loop-2026-07-12_130005.log"
-    },
-    {
-      "id": "2026-07-12_070005",
-      "started": "2026-07-12T07:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Loop pass complete \u2014 E0 OK.",
-      "domain": "Recipes: Hibachi Chicken Fried Rice \u25d0\u2192\u25cf (Flat Top King cited) \u2192 Fitness next",
-      "chats_cleared": null,
-      "deploy": "b0d336a",
-      "log": "logs/loop-2026-07-12_070005.log"
     }
   ]
 }

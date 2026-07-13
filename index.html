@@ -231,6 +231,15 @@
   .graph-detail p{margin:0 0 10px;font-size:12.5px;color:var(--muted);line-height:1.4}
   .graph-detail .cta{display:flex;gap:8px}
   .graph-detail .cta button{flex:1;border:0;border-radius:10px;padding:10px;font-size:13px;font-weight:700;cursor:pointer}
+  .lrun{background:#fff;border:2px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+  .lrun.ok{border-left:5px solid var(--ok)}.lrun.skip{border-left:5px solid #b8bfb0}.lrun.blocked{border-left:5px solid var(--red)}.lrun.degraded{border-left:5px solid var(--amber)}
+  .lrun .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+  .lrun .when{font-weight:800;font-size:16px;line-height:1.25}
+  .lrun .badge{font-size:11px;font-weight:800;text-transform:uppercase;padding:4px 8px;border-radius:8px;background:var(--chip);color:var(--muted);white-space:nowrap}
+  .lrun.ok .badge{background:#e8f5ea;color:var(--ok)}.lrun.skip .badge{background:#eef1ea;color:var(--muted)}.lrun.blocked .badge{background:#fdecea;color:var(--red)}
+  .lrun .sum{font-size:15px;line-height:1.45;margin:0 0 8px}
+  .lrun .meta{font-size:13px;color:var(--muted);line-height:1.4}
+  .lrun .meta b{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -294,6 +303,8 @@
   <div class="home">
     <div class="hgrid">
       <a class="tile" onclick="showView('dash')"><div class="ic">📊</div><div class="tt">Status</div><div class="ds" id="hNeeds">build, maintenance, supplies</div></a>
+      <a class="tile" onclick="showView('looplog')"><div class="ic">🔄</div><div class="tt">Loop log</div><div class="ds">last 5 passes</div></a>
+      <a class="tile" onclick="showView('looplog')"><div class="ic">🔄</div><div class="tt">Loop log</div><div class="ds">last 5 passes</div></a>
       <a class="tile" onclick="showView('brief')"><div class="ic">🧭</div><div class="tt">Brief</div><div class="ds">copy context for Grok Build</div></a>
       <a class="tile" onclick="showView('setup')"><div class="ic">🔌</div><div class="tt">Setup</div><div class="ds">password &amp; connection</div></a>
       <a class="tile" href="projects.html"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Castle Fund + ranch builds</div></a>
@@ -307,6 +318,18 @@
 
 <!-- DASHBOARD VIEW -->
 <div id="dashView" class="hide"><div class="dash" id="dash"></div></div>
+
+<!-- LOOP LOG VIEW -->
+<div id="looplogView" class="hide">
+  <div class="dash">
+    <div class="dsec">
+      <h3>Loop runs</h3>
+      <p class="lead" id="looplogLead">Last 5 scheduled or triggered passes on your Mac.</p>
+      <div id="looplogBody"></div>
+      <p class="muted" style="margin-top:10px">Schedule: 7:00 · 13:00 · 19:00 + chat queue watcher (every 5 min).</p>
+    </div>
+  </div>
+</div>
 
 <!-- EQUIPMENT VIEW -->
 <div id="equipView" class="hide">
@@ -390,7 +413,19 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-13-morning";
+const BUILD_DATE="2026-07-13-looplog";
+// Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
+const LOOP_RUNS={
+  updated:"2026-07-13T12:31:42Z",
+  schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
+  runs:[
+    {id:"2026-07-13_070004",started:"2026-07-13T07:00:04",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Monday morning pass complete. Loop health → OK (E0).",domain:"Recipes: Blackstone Philly Cheesesteak ●",chats_cleared:0,deploy:"1c63073"},
+    {id:"2026-07-12_190004",started:"2026-07-12T19:00:04",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Evening loop pass complete. Loop health → OK (E0).",domain:"Readwise: 971 / pending 0",chats_cleared:0,deploy:"cdd7416"},
+    {id:"2026-07-12_130005",started:"2026-07-12T13:00:05",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Afternoon loop complete — E0 OK.",domain:"Fitness: Champion's Mind — Win the Day",chats_cleared:0,deploy:"4fb87e1"},
+    {id:"2026-07-12_070005",started:"2026-07-12T07:00:05",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Loop pass complete — E0 OK.",domain:"Recipes: Hibachi Chicken Fried Rice ●",chats_cleared:2,deploy:"b0d336a"},
+    {id:"2026-07-11_190005",started:"2026-07-11T19:00:05",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Evening loop complete — E0 OK.",domain:"Finance: 80/20 Key Drivers & Hit Singles",chats_cleared:2,deploy:"401e163"}
+  ]
+};
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",error:"",proposed_fix:"",owner:"grok",
@@ -995,12 +1030,12 @@ function renderSetupManuals(){
   el.innerHTML=MANUALS_NEEDED.map((x,i)=>`<div class="att"><span class="ic n"></span><div class="body"><b>${i+1}. ${x.eq}</b> — <a class="lk" href="${x.url}" target="_blank" rel="noopener">📄 Open manual PDF ↗</a><div class="sub">${x.note}${x.gated?' <span class="verify">needs a one-time “I agree” tap first</span>':''}</div></div></div>`).join("");
 }
 function showView(v){
-  const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),go=document.getElementById('graphView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
-  const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup"||v==="graph";
+  const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),go=document.getElementById('graphView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),ll=document.getElementById('looplogView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
+  const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup"||v==="graph"||v==="looplog";
   const setBnav=(id,on)=>{const el=document.getElementById(id);if(el)el.classList.toggle('on',on);};
   setBnav('bnavHome',v==="home");setBnav('bnavWork',v==="work");setBnav('bnavChat',v==="chat");
   setBnav('bnavEquip',v==="equip");setBnav('bnavMore',moreTab);
-  ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");go.classList.toggle('hide',v!=="graph");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
+  ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");go.classList.toggle('hide',v!=="graph");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");ll.classList.toggle('hide',v!=="looplog");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
   const eh=document.getElementById('equipHint');if(eh)eh.classList.toggle('hide',v!=="equip"||filter!=="Due soon");
   document.body.classList.toggle('no-bar',true);
   if(v==="home"){renderToday();renderAnnounce();}
@@ -1008,6 +1043,7 @@ function showView(v){
   if(v==="graph"){markGraphAnnounceSeen();initGraphView();}
   if(v==="setup"){try{document.getElementById('hankKey').value=localStorage.getItem('hankKey')||"";}catch(err){}renderSetupManuals();}
   if(v==="dash")renderDash();
+  if(v==="looplog")renderLoopLog();
   if(v==="chat"){if(!chatMsgs.length){chatMsgs.push({role:"assistant",content:"Hey Darren — Hank here. Ask me about the fleet, a project, or what's due. (I capture anything you want filed for the next loop pass.)"});renderChat();}setTimeout(()=>{var ci=document.getElementById('chatInput');if(ci)ci.focus();},50);}
   window.scrollTo(0,0);
 }
@@ -1279,8 +1315,49 @@ function loopHealthSection(lh){
   h+=`<div class="sup"><span class="k">Tier</span><span class="v">${tier}</span></div>`;
   h+=`<div class="sup"><span class="k">Last pass</span><span class="v">${loopHealthFmt(lh&&lh.last_success)}</span></div>`;
   h+=`<div class="sup"><span class="k">Schedule</span><span class="v">7:00 · 13:00 · 19:00 + chat queue</span></div>`;
+  h+=`<div class="cta" style="margin-top:12px"><button class="s" onclick="showView('looplog')">View loop log (last 5)</button></div>`;
   h+=`</div>`;
   return h;
+}
+function loopRunFmt(iso){
+  if(!iso)return "—";
+  const d=new Date(iso);
+  if(isNaN(d))return iso.replace("T"," ").slice(0,16);
+  return d.toLocaleString(undefined,{weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});
+}
+function loopRunStatusLabel(st){
+  if(st==="ok")return "OK";
+  if(st==="skip")return "Skipped";
+  if(st==="blocked")return "Blocked";
+  if(st==="degraded")return "Degraded";
+  return st||"—";
+}
+async function loadLoopRuns(){
+  try{
+    const r=await fetch("loop-runs.json?"+Date.now(),{cache:"no-store"});
+    if(r.ok)return await r.json();
+  }catch(e){}
+  return LOOP_RUNS;
+}
+async function renderLoopLog(){
+  const data=await loadLoopRuns();
+  const lead=document.getElementById("looplogLead");
+  const body=document.getElementById("looplogBody");
+  if(!body)return;
+  if(lead)lead.textContent="Last 5 passes · updated "+loopHealthFmt(data.updated||"");
+  const runs=(data&&data.runs)||[];
+  if(!runs.length){body.innerHTML='<p class="muted">No loop runs recorded yet.</p>';return;}
+  body.innerHTML=runs.map((r,i)=>{
+    const st=r.status||"unknown";
+    const chats=r.chats_cleared!=null?`<b>${r.chats_cleared}</b> chat${r.chats_cleared===1?"":"s"} cleared · `:"";
+    const dep=r.deploy?`deploy <b>${r.deploy}</b> · `:"";
+    const dom=r.domain?`<div class="meta" style="margin-top:6px">${escapeHtml(r.domain)}</div>`:"";
+    return `<div class="lrun ${st}">
+      <div class="top"><div class="when">${i+1}. ${loopRunFmt(r.started)}</div><span class="badge">${escapeHtml(r.trigger_label||r.slot||"loop")} · ${loopRunStatusLabel(st)}</span></div>
+      <p class="sum">${escapeHtml(r.summary||"—")}</p>
+      <div class="meta">${chats}${dep}tier <b>${escapeHtml(r.tier||"—")}</b></div>${dom}
+    </div>`;
+  }).join("");
 }
 async function loadLoopHealth(){
   try{

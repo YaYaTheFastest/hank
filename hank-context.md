@@ -22,13 +22,13 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-12 evening)
+## LIVE STATE (refreshed 2026-07-13 morning)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. **4044M full 50-hr service** logged. Finance: Initial Hypothesis & Issue Trees note. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: Philly Cheesesteak ●. **Job search** refreshed 07-13 (ADUSA Director listing 404; TFM VP Merch Ops still live). Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance. (Finance done 07-12 evening: Initial Hypothesis & Issue Trees.)
+**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-13 morning: Philly Cheesesteak ●.)
 
 **Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar.
 
@@ -36,7 +36,7 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. Gmail new **0**.
 
-**Loop:** OK (E0) — evening pass: inbox/queues empty; Castle 0 new ($115/$75 +1 pending); Finance Initial Hypothesis & Issue Trees; Readwise 971/0.
+**Loop:** OK (E0) — Monday morning: inbox/queues empty; Castle 0 new ($115/$75 +1 pending); Recipes Philly ●; job search refresh; Readwise 971/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
@@ -44,10 +44,10 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Readwise:** 971, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-12-evening (this pass).
+**Deploy:** BUILD_DATE 2026-07-13-morning (this pass).
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 
-**Job search:** Active — weekly Monday (~07-13).
+**Job search:** Active — last refresh **2026-07-13** (ADUSA Director Network Strategy apply URL 404; Salisbury still posting SC strategy/analytics roles; Fresh Market VP Merch Ops live Greensboro).
 
 When Darren asks rotation, fleet, Castle, projects, doing, or inbox — **cite LIVE STATE first**. Keep replies tight unless he asks for depth.

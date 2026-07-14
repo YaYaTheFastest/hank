@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-13T23:22:42Z",
+  "updated": "2026-07-14T11:07:33Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-14_070005",
+      "started": "2026-07-14T07:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Tuesday morning pass complete \u2014 OK (E0).",
+      "domain": "Recipes: `Blackstone Breakfast Hash & Eggs` \u25d0\u2192\u25cf (medium-low O'Brien + sausage + eggs; Blackstone Products + TGWG cited).",
+      "chats_cleared": 0,
+      "deploy": null,
+      "log": "logs/loop-2026-07-14_070005.log"
+    },
     {
       "id": "2026-07-13_190013",
       "started": "2026-07-13T19:00:13",
@@ -57,20 +71,6 @@
       "chats_cleared": 0,
       "deploy": "1c63073",
       "log": "logs/loop-2026-07-13_070004.log"
-    },
-    {
-      "id": "2026-07-12_190004",
-      "started": "2026-07-12T19:00:04",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Evening loop pass complete. Loop health \u2192 OK (E0).",
-      "domain": "Readwise: 971 / pending 0 (inventory only \u2014 not Monday)",
-      "chats_cleared": 0,
-      "deploy": "cdd7416",
-      "log": "logs/loop-2026-07-12_190004.log"
     }
   ]
 }

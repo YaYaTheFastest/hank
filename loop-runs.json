@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-14T11:07:33Z",
+  "updated": "2026-07-14T17:03:51Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-14_130001",
+      "started": "2026-07-14T13:00:01",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Afternoon loop complete \u2014 E0 OK.",
+      "domain": "Readwise: 971 / pending 0 (inventory only \u2014 not Monday).",
+      "chats_cleared": null,
+      "deploy": "5896ce3",
+      "log": "logs/loop-2026-07-14_130001.log"
+    },
     {
       "id": "2026-07-14_070005",
       "started": "2026-07-14T07:00:05",
@@ -57,20 +71,6 @@
       "chats_cleared": null,
       "deploy": "2953e29",
       "log": "logs/loop-2026-07-13_130004.log"
-    },
-    {
-      "id": "2026-07-13_070004",
-      "started": "2026-07-13T07:00:04",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Monday morning pass complete. Loop health \u2192 OK (E0).",
-      "domain": "Recipes: Blackstone Philly Cheesesteak \u25d0\u2192\u25cf (thin ribeye ~\u215b\", ~400\u00b0F, chop on griddle; Flat Top King + Blackstone cited). Next domain: Fitness",
-      "chats_cleared": 0,
-      "deploy": "1c63073",
-      "log": "logs/loop-2026-07-13_070004.log"
     }
   ]
 }

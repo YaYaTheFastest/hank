@@ -22,13 +22,13 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-14 afternoon)
+## LIVE STATE (refreshed 2026-07-14 evening)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Breakfast Hash & Eggs ●** (07-14). Fitness: **Living With a SEAL — Comfortable Being Uncomfortable** (07-14 afternoon). Finance: Elevator Test / Prewire & Ship. **Job search** refreshed 07-13 (ADUSA Director listing 404; TFM VP Merch Ops still live). Glocks ●; Sig handguns still ◐. Projects UI intent re-answered from design brief.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Breakfast Hash & Eggs ●** (07-14). Fitness: **Living With a SEAL — Comfortable Being Uncomfortable** (07-14). Finance: **Implementation Buy-In & Ownership** (07-14 evening). **Job search** refreshed 07-13 (ADUSA Director listing 404; TFM VP Merch Ops still live). Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-14 afternoon: Living With a SEAL.)
+**Next domain (rotation):** **Recipes** — then Fitness → Finance. (Finance done 07-14 evening: Implementation Buy-In & Ownership.)
 
 **Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar.
 
@@ -36,7 +36,7 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. Gmail new **0**. Queues **empty**.
 
-**Loop:** OK (E0) — Tuesday afternoon: 1 chat filed (Projects UI intent query); Castle 0 new ($115/$75 +1 pending); Fitness Living With a SEAL; Readwise 971/0.
+**Loop:** OK (E0) — Tuesday evening: inbox/queues empty; Castle 0 new ($115/$75 +1 pending); Finance Implementation Buy-In; Readwise 971/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
@@ -44,7 +44,7 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Readwise:** 971, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-14-afternoon (this pass).
+**Deploy:** BUILD_DATE 2026-07-14-evening (this pass).
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

@@ -1,13 +1,13 @@
 {
   "status": "ok",
   "tier": "E0",
-  "summary": "2026-07-13 evening pass complete — Finance Elevator Test Prewire & Ship; Castle $115/$75 +1 pending",
-  "updated": "2026-07-13T23:06:00Z",
+  "summary": "2026-07-14 morning pass complete \u2014 Recipes Blackstone Breakfast Hash \u25cf; Castle $115/$75 +1 pending; 47 full + 4 \u25d0",
+  "updated": "2026-07-14T11:03:02Z",
   "owner": "grok",
   "component": "full-pass",
   "error": "",
   "proposed_fix": "",
-  "last_attempt": "2026-07-13T23:06:00Z",
-  "last_success": "2026-07-13T23:06:00Z",
+  "last_attempt": "2026-07-14T11:03:02Z",
+  "last_success": "2026-07-14T11:03:02Z",
   "open_issues": []
 }

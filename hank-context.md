@@ -22,13 +22,13 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-15 morning)
+## LIVE STATE (refreshed 2026-07-15 afternoon)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Fajita Quesadillas ●** (07-15). Fitness: **Living With a SEAL** (07-14). Finance: **Implementation Buy-In & Ownership** (07-14). **Job search** refreshed 07-13 (ADUSA Director listing 404; TFM VP Merch Ops still live). Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Fajita Quesadillas ●** (07-15). Fitness: **Why Zebras Don't Get Ulcers — Stress Levers** (07-15 afternoon). Finance: **Implementation Buy-In & Ownership** (07-14). **Job search** refreshed 07-13 (ADUSA Director listing 404; TFM VP Merch Ops still live). Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-15 morning: Blackstone Fajita Quesadillas ●.)
+**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-15 afternoon: Sapolsky stress levers.)
 
 **Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar.
 
@@ -36,7 +36,7 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. Gmail new **0**. Queues **empty**.
 
-**Loop:** OK (E0) — Wednesday morning: inbox/queues empty; Castle 2 new pending ($115/$75 +3 pending); Recipes Fajita Quesadillas ●; Readwise 971/0.
+**Loop:** OK (E0) — Wednesday afternoon: inbox/queues empty; Castle 0 new ($115/$75 +3 pending); Fitness Zebras stress levers; Readwise 971/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
@@ -44,7 +44,7 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Readwise:** 971, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-15-morning (this pass).
+**Deploy:** BUILD_DATE 2026-07-15-afternoon (this pass).
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

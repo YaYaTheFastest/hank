@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-15T11:07:42Z",
+  "updated": "2026-07-15T17:15:00Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-15_130001",
+      "started": "2026-07-15T13:00:01",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Wednesday afternoon pass complete \u2014 loop health OK (E0).",
+      "domain": "Fitness: Why Zebras Don't Get Ulcers \u2014 Stress Levers (Sapolsky)",
+      "chats_cleared": 0,
+      "deploy": "5c99357",
+      "log": "logs/loop-2026-07-15_130001.log"
+    },
     {
       "id": "2026-07-15_070001",
       "started": "2026-07-15T07:00:01",
@@ -57,20 +71,6 @@
       "chats_cleared": 0,
       "deploy": null,
       "log": "logs/loop-2026-07-14_070005.log"
-    },
-    {
-      "id": "2026-07-13_190013",
-      "started": "2026-07-13T19:00:13",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Evening loop complete \u2014 OK (E0).",
-      "domain": "Readwise: 971 / pending 0",
-      "chats_cleared": null,
-      "deploy": "cf4bc10",
-      "log": "logs/loop-2026-07-13_190013.log"
     }
   ]
 }

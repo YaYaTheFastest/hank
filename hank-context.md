@@ -22,29 +22,29 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-14 evening)
+## LIVE STATE (refreshed 2026-07-15 morning)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Breakfast Hash & Eggs ●** (07-14). Fitness: **Living With a SEAL — Comfortable Being Uncomfortable** (07-14). Finance: **Implementation Buy-In & Ownership** (07-14 evening). **Job search** refreshed 07-13 (ADUSA Director listing 404; TFM VP Merch Ops still live). Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Fajita Quesadillas ●** (07-15). Fitness: **Living With a SEAL** (07-14). Finance: **Implementation Buy-In & Ownership** (07-14). **Job search** refreshed 07-13 (ADUSA Director listing 404; TFM VP Merch Ops still live). Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance. (Finance done 07-14 evening: Implementation Buy-In & Ownership.)
+**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-15 morning: Blackstone Fajita Quesadillas ●.)
 
 **Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar.
 
-**Waiting:** Home domain tiles · Profit-center metric pick · Dagvald Clean Room **pending** in Kids tab (await parent approve).
+**Waiting:** Home domain tiles · Profit-center metric pick · **3 Castle pending** (Dagvald Clean Room $5; Davikja Vacuum Sunroom $5 + Kitten Palace $15) — parent approve in Kids tab.
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. Gmail new **0**. Queues **empty**.
 
-**Loop:** OK (E0) — Tuesday evening: inbox/queues empty; Castle 0 new ($115/$75 +1 pending); Finance Implementation Buy-In; Readwise 971/0.
+**Loop:** OK (E0) — Wednesday morning: inbox/queues empty; Castle 2 new pending ($115/$75 +3 pending); Recipes Fajita Quesadillas ●; Readwise 971/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
-**Castle (KV):** Dagvald **$115**, Davikja **$75** (1 pending Clean Room $5 — not counted). Queues **empty**.
+**Castle (KV):** Dagvald **$115**, Davikja **$75** (3 pending — not counted). Queues **empty**.
 
 **Readwise:** 971, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-14-evening (this pass).
+**Deploy:** BUILD_DATE 2026-07-15-morning (this pass).
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

@@ -1,7 +1,19 @@
 {
-  "updated": "2026-07-15T17:06:58Z",
+  "updated": "2026-07-15T23:05:00Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-15_190001",
+      "started": "2026-07-15T19:00:01",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Wednesday evening pass complete. Loop health \u2192 OK (E0).",
+      "domain": "Finance: Don't Fear the Facts \u2014 Chart Every Day",
+      "chats_cleared": 0,
+      "deploy": "6f48e45"
+    },
     {
       "id": "2026-07-15_130005",
       "started": "2026-07-15T13:00:05",
@@ -57,20 +69,6 @@
       "chats_cleared": null,
       "deploy": "5896ce3",
       "log": "logs/loop-2026-07-14_130001.log"
-    },
-    {
-      "id": "2026-07-14_070005",
-      "started": "2026-07-14T07:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Tuesday morning pass complete \u2014 OK (E0).",
-      "domain": "Recipes: `Blackstone Breakfast Hash & Eggs` \u25d0\u2192\u25cf (medium-low O'Brien + sausage + eggs; Blackstone Products + TGWG cited).",
-      "chats_cleared": 0,
-      "deploy": null,
-      "log": "logs/loop-2026-07-14_070005.log"
     }
   ]
 }

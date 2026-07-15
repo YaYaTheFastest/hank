@@ -1,13 +1,13 @@
 {
   "status": "ok",
   "tier": "E0",
-  "summary": "2026-07-15 afternoon pass complete — inbox/queues empty; Fitness Zebras stress levers; Castle $115/$75 +3 pending; 47 full + 4 ◐",
-  "updated": "2026-07-15T17:15:00Z",
+  "summary": "2026-07-15 evening pass complete — inbox/queues empty; Finance Don't Fear the Facts; Castle $150/$95 0 pending; 47 full + 4 ◐",
+  "updated": "2026-07-15T23:05:00Z",
   "owner": "grok",
   "component": "full-pass",
   "error": "",
   "proposed_fix": "",
-  "last_attempt": "2026-07-15T17:15:00Z",
-  "last_success": "2026-07-15T17:15:00Z",
+  "last_attempt": "2026-07-15T23:05:00Z",
+  "last_success": "2026-07-15T23:05:00Z",
   "open_issues": []
 }

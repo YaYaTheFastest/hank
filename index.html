@@ -413,24 +413,24 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-15-afternoon";
+const BUILD_DATE="2026-07-15-evening";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-07-15T17:15:00Z",
+  updated:"2026-07-15T23:05:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+    {id:"2026-07-15_190001",started:"2026-07-15T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Wednesday evening pass complete. Loop health → OK (E0).",domain:"Finance: Don't Fear the Facts — Chart Every Day",chats_cleared:0,deploy:"pending"},
     {id:"2026-07-15_130001",started:"2026-07-15T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Wednesday afternoon pass complete. Loop health → OK (E0).",domain:"Fitness: Why Zebras Don't Get Ulcers — Stress Levers",chats_cleared:0,deploy:"5c99357"},
     {id:"2026-07-15_070001",started:"2026-07-15T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Wednesday morning pass complete. Loop health → OK (E0).",domain:"Recipes: Blackstone Fajita Quesadillas ●",chats_cleared:0,deploy:"5f51b1b"},
     {id:"2026-07-14_190001",started:"2026-07-14T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Tuesday evening pass complete. Loop health → OK (E0).",domain:"Finance: Implementation Buy-In & Ownership",chats_cleared:0,deploy:"b2f3d43"},
-    {id:"2026-07-14_130001",started:"2026-07-14T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Tuesday afternoon pass complete. Loop health → OK (E0).",domain:"Fitness: Living With a SEAL",chats_cleared:1,deploy:"5896ce3"},
-    {id:"2026-07-14_070005",started:"2026-07-14T07:00:05",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Tuesday morning pass complete. Loop health → OK (E0).",domain:"Recipes: Blackstone Breakfast Hash & Eggs ●",chats_cleared:0,deploy:"e9a277c"}
+    {id:"2026-07-14_130001",started:"2026-07-14T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Tuesday afternoon pass complete. Loop health → OK (E0).",domain:"Fitness: Living With a SEAL",chats_cleared:1,deploy:"5896ce3"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",error:"",proposed_fix:"",owner:"grok",
-  summary:"Wednesday afternoon 15 Jul — inbox/queues empty, Castle $115/$75 +3 pending, Fitness Zebras stress levers, 47 full + 4 ◐.",
-  last_attempt:"2026-07-15T17:15:00Z",last_success:"2026-07-15T17:15:00Z",open_issues:[]
+  summary:"Wednesday evening 15 Jul — inbox/queues empty, Castle $150/$95 0 pending, Finance Don't Fear the Facts, 47 full + 4 ◐.",
+  last_attempt:"2026-07-15T23:05:00Z",last_success:"2026-07-15T23:05:00Z",open_issues:[]
 };
 const ANNOUNCE={id:"phase2-mock-2026-07-09",title:"Phase 2 preview is ready",body:"Tap Work for Projects + Doing — a mock-up of your command center verbs. Preview only; tell Hank in Chat to change anything.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections, or Work → Explore links.",cta:"Open graph"};

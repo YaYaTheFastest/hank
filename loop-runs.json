@@ -1,18 +1,20 @@
 {
-  "updated": "2026-07-15T23:05:00Z",
+  "updated": "2026-07-15T23:06:10Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
     {
-      "id": "2026-07-15_190001",
-      "started": "2026-07-15T19:00:01",
+      "id": "2026-07-15_190002",
+      "started": "2026-07-15T19:00:02",
+      "trigger": "scheduled",
       "trigger_label": "Scheduled (evening)",
       "slot": "evening",
       "status": "ok",
       "tier": "E0",
-      "summary": "Wednesday evening pass complete. Loop health \u2192 OK (E0).",
-      "domain": "Finance: Don't Fear the Facts \u2014 Chart Every Day",
-      "chats_cleared": 0,
-      "deploy": "6f48e45"
+      "summary": "Evening pass complete. Loop health \u2192 OK (E0).",
+      "domain": "Finance: New principle note: Don't Fear the Facts \u2014 Chart Every Day (McKinsey L159 + L548). Stack step 0. Next domain: Recipes.",
+      "chats_cleared": null,
+      "deploy": "6f48e45",
+      "log": "logs/loop-2026-07-15_190002.log"
     },
     {
       "id": "2026-07-15_130005",

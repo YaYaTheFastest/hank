@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-15T23:06:10Z",
+  "updated": "2026-07-16T11:20:00Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-16_070001",
+      "started": "2026-07-16T07:00:01",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Thursday morning pass complete. Loop health \u2192 OK (E0).",
+      "domain": "Recipes: Traeger Smoked Chicken Thighs \u25cf",
+      "chats_cleared": 0,
+      "deploy": "a47acbf",
+      "log": "logs/loop-2026-07-16_070001.log"
+    },
     {
       "id": "2026-07-15_190002",
       "started": "2026-07-15T19:00:02",
@@ -57,20 +71,6 @@
       "chats_cleared": null,
       "deploy": "b2f3d43",
       "log": "logs/loop-2026-07-14_190003.log"
-    },
-    {
-      "id": "2026-07-14_130001",
-      "started": "2026-07-14T13:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Afternoon loop complete \u2014 E0 OK.",
-      "domain": "Readwise: 971 / pending 0 (inventory only \u2014 not Monday).",
-      "chats_cleared": null,
-      "deploy": "5896ce3",
-      "log": "logs/loop-2026-07-14_130001.log"
     }
   ]
 }

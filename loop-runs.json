@@ -1,7 +1,19 @@
 {
-  "updated": "2026-07-16T17:05:28Z",
+  "updated": "2026-07-16T23:05:00Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-16_190001",
+      "started": "2026-07-16T19:00:01",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "degraded",
+      "tier": "E2",
+      "summary": "Thursday evening pass \u2014 Gmail OAuth BLOCKED; Castle $185/$120; Finance chart craft. Loop health \u2192 DEGRADED (E2).",
+      "domain": "Finance: One Message Per Chart \u2014 Lead & Source",
+      "chats_cleared": 0,
+      "deploy": "8732b34"
+    },
     {
       "id": "2026-07-16_130005",
       "started": "2026-07-16T13:00:05",
@@ -57,20 +69,6 @@
       "chats_cleared": null,
       "deploy": "6f48e45",
       "log": "logs/loop-2026-07-15_190002.log"
-    },
-    {
-      "id": "2026-07-15_130005",
-      "started": "2026-07-15T13:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Wednesday afternoon pass complete. Loop health \u2192 OK (E0).",
-      "domain": "Fitness: New principle: Why Zebras Don't Get Ulcers \u2014 Stress Levers (Sapolsky) \u2014 control, predictability, outlets, social connection; habituate the psychological lead-in; exercise completes the stress",
-      "chats_cleared": 0,
-      "deploy": "5c99357",
-      "log": "logs/loop-2026-07-15_130005.log"
     }
   ]
 }

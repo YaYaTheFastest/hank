@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-16T11:21:20Z",
+  "updated": "2026-07-16T17:05:28Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-16_130005",
+      "started": "2026-07-16T13:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Thursday afternoon pass complete. Loop health \u2192 OK (E0).",
+      "domain": "Readwise: 971 / pending 0 (inventory only; not Monday).",
+      "chats_cleared": 0,
+      "deploy": "a67d4e1",
+      "log": "logs/loop-2026-07-16_130005.log"
+    },
     {
       "id": "2026-07-16_070005",
       "started": "2026-07-16T07:00:05",
@@ -57,20 +71,6 @@
       "chats_cleared": 0,
       "deploy": "5c99357",
       "log": "logs/loop-2026-07-15_130005.log"
-    },
-    {
-      "id": "2026-07-15_070001",
-      "started": "2026-07-15T07:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Wednesday morning pass complete \u2014 loop health OK (E0).",
-      "domain": "Recipes: Blackstone Fajita Quesadillas \u25d0\u2192\u25cf (Flat Top King 375\u2013400\u00b0F / 165\u00b0F; Homemade on a Weeknight corroboration).",
-      "chats_cleared": null,
-      "deploy": "5f51b1b",
-      "log": "logs/loop-2026-07-15_070001.log"
     }
   ]
 }

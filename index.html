@@ -413,24 +413,28 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-16-afternoon";
+const BUILD_DATE="2026-07-16-evening";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-07-16T17:10:00Z",
+  updated:"2026-07-16T23:05:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+    {id:"2026-07-16_190001",started:"2026-07-16T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"degraded",tier:"E2",summary:"Thursday evening pass — Gmail OAuth BLOCKED; Castle $185/$120; Finance chart craft. Loop health → DEGRADED (E2).",domain:"Finance: One Message Per Chart — Lead & Source",chats_cleared:0,deploy:"pending"},
     {id:"2026-07-16_130001",started:"2026-07-16T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon pass complete. Loop health → OK (E0).",domain:"Fitness: Power of Habit — Cue Routine Reward",chats_cleared:0,deploy:"a67d4e1"},
     {id:"2026-07-16_070001",started:"2026-07-16T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Thursday morning pass complete. Loop health → OK (E0).",domain:"Recipes: Traeger Smoked Chicken Thighs ●",chats_cleared:0,deploy:"a47acbf"},
     {id:"2026-07-15_190001",started:"2026-07-15T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Wednesday evening pass complete. Loop health → OK (E0).",domain:"Finance: Don't Fear the Facts — Chart Every Day",chats_cleared:0,deploy:"6f48e45"},
-    {id:"2026-07-15_130001",started:"2026-07-15T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Wednesday afternoon pass complete. Loop health → OK (E0).",domain:"Fitness: Why Zebras Don't Get Ulcers — Stress Levers",chats_cleared:0,deploy:"5c99357"},
-    {id:"2026-07-15_070001",started:"2026-07-15T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Wednesday morning pass complete. Loop health → OK (E0).",domain:"Recipes: Blackstone Fajita Quesadillas ●",chats_cleared:0,deploy:"5f51b1b"}
+    {id:"2026-07-15_130001",started:"2026-07-15T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Wednesday afternoon pass complete. Loop health → OK (E0).",domain:"Fitness: Why Zebras Don't Get Ulcers — Stress Levers",chats_cleared:0,deploy:"5c99357"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
-  status:"ok",tier:"E0",component:"full-pass",error:"",proposed_fix:"",owner:"grok",
-  summary:"Thursday afternoon 16 Jul — inbox/queues empty, Castle $150/$95 0 pending, Fitness Power of Habit principle, 47 full + 4 ◐.",
-  last_attempt:"2026-07-16T17:10:00Z",last_success:"2026-07-16T17:10:00Z",open_issues:[]
+  status:"degraded",tier:"E2",component:"full-pass",
+  error:"gmail-search-failed: OAuth token expired or revoked",
+  proposed_fix:"Re-auth Google OAuth at ~/.config/hank per HANK Loop — Gmail Setup.md",
+  owner:"grok",
+  summary:"Thursday evening 16 Jul — FASTING.pdf filed; Castle $185/$120 0 pending; Finance One Message Per Chart; Readwise 972/0; Gmail OAuth BLOCKED (darren re-auth).",
+  last_attempt:"2026-07-16T23:05:00Z",last_success:"2026-07-16T17:10:00Z",
+  open_issues:[{tier:"E1",component:"gmail",owner:"darren",error:"OAuth invalid_grant — token expired or revoked",proposed_fix:"Re-auth Gmail OAuth (HANK Loop — Gmail Setup.md)"}]
 };
 const ANNOUNCE={id:"phase2-mock-2026-07-09",title:"Phase 2 preview is ready",body:"Tap Work for Projects + Doing — a mock-up of your command center verbs. Preview only; tell Hank in Chat to change anything.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections, or Work → Explore links.",cta:"Open graph"};

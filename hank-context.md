@@ -22,31 +22,31 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-16 afternoon)
+## LIVE STATE (refreshed 2026-07-16 evening)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Traeger Smoked Chicken Thighs ●** (07-16 morning). Fitness: **Power of Habit — Cue Routine Reward & Keystone Habits** (07-16 afternoon). Finance: **Don't Fear the Facts — Chart Every Day** (07-15 evening). **Job search** refreshed 07-13 (ADUSA Director listing 404; TFM VP Merch Ops still live). Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Traeger Smoked Chicken Thighs ●** (07-16 morning). Fitness: **Power of Habit** (07-16 afternoon) + **IF metabolic ranking (Chen 2024)** filed from inbox. Finance: **One Message Per Chart — Lead & Source** (07-16 evening). **Job search** refreshed 07-13 (ADUSA Director listing 404; TFM VP Merch Ops still live). Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-16 afternoon: Power of Habit.)
+**Next domain (rotation):** **Recipes** — then Fitness → Finance. (Finance done 07-16 evening: One Message Per Chart.)
 
 **Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar.
 
 **Waiting:** Home domain tiles · Profit-center metric pick. Castle pending **0**.
 
-**Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. Gmail new **0**. Queues **empty**.
+**Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only (FASTING.pdf filed + deleted this pass). **Gmail BLOCKED** — OAuth token expired/revoked (re-auth needed). Queues **empty**.
 
-**Loop:** OK (E0) — Thursday afternoon: inbox/queues empty; Castle $150/$95 0 pending; Fitness Power of Habit principle; Readwise 971/0.
+**Loop:** DEGRADED (E2) — Gmail OAuth invalid_grant; all other steps complete. Castle $185/$120 0 pending; Finance chart-craft principle; Readwise 972/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
-**Castle (KV):** Dagvald **$150**, Davikja **$95** (0 pending). Queues **empty**.
+**Castle (KV):** Dagvald **$185**, Davikja **$120** (0 pending). Queues **empty**.
 
-**Readwise:** 971, pending **0**.
+**Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-16-afternoon (this pass).
+**Deploy:** BUILD_DATE 2026-07-16-evening (this pass).
 
-**Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
+**Needs From You:** **Gmail OAuth re-auth** (token revoked — Status tab). DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 
 **Job search:** Active — last refresh **2026-07-13** (ADUSA Director Network Strategy apply URL 404; Salisbury still posting SC strategy/analytics roles; Fresh Market VP Merch Ops live Greensboro).
 

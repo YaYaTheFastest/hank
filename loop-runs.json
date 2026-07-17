@@ -1,20 +1,20 @@
 {
-  "updated": "2026-07-17T11:07:50Z",
+  "updated": "2026-07-17T17:10:00Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
     {
-      "id": "2026-07-17_070000",
-      "started": "2026-07-17T07:00:00",
+      "id": "2026-07-17_130001",
+      "started": "2026-07-17T13:00:01",
       "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
       "status": "degraded",
       "tier": "E2",
-      "summary": "Recipes: Traeger Pulled Pork Shoulder \u25d0\u2192\u25cf (250\u00b0F \u2192 wrap 160\u00b0F + cider \u2192 204\u00b0F \u2192 45 min rest)",
-      "domain": "Recipes: Traeger Pulled Pork Shoulder \u25d0\u2192\u25cf (250\u00b0F \u2192 wrap 160\u00b0F + cider \u2192 204\u00b0F \u2192 45 min rest)",
-      "chats_cleared": null,
-      "deploy": "30c70a9",
-      "log": "logs/loop-2026-07-17_070000.log"
+      "summary": "Friday afternoon \u2014 inbox/queues empty; Castle 1 pending ($185/$120); Fitness War of Art Resistance; Gmail BLOCKED. Loop health \u2192 DEGRADED (E2).",
+      "domain": "Fitness: War of Art \u2014 Resistance & the Professional",
+      "chats_cleared": 0,
+      "deploy": "7ff865f",
+      "log": "logs/loop-2026-07-17_130000.log"
     },
     {
       "id": "2026-07-17_070001",

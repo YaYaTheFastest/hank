@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-16T23:09:24Z",
+  "updated": "2026-07-17T11:06:01Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-17_070001",
+      "started": "2026-07-17T07:00:01",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "degraded",
+      "tier": "E2",
+      "summary": "Friday morning \u2014 8 chats filed+cleared; Castle $185/$120 0 pending; Recipes Traeger Pulled Pork \u25cf; Gmail BLOCKED. Loop health \u2192 DEGRADED (E2).",
+      "domain": "Recipes: Traeger Pulled Pork Shoulder \u25cf",
+      "chats_cleared": 8,
+      "deploy": "30c70a9",
+      "log": "logs/loop-2026-07-17_070000.log"
+    },
     {
       "id": "2026-07-16_190005",
       "started": "2026-07-16T19:00:05",
@@ -57,20 +71,6 @@
       "chats_cleared": 0,
       "deploy": "a47acbf",
       "log": "logs/loop-2026-07-16_070001.log"
-    },
-    {
-      "id": "2026-07-15_190002",
-      "started": "2026-07-15T19:00:02",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Evening pass complete. Loop health \u2192 OK (E0).",
-      "domain": "Finance: New principle note: Don't Fear the Facts \u2014 Chart Every Day (McKinsey L159 + L548). Stack step 0. Next domain: Recipes.",
-      "chats_cleared": null,
-      "deploy": "6f48e45",
-      "log": "logs/loop-2026-07-15_190002.log"
     }
   ]
 }

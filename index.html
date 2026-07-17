@@ -416,14 +416,14 @@
 const BUILD_DATE="2026-07-17-morning";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-07-16T23:05:00Z",
+  updated:"2026-07-17T11:06:01Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
-    {id:"2026-07-16_190001",started:"2026-07-16T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"degraded",tier:"E2",summary:"Thursday evening pass — Gmail OAuth BLOCKED; Castle $185/$120; Finance chart craft. Loop health → DEGRADED (E2).",domain:"Finance: One Message Per Chart — Lead & Source",chats_cleared:0,deploy:"8732b34"},
-    {id:"2026-07-16_130001",started:"2026-07-16T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon pass complete. Loop health → OK (E0).",domain:"Fitness: Power of Habit — Cue Routine Reward",chats_cleared:0,deploy:"a67d4e1"},
-    {id:"2026-07-16_070001",started:"2026-07-16T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Thursday morning pass complete. Loop health → OK (E0).",domain:"Recipes: Traeger Smoked Chicken Thighs ●",chats_cleared:0,deploy:"a47acbf"},
-    {id:"2026-07-15_190001",started:"2026-07-15T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Wednesday evening pass complete. Loop health → OK (E0).",domain:"Finance: Don't Fear the Facts — Chart Every Day",chats_cleared:0,deploy:"6f48e45"},
-    {id:"2026-07-15_130001",started:"2026-07-15T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Wednesday afternoon pass complete. Loop health → OK (E0).",domain:"Fitness: Why Zebras Don't Get Ulcers — Stress Levers",chats_cleared:0,deploy:"5c99357"}
+    {id:"2026-07-17_070001",started:"2026-07-17T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"degraded",tier:"E2",summary:"Friday morning \u2014 8 chats filed+cleared; Castle $185/$120 0 pending; Recipes Traeger Pulled Pork \u25cf; Gmail BLOCKED. Loop health \u2192 DEGRADED (E2).",domain:"Recipes: Traeger Pulled Pork Shoulder \u25cf",chats_cleared:8,deploy:"30c70a9"},
+    {id:"2026-07-16_190005",started:"2026-07-16T19:00:05",trigger_label:"Scheduled (evening)",slot:"evening",status:"degraded",tier:"E2",summary:"Readwise: Pending was 1 \u2192 full pipeline \u2192 972 / 0",domain:"Readwise: Pending was 1 \u2192 full pipeline \u2192 972 / 0",chats_cleared:null,deploy:"8732b34"},
+    {id:"2026-07-16_130005",started:"2026-07-16T13:00:05",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon pass complete. Loop health \u2192 OK (E0).",domain:"Readwise: 971 / pending 0 (inventory only; not Monday).",chats_cleared:0,deploy:"a67d4e1"},
+    {id:"2026-07-16_070005",started:"2026-07-16T07:00:05",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Thursday morning loop complete. Loop health \u2192 OK (E0).",domain:"Readwise: 971 / pending 0 (Thursday inventory only)",chats_cleared:0,deploy:"a47acbf"},
+    {id:"2026-07-16_070001",started:"2026-07-16T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Thursday morning pass complete. Loop health \u2192 OK (E0).",domain:"Recipes: Traeger Smoked Chicken Thighs \u25cf",chats_cleared:0,deploy:"a47acbf"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)

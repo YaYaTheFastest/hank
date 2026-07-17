@@ -413,7 +413,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-17-gmail-ok";
+const BUILD_DATE="2026-07-17-bible-domain";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-07-17T17:05:00Z",
@@ -464,6 +464,24 @@ const GRAPH_DOMAINS={
       {id:"job",label:"Seal-by-location job",type:"note",desc:"Future job card — materials TBD.",links:1}
     ],
     edges:[["hub","card"],["hub","manuals"],["hub","job"],["card","index"],["card","manuals"],["manuals","inbox"],["needs","card"],["needs","hub"],["inbox","card"]]
+  },
+  bible:{
+    label:"The Bible",count:12,
+    nodes:[
+      {id:"hub",label:"Bible Reference Hub",type:"hub",desc:"Front door — characters, situations, dialogue, Jesus' words.",links:5},
+      {id:"jesus",label:"Jesus of Nazareth",type:"hub",desc:"Center of speech & relationships. Red-letter index.",links:6},
+      {id:"peter",label:"Peter",type:"note",desc:"Call → denial → restoration. Feed My sheep.",links:3},
+      {id:"judas",label:"Judas",type:"note",desc:"Proximity without loyalty. Betrayal dialogue.",links:2},
+      {id:"john",label:"John",type:"note",desc:"Beloved disciple. Witness at the cross.",links:2},
+      {id:"martha",label:"Martha & Mary",type:"note",desc:"Sisters — sit vs serve; Jesus reorders anxiety.",links:2},
+      {id:"situ",label:"Situation Index",type:"index",desc:"Feeling/need → Jesus' words + next step.",links:4},
+      {id:"words",label:"Jesus Words Index",type:"index",desc:"Thematic red-letter retrieval with citations.",links:3},
+      {id:"well",label:"Woman at the Well",type:"note",desc:"John 4 — long personal dialogue; living water.",links:2},
+      {id:"adultery",label:"John 8 Mercy Scene",type:"note",desc:"Neither do I condemn you; go and sin no more.",links:2},
+      {id:"restore",label:"Peter Restored",type:"note",desc:"John 21 — love questions ×3; commission.",links:2},
+      {id:"select",label:"Situation Selector",type:"project",desc:"App idea — pick need, get Jesus' words.",links:2}
+    ],
+    edges:[["hub","jesus"],["hub","situ"],["hub","words"],["hub","select"],["jesus","peter"],["jesus","judas"],["jesus","john"],["jesus","martha"],["jesus","well"],["jesus","adultery"],["peter","restore"],["jesus","restore"],["situ","words"],["situ","select"],["well","situ"],["adultery","situ"],["restore","situ"],["martha","hub"],["judas","hub"]]
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
@@ -1156,6 +1174,7 @@ function renderWork(){
     <h2>Explore</h2>
     <div class="pcard" onclick="openGraph('finance','work')"><div class="pt">Finance connections</div><div class="pn">Reference Hub + projects + sources — 9 nodes</div><div class="pm">Graph preview</div></div>
     <div class="pcard" onclick="openGraph('bison','work')"><div class="pt">Bison rodent exclusion</div><div class="pn">Project + equipment card + capture path — 7 nodes</div><div class="pm">Graph preview</div></div>
+    <div class="pcard" onclick="openGraph('bible','work')"><div class="pt">The Bible</div><div class="pn">Jesus · characters · situations · red-letter words — 12 nodes</div><div class="pm">Graph preview</div></div>
     <p class="muted" style="margin-top:10px">Tap a project for detail. Graph = how this area connects (Obsidian-style, scoped).</p>`;
 }
 function findProject(n){

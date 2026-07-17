@@ -1,20 +1,20 @@
 {
   "status": "degraded",
   "tier": "E2",
-  "summary": "2026-07-16 evening pass — inbox FASTING filed+deleted; Castle 7 new ($185/$120 0 pending); Finance One Message Per Chart; Readwise 972/0; Gmail BLOCKED (OAuth token expired/revoked)",
-  "updated": "2026-07-16T23:05:00Z",
+  "summary": "2026-07-17 morning pass — 8 chats filed+cleared; Castle 0 new ($185/$120 0 pending); Recipes Traeger Pulled Pork ●; Readwise 972/0; Gmail BLOCKED (OAuth)",
+  "updated": "2026-07-17T11:15:00Z",
   "owner": "grok",
   "component": "full-pass",
-  "error": "gmail-search-failed: invalid_grant Token has been expired or revoked",
+  "error": "gmail-search-failed: OAuth / google_api build_service failure",
   "proposed_fix": "Darren: re-auth Google OAuth for HANK Gmail (see HANK Loop — Gmail Setup.md); refresh ~/.config/hank/google_token.json",
-  "last_attempt": "2026-07-16T23:05:00Z",
+  "last_attempt": "2026-07-17T11:15:00Z",
   "last_success": "2026-07-16T17:10:00Z",
   "open_issues": [
     {
       "tier": "E1",
       "component": "gmail",
       "owner": "darren",
-      "error": "OAuth refresh invalid_grant — token expired or revoked",
+      "error": "Gmail OAuth still failing (gmail-search-failed) — token invalid/revoked or workspace auth broken",
       "proposed_fix": "Re-run Gmail OAuth setup in ~/.config/hank per HANK Loop — Gmail Setup.md; then next loop pass retries scan"
     }
   ]

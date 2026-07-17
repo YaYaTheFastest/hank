@@ -1,6 +1,6 @@
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
-  // deploy-trigger: 2026-07-13T1 — vault audit BUILD_DATE align + Brief app-only Needs
+  // deploy-trigger: 2026-07-17T2 — Gmail OAuth re-auth; loop health OK E0
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",

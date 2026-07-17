@@ -34,9 +34,9 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Waiting:** Home domain tiles · Profit-center metric pick. Castle pending **1** (Dagvald Clean Room $5).
 
-**Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail BLOCKED** — OAuth still broken (re-auth needed). Queues **empty**.
+**Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail OK** (0 new / 9 labeled). Queues **empty**.
 
-**Loop:** DEGRADED (E2) — Gmail OAuth; all other steps complete. Castle $185/$120 +1 pending; Fitness War of Art Resistance; Readwise 972/0.
+**Loop:** **OK (E0)** — Gmail OAuth re-auth verified 2026-07-17. Castle $185/$120 +1 pending; Fitness War of Art Resistance; Readwise 972/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
@@ -44,9 +44,9 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-17-afternoon (this pass).
+**Deploy:** BUILD_DATE 2026-07-17-gmail-ok (Gmail health clear).
 
-**Needs From You:** **Gmail OAuth re-auth** (Status tab). DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
+**Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 
 **Job search:** Active — last refresh **2026-07-13** (ADUSA Director Network Strategy apply URL 404; Salisbury still posting SC strategy/analytics roles; Fresh Market VP Merch Ops live Greensboro).
 

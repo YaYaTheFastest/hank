@@ -22,31 +22,31 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-17 afternoon)
+## LIVE STATE (refreshed 2026-07-17 evening)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Traeger Pulled Pork Shoulder ●** (07-17 morning). Fitness: **War of Art — Resistance & the Professional** (07-17 afternoon) + Power of Habit + IF Chen 2024. Finance: **One Message Per Chart**. Faith pack + **Biblical Guidance — Situation Selector**. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Traeger Pulled Pork Shoulder ●**. Fitness: **War of Art — Resistance**. Finance: **White Room Brainstorming — Prep & Clean Slate** (07-17 evening). Faith pack + **Bible Guidance** app surface. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-17 afternoon: War of Art Resistance.)
+**Next domain (rotation):** **Recipes** — then Fitness → Finance. (Finance done 07-17 evening: White Room Brainstorming.)
 
 **The Bible domain (founded 2026-07-17):** Deep vault domain — characters · situations · dialogue · Jesus’ direct words. **How Darren interacts (app):** **Bible Guidance** (Home primary tile) is the front door — pick “I need…” → cited Jesus’ words + one next step → optional Walk the scene / Talk with Hank. Tabs: Scenes · People. Chat starter **“I need guidance”** primes pastoral unpacking. **Do not** send him to Connections graph for Scripture — that is a label map only. Vault hub: `20 Knowledge Base/The Bible/The Bible Reference Hub.md`. Application principles still under Mind Body Spirit.
 
 **Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar.
 
-**Waiting:** Home domain tiles · Profit-center metric pick. Castle pending **1** (Dagvald Clean Room $5).
+**Waiting:** Home domain tiles · Profit-center metric pick. Castle **0 pending**.
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail OK** (0 new / 9 labeled). Queues **empty**.
 
-**Loop:** **OK (E0)** — Gmail OAuth re-auth verified 2026-07-17. Castle $185/$120 +1 pending; Fitness War of Art Resistance; Readwise 972/0.
+**Loop:** **OK (E0)** — evening pass complete. Castle $270/$120 (Dagvald 19-day streak); Finance White Room Brainstorming; Readwise 972/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
-**Castle (KV):** Dagvald **$185**, Davikja **$120** (**1 pending** — Dagvald Clean Room $5). Queues **empty**.
+**Castle (KV):** Dagvald **$270** (19-day streak; +$30 Clean Stalls ×3 on 07-17), Davikja **$120**. Queues **empty**.
 
 **Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-17-bible-guide (Bible Guidance UI live).
+**Deploy:** BUILD_DATE 2026-07-17-evening.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

@@ -449,25 +449,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-17-bible-guide";
+const BUILD_DATE="2026-07-17-evening";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-07-17T17:05:00Z",
+  updated:"2026-07-17T23:05:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+    {id:"2026-07-17_190001",started:"2026-07-17T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Friday evening \u2014 1 chat filed+cleared; Castle $270/$120 0 pending; Finance White Room Brainstorming; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Finance: White Room Brainstorming \u2014 Prep & Clean Slate",chats_cleared:1,deploy:"pending"},
     {id:"2026-07-17_130001",started:"2026-07-17T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"degraded",tier:"E2",summary:"Friday afternoon \u2014 inbox/queues empty; Castle 1 pending ($185/$120); Fitness War of Art Resistance; Gmail BLOCKED. Loop health \u2192 DEGRADED (E2).",domain:"Fitness: War of Art \u2014 Resistance & the Professional",chats_cleared:0,deploy:"7ff865f"},
     {id:"2026-07-17_070001",started:"2026-07-17T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"degraded",tier:"E2",summary:"Friday morning \u2014 8 chats filed+cleared; Castle $185/$120 0 pending; Recipes Traeger Pulled Pork \u25cf; Gmail BLOCKED. Loop health \u2192 DEGRADED (E2).",domain:"Recipes: Traeger Pulled Pork Shoulder \u25cf",chats_cleared:8,deploy:"30c70a9"},
     {id:"2026-07-16_190005",started:"2026-07-16T19:00:05",trigger_label:"Scheduled (evening)",slot:"evening",status:"degraded",tier:"E2",summary:"Readwise: Pending was 1 \u2192 full pipeline \u2192 972 / 0",domain:"Readwise: Pending was 1 \u2192 full pipeline \u2192 972 / 0",chats_cleared:null,deploy:"8732b34"},
-    {id:"2026-07-16_130005",started:"2026-07-16T13:00:05",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon pass complete. Loop health \u2192 OK (E0).",domain:"Readwise: 971 / pending 0 (inventory only; not Monday).",chats_cleared:0,deploy:"a67d4e1"},
-    {id:"2026-07-16_070005",started:"2026-07-16T07:00:05",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Thursday morning loop complete. Loop health \u2192 OK (E0).",domain:"Readwise: 971 / pending 0 (Thursday inventory only)",chats_cleared:0,deploy:"a47acbf"}
+    {id:"2026-07-16_130005",started:"2026-07-16T13:00:05",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon pass complete. Loop health \u2192 OK (E0).",domain:"Readwise: 971 / pending 0 (inventory only; not Monday).",chats_cleared:0,deploy:"a67d4e1"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"Gmail OAuth re-auth verified 2026-07-17 — fetch ok:true 0 new / 9 fetched; open Gmail issue cleared.",
-  last_attempt:"2026-07-17T17:12:50Z",last_success:"2026-07-17T17:12:50Z",
+  summary:"2026-07-17 evening pass complete — inbox empty; Gmail 0 new; 1 chat filed+cleared; Castle $270/$120 0 pending; Finance White Room Brainstorming; Readwise 972/0.",
+  last_attempt:"2026-07-17T23:05:00Z",last_success:"2026-07-17T23:05:00Z",
   open_issues:[]
 };
 const ANNOUNCE={id:"phase2-mock-2026-07-09",title:"Phase 2 preview is ready",body:"Tap Work for Projects + Doing — a mock-up of your command center verbs. Preview only; tell Hank in Chat to change anything.",cta:"Open Work"};

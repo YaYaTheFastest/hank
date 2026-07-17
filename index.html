@@ -240,6 +240,25 @@
   .lrun .sum{font-size:15px;line-height:1.45;margin:0 0 8px}
   .lrun .meta{font-size:13px;color:var(--muted);line-height:1.4}
   .lrun .meta b{color:var(--ink)}
+  /* Bible Guidance */
+  .bible-head{padding:12px 16px 4px}
+  .bible-head h2{margin:0 0 4px;font-size:20px;font-weight:800}
+  .bible-head p{margin:0;font-size:14px;color:var(--muted);line-height:1.4}
+  .bible-seg{display:flex;gap:8px;padding:10px 16px 6px}
+  .bible-seg button{flex:1;border:1px solid var(--line);background:#fff;border-radius:11px;padding:11px 8px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;min-height:var(--touch)}
+  .bible-seg button.on{background:var(--green);color:#fff;border-color:var(--green)}
+  .bible-body{padding:4px 16px 24px}
+  .bcard{background:#fff;border:2px solid var(--line);border-radius:var(--radius);padding:14px 15px;margin-bottom:10px;cursor:pointer;text-align:left;width:100%}
+  .bcard:active{border-color:var(--green)}
+  .bcard .bt{font-weight:800;font-size:16px;line-height:1.25;margin:0 0 6px}
+  .bcard .bq{font-size:14px;line-height:1.45;color:var(--ink);font-style:italic;margin:0 0 6px}
+  .bcard .bs{font-size:12.5px;color:var(--muted);line-height:1.35}
+  .bquote{background:#f4f7f2;border-left:4px solid var(--green);padding:12px 14px;margin:0 0 12px;border-radius:0 10px 10px 0}
+  .bquote p{margin:0 0 4px;font-size:16px;line-height:1.45;font-style:italic}
+  .bquote .ref{font-size:12px;font-weight:700;color:var(--green);font-style:normal}
+  .bnext{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:12px}
+  .bnext b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--green);margin-bottom:4px}
+  .bnext p{margin:0;font-size:15px;line-height:1.4}
 </style>
 </head>
 <body>
@@ -256,6 +275,7 @@
     <div class="hgrid">
       <a class="tile prim" onclick="showView('chat')"><div class="ic">💬</div><div class="tt">Ask Hank</div><div class="ds">one question, straight answer</div></a>
       <a class="tile prim" onclick="showView('equip')"><div class="ic">🚜</div><div class="tt">Equipment</div><div class="ds" id="hEquip">machines, by category</div></a>
+      <a class="tile prim" onclick="showView('bible')"><div class="ic">✝</div><div class="tt">Bible Guidance</div><div class="ds">situation → Jesus’ words → next step</div></a>
     </div>
     <button type="button" class="bigcta" onclick="document.getElementById('cap').click()">📷 Send a photo to Hank</button>
     <details class="more-wrap">
@@ -265,6 +285,7 @@
           <a class="tile" href="projects.html"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Castle Fund + ranch builds</div></a>
           <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
           <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
+          <a class="tile" onclick="showView('bible')"><div class="ic">✝</div><div class="tt">Bible Guidance</div><div class="ds">I need… · scenes · people</div></a>
           <a class="tile" onclick="showView('dash')"><div class="ic">📊</div><div class="tt">Status</div><div class="ds">build, maintenance, supplies</div></a>
           <a class="tile" onclick="showView('brief')"><div class="ic">🧭</div><div class="tt">Brief</div><div class="ds">copy context for Grok Build</div></a>
           <a class="tile" onclick="showView('setup')"><div class="ic">🔌</div><div class="tt">Setup</div><div class="ds" id="hSetup">connect the backend</div></a>
@@ -284,9 +305,9 @@
   <div id="workBody" class="work-body"></div>
 </div>
 
-<!-- GRAPH VIEW (domain network mock) -->
+<!-- GRAPH VIEW (domain network mock — secondary; Bible uses Guidance) -->
 <div id="graphView" class="hide">
-  <div class="mock-ribbon">Graph preview — scoped domain network (not full vault). Loop will publish graph-*.json later.</div>
+  <div class="mock-ribbon">Graph preview — map of labels only. For Scripture, use <b>Bible Guidance</b> (situations → Jesus’ words).</div>
   <div class="graph-wrap">
     <div class="graph-toolbar">
       <button class="back" onclick="graphBack()">← Back</button>
@@ -296,6 +317,20 @@
     <p class="graph-foot" id="graphHint">Drag to pan · tap a node · hub = Reference Hub or project center</p>
     <div class="graph-detail" id="graphDetail"></div>
   </div>
+</div>
+
+<!-- BIBLE GUIDANCE — primary interaction for The Bible domain -->
+<div id="bibleView" class="hide">
+  <div class="bible-head">
+    <h2>Bible Guidance</h2>
+    <p>Pick how you feel → Jesus’ words + one next step. Deeper scenes &amp; people when you want them.</p>
+  </div>
+  <div class="bible-seg" id="bibleSeg">
+    <button type="button" class="on" id="bibleSegSit" onclick="setBibleSeg('sit')">I need…</button>
+    <button type="button" id="bibleSegScene" onclick="setBibleSeg('scene')">Scenes</button>
+    <button type="button" id="bibleSegWho" onclick="setBibleSeg('who')">People</button>
+  </div>
+  <div class="bible-body" id="bibleBody"></div>
 </div>
 
 <!-- MORE VIEW -->
@@ -311,7 +346,8 @@
       <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
       <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
       <a class="tile" onclick="document.getElementById('cap').click()"><div class="ic">📷</div><div class="tt">Send to Hank</div><div class="ds">drop a photo to the inbox</div></a>
-      <a class="tile" onclick="openGraph('finance','more')"><div class="ic">🕸️</div><div class="tt">Connections</div><div class="ds">domain graph preview</div></a>
+      <a class="tile" onclick="showView('bible')"><div class="ic">✝</div><div class="tt">Bible Guidance</div><div class="ds">situation → Jesus’ words</div></a>
+      <a class="tile" onclick="openGraph('finance','more')"><div class="ic">🕸️</div><div class="tt">Connections</div><div class="ds">label map (not Scripture)</div></a>
     </div>
   </div>
 </div>
@@ -413,7 +449,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-17-bible-domain";
+const BUILD_DATE="2026-07-17-bible-guide";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-07-17T17:05:00Z",
@@ -508,11 +544,53 @@ const PROJECTS_MOCK={
 let workSeg="projects";
 const CHAT_STARTERS=[
   {label:"Paste Grok session — file it",text:"From Grok — file this:\n\n",send:false},
+  {label:"I need guidance",text:"I need biblical guidance. I'm feeling:\n\n",send:false},
   "What's due on the fleet?",
   "What's the domain rotation?",
   "Castle balances?",
   "What manuals are still needed?"
 ];
+// Bible Guidance — app-facing content (mirrors vault Situation Index + Scenes; NKJV sense; never invent Jesus' words)
+const BIBLE={
+  situations:[
+    {id:"lost-aim",t:"Lost aim / directionless",words:[{q:"Come to Me, all you who labor and are heavy laden, and I will give you rest.",r:"Matt 11:28"},{q:"But seek first the kingdom of God and His righteousness, and all these things shall be added to you.",r:"Matt 6:33"}],next:"5-minute honest prayer (say where you are). One verse. One next right step only — not a life plan.",scene:"emmaus",who:["jesus"]},
+    {id:"overload",t:"Overloaded / burned out",words:[{q:"Come to Me… Take My yoke upon you and learn from Me… For My yoke is easy and My burden is light.",r:"Matt 11:28–30"},{q:"Abide in Me, and I in you.",r:"John 15:4"}],next:"Trade “I must carry this” for His yoke. 60-second abide. Drop one non-kingdom urgency today.",scene:"supper",who:["jesus"]},
+    {id:"failed",t:"Failed as husband / father",words:[{q:"A new commandment I give to you, that you love one another; as I have loved you…",r:"John 13:34"},{q:"Blessed are the merciful… Blessed are the peacemakers…",r:"Matt 5:7, 9"}],next:"Confess (1 John 1:9). One sacrificial act toward wife or child today — small and real.",scene:"restore",who:["peter","jesus"]},
+    {id:"shame",t:"Need forgiveness / shame",words:[{q:"Neither do I condemn you; go and sin no more.",r:"John 8:11"},{q:"He who is without sin among you, let him throw a stone at her first.",r:"John 8:7"}],next:"Receive mercy — stop self-prosecution. If someone was harmed, repair. Both clauses: no condemnation and a new walk.",scene:"adultery",who:["jesus"]},
+    {id:"conflict",t:"Conflict at home",words:[{q:"Blessed are the peacemakers, for they shall be called sons of God.",r:"Matt 5:9"},{q:"…first be reconciled to your brother…",r:"Matt 5:24"},{q:"…love one another; as I have loved you…",r:"John 13:34"}],next:"Reconcile before “offering.” Listen first. One peacemaking move before you win the argument.",scene:"samaritan",who:["jesus"]},
+    {id:"money",t:"Money anxiety / greed pressure",words:[{q:"Do not worry about your life, what you will eat or what you will drink…",r:"Matt 6:25"},{q:"You cannot serve God and mammon.",r:"Matt 6:24"},{q:"…sell whatever you have and give to the poor… and come, take up the cross, and follow Me.",r:"Mark 10:21"}],next:"Name the fear out loud to God. One act of trust or generosity. No panic debt decision today.",scene:"ruler",who:["jesus"]},
+    {id:"judged",t:"Judged / trapped by others’ rules",words:[{q:"He who is without sin among you, let him throw a stone at her first.",r:"John 8:7"},{q:"I desire mercy and not sacrifice.",r:"Matt 9:13"}],next:"Refuse stone-throwing. Check your own plank (Matt 7:3–5) before prosecuting anyone.",scene:"adultery",who:["jesus"]},
+    {id:"thirst",t:"Thirsty for meaning / stuck",words:[{q:"…whoever drinks of the water that I shall give him will never thirst.",r:"John 4:14"},{q:"I who speak to you am He.",r:"John 4:26"}],next:"Honest conversation with God about the real thirst under the habit or scroll.",scene:"well",who:["jesus"]},
+    {id:"betray",t:"Betrayed — or you failed someone",words:[{q:"Simon, son of Jonah, do you love Me?",r:"John 21:15–17"},{q:"Feed My sheep.",r:"John 21:17"}],next:"If you failed: answer the love question, then one “feed sheep” act. If betrayed: truth + boundaries; no revenge fantasy.",scene:"restore",who:["peter","judas","jesus"]},
+    {id:"grief",t:"Grief / hard obedience",words:[{q:"My soul is exceedingly sorrowful, even to death.",r:"Matt 26:38"},{q:"O My Father, if it is possible, let this cup pass from Me; nevertheless, not as I will, but as You will.",r:"Matt 26:39"}],next:"Lament honestly. Stay with friends. Don’t fake steel. Pray the real want, then surrender.",scene:"gethsemane",who:["jesus","peter"]},
+    {id:"morning",t:"How to start the day",words:[{q:"But seek first the kingdom of God and His righteousness…",r:"Matt 6:33"},{q:"Abide in Me, and I in you.",r:"John 15:4"}],next:"10–15 min prayer + Scripture if you can; if not, pray Matt 6:33 aloud and one act of love at home.",scene:"sermon",who:["jesus"]},
+    {id:"work",t:"Work under pressure / integrity",words:[{q:"You are the salt of the earth… You are the light of the world…",r:"Matt 5:13–14"},{q:"Let your light so shine before men, that they may see your good works and glorify your Father in heaven.",r:"Matt 5:16"}],next:"One excellent honest action. No gossip shortcut. Work as unto the Lord.",scene:"sermon",who:["jesus"]},
+    {id:"neighbor",t:"Need neighbor love made concrete",words:[{q:"Go and do likewise.",r:"Luke 10:37"}],next:"Name one costly neighbor act this week — time, money, or presence.",scene:"samaritan",who:["jesus"]},
+    {id:"compare",t:"Sibling / family comparison",words:[{q:"Martha, Martha, you are worried and troubled about many things. But one thing is needed…",r:"Luke 10:41–42"}],next:"Drop scorekeeping. Choose the “one thing” needed — presence over anxious performance.",scene:"prodigal",who:["martha","jesus"]},
+    {id:"status",t:"Status / achievement over God",words:[{q:"One thing you lack: Go your way, sell whatever you have… and come, take up the cross, and follow Me.",r:"Mark 10:21"},{q:"With men it is impossible, but not with God…",r:"Mark 10:27"}],next:"Ask what you won’t release. Hold it open-handed in prayer. Don’t soft-edit the cost.",scene:"ruler",who:["jesus"]}
+  ],
+  scenes:[
+    {id:"well",t:"Woman at the Well",ref:"John 4:1–42",one:"Long personal dialogue across taboo. Living water; truth without cruelty; “I am He.”",cast:"Jesus · Samaritan woman · disciples",pattern:"Honest seeker → layered answer",jesus:["If you knew the gift of God… He would have given you living water. (4:10)","Whoever drinks of this water will thirst again, but… never thirst. (4:13–14)","God is Spirit, and those who worship Him must worship in spirit and truth. (4:24)","I who speak to you am He. (4:26)"],shift:"Stranger → known Messiah; isolation → public witness"},
+    {id:"adultery",t:"Woman Caught in Adultery",ref:"John 7:53–8:11",one:"Trap using a woman’s shame. Silence, then mercy + charge.",cast:"Jesus · woman · scribes/Pharisees",pattern:"Trap → silence → mercy + agency",jesus:["He who is without sin among you, let him throw a stone at her first. (8:7)","Neither do I condemn you; go and sin no more. (8:11)"],shift:"Object of prosecution → person addressed; accusers leave"},
+    {id:"sermon",t:"Sermon on the Mount",ref:"Matt 5–7",one:"Kingdom constitution: Beatitudes, secret piety, seek first, two builders.",cast:"Jesus · disciples · crowds",pattern:"Authoritative teaching",jesus:["Blessed are the poor in spirit… (5:3–12)","Seek first the kingdom of God… (6:33)","Judge not, that you be not judged. (7:1)","Whoever hears these sayings of Mine, and does them… (7:24)"],shift:"Disciples receive a way of life under the Father"},
+    {id:"samaritan",t:"Good Samaritan",ref:"Luke 10:25–37",one:"Lawyer tests “who is my neighbor?” Story relocates the question.",cast:"Jesus · lawyer · (parable cast)",pattern:"Parable as answer",jesus:["What is written in the law? (10:26)","Go and do likewise. (10:37)"],shift:"Neighbor = who shows mercy, not who qualifies"},
+    {id:"prodigal",t:"Prodigal Son",ref:"Luke 15:11–32",one:"Lost son, running father, angry older brother. Who gets the party?",cast:"Younger · father · older (Jesus narrates)",pattern:"Parable to grumbling audience",jesus:["…this my son was dead and is alive again; he was lost and is found. (15:24)","…you are always with me, and all that I have is yours. (15:31)"],shift:"Death→life for the younger; invitation to the older"},
+    {id:"ruler",t:"Rich Young Ruler",ref:"Mark 10:17–31",one:"Jesus loved him — and named the one thing he wouldn’t release.",cast:"Jesus · rich man · disciples",pattern:"Honest seeker → hard cost → sorrowful exit",jesus:["One thing you lack… sell… give… follow Me. (10:21)","How hard it is for those who have riches to enter the kingdom… (10:23)","With men it is impossible, but not with God. (10:27)"],shift:"Seeking posture → sorrowful distance"},
+    {id:"supper",t:"Last Supper / New Commandment",ref:"John 13",one:"Towel, betrayal at the table, love as the mark of disciples.",cast:"Jesus · Twelve · Peter · Judas",pattern:"Servant action + love command",jesus:["…you also ought to wash one another’s feet. (13:14)","A new commandment… love one another; as I have loved you. (13:34)","By this all will know that you are My disciples… (13:35)"],shift:"Hierarchy inverted; Judas exits into night"},
+    {id:"gethsemane",t:"Gethsemane",ref:"Matt 26:36–46",one:"Honest desire for the cup to pass; will surrendered. Friends sleep.",cast:"Jesus · Peter · James · John",pattern:"Grief dialogue with the Father",jesus:["My soul is exceedingly sorrowful, even to death. (26:38)","…not as I will, but as You will. (26:39)","Watch and pray… The spirit indeed is willing, but the flesh is weak. (26:41)"],shift:"Desire spoken; resolve toward the cross"},
+    {id:"restore",t:"Peter Restored",ref:"John 21:15–19",one:"Charcoal fire. Love asked three times. Feed My sheep. Follow Me.",cast:"Risen Jesus · Peter",pattern:"Commission after failure",jesus:["Simon, son of Jonah, do you love Me? (21:15–17)","Feed My lambs / Tend My sheep / Feed My sheep.","Follow Me. (21:19)","…what is that to you? You follow Me. (21:22)"],shift:"Denial not final; leadership re-given as feeding"},
+    {id:"emmaus",t:"Road to Emmaus",ref:"Luke 24:13–35",one:"Unrecognized Lord walks with crushed hope; known in the breaking of bread.",cast:"Risen Jesus · Cleopas · companion",pattern:"Question → Scripture open → recognition",jesus:["O foolish ones, and slow of heart to believe… (24:25)","Ought not the Christ to have suffered these things and to enter into His glory? (24:26)"],shift:"Away in despair → back with burning hearts"}
+  ],
+  who:[
+    {id:"jesus",t:"Jesus of Nazareth",one:"Center of speech and relationship. Questions, commands, “I am,” parables, prayer.",arc:"Ministry → cross → risen Lord who still speaks.",edge:"Father · Twelve · crowds · outsiders"},
+    {id:"peter",t:"Peter",one:"Zeal, collapse, restoration. Closest among leaders — still fails, still commissioned.",arc:"Call → confession → denial → “Feed My sheep.”",edge:"Jesus (love questions) · John · the church"},
+    {id:"judas",t:"Judas Iscariot",one:"Proximity without loyalty. Chosen, trusted with purse, exits into night.",arc:"Disciple → bargain → kiss → no restoration scene.",edge:"Contrast with Peter’s return"},
+    {id:"john",t:"John the Beloved",one:"Witness at the cross; “disciple Jesus loved.” Against comparison (John 21).",arc:"Inner three → cross fidelity → tomb.",edge:"Jesus · Peter · Mary mother of Jesus"},
+    {id:"martha",t:"Martha & Mary",one:"Sisters: serve vs sit. Jesus reorders anxiety under presence.",arc:"Hospitality clash → grief at Lazarus → anointing.",edge:"Each other · Jesus · Lazarus"},
+    {id:"paul",t:"Paul (Saul)",one:"Enemy → apostle. Risen Jesus: “why are you persecuting Me?”",arc:"Persecutor → Damascus word → mission.",edge:"Identifies with His people"}
+  ]
+};
+let bibleSeg="sit";
 // Needs From You — only items that require Darren physically (a photo / a decision). Hank's homework never appears here.
 const NEEDS=[
  // Whirlpool freezer inducted 2026-07-01 from the nameplate photo (WZF34X20DW07 / UE4506196). No open physical Needs. (Toro Recycler Max rebuilt manual-first 2026-07-04 → Full.)
@@ -1050,22 +1128,102 @@ function renderSetupManuals(){
   el.innerHTML=MANUALS_NEEDED.map((x,i)=>`<div class="att"><span class="ic n"></span><div class="body"><b>${i+1}. ${x.eq}</b> — <a class="lk" href="${x.url}" target="_blank" rel="noopener">📄 Open manual PDF ↗</a><div class="sub">${x.note}${x.gated?' <span class="verify">needs a one-time “I agree” tap first</span>':''}</div></div></div>`).join("");
 }
 function showView(v){
-  const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),go=document.getElementById('graphView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),ll=document.getElementById('looplogView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
+  const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),go=document.getElementById('graphView'),bi=document.getElementById('bibleView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),ll=document.getElementById('looplogView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
   const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup"||v==="graph"||v==="looplog";
   const setBnav=(id,on)=>{const el=document.getElementById(id);if(el)el.classList.toggle('on',on);};
-  setBnav('bnavHome',v==="home");setBnav('bnavWork',v==="work");setBnav('bnavChat',v==="chat");
+  setBnav('bnavHome',v==="home"||v==="bible");setBnav('bnavWork',v==="work");setBnav('bnavChat',v==="chat");
   setBnav('bnavEquip',v==="equip");setBnav('bnavMore',moreTab);
-  ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");go.classList.toggle('hide',v!=="graph");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");ll.classList.toggle('hide',v!=="looplog");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
+  ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");go.classList.toggle('hide',v!=="graph");if(bi)bi.classList.toggle('hide',v!=="bible");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");ll.classList.toggle('hide',v!=="looplog");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
   const eh=document.getElementById('equipHint');if(eh)eh.classList.toggle('hide',v!=="equip"||filter!=="Due soon");
   document.body.classList.toggle('no-bar',true);
   if(v==="home"){renderToday();renderAnnounce();}
   if(v==="work"){markAnnounceSeen();renderWork();}
   if(v==="graph"){markGraphAnnounceSeen();initGraphView();}
+  if(v==="bible")renderBible();
   if(v==="setup"){try{document.getElementById('hankKey').value=localStorage.getItem('hankKey')||"";}catch(err){}renderSetupManuals();}
   if(v==="dash")renderDash();
   if(v==="looplog")renderLoopLog();
   if(v==="chat"){if(!chatMsgs.length){chatMsgs.push({role:"assistant",content:"Hey Darren — Hank here. Ask me about the fleet, a project, or what's due. (I capture anything you want filed for the next loop pass.)"});renderChat();}setTimeout(()=>{var ci=document.getElementById('chatInput');if(ci)ci.focus();},50);}
   window.scrollTo(0,0);
+}
+
+/* ─── Bible Guidance — primary way to use Scripture (not the label graph) ─── */
+function setBibleSeg(s){
+  bibleSeg=s;
+  const sit=document.getElementById('bibleSegSit'),sc=document.getElementById('bibleSegScene'),wh=document.getElementById('bibleSegWho');
+  if(sit)sit.classList.toggle('on',s==="sit");
+  if(sc)sc.classList.toggle('on',s==="scene");
+  if(wh)wh.classList.toggle('on',s==="who");
+  renderBible();
+}
+function renderBible(){
+  const el=document.getElementById('bibleBody');if(!el||typeof BIBLE==="undefined")return;
+  if(bibleSeg==="sit"){
+    el.innerHTML=BIBLE.situations.map(s=>{
+      const first=s.words[0];
+      return `<button type="button" class="bcard" onclick="openSit('${s.id}')"><div class="bt">${escapeHtml(s.t)}</div><div class="bq">“${escapeHtml(first.q)}”</div><div class="bs">${escapeHtml(first.r)} · tap for next step</div></button>`;
+    }).join("");
+  }else if(bibleSeg==="scene"){
+    el.innerHTML=BIBLE.scenes.map(s=>`<button type="button" class="bcard" onclick="openScene('${s.id}')"><div class="bt">${escapeHtml(s.t)}</div><div class="bs">${escapeHtml(s.ref)} · ${escapeHtml(s.one)}</div></button>`).join("");
+  }else{
+    el.innerHTML=BIBLE.who.map(p=>`<button type="button" class="bcard" onclick="openWho('${p.id}')"><div class="bt">${escapeHtml(p.t)}</div><div class="bs">${escapeHtml(p.one)}</div></button>`).join("");
+  }
+}
+function openSit(id){
+  const s=BIBLE.situations.find(x=>x.id===id);if(!s)return;
+  const quotes=s.words.map(w=>`<div class="bquote"><p>“${escapeHtml(w.q)}”</p><div class="ref">${escapeHtml(w.r)}</div></div>`).join("");
+  const sc=BIBLE.scenes.find(x=>x.id===s.scene);
+  const sceneBtn=sc?`<button class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="closeSheet();openScene('${sc.id}')">Walk the scene · ${escapeHtml(sc.t)}</button>`:"";
+  const chatP="I need biblical guidance. Situation: "+s.t+". Jesus said: "+s.words.map(w=>w.r+" — "+w.q).join("; ")+". Next step I was given: "+s.next+". Help me walk this out honestly.";
+  document.getElementById('panel').innerHTML=`<div class="ph"><div><h3>${escapeHtml(s.t)}</h3><div class="sub">Jesus’ words first · one next step</div></div><button class="x" onclick="closeSheet()">×</button></div>
+    ${quotes}
+    <div class="bnext"><b>Next faithful step</b><p>${escapeHtml(s.next)}</p></div>
+    <div class="sec"><h4>Go deeper</h4>
+      <button class="logbtn" onclick='bibleToChat(${JSON.stringify(chatP)})'>Talk it through with Hank</button>
+      ${sceneBtn}
+      <button class="logbtn" style="margin-top:8px" onclick='copyBibleText(${JSON.stringify(s.words.map(w=>w.r+": "+w.q).join("\\n"))})'>Copy Jesus’ words</button>
+    </div>`;
+  document.getElementById('sheet').classList.add('open');
+}
+function openScene(id){
+  const s=BIBLE.scenes.find(x=>x.id===id);if(!s)return;
+  const lines=(s.jesus||[]).map(j=>`<div class="bquote"><p>“${escapeHtml(j)}”</p></div>`).join("");
+  const chatP="Walk me through the scene “"+s.t+"” ("+s.ref+"). Use setting, dialogue, Jesus’ words, and one next step for me today. Cast: "+s.cast+".";
+  document.getElementById('panel').innerHTML=`<div class="ph"><div><h3>${escapeHtml(s.t)}</h3><div class="sub">${escapeHtml(s.ref)} · ${escapeHtml(s.pattern||"")}</div></div><button class="x" onclick="closeSheet()">×</button></div>
+    <div class="sec"><h4>What happens</h4><p style="margin:0;font-size:14px;line-height:1.45">${escapeHtml(s.one)}</p></div>
+    <div class="sec"><h4>Cast</h4><p style="margin:0;font-size:14px">${escapeHtml(s.cast)}</p></div>
+    <div class="sec"><h4>Jesus’ words (start here)</h4>${lines}</div>
+    <div class="sec"><h4>Shift</h4><p style="margin:0;font-size:14px;line-height:1.45">${escapeHtml(s.shift||"")}</p></div>
+    <div class="sec"><h4>Study</h4>
+      <button class="logbtn" onclick='bibleToChat(${JSON.stringify(chatP)})'>Study with Hank</button>
+      <button class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="closeSheet();showView('bible');setBibleSeg('sit')">Back to “I need…”</button>
+    </div>`;
+  document.getElementById('sheet').classList.add('open');
+}
+function openWho(id){
+  const p=BIBLE.who.find(x=>x.id===id);if(!p)return;
+  const chatP="Tell me about "+p.t+" in Scripture — role, arc, and how their story helps me follow Jesus. "+p.one;
+  document.getElementById('panel').innerHTML=`<div class="ph"><div><h3>${escapeHtml(p.t)}</h3><div class="sub">Person · character graph</div></div><button class="x" onclick="closeSheet()">×</button></div>
+    <div class="sec"><h4>Why they matter</h4><p style="margin:0;font-size:14px;line-height:1.45">${escapeHtml(p.one)}</p></div>
+    <div class="sec"><h4>Arc</h4><p style="margin:0;font-size:14px;line-height:1.45">${escapeHtml(p.arc||"")}</p></div>
+    <div class="sec"><h4>Edges</h4><p style="margin:0;font-size:14px;line-height:1.45">${escapeHtml(p.edge||"")}</p></div>
+    <div class="sec"><h4>Go deeper</h4>
+      <button class="logbtn" onclick='bibleToChat(${JSON.stringify(chatP)})'>Ask Hank about ${escapeHtml(p.t)}</button>
+      <button class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="closeSheet();showView('bible');setBibleSeg('scene')">Browse scenes</button>
+    </div>`;
+  document.getElementById('sheet').classList.add('open');
+}
+function bibleToChat(prompt){
+  closeSheet();
+  showView('chat');
+  const inp=document.getElementById('chatInput');
+  if(inp){inp.value=prompt;inp.focus();try{inp.setSelectionRange(prompt.length,prompt.length);}catch(e){}}
+  toast("Prompt ready — Send when you want");
+}
+function copyBibleText(t){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(t).then(()=>toast("Copied")).catch(()=>toast("Copy failed"));
+  }else toast("Copy not available");
 }
 function announceKey(){return"hankSeenAnnounce:"+ANNOUNCE.id;}
 function announceSeen(){try{return localStorage.getItem(announceKey())==="1";}catch(e){return false;}}
@@ -1174,8 +1332,8 @@ function renderWork(){
     <h2>Explore</h2>
     <div class="pcard" onclick="openGraph('finance','work')"><div class="pt">Finance connections</div><div class="pn">Reference Hub + projects + sources — 9 nodes</div><div class="pm">Graph preview</div></div>
     <div class="pcard" onclick="openGraph('bison','work')"><div class="pt">Bison rodent exclusion</div><div class="pn">Project + equipment card + capture path — 7 nodes</div><div class="pm">Graph preview</div></div>
-    <div class="pcard" onclick="openGraph('bible','work')"><div class="pt">The Bible</div><div class="pn">Jesus · characters · situations · red-letter words — 12 nodes</div><div class="pm">Graph preview</div></div>
-    <p class="muted" style="margin-top:10px">Tap a project for detail. Graph = how this area connects (Obsidian-style, scoped).</p>`;
+    <div class="pcard" onclick="showView('bible')"><div class="pt">Bible Guidance</div><div class="pn">I need… → Jesus’ words → next step · scenes · people</div><div class="pm">Primary · not the graph</div></div>
+    <p class="muted" style="margin-top:10px">Tap a project for detail. Finance/Bison graphs = label maps. Scripture = Bible Guidance.</p>`;
 }
 function findProject(n){
   for(const k of ["active","ideas","hold"]){const f=PROJECTS_MOCK[k].find(p=>p.n===n);if(f)return{...f,status:k};}

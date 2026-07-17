@@ -30,9 +30,9 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-17 afternoon: War of Art Resistance.)
 
-**The Bible domain (founded 2026-07-17):** Deep vault domain — characters · situations · dialogue · Jesus’ direct words. Front door: `20 Knowledge Base/The Bible/The Bible Reference Hub.md`. Situation Index for “I need…” guidance. App Connections graph scope **bible**. Application principles still under Mind Body Spirit; narrative graph under The Bible.
+**The Bible domain (founded 2026-07-17):** Deep vault domain — characters · situations · dialogue · Jesus’ direct words. **How Darren interacts (app):** **Bible Guidance** (Home primary tile) is the front door — pick “I need…” → cited Jesus’ words + one next step → optional Walk the scene / Talk with Hank. Tabs: Scenes · People. Chat starter **“I need guidance”** primes pastoral unpacking. **Do not** send him to Connections graph for Scripture — that is a label map only. Vault hub: `20 Knowledge Base/The Bible/The Bible Reference Hub.md`. Application principles still under Mind Body Spirit.
 
-**Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar · Biblical Guidance situation selector (idea).
+**Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar.
 
 **Waiting:** Home domain tiles · Profit-center metric pick. Castle pending **1** (Dagvald Clean Room $5).
 
@@ -46,7 +46,7 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-17-gmail-ok (Gmail health clear).
+**Deploy:** BUILD_DATE 2026-07-17-bible-guide (Bible Guidance UI live).
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

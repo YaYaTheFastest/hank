@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-17T17:10:00Z",
+  "updated": "2026-07-17T17:06:25Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-17_130004",
+      "started": "2026-07-17T13:00:04",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "degraded",
+      "tier": "E2",
+      "summary": "Readwise: 972 / pending 0 (inventory only \u2014 not Monday)",
+      "domain": "Readwise: 972 / pending 0 (inventory only \u2014 not Monday)",
+      "chats_cleared": null,
+      "deploy": "7ff865f",
+      "log": "logs/loop-2026-07-17_130004.log"
+    },
     {
       "id": "2026-07-17_130001",
       "started": "2026-07-17T13:00:01",
@@ -57,20 +71,6 @@
       "chats_cleared": 0,
       "deploy": "a67d4e1",
       "log": "logs/loop-2026-07-16_130005.log"
-    },
-    {
-      "id": "2026-07-16_070005",
-      "started": "2026-07-16T07:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Thursday morning loop complete. Loop health \u2192 OK (E0).",
-      "domain": "Readwise: 971 / pending 0 (Thursday inventory only)",
-      "chats_cleared": 0,
-      "deploy": "a47acbf",
-      "log": "logs/loop-2026-07-16_070005.log"
     }
   ]
 }

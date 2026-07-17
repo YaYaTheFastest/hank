@@ -1,6 +1,6 @@
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
-  // deploy-trigger: 2026-07-17T3 — The Bible domain graph (characters · situations · Jesus words)
+  // deploy-trigger: 2026-07-17T4 — Bible Guidance surface (situation → Jesus words → next step)
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",

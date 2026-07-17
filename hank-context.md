@@ -22,29 +22,29 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-17 morning)
+## LIVE STATE (refreshed 2026-07-17 afternoon)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Traeger Pulled Pork Shoulder ●** (07-17 morning). Faith pack filed (gospel, roles, Beatitudes, 5 commands, lost-aim prayer, 7 daily steps) + idea **Biblical Guidance — Situation Selector**. Fitness: **Power of Habit** + IF Chen 2024. Finance: **One Message Per Chart**. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Traeger Pulled Pork Shoulder ●** (07-17 morning). Fitness: **War of Art — Resistance & the Professional** (07-17 afternoon) + Power of Habit + IF Chen 2024. Finance: **One Message Per Chart**. Faith pack + **Biblical Guidance — Situation Selector**. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-17 morning: Traeger Pulled Pork ●.)
+**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-17 afternoon: War of Art Resistance.)
 
 **Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar · Biblical Guidance situation selector (idea).
 
-**Waiting:** Home domain tiles · Profit-center metric pick. Castle pending **0**.
+**Waiting:** Home domain tiles · Profit-center metric pick. Castle pending **1** (Dagvald Clean Room $5).
 
-**Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail BLOCKED** — OAuth still broken (re-auth needed). Queues **empty** (8 chats filed + cleared this pass).
+**Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail BLOCKED** — OAuth still broken (re-auth needed). Queues **empty**.
 
-**Loop:** DEGRADED (E2) — Gmail OAuth; all other steps complete. Castle $185/$120 0 pending; 8 chats filed; Recipes pulled pork ●; Readwise 972/0.
+**Loop:** DEGRADED (E2) — Gmail OAuth; all other steps complete. Castle $185/$120 +1 pending; Fitness War of Art Resistance; Readwise 972/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
-**Castle (KV):** Dagvald **$185**, Davikja **$120** (0 pending). Queues **empty**.
+**Castle (KV):** Dagvald **$185**, Davikja **$120** (**1 pending** — Dagvald Clean Room $5). Queues **empty**.
 
 **Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-17-morning (this pass).
+**Deploy:** BUILD_DATE 2026-07-17-afternoon (this pass).
 
 **Needs From You:** **Gmail OAuth re-auth** (Status tab). DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

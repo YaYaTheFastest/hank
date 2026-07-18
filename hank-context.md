@@ -33,34 +33,36 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-18 evening — memory protocol)
+## LIVE STATE (refreshed 2026-07-18 night — scheduled evening loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** **Memory Protocol** live (Write→Consolidate→Recall→Apply) + **weekly wiki lint** + first **backfill complete** (Obstacle Is the Way principle). Differentiator locked: **job front door + Grok operator**. Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. Recipes: **Traeger Smoked Salmon ●**. Fitness: **Resilience — Greitens**. Finance: **White Room Brainstorming**. Faith + **Bible Guidance**. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Steady-state loop. **Finance** deepened: **Team Mix, Morale & Information Flow** (McKinsey). Recipes: **Traeger Smoked Salmon ●**. Fitness: **Resilience — Greitens**. Memory Protocol live. Differentiator: **job front door + Grok operator**. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. Faith + **Bible Guidance**. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-18 afternoon: Resilience · Greitens.)
+**Next domain (rotation):** **Recipes** — then Fitness → Finance. (Finance done 07-18 evening: Team Mix · Morale · Info Flow.)
 
 **The Bible domain (founded 2026-07-17):** Deep vault domain — characters · situations · dialogue · Jesus’ direct words. **How Darren interacts (app):** **Bible Guidance** (Home primary tile) is the front door — pick “I need…” → cited Jesus’ words + one next step → optional Walk the scene / Talk with Hank. Tabs: Scenes · People. Chat starter **“I need guidance”** primes pastoral unpacking. **Do not** send him to Connections graph for Scripture — that is a label map only. Vault hub: `20 Knowledge Base/The Bible/The Bible Reference Hub.md`. Application principles still under Mind Body Spirit.
 
-**Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar.
+**Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + project info block + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar.
 
-**Waiting:** Home domain tiles · Profit-center metric pick. Castle **1 pending** (Dagvald Clean Room $5).
+**Waiting:** Home domain tiles · Profit-center metric pick. Castle **4 pending** (Dagvald Clean Room $5 + Clean Stalls $10×3).
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail OK**. Queues **empty**.
 
-**Loop:** **OK (E0)** — memory protocol + wiki lint + BF-2026-07-18 complete. Castle $270/$120 +1 pending; Readwise 972/0.
+**Loop:** **OK (E0)** — evening pass complete. Castle **$240 / $120** +4 pending; Readwise 972/0. (Dagvald balance corrected from misstated $270.)
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
-**Castle (KV):** Dagvald **$270** (19-day streak through 07-17; **1 pending** Clean Room $5), Davikja **$120**. Queues **empty**.
+**Castle (KV v71):** Dagvald **$240** (19-day streak through 07-17; **4 pending**), Davikja **$120**. Queues **empty**.
 
 **Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-18-memory-protocol.
+**Deploy:** BUILD_DATE 2026-07-18-evening.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 
 **Job search:** Active — last refresh **2026-07-13** (ADUSA Director Network Strategy apply URL 404; Salisbury still posting SC strategy/analytics roles; Fresh Market VP Merch Ops live Greensboro).
+
+**Property (parcel):** Home ranch **441** Plainfield → REID **137608** (PIN not in vault). Neighbor deal **439** → REID **137611** / PIN **7858962380**.
 
 When Darren asks rotation, fleet, Castle, projects, doing, or inbox — **cite LIVE STATE first**. On harder questions — **RECALL RULE** above. Keep replies tight unless he asks for depth.

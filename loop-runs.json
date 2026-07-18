@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-18T11:07:56Z",
+  "updated": "2026-07-18T17:09:50Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-18_130005",
+      "started": "2026-07-18T13:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Readwise: 972 / pending 0 (inventory only; not Monday)",
+      "domain": "Readwise: 972 / pending 0 (inventory only; not Monday)",
+      "chats_cleared": null,
+      "deploy": "326f363",
+      "log": "logs/loop-2026-07-18_130005.log"
+    },
     {
       "id": "2026-07-18_070005",
       "started": "2026-07-18T07:00:05",
@@ -57,20 +71,6 @@
       "chats_cleared": 0,
       "deploy": "7ff865f",
       "log": "logs/loop-2026-07-17_130000.log"
-    },
-    {
-      "id": "2026-07-17_070001",
-      "started": "2026-07-17T07:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "degraded",
-      "tier": "E2",
-      "summary": "Friday morning \u2014 8 chats filed+cleared; Castle $185/$120 0 pending; Recipes Traeger Pulled Pork \u25cf; Gmail BLOCKED. Loop health \u2192 DEGRADED (E2).",
-      "domain": "Recipes: Traeger Pulled Pork Shoulder \u25cf",
-      "chats_cleared": 8,
-      "deploy": "30c70a9",
-      "log": "logs/loop-2026-07-17_070000.log"
     }
   ]
 }

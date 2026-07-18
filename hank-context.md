@@ -20,6 +20,8 @@ CASTLE: Dagvald and Davikja — balances in LIVE STATE.
 
 THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok. Footer: powered by Grok.
 
+**How Darren interacts with the vault (product answer):** He does **not** open Obsidian or browse folders. He enters by **job** via four doors — **Pressure** (e.g. Bible Guidance) · **Stuff/Have** (Equipment, Castle) · **Work/Do** (Projects, Doing) · **Talk/Capture** (Chat, photo inbox). Depth ladder on every surface: **Answer → Cite → One next step → Talk to Hank**. Design page: app `vault.html` (“How vault works”). Network graph = secondary label map only.
+
 ---
 
 ## LIVE STATE (refreshed 2026-07-18 morning)

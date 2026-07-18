@@ -282,6 +282,7 @@
       <summary>More areas</summary>
       <div class="more-in">
         <div class="hgrid">
+          <a class="tile" href="vault.html"><div class="ic">🗺</div><div class="tt">How vault works</div><div class="ds">enter by job — not folders</div></a>
           <a class="tile" href="projects.html"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Castle Fund + ranch builds</div></a>
           <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
           <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
@@ -346,6 +347,7 @@
       <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
       <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
       <a class="tile" onclick="document.getElementById('cap').click()"><div class="ic">📷</div><div class="tt">Send to Hank</div><div class="ds">drop a photo to the inbox</div></a>
+      <a class="tile" href="vault.html"><div class="ic">🗺</div><div class="tt">How vault works</div><div class="ds">four doors · depth ladder</div></a>
       <a class="tile" onclick="showView('bible')"><div class="ic">✝</div><div class="tt">Bible Guidance</div><div class="ds">situation → Jesus’ words</div></a>
       <a class="tile" onclick="openGraph('finance','more')"><div class="ic">🕸️</div><div class="tt">Connections</div><div class="ds">label map (not Scripture)</div></a>
     </div>
@@ -449,7 +451,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-18-morning";
+const BUILD_DATE="2026-07-18-vault-door";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-07-17T23:05:00Z",
@@ -1686,7 +1688,14 @@ initChatStarters();
 renderDash();
 render();
 checkAnnounceOnLoad();
-showView('home');
+(function(){
+  var open=null;
+  try{open=sessionStorage.getItem('hankOpen');if(open)sessionStorage.removeItem('hankOpen');}catch(e){}
+  if(open==='bible'||open==='equip'||open==='work'||open==='chat'||open==='graph'){
+    if(open==='graph')openGraph('finance','home');
+    else showView(open);
+  }else showView('home');
+})();
 </script>
 </body>
 </html>

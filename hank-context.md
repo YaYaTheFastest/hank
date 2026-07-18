@@ -22,13 +22,13 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 ---
 
-## LIVE STATE (refreshed 2026-07-17 evening)
+## LIVE STATE (refreshed 2026-07-18 morning)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Traeger Pulled Pork Shoulder ●**. Fitness: **War of Art — Resistance**. Finance: **White Room Brainstorming — Prep & Clean Slate** (07-17 evening). Faith pack + **Bible Guidance** app surface. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Traeger Smoked Salmon ●** (07-18 morning). Fitness: **War of Art — Resistance**. Finance: **White Room Brainstorming — Prep & Clean Slate**. Faith pack + **Bible Guidance** app surface. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance. (Finance done 07-17 evening: White Room Brainstorming.)
+**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-18 morning: Traeger Smoked Salmon ●.)
 
 **The Bible domain (founded 2026-07-17):** Deep vault domain — characters · situations · dialogue · Jesus’ direct words. **How Darren interacts (app):** **Bible Guidance** (Home primary tile) is the front door — pick “I need…” → cited Jesus’ words + one next step → optional Walk the scene / Talk with Hank. Tabs: Scenes · People. Chat starter **“I need guidance”** primes pastoral unpacking. **Do not** send him to Connections graph for Scripture — that is a label map only. Vault hub: `20 Knowledge Base/The Bible/The Bible Reference Hub.md`. Application principles still under Mind Body Spirit.
 
@@ -38,15 +38,15 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail OK** (0 new / 9 labeled). Queues **empty**.
 
-**Loop:** **OK (E0)** — evening pass complete. Castle $270/$120 (Dagvald 19-day streak); Finance White Room Brainstorming; Readwise 972/0.
+**Loop:** **OK (E0)** — morning pass complete. Castle $270/$120 (Dagvald 19-day streak); Recipes Traeger Smoked Salmon ●; Readwise 972/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
-**Castle (KV):** Dagvald **$270** (19-day streak; +$30 Clean Stalls ×3 on 07-17), Davikja **$120**. Queues **empty**.
+**Castle (KV):** Dagvald **$270** (19-day streak through 07-17; 0 new 07-18), Davikja **$120**. Queues **empty**.
 
 **Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-17-evening.
+**Deploy:** BUILD_DATE 2026-07-18-morning.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

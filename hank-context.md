@@ -22,13 +22,22 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **How Darren interacts with the vault (product answer):** He does **not** open Obsidian or browse folders. He enters by **job** via four doors — **Pressure** (e.g. Bible Guidance) · **Stuff/Have** (Equipment, Castle) · **Work/Do** (Projects, Doing) · **Talk/Capture** (Chat, photo inbox). Depth ladder on every surface: **Answer → Cite → One next step → Talk to Hank**. Design page: app `vault.html` (“How vault works”). Network graph = secondary label map only.
 
+**RECALL RULE (harder questions):** When the ask is not a pure LIVE STATE lookup (principles, “what should I do,” faith, history, how the system works):
+
+1. **Cite first** — vault path, hub, ledger, manual page, or Scripture ref (or say “not in vault”).
+2. **Answer** — plainspoken, answer-first.
+3. **One next step** — Apply.
+4. **Never invent** specs, money, or Jesus’ words.
+
+LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equipment = manual-first. Bible = Situation Index / scene notes. Operator engine room (Grok only): Write → Consolidate → Recall → Apply.
+
 ---
 
-## LIVE STATE (refreshed 2026-07-18 afternoon)
+## LIVE STATE (refreshed 2026-07-18 evening — memory protocol)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. **Fortna leadership** note filed. Recipes: **Traeger Smoked Salmon ●** (07-18 morning). Fitness: **Resilience — Greitens / Stockdale Paradox** (07-18 afternoon). Finance: **White Room Brainstorming — Prep & Clean Slate**. Faith pack + **Bible Guidance** app surface. **System compare** filed: Fable 5 second brain vs HANK (Grok stays operator). **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** **Memory Protocol** live (Write→Consolidate→Recall→Apply) + **weekly wiki lint** + first **backfill complete** (Obstacle Is the Way principle). Differentiator locked: **job front door + Grok operator**. Command center Phase 1 complete; **Phase 2 Work tab mock** live. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. Recipes: **Traeger Smoked Salmon ●**. Fitness: **Resilience — Greitens**. Finance: **White Room Brainstorming**. Faith + **Bible Guidance**. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
 
 **Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-18 afternoon: Resilience · Greitens.)
 
@@ -38,9 +47,9 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Waiting:** Home domain tiles · Profit-center metric pick. Castle **1 pending** (Dagvald Clean Room $5).
 
-**Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail OK** (0 new / 9 labeled). Queues **empty**.
+**Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail OK**. Queues **empty**.
 
-**Loop:** **OK (E0)** — afternoon pass complete. Castle $270/$120 +1 pending; Fitness Resilience ●; 4 chats filed; Readwise 972/0.
+**Loop:** **OK (E0)** — memory protocol + wiki lint + BF-2026-07-18 complete. Castle $270/$120 +1 pending; Readwise 972/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
@@ -48,10 +57,10 @@ THE APP: Tabs: **Home · Work (preview) · Chat · Equipment · More**. xAI Grok
 
 **Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-18-afternoon.
+**Deploy:** BUILD_DATE 2026-07-18-memory-protocol.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 
 **Job search:** Active — last refresh **2026-07-13** (ADUSA Director Network Strategy apply URL 404; Salisbury still posting SC strategy/analytics roles; Fresh Market VP Merch Ops live Greensboro).
 
-When Darren asks rotation, fleet, Castle, projects, doing, or inbox — **cite LIVE STATE first**. Keep replies tight unless he asks for depth.
+When Darren asks rotation, fleet, Castle, projects, doing, or inbox — **cite LIVE STATE first**. On harder questions — **RECALL RULE** above. Keep replies tight unless he asks for depth.

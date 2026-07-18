@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-17T23:05:30Z",
+  "updated": "2026-07-18T11:07:56Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-18_070005",
+      "started": "2026-07-18T07:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "blocked",
+      "tier": "E3",
+      "summary": "Recipes: Traeger Smoked Salmon \u25d0\u2192\u25cf (dry cure \u2192 overnight pellicle \u2192 180\u00b0F \u2192 140\u00b0F; Traeger Kitchen)",
+      "domain": "Recipes: Traeger Smoked Salmon \u25d0\u2192\u25cf (dry cure \u2192 overnight pellicle \u2192 180\u00b0F \u2192 140\u00b0F; Traeger Kitchen)",
+      "chats_cleared": null,
+      "deploy": "dd09c05",
+      "log": "logs/loop-2026-07-18_070005.log"
+    },
     {
       "id": "2026-07-17_190001",
       "started": "2026-07-17T19:00:01",
@@ -57,20 +71,6 @@
       "chats_cleared": 8,
       "deploy": "30c70a9",
       "log": "logs/loop-2026-07-17_070000.log"
-    },
-    {
-      "id": "2026-07-16_190005",
-      "started": "2026-07-16T19:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "degraded",
-      "tier": "E2",
-      "summary": "Readwise: Pending was 1 \u2192 full pipeline \u2192 972 / 0",
-      "domain": "Readwise: Pending was 1 \u2192 full pipeline \u2192 972 / 0",
-      "chats_cleared": null,
-      "deploy": "8732b34",
-      "log": "logs/loop-2026-07-16_190005.log"
     }
   ]
 }

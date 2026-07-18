@@ -1,6 +1,6 @@
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
-  // deploy-trigger: 2026-07-17T5 — Vault door design page (enter by job)
+  // deploy-trigger: 2026-07-18T6 — vault door in-app view
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",

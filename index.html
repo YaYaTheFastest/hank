@@ -259,6 +259,23 @@
   .bnext{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:12px}
   .bnext b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--green);margin-bottom:4px}
   .bnext p{margin:0;font-size:15px;line-height:1.4}
+  /* Vault door (how you interact) */
+  .vault-wrap{padding:12px 16px 28px;max-width:560px;margin:0 auto}
+  .vault-answer{background:#fff;border:3px solid var(--green);border-radius:var(--radius);padding:16px;margin-bottom:14px;box-shadow:0 4px 14px rgba(54,124,43,.12)}
+  .vault-answer .k{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin:0 0 6px}
+  .vault-answer h2{margin:0 0 8px;font-size:19px;line-height:1.25}
+  .vault-answer p{margin:0;font-size:14.5px;line-height:1.45}
+  .vault-h{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:18px 2px 8px}
+  .vdoor{width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 14px;margin-bottom:8px;cursor:pointer;display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:center}
+  .vdoor.on{border-color:var(--green);background:#f7faf5}
+  .vdoor .vi{font-size:24px}.vdoor .vt{font-weight:800;font-size:15px;margin:0 0 2px}.vdoor .vd{font-size:12.5px;color:var(--muted);margin:0;line-height:1.35}
+  .vpanel{display:none;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px;font-size:14px;line-height:1.45}
+  .vpanel.on{display:block}
+  .vrung{display:grid;grid-template-columns:26px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+  .vrung:first-child{border-top:0}
+  .vrung .vn{width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .vbad{background:#fff8f0;border:1px solid #f0d9b0;border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.45;margin-top:8px}
+  .vgood{background:#f4faf5;border:1px solid #c5dfc4;border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.45}
 </style>
 </head>
 <body>
@@ -282,7 +299,7 @@
       <summary>More areas</summary>
       <div class="more-in">
         <div class="hgrid">
-          <a class="tile" href="vault.html"><div class="ic">🗺</div><div class="tt">How vault works</div><div class="ds">enter by job — not folders</div></a>
+          <a class="tile" onclick="showView('vault')"><div class="ic">🗺</div><div class="tt">How vault works</div><div class="ds">enter by job — not folders</div></a>
           <a class="tile" href="projects.html"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Castle Fund + ranch builds</div></a>
           <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
           <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
@@ -334,6 +351,34 @@
   <div class="bible-body" id="bibleBody"></div>
 </div>
 
+<!-- VAULT DOOR — how Darren interacts with vault content -->
+<div id="vaultView" class="hide">
+  <div class="vault-wrap">
+    <div class="vault-answer">
+      <p class="k">Bottom line</p>
+      <h2>You never open the vault. You enter by job.</h2>
+      <p>Obsidian is Hank’s backend. You use four doors on this phone — pressure, stuff, work, talk. Each domain gets a surface shaped for that job, not a folder tree or a spiderweb of labels.</p>
+    </div>
+    <p class="vault-h">Four doors</p>
+    <button type="button" class="vdoor on" id="vd-pressure" onclick="pickVaultDoor('pressure')"><span class="vi">🧭</span><span><p class="vt">Pressure</p><p class="vd">“I need…” — guidance, wisdom, next step</p></span></button>
+    <div class="vpanel on" id="vp-pressure"><b>Bible Guidance</b> is the model: situation → cited Jesus’ words → one next step → optional scene or Chat.<br><button class="logbtn" style="margin-top:10px" onclick="showView('bible')">Open Bible Guidance</button></div>
+    <button type="button" class="vdoor" id="vd-stuff" onclick="pickVaultDoor('stuff')"><span class="vi">🚜</span><span><p class="vt">Stuff (Have)</p><p class="vd">Machines, manuals, Castle balances</p></span></button>
+    <div class="vpanel" id="vp-stuff">Nouns you own. Equip cards (manual-first) · Kids pages (ledger-backed).<br><button class="logbtn" style="margin-top:10px" onclick="showView('equip')">Equipment</button> <button class="logbtn" style="margin-top:10px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="location.href='dagvald.html'">Dagvald</button></div>
+    <button type="button" class="vdoor" id="vd-work" onclick="pickVaultDoor('work')"><span class="vi">📋</span><span><p class="vt">Work (Do)</p><p class="vd">Projects, doing, what matters now</p></span></button>
+    <div class="vpanel" id="vp-work">Verbs in flight. Change priority via Chat directive — loop files the vault.<br><button class="logbtn" style="margin-top:10px" onclick="showView('work')">Work tab</button></div>
+    <button type="button" class="vdoor" id="vd-talk" onclick="pickVaultDoor('talk')"><span class="vi">💬</span><span><p class="vt">Talk / Capture</p><p class="vd">Ask Hank · photo · “tell Grok”</p></span></button>
+    <div class="vpanel" id="vp-talk">Primary write path. Chat carries intent; photos → _Cowork Inbox; loop files. You never sort folders.<br><button class="logbtn" style="margin-top:10px" onclick="showView('chat')">Ask Hank</button></div>
+    <p class="vault-h">Depth ladder (every good surface)</p>
+    <div class="vgood">
+      <div class="vrung"><span class="vn">1</span><span><b>Answer</b> — what you need in under 10 seconds</span></div>
+      <div class="vrung"><span class="vn">2</span><span><b>Cite</b> — verse, manual page, ledger key (never invent)</span></div>
+      <div class="vrung"><span class="vn">3</span><span><b>One next step</b> — not a life plan</span></div>
+      <div class="vrung"><span class="vn">4</span><span><b>Talk to Hank</b> — unpack, decide, or file a directive</span></div>
+    </div>
+    <div class="vbad"><b>Don’t:</b> open Obsidian · use Connections graph as primary learning · browse a full file tree · edit vault files yourself for day-to-day truth.</div>
+  </div>
+</div>
+
 <!-- MORE VIEW -->
 <div id="moreView" class="hide">
   <div class="home">
@@ -347,7 +392,7 @@
       <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
       <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
       <a class="tile" onclick="document.getElementById('cap').click()"><div class="ic">📷</div><div class="tt">Send to Hank</div><div class="ds">drop a photo to the inbox</div></a>
-      <a class="tile" href="vault.html"><div class="ic">🗺</div><div class="tt">How vault works</div><div class="ds">four doors · depth ladder</div></a>
+      <a class="tile" onclick="showView('vault')"><div class="ic">🗺</div><div class="tt">How vault works</div><div class="ds">four doors · depth ladder</div></a>
       <a class="tile" onclick="showView('bible')"><div class="ic">✝</div><div class="tt">Bible Guidance</div><div class="ds">situation → Jesus’ words</div></a>
       <a class="tile" onclick="openGraph('finance','more')"><div class="ic">🕸️</div><div class="tt">Connections</div><div class="ds">label map (not Scripture)</div></a>
     </div>
@@ -1130,12 +1175,12 @@ function renderSetupManuals(){
   el.innerHTML=MANUALS_NEEDED.map((x,i)=>`<div class="att"><span class="ic n"></span><div class="body"><b>${i+1}. ${x.eq}</b> — <a class="lk" href="${x.url}" target="_blank" rel="noopener">📄 Open manual PDF ↗</a><div class="sub">${x.note}${x.gated?' <span class="verify">needs a one-time “I agree” tap first</span>':''}</div></div></div>`).join("");
 }
 function showView(v){
-  const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),go=document.getElementById('graphView'),bi=document.getElementById('bibleView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),ll=document.getElementById('looplogView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
-  const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup"||v==="graph"||v==="looplog";
+  const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),go=document.getElementById('graphView'),bi=document.getElementById('bibleView'),va=document.getElementById('vaultView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),ll=document.getElementById('looplogView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
+  const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup"||v==="graph"||v==="looplog"||v==="vault";
   const setBnav=(id,on)=>{const el=document.getElementById(id);if(el)el.classList.toggle('on',on);};
   setBnav('bnavHome',v==="home"||v==="bible");setBnav('bnavWork',v==="work");setBnav('bnavChat',v==="chat");
   setBnav('bnavEquip',v==="equip");setBnav('bnavMore',moreTab);
-  ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");go.classList.toggle('hide',v!=="graph");if(bi)bi.classList.toggle('hide',v!=="bible");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");ll.classList.toggle('hide',v!=="looplog");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
+  ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");go.classList.toggle('hide',v!=="graph");if(bi)bi.classList.toggle('hide',v!=="bible");if(va)va.classList.toggle('hide',v!=="vault");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");ll.classList.toggle('hide',v!=="looplog");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
   const eh=document.getElementById('equipHint');if(eh)eh.classList.toggle('hide',v!=="equip"||filter!=="Due soon");
   document.body.classList.toggle('no-bar',true);
   if(v==="home"){renderToday();renderAnnounce();}
@@ -1147,6 +1192,13 @@ function showView(v){
   if(v==="looplog")renderLoopLog();
   if(v==="chat"){if(!chatMsgs.length){chatMsgs.push({role:"assistant",content:"Hey Darren — Hank here. Ask me about the fleet, a project, or what's due. (I capture anything you want filed for the next loop pass.)"});renderChat();}setTimeout(()=>{var ci=document.getElementById('chatInput');if(ci)ci.focus();},50);}
   window.scrollTo(0,0);
+}
+function pickVaultDoor(id){
+  ["pressure","stuff","work","talk"].forEach(function(k){
+    var d=document.getElementById("vd-"+k),p=document.getElementById("vp-"+k);
+    if(d)d.classList.toggle("on",k===id);
+    if(p)p.classList.toggle("on",k===id);
+  });
 }
 
 /* ─── Bible Guidance — primary way to use Scripture (not the label graph) ─── */
@@ -1691,7 +1743,7 @@ checkAnnounceOnLoad();
 (function(){
   var open=null;
   try{open=sessionStorage.getItem('hankOpen');if(open)sessionStorage.removeItem('hankOpen');}catch(e){}
-  if(open==='bible'||open==='equip'||open==='work'||open==='chat'||open==='graph'){
+  if(open==='bible'||open==='equip'||open==='work'||open==='chat'||open==='graph'||open==='vault'){
     if(open==='graph')openGraph('finance','home');
     else showView(open);
   }else showView('home');

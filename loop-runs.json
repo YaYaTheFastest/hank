@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-18T23:06:12Z",
+  "updated": "2026-07-19T11:07:27Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-19_070002",
+      "started": "2026-07-19T07:00:02",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Recipes: Traeger Smash-and-Sear Meatballs \u25cf",
+      "domain": "Recipes: Traeger Smash-and-Sear Meatballs \u25cf",
+      "chats_cleared": null,
+      "deploy": null,
+      "log": "logs/loop-2026-07-19_070002.log"
+    },
     {
       "id": "2026-07-18_190005",
       "started": "2026-07-18T19:00:05",
@@ -57,20 +71,6 @@
       "chats_cleared": 1,
       "deploy": "6b72906",
       "log": "logs/loop-2026-07-17_190001.log"
-    },
-    {
-      "id": "2026-07-17_130004",
-      "started": "2026-07-17T13:00:04",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "degraded",
-      "tier": "E2",
-      "summary": "Readwise: 972 / pending 0 (inventory only \u2014 not Monday)",
-      "domain": "Readwise: 972 / pending 0 (inventory only \u2014 not Monday)",
-      "chats_cleared": null,
-      "deploy": "7ff865f",
-      "log": "logs/loop-2026-07-17_130004.log"
     }
   ]
 }

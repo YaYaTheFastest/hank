@@ -33,31 +33,31 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-19 morning — scheduled morning loop)
+## LIVE STATE (refreshed 2026-07-19 afternoon — scheduled afternoon loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Steady-state loop. **Recipes** deepened: **Traeger Smash-and-Sear Meatballs ●** (smoke 180°F → 350°F / 165°F). **Castle:** Dagvald **Saving mode** — balance + future chores → Save; annotated holiday forecast chart on his page. Fitness last: **Resilience — Greitens**. Finance last: **Team Mix Morale & Info Flow**. Memory Protocol live. Differentiator: **job front door + Grok operator**. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. Faith + **Bible Guidance**. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Steady-state loop. **Fitness** deepened: **Run the Mile You're In — Heart Goals & Present Focus (Ryan Hall)** (heart goals · expect hard · personal excellence today). Recipes last: **Traeger Smash-and-Sear Meatballs ●**. Finance last: **Team Mix Morale & Info Flow**. **Castle:** Dagvald **Saving mode** + holiday forecast chart; **8 pending** chores awaiting parent. Memory Protocol live. Differentiator: **job front door + Grok operator**. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. Faith + **Bible Guidance**. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-19 morning: Traeger Smash-and-Sear Meatballs ●.)
+**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-19 afternoon: Run the Mile You're In — Ryan Hall.)
 
 **The Bible domain (founded 2026-07-17):** Deep vault domain — characters · situations · dialogue · Jesus’ direct words. **How Darren interacts (app):** **Bible Guidance** (Home primary tile) is the front door — pick “I need…” → cited Jesus’ words + one next step → optional Walk the scene / Talk with Hank. Tabs: Scenes · People. Chat starter **“I need guidance”** primes pastoral unpacking. **Do not** send him to Connections graph for Scripture — that is a label map only. Vault hub: `20 Knowledge Base/The Bible/The Bible Reference Hub.md`. Application principles still under Mind Body Spirit.
 
 **Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + project info block + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar.
 
-**Waiting:** Home domain tiles · Profit-center metric pick. Castle **4 pending** (Dagvald Clean Room $5 + Clean Stalls $10×3).
+**Waiting:** Home domain tiles · Profit-center metric pick. Castle **8 pending** (Dagvald Clean Room $5×2 + Clean Stalls $10×6 — 07-18 + 07-19).
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail OK**. Queues **empty**.
 
-**Loop:** **OK (E0)** — morning pass complete. Castle **$240 / $120** +4 pending; Dagvald Saving mode + forecast chart; Readwise 972/0.
+**Loop:** **OK (E0)** — afternoon pass complete. Castle **$240 / $120** +8 pending; Fitness Ryan Hall; Readwise 972/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
-**Castle (KV v72):** Dagvald **$240** · **Saving** (100% Save alloc; holiday forecast on page; 19-day streak through 07-17; **4 pending**), Davikja **$120**. Queues **empty**.
+**Castle (KV v76):** Dagvald **$240** · **Saving** (100% Save alloc; holiday forecast on page; 19-day streak through 07-17; **8 pending**), Davikja **$120**. Queues **empty**.
 
 **Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-19-morning.
+**Deploy:** BUILD_DATE 2026-07-19-afternoon.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

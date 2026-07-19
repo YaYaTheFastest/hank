@@ -57,7 +57,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-19-evening · (SHA after push).
+**Deploy:** BUILD_DATE 2026-07-19-evening · live `702342a`.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

@@ -33,13 +33,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-19 afternoon — scheduled afternoon loop)
+## LIVE STATE (refreshed 2026-07-19 evening — scheduled evening loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Steady-state loop. **Fitness** deepened: **Run the Mile You're In — Heart Goals & Present Focus (Ryan Hall)** (heart goals · expect hard · personal excellence today). Recipes last: **Traeger Smash-and-Sear Meatballs ●**. Finance last: **Team Mix Morale & Info Flow**. **Castle:** Dagvald **Saving mode** + holiday forecast chart; **8 pending** chores awaiting parent. Memory Protocol live. Differentiator: **job front door + Grok operator**. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. Faith + **Bible Guidance**. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Steady-state loop. **Finance** deepened: **Don't Reinvent the Wheel & Interview for Facts** (reuse first · interview guide · three must-knows · listen + silence). Fitness last: **Run the Mile You're In (Ryan Hall)**. Recipes last: **Traeger Smash-and-Sear Meatballs ●**. **Castle:** Dagvald **Saving mode** + holiday forecast chart; **8 pending** chores awaiting parent. Memory Protocol live. Differentiator: **job front door + Grok operator**. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. Faith + **Bible Guidance**. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-19 afternoon: Run the Mile You're In — Ryan Hall.)
+**Next domain (rotation):** **Recipes** — then Fitness → Finance. (Finance done 07-19 evening: Don't Reinvent the Wheel & Interview for Facts.)
 
 **The Bible domain (founded 2026-07-17):** Deep vault domain — characters · situations · dialogue · Jesus’ direct words. **How Darren interacts (app):** **Bible Guidance** (Home primary tile) is the front door — pick “I need…” → cited Jesus’ words + one next step → optional Walk the scene / Talk with Hank. Tabs: Scenes · People. Chat starter **“I need guidance”** primes pastoral unpacking. **Do not** send him to Connections graph for Scripture — that is a label map only. Vault hub: `20 Knowledge Base/The Bible/The Bible Reference Hub.md`. Application principles still under Mind Body Spirit.
 
@@ -49,7 +49,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail OK**. Queues **empty**.
 
-**Loop:** **OK (E0)** — afternoon pass complete. Castle **$240 / $120** +8 pending; Fitness Ryan Hall; Readwise 972/0.
+**Loop:** **OK (E0)** — evening pass complete. Castle **$240 / $120** +8 pending; Finance Don't Reinvent / Interview; Readwise 972/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
@@ -57,7 +57,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-19-afternoon.
+**Deploy:** BUILD_DATE 2026-07-19-evening · (SHA after push).
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

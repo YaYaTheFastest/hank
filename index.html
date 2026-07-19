@@ -496,25 +496,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-19-afternoon";
+const BUILD_DATE="2026-07-19-evening";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-07-19T17:00:00Z",
+  updated:"2026-07-19T23:00:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
-    {id:"2026-07-19_130001",started:"2026-07-19T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Sunday afternoon \u2014 inbox/queues empty; Castle $240/$120 +8 pending (4 new); Fitness Run the Mile You\u2019re In (Hall); Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: Run the Mile You\u2019re In \u2014 Ryan Hall",chats_cleared:0,deploy:"pending"},
+    {id:"2026-07-19_190001",started:"2026-07-19T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Sunday evening \u2014 inbox/queues empty; Castle $240/$120 +8 pending (no new); Finance Don\u2019t Reinvent the Wheel & Interview for Facts; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Finance: Don\u2019t Reinvent the Wheel & Interview for Facts",chats_cleared:0,deploy:"pending"},
+    {id:"2026-07-19_130001",started:"2026-07-19T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Sunday afternoon \u2014 inbox/queues empty; Castle $240/$120 +8 pending (4 new); Fitness Run the Mile You\u2019re In (Hall); Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: Run the Mile You\u2019re In \u2014 Ryan Hall",chats_cleared:0,deploy:"1d0a958"},
     {id:"2026-07-19_070001",started:"2026-07-19T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Sunday morning \u2014 2 chats filed+cleared; Castle $240/$120 +4 pending; Dagvald Saving mode + holiday forecast chart; Recipes Meatballs \u25cf; CASTLE_RT reminted; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Recipes: Traeger Smash-and-Sear Meatballs \u25cf",chats_cleared:2,deploy:"ae22546"},
     {id:"2026-07-18_190001",started:"2026-07-18T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Saturday evening \u2014 2 chats filed+cleared; Castle $240/$120 +4 pending (balance corrected); Finance Team Mix Morale & Info Flow; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Finance: Team Mix Morale & Information Flow",chats_cleared:2,deploy:"afceddb"},
-    {id:"2026-07-18_130001",started:"2026-07-18T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Saturday afternoon \u2014 4 chats filed+cleared; Castle $270/$120 +1 pending; Fitness Resilience Greitens; memory protocol. Loop health \u2192 OK (E0).",domain:"Fitness: Resilience \u2014 Greitens",chats_cleared:4,deploy:"2aeb6db"},
-    {id:"2026-07-18_070001",started:"2026-07-18T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Saturday morning \u2014 inbox/queues empty; Castle $270/$120 0 pending; Recipes Traeger Smoked Salmon \u25cf; Gmail OK. Loop health \u2192 OK (E0).",domain:"Recipes: Traeger Smoked Salmon \u25cf",chats_cleared:0,deploy:"dd09c05"}
+    {id:"2026-07-18_130001",started:"2026-07-18T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Saturday afternoon \u2014 4 chats filed+cleared; Castle $270/$120 +1 pending; Fitness Resilience Greitens; memory protocol. Loop health \u2192 OK (E0).",domain:"Fitness: Resilience \u2014 Greitens",chats_cleared:4,deploy:"2aeb6db"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-07-19 afternoon pass complete — inbox/queues empty; Castle $240/$120 +8 pending; Fitness Run the Mile You're In (Hall); Gmail 0 new; Readwise 972/0.",
-  last_attempt:"2026-07-19T17:00:00Z",last_success:"2026-07-19T17:00:00Z",
+  summary:"2026-07-19 evening pass complete — inbox/queues empty; Castle $240/$120 +8 pending; Finance Don't Reinvent the Wheel & Interview for Facts; Gmail 0 new; Readwise 972/0.",
+  last_attempt:"2026-07-19T23:00:00Z",last_success:"2026-07-19T23:00:00Z",
   open_issues:[]
 };
 const ANNOUNCE={id:"phase2-mock-2026-07-09",title:"Phase 2 preview is ready",body:"Tap Work for Projects + Doing — a mock-up of your command center verbs. Preview only; tell Hank in Chat to change anything.",cta:"Open Work"};

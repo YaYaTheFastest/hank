@@ -389,13 +389,13 @@ async function handleApi(request, env, url, siteAuthed) {
     return json({ ok: true, entry: row, v: bundle.v });
   }
 
-  // Parent edits the chore list or settings (goal/reward/interest) — PIN-gated.
+  // Parent edits the chore list or settings (goal/reward/interest) — PIN-gated, or loop key (authed) for operator directives.
   if ((url.pathname === "/api/castle/catalog" || url.pathname === "/api/castle/config") && request.method === "POST") {
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const b = await request.json().catch(() => ({}));
     const savedPin = await env.STATE.get("castle:pin");
-    if (!savedPin) return json({ ok: false, error: "no-pin-set" }, 409);
-    if (String(b.pin || "") !== savedPin) return json({ ok: false, error: "bad-pin" }, 401);
+    if (!savedPin && !authed) return json({ ok: false, error: "no-pin-set" }, 409);
+    if (!authed && String(b.pin || "") !== savedPin) return json({ ok: false, error: "bad-pin" }, 401);
     if (!b.kid) return json({ ok: false, error: "missing-kid" }, 400);
     const bundle = await loadCastleBundle(env);
     if (!bundle) return castleMissing();

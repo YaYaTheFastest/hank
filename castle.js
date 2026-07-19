@@ -47,8 +47,21 @@
     return Math.max(10, Math.round(earn.reduce(function (s, e) { return s + e.amount; }, 0) / months));
   }
   function r2(n) { return Math.round(n * 100) / 100; }
+  // Savings mode: goal/reward marked Saving + 100% save alloc → whole balance sits in Save (current + future).
+  function isSavingsMode() {
+    var C = cfg(), al = C.alloc || {};
+    if (C.savingsMode) return true;
+    var r = String(C.reward || "").toLowerCase();
+    if (r === "saving" || r === "savings" || r.indexOf("saving") === 0) return true;
+    return Number(al.save) === 100 && Number(al.spend || 0) === 0 && Number(al.give || 0) === 0;
+  }
   // Buckets: seed + legacy earnings + deductions/purchases -> Spend; interest -> Save; new earnings split per stored e.buckets.
+  // Savings mode (parent/operator): all positive balance → Save; deductions still reduce Save.
   function buckets() {
+    if (isSavingsMode()) {
+      var bal = balance();
+      return { save: r2(Math.max(0, bal)), spend: r2(Math.min(0, bal)), give: 0 };
+    }
     var b = { save: 0, spend: cfg().seed, give: 0 };
     approved().forEach(function (e) {
       if (e.buckets) { b.save += e.buckets.save || 0; b.spend += e.buckets.spend || 0; b.give += e.buckets.give || 0; }
@@ -151,8 +164,119 @@
       '<text x="150" y="100" text-anchor="middle" font-size="22" font-weight="800" fill="#fff" style="paint-order:stroke;stroke:var(--kid);stroke-width:4">' + money(bal) + '</text></svg>';
   }
 
+  // Daily earning rate from recent approved chores (not interest/deductions). Fallback $40/mo ≈ $1.33/day.
+  function recentDailyRate() {
+    var earn = approved().filter(function (e) { return e.kind !== "interest" && e.kind !== "deduction" && e.kind !== "purchase" && (e.amount || 0) > 0; });
+    if (!earn.length) return monthlyContribution() / 30;
+    var cutoff = Date.now() - 21 * 864e5;
+    var recent = earn.filter(function (e) { return (e.ts || 0) >= cutoff; });
+    var use = recent.length >= 3 ? recent : earn.slice(-12);
+    var sum = use.reduce(function (s, e) { return s + e.amount; }, 0);
+    var days = {};
+    use.forEach(function (e) { if (e.day) days[e.day] = 1; });
+    var nDays = Math.max(1, Object.keys(days).length);
+    // Spread over calendar span so idle days lower the average
+    var tsList = use.map(function (e) { return e.ts || 0; }).filter(Boolean);
+    var spanDays = 1;
+    if (tsList.length) {
+      spanDays = Math.max(nDays, Math.round((Math.max.apply(null, tsList) - Math.min.apply(null, tsList)) / 864e5) + 1);
+    }
+    return Math.max(0.5, sum / spanDays);
+  }
+  function maxDailyEarn() {
+    var cat = catalog(), max = 0;
+    cat.forEach(function (c) {
+      if (c.once) return;
+      max += (Number(c.price) || 0) * (Number(c.qty) || 1);
+    });
+    return Math.max(max, 35); // Dagvald default room+3 stalls+mow ≈ 60 when catalog live
+  }
+  function holidayMilestones() {
+    var now = new Date();
+    now.setHours(0, 0, 0, 0);
+    var y = now.getFullYear();
+    // US Thanksgiving = 4th Thursday of November
+    function thanksgiving(yr) {
+      var d = new Date(yr, 10, 1);
+      while (d.getDay() !== 4) d.setDate(d.getDate() + 1); // first Thursday
+      d.setDate(d.getDate() + 21); // 4th Thursday
+      return d;
+    }
+    var dob = (cfg().dob || "2015-09-17").split("-");
+    var bday = new Date(y, Number(dob[1]) - 1, Number(dob[2]));
+    if (bday < now) bday = new Date(y + 1, Number(dob[1]) - 1, Number(dob[2]));
+    var marks = [
+      { id: "bday", label: "Birthday", short: "🎂", date: bday },
+      { id: "hw", label: "Halloween", short: "🎃", date: new Date(y, 9, 31) },
+      { id: "tg", label: "Thanksgiving", short: "🦃", date: thanksgiving(y) },
+      { id: "xmas", label: "Christmas", short: "🎄", date: new Date(y, 11, 25) },
+      { id: "ny", label: "New Year", short: "🎉", date: new Date(y + 1, 0, 1) }
+    ];
+    // If past a holiday this year, use next year's for that holiday (except birthday already advanced)
+    marks.forEach(function (m) {
+      if (m.id === "bday") return;
+      if (m.date < now) {
+        if (m.id === "ny") m.date = new Date(y + 1, 0, 1);
+        else if (m.id === "hw") m.date = new Date(y + 1, 9, 31);
+        else if (m.id === "tg") m.date = thanksgiving(y + 1);
+        else if (m.id === "xmas") m.date = new Date(y + 1, 11, 25);
+      }
+    });
+    marks.sort(function (a, b) { return a.date - b.date; });
+    return marks;
+  }
   // ---- Savings growth chart (teaches compounding) ----
+  // Savings mode: annotated line chart to Birthday · Halloween · Thanksgiving · Christmas · New Year
+  // Solid = recent trend $/day; dashed = max chores every day from today.
+  function savingsForecastChart() {
+    var bal = balance(), trend = recentDailyRate(), maxD = maxDailyEarn();
+    var marks = holidayMilestones();
+    var now = new Date(); now.setHours(0, 0, 0, 0);
+    var end = marks[marks.length - 1].date;
+    var totalDays = Math.max(1, Math.round((end - now) / 864e5));
+    var pts = [{ d: 0, t: bal, m: bal, label: "now" }];
+    marks.forEach(function (mk) {
+      var d = Math.max(0, Math.round((mk.date - now) / 864e5));
+      pts.push({ d: d, t: bal + trend * d, m: bal + maxD * d, label: mk.short, name: mk.label, date: mk.date });
+    });
+    var yMax = Math.max(1, bal, pts[pts.length - 1].m) * 1.08;
+    var W = 320, H = 168, pL = 28, pR = 8, pT = 14, pB = 28, iw = W - pL - pR, ih = H - pT - pB;
+    function X(d) { return pL + iw * (d / totalDays); }
+    function Y(v) { return pT + ih * (1 - v / yMax); }
+    function line(key) {
+      return pts.map(function (p, i) { return (i ? "L" : "M") + X(p.d).toFixed(1) + " " + Y(p[key]).toFixed(1); }).join(" ");
+    }
+    var area = line("t") + " L " + X(pts[pts.length - 1].d).toFixed(1) + " " + Y(0).toFixed(1) + " L " + X(0).toFixed(1) + " " + Y(0).toFixed(1) + " Z";
+    var svg = '<svg class="art" viewBox="0 0 ' + W + ' ' + H + '" width="100%" height="' + H + '" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="' + area + '" fill="var(--kid)" opacity="0.10"/>' +
+      '<path d="' + line("m") + '" fill="none" stroke="#b4b2a9" stroke-width="2" stroke-dasharray="4 4"/>' +
+      '<path d="' + line("t") + '" fill="none" stroke="var(--kid)" stroke-width="2.5"/>';
+    pts.forEach(function (p, i) {
+      svg += '<circle cx="' + X(p.d).toFixed(1) + '" cy="' + Y(p.t).toFixed(1) + '" r="' + (i === 0 ? 3.5 : 4) + '" fill="var(--kid)"/>';
+      if (i > 0) {
+        svg += '<text x="' + X(p.d).toFixed(1) + '" y="' + (Y(p.t) - 8).toFixed(1) + '" font-size="11" text-anchor="middle">' + p.label + '</text>';
+        svg += '<text x="' + X(p.d).toFixed(1) + '" y="' + (Y(p.t) + 14).toFixed(1) + '" font-size="9" fill="#5f5e5a" text-anchor="middle" font-weight="700">' + money(p.t) + '</text>';
+      }
+    });
+    // x labels for first/last
+    svg += '<text x="' + X(0).toFixed(1) + '" y="' + (H - 6) + '" font-size="10" fill="#9aa291" text-anchor="start">now</text>';
+    svg += '<text x="' + X(totalDays).toFixed(1) + '" y="' + (H - 6) + '" font-size="10" fill="#9aa291" text-anchor="end">NY</text>';
+    // y axis ends
+    svg += '<text x="2" y="' + (Y(yMax) + 4).toFixed(1) + '" font-size="9" fill="#9aa291">' + money(Math.round(yMax)) + '</text>';
+    svg += '<text x="2" y="' + (Y(0)).toFixed(1) + '" font-size="9" fill="#9aa291">$0</text>';
+    svg += '</svg>';
+    var rows = pts.slice(1).map(function (p) {
+      var ds = p.date.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+      return '<div class="row"><span class="rl">' + p.label + " " + esc(p.name) + '<div class="rd">' + ds + " · " + p.d + " days</div></span>" +
+        '<span class="ra pos">' + money(p.t) + '</span><span class="run">max ' + money(p.m) + "</span></div>";
+    }).join("");
+    return svg +
+      '<div class="cap" style="margin-top:6px"><b style="color:var(--kid)">Solid line</b> = keep earning about <b>' + money(r2(trend)) + '/day</b> (your recent pace). ' +
+      '<b style="color:#888">Dashed</b> = max if you do every chore every day (~' + money(maxD) + '/day). Annotations show the trend balance at each holiday.</div>' +
+      '<div class="card" style="margin:8px 0 0;padding:6px 10px">' + rows + "</div>";
+  }
   function growthChart() {
+    if (isSavingsMode()) return savingsForecastChart();
     var months = 6, r = (cfg().interestPct || 0) / 100, c = monthlyContribution();
     var wI = balance(), nI = balance(), pts = [], max = Math.max(1, balance());
     for (var m = 0; m <= months; m++) { if (m > 0) { wI = wI * (1 + r) + c; nI = nI + c; } pts.push({ m: m, w: wI, n: nI }); if (wI > max) max = wI; }
@@ -183,9 +307,14 @@
     html += '<div class="wrap">';
 
     html += '<div class="hero">';
-    html += C.theme === "castle" ? castleArt(pct) : jarArt(bal, goal);
+    // Savings mode: soft fill (headroom) so the castle isn't stuck at 100% with no goal target
+    html += C.theme === "castle"
+      ? castleArt(isSavingsMode() ? Math.min(0.92, bal / (bal + 80)) : pct)
+      : jarArt(bal, isSavingsMode() ? Math.max(bal + 80, 100) : goal);
     html += '<div class="bal">' + money(bal) + "</div>";
-    if (goal) {
+    if (isSavingsMode()) {
+      html += '<div class="sub">🐷 Saving mode — balance + new chores go to <b>Save</b>. No toy goal right now.</div>';
+    } else if (goal) {
       html += '<div class="sub">' + money(bal) + " of " + money(goal) + " · " + esc(ag.reward) + " · " + money(Math.max(0, goal - bal)) + " to go</div>";
       html += '<div class="mile">';
       for (var m = 1; m <= 5; m++) html += '<div class="dot ' + (pct >= m / 5 ? "on" : "") + '"></div>';
@@ -211,8 +340,8 @@
     // Wishlist
     html += wishlistSection(bal);
 
-    // Growth chart
-    html += '<div class="h">If you keep saving</div><div class="card">' + growthChart() + "</div>";
+    // Growth chart (savings mode = holiday forecast annotated line chart)
+    html += '<div class="h">' + (isSavingsMode() ? "Savings forecast" : "If you keep saving") + '</div><div class="card">' + growthChart() + "</div>";
 
     // Chores — split into one-time "Special" + recurring daily
     function choreBtn(c, once) {

@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-19T17:05:43Z",
+  "updated": "2026-07-19T23:05:18Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-19_190002",
+      "started": "2026-07-19T19:00:02",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Evening loop complete \u2014 OK (E0).",
+      "domain": "Readwise: 972 / pending 0 (Sunday inventory only)",
+      "chats_cleared": 0,
+      "deploy": "702342a",
+      "log": "logs/loop-2026-07-19_190002.log"
+    },
     {
       "id": "2026-07-19_130005",
       "started": "2026-07-19T13:00:05",
@@ -57,20 +71,6 @@
       "chats_cleared": null,
       "deploy": "326f363",
       "log": "logs/loop-2026-07-18_130005.log"
-    },
-    {
-      "id": "2026-07-18_070005",
-      "started": "2026-07-18T07:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "blocked",
-      "tier": "E3",
-      "summary": "Recipes: Traeger Smoked Salmon \u25d0\u2192\u25cf (dry cure \u2192 overnight pellicle \u2192 180\u00b0F \u2192 140\u00b0F; Traeger Kitchen)",
-      "domain": "Recipes: Traeger Smoked Salmon \u25d0\u2192\u25cf (dry cure \u2192 overnight pellicle \u2192 180\u00b0F \u2192 140\u00b0F; Traeger Kitchen)",
-      "chats_cleared": null,
-      "deploy": "dd09c05",
-      "log": "logs/loop-2026-07-18_070005.log"
     }
   ]
 }

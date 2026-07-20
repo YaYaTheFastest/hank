@@ -33,13 +33,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-19 evening — scheduled evening loop)
+## LIVE STATE (refreshed 2026-07-20 morning — scheduled morning loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Steady-state loop. **Finance** deepened: **Don't Reinvent the Wheel & Interview for Facts** (reuse first · interview guide · three must-knows · listen + silence). Fitness last: **Run the Mile You're In (Ryan Hall)**. Recipes last: **Traeger Smash-and-Sear Meatballs ●**. **Castle:** Dagvald **Saving mode** + holiday forecast chart; **8 pending** chores awaiting parent. Memory Protocol live. Differentiator: **job front door + Grok operator**. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. Faith + **Bible Guidance**. **Job search** refreshed 07-13. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Steady-state loop. **Recipes** deepened: **BGE Spatchcock Chicken ●** (indirect 250°F + pecan → 165°F; BGE official). Finance last: **Don't Reinvent the Wheel & Interview for Facts**. Fitness last: **Run the Mile You're In (Ryan Hall)**. **Castle:** Dagvald **Saving mode** + holiday forecast chart; **8 pending** chores awaiting parent. **Job search** refreshed **07-20** (Monday). Memory Protocol live. Differentiator: **job front door + Grok operator**. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. Faith + **Bible Guidance**. Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance. (Finance done 07-19 evening: Don't Reinvent the Wheel & Interview for Facts.)
+**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-20 morning: BGE Spatchcock Chicken ●.)
 
 **The Bible domain (founded 2026-07-17):** Deep vault domain — characters · situations · dialogue · Jesus’ direct words. **How Darren interacts (app):** **Bible Guidance** (Home primary tile) is the front door — pick “I need…” → cited Jesus’ words + one next step → optional Walk the scene / Talk with Hank. Tabs: Scenes · People. Chat starter **“I need guidance”** primes pastoral unpacking. **Do not** send him to Connections graph for Scripture — that is a label map only. Vault hub: `20 Knowledge Base/The Bible/The Bible Reference Hub.md`. Application principles still under Mind Body Spirit.
 
@@ -49,7 +49,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail OK**. Queues **empty**.
 
-**Loop:** **OK (E0)** — evening pass complete. Castle **$240 / $120** +8 pending; Finance Don't Reinvent / Interview; Readwise 972/0.
+**Loop:** **OK (E0)** — morning pass complete. Castle **$240 / $120** +8 pending; BGE Spatchcock ●; job search 07-20; Readwise 972/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
@@ -57,11 +57,11 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-19-evening · live `702342a`.
+**Deploy:** BUILD_DATE 2026-07-20-morning · (this pass).
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 
-**Job search:** Active — last refresh **2026-07-13** (ADUSA Director Network Strategy apply URL 404; Salisbury still posting SC strategy/analytics roles; Fresh Market VP Merch Ops live Greensboro).
+**Job search:** Active — last refresh **2026-07-20** (ADUSA Director Network Strategy still 404; ADUSA SC Strategy Lead still live; Fresh Market VP Merch Ops still live Greensboro).
 
 **Property (parcel):** Home ranch **441** Plainfield → REID **137608** (PIN not in vault). Neighbor deal **439** → REID **137611** / PIN **7858962380**.
 

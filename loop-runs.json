@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-19T23:05:18Z",
+  "updated": "2026-07-20T11:07:58Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-20_070001",
+      "started": "2026-07-20T07:00:01",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Monday morning loop complete \u2014 OK (E0).",
+      "domain": "Recipes: BGE Spatchcock Chicken \u25d0\u2192\u25cf \u2014 BGE official (indirect 250\u00b0F + pecan \u2192 165\u00b0F; rest 10 min) + optional ~350\u00b0F crispy path",
+      "chats_cleared": 0,
+      "deploy": null,
+      "log": "logs/loop-2026-07-20_070001.log"
+    },
     {
       "id": "2026-07-19_190002",
       "started": "2026-07-19T19:00:02",
@@ -57,20 +71,6 @@
       "chats_cleared": null,
       "deploy": "afceddb",
       "log": "logs/loop-2026-07-18_190005.log"
-    },
-    {
-      "id": "2026-07-18_130005",
-      "started": "2026-07-18T13:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Readwise: 972 / pending 0 (inventory only; not Monday)",
-      "domain": "Readwise: 972 / pending 0 (inventory only; not Monday)",
-      "chats_cleared": null,
-      "deploy": "326f363",
-      "log": "logs/loop-2026-07-18_130005.log"
     }
   ]
 }

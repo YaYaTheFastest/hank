@@ -33,13 +33,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-20 morning — scheduled morning loop)
+## LIVE STATE (refreshed 2026-07-20 afternoon — scheduled afternoon loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Steady-state loop. **Recipes** deepened: **BGE Spatchcock Chicken ●** (indirect 250°F + pecan → 165°F; BGE official). Finance last: **Don't Reinvent the Wheel & Interview for Facts**. Fitness last: **Run the Mile You're In (Ryan Hall)**. **Castle:** Dagvald **Saving mode** + holiday forecast chart; **8 pending** chores awaiting parent. **Job search** refreshed **07-20** (Monday). Memory Protocol live. Differentiator: **job front door + Grok operator**. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. Faith + **Bible Guidance**. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Steady-state loop. **Fitness** deepened: **12 Rules — Stand Tall / Treat Yourself as Worth Helping** (Peterson). Recipes last: **BGE Spatchcock Chicken ●**. Finance last: **Don't Reinvent the Wheel & Interview for Facts**. **Castle:** Dagvald **Saving mode** + holiday forecast chart; **8 pending** chores awaiting parent. **Job search** refreshed **07-20** (Monday). Memory Protocol live. Differentiator: **job front door + Grok operator**. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. Faith + **Bible Guidance**. Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-20 morning: BGE Spatchcock Chicken ●.)
+**Next domain (rotation):** **Finance** — then Recipes → Fitness. (Fitness done 07-20 afternoon: 12 Rules Peterson.)
 
 **The Bible domain (founded 2026-07-17):** Deep vault domain — characters · situations · dialogue · Jesus’ direct words. **How Darren interacts (app):** **Bible Guidance** (Home primary tile) is the front door — pick “I need…” → cited Jesus’ words + one next step → optional Walk the scene / Talk with Hank. Tabs: Scenes · People. Chat starter **“I need guidance”** primes pastoral unpacking. **Do not** send him to Connections graph for Scripture — that is a label map only. Vault hub: `20 Knowledge Base/The Bible/The Bible Reference Hub.md`. Application principles still under Mind Body Spirit.
 
@@ -49,7 +49,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail OK**. Queues **empty**.
 
-**Loop:** **OK (E0)** — morning pass complete. Castle **$240 / $120** +8 pending; BGE Spatchcock ●; job search 07-20; Readwise 972/0.
+**Loop:** **OK (E0)** — afternoon pass complete. Castle **$240 / $120** +8 pending; Fitness 12 Rules; Readwise 972/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
@@ -57,7 +57,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-20-morning · live `b272157`.
+**Deploy:** BUILD_DATE 2026-07-20-afternoon · (this pass).
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

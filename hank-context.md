@@ -33,15 +33,15 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-21 — nav proposal ship)
+## LIVE STATE (refreshed 2026-07-21 afternoon)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Nav proposal **approved** (ship in order). **Work tab real** — hierarchical projects with what/why/next/status + per-project chat. **Proposals surface live** — Work → Proposals (or More → Proposals); review without Obsidian. Bible Guidance + addiction · courage · marriage situations. Home kept clean. Equipment cards **not** redesigned. Castle **$345 / $120** · 0 pending. Recipes: Traeger Burnt Ends ●. Shop org — book Deane 2 hr. Kitchen sink backup open. Glocks ●; Sig ◐.
+**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$345 / $120** · 0 pending. Afternoon loop: Fitness = Bruce Lee Striking Thoughts (empty cup · formless form · absorb/reject/add). Morning: Traeger Burnt Ends ● + 7 chats filed. Shop org — book Deane 2 hr. Kitchen sink backup open. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes.
+**Next domain (rotation):** **Finance** — then Recipes → Fitness.
 
-**The Bible domain:** Bible Guidance is the front door. New app situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
+**The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
 **Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink snaking · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order.
 
@@ -53,14 +53,14 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Fleet:** 51 = **47 Full + 4 ◐**.
 
-**Castle:** Dagvald **$345** (22-day streak), Davikja **$120**.
+**Castle:** Dagvald **$345** (22-day streak through 07-20), Davikja **$120**.
 
-**Deploy:** BUILD_DATE **2026-07-21-proposals-ship**.
+**Deploy:** BUILD_DATE **2026-07-21-afternoon**.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 
 **Job search:** Last refresh **2026-07-20**.
 
-**Proposals:** Open list empty after ship; nav proposal status **shipping**. New Grok proposals appear under Work → Proposals.
+**Proposals:** Work → Proposals (or More → Proposals). Nav proposal **shipping**.
 
 When Darren asks rotation, fleet, Castle, projects, doing, proposals, or inbox — **cite LIVE STATE first**. On harder questions — **RECALL RULE**. Keep replies tight unless he asks for depth.

@@ -508,25 +508,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-21-afternoon";
+const BUILD_DATE="2026-07-21-evening";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-07-21T17:15:00Z",
+  updated:"2026-07-21T23:30:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
-    {id:"2026-07-21_130001",started:"2026-07-21T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Tuesday afternoon \u2014 inbox/queues empty; Castle $345/$120 0 pending; Fitness Bruce Lee Striking Thoughts; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: Bruce Lee \u2014 Empty Cup / Formless Form / Absorb",chats_cleared:0,deploy:""},
+    {id:"2026-07-21_190001",started:"2026-07-21T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Tuesday evening \u2014 inbox/queues empty; Castle $345/$120 0 pending; Finance McKinsey Mind QDT/structure; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Finance: Problem Is Not Always the Problem \u2014 QDT & Structure First",chats_cleared:0,deploy:""},
+    {id:"2026-07-21_130001",started:"2026-07-21T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Tuesday afternoon \u2014 inbox/queues empty; Castle $345/$120 0 pending; Fitness Bruce Lee Striking Thoughts; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: Bruce Lee \u2014 Empty Cup / Formless Form / Absorb",chats_cleared:0,deploy:"ff50a4b"},
     {id:"2026-07-21_070001",started:"2026-07-21T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Tuesday morning \u2014 7 chats filed (Bible themes + app nav + guidance); Castle $345/$120 0 pending; Recipes Traeger Burnt Ends \u25cf; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Recipes: Traeger Burnt Ends (Chuck) \u25cf",chats_cleared:7,deploy:"e7cd800"},
     {id:"2026-07-20_190001",started:"2026-07-20T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Monday evening \u2014 inbox/queues empty; Castle $345/$120 0 pending (8 approved + 4 new Dagvald); Finance Make Your Boss Look Good; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Finance: Make Your Boss Look Good \u2014 Hierarchy & Information Flow",chats_cleared:0,deploy:"44709ea"},
-    {id:"2026-07-20_130001",started:"2026-07-20T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Monday afternoon \u2014 inbox/queues empty; Castle $240/$120 +8 pending (no new); Fitness 12 Rules Stand Tall (Peterson); Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: 12 Rules \u2014 Stand Tall / Treat Yourself as Worth Helping",chats_cleared:0,deploy:"4546e25"},
-    {id:"2026-07-20_070001",started:"2026-07-20T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Monday morning \u2014 inbox/queues empty; Castle $240/$120 +8 pending (no new); Recipes BGE Spatchcock Chicken \u25cf; job search 07-20; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Recipes: BGE Spatchcock Chicken \u25cf",chats_cleared:0,deploy:"b272157"}
+    {id:"2026-07-20_130001",started:"2026-07-20T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Monday afternoon \u2014 inbox/queues empty; Castle $240/$120 +8 pending (no new); Fitness 12 Rules Stand Tall (Peterson); Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: 12 Rules \u2014 Stand Tall / Treat Yourself as Worth Helping",chats_cleared:0,deploy:"4546e25"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-07-21 afternoon pass complete — inbox/queues empty; Castle $345/$120 0 pending; Fitness Bruce Lee Striking Thoughts; Gmail 0 new; Readwise 972/0.",
-  last_attempt:"2026-07-21T17:15:00Z",last_success:"2026-07-21T17:15:00Z",
+  summary:"2026-07-21 evening pass complete — inbox/queues empty; Castle $345/$120 0 pending; Finance McKinsey Mind QDT/structure; Gmail 0 new; Readwise 972/0.",
+  last_attempt:"2026-07-21T23:30:00Z",last_success:"2026-07-21T23:30:00Z",
   open_issues:[]
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};

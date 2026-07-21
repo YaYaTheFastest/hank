@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-20T23:07:55Z",
+  "updated": "2026-07-21T11:07:23Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-21_070001",
+      "started": "2026-07-21T07:00:01",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Recipes: [[Traeger Burnt Ends (Chuck or Brisket)]] \u25d0\u2192\u25cf (Traeger Kitchen Poor Man\u2019s path)",
+      "domain": "Recipes: [[Traeger Burnt Ends (Chuck or Brisket)]] \u25d0\u2192\u25cf (Traeger Kitchen Poor Man\u2019s path)",
+      "chats_cleared": null,
+      "deploy": null,
+      "log": "logs/loop-2026-07-21_070001.log"
+    },
     {
       "id": "2026-07-20_190005",
       "started": "2026-07-20T19:00:05",
@@ -57,20 +71,6 @@
       "chats_cleared": 0,
       "deploy": null,
       "log": "logs/loop-2026-07-20_070001.log"
-    },
-    {
-      "id": "2026-07-19_190002",
-      "started": "2026-07-19T19:00:02",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Evening loop complete \u2014 OK (E0).",
-      "domain": "Readwise: 972 / pending 0 (Sunday inventory only)",
-      "chats_cleared": 0,
-      "deploy": "702342a",
-      "log": "logs/loop-2026-07-19_190002.log"
     }
   ]
 }

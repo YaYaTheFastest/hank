@@ -215,6 +215,16 @@
   .vchip.do{border-left:3px solid var(--ok)}.vchip.wait{border-left:3px solid var(--amber)}.vchip.done{border-left:3px solid #c7ccc0;color:var(--muted)}
   .vchip b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
   .vchip.do b{color:var(--ok)}.vchip.wait b{color:var(--amber)}.vchip.done b{color:var(--muted)}
+
+  .pcard.prop{border-left-color:#5b6fd6}
+  .pcard .pst{font-size:10.5px;font-weight:800;text-transform:uppercase;margin-top:6px;color:#5b6fd6}
+  .pcard.prop.open .pst{color:var(--amber)}
+  .pcard.prop.shipped .pst,.pcard.prop.approved .pst{color:var(--ok)}
+  .pib{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 13px;margin:0 0 12px}
+  .pib .row{margin:0 0 8px;font-size:13.5px;line-height:1.4}
+  .pib .row:last-child{margin:0}
+  .pib .k{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);display:block;margin-bottom:2px}
+  .prop-ribbon{background:#eef1ff;border:1px solid #c8d0f0;color:#2a3570;font-size:12px;font-weight:600;text-align:left;padding:10px 14px;margin:12px var(--space) 0;border-radius:12px;line-height:1.4}
   .site-foot{text-align:center;padding:8px 16px 4px;font-size:10.5px;color:var(--muted);opacity:.85}
   .graph-wrap{display:flex;flex-direction:column;height:calc(100vh - 120px);min-height:420px}
   .graph-toolbar{padding:10px 16px 6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -300,7 +310,8 @@
       <div class="more-in">
         <div class="hgrid">
           <a class="tile" onclick="showView('vault')"><div class="ic">🗺</div><div class="tt">How vault works</div><div class="ds">enter by job — not folders</div></a>
-          <a class="tile" href="projects.html"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Castle Fund + ranch builds</div></a>
+          <a class="tile" onclick="showView('work')"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Work tab · hierarchy + chat</div></a>
+          <a class="tile" onclick="setWorkSeg('proposals');showView('work')"><div class="ic">📝</div><div class="tt">Proposals</div><div class="ds">review without Obsidian</div></a>
           <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
           <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
           <a class="tile" onclick="showView('bible')"><div class="ic">✝</div><div class="tt">Bible Guidance</div><div class="ds">I need… · scenes · people</div></a>
@@ -313,12 +324,13 @@
   </div>
 </div>
 
-<!-- WORK VIEW (Phase 2 mock) -->
+<!-- WORK VIEW — hierarchical projects + Doing + Proposals -->
 <div id="workView" class="hide">
-  <div class="mock-ribbon">Phase 2 preview — mock data from vault; not live-synced yet. Change anything via Chat.</div>
+  <div class="prop-ribbon">Work = real projects &amp; verbs. Open proposals live here — review without Obsidian. Change via Chat; loop files.</div>
   <div class="seg">
     <button id="segProjects" class="on" onclick="setWorkSeg('projects')">Projects</button>
     <button id="segDoing" onclick="setWorkSeg('doing')">Doing</button>
+    <button id="segProposals" onclick="setWorkSeg('proposals')">Proposals</button>
   </div>
   <div id="workBody" class="work-body"></div>
 </div>
@@ -384,11 +396,11 @@
   <div class="home">
     <div class="hgrid">
       <a class="tile" onclick="showView('dash')"><div class="ic">📊</div><div class="tt">Status</div><div class="ds" id="hNeeds">build, maintenance, supplies</div></a>
-      <a class="tile" onclick="showView('looplog')"><div class="ic">🔄</div><div class="tt">Loop log</div><div class="ds">last 5 passes</div></a>
+      <a class="tile" onclick="setWorkSeg('proposals');showView('work')"><div class="ic">📝</div><div class="tt">Proposals</div><div class="ds">review &amp; approve without Obsidian</div></a>
       <a class="tile" onclick="showView('looplog')"><div class="ic">🔄</div><div class="tt">Loop log</div><div class="ds">last 5 passes</div></a>
       <a class="tile" onclick="showView('brief')"><div class="ic">🧭</div><div class="tt">Brief</div><div class="ds">copy context for Grok Build</div></a>
       <a class="tile" onclick="showView('setup')"><div class="ic">🔌</div><div class="tt">Setup</div><div class="ds">password &amp; connection</div></a>
-      <a class="tile" href="projects.html"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Castle Fund + ranch builds</div></a>
+      <a class="tile" onclick="showView('work')"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Work tab · hierarchical</div></a>
       <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
       <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
       <a class="tile" onclick="document.getElementById('cap').click()"><div class="ic">📷</div><div class="tt">Send to Hank</div><div class="ds">drop a photo to the inbox</div></a>
@@ -496,13 +508,13 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-21-morning";
+const BUILD_DATE="2026-07-21-proposals-ship";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-07-21T11:15:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
-    {id:"2026-07-21_070001",started:"2026-07-21T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Tuesday morning \u2014 7 chats filed (Bible themes + app nav + guidance); Castle $345/$120 0 pending; Recipes Traeger Burnt Ends \u25cf; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Recipes: Traeger Burnt Ends (Chuck) \u25cf",chats_cleared:7,deploy:""},
+    {id:"2026-07-21_070001",started:"2026-07-21T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Tuesday morning \u2014 7 chats filed (Bible themes + app nav + guidance); Castle $345/$120 0 pending; Recipes Traeger Burnt Ends \u25cf; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Recipes: Traeger Burnt Ends (Chuck) \u25cf",chats_cleared:7,deploy:"e7cd800"},
     {id:"2026-07-20_190001",started:"2026-07-20T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Monday evening \u2014 inbox/queues empty; Castle $345/$120 0 pending (8 approved + 4 new Dagvald); Finance Make Your Boss Look Good; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Finance: Make Your Boss Look Good \u2014 Hierarchy & Information Flow",chats_cleared:0,deploy:"44709ea"},
     {id:"2026-07-20_130001",started:"2026-07-20T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Monday afternoon \u2014 inbox/queues empty; Castle $240/$120 +8 pending (no new); Fitness 12 Rules Stand Tall (Peterson); Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: 12 Rules \u2014 Stand Tall / Treat Yourself as Worth Helping",chats_cleared:0,deploy:"4546e25"},
     {id:"2026-07-20_070001",started:"2026-07-20T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Monday morning \u2014 inbox/queues empty; Castle $240/$120 +8 pending (no new); Recipes BGE Spatchcock Chicken \u25cf; job search 07-20; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Recipes: BGE Spatchcock Chicken \u25cf",chats_cleared:0,deploy:"b272157"},
@@ -517,8 +529,8 @@ const LOOP_HEALTH={
   last_attempt:"2026-07-21T11:15:00Z",last_success:"2026-07-21T11:15:00Z",
   open_issues:[]
 };
-const ANNOUNCE={id:"phase2-mock-2026-07-09",title:"Phase 2 preview is ready",body:"Tap Work for Projects + Doing — a mock-up of your command center verbs. Preview only; tell Hank in Chat to change anything.",cta:"Open Work"};
-const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections, or Work → Explore links.",cta:"Open graph"};
+const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
+const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};
 const GRAPH_DOMAINS={
   finance:{
     label:"Finance",count:9,
@@ -568,26 +580,37 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-07-10",now:"Glock OMs hosted ●; Sig OMs still portal",nextDomain:"Recipes",rotation:"Recipes → Fitness → Finance",dagvald:115,davikja:75,fleetTotal:51,fleetFull:47,fleetPart:4,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"Night pass 10 Jul — Glocks Full, queues cleared, Castle current, Finance MECE."},
-  doing:["Equipment quality audit","Sig handgun OMs + serials","Ranch Chores as Profit Center"],
-  waiting:["Projects interaction design","Home domain tiles layout","Profit-center metric pick"]};
-const PROJECTS_MOCK={
+const LIVE_STATE={refreshed:"2026-07-21",now:"Nav approved — Work tab real + Proposals surface shipping",nextDomain:"Fitness",rotation:"Recipes → Fitness → Finance",dagvald:345,davikja:120,fleetTotal:51,fleetFull:47,fleetPart:4,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"2026-07-21 — nav proposal approved; Work + Proposals ship; Bible rows; Castle $345/$120."},
+  doing:["Book Deane 2 hr shop org","Kitchen sink under-slab snaking","Ship Work tab + proposals surface","Equipment quality audit","Sig handgun OMs + serials","Fortna leadership — Tier-1 bar"],
+  waiting:["Home domain tiles layout (B2)","Profit-center metric pick"]};
+// Hierarchical projects — vault-backed fields (what/why/next/status). Loop refreshes this block each deploy.
+const PROJECTS={
   active:[
-    {n:"Bison Trailer — Rodent Exclusion",next:"Night daylight inspection — mark gaps (don't block vents)",domain:"Ranch"},
-    {n:"Plainfield Rd Land Purchase",next:"Resolve trust-vs-probate; engage NC attorney",domain:"Property"},
-    {n:"2026 Job Search",next:"Weekly refresh Mon 07-13",domain:"Career"},
-    {n:"Shop – Ongoing",next:"Keep equipment cards flowing to Full",domain:"Shop"},
-    {n:"Castle Fund",next:"Standing sync + enhancements per roadmap",domain:"Family"},
-    {n:"Tax Strategy 2026",next:"Outline actions (finance reference-only)",domain:"Finance"}
+    {id:"bison-rodent",n:"Bison Trailer — Rodent Exclusion",what:"Seal the Bison Coach horse trailer against rodents without blocking designed vents.",why:"Protect LQ/living space and gear from mice; trailer is on-site and active.",next:"Night daylight inspection — mark gaps (don't block vents)",status:"Active",owner:"Darren",domain:"Ranch"},
+    {id:"kitchen-sink",n:"Kitchen Sink → Basement Shower Backup",what:"Clear kitchen branch under slab that backs up into basement shower.",why:"House plumbing pressure — usable basement shower + kitchen drain.",next:"Snake from shower drain downstream; enzyme follow-up",status:"Active",owner:"Darren",domain:"Home"},
+    {id:"shop-org",n:"Shop – Ongoing",what:"Finish shop organization with Deane; keep equipment cards honest.",why:"Shop is the ranch ops hub; clutter slows every job.",next:"Book Deane 2 hr to finish organizing",status:"Active",owner:"Darren",domain:"Shop"},
+    {id:"plainfield",n:"Plainfield Rd Land Purchase",what:"Close clarity on Plainfield Rd land (trust vs probate path).",why:"Property decision blocks clean next legal/money moves.",next:"Resolve trust-vs-probate; engage NC attorney",status:"Active",owner:"Darren",domain:"Property"},
+    {id:"job-search",n:"2026 Job Search",what:"Active search — network strategy / merch ops targets.",why:"Career track alongside ranch OS; weekly Monday refresh.",next:"Next weekly refresh Mon 07-27",status:"Active",owner:"Darren",domain:"Career"},
+    {id:"castle",n:"Castle Fund",what:"Kids earn-toward-reward balances (Dagvald / Davikja) inside HANK.",why:"Family module live; loop syncs ledgers from app.",next:"Standing sync; parent PIN for pending",status:"Active",owner:"Hank + parents",domain:"Family"},
+    {id:"tax-2026",n:"Tax Strategy 2026",what:"Tax planning reference + action outline (finance stays reference-only until aggregator pick).",why:"Avoid year-end scramble; ranch/entity complexity.",next:"Outline actions from Finance hub",status:"Active",owner:"Darren",domain:"Finance"},
+    {id:"profit-chores",n:"Ranch Chores as Profit Center",what:"Design how ranch chores map to value (metric TBD).",why:"Align kids work + ranch economics without fake rates.",next:"Pick metric (options A–F filed)",status:"Active",owner:"Darren",domain:"Ranch"},
+    {id:"cmd-phase2",n:"Command Center Phase 2",what:"Work tab = hierarchical projects + Doing + per-project chat; proposals surface.",why:"You enter by job — not Obsidian. Approved 2026-07-21.",next:"This deploy live; refine from chat",status:"Active",owner:"Grok",domain:"System"}
   ],
   ideas:[
-    {n:"Replace Barn with Amish Barn",next:"Dreaming — drop a line in Chat to activate",domain:"Ranch"},
-    {n:"Rainwater Irrigation System",next:"Dreaming",domain:"Ranch"},
-    {n:"Home Organizing",next:"Dreaming",domain:"Home"}
+    {id:"amish-barn",n:"Replace Barn with Amish Barn",what:"Long-horizon barn replacement dream.",why:"Capacity/quality of current barn may limit ranch growth.",next:"Dreaming — Chat to activate",status:"Ideas",owner:"Darren",domain:"Ranch"},
+    {id:"rainwater",n:"Rainwater Irrigation System",what:"Capture and use rain for irrigation.",why:"Water resilience on the ranch.",next:"Dreaming",status:"Ideas",owner:"Darren",domain:"Ranch"},
+    {id:"home-org",n:"Home Organizing",what:"Broader home organization beyond shop.",why:"Household friction.",next:"Dreaming",status:"Ideas",owner:"Darren",domain:"Home"},
+    {id:"cat-door",n:"Shop Cat Door",what:"Install smart/pet door for shop cats (OnlyCat vs DualScan research filed).",why:"Cats + shop access without open door energy loss.",next:"Pick model + install surface photo",status:"Ideas",owner:"Darren",domain:"Shop"}
   ],
-  hold:[{n:"Kalshi Bot",next:"Resume vs archive — decision parked",domain:"Finance"}]
+  hold:[
+    {id:"kalshi",n:"Kalshi Bot",what:"Trading bot experiment parked.",why:"Not current priority vs ranch/family/command center.",next:"Resume vs archive — decision parked",status:"Hold",owner:"Darren",domain:"Finance"}
+  ]
 };
+// Open proposals for Darren to review in-app (no Obsidian). Grok files new ones; you approve/hold via Chat.
+const PROPOSALS=[
+  {id:"nav-ideal-2026-07-21",title:"App navigation — ideal layout & hierarchy",status:"shipping",one:"Job doors, real Work tab, quiet Status, Proposals in-app. You approved ship-in-order.",summary:"Ideal hierarchy: Home (Have·Do·Matter + job doors) → Equipment · Castle · Work · Chat · Bible Guidance · Status/Brief · More. Anti: folder tree, badge spam, chat-only memory, BJJ merge.",steps:["1. Ship Work tab for real (hierarchy + info block + per-project chat)","2. Keep Home clean","3. Grow Bible Guidance from chat captures","4. Do not redesign Equipment card layout","5. Confirm tab renames / new Home tiles before changing"],decided:"2026-07-21 — approve all, ship in that order",next:"This deploy implements 1–4; 5 waits on you for any rename."}
+];
 let workSeg="projects";
 const CHAT_STARTERS=[
   {label:"Paste Grok session — file it",text:"From Grok — file this:\n\n",send:false},
@@ -614,6 +637,9 @@ const BIBLE={
     {id:"work",t:"Work under pressure / integrity",words:[{q:"You are the salt of the earth… You are the light of the world…",r:"Matt 5:13–14"},{q:"Let your light so shine before men, that they may see your good works and glorify your Father in heaven.",r:"Matt 5:16"}],next:"One excellent honest action. No gossip shortcut. Work as unto the Lord.",scene:"sermon",who:["jesus"]},
     {id:"neighbor",t:"Need neighbor love made concrete",words:[{q:"Go and do likewise.",r:"Luke 10:37"}],next:"Name one costly neighbor act this week — time, money, or presence.",scene:"samaritan",who:["jesus"]},
     {id:"compare",t:"Sibling / family comparison",words:[{q:"Martha, Martha, you are worried and troubled about many things. But one thing is needed…",r:"Luke 10:41–42"}],next:"Drop scorekeeping. Choose the “one thing” needed — presence over anxious performance.",scene:"prodigal",who:["martha","jesus"]},
+    {id:"addiction",t:"Lost in addiction",words:[{q:"Neither do I condemn you; go and sin no more.",r:"John 8:11"},{q:"Come to Me, all you who labor and are heavy laden, and I will give you rest.",r:"Matt 11:28"},{q:"If you abide in My word, you are My disciples indeed. And you shall know the truth, and the truth shall make you free.",r:"John 8:31–32"},{q:"If anyone desires to come after Me, let him deny himself, and take up his cross daily, and follow Me.",r:"Luke 9:23"}],next:"Come, don't hide — plain prayer. One concrete refusal today (not forever theater). Tell one safe person or get professional help if substances/self-harm risk.",scene:"adultery",who:["jesus"]},
+    {id:"courage",t:"Need courage / get after it",words:[{q:"Follow Me.",r:"Mark 1:17; John 21:19"},{q:"…deny himself, and take up his cross daily, and follow Me.",r:"Luke 9:23"},{q:"…be of good cheer, I have overcome the world.",r:"John 16:33"},{q:"But seek first the kingdom of God and His righteousness…",r:"Matt 6:33"}],next:"Pick one domain (home · work · body · faith). Do the smallest costly follow today — daily cross, not a five-year plan.",scene:"restore",who:["jesus","peter"]},
+    {id:"marriage",t:"Marriage under strain",words:[{q:"A new commandment I give to you, that you love one another; as I have loved you…",r:"John 13:34"},{q:"…first be reconciled to your brother…",r:"Matt 5:24"}],next:"One reconciling or sacrificial act toward your spouse today — small and real. Listen before you win.",scene:"supper",who:["jesus"]},
     {id:"status",t:"Status / achievement over God",words:[{q:"One thing you lack: Go your way, sell whatever you have… and come, take up the cross, and follow Me.",r:"Mark 10:21"},{q:"With men it is impossible, but not with God…",r:"Mark 10:27"}],next:"Ask what you won’t release. Hold it open-handed in prayer. Don’t soft-edit the cost.",scene:"ruler",who:["jesus"]}
   ],
   scenes:[
@@ -1282,7 +1308,7 @@ function copyBibleText(t){
 function announceKey(){return"hankSeenAnnounce:"+ANNOUNCE.id;}
 function announceSeen(){try{return localStorage.getItem(announceKey())==="1";}catch(e){return false;}}
 function markAnnounceSeen(){try{localStorage.setItem(announceKey(),"1");}catch(e){}const b=document.getElementById('bnavWorkBadge');if(b)b.classList.add('hide');renderAnnounce();}
-function dismissAnnounce(){markAnnounceSeen();renderAnnounce();toast("Got it — Work tab has the Phase 2 preview.");}
+function dismissAnnounce(){markAnnounceSeen();renderAnnounce();toast("Got it — Work has Projects, Doing, and Proposals.");}
 function renderAnnounce(){
   const el=document.getElementById('announceBanner');if(!el)return;
   if(!announceSeen()){
@@ -1371,43 +1397,100 @@ function bindGraphCanvas(){
   wrap.addEventListener("touchend",e=>{if(!graphDrag)return;const p=pt(e.changedTouches?{touches:e.changedTouches}:e);if(Math.abs(p.x-graphDrag.x)<10&&Math.abs(p.y-graphDrag.y)<10){const n=graphHit(p.x,p.y);if(n)showGraphNode(n);}graphDrag=null;});
   window.addEventListener("resize",()=>{if(!document.getElementById("graphView").classList.contains("hide")){layoutGraphPositions();drawGraph();}});
 }
-function setWorkSeg(s){workSeg=s;document.getElementById('segProjects').classList.toggle('on',s==="projects");document.getElementById('segDoing').classList.toggle('on',s==="doing");renderWork();}
+function setWorkSeg(s){
+  workSeg=s;
+  const a=document.getElementById('segProjects'),b=document.getElementById('segDoing'),c=document.getElementById('segProposals');
+  if(a)a.classList.toggle('on',s==="projects");
+  if(b)b.classList.toggle('on',s==="doing");
+  if(c)c.classList.toggle('on',s==="proposals");
+  renderWork();
+}
 function renderWork(){
   const el=document.getElementById('workBody');if(!el)return;
   if(workSeg==="doing"){
-    const mk=(st,list)=>list.map(t=>`<div class="vchip ${st}" onclick="workDirective('${st}','${t.replace(/'/g,"\\'")}')"><b>${st}</b>${escapeHtml(t)}</div>`).join("");
-    el.innerHTML=`<h2>Doing</h2><div class="vrow">${mk("do",LIVE_STATE.doing)}</div><h2>Waiting</h2><div class="vrow">${mk("wait",LIVE_STATE.waiting)}</div><p class="muted" style="margin-top:12px">Tap a verb to tell Hank in Chat. Done items will appear here once wired to the vault.</p>`;
+    const mk=(st,list)=>list.map(t=>`<div class="vchip ${st}" onclick="workDirective('${st}',${JSON.stringify(t)})"><b>${st}</b>${escapeHtml(t)}</div>`).join("");
+    el.innerHTML=`<h2>Doing</h2><div class="vrow">${mk("do",LIVE_STATE.doing||[])}</div><h2>Waiting</h2><div class="vrow">${mk("wait",LIVE_STATE.waiting||[])}</div><p class="muted" style="margin-top:12px">Tap a verb → Chat pre-fills a directive. Loop files status on the next pass.</p>`;
     return;
   }
-  const card=(p,cls)=>`<div class="pcard ${cls}" onclick="openProjectMock('${p.n.replace(/'/g,"\\'")}','${cls}')"><div class="pt">${escapeHtml(p.n)}</div><div class="pn">${escapeHtml(p.next)}</div><div class="pm">${escapeHtml(p.domain)}</div></div>`;
-  el.innerHTML=`<h2>▶ Active</h2>${PROJECTS_MOCK.active.map(p=>card(p,"")).join("")}
-    <h2>💡 Ideas</h2>${PROJECTS_MOCK.ideas.map(p=>card(p,"idea")).join("")}
-    <h2>⏸ On hold</h2>${PROJECTS_MOCK.hold.map(p=>card(p,"hold")).join("")}
+  if(workSeg==="proposals"){
+    const open=(PROPOSALS||[]).filter(p=>p.status==="open"||p.status==="hold");
+    const ship=(PROPOSALS||[]).filter(p=>p.status==="approved"||p.status==="shipping");
+    const done=(PROPOSALS||[]).filter(p=>p.status==="shipped");
+    const card=p=>{
+      const st=p.status||"open";
+      return `<div class="pcard prop ${st}" onclick="openProposal(${JSON.stringify(p.id)})"><div class="pt">${escapeHtml(p.title)}</div><div class="pn">${escapeHtml(p.one||"")}</div><div class="pst">${escapeHtml(st)}</div></div>`;
+    };
+    el.innerHTML=`<p class="muted" style="margin:0 0 10px">Grok files design/ops proposals here. You review on this phone — approve, hold, or revise in Chat. No Obsidian.</p>
+      <h2>Needs your call</h2>${open.length?open.map(card).join(""):'<p class="muted">None open right now.</p>'}
+      <h2>Approved / shipping</h2>${ship.length?ship.map(card).join(""):'<p class="muted">—</p>'}
+      <h2>Shipped</h2>${done.length?done.map(card).join(""):'<p class="muted">History appears after Grok marks shipped.</p>'}
+      <p class="muted" style="margin-top:12px">New proposals land after a chat directive or loop pass. Say “show proposals” anytime.</p>`;
+    return;
+  }
+  const card=(p,cls)=>`<div class="pcard ${cls}" onclick="openProject(${JSON.stringify(p.id)})"><div class="pt">${escapeHtml(p.n)}</div><div class="pn">${escapeHtml(p.next)}</div><div class="pm">${escapeHtml(p.domain)} · ${escapeHtml(p.status||"")}</div></div>`;
+  el.innerHTML=`<h2>▶ Active</h2>${(PROJECTS.active||[]).map(p=>card(p,"")).join("")}
+    <h2>💡 Ideas</h2>${(PROJECTS.ideas||[]).map(p=>card(p,"idea")).join("")}
+    <h2>⏸ On hold</h2>${(PROJECTS.hold||[]).map(p=>card(p,"hold")).join("")}
     <h2>Explore</h2>
-    <div class="pcard" onclick="openGraph('finance','work')"><div class="pt">Finance connections</div><div class="pn">Reference Hub + projects + sources — 9 nodes</div><div class="pm">Graph preview</div></div>
-    <div class="pcard" onclick="openGraph('bison','work')"><div class="pt">Bison rodent exclusion</div><div class="pn">Project + equipment card + capture path — 7 nodes</div><div class="pm">Graph preview</div></div>
-    <div class="pcard" onclick="showView('bible')"><div class="pt">Bible Guidance</div><div class="pn">I need… → Jesus’ words → next step · scenes · people</div><div class="pm">Primary · not the graph</div></div>
-    <p class="muted" style="margin-top:10px">Tap a project for detail. Finance/Bison graphs = label maps. Scripture = Bible Guidance.</p>`;
+    <div class="pcard" onclick="showView('bible')"><div class="pt">Bible Guidance</div><div class="pn">I need… → Jesus’ words → next step</div><div class="pm">Primary · not the graph</div></div>
+    <div class="pcard" onclick="setWorkSeg('proposals')"><div class="pt">Open proposals</div><div class="pn">Review Grok ideas without Obsidian</div><div class="pm">Approve · hold · revise</div></div>
+    <div class="pcard" onclick="openGraph('finance','work')"><div class="pt">Finance connections</div><div class="pn">Label map only</div><div class="pm">Secondary</div></div>
+    <p class="muted" style="margin-top:10px">Tap a project for what / why / next + chat. Scripture = Bible Guidance.</p>`;
 }
-function findProject(n){
-  for(const k of ["active","ideas","hold"]){const f=PROJECTS_MOCK[k].find(p=>p.n===n);if(f)return{...f,status:k};}
+function findProject(id){
+  for(const k of ["active","ideas","hold"]){
+    const f=(PROJECTS[k]||[]).find(p=>p.id===id||p.n===id);
+    if(f)return{...f,bucket:k};
+  }
   return null;
 }
-function openProjectMock(n,cls){
-  const p=findProject(n);if(!p)return;
-  const st=p.status==="active"?"Active":p.status==="ideas"?"Idea":"On hold";
-  document.getElementById('panel').innerHTML=`<div class="ph"><div><h3>${escapeHtml(p.n)}</h3><div class="sub">${st} · ${escapeHtml(p.domain)} · <span class="verify">Phase 2 mock</span></div></div><button class="x" onclick="closeSheet()">×</button></div>
-    <div class="sec"><h4>Next</h4><p style="margin:0;font-size:14px;line-height:1.45">${escapeHtml(p.next)}</p></div>
-    <div class="sec"><h4>Change this project</h4><p class="muted" style="margin:0 0 10px">Not wired to vault yet — tell Hank what to update.</p>
-      <button class="logbtn" onclick="closeSheet();projectChat('${p.n.replace(/'/g,"\\'")}','status')">Change status / priority</button>
-      <button class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="closeSheet();projectChat('${p.n.replace(/'/g,"\\'")}','next')">Update next step</button>
+function openProject(id){
+  const p=findProject(id);if(!p)return;
+  const st=p.status||(p.bucket==="active"?"Active":p.bucket==="ideas"?"Idea":"On hold");
+  document.getElementById('panel').innerHTML=`<div class="ph"><div><h3>${escapeHtml(p.n)}</h3><div class="sub">${escapeHtml(st)} · ${escapeHtml(p.domain||"")} · ${escapeHtml(p.owner||"")}</div></div><button class="x" onclick="closeSheet()">×</button></div>
+    <div class="pib">
+      <div class="row"><span class="k">What</span>${escapeHtml(p.what||"—")}</div>
+      <div class="row"><span class="k">Why</span>${escapeHtml(p.why||"—")}</div>
+      <div class="row"><span class="k">Next</span>${escapeHtml(p.next||"—")}</div>
+      <div class="row"><span class="k">Status</span>${escapeHtml(st)}</div>
+    </div>
+    <div class="sec"><h4>Talk about this project</h4>
+      <button class="logbtn" onclick="closeSheet();projectChat(${JSON.stringify(p.id)},'chat')">Chat about this project</button>
+      <button class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="closeSheet();projectChat(${JSON.stringify(p.id)},'next')">Update next step</button>
+      <button class="logbtn" style="margin-top:8px" onclick="closeSheet();projectChat(${JSON.stringify(p.id)},'status')">Change status / priority</button>
     </div>`;
   document.getElementById('sheet').classList.add('open');
 }
-function projectChat(name,kind){
-  const pre=kind==="next"?"Project directive — update next step for "+name+":\n\n":"Project directive — change status/priority for "+name+":\n\n";
+function projectChat(id,kind){
+  const p=findProject(id)||{n:id,what:"",next:""};
+  let pre;
+  if(kind==="next")pre="Project directive — update next step for "+p.n+":\n\n";
+  else if(kind==="status")pre="Project directive — change status/priority for "+p.n+":\n\n";
+  else pre="Project chat — "+p.n+"\nWhat: "+(p.what||"")+"\nWhy: "+(p.why||"")+"\nNext: "+(p.next||"")+"\n\n";
   document.getElementById('chatInput').value=pre;showView('chat');document.getElementById('chatInput').focus();
-  toast("Tell Hank what to change — loop files it.");
+  toast("Tell Hank — loop files it.");
+}
+function openProposal(id){
+  const p=(PROPOSALS||[]).find(x=>x.id===id);if(!p)return;
+  const steps=(p.steps||[]).map(s=>`<li style="margin:0 0 6px">${escapeHtml(s)}</li>`).join("");
+  document.getElementById('panel').innerHTML=`<div class="ph"><div><h3>${escapeHtml(p.title)}</h3><div class="sub">Proposal · ${escapeHtml(p.status||"open")}</div></div><button class="x" onclick="closeSheet()">×</button></div>
+    <div class="sec"><h4>Bottom line</h4><p style="margin:0;font-size:14px;line-height:1.45">${escapeHtml(p.one||"")}</p></div>
+    <div class="sec"><h4>Summary</h4><p style="margin:0;font-size:14px;line-height:1.45">${escapeHtml(p.summary||"")}</p></div>
+    ${steps?`<div class="sec"><h4>Ship order</h4><ol style="margin:0;padding-left:18px;font-size:14px;line-height:1.4">${steps}</ol></div>`:""}
+    ${p.decided?`<div class="sec"><h4>Your decision</h4><p style="margin:0;font-size:14px">${escapeHtml(p.decided)}</p></div>`:""}
+    ${p.next?`<div class="bnext"><b>Next</b><p>${escapeHtml(p.next)}</p></div>`:""}
+    <div class="sec"><h4>Respond</h4>
+      <button class="logbtn" onclick="closeSheet();proposalChat(${JSON.stringify(p.id)},'approve')">Approve / ship</button>
+      <button class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="closeSheet();proposalChat(${JSON.stringify(p.id)},'hold')">Hold</button>
+      <button class="logbtn" style="margin-top:8px" onclick="closeSheet();proposalChat(${JSON.stringify(p.id)},'revise')">Revise idea</button>
+    </div>`;
+  document.getElementById('sheet').classList.add('open');
+}
+function proposalChat(id,kind){
+  const p=(PROPOSALS||[]).find(x=>x.id===id)||{title:id};
+  const map={approve:"Decision — APPROVE proposal “"+p.title+"”. Ship next steps.",hold:"Decision — HOLD proposal “"+p.title+"”. Do not ship yet.",revise:"Proposal revise — “"+p.title+"”:\n\n"};
+  document.getElementById('chatInput').value=map[kind]||map.revise;showView('chat');document.getElementById('chatInput').focus();
+  toast(kind==="approve"?"Approve captured for loop":kind==="hold"?"Hold captured":"Tell Hank what to change");
 }
 function workDirective(st,text){
   document.getElementById('chatInput').value="Directive — "+text+":\n\n";showView('chat');document.getElementById('chatInput').focus();
@@ -1427,7 +1510,7 @@ function renderToday(){
       <div class="pill ${wn?'warn':''}" onclick="showView('dash')"><b>${wn}</b><span>Needs you</span></div>
       <div class="pill ${mn?'warn':''}" onclick="showView('dash')"><b>${mn}</b><span>Manuals</span></div>
       <div class="pill ${due?'warn':''}" onclick="goDueSoon()"><b>${due}</b><span>Due soon</span></div>
-      <div class="pill" onclick="showView('work')"><b>${PROJECTS_MOCK.active.length}</b><span>Projects</span></div>
+      <div class="pill" onclick="showView('work')"><b>${(PROJECTS.active||[]).length}</b><span>Projects</span></div>
     </div>
     <p class="line"><b>Now:</b> ${escapeHtml(LIVE_STATE.now||LIVE_STATE.nextDomain)}</p>
     <p class="line"><b>Doing:</b> ${doing}</p>

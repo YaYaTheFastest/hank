@@ -33,23 +33,23 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-20 evening — scheduled evening loop)
+## LIVE STATE (refreshed 2026-07-21 morning — scheduled morning loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Steady-state loop. **Finance** deepened: **Make Your Boss Look Good — Hierarchy & Information Flow** (McKinsey). Fitness last: **12 Rules — Stand Tall / Treat Yourself as Worth Helping** (Peterson). Recipes last: **BGE Spatchcock Chicken ●**. **Castle:** parent approved backlog — Dagvald **$345** (22-day streak), Davikja **$120**, **0 pending**. **Job search** refreshed **07-20** (Monday). Memory Protocol live. Differentiator: **job front door + Grok operator**. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. Faith + **Bible Guidance**. Glocks ●; Sig handguns still ◐.
+**Now (what matters):** Steady-state loop. **Recipes** deepened: **Traeger Burnt Ends (Chuck) ●** (Traeger Kitchen Poor Man’s path). Chat drained **7** (Bible themes + app nav proposal + addiction/courage guidance). **Castle:** Dagvald **$345** (22-day streak through 07-20), Davikja **$120**, **0 pending**. **Job search** last refresh **07-20**. Memory Protocol live. Differentiator: **job front door + Grok operator**. **Shop org** — book **Deane 2 hr**. **Kitchen Sink → Basement Shower Backup** open. Faith + **Bible Guidance** (new: addiction · cross daily · marriage/holy family). Glocks ●; Sig handguns still ◐.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance. (Finance done 07-20 evening: Make Your Boss Look Good.)
+**Next domain (rotation):** **Fitness** — then Finance → Recipes. (Recipes done 07-21 morning: Traeger Burnt Ends ●.)
 
-**The Bible domain (founded 2026-07-17):** Deep vault domain — characters · situations · dialogue · Jesus’ direct words. **How Darren interacts (app):** **Bible Guidance** (Home primary tile) is the front door — pick “I need…” → cited Jesus’ words + one next step → optional Walk the scene / Talk with Hank. Tabs: Scenes · People. Chat starter **“I need guidance”** primes pastoral unpacking. **Do not** send him to Connections graph for Scripture — that is a label map only. Vault hub: `20 Knowledge Base/The Bible/The Bible Reference Hub.md`. Application principles still under Mind Body Spirit.
+**The Bible domain (founded 2026-07-17):** Deep vault domain — characters · situations · dialogue · Jesus’ direct words. **How Darren interacts (app):** **Bible Guidance** (Home primary tile) is the front door — pick “I need…” → cited Jesus’ words + one next step → optional Walk the scene / Talk with Hank. Tabs: Scenes · People. Chat starter **“I need guidance”** primes pastoral unpacking. **Do not** send him to Connections graph for Scripture — that is a label map only. Vault hub: `20 Knowledge Base/The Bible/The Bible Reference Hub.md`. Application principles still under Mind Body Spirit. **New 07-21:** Situation rows Lost in addiction · Need courage/get after it; themes Holy Familial Relationships · Take Up Your Cross Daily · Ephesians 5 marriage.
 
-**Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + project info block + per-project chat · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar.
+**Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink under-slab snaking · Phase 2 Projects hierarchical UI + project info block + per-project chat · App nav ideal layout filed (proposal) · Equipment quality audit · Sig OMs + handgun serials · Ranch Chores as Profit Center · Shop cat door (pick/order) · Lead Fortna team to Tier-1 operator bar.
 
 **Waiting:** Home domain tiles · Profit-center metric pick. Castle **0 pending**.
 
-**Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail OK**. Queues **empty**.
+**Inbox:** Vault clean. iCloud `_Cowork Inbox` = `_README` only. **Gmail OK**. Queues **empty** (7 chats filed this pass).
 
-**Loop:** **OK (E0)** — evening pass complete. Castle **$345 / $120** · 0 pending; Finance Make Your Boss Look Good; Readwise 972/0.
+**Loop:** **OK (E0)** — morning pass complete. Castle **$345 / $120** · 0 pending; Recipes Traeger Burnt Ends ●; chats 7 filed; Readwise 972/0.
 
 **Fleet:** 51 = **47 Full + 4 ◐** (AP10F + 3 Sig handguns). Manual-backed Glocks + H&K MR556A1 ●.
 
@@ -57,7 +57,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Readwise:** 972, pending **0**.
 
-**Deploy:** BUILD_DATE 2026-07-20-evening · live `21ffdae` (body `44709ea`).
+**Deploy:** BUILD_DATE 2026-07-21-morning · (SHA after push this pass).
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

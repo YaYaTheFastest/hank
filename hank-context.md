@@ -33,13 +33,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-21 evening)
+## LIVE STATE (refreshed 2026-07-22 morning)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$345 / $120** · 0 pending. Evening loop: Finance = McKinsey Mind (problem ≠ label · structure first · QDT). Afternoon: Fitness Bruce Lee. Morning: Traeger Burnt Ends ●. Shop org — book Deane 2 hr. Kitchen sink backup open. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$345 / $120** · 0 pending. Morning loop: Recipes = **BGE Pizza (stone)** ●. Shop org — book Deane 2 hr. Kitchen sink backup open. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance.
+**Next domain (rotation):** **Fitness** — then Finance → Recipes.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
@@ -55,7 +55,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$345** (22-day streak through 07-20), Davikja **$120**.
 
-**Deploy:** BUILD_DATE **2026-07-21-evening**.
+**Deploy:** BUILD_DATE **2026-07-22-morning**.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

@@ -1,7 +1,34 @@
 {
-  "updated": "2026-07-21T23:08:45Z",
+  "updated": "2026-07-22T11:06:00Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-22_070004",
+      "started": "2026-07-22T07:00:04",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Loop pass complete \u2014 OK (E0).",
+      "domain": "",
+      "chats_cleared": null,
+      "deploy": "955f74b",
+      "log": "logs/loop-2026-07-22_070004.log"
+    },
+    {
+      "id": "2026-07-22_070001",
+      "started": "2026-07-22T07:00:01",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Wednesday morning \u2014 inbox/queues empty; Castle $345/$120 0 pending; Recipes BGE Pizza (stone) \u25cf; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",
+      "domain": "Recipes: BGE Pizza (stone) \u25cf",
+      "chats_cleared": 0,
+      "deploy": "955f74b"
+    },
     {
       "id": "2026-07-21_190005",
       "started": "2026-07-21T19:00:05",
@@ -41,34 +68,6 @@
       "chats_cleared": null,
       "deploy": null,
       "log": "logs/loop-2026-07-21_130004.log"
-    },
-    {
-      "id": "2026-07-21_130001",
-      "started": "2026-07-21T13:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Tuesday afternoon \u2014 inbox/queues empty; Castle $345/$120 0 pending; Fitness Bruce Lee Striking Thoughts; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",
-      "domain": "Fitness: Bruce Lee \u2014 Empty Cup / Formless Form / Absorb",
-      "chats_cleared": 0,
-      "deploy": "ff50a4b",
-      "log": "logs/loop-2026-07-21_130001.log"
-    },
-    {
-      "id": "2026-07-21_070001",
-      "started": "2026-07-21T07:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Recipes: [[Traeger Burnt Ends (Chuck or Brisket)]] \u25d0\u2192\u25cf (Traeger Kitchen Poor Man\u2019s path)",
-      "domain": "Recipes: [[Traeger Burnt Ends (Chuck or Brisket)]] \u25d0\u2192\u25cf (Traeger Kitchen Poor Man\u2019s path)",
-      "chats_cleared": null,
-      "deploy": null,
-      "log": "logs/loop-2026-07-21_070001.log"
     }
   ]
 }

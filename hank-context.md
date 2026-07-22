@@ -33,19 +33,19 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-22 morning)
+## LIVE STATE (refreshed 2026-07-22 afternoon)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$345 / $120** · 0 pending. Morning loop: Recipes = **BGE Pizza (stone)** ●. Shop org — book Deane 2 hr. Kitchen sink backup open. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$345 / $120** · **3 pending** (Dagvald Clean Stalls — parent PIN). Afternoon loop: Fitness = **Ford Dark Side / projection mirror**. Shop org — book Deane 2 hr. Kitchen sink backup open. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes.
+**Next domain (rotation):** **Finance** — then Recipes → Fitness.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
 **Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink snaking · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order.
 
-**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick. Castle **0 pending**.
+**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Castle **3 pending** (parent PIN).
 
 **Inbox:** Clean. Gmail OK. Queues empty.
 
@@ -53,9 +53,9 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Fleet:** 51 = **47 Full + 4 ◐**.
 
-**Castle:** Dagvald **$345** (22-day streak through 07-20), Davikja **$120**.
+**Castle:** Dagvald **$345** (22-day streak through 07-20; 3 pending $30), Davikja **$120**.
 
-**Deploy:** BUILD_DATE **2026-07-22-morning**.
+**Deploy:** BUILD_DATE **2026-07-22-afternoon**.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

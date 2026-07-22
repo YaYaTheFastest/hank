@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-22T11:06:00Z",
+  "updated": "2026-07-22T17:06:26Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-22_130003",
+      "started": "2026-07-22T13:00:03",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Afternoon loop complete \u2014 **OK (E0)**",
+      "domain": "Fitness: New principle: Dark Side of the Light Chasers \u2014 Projection Mirror & Own the Trait (Ford)",
+      "chats_cleared": null,
+      "deploy": null,
+      "log": "logs/loop-2026-07-22_130003.log"
+    },
     {
       "id": "2026-07-22_070004",
       "started": "2026-07-22T07:00:04",
@@ -54,20 +68,6 @@
       "domain": "Finance: Problem Is Not Always the Problem \u2014 QDT & Structure First",
       "chats_cleared": 0,
       "deploy": "62bdc1b"
-    },
-    {
-      "id": "2026-07-21_130004",
-      "started": "2026-07-21T13:00:04",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Afternoon loop complete \u2014 OK (E0).",
-      "domain": "Readwise: 972 / pending 0 (inventory; not Monday)",
-      "chats_cleared": null,
-      "deploy": null,
-      "log": "logs/loop-2026-07-21_130004.log"
     }
   ]
 }

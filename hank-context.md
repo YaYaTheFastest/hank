@@ -33,34 +33,36 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-23 morning)
+## LIVE STATE (refreshed 2026-07-23 afternoon)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$375 / $145** · **0 pending**. Morning loop: Recipes = **BGE Cedar-Plank Salmon ●**; courage guidance filed from chat. Shop org — book Deane 2 hr. Kitchen sink backup open. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$410 / $145** · **0 pending**. Afternoon: **2 Dyson chats** filed (filter reset how-to + inventory); **Dyson Air Purifier / Fan** inducted ◐. Fitness = **Art of Peace (Ueshiba)**. Shop org — book Deane 2 hr. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes.
+**Next domain (rotation):** **Finance** — then Recipes → Fitness.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
-**Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink snaking · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order.
+**Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink snaking · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo.
 
-**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick.
+**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
 
-**Inbox:** Clean. Gmail OK. Queues empty (1 courage chat filed this pass).
+**Inbox:** Clean. Gmail OK. Queues empty (2 Dyson chats filed this pass).
 
 **Loop:** **OK (E0)**. Readwise 972/0.
 
-**Fleet:** 51 = **47 Full + 4 ◐**.
+**Fleet:** 52 = **47 Full + 5 ◐** (new: Dyson Air Purifier / Fan).
 
-**Castle:** Dagvald **$375** (1-day streak 07-22; prior 22-day run broke 07-21), Davikja **$145** (~97% to $150 Diadem).
+**Castle:** Dagvald **$410** (2-day streak 07-22→07-23; +$35 Clean Room + Clean Stalls×3), Davikja **$145** (~97% to $150 Diadem).
 
-**Deploy:** BUILD_DATE **2026-07-23-morning**.
+**Deploy:** BUILD_DATE **2026-07-23-afternoon**.
 
-**Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
+**Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox` (chat photo did not land in KV).
 
 **Job search:** Last refresh **2026-07-20**.
 
 **Proposals:** Work → Proposals (or More → Proposals). Nav proposal **shipping**.
+
+**Dyson filter light (quick):** After filter change, hold remote **Standby ON/OFF ~6 s** or app **Filter life → Reset**.
 
 When Darren asks rotation, fleet, Castle, projects, doing, proposals, or inbox — **cite LIVE STATE first**. On harder questions — **RECALL RULE**. Keep replies tight unless he asks for depth.

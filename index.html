@@ -508,25 +508,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-23-morning";
+const BUILD_DATE="2026-07-23-afternoon";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-07-23T11:15:00Z",
+  updated:"2026-07-23T17:15:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+    {id:"2026-07-23_130001",started:"2026-07-23T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon \u2014 2 Dyson chats filed+cleared; Castle $410/$145 0 pending; Fitness Art of Peace (Ueshiba); purifier inducted \u25d0; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: Art of Peace \u2014 Forge / Blend / Sphere (Ueshiba)",chats_cleared:2,deploy:""},
     {id:"2026-07-23_070001",started:"2026-07-23T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Thursday morning \u2014 1 courage chat filed+cleared; Castle $375/$145 0 pending; Recipes BGE Cedar-Plank Salmon \u25cf; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Recipes: BGE Cedar-Plank Salmon \u25cf",chats_cleared:1,deploy:"971c0cd"},
     {id:"2026-07-22_190001",started:"2026-07-22T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Wednesday evening \u2014 inbox/queues empty; Castle $375/$145 0 pending; Finance confidentiality discipline; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Finance: Always Look Over Your Shoulder \u2014 Confidentiality",chats_cleared:0,deploy:"285e0da"},
     {id:"2026-07-22_130001",started:"2026-07-22T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Wednesday afternoon \u2014 inbox/queues empty; Castle $345/$120 3 pending; Fitness Ford Dark Side projection; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: Dark Side \u2014 Projection Mirror / Own the Trait (Ford)",chats_cleared:0,deploy:"3de3260"},
-    {id:"2026-07-22_070001",started:"2026-07-22T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Wednesday morning \u2014 inbox/queues empty; Castle $345/$120 0 pending; Recipes BGE Pizza (stone) \u25cf; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Recipes: BGE Pizza (stone) \u25cf",chats_cleared:0,deploy:"955f74b"},
-    {id:"2026-07-21_190001",started:"2026-07-21T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Tuesday evening \u2014 inbox/queues empty; Castle $345/$120 0 pending; Finance McKinsey Mind QDT/structure; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Finance: Problem Is Not Always the Problem \u2014 QDT & Structure First",chats_cleared:0,deploy:"62bdc1b"}
+    {id:"2026-07-22_070001",started:"2026-07-22T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Wednesday morning \u2014 inbox/queues empty; Castle $345/$120 0 pending; Recipes BGE Pizza (stone) \u25cf; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Recipes: BGE Pizza (stone) \u25cf",chats_cleared:0,deploy:"955f74b"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-07-23 morning pass complete — 1 courage chat filed+cleared; Castle $375/$145 · 0 pending; Recipes BGE Cedar-Plank Salmon \u25cf; Gmail 0 new; Readwise 972/0.",
-  last_attempt:"2026-07-23T11:15:00Z",last_success:"2026-07-23T11:15:00Z",
+  summary:"2026-07-23 afternoon pass complete — 2 Dyson chats filed+cleared; Castle $410/$145 · 0 pending; Fitness Art of Peace (Ueshiba); Dyson purifier \u25d0; Gmail 0 new; Readwise 972/0.",
+  last_attempt:"2026-07-23T17:15:00Z",last_success:"2026-07-23T17:15:00Z",
   open_issues:[]
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
@@ -683,6 +683,7 @@ const MANUALS_NEEDED=[
  {eq:"Sig Sauer P365XL — model OM PDF",url:"https://www.sigsauer.com/owner-manuals.html",note:"Factory linked; portal only (no direct ungated PDF). Download P365XL manual from portal → _Cowork Inbox → host → Full.",gated:true},
  {eq:"Sig Sauer P365 X-MACRO — model OM PDF",url:"https://www.sigsauer.com/owner-manuals.html",note:"Factory linked; portal only. Download X-MACRO manual → _Cowork Inbox → host → Full.",gated:true},
  {eq:"Sig Sauer P365XC — model OM PDF",url:"https://www.sigsauer.com/owner-manuals.html",note:"Factory linked; confirm SKU on slide, then download matching P365 manual from portal → _Cowork Inbox → host → Full.",gated:true},
+ {eq:"Dyson Air Purifier / Fan — model OM + filter P/N",url:"https://www.dyson.com/support",note:"Inducted 2026-07-23 (chat). Factory air-treatment linked. Need base/rear label photo for exact TP/HP/PH model → download matching OM + sealed filter part # from dyson.com/support → _Cowork Inbox. Filter-life reset after replace is documented on the card (remote Standby ~6s or app).",gated:false},
  // Toro 22" Recycler Max (21485) — DONE 2026-07-04 (rebuilt manual-first from the interactive Operator's Manual manuals.toro.com/268899: blade 82 N·m, plug 20 N·m, oil 0.44 L/15 oz, air filter 25 h/no-oil, 3-sec stop, 4 job cards). HTML manual = no PDF to host; manualUrl points to the interactive manual; figure PNGs not embedded (toro.com media proxy-blocked + screen locked this pass).
  // Brower MK32HE — DONE 2026-07-04 (built to Full; brower-waterer.pdf on file + hosted, 4 figures).
  // Bison Coach Horse Trailer — running gear DONE 2026-07-04 (built to Full; Dexter running-gear manual bison-dexter-running-gear.pdf on file + hosted, 4 figures). VIN 51Y3C6J23F2004517 · mfg 10/2014 (MY2015) on the card + specs. 2026-07-05: re-checked _Cowork Inbox — the only Bison manual present is a re-drop of the same Dexter running-gear PDF (already hosted); no new Bison manuals landed. The coach/body owner packet (floorplan/LQ, options) is still missing → now tracked as a MANUALS_NEEDED entry above (dealer/VIN lookup, no public PDF) + the card's "Confirm" spec row. Not a maintenance blocker.
@@ -728,6 +729,7 @@ const URLS={
 "Rabaconda Tire Changer":"https://rabaconda.com",
 "Timber Tuff Chain Sharpener":"https://www.timbertuff.com",
 "Dyson Cordless #1 & #2":"https://www.dyson.com",
+"Dyson Air Purifier / Fan":"https://www.dyson.com/air-treatment",
 "KitchenAid Fridge (20cf)":"https://www.kitchenaid.com",
 "LG Fridge (top-freezer)":"https://www.lg.com/us/refrigerators/lg-lt09s2000w-top-freezer-refrigerator",
 "Litter-Robot 4 (×2)":"https://www.litter-robot.com",
@@ -923,6 +925,11 @@ const DATA = [
      manual:"Dyson support — clean your Dyson vacuum",manualUrl:"https://www.dyson.com/discover/insights/cleaning/tips/how-to-clean-your-dyson-vacuum-cleaner",
      jobs:[{t:"Wash the Filter (~monthly)",s:["Remove the filter from the machine","Rinse under WARM tap water; squeeze; repeat until water runs clear","Shake out excess; dry COMPLETELY ≥24 h in good airflow (no heat source)","Refit only when fully dry — a damp filter causes mold + motor damage","Still weak? Check wand/head/bin for a blockage"]},
            {t:"Brush Bar & Blockage Clearing",s:["Remove the head; release the brush bar per your model","Cut/pull hair & fiber off the bar","Only the fluffy/soft-roller bar may be washed — COLD water, dry upright fully","Check bin (empty at max line), wand, and head inlets for clogs","Wipe head/bin/wand clean — do NOT wash these parts"],video:"https://www.dyson.com/discover/insights/cleaning/tips/how-to-clean-your-dyson-vacuum-cleaner"}]},
+   {n:"Dyson Air Purifier / Fan",power:"Electric",loc:"House",basis:"Seasonal",st:"part",
+     specs:[["Type","Tower purifier / fan (Pure Cool / Hot+Cool / Purifier line)"],["Model","confirm from base/rear label (TP / HP / PH…)"],["Filter","Sealed HEPA (+ carbon on most) — model-specific P/N"],["Factory","https://www.dyson.com/air-treatment"],["Filter light after change","Does NOT auto-clear — must reset filter life"]],
+     sched:[["Replace sealed filter","on filter light / F / app %","r","OEM only"],["Reset filter life","after every install","r","remote Standby ~6s or app"],["Clean outer mesh / loop","as needed","g","per model OM"],["Remote batteries / app link","as needed","g","OK"]],
+     manual:"Dyson support — filter replace + life reset (model OM pending label)",manualUrl:"https://www.dyson.com/support",
+     jobs:[{t:"Filter Replace & Life Reset",s:["Open filter cover / loop; remove spent sealed filter","Install correct OEM filter for this model; latch cover fully","Standby mode","Remote: hold Standby ON/OFF ≈ 6 seconds until indicator resets — OR app: Settings → Filter life / Filter management → Reset filter life","Confirm filter light / F is gone"]}]},
    {n:"KitchenAid Fridge (20cf)",power:"Electric",loc:"House",basis:"Seasonal",st:"full",
      specs:[["Model","KitchenAid KRFC136RPS, French door, counter-depth"],["Capacity","~20 cu ft; interior water dispenser"],["Water filter","EveryDrop EDRARXD1 (confirm from label)"],["Air filter","FreshFlow (confirm part #)"]],
      sched:[["Replace water filter","~6 mo / filter light","r","flush 3–4 gal after"],["Clean condenser / grille","~6 mo","r","unplug first"],["Clean & check door gaskets","periodic","g","OK"],["Replace FreshFlow air filter","per indicator","r","confirm #"],["Clean drip pan / under-unit","periodic","g","OK"]],
@@ -1113,6 +1120,7 @@ const PREUSE={
 "Yamaha TT-R110E":["Engine oil to dipstick FULL (10W-40 MA)","Chain slack 40–56 mm & lube","Tires 15 psi F/R cold; drum brakes firm","Throttle free play 4–6 mm & kill switch","Fuel fresh (E10 OK); no leaks","Helmet & PPE on rider (auto clutch — no lever)"],
 "Battery Charger":["Well-ventilated area; eye protection","ON/OFF switch OFF before connecting","Clean terminals; confirm 6V/12V & type (STD/AGM/GEL)","Connect + first, then ground AWAY from the battery","Plug in AC after clamps are on","Keep clamps apart (they spark when energized)"],
 "Dyson Cordless #1 & #2":["Battery charged (check gauge)","Filter clean, dry & seated","Bin below max line; airway clear","Correct head/attachment fitted"],
+"Dyson Air Purifier / Fan":["Unit upright; intake/outlet clear","Filter cover fully latched","No filter light (or plan reset after change)","Remote batteries OK / app linked if needed"],
 "KitchenAid Fridge (20cf)":["Doors seal fully; gaskets clean","Water filter light not lit; water tastes clean","Grille/vents clear for airflow","Temps holding (~37°F / ~0°F — confirm)"],
 "LG Fridge (top-freezer)":["Door seals fully; gasket supple","Rear coils/vents clear of dust","No excessive frost in freezer","Unit level; temps holding"],
 "Litter-Robot 4 (×2)":["Drawer not full (Light Bar solid blue = ready; flashing blue = empty it)","Litter at the MAX Fill Line (not above)","Bezel + curtain-sensor holes clear of fur/dust","Unit on hard level surface, NOT touching a wall, plugged in, app connected","After any drawer-empty / litter top-up / move: press Reset to zero the Weight Scale"],

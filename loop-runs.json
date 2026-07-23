@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-22T23:07:10Z",
+  "updated": "2026-07-23T11:08:16Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-23_070003",
+      "started": "2026-07-23T07:00:03",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Morning pass complete \u2014 OK (E0).",
+      "domain": "Recipes: [[BGE Cedar-Plank Salmon]] \u25d0\u2192\u25cf",
+      "chats_cleared": null,
+      "deploy": "971c0cd",
+      "log": "logs/loop-2026-07-23_070003.log"
+    },
     {
       "id": "2026-07-22_190005",
       "started": "2026-07-22T19:00:05",
@@ -55,19 +69,6 @@
       "chats_cleared": null,
       "deploy": "955f74b",
       "log": "logs/loop-2026-07-22_070004.log"
-    },
-    {
-      "id": "2026-07-22_070001",
-      "started": "2026-07-22T07:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Wednesday morning \u2014 inbox/queues empty; Castle $345/$120 0 pending; Recipes BGE Pizza (stone) \u25cf; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",
-      "domain": "Recipes: BGE Pizza (stone) \u25cf",
-      "chats_cleared": 0,
-      "deploy": "955f74b"
     }
   ]
 }

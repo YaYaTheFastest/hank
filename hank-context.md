@@ -33,13 +33,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-22 evening)
+## LIVE STATE (refreshed 2026-07-23 morning)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$375 / $145** · **0 pending**. Evening loop: Finance = **Always Look Over Your Shoulder** (confidentiality). Shop org — book Deane 2 hr. Kitchen sink backup open. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$375 / $145** · **0 pending**. Morning loop: Recipes = **BGE Cedar-Plank Salmon ●**; courage guidance filed from chat. Shop org — book Deane 2 hr. Kitchen sink backup open. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance.
+**Next domain (rotation):** **Fitness** — then Finance → Recipes.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
@@ -47,7 +47,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick.
 
-**Inbox:** Clean. Gmail OK. Queues empty.
+**Inbox:** Clean. Gmail OK. Queues empty (1 courage chat filed this pass).
 
 **Loop:** **OK (E0)**. Readwise 972/0.
 
@@ -55,7 +55,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$375** (1-day streak 07-22; prior 22-day run broke 07-21), Davikja **$145** (~97% to $150 Diadem).
 
-**Deploy:** BUILD_DATE **2026-07-22-evening**.
+**Deploy:** BUILD_DATE **2026-07-23-morning**.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient.
 

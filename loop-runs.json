@@ -1,7 +1,33 @@
 {
-  "updated": "2026-07-22T17:06:26Z",
+  "updated": "2026-07-22T23:07:10Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-22_190005",
+      "started": "2026-07-22T19:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Evening loop complete \u2014 OK (E0).",
+      "domain": "Readwise: 972 / pending 0",
+      "chats_cleared": null,
+      "deploy": "285e0da",
+      "log": "logs/loop-2026-07-22_190005.log"
+    },
+    {
+      "id": "2026-07-22_190001",
+      "started": "2026-07-22T19:00:01",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Wednesday evening \u2014 inbox/queues empty; Castle $375/$145 0 pending; Finance confidentiality discipline; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",
+      "domain": "Finance: Always Look Over Your Shoulder \u2014 Confidentiality",
+      "chats_cleared": 0,
+      "deploy": "285e0da"
+    },
     {
       "id": "2026-07-22_130003",
       "started": "2026-07-22T13:00:03",
@@ -42,32 +68,6 @@
       "domain": "Recipes: BGE Pizza (stone) \u25cf",
       "chats_cleared": 0,
       "deploy": "955f74b"
-    },
-    {
-      "id": "2026-07-21_190005",
-      "started": "2026-07-21T19:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Readwise: 972 / pending 0 (Tue inventory only)",
-      "domain": "Readwise: 972 / pending 0 (Tue inventory only)",
-      "chats_cleared": 0,
-      "deploy": "62bdc1b",
-      "log": "logs/loop-2026-07-21_190005.log"
-    },
-    {
-      "id": "2026-07-21_190001",
-      "started": "2026-07-21T19:00:01",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Tuesday evening \u2014 inbox/queues empty; Castle $345/$120 0 pending; Finance McKinsey Mind QDT/structure; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",
-      "domain": "Finance: Problem Is Not Always the Problem \u2014 QDT & Structure First",
-      "chats_cleared": 0,
-      "deploy": "62bdc1b"
     }
   ]
 }

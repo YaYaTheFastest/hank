@@ -470,7 +470,7 @@
   <div id="chatLog" class="chatlog"></div>
   <div class="chat-starters" id="chatStarters"></div>
   <div class="chatbar">
-    <input id="chatInput" placeholder="Ask Hank…" autocomplete="off" onkeydown="if(event.key==='Enter')sendChat()">
+    <input id="chatInput" placeholder="Ask Hank… or paste an X link" autocomplete="off" onkeydown="if(event.key==='Enter')sendChat()">
     <button id="chatSend" onclick="sendChat()">Send</button>
   </div>
 </div>
@@ -508,13 +508,13 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-23-afternoon";
+const BUILD_DATE="2026-07-23-file-this-x";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-07-23T17:15:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
-    {id:"2026-07-23_130001",started:"2026-07-23T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon \u2014 2 Dyson chats filed+cleared; Castle $410/$145 0 pending; Fitness Art of Peace (Ueshiba); purifier inducted \u25d0; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: Art of Peace \u2014 Forge / Blend / Sphere (Ueshiba)",chats_cleared:2,deploy:""},
+    {id:"2026-07-23_130001",started:"2026-07-23T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon \u2014 2 Dyson chats filed+cleared; Castle $410/$145 0 pending; Fitness Art of Peace (Ueshiba); purifier inducted \u25d0; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: Art of Peace \u2014 Forge / Blend / Sphere (Ueshiba)",chats_cleared:2,deploy:"4a9dafe"},
     {id:"2026-07-23_070001",started:"2026-07-23T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Thursday morning \u2014 1 courage chat filed+cleared; Castle $375/$145 0 pending; Recipes BGE Cedar-Plank Salmon \u25cf; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Recipes: BGE Cedar-Plank Salmon \u25cf",chats_cleared:1,deploy:"971c0cd"},
     {id:"2026-07-22_190001",started:"2026-07-22T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Wednesday evening \u2014 inbox/queues empty; Castle $375/$145 0 pending; Finance confidentiality discipline; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Finance: Always Look Over Your Shoulder \u2014 Confidentiality",chats_cleared:0,deploy:"285e0da"},
     {id:"2026-07-22_130001",started:"2026-07-22T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Wednesday afternoon \u2014 inbox/queues empty; Castle $345/$120 3 pending; Fitness Ford Dark Side projection; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: Dark Side \u2014 Projection Mirror / Own the Trait (Ford)",chats_cleared:0,deploy:"3de3260"},
@@ -613,6 +613,7 @@ const PROPOSALS=[
 ];
 let workSeg="projects";
 const CHAT_STARTERS=[
+  {label:"File this X link",text:"FILE THIS X:\n",send:false,toast:"Paste the x.com / twitter.com link after the line, then Send. Loop reads text, files + deepens, keeps video/post URL."},
   {label:"Paste Grok session — file it",text:"From Grok — file this:\n\n",send:false},
   {label:"I need guidance",text:"I need biblical guidance. I'm feeling:\n\n",send:false},
   "What's due on the fleet?",
@@ -1536,7 +1537,25 @@ function starterChat(i){
   const s=CHAT_STARTERS[i];const text=typeof s==="string"?s:s.text;const send=typeof s==="string"||s.send!==false;
   const inp=document.getElementById('chatInput');inp.value=text;
   if(send)sendChat();
-  else{inp.focus();inp.setSelectionRange(text.length,text.length);toast("Paste your Grok session, then Send.");}
+  else{
+    inp.focus();inp.setSelectionRange(text.length,text.length);
+    toast((typeof s==="object"&&s.toast)||"Add your content, then Send.");
+  }
+}
+/** Bare X/Twitter status URLs → FILE THIS X so the loop always deepens (not just chat chit-chat). */
+function normalizeChatOutbound(text){
+  const t=(text||"").trim();
+  if(!t)return t;
+  if(/^FILE THIS X:/i.test(t))return t;
+  const re=/https?:\/\/(www\.)?(x\.com|twitter\.com)\/[^\s]+/i;
+  const m=t.match(re);
+  if(!m)return t;
+  // Whole message is just the link (or link + short junk)
+  const onlyLink=t.replace(re,"").replace(/\s+/g,"").length===0;
+  if(onlyLink||t.length<120){
+    return "FILE THIS X:\n"+m[0]+"\n\n(Loop: read public post text; file + deepen per Note Constitution; keep post URL as video/media pointer; do not invent form cues.)";
+  }
+  return t;
 }
 function goDueSoon(){filter="Due soon";syncChips();showView('equip');render();const eh=document.getElementById('equipHint');if(eh)eh.classList.remove('hide');}
 function syncChips(){[...chips.children].forEach(c=>c.classList.toggle('active',c.textContent===filter));}
@@ -1548,7 +1567,8 @@ function renderChat(){
   l.scrollTop=l.scrollHeight;
 }
 async function sendChat(){
-  const inp=document.getElementById('chatInput');const text=(inp.value||"").trim();if(!text)return;
+  const inp=document.getElementById('chatInput');const raw=(inp.value||"").trim();if(!raw)return;
+  const text=normalizeChatOutbound(raw);
   let key="";try{key=localStorage.getItem('hankKey')||"";}catch(e){}
   if(!key){toast("Set your password in Setup first.");showView('setup');return;}
   chatMsgs.push({role:"user",content:text});inp.value="";renderChat();

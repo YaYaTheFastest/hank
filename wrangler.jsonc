@@ -1,7 +1,6 @@
-// HANK deploy pin 2026-07-23-evening 0cd3fcc
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
-  // deploy-trigger: 2026-07-23 afternoon — Dyson purifier ◐ + Castle $410 + LIVE STATE
+  // deploy-trigger: 2026-07-23 evening — Finance Industry Structure Scan + LIVE STATE + LOOP_HEALTH pin e9277b3
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",

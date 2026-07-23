@@ -35,13 +35,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-23 afternoon)
+## LIVE STATE (refreshed 2026-07-23 evening)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$410 / $145** · **0 pending**. Afternoon: **2 Dyson chats** filed (filter reset how-to + inventory); **Dyson Air Purifier / Fan** inducted ◐. Fitness = **Art of Peace (Ueshiba)**. Shop org — book Deane 2 hr. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$410 / $145** · **0 pending**. Evening: inbox/queues empty; Finance = **Industry Structure Scan** (McKinsey Way L307). Dyson Air Purifier / Fan ◐ (afternoon). Shop org — book Deane 2 hr. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness.
+**Next domain (rotation):** **Recipes** — then Fitness → Finance.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
@@ -49,15 +49,15 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
 
-**Inbox:** Clean. Gmail OK. Queues empty (2 Dyson chats filed this pass).
+**Inbox:** Clean. Gmail OK. Queues empty. X bookmarks none in Downloads.
 
 **Loop:** **OK (E0)**. Readwise 972/0.
 
-**Fleet:** 52 = **47 Full + 5 ◐** (new: Dyson Air Purifier / Fan).
+**Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐).
 
-**Castle:** Dagvald **$410** (2-day streak 07-22→07-23; +$35 Clean Room + Clean Stalls×3), Davikja **$145** (~97% to $150 Diadem).
+**Castle:** Dagvald **$410** (2-day streak 07-22→07-23), Davikja **$145** (~97% to $150 Diadem). **0 pending.**
 
-**Deploy:** BUILD_DATE **2026-07-23-afternoon**.
+**Deploy:** BUILD_DATE **2026-07-23-evening**.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox` (chat photo did not land in KV).
 

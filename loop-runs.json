@@ -1,7 +1,35 @@
 {
-  "updated": "2026-07-24T11:22:03Z",
+  "updated": "2026-07-24T17:08:00Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-24_130004",
+      "started": "2026-07-24T13:00:04",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Readwise: 972 / pending 0",
+      "domain": "Readwise: 972 / pending 0",
+      "chats_cleared": null,
+      "deploy": "dffa355",
+      "log": "logs/loop-2026-07-24_130004.log"
+    },
+    {
+      "id": "2026-07-24_130001",
+      "started": "2026-07-24T13:00:01",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "HANK Loop pass complete \u2014 Friday afternoon ~13:00 \u00b7 OK (E0) \u00b7 Fitness Musashi \u00b7 deploy dffa355/1ed52ee",
+      "domain": "Fitness: Musashi \u2014 True Courage / Heroic Victory / Danger as Grindstone",
+      "chats_cleared": 0,
+      "deploy": "dffa355",
+      "log": null
+    },
     {
       "id": "2026-07-24_070004",
       "started": "2026-07-24T07:00:04",
@@ -43,34 +71,6 @@
       "chats_cleared": null,
       "deploy": null,
       "log": "logs/loop-2026-07-23_130330.log"
-    },
-    {
-      "id": "2026-07-23_070003",
-      "started": "2026-07-23T07:00:03",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Morning pass complete \u2014 OK (E0).",
-      "domain": "Recipes: [[BGE Cedar-Plank Salmon]] \u25d0\u2192\u25cf",
-      "chats_cleared": null,
-      "deploy": "971c0cd",
-      "log": "logs/loop-2026-07-23_070003.log"
-    },
-    {
-      "id": "2026-07-22_190005",
-      "started": "2026-07-22T19:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Evening loop complete \u2014 OK (E0).",
-      "domain": "Readwise: 972 / pending 0",
-      "chats_cleared": null,
-      "deploy": "285e0da",
-      "log": "logs/loop-2026-07-22_190005.log"
     }
   ]
 }

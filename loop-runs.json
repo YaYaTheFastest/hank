@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-23T23:07:08Z",
+  "updated": "2026-07-24T11:22:03Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-24_070004",
+      "started": "2026-07-24T07:00:04",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "HANK Loop pass complete \u2014 Friday morning ~07:00 \u00b7 OK (E0)",
+      "domain": "Readwise: 972 / pending 0 (Friday inventory)",
+      "chats_cleared": null,
+      "deploy": null,
+      "log": "logs/loop-2026-07-24_070004.log"
+    },
     {
       "id": "2026-07-23_190005",
       "started": "2026-07-23T19:00:05",
@@ -57,18 +71,6 @@
       "chats_cleared": null,
       "deploy": "285e0da",
       "log": "logs/loop-2026-07-22_190005.log"
-    },
-    {
-      "id": "2026-07-22_190001",
-      "started": "2026-07-22T19:00:01",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Wednesday evening \u2014 inbox/queues empty; Castle $375/$145 0 pending; Finance confidentiality discipline; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",
-      "domain": "Finance: Always Look Over Your Shoulder \u2014 Confidentiality",
-      "chats_cleared": 0,
-      "deploy": "285e0da"
     }
   ]
 }

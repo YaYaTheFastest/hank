@@ -1,6 +1,6 @@
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
-  // deploy-trigger: 2026-07-23 evening — Finance Industry Structure Scan + LIVE STATE + LOOP_HEALTH pin e9277b3
+  // deploy-trigger: 2026-07-24 morning — Recipes BGE Pork Belly Burnt Ends + LIVE STATE + LOOP_HEALTH pin 1e25345
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",

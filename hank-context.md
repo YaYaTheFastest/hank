@@ -35,35 +35,39 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-25 afternoon)
+## LIVE STATE (refreshed 2026-07-25 evening)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$410 / $145** · **0 pending**. Afternoon: Fitness = **Under the Sword — No-Mind / stallion / mind as friend** (Turner). Morning: Recipes **BGE Tomahawk / Thick Ribeye reverse ●**. Dyson Air Purifier / Fan ◐. Shop org — book Deane 2 hr. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$410 / $145** · **4 pending** (Dagvald 07-25 $35). Evening: Finance = **Be Careful What You Promise — Scope & Milestones**. **Endurance rebuild** protocol filed (marathons 2022–23 → comeback). Style guide (four uniforms / seven rules) filed. Dyson Air Purifier / Fan ◐. Shop org — book Deane 2 hr. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness.
+**Next domain (rotation):** **Recipes** — then Fitness → Finance.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
-**Doing (verbs):** Book Deane 2 hr shop org · Kitchen sink snaking · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo.
+**Doing (verbs):** **Endurance rebuild Phase 0** (easy base) · Book Deane 2 hr shop org · Kitchen sink snaking · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo.
 
-**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
+**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models · Castle parent PIN for 4 pending.
 
 **Inbox:** Clean. Queues empty. X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`); no labeled mail filed this pass.
 
-**Loop:** **OK (E0)** (Gmail step E1 note only — other steps green). Readwise 972/0. Wiki lint Saturday morning: clean (P0/P1 0).
+**Loop:** **OK (E0)** (Gmail step E1 note only — other steps green). Readwise 972/0.
 
 **Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐).
 
-**Castle:** Dagvald **$410** (2-day streak 07-22→07-23), Davikja **$145** (~97% to $150 Diadem). **0 pending.**
+**Castle:** Dagvald **$410** (2-day streak 07-22→07-23; **4 pending** $35 on 07-25), Davikja **$145** (~97% to $150 Diadem).
 
-**Deploy:** BUILD_DATE **2026-07-25-afternoon**.
+**Deploy:** BUILD_DATE **2026-07-25-evening**.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again.
 
 **Job search:** Last refresh **2026-07-20**.
 
 **Proposals:** Work → Proposals (or More → Proposals). Nav proposal **shipping**.
+
+**Endurance (quick):** Phase 0 = 2–3 easy runs/week, 20–30 min, conversational. Protocol: Endurance Rebuild — Marathon Base Return. Paper: cardiac remodeling over months, not weeks.
+
+**Style (quick):** Four effects (Glamorous / Powerful / Confident / Approachable) · seven mirror rules · always tuck · half break · shoulder + wristbone. Note: Style Guide — Four Uniforms Seven Rules.
 
 **Dyson filter light (quick):** After filter change, hold remote **Standby ON/OFF ~6 s** or app **Filter life → Reset**.
 

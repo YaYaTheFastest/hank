@@ -1,3 +1,4 @@
+// DEPLOY-PIN 2026-07-25-evening 806cb9b 1785020829
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
   // deploy-trigger: 2026-07-25 afternoon — Fitness Under the Sword + LIVE STATE + LOOP_HEALTH pin bcb06ef

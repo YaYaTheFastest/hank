@@ -35,13 +35,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-25 morning)
+## LIVE STATE (refreshed 2026-07-25 afternoon)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$410 / $145** · **0 pending**. Morning: Recipes = **BGE Tomahawk / Thick Ribeye reverse ●** (BGE Siegel + thick-ribeye companion). Dyson Air Purifier / Fan ◐. Shop org — book Deane 2 hr. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$410 / $145** · **0 pending**. Afternoon: Fitness = **Under the Sword — No-Mind / stallion / mind as friend** (Turner). Morning: Recipes **BGE Tomahawk / Thick Ribeye reverse ●**. Dyson Air Purifier / Fan ◐. Shop org — book Deane 2 hr. Glocks ●; Sig ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes.
+**Next domain (rotation):** **Finance** — then Recipes → Fitness.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
@@ -51,13 +51,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Inbox:** Clean. Queues empty. X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`); no labeled mail filed this pass.
 
-**Loop:** **OK (E0)** (Gmail step E1 note only — other steps green). Readwise 972/0. Wiki lint Saturday: clean (P0/P1 0).
+**Loop:** **OK (E0)** (Gmail step E1 note only — other steps green). Readwise 972/0. Wiki lint Saturday morning: clean (P0/P1 0).
 
 **Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐).
 
 **Castle:** Dagvald **$410** (2-day streak 07-22→07-23), Davikja **$145** (~97% to $150 Diadem). **0 pending.**
 
-**Deploy:** BUILD_DATE **2026-07-25-morning**.
+**Deploy:** BUILD_DATE **2026-07-25-afternoon**.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again.
 

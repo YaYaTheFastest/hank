@@ -508,25 +508,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-24-evening";
+const BUILD_DATE="2026-07-25-morning";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-07-24T23:10:00Z",
+  updated:"2026-07-25T11:15:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+    {id:"2026-07-25_070001",started:"2026-07-25T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Saturday morning \u2014 inbox/queues empty; Castle $410/$145 0 pending; Recipes BGE Tomahawk/Thick Ribeye \u25cf; Gmail OAuth invalid_grant (E1 note); X bookmarks none; wiki lint clean; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Recipes: BGE Tomahawk or Thick Ribeye (reverse) \u25cf",chats_cleared:0,deploy:"pending"},
     {id:"2026-07-24_190001",started:"2026-07-24T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Friday evening \u2014 FILE THIS X Loop Engineering filed+deepened; Castle $410/$145 0 pending; Finance six-element map; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Finance: Six-Element Problem-Solving Map (McKinsey Mind)",chats_cleared:1,deploy:"9ca66c6"},
     {id:"2026-07-24_130001",started:"2026-07-24T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Friday afternoon \u2014 inbox/queues empty; Castle $410/$145 0 pending; Fitness Musashi principle; Gmail OK 0 new; X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: Musashi \u2014 True Courage / Heroic Victory / Danger as Grindstone",chats_cleared:0,deploy:"dffa355"},
     {id:"2026-07-24_070004",started:"2026-07-24T07:00:04",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Friday morning \u2014 inbox/queues empty; Castle $410/$145 0 pending; Recipes BGE Pork Belly Burnt Ends \u25cf; Gmail OK 0 new; X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Recipes: BGE Smoked Pork Belly Burnt Ends \u25cf",chats_cleared:0,deploy:"1e25345"},
-    {id:"2026-07-23_190005",started:"2026-07-23T19:00:05",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Thursday evening \u2014 inbox/queues empty; Castle $410/$145 0 pending; Finance Industry Structure Scan; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Finance: Industry Structure Scan",chats_cleared:0,deploy:"0cd3fcc"},
-    {id:"2026-07-23_130330",started:"2026-07-23T13:03:30",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon \u2014 2 Dyson chats filed+cleared; Castle $410/$145 0 pending; Fitness Art of Peace (Ueshiba); purifier inducted \u25d0; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Fitness: Art of Peace \u2014 Forge / Blend / Sphere (Ueshiba)",chats_cleared:2,deploy:"4a9dafe"}
+    {id:"2026-07-23_190005",started:"2026-07-23T19:00:05",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Thursday evening \u2014 inbox/queues empty; Castle $410/$145 0 pending; Finance Industry Structure Scan; Gmail OK 0 new; Readwise 972/0. Loop health \u2192 OK (E0).",domain:"Finance: Industry Structure Scan",chats_cleared:0,deploy:"0cd3fcc"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-07-24 evening — FILE THIS X Loop Engineering; Castle $410/$145 · 0 pending; Finance six-element map; Readwise 972/0; Gmail OAuth invalid_grant (darren re-auth); X bookmarks none; deploy+verify.",
-  last_success:"2026-07-24T23:10:00Z"
+  summary:"2026-07-25 morning — Recipes BGE Tomahawk \u25cf; Castle $410/$145 · 0 pending; Readwise 972/0; wiki lint clean; Gmail OAuth invalid_grant (darren re-auth); X bookmarks none; deploy+verify.",
+  last_success:"2026-07-25T11:15:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};

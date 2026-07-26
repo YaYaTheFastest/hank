@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-26T11:07:45Z",
+  "updated": "2026-07-26T17:08:17Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-26_130002",
+      "started": "2026-07-26T13:00:02",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "HANK Loop pass complete \u2014 OK (E0)",
+      "domain": "",
+      "chats_cleared": null,
+      "deploy": null,
+      "log": "logs/loop-2026-07-26_130002.log"
+    },
     {
       "id": "2026-07-26_070005",
       "started": "2026-07-26T07:00:05",
@@ -56,20 +70,6 @@
       "domain": "Fitness: Under the Sword \u2014 No-Mind Stallion & Mind as Friend (Turner)",
       "chats_cleared": 0,
       "deploy": "bcb06ef"
-    },
-    {
-      "id": "2026-07-25_070002",
-      "started": "2026-07-25T07:00:02",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Recipes: [[BGE Tomahawk or Thick Ribeye (reverse)]] \u25d0\u2192\u25cf \u2014 BGE Siegel 225\u00b0F\u2192115\u00b0F\u2192>400\u00b0F sear + chimichurri; thick ribeye companion 250\u2192120\u2192550",
-      "domain": "Recipes: [[BGE Tomahawk or Thick Ribeye (reverse)]] \u25d0\u2192\u25cf \u2014 BGE Siegel 225\u00b0F\u2192115\u00b0F\u2192>400\u00b0F sear + chimichurri; thick ribeye companion 250\u2192120\u2192550",
-      "chats_cleared": null,
-      "deploy": "ab1447e",
-      "log": "logs/loop-2026-07-25_070002.log"
     }
   ]
 }

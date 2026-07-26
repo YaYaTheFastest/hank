@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-25T23:08:59Z",
+  "updated": "2026-07-26T11:07:45Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-26_070005",
+      "started": "2026-07-26T07:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Recipes: New [[Traeger Dry-Rub Smoked Wings]] \u25cf \u2014 brine \u2192 180\u00b0F Super Smoke \u2192 450\u00b0F finish to 175\u00b0F (Traeger Kitchen). Next domain: Fitness.",
+      "domain": "Recipes: New [[Traeger Dry-Rub Smoked Wings]] \u25cf \u2014 brine \u2192 180\u00b0F Super Smoke \u2192 450\u00b0F finish to 175\u00b0F (Traeger Kitchen). Next domain: Fitness.",
+      "chats_cleared": null,
+      "deploy": "666a87c",
+      "log": "logs/loop-2026-07-26_070005.log"
+    },
     {
       "id": "2026-07-25_190005",
       "started": "2026-07-25T19:00:05",
@@ -56,18 +70,6 @@
       "chats_cleared": null,
       "deploy": "ab1447e",
       "log": "logs/loop-2026-07-25_070002.log"
-    },
-    {
-      "id": "2026-07-25_070001",
-      "started": "2026-07-25T07:00:01",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Saturday morning \u2014 inbox/queues empty; Castle $410/$145 0 pending; Recipes BGE Tomahawk/Thick Ribeye \u25cf; Gmail OAuth invalid_grant (E1 note); X bookmarks none; wiki lint clean; Readwise 972/0. Loop health \u2192 OK (E0).",
-      "domain": "Recipes: BGE Tomahawk or Thick Ribeye (reverse) \u25cf",
-      "chats_cleared": 0,
-      "deploy": "ab1447e"
     }
   ]
 }

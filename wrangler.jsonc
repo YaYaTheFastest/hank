@@ -1,3 +1,4 @@
+// DEPLOY-STALE pin evening 2026-07-26 1642253 @ 2026-07-26T23:09Z
 // DEPLOY-PIN 2026-07-26-afternoon a4f6cd6 1785085564
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).

@@ -1,7 +1,7 @@
-// DEPLOY-PIN 2026-07-25-evening 806cb9b 1785020829
+// DEPLOY-PIN 2026-07-26-afternoon a4f6cd6 1785085564
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
-  // deploy-trigger: 2026-07-25 afternoon — Fitness Under the Sword + LIVE STATE + LOOP_HEALTH pin bcb06ef
+  // deploy-trigger: 2026-07-26 afternoon — Castle $480/$92 · Fitness Primal Endurance · Grok Build how-to · pin a4f6cd6
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",

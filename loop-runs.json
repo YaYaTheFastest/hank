@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-27T11:10:00Z",
+  "updated": "2026-07-27T11:13:15Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-27_070005",
+      "started": "2026-07-27T07:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Loop pass complete \u2014 OK (E0).",
+      "domain": "Recipes: New [[Traeger 3-2-1 Baby Back Ribs]] \u25cf (Diva Q / Traeger Kitchen) \u00b7 next \u2192 Fitness",
+      "chats_cleared": null,
+      "deploy": null,
+      "log": "logs/loop-2026-07-27_070005.log"
+    },
     {
       "id": "2026-07-27_070001",
       "started": "2026-07-27T07:00:01",
@@ -55,20 +69,6 @@
       "chats_cleared": null,
       "deploy": null,
       "log": "logs/loop-2026-07-26_130002.log"
-    },
-    {
-      "id": "2026-07-26_070005",
-      "started": "2026-07-26T07:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Recipes: New [[Traeger Dry-Rub Smoked Wings]] \u25cf \u2014 brine \u2192 180\u00b0F Super Smoke \u2192 450\u00b0F finish to 175\u00b0F (Traeger Kitchen). Next domain: Fitness.",
-      "domain": "Recipes: New [[Traeger Dry-Rub Smoked Wings]] \u25cf \u2014 brine \u2192 180\u00b0F Super Smoke \u2192 450\u00b0F finish to 175\u00b0F (Traeger Kitchen). Next domain: Fitness.",
-      "chats_cleared": null,
-      "deploy": "666a87c",
-      "log": "logs/loop-2026-07-26_070005.log"
     }
   ]
 }

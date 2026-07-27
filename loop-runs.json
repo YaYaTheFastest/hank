@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-27T11:13:15Z",
+  "updated": "2026-07-27T17:27:22Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-27_130000",
+      "started": "2026-07-27T13:00:00",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Fitness: Breathing for Warriors \u2014 respiratory muscle fatigue \u00b7 3:2 rhythm \u00b7 recovery landmarks",
+      "domain": "Fitness: Breathing for Warriors \u2014 respiratory muscle fatigue \u00b7 3:2 rhythm \u00b7 recovery landmarks",
+      "chats_cleared": null,
+      "deploy": "73a8d48",
+      "log": "logs/loop-2026-07-27_130000.log"
+    },
     {
       "id": "2026-07-27_070005",
       "started": "2026-07-27T07:00:05",
@@ -55,20 +69,6 @@
       "chats_cleared": 0,
       "deploy": "5021522",
       "log": "logs/loop-2026-07-26_190001.log"
-    },
-    {
-      "id": "2026-07-26_130002",
-      "started": "2026-07-26T13:00:02",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "HANK Loop pass complete \u2014 OK (E0)",
-      "domain": "",
-      "chats_cleared": null,
-      "deploy": null,
-      "log": "logs/loop-2026-07-26_130002.log"
     }
   ]
 }

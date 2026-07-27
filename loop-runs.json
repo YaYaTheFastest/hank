@@ -1,7 +1,35 @@
 {
-  "updated": "2026-07-26T17:08:17Z",
+  "updated": "2026-07-26T23:11:22Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-26_190153",
+      "started": "2026-07-26T19:01:53",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Readwise: 972 / pending 0 (Sunday inventory only).",
+      "domain": "Readwise: 972 / pending 0 (Sunday inventory only).",
+      "chats_cleared": 0,
+      "deploy": null,
+      "log": "logs/loop-2026-07-26_190153.log"
+    },
+    {
+      "id": "2026-07-26_190001",
+      "started": "2026-07-26T19:00:01",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Sunday evening \u2014 inbox/queues empty; Castle $480/$92 \u00b7 3 pending; Finance Look at the Big Picture; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",
+      "domain": "Finance: Look at the Big Picture \u2014 Step-Back Check",
+      "chats_cleared": 0,
+      "deploy": "5021522",
+      "log": "logs/loop-2026-07-26_190001.log"
+    },
     {
       "id": "2026-07-26_130002",
       "started": "2026-07-26T13:00:02",
@@ -43,33 +71,6 @@
       "chats_cleared": null,
       "deploy": "806cb9b",
       "log": "logs/loop-2026-07-25_190005.log"
-    },
-    {
-      "id": "2026-07-25_130005",
-      "started": "2026-07-25T13:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Readwise: 972 / pending 0 (inventory only; not Monday).",
-      "domain": "Readwise: 972 / pending 0 (inventory only; not Monday).",
-      "chats_cleared": null,
-      "deploy": "bcb06ef",
-      "log": "logs/loop-2026-07-25_130005.log"
-    },
-    {
-      "id": "2026-07-25_130001",
-      "started": "2026-07-25T13:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Saturday afternoon \u2014 inbox/queues empty; Castle $410/$145 0 pending; Fitness Under the Sword (Turner); Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",
-      "domain": "Fitness: Under the Sword \u2014 No-Mind Stallion & Mind as Friend (Turner)",
-      "chats_cleared": 0,
-      "deploy": "bcb06ef"
     }
   ]
 }

@@ -35,13 +35,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-26 evening)
+## LIVE STATE (refreshed 2026-07-27 morning)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$480 / $92** · **3 pending** (Davikja $30). Evening: Finance = **Look at the Big Picture** (step-back check). Afternoon: Fitness **Primal Endurance**. Chat filed earlier: **How to Interact with Grok Build**. Davikja Minecraft Lego −$53. Morning: Recipes Traeger Dry-Rub Wings ●. **Endurance rebuild** protocol filed. Style guide filed. Dyson Air Purifier / Fan ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$480 / $92** · **3 pending** (Davikja $30). Morning: Recipes = **Traeger 3-2-1 Baby Back Ribs ●**. Job search weekly **07-27**. Sunday: Finance Look at the Big Picture · Fitness Primal Endurance · **How to Interact with Grok Build**. **Endurance rebuild** protocol filed. Style guide filed. Dyson Air Purifier / Fan ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance.
+**Next domain (rotation):** **Fitness** — then Finance → Recipes.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
@@ -51,17 +51,17 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Inbox:** Clean. Queues empty. X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`); no labeled mail filed this pass.
 
-**Loop:** **OK (E0)** (Gmail step E1 note only — other steps green). Readwise 972/0.
+**Loop:** **OK (E0)** (Gmail step E1 note only — other steps green). Readwise 972/0 (Monday full pipeline clean).
 
 **Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐).
 
 **Castle:** Dagvald **$480** (2-day streak 07-25→07-26; **0 pending**), Davikja **$92** (~61% to $150 Diadem; **3 pending** $30).
 
-**Deploy:** BUILD_DATE **2026-07-26-evening**.
+**Deploy:** BUILD_DATE **2026-07-27-morning**.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again.
 
-**Job search:** Last refresh **2026-07-20**.
+**Job search:** Last refresh **2026-07-27** — ADUSA Director still 404; TFM VP Merch Ops still live (posted 7/7); ADUSA SC Strategy Lead still posting.
 
 **Proposals:** Work → Proposals (or More → Proposals). Nav proposal **shipping**.
 

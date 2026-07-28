@@ -3,6 +3,16 @@
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
     {
+      "ts": "2026-07-28T23:10:00Z",
+      "pass": "2026-07-28-evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Tuesday evening \u2014 inbox/queues empty; Castle $480/$92 \u00b7 5 pending; Finance Three Keys to an Effective Message; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",
+      "domain": "Finance: Three Keys to an Effective Message \u2014 Brevity Thoroughness Structure",
+      "castle": "$480/$92 \u00b7 5 pending",
+      "deploy": "8de1491 live verified"
+    },
+    {
       "id": "2026-07-28_130005",
       "started": "2026-07-28T13:00:05",
       "trigger": "scheduled",
@@ -55,20 +65,6 @@
       "domain": "Finance: Just Say I Don't Know & Probe for Ideas",
       "chats_cleared": 0,
       "deploy": "d3219b5"
-    },
-    {
-      "id": "2026-07-27_130000",
-      "started": "2026-07-27T13:00:00",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Fitness: Breathing for Warriors \u2014 respiratory muscle fatigue \u00b7 3:2 rhythm \u00b7 recovery landmarks",
-      "domain": "Fitness: Breathing for Warriors \u2014 respiratory muscle fatigue \u00b7 3:2 rhythm \u00b7 recovery landmarks",
-      "chats_cleared": null,
-      "deploy": "73a8d48",
-      "log": "logs/loop-2026-07-27_130000.log"
     }
   ]
 }

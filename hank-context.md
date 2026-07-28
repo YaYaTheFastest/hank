@@ -35,13 +35,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-27 evening)
+## LIVE STATE (refreshed 2026-07-28 morning)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$480 / $92** · **4 pending** ($35: Dagvald Clean Room $5 + Davikja $30). Evening: Finance = **Just Say I Don't Know & Probe for Ideas** (never bluff · probe shrugs). Health labs filed (HRT + IGF-1 07-24 · CBC/CMP 02-18). Job search weekly **07-27**. Dyson Air Purifier / Fan ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$480 / $92** · **4 pending** ($35: Dagvald Clean Room $5 + Davikja $30). Morning: Recipes = **Traeger Smoked Tri-Tip** ● (225°F → 130°F → sear). Health labs filed (HRT + IGF-1 07-24 · CBC/CMP 02-18). Job search weekly **07-27**. Dyson Air Purifier / Fan ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance.
+**Next domain (rotation):** **Fitness** — then Finance → Recipes.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
@@ -57,7 +57,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$480** (2-day streak 07-25→07-26; **1 pending** $5), Davikja **$92** (~61% to $150 Diadem; **3 pending** $30).
 
-**Deploy:** BUILD_DATE **2026-07-27-evening**.
+**Deploy:** BUILD_DATE **2026-07-28-morning**.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again.
 

@@ -1,8 +1,8 @@
-// DEPLOY-STALE pin 2026-07-27-evening 72b2b04 → force rebuild
-// DEPLOY-PIN 2026-07-26-afternoon a4f6cd6 1785085564
+// DEPLOY-STALE pin 2026-07-28-morning → force rebuild after LIVE STATE / Recipes tri-tip
+// DEPLOY-PIN 2026-07-27-evening d3219b5
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
-  // deploy-trigger: 2026-07-26 afternoon — Castle $480/$92 · Fitness Primal Endurance · Grok Build how-to · pin a4f6cd6
+  // deploy-trigger: 2026-07-28 morning — Castle $480/$92 · Recipes Traeger Smoked Tri-Tip · Next Fitness
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",

@@ -508,7 +508,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-28-morning";
+const BUILD_DATE="2026-07-28-afternoon";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-07-28T11:10:00Z",
@@ -525,8 +525,8 @@ const LOOP_RUNS={
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-07-28 morning — inbox/queues empty; Castle $480/$92 · 4 pending; Recipes Traeger Smoked Tri-Tip ●; Readwise 972/0; Gmail OAuth invalid_grant (darren re-auth); X bookmarks none; deploy+verify.",
-  last_success:"2026-07-28T11:10:00Z"
+  summary:"2026-07-28 afternoon — 3 chats filed (FILE THIS X issue tree · Jairo · eero 7); Castle $480/$92 · 5 pending (+1 Dagvald); Fitness Endure pacing; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
+  last_success:"2026-07-28T18:00:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};
@@ -586,12 +586,14 @@ const LIVE_STATE={refreshed:"2026-07-22",now:"Steady-state — Work + Proposals 
 // Hierarchical projects — vault-backed fields (what/why/next/status). Loop refreshes this block each deploy.
 const PROJECTS={
   active:[
+    {id:"eero-7",n:"eero 7 Gateway Swap — Mesh",what:"Replace gateway with eero 7; then placement, backhaul, and node audit.",why:"Highest leverage for Outdoor 7s + older nodes (barn/loft/yard).",next:"Swap gateway via Replace eero / modem Ethernet; TrueMesh 1–2 hr",status:"Active",owner:"Darren",domain:"Home"},
+    {id:"jairo",n:"Jairo — Handyman List",what:"Ongoing work list for Jairo (friend + handyman).",why:"Single place for jobs to hand him; chat prefix For Jairo.",next:"Empty list — first For Jairo chat becomes row 1",status:"Active",owner:"Darren",domain:"Home"},
     {id:"bison-rodent",n:"Bison Trailer — Rodent Exclusion",what:"Seal the Bison Coach horse trailer against rodents without blocking designed vents.",why:"Protect LQ/living space and gear from mice; trailer is on-site and active.",next:"Night daylight inspection — mark gaps (don't block vents)",status:"Active",owner:"Darren",domain:"Ranch"},
     {id:"kitchen-sink",n:"Kitchen Sink → Basement Shower Backup",what:"Clear kitchen branch under slab that backs up into basement shower.",why:"House plumbing pressure — usable basement shower + kitchen drain.",next:"Snake from shower drain downstream; enzyme follow-up",status:"Active",owner:"Darren",domain:"Home"},
     {id:"shop-org",n:"Shop – Ongoing",what:"Finish shop organization with Deane; keep equipment cards honest.",why:"Shop is the ranch ops hub; clutter slows every job.",next:"Book Deane 2 hr to finish organizing",status:"Active",owner:"Darren",domain:"Shop"},
     {id:"plainfield",n:"Plainfield Rd Land Purchase",what:"Close clarity on Plainfield Rd land (trust vs probate path).",why:"Property decision blocks clean next legal/money moves.",next:"Resolve trust-vs-probate; engage NC attorney",status:"Active",owner:"Darren",domain:"Property"},
-    {id:"job-search",n:"2026 Job Search",what:"Active search — network strategy / merch ops targets.",why:"Career track alongside ranch OS; weekly Monday refresh.",next:"Next weekly refresh Mon 07-27",status:"Active",owner:"Darren",domain:"Career"},
-    {id:"castle",n:"Castle Fund",what:"Kids earn-toward-reward balances (Dagvald / Davikja) inside HANK.",why:"Family module live; loop syncs ledgers from app.",next:"Standing sync; parent PIN for pending",status:"Active",owner:"Hank + parents",domain:"Family"},
+    {id:"job-search",n:"2026 Job Search",what:"Active search — network strategy / merch ops targets.",why:"Career track alongside ranch OS; weekly Monday refresh.",next:"Next weekly refresh Mon 08-03",status:"Active",owner:"Darren",domain:"Career"},
+    {id:"castle",n:"Castle Fund",what:"Kids earn-toward-reward balances (Dagvald / Davikja) inside HANK.",why:"Family module live; loop syncs ledgers from app.",next:"Parent PIN for 5 pending ($40)",status:"Active",owner:"Hank + parents",domain:"Family"},
     {id:"tax-2026",n:"Tax Strategy 2026",what:"Tax planning reference + action outline (finance stays reference-only until aggregator pick).",why:"Avoid year-end scramble; ranch/entity complexity.",next:"Outline actions from Finance hub",status:"Active",owner:"Darren",domain:"Finance"},
     {id:"profit-chores",n:"Ranch Chores as Profit Center",what:"Design how ranch chores map to value (metric TBD).",why:"Align kids work + ranch economics without fake rates.",next:"Pick metric (options A–F filed)",status:"Active",owner:"Darren",domain:"Ranch"},
     {id:"cmd-phase2",n:"Command Center Phase 2",what:"Work tab = hierarchical projects + Doing + per-project chat; proposals surface.",why:"You enter by job — not Obsidian. Approved 2026-07-21.",next:"This deploy live; refine from chat",status:"Active",owner:"Grok",domain:"System"}

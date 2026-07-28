@@ -1,7 +1,47 @@
 {
-  "updated": "2026-07-27T17:27:22Z",
+  "updated": "2026-07-28T11:07:36Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-28_070002",
+      "started": "2026-07-28T07:00:02",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Tuesday morning loop complete \u2014 OK (E0).",
+      "domain": "Recipes: New [[Traeger Smoked Tri-Tip]] \u25cf \u2014 225\u00b0F \u2192 130\u00b0F \u2192 450\u2013500\u00b0F sear 4 min/side \u00b7 Traeger Kitchen",
+      "chats_cleared": null,
+      "deploy": "0bd6e7b",
+      "log": "logs/loop-2026-07-28_070002.log"
+    },
+    {
+      "id": "2026-07-27_190000",
+      "started": "2026-07-27T19:00:00",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Evening loop complete \u2014 OK (E0).",
+      "domain": "Readwise: 972 / pending 0 (inventory only; full pipeline was this morning).",
+      "chats_cleared": null,
+      "deploy": null,
+      "log": "logs/loop-2026-07-27_190000.log"
+    },
+    {
+      "id": "2026-07-27_190001",
+      "started": "2026-07-27T19:00:01",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Monday evening \u2014 inbox/queues empty; Castle $480/$92 \u00b7 4 pending; Finance Just Say I Don't Know & Probe for Ideas; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",
+      "domain": "Finance: Just Say I Don't Know & Probe for Ideas",
+      "chats_cleared": 0,
+      "deploy": "d3219b5"
+    },
     {
       "id": "2026-07-27_130000",
       "started": "2026-07-27T13:00:00",
@@ -29,46 +69,6 @@
       "chats_cleared": null,
       "deploy": null,
       "log": "logs/loop-2026-07-27_070005.log"
-    },
-    {
-      "id": "2026-07-27_070001",
-      "started": "2026-07-27T07:00:01",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Monday morning \u2014 inbox/queues empty; Castle $480/$92 \u00b7 3 pending unchanged; Recipes Traeger 3-2-1 Baby Back Ribs \u25cf; job search weekly 07-27; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",
-      "domain": "Recipes: Traeger 3-2-1 Baby Back Ribs \u25cf",
-      "chats_cleared": 0,
-      "deploy": "7472d7f"
-    },
-    {
-      "id": "2026-07-26_190153",
-      "started": "2026-07-26T19:01:53",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Readwise: 972 / pending 0 (Sunday inventory only).",
-      "domain": "Readwise: 972 / pending 0 (Sunday inventory only).",
-      "chats_cleared": 0,
-      "deploy": null,
-      "log": "logs/loop-2026-07-26_190153.log"
-    },
-    {
-      "id": "2026-07-26_190001",
-      "started": "2026-07-26T19:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Sunday evening \u2014 inbox/queues empty; Castle $480/$92 \u00b7 3 pending; Finance Look at the Big Picture; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",
-      "domain": "Finance: Look at the Big Picture \u2014 Step-Back Check",
-      "chats_cleared": 0,
-      "deploy": "5021522",
-      "log": "logs/loop-2026-07-26_190001.log"
     }
   ]
 }

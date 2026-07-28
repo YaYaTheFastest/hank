@@ -35,39 +35,43 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-28 morning)
+## LIVE STATE (refreshed 2026-07-28 afternoon)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$480 / $92** · **4 pending** ($35: Dagvald Clean Room $5 + Davikja $30). Morning: Recipes = **Traeger Smoked Tri-Tip** ● (225°F → 130°F → sear). Health labs filed (HRT + IGF-1 07-24 · CBC/CMP 02-18). Job search weekly **07-27**. Dyson Air Purifier / Fan ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$480 / $92** · **5 pending** ($40: Dagvald Clean Room $5×2 + Davikja $30). Afternoon: Fitness = **Endure** pacing/expectation/belief (Hutchinson). New projects: **Jairo** handyman list · **eero 7** gateway swap. FILE THIS X: McKinsey Why/What/How issue trees. Job search weekly **07-27**. Dyson Air Purifier / Fan ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes.
+**Next domain (rotation):** **Finance** — then Recipes → Fitness.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
-**Doing (verbs):** **Endurance rebuild Phase 0** (easy base) · Book Deane 2 hr shop org · Kitchen sink snaking · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo.
+**Doing (verbs):** **eero 7 gateway swap** (Replace eero → TrueMesh) · **Jairo** list (chat `For Jairo`) · **Endurance rebuild Phase 0** (easy base) · Book Deane 2 hr shop org · Kitchen sink snaking · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo.
 
-**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models · Castle parent PIN for **4 pending** ($35).
+**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models · Castle parent PIN for **5 pending** ($40).
 
-**Inbox:** Clean. Queues empty. X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`); no labeled mail filed this pass. **Health labs** filed from `_Cowork Inbox` this afternoon.
+**Inbox:** Clean. Queues empty (3 chats cleared this pass). X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
 **Loop:** **OK (E0)** (Gmail step E1 note only — other steps green). Readwise 972/0.
 
 **Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐).
 
-**Castle:** Dagvald **$480** (2-day streak 07-25→07-26; **1 pending** $5), Davikja **$92** (~61% to $150 Diadem; **3 pending** $30).
+**Castle:** Dagvald **$480** (2-day streak 07-25→07-26; **2 pending** $10), Davikja **$92** (~61% to $150 Diadem; **3 pending** $30).
 
-**Deploy:** BUILD_DATE **2026-07-28-morning**.
+**Deploy:** BUILD_DATE **2026-07-28-afternoon**.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again.
 
-**Job search:** Last refresh **2026-07-27** — ADUSA Director still 404; TFM VP Merch Ops still live (posted 7/7); ADUSA SC Strategy Lead still posting.
+**Job search:** Last refresh **2026-07-27** — ADUSA Director still 404; TFM VP Merch Ops still live (posted 7/7); ADUSA SC Strategy Lead still posting. Next Mon **08-03**.
 
 **Proposals:** Work → Proposals (or More → Proposals). Nav proposal **shipping**.
 
 **Grok Build (quick):** Say **Prime Hank** to load context. App = daily front door; Grok Build = write-desk (install: x.ai/cli · modes Code/Plan/Ask). Note: How to Interact with Grok Build.
 
-**Endurance (quick):** Phase 0 = 2–3 easy runs/week, 20–30 min, conversational. Breath: treat early fatigue as possible respiratory-muscle limit; try 3:2 rhythmic pattern (*Breathing for Warriors*). Avoid chronic anaerobic if body-comp goal (Primal ~72 hr). Protocol: Endurance Rebuild — Marathon Base Return.
+**For Jairo (quick):** Chat `For Jairo: <task>` → loop appends to project **Jairo — Handyman List** (Work tab).
+
+**eero mesh (quick):** Gateway swap first (Replace eero / modem Ethernet / TrueMesh 1–2 hr), then node quality audit, Outdoor 7 placement, optional barn/loft Ethernet backhaul. Project on Work tab.
+
+**Endurance (quick):** Phase 0 = 2–3 easy runs/week, 20–30 min, conversational. Pace vs **expected** feel (*Endure* Hutchinson). Breath: treat early fatigue as possible respiratory-muscle limit; try 3:2 rhythmic pattern (*Breathing for Warriors*). Protocol: Endurance Rebuild — Marathon Base Return.
 
 **Style (quick):** Four effects (Glamorous / Powerful / Confident / Approachable) · seven mirror rules · always tuck · half break · shoulder + wristbone. Note: Style Guide — Four Uniforms Seven Rules.
 

@@ -2,7 +2,7 @@
 // DEPLOY-PIN 2026-07-27-evening d3219b5
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
-  // deploy-trigger: 2026-07-28 morning — Castle $480/$92 · Recipes Traeger Smoked Tri-Tip · Next Fitness
+  // DEPLOY-STALE pin 2026-07-28-evening 412ca11
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",

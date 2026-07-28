@@ -1,4 +1,4 @@
-// DEPLOY-STALE pin 2026-07-28-morning → force rebuild after LIVE STATE / Recipes tri-tip
+// DEPLOY-STALE pin 2026-07-28-afternoon 6e4a407 force rebuild
 // DEPLOY-PIN 2026-07-27-evening d3219b5
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).

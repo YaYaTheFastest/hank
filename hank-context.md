@@ -35,13 +35,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-28 afternoon)
+## LIVE STATE (refreshed 2026-07-28 evening)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$480 / $92** · **5 pending** ($40: Dagvald Clean Room $5×2 + Davikja $30). Afternoon: Fitness = **Endure** pacing/expectation/belief (Hutchinson). New projects: **Jairo** handyman list · **eero 7** gateway swap. FILE THIS X: McKinsey Why/What/How issue trees. Job search weekly **07-27**. Dyson Air Purifier / Fan ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$480 / $92** · **5 pending** ($40: Dagvald Clean Room $5×2 + Davikja $30). Evening: Finance = **Three Keys to an Effective Message** (brevity · thoroughness · structure). New projects: **Jairo** handyman list · **eero 7** gateway swap. Job search weekly **07-27**. Dyson Air Purifier / Fan ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness.
+**Next domain (rotation):** **Recipes** — then Fitness → Finance.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
@@ -51,13 +51,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Inbox:** Clean. Queues empty (3 chats cleared this pass). X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
-**Loop:** **OK (E0)** (Gmail step E1 note only — other steps green). Readwise 972/0.
+**Loop:** OK (E0) · Gmail E1 noted (OAuth re-auth when convenient).
 
 **Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐).
 
 **Castle:** Dagvald **$480** (2-day streak 07-25→07-26; **2 pending** $10), Davikja **$92** (~61% to $150 Diadem; **3 pending** $30).
 
-**Deploy:** BUILD_DATE **2026-07-28-afternoon**.
+**Deploy:** BUILD_DATE **2026-07-28-evening**.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again.
 

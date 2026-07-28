@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-28T11:07:36Z",
+  "updated": "2026-07-28T17:09:34Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-28_130005",
+      "started": "2026-07-28T13:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "\u00b7 Tuesday afternoon pass complete.\n\n### Queues (3 filed \u00b7 cleared)\n1.",
+      "domain": "",
+      "chats_cleared": null,
+      "deploy": null,
+      "log": "logs/loop-2026-07-28_130005.log"
+    },
     {
       "id": "2026-07-28_070002",
       "started": "2026-07-28T07:00:02",
@@ -55,20 +69,6 @@
       "chats_cleared": null,
       "deploy": "73a8d48",
       "log": "logs/loop-2026-07-27_130000.log"
-    },
-    {
-      "id": "2026-07-27_070005",
-      "started": "2026-07-27T07:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Loop pass complete \u2014 OK (E0).",
-      "domain": "Recipes: New [[Traeger 3-2-1 Baby Back Ribs]] \u25cf (Diva Q / Traeger Kitchen) \u00b7 next \u2192 Fitness",
-      "chats_cleared": null,
-      "deploy": null,
-      "log": "logs/loop-2026-07-27_070005.log"
     }
   ]
 }

@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-28T23:07:00Z",
+  "updated": "2026-07-29T11:08:26Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-29_070000",
+      "started": "2026-07-29T07:00:00",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Recipes: [[BGE Pork Tenderloin Honey Mustard]] \u25cf (indirect 375\u00b0F \u2192 145\u00b0F, honey-Dijon glaze)",
+      "domain": "Recipes: [[BGE Pork Tenderloin Honey Mustard]] \u25cf (indirect 375\u00b0F \u2192 145\u00b0F, honey-Dijon glaze)",
+      "chats_cleared": null,
+      "deploy": "b686381",
+      "log": "logs/loop-2026-07-29_070000.log"
+    },
     {
       "id": "2026-07-28_190003",
       "started": "2026-07-28T19:00:03",
@@ -57,18 +71,6 @@
       "chats_cleared": null,
       "deploy": null,
       "log": "logs/loop-2026-07-27_190000.log"
-    },
-    {
-      "id": "2026-07-27_190001",
-      "started": "2026-07-27T19:00:01",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Monday evening \u2014 inbox/queues empty; Castle $480/$92 \u00b7 4 pending; Finance Just Say I Don't Know & Probe for Ideas; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",
-      "domain": "Finance: Just Say I Don't Know & Probe for Ideas",
-      "chats_cleared": 0,
-      "deploy": "d3219b5"
     }
   ]
 }

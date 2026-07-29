@@ -1,4 +1,4 @@
-// DEPLOY-STALE pin 2026-07-29-afternoon after 3bcbe01
+// DEPLOY-STALE pin 2026-07-29-evening 95b0991 → force CF rebuild
 // DEPLOY-PIN 2026-07-28-evening 8de1491
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).

@@ -35,35 +35,35 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-28 evening)
+## LIVE STATE (refreshed 2026-07-29 morning)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Nav proposal **approved** · Work + Proposals **live**. Castle **$480 / $92** · **5 pending** ($40: Dagvald Clean Room $5×2 + Davikja $30). Evening: Finance = **Three Keys to an Effective Message** (brevity · thoroughness · structure). New projects: **Jairo** handyman list · **eero 7** gateway swap. Job search weekly **07-27**. Dyson Air Purifier / Fan ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Castle **$480 / $92** · **5 pending** ($40). Morning: Recipes = **BGE Pork Tenderloin Honey Mustard** ●. **Castle Fund V2** filed as active project (in-Hank only — no React rewrite, no KV wipe; code ship on next focused pass). Job search weekly **07-27**. Dyson Air Purifier / Fan ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance.
+**Next domain (rotation):** **Fitness** — then Finance → Recipes.
 
-**The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
+**The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture. (This pass: addiction counsel query answered from Situation Index.)
 
-**Doing (verbs):** **eero 7 gateway swap** (Replace eero → TrueMesh) · **Jairo** list (chat `For Jairo`) · **Endurance rebuild Phase 0** (easy base) · Book Deane 2 hr shop org · Kitchen sink snaking · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo.
+**Doing (verbs):** **Castle Fund V2** (in-Hank: XP/check-in/lessons/parent dual dashboard — project filed) · **eero 7 gateway swap** · **Jairo** list (chat `For Jairo`) · **Endurance rebuild Phase 0** · Book Deane 2 hr shop org · Kitchen sink snaking · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo.
 
 **Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models · Castle parent PIN for **5 pending** ($40).
 
-**Inbox:** Clean. Queues empty (3 chats cleared this pass). X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
+**Inbox:** Clean. Queues empty (3 chats cleared this pass — V2 directive + addiction query). X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
 **Loop:** OK (E0) · Gmail E1 noted (OAuth re-auth when convenient).
 
 **Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐).
 
-**Castle:** Dagvald **$480** (2-day streak 07-25→07-26; **2 pending** $10), Davikja **$92** (~61% to $150 Diadem; **3 pending** $30).
+**Castle:** Dagvald **$480** (2-day streak 07-25→07-26; **2 pending** $10), Davikja **$92** (~61% to $150 Diadem; **3 pending** $30). V2 upgrades queued — live balances untouched this pass.
 
-**Deploy:** BUILD_DATE **2026-07-28-evening**.
+**Deploy:** BUILD_DATE **2026-07-29-morning**.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again.
 
 **Job search:** Last refresh **2026-07-27** — ADUSA Director still 404; TFM VP Merch Ops still live (posted 7/7); ADUSA SC Strategy Lead still posting. Next Mon **08-03**.
 
-**Proposals:** Work → Proposals (or More → Proposals). Nav proposal **shipping**.
+**Proposals:** Work → Proposals. Nav proposal **shipping**. Castle Fund V2 = **Doing** (directive already approved by chat).
 
 **Grok Build (quick):** Say **Prime Hank** to load context. App = daily front door; Grok Build = write-desk (install: x.ai/cli · modes Code/Plan/Ask). Note: How to Interact with Grok Build.
 

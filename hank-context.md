@@ -39,19 +39,19 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-30 evening — P1/P2)
+## LIVE STATE (refreshed 2026-07-30 evening loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$525 / $162** · **0 pending**. **P1/P2 shipped:** project deep links · Doing linked to projects · Find (equipment+projects) · LIVE_STATE synced from Hub. **Castle Fund V2** active (code ship next focused pass). Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐.
+**Now (what matters):** Castle **$525 / $162** · **5 pending** (~$40 — parent PIN). **Castle V2 §2+§3 live** (check-in +10 XP · XP on approve · levels). **Kitchen Sink → Basement Shower** marked **complete** (Shipped). Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness.
+**Next domain (rotation):** **Recipes** — then Fitness → Finance.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
-**Doing (verbs):** **Castle Fund V2** (in-Hank: XP/check-in/lessons/parent dual dashboard — project filed) · **eero 7 gateway swap** · **Jairo** list (chat `For Jairo`) · **Endurance rebuild Phase 0** · Book Deane 2 hr shop org · Kitchen sink snaking · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo · **Davikja Diadem redeem or next goal** (parent).
+**Doing (verbs):** **Castle Fund V2** (lessons unlock + parent dual polish next) · **eero 7 gateway swap** · **Jairo** list (chat `For Jairo`) · **Endurance rebuild Phase 0** · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo · **Davikja Diadem redeem or next goal** (parent).
 
-**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
+**Waiting:** Home domain tiles (B2 — confirm before shipping) · **Parent PIN for 5 Castle pending** · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
 
 **Inbox:** Clean. Queues empty. X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
@@ -59,9 +59,9 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐).
 
-**Castle:** Dagvald **$525** (5-day streak 07-25→07-29; **0 pending**), Davikja **$162** (**$150 Diadem goal met**, $12 over; **0 pending**). V2 upgrades queued — live balances protected.
+**Castle:** Dagvald **$525** (5-day streak 07-25→07-29; **4 pending**), Davikja **$162** (**$150 Diadem goal met**, $12 over; **1 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-07-30-p1p2-work**.
+**Deploy:** BUILD_DATE **2026-07-30-evening** (Castle V2 check-in + XP; Kitchen Sink shipped).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 
@@ -69,14 +69,14 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Job search:** Last refresh **2026-07-27** — ADUSA Director still 404; TFM VP Merch Ops still live (posted 7/7); ADUSA SC Strategy Lead still posting. Next Mon **08-03**.
 
-**Proposals:** Work → Proposals. Nav proposal **shipping**. Castle Fund V2 = **Doing** (directive already approved by chat).
+**Proposals:** Work → Proposals. Nav proposal **re-approved** 07-30 evening (still shipping). Castle Fund V2 = **Doing** (§1–§3 core shipped).
 
 **CASTLE FUND V2 PLAN (paste this when asked — do not only redirect):**
 - **One line:** Port V2 into live castle.js / worker / kid pages. Same loop: log chore → pending → parent PIN → balance. **No** new React app. **No** KV wipe.
 - **Constraints:** existing Hank stack only; protect live balances/history; no Equipment/Bible/CC redesign; non-destructive defaults for new fields.
 - **Preserve:** pending→PIN approve; deduct + Bank of Mom/Dad interest (idempotent); old bundles still load.
-- **Build order:** (1) Bundle progress + competitionVisible defaults (2) Work-day check-in +10 XP (3) XP on approve 15+min(40,price) + levels (4) 8 money lessons (5) Wishlist search (6) Parent dual-kid dashboard (7) Competition board toggle (8) Ship + verify full path.
-- **Next:** non-destructive progress defaults → check-in + XP on approve → parent dual surface.
+- **Build order:** (1) ✅ Bundle progress + competitionVisible defaults (2) ✅ Work-day check-in +10 XP (3) ✅ XP on approve 15+min(40,price) + levels (4) 8 money lessons (5) Wishlist search (6) Parent dual-kid dashboard (7) Competition board toggle (8) Ship + verify full path.
+- **Next:** money lessons unlock by level → parent dual polish → competition/wishlist.
 - **Open in app:** https://hank.darren-l-jorgenson.workers.dev/#work/project/castle-v2
 
 **Grok Build (quick):** Say **Prime Hank** to load context. App = daily front door; Grok Build = write-desk (install: x.ai/cli · modes Code/Plan/Ask). Note: How to Interact with Grok Build.

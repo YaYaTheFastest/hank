@@ -92,12 +92,38 @@
   function wishlist() { return apiWish[KID] || []; }
   function activeGoal() { var w = wishlist().filter(function (it) { return it.goal && !it.purchased; })[0]; var C = cfg(); return w ? { reward: w.name, goal: Number(w.price) || 0, item: w } : { reward: C.reward, goal: C.goal, item: null }; }
   function streak() {
-    var days = {}; approved().forEach(function (e) { if ((e.amount || 0) > 0 && e.kind !== "interest" && e.day) days[e.day] = 1; });
+    // V2 §2: streaks count check-in days AND approved earn days
+    var days = {};
+    approved().forEach(function (e) { if ((e.amount || 0) > 0 && e.kind !== "interest" && e.day) days[e.day] = 1; });
+    (progress().workDays || []).forEach(function (w) { if (w && w.checkedIn && w.day) days[w.day] = 1; });
     function ds(dt) { function p(x) { return (x < 10 ? "0" : "") + x; } return dt.getFullYear() + "-" + p(dt.getMonth() + 1) + "-" + p(dt.getDate()); }
     var d = new Date(Date.now() - 4 * 3600 * 1000), n = 0;
     if (!days[ds(d)]) d.setDate(d.getDate() - 1);
     while (days[ds(d)]) { n++; d.setDate(d.getDate() - 1); }
     return n;
+  }
+  function checkedInToday() {
+    var day = choreDay(), pr = progress();
+    if (pr.lastCheckIn === day) return true;
+    return (pr.workDays || []).some(function (w) { return w && w.day === day && w.checkedIn; });
+  }
+  function workTotals() {
+    var day = choreDay();
+    var now = new Date(Date.now() - 4 * 3600 * 1000);
+    function iso(dt) { function p(x) { return (x < 10 ? "0" : "") + x; } return dt.getFullYear() + "-" + p(dt.getMonth() + 1) + "-" + p(dt.getDate()); }
+    var weekStart = new Date(now); weekStart.setDate(weekStart.getDate() - ((weekStart.getDay() + 6) % 7)); // Mon
+    var weekIso = iso(weekStart);
+    var monthIso = iso(now).slice(0, 7);
+    var earn = approved().filter(function (e) { return (e.amount || 0) > 0 && e.kind !== "interest" && e.kind !== "deduction" && e.kind !== "purchase"; });
+    function pack(list) {
+      return { chores: list.length, dollars: list.reduce(function (s, e) { return s + (e.amount || 0); }, 0) };
+    }
+    return {
+      today: pack(earn.filter(function (e) { return e.day === day; })),
+      week: pack(earn.filter(function (e) { return e.day && e.day >= weekIso; })),
+      month: pack(earn.filter(function (e) { return e.day && e.day.indexOf(monthIso) === 0; })),
+      all: pack(earn)
+    };
   }
   function badges() {
     var earned = approved().filter(function (e) { return e.amount > 0 && e.kind !== "interest"; }).reduce(function (s, e) { return s + e.amount; }, 0);
@@ -346,18 +372,28 @@
       '<div class="bk" style="background:#faeeda"><div class="be">🛒</div><div class="bv" style="color:#854F0B">' + money(bk.spend) + '</div><div class="bl" style="color:#854F0B">Spend</div></div>' +
       '<div class="bk" style="background:#fbeaf0"><div class="be">🎁</div><div class="bv" style="color:#993556">' + money(bk.give) + '</div><div class="bl" style="color:#993556">Give</div></div></div>';
 
-    // V2 progress (defaults safe — XP stays 0 until check-in/approve ship)
-    var pr = progress(), need = xpToNext(pr.level);
+    // V2 progress — check-in + XP on approve live
+    var pr = progress(), need = xpToNext(pr.level), cin = checkedInToday(), wt = workTotals();
     html += '<div style="display:flex;align-items:center;gap:8px;margin:6px 2px 2px;flex-wrap:wrap">' +
       '<span class="chip">⭐ Level ' + pr.level + '</span>' +
       '<span class="chip">' + pr.xp + ' / ' + need + ' XP</span>' +
       (castleSettings().competitionVisible ? '' : '<span class="cap" style="margin:0">Competition board hidden</span>') +
       '</div>';
+    html += '<div style="margin:8px 2px 4px">';
+    if (cin) {
+      html += '<button class="btns" id="checkInBtn" disabled style="width:100%;opacity:.75">✓ Checked in today · +10 XP</button>';
+    } else {
+      html += '<button class="btnp" id="checkInBtn" style="width:100%">✅ Check in for work day · +10 XP</button>';
+    }
+    html += '</div>';
+    html += '<div class="cap" style="margin:2px 2px 8px">Work: today ' + wt.today.chores + ' chore' + (wt.today.chores === 1 ? '' : 's') + ' · ' + money(wt.today.dollars) +
+      ' · week ' + wt.week.chores + ' · ' + money(wt.week.dollars) +
+      ' · month ' + wt.month.chores + ' · all-time ' + wt.all.chores + ' · ' + money(wt.all.dollars) + '</div>';
 
     // Streak + badges
     var st = streak();
     html += '<div style="display:flex;align-items:center;gap:10px;margin:8px 2px 4px">';
-    html += st > 0 ? '<span class="chip">🔥 ' + st + '-day streak</span><span class="cap" style="margin:0">keep it going!</span>' : '<span class="cap" style="margin:0">Do a chore today to start a streak 🔥</span>';
+    html += st > 0 ? '<span class="chip">🔥 ' + st + '-day streak</span><span class="cap" style="margin:0">keep it going!</span>' : '<span class="cap" style="margin:0">Check in or earn today to start a streak 🔥</span>';
     html += '</div>';
     html += '<div class="h">Badges</div><div class="badges">';
     badges().forEach(function (bd) { html += '<div class="bg ' + (bd.on ? "on" : "") + '"><div class="bgc">' + (bd.on ? bd.icon : "🔒") + '</div><span class="bgl">' + bd.label + '</span></div>'; });
@@ -403,8 +439,34 @@
       b.addEventListener("click", function () { logChore(b.dataset.chore, +b.dataset.amt, +b.dataset.qty, b.dataset.once === "1", b); });
     });
     Array.prototype.forEach.call(document.querySelectorAll("[data-star]"), function (b) { b.addEventListener("click", function () { star(b.dataset.star); }); });
+    var cinBtn = document.getElementById("checkInBtn");
+    if (cinBtn && !cinBtn.disabled) cinBtn.addEventListener("click", checkIn);
     document.getElementById("parentBtn").addEventListener("click", function () { openParent(); });
     document.getElementById("pmClose").addEventListener("click", function () { lastPin = ""; editCat = null; editWish = null; document.getElementById("pm").classList.remove("on"); });
+  }
+
+  // V2 §2: once-per-chore-day check-in (+10 XP server-side)
+  function checkIn() {
+    var btn = document.getElementById("checkInBtn");
+    if (btn) btn.disabled = true;
+    fetch("/api/castle/checkin", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kid: KID, day: choreDay() }) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j.ok) {
+          if (j.progress) { apiProgress[KID] = j.progress; }
+          if (typeof j.v === "number") castleV = j.v;
+          confetti();
+          toast("Checked in! +10 XP 💪");
+          return load(true);
+        }
+        if (j.error === "already-checked-in") {
+          if (j.progress) apiProgress[KID] = j.progress;
+          toast("Already checked in today ✓");
+          return load(true);
+        }
+        toast("Couldn't check in — try again.");
+        if (btn) btn.disabled = false;
+      }).catch(function () { toast("Offline — couldn't check in."); if (btn) btn.disabled = false; });
   }
 
   function historyRows() {
@@ -655,7 +717,9 @@
           lastPin = pin;
           if (typeof j.v === "number") castleV = j.v;
           if (j.entry) mergeEntry(j.entry);
-          toast(act === "approve" ? "Approved ✓ posted to balance" : "Declined");
+          if (j.progress && j.entry && j.entry.kid) apiProgress[j.entry.kid] = j.progress;
+          var xpMsg = (act === "approve" && j.xpGain) ? (" · +" + j.xpGain + " XP") : "";
+          toast(act === "approve" ? ("Approved ✓ posted to balance" + xpMsg) : "Declined");
           return maybeAccrue(pin).then(function () { return load(true); }).then(openParent);
         }
         if (j.error === "bad-pin") { toast("Wrong PIN — try again."); return; }

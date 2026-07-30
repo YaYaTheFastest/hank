@@ -40,6 +40,38 @@ function normalizeCastleSettings(s) {
     competitionVisible: typeof o.competitionVisible === "boolean" ? o.competitionVisible : true,
   };
 }
+/** V2 XP curve: need = 100 + (level-1)×50 */
+function xpToNext(level) {
+  return 100 + (Math.max(1, level) - 1) * 50;
+}
+/** Add XP and level up; never touches balances/entries. */
+function addXp(progress, amount) {
+  const p = normalizeProgress(progress);
+  const gain = Math.max(0, Math.round(Number(amount) || 0));
+  if (!gain) return p;
+  p.xp += gain;
+  let guard = 0;
+  while (p.xp >= xpToNext(p.level) && guard < 50) {
+    p.xp -= xpToNext(p.level);
+    p.level += 1;
+    guard++;
+  }
+  return p;
+}
+/** Approved-chore XP: 15 + min(40, round(price)) */
+function approveXpGain(amount) {
+  const price = Math.max(0, Math.round(Number(amount) || 0));
+  return 15 + Math.min(40, price);
+}
+function ensureWorkDay(progress, day) {
+  const p = normalizeProgress(progress);
+  let wd = (p.workDays || []).find((w) => w && w.day === day);
+  if (!wd) {
+    wd = { day, checkedIn: false, choresDone: 0 };
+    p.workDays = (p.workDays || []).concat([wd]);
+  }
+  return { progress: p, workDay: wd };
+}
 /** Non-destructive: ensure progress + settings exist; do not reset balances/entries. */
 function ensureCastleV2Defaults(bundle) {
   if (!bundle || typeof bundle !== "object") return emptyCastleBundle();
@@ -384,8 +416,55 @@ async function handleApi(request, env, url, siteAuthed) {
     if (e.status === "approved" && !e.buckets && (e.amount || 0) > 0 && e.kind !== "interest") {
       e.buckets = bucketsForCfg(bundle.configs, e.kid, e.amount);
     }
+    // V2 §3: XP on approve (positive chore earnings only — never deductions/interest)
+    let xpGain = 0;
+    let progressOut = null;
+    if (
+      e.status === "approved" &&
+      (e.amount || 0) > 0 &&
+      e.kind !== "interest" &&
+      e.kind !== "deduction" &&
+      e.kind !== "purchase" &&
+      CASTLE_KIDS.includes(e.kid)
+    ) {
+      xpGain = approveXpGain(e.amount);
+      const day = e.day || new Date().toISOString().slice(0, 10);
+      const { progress: p0, workDay } = ensureWorkDay(bundle.progress[e.kid], day);
+      workDay.choresDone = (Number(workDay.choresDone) || 0) + 1;
+      progressOut = addXp(p0, xpGain);
+      // re-attach mutated workDay into progressOut.workDays
+      const idx = progressOut.workDays.findIndex((w) => w && w.day === day);
+      if (idx >= 0) progressOut.workDays[idx] = workDay;
+      else progressOut.workDays.push(workDay);
+      bundle.progress[e.kid] = progressOut;
+    }
     const row = await persistCastleEntry(env, bundle, b.key, e);
-    return json({ ok: true, entry: row, v: bundle.v });
+    return json({ ok: true, entry: row, v: bundle.v, xpGain, progress: progressOut || bundle.progress[e.kid] });
+  }
+
+  // V2 §2: work-day check-in — once per chore-day, +10 XP (family cookie; no balance touch)
+  if (url.pathname === "/api/castle/checkin" && request.method === "POST") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const b = await request.json().catch(() => ({}));
+    if (!b.kid || !CASTLE_KIDS.includes(b.kid)) return json({ ok: false, error: "missing-fields" }, 400);
+    const day = typeof b.day === "string" && b.day ? b.day : new Date().toISOString().slice(0, 10);
+    const bundle = await loadCastleBundle(env);
+    if (!bundle) return castleMissing();
+    const cur = normalizeProgress(bundle.progress[b.kid]);
+    if (cur.lastCheckIn === day || (cur.workDays || []).some((w) => w && w.day === day && w.checkedIn)) {
+      return json({ ok: false, error: "already-checked-in", day, progress: cur }, 409);
+    }
+    const { progress: p0, workDay } = ensureWorkDay(cur, day);
+    workDay.checkedIn = true;
+    p0.lastCheckIn = day;
+    const progressOut = addXp(p0, 10);
+    const idx = progressOut.workDays.findIndex((w) => w && w.day === day);
+    if (idx >= 0) progressOut.workDays[idx] = workDay;
+    else progressOut.workDays.push(workDay);
+    bundle.progress[b.kid] = progressOut;
+    await saveCastleBundle(env, bundle);
+    return json({ ok: true, day, xpGain: 10, progress: progressOut, v: bundle.v });
   }
 
   // Manual deduction / penalty (PIN) — negative entry against the Spend bucket.

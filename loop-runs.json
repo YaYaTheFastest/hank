@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-30T11:15:00Z",
+  "updated": "2026-07-30T11:06:04Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-30_070005",
+      "started": "2026-07-30T07:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Recipes: New [[BGE Smoked Chicken Thighs Sorghum Chile]] \u25cf (BGE/Bobby Flay: 275\u00b0F \u00b7 90 min \u00b7 sorghum glaze). Next domain \u2192 Fitness",
+      "domain": "Recipes: New [[BGE Smoked Chicken Thighs Sorghum Chile]] \u25cf (BGE/Bobby Flay: 275\u00b0F \u00b7 90 min \u00b7 sorghum glaze). Next domain \u2192 Fitness",
+      "chats_cleared": null,
+      "deploy": null,
+      "log": "logs/loop-2026-07-30_070005.log"
+    },
     {
       "id": "2026-07-30_070001",
       "started": "2026-07-30T07:00:01",
@@ -48,18 +62,6 @@
       "summary": "Wednesday morning \u2014 3 chats filed+cleared; Castle $480/$92 \u00b7 5 pending; Recipes BGE Pork Tenderloin Honey Mustard \u25cf; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",
       "domain": "Recipes: BGE Pork Tenderloin Honey Mustard \u25cf",
       "chats_cleared": 3,
-      "deploy": "pending"
-    },
-    {
-      "id": "2026-07-28_070001",
-      "started": "2026-07-28T07:00:01",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Tuesday morning \u2014 inbox/queues empty; Castle $480/$92 \u00b7 4 pending; Recipes Traeger Smoked Tri-Tip \u25cf; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",
-      "domain": "Recipes: Traeger Smoked Tri-Tip \u25cf",
-      "chats_cleared": 0,
       "deploy": "pending"
     }
   ]

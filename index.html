@@ -120,12 +120,14 @@
   .sup{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
   .sup:last-child{border:0}.sup .k{font-weight:600}.sup .v{color:var(--muted);text-align:right;font-size:12px}
   .note{font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.4}
-  /* detail */
-  .sheet{position:fixed;inset:0;background:rgba(20,28,18,.4);display:none;z-index:50}
+  /* detail — z-index above bnav (45); white panel so plan text is readable */
+  .sheet{position:fixed;inset:0;background:rgba(20,28,18,.45);display:none;z-index:200;-webkit-tap-highlight-color:transparent}
   .sheet.open{display:block}
-  .panel{position:absolute;left:0;right:0;bottom:0;max-height:92vh;overflow-y:auto;background:var(--bg);
-    border-radius:18px 18px 0 0;padding:18px 18px calc(28px + env(safe-area-inset-bottom))}
-  @media(min-width:620px){.panel{left:50%;transform:translateX(-50%);max-width:560px;border-radius:18px;bottom:auto;top:50%;transform:translate(-50%,-50%)}}
+  .panel{position:absolute;left:0;right:0;bottom:0;max-height:90vh;overflow-y:auto;background:#fff;
+    border-radius:18px 18px 0 0;padding:18px 18px calc(88px + env(safe-area-inset-bottom));
+    box-shadow:0 -8px 32px rgba(28,36,25,.18);-webkit-overflow-scrolling:touch}
+  @media(min-width:620px){.panel{left:50%;right:auto;width:min(560px,94vw);max-width:560px;border-radius:18px;bottom:auto;top:50%;
+    transform:translate(-50%,-50%);max-height:86vh;padding-bottom:28px}}
   .ph{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
   .ph h3{margin:0;font-size:20px}.ph .sub{color:var(--muted);font-size:13px;margin-top:2px}
   .x{border:0;background:#fff;border:1px solid var(--line);border-radius:9px;width:34px;height:34px;font-size:17px;flex:none}
@@ -220,10 +222,13 @@
   .pcard .pst{font-size:10.5px;font-weight:800;text-transform:uppercase;margin-top:6px;color:#5b6fd6}
   .pcard.prop.open .pst{color:var(--amber)}
   .pcard.prop.shipped .pst,.pcard.prop.approved .pst{color:var(--ok)}
-  .pib{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 13px;margin:0 0 12px}
-  .pib .row{margin:0 0 8px;font-size:13.5px;line-height:1.4}
+  .pib{background:var(--chip);border:1px solid var(--line);border-radius:12px;padding:12px 13px;margin:0 0 12px}
+  .pib .row{display:block;margin:0 0 10px;font-size:14px;line-height:1.45;color:var(--ink)}
   .pib .row:last-child{margin:0}
-  .pib .k{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);display:block;margin-bottom:2px}
+  .pib .k{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);display:block;margin-bottom:3px}
+  .plan-list{margin:0;padding-left:18px;font-size:14px;line-height:1.45}
+  .plan-list li{margin:0 0 8px}
+  .plan-note{font-size:13px;line-height:1.45;color:var(--muted);margin:0 0 10px}
   .prop-ribbon{background:#eef1ff;border:1px solid #c8d0f0;color:#2a3570;font-size:12px;font-weight:600;text-align:left;padding:10px 14px;margin:12px var(--space) 0;border-radius:12px;line-height:1.4}
   .site-foot{text-align:center;padding:8px 16px 4px;font-size:10.5px;color:var(--muted);opacity:.85}
   .graph-wrap{display:flex;flex-direction:column;height:calc(100vh - 120px);min-height:420px}
@@ -508,7 +513,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-30-afternoon";/* morning pass */
+const BUILD_DATE="2026-07-30-project-sheet-fix";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-07-30T17:20:00Z",
@@ -594,7 +599,11 @@ const PROJECTS={
     {id:"plainfield",n:"Plainfield Rd Land Purchase",what:"Close clarity on Plainfield Rd land (trust vs probate path).",why:"Property decision blocks clean next legal/money moves.",next:"Resolve trust-vs-probate; engage NC attorney",status:"Active",owner:"Darren",domain:"Property"},
     {id:"job-search",n:"2026 Job Search",what:"Active search — network strategy / merch ops targets.",why:"Career track alongside ranch OS; weekly Monday refresh.",next:"Next weekly refresh Mon 08-03",status:"Active",owner:"Darren",domain:"Career"},
     {id:"castle",n:"Castle Fund",what:"Kids earn-toward-reward balances (Dagvald / Davikja) inside HANK.",why:"Family module live; loop syncs ledgers from app.",next:"Parent PIN for 5 pending ($40); V2 in-Hank ship next",status:"Active",owner:"Hank + parents",domain:"Family"},
-    {id:"castle-v2",n:"Castle Fund V2 — In-Hank",what:"XP, work-day check-in, money lessons, wishlist search, dual-kid parent dashboard, competition toggle — in existing Hank stack only.",why:"Chat directive 2026-07-29: port V2 behavior without React rewrite or wiping live KV.",next:"Non-destructive progress defaults → check-in + XP on approve → parent dual surface",status:"Active",owner:"Grok",domain:"Family"},
+    {id:"castle-v2",n:"Castle Fund V2 — In-Hank",what:"XP, work-day check-in, money lessons, wishlist search, dual-kid parent dashboard, competition toggle — in existing Hank stack only.",why:"Chat directive 2026-07-29: port V2 behavior without React rewrite or wiping live KV.",next:"Non-destructive progress defaults → check-in + XP on approve → parent dual surface",status:"Active",owner:"Grok",domain:"Family",
+      one:"Port V2 into live castle.js / worker / kid pages. Same core loop (log → pending → PIN → balance). No new React app. No KV wipe.",
+      constraints:["Existing Hank stack only (Worker + static HTML/JS)","Do not wipe live KV balances or chore history","Do not redesign Equipment, Bible, or Command Center","Non-destructive defaults for any new fields"],
+      preserve:["Kid logs chore → pending → parent 4-digit PIN → balance / Save-Spend-Give","Deduct + Bank of Mom and Dad interest (idempotent per kid+month)","Old bundles must still load (default missing fields)"],
+      steps:["1. Bundle: progress per kid (xp, level, lessons, workDays) + settings.competitionVisible (default true)","2. Work-day check-in on kid page (+10 XP; once per chore-day)","3. XP on approve: 15 + min(40, round(price)); level curve 100+(level-1)×50","4. Money lessons UI (8 lessons; unlock by level)","5. Wishlist search + star-as-goal","6. Parent dual-kid dashboard (approvals, PIN, competition toggle, purchase with edit cost)","7. Competition board (hide when toggle off)","8. Ship + verify: log → approve → balance/XP; check-in; hide competition; interest still safe"]},
     {id:"tax-2026",n:"Tax Strategy 2026",what:"Tax planning reference + action outline (finance stays reference-only until aggregator pick).",why:"Avoid year-end scramble; ranch/entity complexity.",next:"Outline actions from Finance hub",status:"Active",owner:"Darren",domain:"Finance"},
     {id:"profit-chores",n:"Ranch Chores as Profit Center",what:"Design how ranch chores map to value (metric TBD).",why:"Align kids work + ranch economics without fake rates.",next:"Pick metric (options A–F filed)",status:"Active",owner:"Darren",domain:"Ranch"},
     {id:"cmd-phase2",n:"Command Center Phase 2",what:"Work tab = hierarchical projects + Doing + per-project chat; proposals surface.",why:"You enter by job — not Obsidian. Approved 2026-07-21.",next:"This deploy live; refine from chat",status:"Active",owner:"Grok",domain:"System"}
@@ -1439,7 +1448,7 @@ function renderWork(){
       <p class="muted" style="margin-top:12px">New proposals land after a chat directive or loop pass. Say “show proposals” anytime.</p>`;
     return;
   }
-  const card=(p,cls)=>`<div class="pcard ${cls}" onclick="openProject(${JSON.stringify(p.id)})"><div class="pt">${escapeHtml(p.n)}</div><div class="pn">${escapeHtml(p.next)}</div><div class="pm">${escapeHtml(p.domain)} · ${escapeHtml(p.status||"")}</div></div>`;
+  const card=(p,cls)=>`<div class="pcard ${cls}" data-pid="${escapeHtml(p.id)}" role="button" tabindex="0"><div class="pt">${escapeHtml(p.n)}</div><div class="pn">${escapeHtml(p.next)}</div><div class="pm">${escapeHtml(p.domain)} · ${escapeHtml(p.status||"")} · tap for plan</div></div>`;
   el.innerHTML=`<h2>▶ Active</h2>${(PROJECTS.active||[]).map(p=>card(p,"")).join("")}
     <h2>💡 Ideas</h2>${(PROJECTS.ideas||[]).map(p=>card(p,"idea")).join("")}
     <h2>⏸ On hold</h2>${(PROJECTS.hold||[]).map(p=>card(p,"hold")).join("")}
@@ -1447,7 +1456,11 @@ function renderWork(){
     <div class="pcard" onclick="showView('bible')"><div class="pt">Bible Guidance</div><div class="pn">I need… → Jesus’ words → next step</div><div class="pm">Primary · not the graph</div></div>
     <div class="pcard" onclick="setWorkSeg('proposals')"><div class="pt">Open proposals</div><div class="pn">Review Grok ideas without Obsidian</div><div class="pm">Approve · hold · revise</div></div>
     <div class="pcard" onclick="openGraph('finance','work')"><div class="pt">Finance connections</div><div class="pn">Label map only</div><div class="pm">Secondary</div></div>
-    <p class="muted" style="margin-top:10px">Tap a project for what / why / next + chat. Scripture = Bible Guidance.</p>`;
+    <p class="muted" style="margin-top:10px">Tap a project — plan opens here (what / why / next / checklist). Scripture = Bible Guidance.</p>`;
+  el.querySelectorAll(".pcard[data-pid]").forEach(function(cardEl){
+    cardEl.addEventListener("click",function(ev){ev.preventDefault();ev.stopPropagation();openProject(cardEl.getAttribute("data-pid"));});
+    cardEl.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();openProject(cardEl.getAttribute("data-pid"));}});
+  });
 }
 function findProject(id){
   for(const k of ["active","ideas","hold"]){
@@ -1456,22 +1469,41 @@ function findProject(id){
   }
   return null;
 }
+let sheetGuardUntil=0;
+function openSheet(html){
+  const sh=document.getElementById("sheet"), pan=document.getElementById("panel");
+  if(!sh||!pan){toast("Couldn't open panel — refresh the app.");return;}
+  pan.innerHTML=html;
+  sh.classList.add("open");
+  sheetGuardUntil=Date.now()+450; /* ignore ghost tap that would close instantly on mobile */
+  try{pan.scrollTop=0;}catch(e){}
+}
 function openProject(id){
-  const p=findProject(id);if(!p)return;
+  const p=findProject(id);
+  if(!p){toast("Project not found: "+id);return;}
   const st=p.status||(p.bucket==="active"?"Active":p.bucket==="ideas"?"Idea":"On hold");
-  document.getElementById('panel').innerHTML=`<div class="ph"><div><h3>${escapeHtml(p.n)}</h3><div class="sub">${escapeHtml(st)} · ${escapeHtml(p.domain||"")} · ${escapeHtml(p.owner||"")}</div></div><button class="x" onclick="closeSheet()">×</button></div>
+  const steps=(p.steps||[]).map(function(s){return "<li>"+escapeHtml(s)+"</li>";}).join("");
+  const constraints=(p.constraints||[]).map(function(s){return "<li>"+escapeHtml(s)+"</li>";}).join("");
+  const preserve=(p.preserve||[]).map(function(s){return "<li>"+escapeHtml(s)+"</li>";}).join("");
+  const planHtml=
+    (p.one?`<div class="sec"><h4>Plan (one line)</h4><p class="plan-note" style="color:var(--ink);font-size:14px">${escapeHtml(p.one)}</p></div>`:"")+
+    (constraints?`<div class="sec"><h4>Hard constraints</h4><ul class="plan-list">${constraints}</ul></div>`:"")+
+    (preserve?`<div class="sec"><h4>Preserve (do not break)</h4><ul class="plan-list">${preserve}</ul></div>`:"")+
+    (steps?`<div class="sec"><h4>Build checklist</h4><ol class="plan-list">${steps}</ol></div>`:"")+
+    (!p.one&&!steps?`<div class="sec"><h4>Plan</h4><p class="plan-note">Summary only on this card. Ask Chat: “Castle V2 plan” for more, or open Proposals for ship order.</p></div>`:"");
+  openSheet(`<div class="ph"><div><h3>${escapeHtml(p.n)}</h3><div class="sub">${escapeHtml(st)} · ${escapeHtml(p.domain||"")} · ${escapeHtml(p.owner||"")}</div></div><button type="button" class="x" onclick="closeSheet()">×</button></div>
     <div class="pib">
       <div class="row"><span class="k">What</span>${escapeHtml(p.what||"—")}</div>
       <div class="row"><span class="k">Why</span>${escapeHtml(p.why||"—")}</div>
       <div class="row"><span class="k">Next</span>${escapeHtml(p.next||"—")}</div>
       <div class="row"><span class="k">Status</span>${escapeHtml(st)}</div>
     </div>
+    ${planHtml}
     <div class="sec"><h4>Talk about this project</h4>
-      <button class="logbtn" onclick="closeSheet();projectChat(${JSON.stringify(p.id)},'chat')">Chat about this project</button>
-      <button class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="closeSheet();projectChat(${JSON.stringify(p.id)},'next')">Update next step</button>
-      <button class="logbtn" style="margin-top:8px" onclick="closeSheet();projectChat(${JSON.stringify(p.id)},'status')">Change status / priority</button>
-    </div>`;
-  document.getElementById('sheet').classList.add('open');
+      <button type="button" class="logbtn" onclick="closeSheet();projectChat(${JSON.stringify(p.id)},'chat')">Chat about this project</button>
+      <button type="button" class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="closeSheet();projectChat(${JSON.stringify(p.id)},'next')">Update next step</button>
+      <button type="button" class="logbtn" style="margin-top:8px" onclick="closeSheet();projectChat(${JSON.stringify(p.id)},'status')">Change status / priority</button>
+    </div>`);
 }
 function projectChat(id,kind){
   const p=findProject(id)||{n:id,what:"",next:""};
@@ -1483,20 +1515,19 @@ function projectChat(id,kind){
   toast("Tell Hank — loop files it.");
 }
 function openProposal(id){
-  const p=(PROPOSALS||[]).find(x=>x.id===id);if(!p)return;
+  const p=(PROPOSALS||[]).find(x=>x.id===id);if(!p){toast("Proposal not found");return;}
   const steps=(p.steps||[]).map(s=>`<li style="margin:0 0 6px">${escapeHtml(s)}</li>`).join("");
-  document.getElementById('panel').innerHTML=`<div class="ph"><div><h3>${escapeHtml(p.title)}</h3><div class="sub">Proposal · ${escapeHtml(p.status||"open")}</div></div><button class="x" onclick="closeSheet()">×</button></div>
+  openSheet(`<div class="ph"><div><h3>${escapeHtml(p.title)}</h3><div class="sub">Proposal · ${escapeHtml(p.status||"open")}</div></div><button type="button" class="x" onclick="closeSheet()">×</button></div>
     <div class="sec"><h4>Bottom line</h4><p style="margin:0;font-size:14px;line-height:1.45">${escapeHtml(p.one||"")}</p></div>
     <div class="sec"><h4>Summary</h4><p style="margin:0;font-size:14px;line-height:1.45">${escapeHtml(p.summary||"")}</p></div>
     ${steps?`<div class="sec"><h4>Ship order</h4><ol style="margin:0;padding-left:18px;font-size:14px;line-height:1.4">${steps}</ol></div>`:""}
     ${p.decided?`<div class="sec"><h4>Your decision</h4><p style="margin:0;font-size:14px">${escapeHtml(p.decided)}</p></div>`:""}
     ${p.next?`<div class="bnext"><b>Next</b><p>${escapeHtml(p.next)}</p></div>`:""}
     <div class="sec"><h4>Respond</h4>
-      <button class="logbtn" onclick="closeSheet();proposalChat(${JSON.stringify(p.id)},'approve')">Approve / ship</button>
-      <button class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="closeSheet();proposalChat(${JSON.stringify(p.id)},'hold')">Hold</button>
-      <button class="logbtn" style="margin-top:8px" onclick="closeSheet();proposalChat(${JSON.stringify(p.id)},'revise')">Revise idea</button>
-    </div>`;
-  document.getElementById('sheet').classList.add('open');
+      <button type="button" class="logbtn" onclick="closeSheet();proposalChat(${JSON.stringify(p.id)},'approve')">Approve / ship</button>
+      <button type="button" class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="closeSheet();proposalChat(${JSON.stringify(p.id)},'hold')">Hold</button>
+      <button type="button" class="logbtn" style="margin-top:8px" onclick="closeSheet();proposalChat(${JSON.stringify(p.id)},'revise')">Revise idea</button>
+    </div>`);
 }
 function proposalChat(id,kind){
   const p=(PROPOSALS||[]).find(x=>x.id===id)||{title:id};
@@ -1846,8 +1877,12 @@ async function logMaint(name){
   try{await navigator.clipboard.writeText(note);toast("Copied. Paste into _Cowork Inbox (or /log it) — Hank takes it from there.");}
   catch(e){toast("Note ready: drop “"+name+": "+what+"” into _Cowork Inbox.");}
 }
-function closeSheet(){document.getElementById('sheet').classList.remove('open')}
-document.getElementById('sheet').onclick=e=>{if(e.target.id==="sheet")closeSheet()};
+function closeSheet(){const sh=document.getElementById('sheet');if(sh)sh.classList.remove('open')}
+document.getElementById('sheet').onclick=function(e){
+  if(Date.now()<sheetGuardUntil)return; /* ghost-tap after open */
+  if(e.target.id==="sheet")closeSheet();
+};
+document.getElementById('panel').onclick=function(e){e.stopPropagation();};
 
 renderToday();
 initChatStarters();

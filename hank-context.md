@@ -35,19 +35,19 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-29 evening)
+## LIVE STATE (refreshed 2026-07-30 morning)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$480 / $92** · **5 pending** ($40). Evening: Finance = **Market, Don't Sell — Be the First Call** (McKinsey Way L686). **Castle Fund V2** filed as active project (in-Hank only — no React rewrite, no KV wipe; code ship on next focused pass). Job search weekly **07-27**. Dyson Air Purifier / Fan ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Castle **$525 / $162** · **0 pending**. Morning: Recipes = **BGE Smoked Chicken Thighs Sorghum Chile** ●. Parent approved pending wave + 07-29 chores — Davikja **Diadem goal met** ($12 over). **Castle Fund V2** active (code ship next focused pass). Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐. Equipment cards **not** redesigned.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance.
+**Next domain (rotation):** **Fitness** — then Finance → Recipes.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
-**Doing (verbs):** **Castle Fund V2** (in-Hank: XP/check-in/lessons/parent dual dashboard — project filed) · **eero 7 gateway swap** · **Jairo** list (chat `For Jairo`) · **Endurance rebuild Phase 0** · Book Deane 2 hr shop org · Kitchen sink snaking · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo.
+**Doing (verbs):** **Castle Fund V2** (in-Hank: XP/check-in/lessons/parent dual dashboard — project filed) · **eero 7 gateway swap** · **Jairo** list (chat `For Jairo`) · **Endurance rebuild Phase 0** · Book Deane 2 hr shop org · Kitchen sink snaking · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo · **Davikja Diadem redeem or next goal** (parent).
 
-**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models · Castle parent PIN for **5 pending** ($40).
+**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
 
 **Inbox:** Clean. Queues empty. X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
@@ -55,9 +55,9 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐).
 
-**Castle:** Dagvald **$480** (2-day streak 07-25→07-26; **2 pending** $10), Davikja **$92** (~61% to $150 Diadem; **3 pending** $30). V2 upgrades queued — live balances untouched this pass.
+**Castle:** Dagvald **$525** (5-day streak 07-25→07-29; **0 pending**), Davikja **$162** (**$150 Diadem goal met**, $12 over; **0 pending**). V2 upgrades queued — live balances protected.
 
-**Deploy:** BUILD_DATE **2026-07-29-evening**.
+**Deploy:** BUILD_DATE **2026-07-30-morning**.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again.
 

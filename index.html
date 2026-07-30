@@ -222,6 +222,24 @@
   .pcard .pst{font-size:10.5px;font-weight:800;text-transform:uppercase;margin-top:6px;color:#5b6fd6}
   .pcard.prop.open .pst{color:var(--amber)}
   .pcard.prop.shipped .pst,.pcard.prop.approved .pst{color:var(--ok)}
+  .work-search{margin:0 0 12px}
+  .work-search input{width:100%;box-sizing:border-box;border:2px solid var(--line);border-radius:12px;padding:12px 14px;font-size:16px;background:#fff}
+  .doing-strip{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0 0 14px}
+  .doing-strip .ds-h{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+  .doing-strip .ds-row{display:flex;flex-wrap:wrap;gap:6px}
+  .doing-strip .dchip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:600;cursor:pointer;color:var(--ink)}
+  .doing-strip .dchip.has-p{border-color:var(--green);color:var(--green)}
+  .vchip.do,.vchip.wait{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;width:100%;box-sizing:border-box;margin-bottom:8px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;cursor:pointer}
+  .vchip.do b,.vchip.wait b{font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .vchip.do .vt,.vchip.wait .vt{font-size:14px;font-weight:600;color:var(--ink);line-height:1.3}
+  .vchip.do .va,.vchip.wait .va{font-size:11px;color:var(--green);font-weight:700}
+  .find-wrap{padding:8px 16px 24px}
+  .find-wrap .search{margin:0 0 14px}
+  .find-sec{margin:0 0 16px}
+  .find-sec h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+  .find-hit{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:8px;cursor:pointer}
+  .find-hit .ft{font-weight:700;font-size:14px}
+  .find-hit .fs{color:var(--muted);font-size:12px;margin-top:3px}
   .pib{background:var(--chip);border:1px solid var(--line);border-radius:12px;padding:12px 13px;margin:0 0 12px}
   .pib .row{display:block;margin:0 0 10px;font-size:14px;line-height:1.45;color:var(--ink)}
   .pib .row:last-child{margin:0}
@@ -316,6 +334,7 @@
         <div class="hgrid">
           <a class="tile" onclick="showView('vault')"><div class="ic">🗺</div><div class="tt">How vault works</div><div class="ds">enter by job — not folders</div></a>
           <a class="tile" onclick="showView('work')"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Work tab · hierarchy + chat</div></a>
+          <a class="tile" onclick="showView('find')"><div class="ic">🔎</div><div class="tt">Find</div><div class="ds">equipment + projects only</div></a>
           <a class="tile" onclick="setWorkSeg('proposals');showView('work')"><div class="ic">📝</div><div class="tt">Proposals</div><div class="ds">review without Obsidian</div></a>
           <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
           <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
@@ -338,6 +357,15 @@
     <button id="segProposals" onclick="setWorkSeg('proposals')">Proposals</button>
   </div>
   <div id="workBody" class="work-body"></div>
+</div>
+
+<!-- FIND — lite search: equipment + projects only (not full vault) -->
+<div id="findView" class="hide">
+  <div class="find-wrap">
+    <p class="muted" style="margin:0 0 10px">Search equipment names and projects only — not the whole vault.</p>
+    <div class="search"><input id="findQ" type="search" placeholder="Find equipment or project…" autocomplete="off" aria-label="Find equipment or project" oninput="renderFind()"></div>
+    <div id="findBody"></div>
+  </div>
 </div>
 
 <!-- GRAPH VIEW (domain network mock — secondary; Bible uses Guidance) -->
@@ -406,6 +434,7 @@
       <a class="tile" onclick="showView('brief')"><div class="ic">🧭</div><div class="tt">Brief</div><div class="ds">copy context for Grok Build</div></a>
       <a class="tile" onclick="showView('setup')"><div class="ic">🔌</div><div class="tt">Setup</div><div class="ds">password &amp; connection</div></a>
       <a class="tile" onclick="showView('work')"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Work tab · hierarchical</div></a>
+      <a class="tile" onclick="showView('find')"><div class="ic">🔎</div><div class="tt">Find</div><div class="ds">equipment + projects</div></a>
       <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
       <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
       <a class="tile" onclick="document.getElementById('cap').click()"><div class="ic">📷</div><div class="tt">Send to Hank</div><div class="ds">drop a photo to the inbox</div></a>
@@ -513,7 +542,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-30-project-sheet-fix";
+const BUILD_DATE="2026-07-30-p1p2-work";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-07-30T17:20:00Z",
@@ -584,10 +613,28 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-07-22",now:"Steady-state — Work + Proposals live; BGE Pizza ●; Castle $345/$120",nextDomain:"Fitness",rotation:"Recipes → Fitness → Finance",dagvald:345,davikja:120,fleetTotal:51,fleetFull:47,fleetPart:4,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"2026-07-22 morning — inbox/queues empty; Castle $345/$120 0 pending; Recipes BGE Pizza (stone) ●."},
-  doing:["Book Deane 2 hr shop org","Kitchen sink under-slab snaking","Equipment quality audit","Sig handgun OMs + serials","Fortna leadership — Tier-1 bar","Ranch Chores profit-center metric"],
-  waiting:["Home domain tiles layout (B2)","Profit-center metric pick"]};
+const LIVE_STATE={refreshed:"2026-07-30",now:"Castle $525/$162 · 0 pending · Castle V2 + eero + Jairo Doing · fleet 52",nextDomain:"Finance",rotation:"Recipes → Fitness → Finance",dagvald:525,davikja:162,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"2026-07-30 afternoon — 2 FILE THIS X; Castle $525/$162 · 0 pending; Fitness Focus; Gmail E1."},
+  /* doing: string or {t, projectId?} — projectId opens Work project sheet */
+  doing:[
+    {t:"Castle Fund V2 — In-Hank (XP/check-in/lessons/parent dual)",projectId:"castle-v2"},
+    {t:"eero 7 gateway swap — Replace eero / modem Ethernet / TrueMesh",projectId:"eero-7"},
+    {t:"Jairo handyman list — chat For Jairo:",projectId:"jairo"},
+    {t:"Shop org — book Deane 2 hr",projectId:"shop-org"},
+    {t:"Kitchen sink → basement shower backup — snake + enzyme",projectId:"kitchen-sink"},
+    {t:"Equipment quality audit gate"},
+    {t:"Sig handgun OMs + serials"},
+    {t:"Fortna leadership — Tier-1 operator bar"},
+    {t:"Ranch Chores as Profit Center — pick metric",projectId:"profit-chores"},
+    {t:"Shop cat door — pick/order",projectId:"cat-door"},
+    {t:"The Bible domain — deepen Scene/Character when prioritized"}
+  ],
+  waiting:[
+    {t:"Home domain tiles layout (B2 — Darren confirm)"},
+    {t:"Davikja Diadem redeem or next goal (parent)",projectId:"castle"},
+    {t:"Profit-center metric pick (options A–F)",projectId:"profit-chores"},
+    {t:"Dyson label photos → _Cowork Inbox"}
+  ]};
 // Hierarchical projects — vault-backed fields (what/why/next/status). Loop refreshes this block each deploy.
 const PROJECTS={
   active:[
@@ -1222,16 +1269,17 @@ function renderSetupManuals(){
   el.innerHTML=MANUALS_NEEDED.map((x,i)=>`<div class="att"><span class="ic n"></span><div class="body"><b>${i+1}. ${x.eq}</b> — <a class="lk" href="${x.url}" target="_blank" rel="noopener">📄 Open manual PDF ↗</a><div class="sub">${x.note}${x.gated?' <span class="verify">needs a one-time “I agree” tap first</span>':''}</div></div></div>`).join("");
 }
 function showView(v){
-  const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),go=document.getElementById('graphView'),bi=document.getElementById('bibleView'),va=document.getElementById('vaultView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),ll=document.getElementById('looplogView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
-  const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup"||v==="graph"||v==="looplog"||v==="vault";
+  const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),fi=document.getElementById('findView'),go=document.getElementById('graphView'),bi=document.getElementById('bibleView'),va=document.getElementById('vaultView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),ll=document.getElementById('looplogView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
+  const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup"||v==="graph"||v==="looplog"||v==="vault"||v==="find";
   const setBnav=(id,on)=>{const el=document.getElementById(id);if(el)el.classList.toggle('on',on);};
   setBnav('bnavHome',v==="home"||v==="bible");setBnav('bnavWork',v==="work");setBnav('bnavChat',v==="chat");
   setBnav('bnavEquip',v==="equip");setBnav('bnavMore',moreTab);
-  ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");go.classList.toggle('hide',v!=="graph");if(bi)bi.classList.toggle('hide',v!=="bible");if(va)va.classList.toggle('hide',v!=="vault");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");ll.classList.toggle('hide',v!=="looplog");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
+  ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");if(fi)fi.classList.toggle('hide',v!=="find");go.classList.toggle('hide',v!=="graph");if(bi)bi.classList.toggle('hide',v!=="bible");if(va)va.classList.toggle('hide',v!=="vault");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");ll.classList.toggle('hide',v!=="looplog");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
   const eh=document.getElementById('equipHint');if(eh)eh.classList.toggle('hide',v!=="equip"||filter!=="Due soon");
   document.body.classList.toggle('no-bar',true);
   if(v==="home"){renderToday();renderAnnounce();}
   if(v==="work"){markAnnounceSeen();renderWork();}
+  if(v==="find"){renderFind();setTimeout(function(){var fq=document.getElementById('findQ');if(fq)fq.focus();},50);}
   if(v==="graph"){markGraphAnnounceSeen();initGraphView();}
   if(v==="bible")renderBible();
   if(v==="setup"){try{document.getElementById('hankKey').value=localStorage.getItem('hankKey')||"";}catch(err){}renderSetupManuals();}
@@ -1239,6 +1287,13 @@ function showView(v){
   if(v==="looplog")renderLoopLog();
   if(v==="chat"){if(!chatMsgs.length){chatMsgs.push({role:"assistant",content:"Hey Darren — Hank here. Ask me about the fleet, a project, or what's due. (I capture anything you want filed for the next loop pass.)"});renderChat();}setTimeout(()=>{var ci=document.getElementById('chatInput');if(ci)ci.focus();},50);}
   window.scrollTo(0,0);
+}
+function doingText(d){return typeof d==="string"?d:(d&&d.t)||"";}
+function doingProjectId(d){return(typeof d==="object"&&d&&d.projectId)?d.projectId:"";}
+function openDoingItem(d){
+  const pid=doingProjectId(d),t=doingText(d);
+  if(pid&&findProject(pid)){showView('work');setWorkSeg('projects');setTimeout(function(){openProject(pid);},30);return;}
+  workDirective("do",t);
 }
 function pickVaultDoor(id){
   ["pressure","stuff","work","talk"].forEach(function(k){
@@ -1418,6 +1473,7 @@ function bindGraphCanvas(){
   wrap.addEventListener("touchend",e=>{if(!graphDrag)return;const p=pt(e.changedTouches?{touches:e.changedTouches}:e);if(Math.abs(p.x-graphDrag.x)<10&&Math.abs(p.y-graphDrag.y)<10){const n=graphHit(p.x,p.y);if(n)showGraphNode(n);}graphDrag=null;});
   window.addEventListener("resize",()=>{if(!document.getElementById("graphView").classList.contains("hide")){layoutGraphPositions();drawGraph();}});
 }
+let workProjectQ="";
 function setWorkSeg(s){
   workSeg=s;
   const a=document.getElementById('segProjects'),b=document.getElementById('segDoing'),c=document.getElementById('segProposals');
@@ -1426,11 +1482,47 @@ function setWorkSeg(s){
   if(c)c.classList.toggle('on',s==="proposals");
   renderWork();
 }
+function projectMatchesQ(p,q){
+  if(!q)return true;
+  const hay=[p.n,p.what,p.why,p.next,p.domain,p.status,p.owner,(p.steps||[]).join(" ")].join(" ").toLowerCase();
+  return hay.indexOf(q)!==-1;
+}
+function bindProjectCards(el){
+  el.querySelectorAll(".pcard[data-pid]").forEach(function(cardEl){
+    cardEl.addEventListener("click",function(ev){ev.preventDefault();ev.stopPropagation();openProject(cardEl.getAttribute("data-pid"));});
+    cardEl.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();openProject(cardEl.getAttribute("data-pid"));}});
+  });
+}
+function renderDoingStrip(){
+  const list=(LIVE_STATE.doing||[]).slice(0,6);
+  if(!list.length)return"";
+  const chips=list.map(function(d,i){
+    const t=doingText(d),pid=doingProjectId(d);
+    const cls=pid?"dchip has-p":"dchip";
+    return `<button type="button" class="${cls}" data-di="${i}">${escapeHtml(t.length>42?t.slice(0,40)+"…":t)}</button>`;
+  }).join("");
+  return `<div class="doing-strip"><div class="ds-h">Doing now · tap opens plan or chat</div><div class="ds-row">${chips}</div></div>`;
+}
 function renderWork(){
   const el=document.getElementById('workBody');if(!el)return;
   if(workSeg==="doing"){
-    const mk=(st,list)=>list.map(t=>`<div class="vchip ${st}" onclick="workDirective('${st}',${JSON.stringify(t)})"><b>${st}</b>${escapeHtml(t)}</div>`).join("");
-    el.innerHTML=`<h2>Doing</h2><div class="vrow">${mk("do",LIVE_STATE.doing||[])}</div><h2>Waiting</h2><div class="vrow">${mk("wait",LIVE_STATE.waiting||[])}</div><p class="muted" style="margin-top:12px">Tap a verb → Chat pre-fills a directive. Loop files status on the next pass.</p>`;
+    const mk=(st,list)=>list.map(function(d,i){
+      const t=doingText(d),pid=doingProjectId(d);
+      const act=pid?"Open project plan":"Chat directive";
+      return `<button type="button" class="vchip ${st}" data-doing-st="${st}" data-doing-i="${i}"><b>${st==="do"?"Doing":"Waiting"}</b><span class="vt">${escapeHtml(t)}</span><span class="va">${act}</span></button>`;
+    }).join("");
+    el.innerHTML=`<h2>Doing</h2><div class="vrow">${mk("do",LIVE_STATE.doing||[])}</div><h2>Waiting</h2><div class="vrow">${mk("wait",LIVE_STATE.waiting||[])}</div><p class="muted" style="margin-top:12px">Linked items open the project sheet. Others pre-fill Chat so the loop can update status.</p>`;
+    el.querySelectorAll("[data-doing-i]").forEach(function(btn){
+      btn.addEventListener("click",function(){
+        const st=btn.getAttribute("data-doing-st");
+        const i=+btn.getAttribute("data-doing-i");
+        const list=st==="wait"?(LIVE_STATE.waiting||[]):(LIVE_STATE.doing||[]);
+        const d=list[i];
+        if(!d)return;
+        if(doingProjectId(d))openDoingItem(d);
+        else workDirective(st==="wait"?"wait":"do",doingText(d));
+      });
+    });
     return;
   }
   if(workSeg==="proposals"){
@@ -1448,18 +1540,76 @@ function renderWork(){
       <p class="muted" style="margin-top:12px">New proposals land after a chat directive or loop pass. Say “show proposals” anytime.</p>`;
     return;
   }
+  const q=(workProjectQ||"").trim().toLowerCase();
+  const filt=list=>(list||[]).filter(p=>projectMatchesQ(p,q));
+  const active=filt(PROJECTS.active),ideas=filt(PROJECTS.ideas),hold=filt(PROJECTS.hold);
   const card=(p,cls)=>`<div class="pcard ${cls}" data-pid="${escapeHtml(p.id)}" role="button" tabindex="0"><div class="pt">${escapeHtml(p.n)}</div><div class="pn">${escapeHtml(p.next)}</div><div class="pm">${escapeHtml(p.domain)} · ${escapeHtml(p.status||"")} · tap for plan</div></div>`;
-  el.innerHTML=`<h2>▶ Active</h2>${(PROJECTS.active||[]).map(p=>card(p,"")).join("")}
-    <h2>💡 Ideas</h2>${(PROJECTS.ideas||[]).map(p=>card(p,"idea")).join("")}
-    <h2>⏸ On hold</h2>${(PROJECTS.hold||[]).map(p=>card(p,"hold")).join("")}
+  const strip=renderDoingStrip();
+  el.innerHTML=`${strip}
+    <div class="work-search"><input id="workQ" type="search" placeholder="Filter projects…" autocomplete="off" aria-label="Filter projects" value="${escapeHtml(workProjectQ||"")}"></div>
+    <h2>▶ Active</h2>${active.length?active.map(p=>card(p,"")).join(""):'<p class="muted">No matches.</p>'}
+    <h2>💡 Ideas</h2>${ideas.length?ideas.map(p=>card(p,"idea")).join(""):'<p class="muted">—</p>'}
+    <h2>⏸ On hold</h2>${hold.length?hold.map(p=>card(p,"hold")).join(""):'<p class="muted">—</p>'}
     <h2>Explore</h2>
+    <div class="pcard" onclick="showView('find')"><div class="pt">Find equipment + projects</div><div class="pn">Lite search — not full vault</div><div class="pm">More · Find</div></div>
     <div class="pcard" onclick="showView('bible')"><div class="pt">Bible Guidance</div><div class="pn">I need… → Jesus’ words → next step</div><div class="pm">Primary · not the graph</div></div>
     <div class="pcard" onclick="setWorkSeg('proposals')"><div class="pt">Open proposals</div><div class="pn">Review Grok ideas without Obsidian</div><div class="pm">Approve · hold · revise</div></div>
     <div class="pcard" onclick="openGraph('finance','work')"><div class="pt">Finance connections</div><div class="pn">Label map only</div><div class="pm">Secondary</div></div>
-    <p class="muted" style="margin-top:10px">Tap a project — plan opens here (what / why / next / checklist). Scripture = Bible Guidance.</p>`;
-  el.querySelectorAll(".pcard[data-pid]").forEach(function(cardEl){
-    cardEl.addEventListener("click",function(ev){ev.preventDefault();ev.stopPropagation();openProject(cardEl.getAttribute("data-pid"));});
-    cardEl.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();openProject(cardEl.getAttribute("data-pid"));}});
+    <p class="muted" style="margin-top:10px">Tap a project — plan opens here (what / why / next / checklist). Deep link: #work/project/castle-v2</p>`;
+  const wq=document.getElementById('workQ');
+  if(wq){
+    wq.addEventListener("input",function(){workProjectQ=wq.value;renderWork();const n=document.getElementById('workQ');if(n){n.focus();try{n.setSelectionRange(n.value.length,n.value.length);}catch(e){}}});
+  }
+  el.querySelectorAll(".doing-strip [data-di]").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      const d=(LIVE_STATE.doing||[])[+btn.getAttribute("data-di")];
+      if(d)openDoingItem(d);
+    });
+  });
+  bindProjectCards(el);
+}
+function renderFind(){
+  const el=document.getElementById('findBody');if(!el)return;
+  const q=((document.getElementById('findQ')||{}).value||"").trim().toLowerCase();
+  if(!q){
+    el.innerHTML='<p class="muted">Type a machine or project name (e.g. 4044M, Castle V2, eero).</p>';
+    return;
+  }
+  const equip=[];
+  (typeof DATA!=="undefined"?DATA:[]).forEach(function(g){
+    (g.items||[]).forEach(function(it){
+      if((it.n||"").toLowerCase().indexOf(q)!==-1)equip.push({n:it.n,g:g.g||g.name||"",it:it});
+    });
+  });
+  const projects=[];
+  ["active","ideas","hold"].forEach(function(k){
+    (PROJECTS[k]||[]).forEach(function(p){
+      if(projectMatchesQ(p,q))projects.push(p);
+    });
+  });
+  let h="";
+  h+=`<div class="find-sec"><h2>Equipment (${equip.length})</h2>`;
+  if(!equip.length)h+='<p class="muted">No equipment matches.</p>';
+  else h+=equip.slice(0,20).map(function(x,i){
+    return `<div class="find-hit" data-fe="${i}"><div class="ft">${escapeHtml(x.n)}</div><div class="fs">${escapeHtml(x.g)}</div></div>`;
+  }).join("");
+  h+=`</div><div class="find-sec"><h2>Projects (${projects.length})</h2>`;
+  if(!projects.length)h+='<p class="muted">No project matches.</p>';
+  else h+=projects.slice(0,20).map(function(p){
+    return `<div class="find-hit" data-fp="${escapeHtml(p.id)}"><div class="ft">${escapeHtml(p.n)}</div><div class="fs">${escapeHtml(p.domain||"")} · ${escapeHtml(p.next||"")}</div></div>`;
+  }).join("");
+  h+="</div>";
+  el.innerHTML=h;
+  el.querySelectorAll("[data-fe]").forEach(function(hit){
+    hit.addEventListener("click",function(){
+      const x=equip[+hit.getAttribute("data-fe")];
+      if(x&&x.it)openDetail(x.it,x.g);
+    });
+  });
+  el.querySelectorAll("[data-fp]").forEach(function(hit){
+    hit.addEventListener("click",function(){
+      openProject(hit.getAttribute("data-fp"));
+    });
   });
 }
 function findProject(id){
@@ -1542,7 +1692,7 @@ function workDirective(st,text){
 function renderToday(){
   const a=attention(),mn=(typeof MANUALS_NEEDED!=="undefined")?MANUALS_NEEDED.length:0,wn=NEEDS.length,due=dueSoonCount();
   const el=document.getElementById('todayCard');if(!el)return;
-  const doing=(LIVE_STATE.doing||[]).slice(0,2).map(t=>escapeHtml(t)).join(" · ")||"—";
+  const doing=(LIVE_STATE.doing||[]).slice(0,2).map(function(d){return escapeHtml(doingText(d));}).join(" · ")||"—";
   let lead="You're clear — pick Work or Equip.";
   if(wn)lead=`${wn} thing${wn>1?"s":""} need you first`;
   else if(mn)lead=`Save ${mn} manual${mn>1?"s":""} when you have a minute`;
@@ -1557,7 +1707,7 @@ function renderToday(){
     </div>
     <p class="line"><b>Now:</b> ${escapeHtml(LIVE_STATE.now||LIVE_STATE.nextDomain)}</p>
     <p class="line"><b>Doing:</b> ${doing}</p>
-    <div class="acts"><button class="p" onclick="wn||mn?showView('dash'):showView('work')">${wn||mn?"Open Status":"Open Work"}</button><button class="s" onclick="showView('chat')">Ask Hank</button></div>`;
+    <div class="acts"><button class="p" onclick="wn||mn?showView('dash'):showView('work')">${wn||mn?"Open Status":"Open Work"}</button><button class="s" onclick="showView('chat')">Ask Hank</button><button class="s" onclick="showView('find')">Find</button></div>`;
   const nb=document.getElementById('bnavNeedsBadge');if(nb){const n=wn+mn;if(n){nb.textContent=n>9?"9+":n;nb.classList.remove('hide');}else nb.classList.add('hide');}
 }
 function initChatStarters(){
@@ -1594,7 +1744,7 @@ function normalizeChatOutbound(text){
 function goDueSoon(){filter="Due soon";syncChips();showView('equip');render();const eh=document.getElementById('equipHint');if(eh)eh.classList.remove('hide');}
 function syncChips(){[...chips.children].forEach(c=>c.classList.toggle('active',c.textContent===filter));}
 let chatMsgs=[];
-function escapeHtml(s){return (s||"").replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+function escapeHtml(s){return (s||"").replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
 function renderChat(){
   const l=document.getElementById('chatLog');
   l.innerHTML=chatMsgs.map(m=>`<div class="cmsg ${m.role}"><div class="bub">${escapeHtml(m.content)}</div></div>`).join("");
@@ -1890,12 +2040,46 @@ renderDash();
 render();
 checkAnnounceOnLoad();
 (function(){
+  /* Deep links: #work/project/<id> | #work/proposal/<id> | ?open=project:id | sessionStorage hankOpen */
+  function parseDeepLink(){
+    try{
+      var sp=new URLSearchParams(location.search||"");
+      var o=sp.get("open")||"";
+      if(o.indexOf("project:")===0)return{kind:"project",id:o.slice(8)};
+      if(o.indexOf("proposal:")===0)return{kind:"proposal",id:o.slice(9)};
+      if(o==="find"||o==="work"||o==="equip")return{kind:"view",id:o};
+    }catch(e){}
+    var h=(location.hash||"").replace(/^#/,"");
+    if(!h)return null;
+    var m=h.match(/^work\/project\/([^/?#]+)/i);
+    if(m)return{kind:"project",id:decodeURIComponent(m[1])};
+    m=h.match(/^work\/proposal\/([^/?#]+)/i);
+    if(m)return{kind:"proposal",id:decodeURIComponent(m[1])};
+    if(h==="work"||h==="find"||h==="equip"||h==="chat"||h==="bible")return{kind:"view",id:h};
+    return null;
+  }
+  var deep=parseDeepLink();
   var open=null;
   try{open=sessionStorage.getItem('hankOpen');if(open)sessionStorage.removeItem('hankOpen');}catch(e){}
-  if(open==='bible'||open==='equip'||open==='work'||open==='chat'||open==='graph'||open==='vault'){
+  if(deep&&deep.kind==="project"){
+    showView('work');setWorkSeg('projects');
+    setTimeout(function(){openProject(deep.id);},80);
+  }else if(deep&&deep.kind==="proposal"){
+    showView('work');setWorkSeg('proposals');
+    setTimeout(function(){openProposal(deep.id);},80);
+  }else if(deep&&deep.kind==="view"){
+    showView(deep.id);
+  }else if(open==='bible'||open==='equip'||open==='work'||open==='chat'||open==='graph'||open==='vault'||open==='find'){
     if(open==='graph')openGraph('finance','home');
     else showView(open);
   }else showView('home');
+  window.addEventListener("hashchange",function(){
+    var d=parseDeepLink();
+    if(!d)return;
+    if(d.kind==="project"){showView('work');setWorkSeg('projects');setTimeout(function(){openProject(d.id);},40);}
+    else if(d.kind==="proposal"){showView('work');setWorkSeg('proposals');setTimeout(function(){openProposal(d.id);},40);}
+    else if(d.kind==="view")showView(d.id);
+  });
 })();
 </script>
 </body>

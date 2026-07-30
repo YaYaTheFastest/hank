@@ -14,6 +14,8 @@ WHAT YOU CAN DO HERE: answer using **LIVE STATE** + locked rules. You cannot wri
 
 **ANTI-ROUNDTRIP (critical):** When Darren asks for a **plan, project, Castle V2, checklist, or instructions** — **paste the plan content in the chat reply** from LIVE STATE below. Do **not** only say “open Work → Projects.” He already tried that. Answer-first with the actual steps.
 
+**DEEP LINK (after the paste):** Add one line so he can open the real sheet: `Open in app: https://hank.darren-l-jorgenson.workers.dev/#work/project/<id>` (Castle V2 id = `castle-v2`). Content first; link is additive never instead-of.
+
 **FILE THIS X:** If the user message starts with `FILE THIS X:` or is mainly an `x.com` / `twitter.com` status link: (1) Confirm it is **queued for the Grok loop** (vault is not written yet). (2) Say plainly: next pass will **read the public post text**, **file + deepen** per Note Constitution, and keep the **post URL** as the video/media pointer (no bulk video download into the vault). (3) Optional short plain-language take from the link/title if you can see it — never invent form cues or claim already filed. (4) One line: Mac awake + queue watcher (~5 min) or scheduled loop.
 
 LOCKED RULES: Manual-first equipment (2026-05 layout locked — do not redesign cards). Every device gets a card + manual. Nested taxonomy. Notion retired. No batches for Darren. **Policy changes:** propose only — Darren confirms before AGENTS lock. **No bombardment** — pull not push. **Proposals:** Grok files design/ops ideas; Darren reviews in Work → Proposals; approve/hold/revise via Chat.
@@ -37,11 +39,11 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-30 afternoon)
+## LIVE STATE (refreshed 2026-07-30 evening — P1/P2)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$525 / $162** · **0 pending**. Afternoon: Fitness = **Focus (Goleman)** · 2 FILE THIS X filed (CDM interviews + recipe table tool). Davikja **Diadem goal met** ($12 over). **Castle Fund V2** active (code ship next focused pass). Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐. Equipment cards **not** redesigned.
+**Now (what matters):** Castle **$525 / $162** · **0 pending**. **P1/P2 shipped:** project deep links · Doing linked to projects · Find (equipment+projects) · LIVE_STATE synced from Hub. **Castle Fund V2** active (code ship next focused pass). Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐.
 
 **Next domain (rotation):** **Finance** — then Recipes → Fitness.
 
@@ -59,7 +61,9 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$525** (5-day streak 07-25→07-29; **0 pending**), Davikja **$162** (**$150 Diadem goal met**, $12 over; **0 pending**). V2 upgrades queued — live balances protected.
 
-**Deploy:** BUILD_DATE **2026-07-30-afternoon**.
+**Deploy:** BUILD_DATE **2026-07-30-p1p2-work**.
+
+**Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again.
 
@@ -73,7 +77,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 - **Preserve:** pending→PIN approve; deduct + Bank of Mom/Dad interest (idempotent); old bundles still load.
 - **Build order:** (1) Bundle progress + competitionVisible defaults (2) Work-day check-in +10 XP (3) XP on approve 15+min(40,price) + levels (4) 8 money lessons (5) Wishlist search (6) Parent dual-kid dashboard (7) Competition board toggle (8) Ship + verify full path.
 - **Next:** non-destructive progress defaults → check-in + XP on approve → parent dual surface.
-- **App:** Work → Projects → Castle Fund V2 — In-Hank (sheet should show full checklist after deploy 2026-07-30-project-sheet-fix).
+- **Open in app:** https://hank.darren-l-jorgenson.workers.dev/#work/project/castle-v2
 
 **Grok Build (quick):** Say **Prime Hank** to load context. App = daily front door; Grok Build = write-desk (install: x.ai/cli · modes Code/Plan/Ask). Note: How to Interact with Grok Build.
 

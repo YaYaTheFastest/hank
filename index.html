@@ -542,7 +542,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-30-projects-canon";
+const BUILD_DATE="2026-07-30-proposal-open-fix";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-07-30T17:20:00Z",
@@ -1493,6 +1493,12 @@ function bindProjectCards(el){
     cardEl.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();openProject(cardEl.getAttribute("data-pid"));}});
   });
 }
+function bindProposalCards(el){
+  el.querySelectorAll(".pcard[data-propid]").forEach(function(cardEl){
+    cardEl.addEventListener("click",function(ev){ev.preventDefault();ev.stopPropagation();openProposal(cardEl.getAttribute("data-propid"));});
+    cardEl.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();openProposal(cardEl.getAttribute("data-propid"));}});
+  });
+}
 function renderDoingStrip(){
   const list=(LIVE_STATE.doing||[]).slice(0,6);
   if(!list.length)return"";
@@ -1531,13 +1537,15 @@ function renderWork(){
     const done=(PROPOSALS||[]).filter(p=>p.status==="shipped");
     const card=p=>{
       const st=p.status||"open";
-      return `<div class="pcard prop ${st}" onclick="openProposal(${JSON.stringify(p.id)})"><div class="pt">${escapeHtml(p.title)}</div><div class="pn">${escapeHtml(p.one||"")}</div><div class="pst">${escapeHtml(st)}</div></div>`;
+      /* data-propid + bindProposalCards — never onclick+JSON.stringify (breaks HTML attrs) */
+      return `<div class="pcard prop ${st}" data-propid="${escapeHtml(p.id)}" role="button" tabindex="0"><div class="pt">${escapeHtml(p.title)}</div><div class="pn">${escapeHtml(p.one||"")}</div><div class="pst">${escapeHtml(st)}</div></div>`;
     };
     el.innerHTML=`<p class="muted" style="margin:0 0 10px">Grok files design/ops proposals here. You review on this phone — approve, hold, or revise in Chat. No Obsidian.</p>
       <h2>Needs your call</h2>${open.length?open.map(card).join(""):'<p class="muted">None open right now.</p>'}
       <h2>Approved / shipping</h2>${ship.length?ship.map(card).join(""):'<p class="muted">—</p>'}
       <h2>Shipped</h2>${done.length?done.map(card).join(""):'<p class="muted">History appears after Grok marks shipped.</p>'}
       <p class="muted" style="margin-top:12px">New proposals land after a chat directive or loop pass. Say “show proposals” anytime.</p>`;
+    bindProposalCards(el);
     return;
   }
   const q=(workProjectQ||"").trim().toLowerCase();

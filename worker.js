@@ -15,14 +15,67 @@ async function sha256hex(s) {
 
 // Castle Fund: one KV snapshot (castle:bundle) — avoids prefix list() on every read (free tier = 1000 lists/day).
 const CASTLE_BUNDLE_KEY = "castle:bundle";
+const CASTLE_KIDS = ["Dagvald", "Davikja"];
+
+/** V2 progress defaults — never wipe; fill missing fields only. */
+function defaultProgress() {
+  return { xp: 0, level: 1, lessonsUnlocked: [], workDays: [], lastCheckIn: null };
+}
+function normalizeProgress(p) {
+  const d = defaultProgress();
+  if (!p || typeof p !== "object") return d;
+  const xp = Number(p.xp);
+  const level = Number(p.level);
+  return {
+    xp: Number.isFinite(xp) && xp >= 0 ? xp : 0,
+    level: Number.isFinite(level) && level >= 1 ? Math.floor(level) : 1,
+    lessonsUnlocked: Array.isArray(p.lessonsUnlocked) ? p.lessonsUnlocked.filter((x) => typeof x === "string") : [],
+    workDays: Array.isArray(p.workDays) ? p.workDays : [],
+    lastCheckIn: typeof p.lastCheckIn === "string" ? p.lastCheckIn : null,
+  };
+}
+function normalizeCastleSettings(s) {
+  const o = s && typeof s === "object" ? s : {};
+  return {
+    competitionVisible: typeof o.competitionVisible === "boolean" ? o.competitionVisible : true,
+  };
+}
+/** Non-destructive: ensure progress + settings exist; do not reset balances/entries. */
+function ensureCastleV2Defaults(bundle) {
+  if (!bundle || typeof bundle !== "object") return emptyCastleBundle();
+  if (!bundle.entries) bundle.entries = [];
+  if (!bundle.catalogs || typeof bundle.catalogs !== "object") bundle.catalogs = {};
+  if (!bundle.configs || typeof bundle.configs !== "object") bundle.configs = {};
+  if (!bundle.wishlists || typeof bundle.wishlists !== "object") bundle.wishlists = {};
+  if (!bundle.progress || typeof bundle.progress !== "object") bundle.progress = {};
+  bundle.settings = normalizeCastleSettings(bundle.settings);
+  for (const kid of CASTLE_KIDS) {
+    bundle.progress[kid] = normalizeProgress(bundle.progress[kid]);
+  }
+  // Keep any extra kid keys normalized too
+  for (const kid of Object.keys(bundle.progress)) {
+    if (!CASTLE_KIDS.includes(kid)) bundle.progress[kid] = normalizeProgress(bundle.progress[kid]);
+  }
+  return bundle;
+}
 
 function emptyCastleBundle() {
-  return { v: 0, entries: [], catalogs: {}, configs: {}, wishlists: {} };
+  return ensureCastleV2Defaults({ v: 0, entries: [], catalogs: {}, configs: {}, wishlists: {}, progress: {}, settings: {} });
 }
 
 function castleBundleResponse(bundle) {
-  const entries = [...bundle.entries].sort((a, b) => (b.ts || 0) - (a.ts || 0));
-  return { ok: true, v: bundle.v || 0, entries, catalogs: bundle.catalogs || {}, configs: bundle.configs || {}, wishlists: bundle.wishlists || {} };
+  const b = ensureCastleV2Defaults(bundle);
+  const entries = [...b.entries].sort((a, b2) => (b2.ts || 0) - (a.ts || 0));
+  return {
+    ok: true,
+    v: b.v || 0,
+    entries,
+    catalogs: b.catalogs || {},
+    configs: b.configs || {},
+    wishlists: b.wishlists || {},
+    progress: b.progress || {},
+    settings: b.settings || { competitionVisible: true },
+  };
 }
 
 async function migrateCastleBundle(env) {
@@ -54,9 +107,15 @@ async function migrateCastleBundle(env) {
 
 async function loadCastleBundle(env) {
   const raw = await env.STATE.get(CASTLE_BUNDLE_KEY);
-  if (raw) return JSON.parse(raw);
+  if (raw) {
+    try {
+      return ensureCastleV2Defaults(JSON.parse(raw));
+    } catch (e) {
+      return null;
+    }
+  }
   try {
-    return await migrateCastleBundle(env);
+    return ensureCastleV2Defaults(await migrateCastleBundle(env));
   } catch (e) {
     return null;
   }
@@ -65,6 +124,7 @@ async function loadCastleBundle(env) {
 const castleMissing = () => json({ ok: false, error: "castle-bundle-missing", hint: "POST /api/castle/seed-bundle (loop key) or wait for KV list quota reset" }, 503);
 
 async function saveCastleBundle(env, bundle) {
+  ensureCastleV2Defaults(bundle);
   bundle.v = (bundle.v || 0) + 1;
   await env.STATE.put(CASTLE_BUNDLE_KEY, JSON.stringify(bundle));
   return bundle;
@@ -241,13 +301,15 @@ async function handleApi(request, env, url, siteAuthed) {
     if (!authed) return json({ ok: false, error: "auth" }, 401);
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const b = await request.json().catch(() => ({}));
-    const bundle = {
+    const bundle = ensureCastleV2Defaults({
       v: Number(b.v) || 1,
       entries: Array.isArray(b.entries) ? b.entries : [],
       catalogs: (b.catalogs && typeof b.catalogs === "object") ? b.catalogs : {},
       configs: (b.configs && typeof b.configs === "object") ? b.configs : {},
       wishlists: (b.wishlists && typeof b.wishlists === "object") ? b.wishlists : {},
-    };
+      progress: (b.progress && typeof b.progress === "object") ? b.progress : {},
+      settings: (b.settings && typeof b.settings === "object") ? b.settings : {},
+    });
     await env.STATE.put(CASTLE_BUNDLE_KEY, JSON.stringify(bundle));
     return json({ ok: true, seeded: true, v: bundle.v, entries: bundle.entries.length });
   }

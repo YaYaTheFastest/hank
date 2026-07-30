@@ -542,7 +542,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-30-project-actions-fix";
+const BUILD_DATE="2026-07-30-castle-v2-step1";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-07-30T17:20:00Z",
@@ -646,11 +646,11 @@ const PROJECTS={
     {id:"plainfield",n:"Plainfield Rd Land Purchase",what:"Close clarity on Plainfield Rd land (trust vs probate path).",why:"Property decision blocks clean next legal/money moves.",next:"Resolve trust-vs-probate; engage NC attorney",status:"Active",owner:"Darren",domain:"Property"},
     {id:"job-search",n:"2026 Job Search",what:"Active search — network strategy / merch ops targets.",why:"Career track alongside ranch OS; weekly Monday refresh.",next:"Next weekly refresh Mon 08-03",status:"Active",owner:"Darren",domain:"Career"},
     {id:"castle",n:"Castle Fund",what:"Kids earn-toward-reward balances (Dagvald / Davikja) inside HANK.",why:"Family module live; loop syncs ledgers from app.",next:"Parent PIN for 5 pending ($40); V2 in-Hank ship next",status:"Active",owner:"Hank + parents",domain:"Family"},
-    {id:"castle-v2",n:"Castle Fund V2 — In-Hank",what:"XP, work-day check-in, money lessons, wishlist search, dual-kid parent dashboard, competition toggle — in existing Hank stack only.",why:"Chat directive 2026-07-29: port V2 behavior without React rewrite or wiping live KV.",next:"Non-destructive progress defaults → check-in + XP on approve → parent dual surface",status:"Active",owner:"Grok",domain:"Family",
+    {id:"castle-v2",n:"Castle Fund V2 — In-Hank",what:"XP, work-day check-in, money lessons, wishlist search, dual-kid parent dashboard, competition toggle — in existing Hank stack only.",why:"Chat directive 2026-07-29: port V2 behavior without React rewrite or wiping live KV.",next:"§2 Work-day check-in (+10 XP) → §3 XP on approve → parent dual surface",status:"Active",owner:"Grok",domain:"Family",
       one:"Port V2 into live castle.js / worker / kid pages. Same core loop (log → pending → PIN → balance). No new React app. No KV wipe.",
       constraints:["Existing Hank stack only (Worker + static HTML/JS)","Do not wipe live KV balances or chore history","Do not redesign Equipment, Bible, or Command Center","Non-destructive defaults for any new fields"],
       preserve:["Kid logs chore → pending → parent 4-digit PIN → balance / Save-Spend-Give","Deduct + Bank of Mom and Dad interest (idempotent per kid+month)","Old bundles must still load (default missing fields)"],
-      steps:["1. Bundle: progress per kid (xp, level, lessons, workDays) + settings.competitionVisible (default true)","2. Work-day check-in on kid page (+10 XP; once per chore-day)","3. XP on approve: 15 + min(40, round(price)); level curve 100+(level-1)×50","4. Money lessons UI (8 lessons; unlock by level)","5. Wishlist search + star-as-goal","6. Parent dual-kid dashboard (approvals, PIN, competition toggle, purchase with edit cost)","7. Competition board (hide when toggle off)","8. Ship + verify: log → approve → balance/XP; check-in; hide competition; interest still safe"]},
+      steps:["1. ✅ Bundle: progress + settings.competitionVisible defaults (shipped 2026-07-30)","2. Work-day check-in on kid page (+10 XP; once per chore-day)","3. XP on approve: 15 + min(40, round(price)); level curve 100+(level-1)×50","4. Money lessons UI (8 lessons; unlock by level)","5. Wishlist search + star-as-goal","6. Parent dual-kid dashboard (approvals, PIN, competition toggle, purchase with edit cost)","7. Competition board (hide when toggle off)","8. Ship + verify: log → approve → balance/XP; check-in; hide competition; interest still safe"]},
     {id:"tax-2026",n:"Tax Strategy 2026",what:"Tax planning reference + action outline (finance stays reference-only until aggregator pick).",why:"Avoid year-end scramble; ranch/entity complexity.",next:"Outline actions from Finance hub",status:"Active",owner:"Darren",domain:"Finance"},
     {id:"profit-chores",n:"Ranch Chores as Profit Center",what:"Design how ranch chores map to value (metric TBD).",why:"Align kids work + ranch economics without fake rates.",next:"Pick metric (options A–F filed)",status:"Active",owner:"Darren",domain:"Ranch"},
     {id:"cmd-phase2",n:"Command Center Phase 2",what:"Work tab = hierarchical projects + Doing + per-project chat; proposals surface.",why:"You enter by job — not Obsidian. Approved 2026-07-21.",next:"This deploy live; refine from chat",status:"Active",owner:"Grok",domain:"System"}

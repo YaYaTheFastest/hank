@@ -27,8 +27,26 @@
   var KID = window.CASTLE_KID;
   if (!BASE[KID]) { document.body.innerHTML = "<p style='padding:24px;font-family:system-ui'>Unknown kid.</p>"; return; }
 
-  var entries = [], apiCat = {}, apiCfg = {}, apiWish = {}, lastPin = "", editCat = null, editWish = null;
+  var entries = [], apiCat = {}, apiCfg = {}, apiWish = {}, apiProgress = {}, apiSettings = {}, lastPin = "", editCat = null, editWish = null;
   function cfg() { var o = {}; var b = BASE[KID]; for (var k in b) o[k] = b[k]; var a = apiCfg[KID] || {}; for (var k2 in a) o[k2] = a[k2]; return o; }
+  // V2 progress/settings — client defaults if Worker omits fields (old bundles still load)
+  function defaultProgress() { return { xp: 0, level: 1, lessonsUnlocked: [], workDays: [], lastCheckIn: null }; }
+  function progressOf(kid) {
+    var p = apiProgress[kid || KID] || {}, d = defaultProgress();
+    var xp = Number(p.xp), level = Number(p.level);
+    return {
+      xp: isFinite(xp) && xp >= 0 ? xp : 0,
+      level: isFinite(level) && level >= 1 ? Math.floor(level) : 1,
+      lessonsUnlocked: Array.isArray(p.lessonsUnlocked) ? p.lessonsUnlocked : [],
+      workDays: Array.isArray(p.workDays) ? p.workDays : [],
+      lastCheckIn: typeof p.lastCheckIn === "string" ? p.lastCheckIn : null
+    };
+  }
+  function progress() { return progressOf(KID); }
+  function castleSettings() {
+    return { competitionVisible: apiSettings.competitionVisible !== false };
+  }
+  function xpToNext(level) { return 100 + (Math.max(1, level) - 1) * 50; }
   function catalog() { return (apiCat[KID] && apiCat[KID].length) ? apiCat[KID] : DEFAULT_CAT[KID]; }
   function money(n) { var s = (n < 0 ? "-" : "") + "$" + Math.abs(Math.round(n * 100) / 100).toFixed(Math.abs(n) % 1 ? 2 : 0); return s.replace(/\.00$/, ""); }
   function mine() { return entries.filter(function (e) { return e.kid === KID; }); }
@@ -327,6 +345,14 @@
       '<div class="bk" style="background:#e7f5ee"><div class="be">🐷</div><div class="bv" style="color:#0F6E56">' + money(bk.save) + '</div><div class="bl" style="color:#0F6E56">Save</div></div>' +
       '<div class="bk" style="background:#faeeda"><div class="be">🛒</div><div class="bv" style="color:#854F0B">' + money(bk.spend) + '</div><div class="bl" style="color:#854F0B">Spend</div></div>' +
       '<div class="bk" style="background:#fbeaf0"><div class="be">🎁</div><div class="bv" style="color:#993556">' + money(bk.give) + '</div><div class="bl" style="color:#993556">Give</div></div></div>';
+
+    // V2 progress (defaults safe — XP stays 0 until check-in/approve ship)
+    var pr = progress(), need = xpToNext(pr.level);
+    html += '<div style="display:flex;align-items:center;gap:8px;margin:6px 2px 2px;flex-wrap:wrap">' +
+      '<span class="chip">⭐ Level ' + pr.level + '</span>' +
+      '<span class="chip">' + pr.xp + ' / ' + need + ' XP</span>' +
+      (castleSettings().competitionVisible ? '' : '<span class="cap" style="margin:0">Competition board hidden</span>') +
+      '</div>';
 
     // Streak + badges
     var st = streak();
@@ -661,10 +687,22 @@
   // ---- Load + sync (version check = 1 KV read, no list ops; approve merges instantly) ----
   var lastSig = "", loadedOnce = false, castleV = 0;
   function modalOpen() { var pm = document.getElementById("pm"); return !!(pm && pm.classList.contains("on")); }
-  function sig() { return entries.map(function (e) { return e.key + e.status + e.amount; }).join("|") + "#" + JSON.stringify(apiCat[KID] || "") + "#" + JSON.stringify(apiCfg[KID] || "") + "#" + JSON.stringify(apiWish[KID] || ""); }
+  function sig() {
+    return entries.map(function (e) { return e.key + e.status + e.amount; }).join("|")
+      + "#" + JSON.stringify(apiCat[KID] || "")
+      + "#" + JSON.stringify(apiCfg[KID] || "")
+      + "#" + JSON.stringify(apiWish[KID] || "")
+      + "#" + JSON.stringify(apiProgress[KID] || "")
+      + "#" + JSON.stringify(apiSettings || "");
+  }
   function applyCastlePayload(j, force) {
     if (j && j.unchanged) return;
-    entries = (j && j.entries) || []; apiCat = (j && j.catalogs) || {}; apiCfg = (j && j.configs) || {}; apiWish = (j && j.wishlists) || {};
+    entries = (j && j.entries) || [];
+    apiCat = (j && j.catalogs) || {};
+    apiCfg = (j && j.configs) || {};
+    apiWish = (j && j.wishlists) || {};
+    apiProgress = (j && j.progress) || {};
+    apiSettings = (j && j.settings) || {};
     if (typeof j.v === "number") castleV = j.v;
     loadedOnce = true;
     var s = sig(); if (!force && s === lastSig) return; lastSig = s; render();

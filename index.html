@@ -542,7 +542,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-30-p1p2-work";
+const BUILD_DATE="2026-07-30-project-actions-fix";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-07-30T17:20:00Z",
@@ -1627,6 +1627,31 @@ function openSheet(html){
   sh.classList.add("open");
   sheetGuardUntil=Date.now()+450; /* ignore ghost tap that would close instantly on mobile */
   try{pan.scrollTop=0;}catch(e){}
+  /* Bind data-action buttons (no inline onclick + JSON.stringify — that broke HTML attributes) */
+  pan.querySelectorAll("[data-pchat]").forEach(function(btn){
+    btn.addEventListener("click",function(ev){
+      ev.preventDefault();ev.stopPropagation();
+      projectChat(btn.getAttribute("data-pid"),btn.getAttribute("data-pchat"));
+    });
+  });
+  pan.querySelectorAll("[data-propchat]").forEach(function(btn){
+    btn.addEventListener("click",function(ev){
+      ev.preventDefault();ev.stopPropagation();
+      proposalChat(btn.getAttribute("data-propid"),btn.getAttribute("data-propchat"));
+    });
+  });
+  pan.querySelectorAll("[data-close-sheet]").forEach(function(btn){
+    btn.addEventListener("click",function(ev){ev.preventDefault();closeSheet();});
+  });
+}
+function goChatWithDraft(text,toastMsg){
+  closeSheet();
+  showView("chat");
+  const inp=document.getElementById("chatInput");
+  if(!inp){toast("Chat box missing — refresh the app.");return;}
+  inp.value=text||"";
+  try{inp.focus();inp.setSelectionRange(inp.value.length,inp.value.length);}catch(e){try{inp.focus();}catch(e2){}}
+  toast(toastMsg||"Chat ready — type and Send.");
 }
 function openProject(id){
   const p=findProject(id);
@@ -1641,7 +1666,8 @@ function openProject(id){
     (preserve?`<div class="sec"><h4>Preserve (do not break)</h4><ul class="plan-list">${preserve}</ul></div>`:"")+
     (steps?`<div class="sec"><h4>Build checklist</h4><ol class="plan-list">${steps}</ol></div>`:"")+
     (!p.one&&!steps?`<div class="sec"><h4>Plan</h4><p class="plan-note">Summary only on this card. Ask Chat: “Castle V2 plan” for more, or open Proposals for ship order.</p></div>`:"");
-  openSheet(`<div class="ph"><div><h3>${escapeHtml(p.n)}</h3><div class="sub">${escapeHtml(st)} · ${escapeHtml(p.domain||"")} · ${escapeHtml(p.owner||"")}</div></div><button type="button" class="x" onclick="closeSheet()">×</button></div>
+  const pid=escapeHtml(p.id);
+  openSheet(`<div class="ph"><div><h3>${escapeHtml(p.n)}</h3><div class="sub">${escapeHtml(st)} · ${escapeHtml(p.domain||"")} · ${escapeHtml(p.owner||"")}</div></div><button type="button" class="x" data-close-sheet>×</button></div>
     <div class="pib">
       <div class="row"><span class="k">What</span>${escapeHtml(p.what||"—")}</div>
       <div class="row"><span class="k">Why</span>${escapeHtml(p.why||"—")}</div>
@@ -1649,41 +1675,58 @@ function openProject(id){
       <div class="row"><span class="k">Status</span>${escapeHtml(st)}</div>
     </div>
     ${planHtml}
-    <div class="sec"><h4>Talk about this project</h4>
-      <button type="button" class="logbtn" onclick="closeSheet();projectChat(${JSON.stringify(p.id)},'chat')">Chat about this project</button>
-      <button type="button" class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="closeSheet();projectChat(${JSON.stringify(p.id)},'next')">Update next step</button>
-      <button type="button" class="logbtn" style="margin-top:8px" onclick="closeSheet();projectChat(${JSON.stringify(p.id)},'status')">Change status / priority</button>
+    <div class="sec"><h4>Take action</h4>
+      <p class="muted" style="margin:0 0 10px;font-size:12.5px;line-height:1.4">These open <b>Chat</b> with a draft. You type the rest and hit <b>Send</b>. Hank answers now; the Grok loop files durable changes.</p>
+      <button type="button" class="logbtn" data-pid="${pid}" data-pchat="chat">Ask Hank about this project</button>
+      <button type="button" class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" data-pid="${pid}" data-pchat="next">Change the “Next” step…</button>
+      <button type="button" class="logbtn" style="margin-top:8px" data-pid="${pid}" data-pchat="status">Change status / priority…</button>
+      <button type="button" class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--ink);border:1px solid var(--line)" data-pid="${pid}" data-pchat="build">Tell Hank: ship next checklist item</button>
     </div>`);
 }
 function projectChat(id,kind){
-  const p=findProject(id)||{n:id,what:"",next:""};
-  let pre;
-  if(kind==="next")pre="Project directive — update next step for "+p.n+":\n\n";
-  else if(kind==="status")pre="Project directive — change status/priority for "+p.n+":\n\n";
-  else pre="Project chat — "+p.n+"\nWhat: "+(p.what||"")+"\nWhy: "+(p.why||"")+"\nNext: "+(p.next||"")+"\n\n";
-  document.getElementById('chatInput').value=pre;showView('chat');document.getElementById('chatInput').focus();
-  toast("Tell Hank — loop files it.");
+  const p=findProject(id)||{n:id,what:"",next:"",one:""};
+  let pre,msg;
+  if(kind==="next"){
+    pre="Project directive — update next step for "+p.n+".\nCurrent next: "+(p.next||"—")+"\n\nNew next step: ";
+    msg="Type the new Next step after the colon, then Send.";
+  }else if(kind==="status"){
+    pre="Project directive — change status/priority for "+p.n+".\nCurrent: "+(p.status||"Active")+"\n\nChange to (Active / Ideas / Hold / Waiting) and why: ";
+    msg="Type the new status after the prompt, then Send.";
+  }else if(kind==="build"){
+    pre="Project directive — "+p.n+": implement the next unfinished build checklist item in the Hank app (existing stack only; protect live Castle balances). Current next: "+(p.next||"—")+"\n\n";
+    msg="Edit if needed, then Send — queues a build directive for the loop.";
+  }else{
+    pre="Project chat — "+p.n+"\nWhat: "+(p.what||"")+"\nWhy: "+(p.why||"")+"\nNext: "+(p.next||"")+"\n\nMy question: ";
+    msg="Type your question after “My question:”, then Send.";
+  }
+  goChatWithDraft(pre,msg);
 }
 function openProposal(id){
   const p=(PROPOSALS||[]).find(x=>x.id===id);if(!p){toast("Proposal not found");return;}
   const steps=(p.steps||[]).map(s=>`<li style="margin:0 0 6px">${escapeHtml(s)}</li>`).join("");
-  openSheet(`<div class="ph"><div><h3>${escapeHtml(p.title)}</h3><div class="sub">Proposal · ${escapeHtml(p.status||"open")}</div></div><button type="button" class="x" onclick="closeSheet()">×</button></div>
+  const propId=escapeHtml(p.id);
+  openSheet(`<div class="ph"><div><h3>${escapeHtml(p.title)}</h3><div class="sub">Proposal · ${escapeHtml(p.status||"open")}</div></div><button type="button" class="x" data-close-sheet>×</button></div>
     <div class="sec"><h4>Bottom line</h4><p style="margin:0;font-size:14px;line-height:1.45">${escapeHtml(p.one||"")}</p></div>
     <div class="sec"><h4>Summary</h4><p style="margin:0;font-size:14px;line-height:1.45">${escapeHtml(p.summary||"")}</p></div>
     ${steps?`<div class="sec"><h4>Ship order</h4><ol style="margin:0;padding-left:18px;font-size:14px;line-height:1.4">${steps}</ol></div>`:""}
     ${p.decided?`<div class="sec"><h4>Your decision</h4><p style="margin:0;font-size:14px">${escapeHtml(p.decided)}</p></div>`:""}
     ${p.next?`<div class="bnext"><b>Next</b><p>${escapeHtml(p.next)}</p></div>`:""}
     <div class="sec"><h4>Respond</h4>
-      <button type="button" class="logbtn" onclick="closeSheet();proposalChat(${JSON.stringify(p.id)},'approve')">Approve / ship</button>
-      <button type="button" class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" onclick="closeSheet();proposalChat(${JSON.stringify(p.id)},'hold')">Hold</button>
-      <button type="button" class="logbtn" style="margin-top:8px" onclick="closeSheet();proposalChat(${JSON.stringify(p.id)},'revise')">Revise idea</button>
+      <p class="muted" style="margin:0 0 10px;font-size:12.5px">Opens Chat with a draft — hit Send to queue it for the loop.</p>
+      <button type="button" class="logbtn" data-propid="${propId}" data-propchat="approve">Approve / ship</button>
+      <button type="button" class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" data-propid="${propId}" data-propchat="hold">Hold</button>
+      <button type="button" class="logbtn" style="margin-top:8px" data-propid="${propId}" data-propchat="revise">Revise idea</button>
     </div>`);
 }
 function proposalChat(id,kind){
   const p=(PROPOSALS||[]).find(x=>x.id===id)||{title:id};
-  const map={approve:"Decision — APPROVE proposal “"+p.title+"”. Ship next steps.",hold:"Decision — HOLD proposal “"+p.title+"”. Do not ship yet.",revise:"Proposal revise — “"+p.title+"”:\n\n"};
-  document.getElementById('chatInput').value=map[kind]||map.revise;showView('chat');document.getElementById('chatInput').focus();
-  toast(kind==="approve"?"Approve captured for loop":kind==="hold"?"Hold captured":"Tell Hank what to change");
+  const map={
+    approve:"Decision — APPROVE proposal “"+p.title+"”. Ship next steps.",
+    hold:"Decision — HOLD proposal “"+p.title+"”. Do not ship yet.",
+    revise:"Proposal revise — “"+p.title+"”:\n\nWhat to change: "
+  };
+  const msg=kind==="approve"?"Approve draft ready — Send to file it.":kind==="hold"?"Hold draft ready — Send to file it.":"Type your revision, then Send.";
+  goChatWithDraft(map[kind]||map.revise,msg);
 }
 function workDirective(st,text){
   document.getElementById('chatInput').value="Directive — "+text+":\n\n";showView('chat');document.getElementById('chatInput').focus();

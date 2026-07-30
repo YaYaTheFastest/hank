@@ -321,7 +321,7 @@
     var html = '<header class="chead"><div class="cbar"><h1>HANK · ' + KID + '</h1>' +
       '<button id="parentBtn" class="pbtn">🔑 Parent</button></div>' +
       '<p class="csub">Castle Fund — chores &amp; reward</p>' +
-      '<div class="tabs"><a class="tab" href="./">Equipment</a><a class="tab" href="projects.html">Projects</a><a class="tab active" href="castle.html">Kids</a></div></header>';
+      '<div class="tabs"><a class="tab" href="./#equip">Equipment</a><a class="tab" href="./#work">Work</a><a class="tab active" href="castle.html">Kids</a></div></header>';
     html += '<div class="wrap">';
 
     html += '<div class="hero">';

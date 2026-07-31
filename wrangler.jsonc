@@ -1,10 +1,6 @@
-/* deploy-pin: 2026-07-31-morning d5caa6f */
+// deploy-pin 2026-07-31T23:03:55Z evening a57b22f
 // DEPLOY-STALE pin 2026-07-31-afternoon 75cebe2 → force rebuild
-// DEPLOY-PIN 2026-07-30-evening — Castle V2 check-in + XP; force CF rebuild
-// DEPLOY-PIN live verified 2504020 2026-07-30-afternoon
-// DEPLOY-PIN 2026-07-30-afternoon — force CF rebuild
 // DEPLOY-STALE pin 2026-07-29-evening 95b0991 → force CF rebuild
-// DEPLOY-PIN 2026-07-28-evening 8de1491
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
   // DEPLOY-STALE pin 2026-07-29-morning b686381

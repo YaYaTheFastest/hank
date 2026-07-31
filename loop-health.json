@@ -5,16 +5,16 @@
   "error": "",
   "proposed_fix": "",
   "owner": "grok",
-  "summary": "2026-07-31 afternoon \u2014 2 decision chats filed+cleared; Castle $565/$172 \u00b7 0 pending (parent approve wave); Fitness Emotional Intelligence (Goleman); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
-  "last_attempt": "2026-07-31T17:00:00Z",
-  "last_success": "2026-07-31T17:05:00Z",
+  "summary": "2026-07-31 evening — 1 chat (Z530R 51h / full service@47) filed+cleared; Castle $565/$172 · 3 pending; Finance Every Client Is Unique (McKinsey Mind); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
+  "last_attempt": "2026-07-31T23:00:00Z",
+  "last_success": "2026-07-31T23:05:00Z",
   "open_issues": [
     {
       "tier": "E1",
       "component": "gmail",
       "error": "invalid_grant: OAuth token expired or revoked",
       "owner": "darren",
-      "proposed_fix": "Re-auth per HANK Loop \u2014 Gmail Setup.md \u2192 refresh ~/.config/hank/google_token.json"
+      "proposed_fix": "Re-auth per HANK Loop — Gmail Setup.md → refresh ~/.config/hank/google_token.json"
     }
   ]
 }

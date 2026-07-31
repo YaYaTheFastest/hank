@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-31T11:07:42Z",
+  "updated": "2026-07-31T17:07:25Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-07-31_130004",
+      "started": "2026-07-31T13:00:04",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Loop run 2026-07-31 130004",
+      "domain": "",
+      "chats_cleared": null,
+      "deploy": null,
+      "log": "logs/loop-2026-07-31_130004.log"
+    },
     {
       "id": "2026-07-31_070002",
       "started": "2026-07-31T07:00:02",
@@ -51,18 +65,6 @@
       "domain": "Fitness: Focus (Goleman)",
       "chats_cleared": 2,
       "deploy": "2504020"
-    },
-    {
-      "id": "2026-07-30_070001",
-      "started": "2026-07-30T07:00:01",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Thursday morning \u2014 Castle approve wave; Recipes BGE sorghum thighs.",
-      "domain": "Recipes: BGE Smoked Chicken Thighs Sorghum Chile \u25cf",
-      "chats_cleared": 0,
-      "deploy": "85037a0"
     }
   ]
 }

@@ -542,25 +542,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-31-afternoon";
+const BUILD_DATE="2026-07-31-evening";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-07-31T12:00:00Z",
+  updated:"2026-07-31T23:00:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+{id:"2026-07-31_190001",started:"2026-07-31T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Friday evening — 1 chat Z530R 51h/full service@47 filed+cleared; Castle $565/$172 · 3 pending; Finance Every Client Is Unique; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Every Client Is Unique — Frameworks Are Not Magic Bullets",chats_cleared:1,deploy:"pending"},
+{id:"2026-07-31_130001",started:"2026-07-31T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Friday afternoon — 2 decisions filed+cleared; Castle parent approve $525→$565 / $162→$172 · 0 pending; Fitness Emotional Intelligence (Goleman); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Fitness: Emotional Intelligence (Goleman)",chats_cleared:2,deploy:"75cebe2"},
 {id:"2026-07-31_070001",started:"2026-07-31T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Friday morning — inbox/queues empty; Castle $525/$162 · 5 pending unchanged; Recipes BGE Low & Slow Baby Back Ribs ●; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health → OK (E0).",domain:"Recipes: BGE Low & Slow Baby Back Ribs ●",chats_cleared:0,deploy:"pending"},
 {id:"2026-07-30_190001",started:"2026-07-30T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Thursday evening — 6 chats filed+cleared (Castle V2 §2+§3 ship, Kitchen Sink complete, nav re-approve); Castle $525/$162 · 5 pending; Finance Engage the Client; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Engage the Client — Involve to Keep Support",chats_cleared:6,deploy:"pending"},
-{id:"2026-07-30_130001",started:"2026-07-30T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon — 2 FILE THIS X filed+cleared (CDM + recipe table); Castle $525/$162 · 0 pending; Fitness Focus (Goleman); Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health → OK (E0).",domain:"Fitness: Focus — Inner Other Outer & Attention as Muscle (Goleman)",chats_cleared:2,deploy:"2504020"},
-{id:"2026-07-30_070001",started:"2026-07-30T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Thursday morning — inbox/queues empty; Castle parent approve wave $480→$525 / $92→$162 · 0 pending; Recipes BGE Smoked Chicken Thighs Sorghum Chile ●; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health → OK (E0).",domain:"Recipes: BGE Smoked Chicken Thighs Sorghum Chile ●",chats_cleared:0,deploy:"85037a0"},
-{id:"2026-07-29_190001",started:"2026-07-29T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Wednesday evening — inbox/queues empty; Castle $480/$92 · 5 pending unchanged; Finance Market Don't Sell — Be the First Call; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health → OK (E0).",domain:"Finance: Market Don't Sell — Be the First Call (McKinsey Way L686)",chats_cleared:0,deploy:"pending"}
+{id:"2026-07-30_130001",started:"2026-07-30T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon — 2 FILE THIS X filed+cleared (CDM + recipe table); Castle $525/$162 · 0 pending; Fitness Focus (Goleman); Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health → OK (E0).",domain:"Fitness: Focus — Inner Other Outer & Attention as Muscle (Goleman)",chats_cleared:2,deploy:"2504020"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-07-31 afternoon — 2 decisions filed+cleared; Castle $565/$172 · 0 pending; Fitness Emotional Intelligence (Goleman); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
-  last_success:"2026-07-31T17:05:00Z"
+  summary:"2026-07-31 evening — 1 chat (Z530R 51h / full service@47) filed+cleared; Castle $565/$172 · 3 pending; Finance Every Client Is Unique; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
+  last_success:"2026-07-31T23:05:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};
@@ -613,8 +613,8 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-07-31 afternoon",now:"Castle $565/$172 · 0 pending · Castle V2 §2+§3 live · Emotional Intelligence ● · fleet 52",nextDomain:"Finance",rotation:"Recipes → Fitness → Finance",dagvald:565,davikja:172,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"2026-07-31 afternoon — 2 decisions; Castle $565/$172 · 0 pending; Fitness EQ (Goleman); Gmail E1."},
+const LIVE_STATE={refreshed:"2026-07-31 evening",now:"Castle $565/$172 · 3 pending · Z530R 51h (service@47) · Finance Every Client Is Unique ● · fleet 52",nextDomain:"Recipes",rotation:"Recipes → Fitness → Finance",dagvald:565,davikja:172,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"2026-07-31 evening — Z530R hours filed; Castle $565/$172 · 3 pending; Finance Every Client Is Unique; Gmail E1."},
   /* doing: string or {t, projectId?} — projectId opens Work project sheet */
   doing:[
     {t:"Castle Fund V2 — lessons unlock + parent dual polish",projectId:"castle-v2"},
@@ -629,6 +629,7 @@ const LIVE_STATE={refreshed:"2026-07-31 afternoon",now:"Castle $565/$172 · 0 pe
     {t:"The Bible domain — deepen Scene/Character when prioritized"}
   ],
   waiting:[
+    {t:"Parent PIN — Dagvald 3× Clean Stalls pending (~$30)",projectId:"castle"},
     {t:"Home domain tiles layout (B2 — Darren confirm)"},
     {t:"Davikja Diadem redeem or next goal (parent — $172, goal met)",projectId:"castle"},
     {t:"Profit-center metric pick (options A–F)",projectId:"profit-chores"},
@@ -828,8 +829,8 @@ const DATA = [
            {t:"Blade Sharpen & Balance (20–25 hr)",s:["Block deck; remove the 3 blades","Sharpen to original bevel","Balance each blade — unbalanced kills spindles","Reinstall, torque blade bolts to spec (confirm)","Spin-check; confirm no contact"]},
            {t:"Gearbox Oil Check & Winterize (seasonal)",s:["Park level; clean around the gearbox","Check level at the level/breather plug — top up SAE 80W/90W","If vent weeps oil, replace breather/level plug (known issue)","Clean deck underside; touch up bare metal","Grease all fittings; store deck-down on blocks"]}]},
    {n:"2024 John Deere Z530R",power:"Gas",loc:"Shop",basis:"Hours",st:"full",
-     specs:[["Engine","Kawasaki FR730V V-twin, 726cc, 24hp @3600"],["Engine oil","10W-30 (API SP/SN/SM), 2.1 L / 2.2 qt w/ filter (OM p.60)"],["Fuel","17 L (4.5 gal)"],["Spark plug","gap 0.75 mm (0.029 in); torque 20 N·m"],["Tires","front 15 psi / rear 10 psi; wheel-nut 24 N·m"],["Deck","54\" Accel Deep, 3 blades"],["Trans","Dual hydrostatic"],["Note","Maint. logged 10 h behind meter"]],
-     sched:[["Engine oil & filter","50 hr","r","−10h offset · 2.2 qt 10W-30"],["Air filter + plugs + fuel filter","100 hr","r","plug gap 0.75 mm"],["Blade sharpen & balance","100 hr / seasonal","g","OK"],["Valve lash (JD dealer)","200 hr","r","—"],["Daily pre-use","Daily","g","OK"]],
+     specs:[["Engine","Kawasaki FR730V V-twin, 726cc, 24hp @3600"],["Engine oil","10W-30 (API SP/SN/SM), 2.1 L / 2.2 qt w/ filter (OM p.60)"],["Fuel","17 L (4.5 gal)"],["Spark plug","gap 0.75 mm (0.029 in); torque 20 N·m"],["Tires","front 15 psi / rear 10 psi; wheel-nut 24 N·m"],["Deck","54\" Accel Deep, 3 blades"],["Trans","Dual hydrostatic"],["Hours","51 meter (2026-07-31) · full service + blades @ 47"],["Note","Maint. logged 10 h behind meter"]],
+     sched:[["Engine oil & filter","~97 meter hr","g","Full service @ 47 · next ~97 · 2.2 qt 10W-30"],["Air filter + plugs + fuel filter","~147 meter hr","g","If covered at 47 full service"],["Blade sharpen & balance","as needed","g","Sharpened @ 47"],["Valve lash (JD dealer)","200 hr","r","—"],["Daily pre-use","Daily","g","OK"]],
      manual:"JD Z515E/Z530M/Z530R Operator's Manual (PDF, on file) — manual-backed",manualUrl:"manuals/jd-z530r.pdf",
      jobs:[{t:"Engine Oil & Filter — 50 hr (manual pp.35–36)",s:["Warm oil; park level, park brake on, PTO off, key out","Clean around dipstick; disconnect drain hose Ⓑ, route down behind trans reservoir","Remove drain cap Ⓑ, drain fully; wipe & remove oil filter Ⓒ/Ⓓ","Light coat clean oil on new filter gasket; install CW to contact + ½ turn","Refit drain cap + re-attach drain hose to engine","Refill 2.1 L (2.2 qt) 10W-30 to FULL — don't overfill; idle, check leaks; log at meter −10h"],img:["manuals/img/jd-z530r-oil-p36.png"]},
            {t:"Air Filter · Plugs · Fuel Filter — 100 hr (manual pp.37–38, 41)",s:["Cool engine, key out, leads off. Remove flywheel screen Ⓐ/Ⓑ (3 screws), clean debris","Remove shroud Ⓒ/Ⓓ (6 screws); clean fan area + cooling fins; reinstall aligning slots to intake ridge (screen 3.0 N·m)","Air filter: lift cover, replace paper element Ⓔ (never wash/blow); seat onto intake tube Ⓕ, tighten thumbscrew Ⓖ, close cover Ⓗ","Spark plugs: gap 0.75 mm (0.029 in), torque 20 N·m","Fuel filter (p.41): pinch hose clamps, swap filter same flow direction, check for leaks"],img:["manuals/img/jd-z530r-air-p38.png"]},

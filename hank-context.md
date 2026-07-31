@@ -39,29 +39,29 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-31 afternoon loop)
+## LIVE STATE (refreshed 2026-07-31 evening loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$565 / $172** · **0 pending**. **Castle V2 §2+§3 live** (check-in +10 XP · XP on approve · levels). **Fitness:** Emotional Intelligence (Goleman) principle. Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐.
+**Now (what matters):** Castle **$565 / $172** · **3 pending** (Dagvald Clean Stalls $10×3). **Castle V2 §2+§3 live**. **Finance:** Every Client Is Unique (McKinsey Mind). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness.
+**Next domain (rotation):** **Recipes** — then Fitness → Finance.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
 **Doing (verbs):** **Castle Fund V2** (lessons unlock + parent dual polish next; Proposals re-APPROVE 07-31) · **eero 7 gateway swap** · **Jairo** list (chat `For Jairo`) · **Endurance rebuild Phase 0** · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo · **Davikja Diadem redeem or next goal** (parent; balance $172).
 
-**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
+**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models · **Parent PIN** for Dagvald 3 pending stalls (~$30).
 
 **Inbox:** Clean. Queues empty. X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
 **Loop:** OK (E0) · Gmail E1 noted (OAuth re-auth when convenient).
 
-**Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐).
+**Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐). Z530R **51 h** (full service @ 47).
 
-**Castle:** Dagvald **$565** (7-day streak 07-25→07-31; **0 pending**), Davikja **$172** (**$150 Diadem goal met**, $22 over; **0 pending**). V2 check-in + XP live — balances protected.
+**Castle:** Dagvald **$565** (7-day streak 07-25→07-31; **3 pending** ~$30), Davikja **$172** (**$150 Diadem goal met**, $22 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-07-31-afternoon** (Fitness Emotional Intelligence · Castle parent approve wave).
+**Deploy:** BUILD_DATE **2026-07-31-evening** (Finance Every Client Is Unique · Z530R hours · Castle 3 pending).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 

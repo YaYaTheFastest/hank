@@ -39,13 +39,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-30 evening loop)
+## LIVE STATE (refreshed 2026-07-31 morning loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$525 / $162** · **5 pending** (~$40 — parent PIN). **Castle V2 §2+§3 live** (check-in +10 XP · XP on approve · levels). **Kitchen Sink → Basement Shower** marked **complete** (Shipped). Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐.
+**Now (what matters):** Castle **$525 / $162** · **5 pending** (~$40 — parent PIN). **Castle V2 §2+§3 live** (check-in +10 XP · XP on approve · levels). **Recipes:** BGE Low & Slow Baby Back Ribs ●. Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance.
+**Next domain (rotation):** **Fitness** — then Finance → Recipes.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
@@ -61,7 +61,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$525** (5-day streak 07-25→07-29; **4 pending**), Davikja **$162** (**$150 Diadem goal met**, $12 over; **1 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-07-30-evening** (Castle V2 check-in + XP; Kitchen Sink shipped).
+**Deploy:** BUILD_DATE **2026-07-31-morning** (Recipes BGE Low & Slow Baby Back Ribs ●).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 

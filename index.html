@@ -542,25 +542,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-30-evening";
+const BUILD_DATE="2026-07-31-morning";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-07-30T23:30:00Z",
+  updated:"2026-07-31T12:00:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+{id:"2026-07-31_070001",started:"2026-07-31T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Friday morning — inbox/queues empty; Castle $525/$162 · 5 pending unchanged; Recipes BGE Low & Slow Baby Back Ribs ●; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health → OK (E0).",domain:"Recipes: BGE Low & Slow Baby Back Ribs ●",chats_cleared:0,deploy:"pending"},
 {id:"2026-07-30_190001",started:"2026-07-30T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Thursday evening — 6 chats filed+cleared (Castle V2 §2+§3 ship, Kitchen Sink complete, nav re-approve); Castle $525/$162 · 5 pending; Finance Engage the Client; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Engage the Client — Involve to Keep Support",chats_cleared:6,deploy:"pending"},
 {id:"2026-07-30_130001",started:"2026-07-30T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon — 2 FILE THIS X filed+cleared (CDM + recipe table); Castle $525/$162 · 0 pending; Fitness Focus (Goleman); Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health → OK (E0).",domain:"Fitness: Focus — Inner Other Outer & Attention as Muscle (Goleman)",chats_cleared:2,deploy:"2504020"},
 {id:"2026-07-30_070001",started:"2026-07-30T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Thursday morning — inbox/queues empty; Castle parent approve wave $480→$525 / $92→$162 · 0 pending; Recipes BGE Smoked Chicken Thighs Sorghum Chile ●; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health → OK (E0).",domain:"Recipes: BGE Smoked Chicken Thighs Sorghum Chile ●",chats_cleared:0,deploy:"85037a0"},
-{id:"2026-07-29_190001",started:"2026-07-29T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Wednesday evening — inbox/queues empty; Castle $480/$92 · 5 pending unchanged; Finance Market Don't Sell — Be the First Call; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health → OK (E0).",domain:"Finance: Market Don't Sell — Be the First Call (McKinsey Way L686)",chats_cleared:0,deploy:"pending"},
-{id:"2026-07-29_130001",started:"2026-07-29T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Wednesday afternoon — inbox/queues empty; Castle $480/$92 · 5 pending unchanged; Fitness Natural Born Heroes — Be Fit to Be Useful; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health → OK (E0).",domain:"Fitness: Natural Born Heroes — Be Fit to Be Useful (McDougall)",chats_cleared:0,deploy:"pending"}
+{id:"2026-07-29_190001",started:"2026-07-29T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Wednesday evening — inbox/queues empty; Castle $480/$92 · 5 pending unchanged; Finance Market Don't Sell — Be the First Call; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health → OK (E0).",domain:"Finance: Market Don't Sell — Be the First Call (McKinsey Way L686)",chats_cleared:0,deploy:"pending"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-07-30 evening — 6 chats filed+cleared; Castle V2 §2+§3 shipped; Kitchen Sink complete; Castle $525/$162 · 5 pending; Finance Engage the Client; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
-  last_success:"2026-07-30T23:30:00Z"
+  summary:"2026-07-31 morning — inbox/queues empty; Castle $525/$162 · 5 pending; Recipes BGE Low & Slow Baby Back Ribs ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
+  last_success:"2026-07-31T12:00:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};
@@ -613,8 +613,8 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-07-30 evening",now:"Castle $525/$162 · 5 pending · Castle V2 §2+§3 live · Kitchen Sink shipped · fleet 52",nextDomain:"Recipes",rotation:"Recipes → Fitness → Finance",dagvald:525,davikja:162,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"2026-07-30 evening — 6 chats; Castle V2 check-in+XP; Kitchen Sink complete; Finance Engage the Client; Gmail E1."},
+const LIVE_STATE={refreshed:"2026-07-31 morning",now:"Castle $525/$162 · 5 pending · Castle V2 §2+§3 live · BGE Low & Slow ribs ● · fleet 52",nextDomain:"Fitness",rotation:"Recipes → Fitness → Finance",dagvald:525,davikja:162,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"2026-07-31 morning — empty queues; Castle $525/$162 · 5 pending; Recipes BGE Low & Slow Baby Back Ribs ●; Gmail E1."},
   /* doing: string or {t, projectId?} — projectId opens Work project sheet */
   doing:[
     {t:"Castle Fund V2 — lessons unlock + parent dual polish",projectId:"castle-v2"},

@@ -1,20 +1,32 @@
 {
-  "updated": "2026-07-30T23:07:02Z",
+  "updated": "2026-07-31T11:07:42Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
     {
-      "id": "2026-07-30_190004",
-      "started": "2026-07-30T19:00:04",
+      "id": "2026-07-31_070002",
+      "started": "2026-07-31T07:00:02",
       "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
       "status": "ok",
       "tier": "E0",
-      "summary": "Readwise: 972 / pending 0 (not Monday).",
-      "domain": "Readwise: 972 / pending 0 (not Monday).",
+      "summary": "HANK loop pass complete \u2014 Friday morning 2026-07-31 \u00b7 OK (E0)",
+      "domain": "Readwise: 972 / pending 0 (inventory only).",
       "chats_cleared": null,
-      "deploy": null,
-      "log": "logs/loop-2026-07-30_190004.log"
+      "deploy": "d5caa6f",
+      "log": "logs/loop-2026-07-31_070002.log"
+    },
+    {
+      "id": "2026-07-31_070001",
+      "started": "2026-07-31T07:00:01",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Friday morning \u2014 inbox/queues empty; Castle $525/$162 \u00b7 5 pending; Recipes BGE Low & Slow Baby Back Ribs \u25cf; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",
+      "domain": "Recipes: BGE Low & Slow Baby Back Ribs \u25cf",
+      "chats_cleared": 0,
+      "deploy": "d5caa6f"
     },
     {
       "id": "2026-07-30_190001",
@@ -23,38 +35,22 @@
       "slot": "evening",
       "status": "ok",
       "tier": "E0",
-      "summary": "Thursday evening \u2014 6 chats filed+cleared; Castle V2 \u00a72+\u00a73; Kitchen Sink complete; Castle $525/$162 \u00b7 5 pending; Finance Engage the Client; Gmail E1; X none; Readwise 972/0.",
-      "domain": "Finance: Engage the Client \u2014 Involve to Keep Support",
+      "summary": "Thursday evening \u2014 6 chats filed+cleared; Castle V2 \u00a72+\u00a73; Kitchen Sink complete; Finance Engage the Client; Gmail E1; X none; Readwise 972/0.",
+      "domain": "Finance: Engage the Client",
       "chats_cleared": 6,
-      "deploy": "6ad838b"
+      "deploy": "pending"
     },
     {
-      "id": "2026-07-30_130005",
-      "started": "2026-07-30T13:00:05",
-      "trigger": "scheduled",
+      "id": "2026-07-30_130001",
+      "started": "2026-07-30T13:00:01",
       "trigger_label": "Scheduled (afternoon)",
       "slot": "afternoon",
       "status": "ok",
       "tier": "E0",
-      "summary": "Readwise: 972 / pending 0.",
-      "domain": "Readwise: 972 / pending 0.",
-      "chats_cleared": null,
-      "deploy": null,
-      "log": "logs/loop-2026-07-30_130005.log"
-    },
-    {
-      "id": "2026-07-30_070005",
-      "started": "2026-07-30T07:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Recipes: New [[BGE Smoked Chicken Thighs Sorghum Chile]] \u25cf (BGE/Bobby Flay: 275\u00b0F \u00b7 90 min \u00b7 sorghum glaze). Next domain \u2192 Fitness",
-      "domain": "Recipes: New [[BGE Smoked Chicken Thighs Sorghum Chile]] \u25cf (BGE/Bobby Flay: 275\u00b0F \u00b7 90 min \u00b7 sorghum glaze). Next domain \u2192 Fitness",
-      "chats_cleared": null,
-      "deploy": null,
-      "log": "logs/loop-2026-07-30_070005.log"
+      "summary": "Thursday afternoon \u2014 2 FILE THIS X; Fitness Focus; Castle $525/$162.",
+      "domain": "Fitness: Focus (Goleman)",
+      "chats_cleared": 2,
+      "deploy": "2504020"
     },
     {
       "id": "2026-07-30_070001",
@@ -63,7 +59,7 @@
       "slot": "morning",
       "status": "ok",
       "tier": "E0",
-      "summary": "Thursday morning \u2014 inbox/queues empty; Castle parent approve wave $480\u2192$525 / $92\u2192$162 \u00b7 0 pending; Recipes BGE Smoked Chicken Thighs Sorghum Chile \u25cf; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",
+      "summary": "Thursday morning \u2014 Castle approve wave; Recipes BGE sorghum thighs.",
       "domain": "Recipes: BGE Smoked Chicken Thighs Sorghum Chile \u25cf",
       "chats_cleared": 0,
       "deploy": "85037a0"

@@ -1,7 +1,21 @@
 {
-  "updated": "2026-07-31T23:05:45Z",
+  "updated": "2026-08-01T11:07:32Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-01_070004",
+      "started": "2026-08-01T07:00:04",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Recipes: [[Traeger Smoked Pork Chops Ale-Balsamic]] \u25cf \u2014 165\u00b0F Super Smoke 30 min \u2192 450\u00b0F glaze \u2192 145\u00b0F \u00b7 Traeger Kitchen",
+      "domain": "Recipes: [[Traeger Smoked Pork Chops Ale-Balsamic]] \u25cf \u2014 165\u00b0F Super Smoke 30 min \u2192 450\u00b0F glaze \u2192 145\u00b0F \u00b7 Traeger Kitchen",
+      "chats_cleared": 0,
+      "deploy": "330974b",
+      "log": "logs/loop-2026-08-01_070004.log"
+    },
     {
       "id": "2026-07-31_190005",
       "started": "2026-07-31T19:00:05",
@@ -55,18 +69,6 @@
       "domain": "Recipes: BGE Low & Slow Baby Back Ribs \u25cf",
       "chats_cleared": 0,
       "deploy": "d5caa6f"
-    },
-    {
-      "id": "2026-07-30_190001",
-      "started": "2026-07-30T19:00:01",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Thursday evening \u2014 6 chats filed+cleared; Castle V2 \u00a72+\u00a73; Kitchen Sink complete; Finance Engage the Client; Gmail E1; X none; Readwise 972/0.",
-      "domain": "Finance: Engage the Client",
-      "chats_cleared": 6,
-      "deploy": "pending"
     }
   ]
 }

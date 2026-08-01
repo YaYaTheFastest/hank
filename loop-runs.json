@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-01T11:07:32Z",
+  "updated": "2026-08-01T17:05:28Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-01_130005",
+      "started": "2026-08-01T13:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Readwise: 972 / pending 0 (inventory only).",
+      "domain": "Readwise: 972 / pending 0 (inventory only).",
+      "chats_cleared": 0,
+      "deploy": "f463b7a",
+      "log": "logs/loop-2026-08-01_130005.log"
+    },
     {
       "id": "2026-08-01_070004",
       "started": "2026-08-01T07:00:04",
@@ -57,18 +71,6 @@
       "chats_cleared": null,
       "deploy": "d5caa6f",
       "log": "logs/loop-2026-07-31_070002.log"
-    },
-    {
-      "id": "2026-07-31_070001",
-      "started": "2026-07-31T07:00:01",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Friday morning \u2014 inbox/queues empty; Castle $525/$162 \u00b7 5 pending; Recipes BGE Low & Slow Baby Back Ribs \u25cf; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health \u2192 OK (E0).",
-      "domain": "Recipes: BGE Low & Slow Baby Back Ribs \u25cf",
-      "chats_cleared": 0,
-      "deploy": "d5caa6f"
     }
   ]
 }

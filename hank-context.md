@@ -39,19 +39,19 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-08-01 afternoon loop)
+## LIVE STATE (refreshed 2026-08-01 evening loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$565 / $172** · **3 pending** (Dagvald Clean Stalls $10×3). **Castle V2 §2+§3 live**. **Fitness:** Run Elite — Belief Applied Faith & Celebrate First (Snow). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐.
+**Now (what matters):** Castle **$600 / $172** · **0 pending**. **Castle V2 §2+§3 live**. **Finance:** Pluck the Low-Hanging Fruit (McKinsey Way L526). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐. Inbox capture: How to articulate yourself (Dan Koe) filed.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness.
+**Next domain (rotation):** **Recipes** — then Fitness → Finance.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
-**Doing (verbs):** **Castle Fund V2** (lessons unlock + parent dual polish next; Proposals re-APPROVE 07-31) · **eero 7 gateway swap** · **Jairo** list (chat `For Jairo`) · **Endurance rebuild Phase 0** · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo · **Davikja Diadem redeem or next goal** (parent; balance $172).
+**Doing (verbs):** **Castle Fund V2** (lessons unlock + parent dual polish next; Proposals re-APPROVE 08-01 evening) · **eero 7 gateway swap** · **Jairo** list (chat `For Jairo`) · **Endurance rebuild Phase 0** · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo · **Davikja Diadem redeem or next goal** (parent; balance $172).
 
-**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models · **Parent PIN** for Dagvald 3 pending stalls (~$30).
+**Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
 
 **Inbox:** Clean. Queues empty. X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
@@ -59,9 +59,9 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐). Z530R **51 h** (full service @ 47).
 
-**Castle:** Dagvald **$565** (7-day streak 07-25→07-31; **3 pending** ~$30), Davikja **$172** (**$150 Diadem goal met**, $22 over; **0 pending**). V2 check-in + XP live — balances protected.
+**Castle:** Dagvald **$600** (8-day streak 07-25→08-01; **0 pending**), Davikja **$172** (**$150 Diadem goal met**, $22 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-08-01-afternoon** (Fitness Run Elite · Castle 3 pending · Gmail E1 noted).
+**Deploy:** BUILD_DATE **2026-08-01-evening** (Finance Pluck Low-Hanging Fruit · Castle $600/$172 · Gmail E1 noted).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 
@@ -69,7 +69,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Job search:** Last refresh **2026-07-27** — ADUSA Director still 404; TFM VP Merch Ops still live (posted 7/7); ADUSA SC Strategy Lead still posting. Next Mon **08-03**.
 
-**Proposals:** Work → Proposals. Nav proposal **re-approved** 07-30 evening (still shipping). Castle Fund V2 = **Doing** (§1–§3 core shipped).
+**Proposals:** Work → Proposals. Nav + Castle Fund V2 **re-approved** 08-01 evening (still shipping). Castle Fund V2 = **Doing** (§1–§3 core shipped).
 
 **CASTLE FUND V2 PLAN (paste this when asked — do not only redirect):**
 - **One line:** Port V2 into live castle.js / worker / kid pages. Same loop: log chore → pending → parent PIN → balance. **No** new React app. **No** KV wipe.

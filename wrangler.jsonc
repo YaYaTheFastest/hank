@@ -1,4 +1,6 @@
-// deploy-pin 2026-07-31T23:03:55Z evening a57b22f
+// deploy-pin 2026-08-01T11:10:00Z morning 330974b
+// DEPLOY-STALE pin 2026-08-01-morning 330974b → force CF rebuild
+// DEPLOY-STALE pin 2026-07-31 evening a57b22f
 // DEPLOY-STALE pin 2026-07-31-afternoon 75cebe2 → force rebuild
 // DEPLOY-STALE pin 2026-07-29-evening 95b0991 → force CF rebuild
 {

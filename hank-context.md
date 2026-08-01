@@ -39,13 +39,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-07-31 evening loop)
+## LIVE STATE (refreshed 2026-08-01 morning loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$565 / $172** · **3 pending** (Dagvald Clean Stalls $10×3). **Castle V2 §2+§3 live**. **Finance:** Every Client Is Unique (McKinsey Mind). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐.
+**Now (what matters):** Castle **$565 / $172** · **3 pending** (Dagvald Clean Stalls $10×3). **Castle V2 §2+§3 live**. **Recipes:** Traeger Smoked Pork Chops Ale-Balsamic ●. **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐. Wiki lint **OK** (first Saturday).
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance.
+**Next domain (rotation):** **Fitness** — then Finance → Recipes.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
@@ -61,7 +61,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$565** (7-day streak 07-25→07-31; **3 pending** ~$30), Davikja **$172** (**$150 Diadem goal met**, $22 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-07-31-evening** (Finance Every Client Is Unique · Z530R hours · Castle 3 pending).
+**Deploy:** BUILD_DATE **2026-08-01-morning** (Recipes Traeger pork chops ale-balsamic · Castle 3 pending · wiki lint OK).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 

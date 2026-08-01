@@ -542,25 +542,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-07-31-evening";
+const BUILD_DATE="2026-08-01-morning";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-07-31T23:00:00Z",
+  updated:"2026-08-01T11:20:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+{id:"2026-08-01_070001",started:"2026-08-01T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Saturday morning — inbox/queues empty; Castle $565/$172 · 3 pending unchanged; Recipes Traeger Smoked Pork Chops Ale-Balsamic ●; wiki lint OK; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Smoked Pork Chops Ale-Balsamic ●",chats_cleared:0,deploy:"pending"},
 {id:"2026-07-31_190001",started:"2026-07-31T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Friday evening — 1 chat Z530R 51h/full service@47 filed+cleared; Castle $565/$172 · 3 pending; Finance Every Client Is Unique; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Every Client Is Unique — Frameworks Are Not Magic Bullets",chats_cleared:1,deploy:"pending"},
 {id:"2026-07-31_130001",started:"2026-07-31T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Friday afternoon — 2 decisions filed+cleared; Castle parent approve $525→$565 / $162→$172 · 0 pending; Fitness Emotional Intelligence (Goleman); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Fitness: Emotional Intelligence (Goleman)",chats_cleared:2,deploy:"75cebe2"},
 {id:"2026-07-31_070001",started:"2026-07-31T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Friday morning — inbox/queues empty; Castle $525/$162 · 5 pending unchanged; Recipes BGE Low & Slow Baby Back Ribs ●; Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health → OK (E0).",domain:"Recipes: BGE Low & Slow Baby Back Ribs ●",chats_cleared:0,deploy:"pending"},
-{id:"2026-07-30_190001",started:"2026-07-30T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Thursday evening — 6 chats filed+cleared (Castle V2 §2+§3 ship, Kitchen Sink complete, nav re-approve); Castle $525/$162 · 5 pending; Finance Engage the Client; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Engage the Client — Involve to Keep Support",chats_cleared:6,deploy:"pending"},
-{id:"2026-07-30_130001",started:"2026-07-30T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon — 2 FILE THIS X filed+cleared (CDM + recipe table); Castle $525/$162 · 0 pending; Fitness Focus (Goleman); Gmail OAuth invalid_grant (E1 note); X bookmarks none; Readwise 972/0. Loop health → OK (E0).",domain:"Fitness: Focus — Inner Other Outer & Attention as Muscle (Goleman)",chats_cleared:2,deploy:"2504020"}
+{id:"2026-07-30_190001",started:"2026-07-30T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Thursday evening — 6 chats filed+cleared (Castle V2 §2+§3 ship, Kitchen Sink complete, nav re-approve); Castle $525/$162 · 5 pending; Finance Engage the Client; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Engage the Client — Involve to Keep Support",chats_cleared:6,deploy:"pending"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-07-31 evening — 1 chat (Z530R 51h / full service@47) filed+cleared; Castle $565/$172 · 3 pending; Finance Every Client Is Unique; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
-  last_success:"2026-07-31T23:05:00Z"
+  summary:"2026-08-01 morning — inbox/queues empty; Castle $565/$172 · 3 pending; Recipes Traeger Smoked Pork Chops Ale-Balsamic ●; wiki lint OK; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
+  last_success:"2026-08-01T11:20:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};
@@ -613,8 +613,8 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-07-31 evening",now:"Castle $565/$172 · 3 pending · Z530R 51h (service@47) · Finance Every Client Is Unique ● · fleet 52",nextDomain:"Recipes",rotation:"Recipes → Fitness → Finance",dagvald:565,davikja:172,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"2026-07-31 evening — Z530R hours filed; Castle $565/$172 · 3 pending; Finance Every Client Is Unique; Gmail E1."},
+const LIVE_STATE={refreshed:"2026-08-01 morning",now:"Castle $565/$172 · 3 pending · Z530R 51h (service@47) · Recipes Traeger pork chops ale-balsamic ● · fleet 52",nextDomain:"Fitness",rotation:"Recipes → Fitness → Finance",dagvald:565,davikja:172,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"2026-08-01 morning — Castle $565/$172 · 3 pending; Recipes Traeger pork chops; wiki lint OK; Gmail E1."},
   /* doing: string or {t, projectId?} — projectId opens Work project sheet */
   doing:[
     {t:"Castle Fund V2 — lessons unlock + parent dual polish",projectId:"castle-v2"},
@@ -644,7 +644,7 @@ const PROJECTS={
     {id:"shop-org",n:"Shop – Ongoing",what:"Finish shop organization with Deane; keep equipment cards honest.",why:"Shop is the ranch ops hub; clutter slows every job.",next:"Book Deane 2 hr to finish organizing",status:"Active",owner:"Darren",domain:"Shop"},
     {id:"plainfield",n:"Plainfield Rd Land Purchase",what:"Close clarity on Plainfield Rd land (trust vs probate path).",why:"Property decision blocks clean next legal/money moves.",next:"Resolve trust-vs-probate; engage NC attorney",status:"Active",owner:"Darren",domain:"Property"},
     {id:"job-search",n:"2026 Job Search",what:"Active search — network strategy / merch ops targets.",why:"Career track alongside ranch OS; weekly Monday refresh.",next:"Next weekly refresh Mon 08-03",status:"Active",owner:"Darren",domain:"Career"},
-    {id:"castle",n:"Castle Fund",what:"Kids earn-toward-reward balances (Dagvald / Davikja) inside HANK.",why:"Family module live; loop syncs ledgers from app.",next:"Parent PIN for 5 pending (~$40); V2 lessons next",status:"Active",owner:"Hank + parents",domain:"Family"},
+    {id:"castle",n:"Castle Fund",what:"Kids earn-toward-reward balances (Dagvald / Davikja) inside HANK.",why:"Family module live; loop syncs ledgers from app.",next:"Parent PIN for 3 pending (~$30); V2 lessons next",status:"Active",owner:"Hank + parents",domain:"Family"},
     {id:"castle-v2",n:"Castle Fund V2 — In-Hank",what:"XP, work-day check-in, money lessons, wishlist search, dual-kid parent dashboard, competition toggle — in existing Hank stack only.",why:"Chat directive 2026-07-29: port V2 behavior without React rewrite or wiping live KV.",next:"Money lessons unlock by level → parent dual polish → competition/wishlist search",status:"Active",owner:"Grok",domain:"Family",
       one:"Port V2 into live castle.js / worker / kid pages. Same core loop (log → pending → PIN → balance). No new React app. No KV wipe.",
       constraints:["Existing Hank stack only (Worker + static HTML/JS)","Do not wipe live KV balances or chore history","Do not redesign Equipment, Bible, or Command Center","Non-destructive defaults for any new fields"],

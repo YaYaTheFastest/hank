@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-02T17:13:10Z",
+  "updated": "2026-08-02T17:15:37Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-02_130548",
+      "started": "2026-08-02T13:05:48",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Fitness: [[Beyond Bodybuilding \u2014 Practice Not Workout Stay Tight (Pavel)]] \u2014 practice not workout \u00b7 stay tight + power breathing \u00b7 70\u201380% perfect \u00b7 never to failure \u00b7 frequent brief",
+      "domain": "Fitness: [[Beyond Bodybuilding \u2014 Practice Not Workout Stay Tight (Pavel)]] \u2014 practice not workout \u00b7 stay tight + power breathing \u00b7 70\u201380% perfect \u00b7 never to failure \u00b7 frequent brief",
+      "chats_cleared": 0,
+      "deploy": null,
+      "log": "logs/loop-2026-08-02_130548.log"
+    },
     {
       "id": "2026-08-02_130001",
       "started": "2026-08-02T13:00:01",
@@ -54,19 +68,6 @@
       "domain": "Finance: Pluck the Low-Hanging Fruit \u2014 Easy Wins Before the Full Solve",
       "chats_cleared": 2,
       "deploy": "cfd967f"
-    },
-    {
-      "id": "2026-08-01_130001",
-      "started": "2026-08-01T13:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Saturday afternoon \u2014 Castle $565/$172 \u00b7 3 pending; Fitness Run Elite (Snow); Gmail E1; X none; Readwise 972/0.",
-      "domain": "Fitness: Run Elite \u2014 Belief Applied Faith & Celebrate First (Snow)",
-      "chats_cleared": 0,
-      "deploy": "493bccf"
     }
   ]
 }

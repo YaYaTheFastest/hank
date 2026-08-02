@@ -5,15 +5,15 @@
   "error": "",
   "proposed_fix": "",
   "owner": "grok",
-  "last_attempt": "2026-08-02T11:15:00Z",
-  "last_success": "2026-08-02T11:15:00Z",
+  "last_attempt": "2026-08-02T17:09:31Z",
+  "last_success": "2026-08-02T17:09:31Z",
   "open_issues": [
     {
       "tier": "E1",
       "component": "gmail",
       "error": "invalid_grant: OAuth token expired or revoked",
       "owner": "darren",
-      "proposed_fix": "Re-auth per HANK Loop — Gmail Setup.md → refresh ~/.config/hank/google_token.json"
+      "proposed_fix": "Re-auth per HANK Loop \u2014 Gmail Setup.md \u2192 refresh ~/.config/hank/google_token.json"
     }
   ]
 }

@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-01T23:06:20Z",
+  "updated": "2026-08-02T11:06:08Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-02_070004",
+      "started": "2026-08-02T07:00:04",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Readwise: 972 / pending 0 (Sunday inventory only)",
+      "domain": "Readwise: 972 / pending 0 (Sunday inventory only)",
+      "chats_cleared": 0,
+      "deploy": "2f67915",
+      "log": "logs/loop-2026-08-02_070004.log"
+    },
     {
       "id": "2026-08-01_190004",
       "started": "2026-08-01T19:00:04",
@@ -54,19 +68,6 @@
       "domain": "Recipes: Traeger Smoked Pork Chops Ale-Balsamic \u25cf",
       "chats_cleared": 0,
       "deploy": "330974b"
-    },
-    {
-      "id": "2026-07-31_190001",
-      "started": "2026-07-31T19:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Friday evening \u2014 Z530R 51h; Castle $565/$172 \u00b7 3 pending; Finance Every Client Is Unique.",
-      "domain": "Finance: Every Client Is Unique \u2014 Frameworks Are Not Magic Bullets",
-      "chats_cleared": 1,
-      "deploy": "pending"
     }
   ]
 }

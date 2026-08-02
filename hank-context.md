@@ -39,13 +39,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-08-01 evening loop)
+## LIVE STATE (refreshed 2026-08-02 morning loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$600 / $172** · **0 pending**. **Castle V2 §2+§3 live**. **Finance:** Pluck the Low-Hanging Fruit (McKinsey Way L526). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐. Inbox capture: How to articulate yourself (Dan Koe) filed.
+**Now (what matters):** Castle **$600 / $172** · **0 pending**. **Castle V2 §2+§3 live**. **Recipes:** Traeger Brined Smoked Turkey Breast ●. **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance.
+**Next domain (rotation):** **Fitness** — then Finance → Recipes.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
 
@@ -61,7 +61,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$600** (8-day streak 07-25→08-01; **0 pending**), Davikja **$172** (**$150 Diadem goal met**, $22 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-08-01-evening** (Finance Pluck Low-Hanging Fruit · Castle $600/$172 · Gmail E1 noted).
+**Deploy:** BUILD_DATE **2026-08-02-morning** (Recipes Traeger Brined Smoked Turkey Breast · Castle $600/$172 · Gmail E1 noted).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 

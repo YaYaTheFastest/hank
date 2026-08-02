@@ -542,25 +542,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-01-evening";
+const BUILD_DATE="2026-08-02-morning";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-08-01T23:30:00Z",
+  updated:"2026-08-02T11:15:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+{id:"2026-08-02_070001",started:"2026-08-02T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Sunday morning — inbox/queues empty; Castle $600/$172 · 0 pending unchanged; Recipes Traeger Brined Smoked Turkey Breast ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Brined Smoked Turkey Breast ●",chats_cleared:0,deploy:"pending"},
 {id:"2026-08-01_190001",started:"2026-08-01T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Saturday evening — inbox mindmap filed; 2 decisions cleared; Castle parent approve $565→$600 · 0 pending; Finance Pluck Low-Hanging Fruit; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Pluck the Low-Hanging Fruit — Easy Wins Before the Full Solve",chats_cleared:2,deploy:"pending"},
 {id:"2026-08-01_130001",started:"2026-08-01T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Saturday afternoon — inbox/queues empty; Castle $565/$172 · 3 pending unchanged; Fitness Run Elite (Snow); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Fitness: Run Elite — Belief Applied Faith & Celebrate First (Snow)",chats_cleared:0,deploy:"493bccf"},
 {id:"2026-08-01_070001",started:"2026-08-01T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Saturday morning — inbox/queues empty; Castle $565/$172 · 3 pending unchanged; Recipes Traeger Smoked Pork Chops Ale-Balsamic ●; wiki lint OK; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Smoked Pork Chops Ale-Balsamic ●",chats_cleared:0,deploy:"330974b"},
-{id:"2026-07-31_190001",started:"2026-07-31T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Friday evening — 1 chat Z530R 51h/full service@47 filed+cleared; Castle $565/$172 · 3 pending; Finance Every Client Is Unique; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Every Client Is Unique — Frameworks Are Not Magic Bullets",chats_cleared:1,deploy:"pending"},
-{id:"2026-07-31_130001",started:"2026-07-31T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Friday afternoon — 2 decisions filed+cleared; Castle parent approve $525→$565 / $162→$172 · 0 pending; Fitness Emotional Intelligence (Goleman); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Fitness: Emotional Intelligence (Goleman)",chats_cleared:2,deploy:"75cebe2"}
+{id:"2026-07-31_190001",started:"2026-07-31T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Friday evening — 1 chat Z530R 51h/full service@47 filed+cleared; Castle $565/$172 · 3 pending; Finance Every Client Is Unique; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Every Client Is Unique — Frameworks Are Not Magic Bullets",chats_cleared:1,deploy:"pending"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-08-01 evening — mindmap + 2 decisions filed; Castle $600/$172 · 0 pending; Finance Pluck Low-Hanging Fruit; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
-  last_success:"2026-08-01T23:30:00Z"
+  summary:"2026-08-02 morning — inbox/queues empty; Castle $600/$172 · 0 pending; Recipes Traeger Brined Smoked Turkey Breast ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
+  last_success:"2026-08-02T11:15:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};

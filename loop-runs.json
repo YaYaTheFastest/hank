@@ -1,7 +1,19 @@
 {
-  "updated": "2026-08-02T11:06:08Z",
+  "updated": "2026-08-02T17:13:10Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-02_130001",
+      "started": "2026-08-02T13:00:01",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Sunday afternoon \u2014 inbox/queues empty; Castle $600/$172 \u00b7 0 pending unchanged; Fitness Beyond Bodybuilding (Pavel); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
+      "domain": "Fitness: Beyond Bodybuilding \u2014 Practice Not Workout Stay Tight (Pavel)",
+      "chats_cleared": 0,
+      "deploy": "01bd1cb"
+    },
     {
       "id": "2026-08-02_070004",
       "started": "2026-08-02T07:00:04",
@@ -55,19 +67,6 @@
       "domain": "Fitness: Run Elite \u2014 Belief Applied Faith & Celebrate First (Snow)",
       "chats_cleared": 0,
       "deploy": "493bccf"
-    },
-    {
-      "id": "2026-08-01_070001",
-      "started": "2026-08-01T07:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Saturday morning \u2014 Recipes Traeger Smoked Pork Chops; wiki lint OK; Castle $565/$172 \u00b7 3 pending; Gmail E1.",
-      "domain": "Recipes: Traeger Smoked Pork Chops Ale-Balsamic \u25cf",
-      "chats_cleared": 0,
-      "deploy": "330974b"
     }
   ]
 }

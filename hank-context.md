@@ -39,21 +39,21 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-08-02 evening loop)
+## LIVE STATE (refreshed 2026-08-03 morning loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$600 / $172** · **0 pending**. **Castle V2 §2+§3 live**. **Finance:** Sacrifice for the Future — Forgo Now Keep the Wolf Away (Peterson). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **07-27** (next Mon **08-03**). Dyson Air Purifier / Fan ◐.
+**Now (what matters):** Castle **$600 / $172** · **0 pending**. **Castle V2 §2+§3 live**. **8 chats filed** (trail habit · Strava pipeline · leadership Scripture · run vs BJJ). **Recipes:** Traeger Brisket (Packer Kitchen) ●. **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-03**. Dyson Air Purifier / Fan ◐.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance.
+**Next domain (rotation):** **Fitness** — then Finance → Recipes.
 
-**The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain. Do **not** send him to Connections graph for Scripture.
+**The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain · **Leadership transition / new role**. Do **not** send him to Connections graph for Scripture.
 
-**Doing (verbs):** **Castle Fund V2** (lessons unlock + parent dual polish next; Proposals re-APPROVE 08-01 evening) · **eero 7 gateway swap** · **Jairo** list (chat `For Jairo`) · **Endurance rebuild Phase 0** · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 bar · Ranch Chores profit-center metric · Shop cat door pick/order · Dyson purifier model label photo · **Davikja Diadem redeem or next goal** (parent; balance $172).
+**Doing (verbs):** **Morning trail habit** (post-travel Saturday · Plainfield → Ridgewood · Ragnar) · **Strava/workout file → Grok analysis** (plan; not fully built) · **Endurance rebuild** (Zone 2 · ~90′ run + 30′ strength goal) · **Castle Fund V2** (lessons unlock next) · **eero 7 gateway swap** · **Jairo** list · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 / leadership transition · Ranch Chores profit-center metric · Shop cat door · **Davikja Diadem redeem or next goal** ($172).
 
 **Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
 
-**Inbox:** Clean. Queues empty. X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
+**Inbox:** Clean. Queues empty (8 cleared this pass). X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
 **Loop:** OK (E0) · Gmail E1 noted (OAuth re-auth when convenient).
 
@@ -61,13 +61,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$600** (8-day streak 07-25→08-01; **0 pending**), Davikja **$172** (**$150 Diadem goal met**, $22 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-08-02-evening** (Finance Sacrifice for the Future · Castle $600/$172 · Gmail E1 noted).
+**Deploy:** BUILD_DATE **2026-08-03-morning** (8 chats · Recipes Traeger Brisket · trail habit · job search 08-03 · Castle $600/$172 · Gmail E1 noted).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again.
 
-**Job search:** Last refresh **2026-07-27** — ADUSA Director still 404; TFM VP Merch Ops still live (posted 7/7); ADUSA SC Strategy Lead still posting. Next Mon **08-03**.
+**Job search:** Last refresh **2026-08-03** — ADUSA Director still 404; TFM VP Merch Ops still live; ADUSA SC Strategy Lead still posting.
 
 **Proposals:** Work → Proposals. Nav + Castle Fund V2 **re-approved** 08-01 evening (still shipping). Castle Fund V2 = **Doing** (§1–§3 core shipped).
 
@@ -85,7 +85,9 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **eero mesh (quick):** Gateway swap first (Replace eero / modem Ethernet / TrueMesh 1–2 hr), then node quality audit, Outdoor 7 placement, optional barn/loft Ethernet backhaul. Project on Work tab.
 
-**Endurance (quick):** Phase 0 = 2–3 easy runs/week, 20–30 min, conversational. Frame as **fatigue work** + **be useful** (*Natural Born Heroes* / Hébert). Pace vs **expected** feel (*Endure* Hutchinson). Breath: treat early fatigue as possible respiratory-muscle limit; try 3:2 rhythmic pattern (*Breathing for Warriors*). Attention: **inner/other/outer** focus; treat attention like a muscle; don’t monologue technique mid-rep at race pace (*Focus* Goleman). Protocol: Endurance Rebuild — Marathon Base Return.
+**Endurance (quick):** Phase 0–1 easy base. **Trail habit** after travel: next Saturday — walk ~0.75 mi from 441 Plainfield (right) to trailhead with Ragnar → run north toward school → left James Doak → Ridgewood. Narrow-shoulder + snake awareness on project note. Goal shape: Zone 2 first → ~90 min run + ~30 min strength. **Strava set up**; Grok workout-file analysis = plan (folder drop easiest most-data path; not fully auto yet). Run-primary keystone if work focus is peak; rebalance BJJ hard rolls — don’t rage-quit the mat. Protocol: Endurance Rebuild + Running Endurance principle + Morning Trail Habit project.
+
+**Leadership transition (quick):** Boss let go; Darren stepping up. Compassion yes; **not** responsible for the decision. Company needs him and believes in him. Servant lead · feed the sheep · release false burden (John 21:22). Full copy + prayer: Leadership Transition — Compassion Release Strength.
 
 **Style (quick):** Four effects (Glamorous / Powerful / Confident / Approachable) · seven mirror rules · always tuck · half break · shoulder + wristbone. Note: Style Guide — Four Uniforms Seven Rules.
 

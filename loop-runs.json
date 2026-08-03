@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-02T17:15:37Z",
+  "updated": "2026-08-02T23:21:11Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-02_190005",
+      "started": "2026-08-02T19:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Finance: new [[Sacrifice for the Future \u2014 Forgo Now Keep the Wolf Away]] (Beyond Order \u2014 forgo now / keep the wolf away \u00b7 open the letter)",
+      "domain": "Finance: new [[Sacrifice for the Future \u2014 Forgo Now Keep the Wolf Away]] (Beyond Order \u2014 forgo now / keep the wolf away \u00b7 open the letter)",
+      "chats_cleared": 0,
+      "deploy": null,
+      "log": "logs/loop-2026-08-02_190005.log"
+    },
     {
       "id": "2026-08-02_130548",
       "started": "2026-08-02T13:05:48",
@@ -55,19 +69,6 @@
       "chats_cleared": null,
       "deploy": null,
       "log": "logs/loop-2026-08-01_190004.log"
-    },
-    {
-      "id": "2026-08-01_190001",
-      "started": "2026-08-01T19:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Saturday evening \u2014 mindmap + 2 decisions filed; Castle $565\u2192$600 \u00b7 0 pending; Finance Pluck Low-Hanging Fruit; Gmail invalid_grant (E1); X none; Readwise 972/0.",
-      "domain": "Finance: Pluck the Low-Hanging Fruit \u2014 Easy Wins Before the Full Solve",
-      "chats_cleared": 2,
-      "deploy": "cfd967f"
     }
   ]
 }

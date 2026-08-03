@@ -39,13 +39,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-08-03 afternoon loop)
+## LIVE STATE (refreshed 2026-08-03 evening loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$600 / $217** · **0 pending** (Davikja **+$45** five chores 08-03). **Castle V2 re-approved** (chat) — next: money lessons. **6 chats filed** (linkify · AA · virtues · manager week-1). **Fitness:** Spark (exercise · ADHD structure · reward salience). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-03**. Dyson Air Purifier / Fan ◐.
+**Now (what matters):** Castle **$600 / $217** · **0 pending** (unchanged vs afternoon). **Finance:** Without Structure Ideas Won't Stand (order out of chaos). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-03**. Dyson Air Purifier / Fan ◐. Queues empty.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness.
+**Next domain (rotation):** **Recipes** — then Fitness → Finance.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain · **Leadership transition / new role**. Virtues theme note filed. Do **not** send him to Connections graph for Scripture.
 
@@ -53,7 +53,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
 
-**Inbox:** Clean. Queues empty (6 cleared this pass). X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
+**Inbox:** Clean. Queues empty. X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
 **Loop:** OK (E0) · Gmail E1 noted (OAuth re-auth when convenient).
 
@@ -61,7 +61,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$600** (8-day streak 07-25→08-01; **0 pending**), Davikja **$217** (**$150 Diadem goal met**, $67 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-08-03-afternoon** (6 chats · Fitness Spark · chat linkify · AA/virtues/manager · Castle $600/$217 · Gmail E1 noted).
+**Deploy:** BUILD_DATE **2026-08-03-evening** (Finance structure principle · Castle $600/$217 · Gmail E1 noted).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 

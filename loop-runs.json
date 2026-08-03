@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-03T11:18:54Z",
+  "updated": "2026-08-03T17:16:48Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-03_130005",
+      "started": "2026-08-03T13:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Readwise: 972 / pending 0",
+      "domain": "Readwise: 972 / pending 0",
+      "chats_cleared": null,
+      "deploy": "399c7af",
+      "log": "logs/loop-2026-08-03_130005.log"
+    },
     {
       "id": "2026-08-03_070004",
       "started": "2026-08-03T07:00:04",
@@ -55,18 +69,6 @@
       "chats_cleared": 0,
       "deploy": null,
       "log": "logs/loop-2026-08-02_130548.log"
-    },
-    {
-      "id": "2026-08-02_130001",
-      "started": "2026-08-02T13:00:01",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Sunday afternoon \u2014 inbox/queues empty; Castle $600/$172 \u00b7 0 pending unchanged; Fitness Beyond Bodybuilding (Pavel); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
-      "domain": "Fitness: Beyond Bodybuilding \u2014 Practice Not Workout Stay Tight (Pavel)",
-      "chats_cleared": 0,
-      "deploy": "01bd1cb"
     }
   ]
 }

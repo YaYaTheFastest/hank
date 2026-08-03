@@ -542,25 +542,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-03-morning";
+const BUILD_DATE="2026-08-03-afternoon";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-08-03T11:15:00Z",
+  updated:"2026-08-03T17:10:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+{id:"2026-08-03_130001",started:"2026-08-03T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Monday afternoon — 6 chats filed+cleared (Castle V2 re-approve · chat linkify · AA · virtues · manager week-1); Castle $600/$217 · 0 pending (+$45 Davikja); Fitness Spark; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Fitness: Spark — Exercise Structure ADHD & Reward Salience",chats_cleared:6,deploy:"pending"},
 {id:"2026-08-03_070001",started:"2026-08-03T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Monday morning — 8 chats filed+cleared (trail habit · Strava pipeline · leadership Scripture); Castle $600/$172 · 0 pending; Recipes Traeger Brisket Packer ●; job search 08-03; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0 lint clean.",domain:"Recipes: Traeger Brisket (Packer Kitchen) ●",chats_cleared:8,deploy:"pending"},
 {id:"2026-08-02_190001",started:"2026-08-02T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Sunday evening — inbox/queues empty; Castle $600/$172 · 0 pending unchanged; Finance Sacrifice for the Future (Peterson); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Sacrifice for the Future — Forgo Now Keep the Wolf Away",chats_cleared:0,deploy:"1fe898f"},
 {id:"2026-08-02_130001",started:"2026-08-02T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Sunday afternoon — inbox/queues empty; Castle $600/$172 · 0 pending unchanged; Fitness Beyond Bodybuilding (Pavel); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Fitness: Beyond Bodybuilding — Practice Not Workout Stay Tight (Pavel)",chats_cleared:0,deploy:"01bd1cb"},
-{id:"2026-08-02_070001",started:"2026-08-02T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Sunday morning — inbox/queues empty; Castle $600/$172 · 0 pending unchanged; Recipes Traeger Brined Smoked Turkey Breast ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Brined Smoked Turkey Breast ●",chats_cleared:0,deploy:"pending"},
-{id:"2026-08-01_190001",started:"2026-08-01T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Saturday evening — inbox mindmap filed; 2 decisions cleared; Castle parent approve $565→$600 · 0 pending; Finance Pluck Low-Hanging Fruit; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Pluck the Low-Hanging Fruit — Easy Wins Before the Full Solve",chats_cleared:2,deploy:"pending"}
+{id:"2026-08-02_070001",started:"2026-08-02T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Sunday morning — inbox/queues empty; Castle $600/$172 · 0 pending unchanged; Recipes Traeger Brined Smoked Turkey Breast ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Brined Smoked Turkey Breast ●",chats_cleared:0,deploy:"pending"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-08-03 morning — 8 chats cleared; Castle $600/$172 · 0 pending; Recipes Traeger Brisket Packer ●; job search 08-03; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
-  last_success:"2026-08-03T11:15:00Z"
+  summary:"2026-08-03 afternoon — 6 chats cleared; Castle $600/$217 · 0 pending; Fitness Spark; chat linkify; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
+  last_success:"2026-08-03T17:10:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};
@@ -613,26 +613,26 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-08-03 morning",now:"Castle $600/$172 · 0 pending · Z530R 51h (service@47) · Recipes Traeger Brisket Packer ● · trail habit filed · fleet 52",nextDomain:"Fitness",rotation:"Recipes → Fitness → Finance",dagvald:600,davikja:172,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"2026-08-03 morning — 8 chats cleared; Castle $600/$172 · 0 pending; Recipes Traeger Brisket Packer ●; job search 08-03; Gmail E1."},
+const LIVE_STATE={refreshed:"2026-08-03 afternoon",now:"Castle $600/$217 · 0 pending · Z530R 51h (service@47) · Fitness Spark · AA+virtues+manager week-1 filed · fleet 52",nextDomain:"Finance",rotation:"Recipes → Fitness → Finance",dagvald:600,davikja:217,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"2026-08-03 afternoon — 6 chats cleared; Castle $600/$217 · 0 pending; Fitness Spark; chat linkify; Gmail E1."},
   /* doing: string or {t, projectId?} — projectId opens Work project sheet */
   doing:[
     {t:"Morning trail habit — post-travel Saturday Plainfield→Ridgewood + Ragnar",projectId:"morning-trail"},
     {t:"Strava/workout file → Grok analysis (Zone 2 · plan not fully built)",projectId:"strava-pipeline"},
-    {t:"Castle Fund V2 — lessons unlock + parent dual polish",projectId:"castle-v2"},
+    {t:"Castle Fund V2 — lessons unlock + parent dual polish (re-approved 08-03)",projectId:"castle-v2"},
     {t:"eero 7 gateway swap — Replace eero / modem Ethernet / TrueMesh",projectId:"eero-7"},
     {t:"Jairo handyman list — chat For Jairo:",projectId:"jairo"},
     {t:"Shop org — book Deane 2 hr",projectId:"shop-org"},
     {t:"Equipment quality audit gate"},
     {t:"Sig handgun OMs + serials"},
-    {t:"Fortna leadership transition — servant lead + Tier-1 bar"},
+    {t:"Fortna leadership transition — servant lead + Tier-1 bar + week-1 listen tour"},
     {t:"Ranch Chores as Profit Center — pick metric",projectId:"profit-chores"},
     {t:"Shop cat door — pick/order",projectId:"cat-door"},
     {t:"The Bible domain — deepen Scene/Character when prioritized"}
   ],
   waiting:[
     {t:"Home domain tiles layout (B2 — Darren confirm)"},
-    {t:"Davikja Diadem redeem or next goal (parent — $172, goal met)",projectId:"castle"},
+    {t:"Davikja Diadem redeem or next goal (parent — $217, goal met $67 over)",projectId:"castle"},
     {t:"Profit-center metric pick (options A–F)",projectId:"profit-chores"},
     {t:"Dyson label photos → _Cowork Inbox"}
   ]};
@@ -651,8 +651,8 @@ const PROJECTS={
       preserve:["Warm-up walk counts","Walk breaks OK early weeks","Alternate drive-to-trailhead if road day is unsafe"],
       steps:["1. Travel week — rest/prep only","2. First Saturday: complete skeleton at easy pace","3. Log Strava; drop GPX if possible for Grok analysis","4. Four-week streak before mileage ego","5. Stack ~30 min strength most non-wrecked days"]},
     {id:"strava-pipeline",n:"Strava & Workout File → Grok",what:"Get workout files (Strava/Apple Watch) into a path Grok can analyze for trends, Zone 2 honesty, and TrainingPeaks-style next steps.",why:"Darren wants analysis + challenges without manual chat paste forever.",next:"Use folder-drop GPX/FIT (easiest most-data); loop auto-trigger is planned not shipped",status:"Active",owner:"Grok",domain:"Fitness"},
-    {id:"castle",n:"Castle Fund",what:"Kids earn-toward-reward balances (Dagvald / Davikja) inside HANK.",why:"Family module live; loop syncs ledgers from app.",next:"V2 lessons unlock by level; Davikja Diadem redeem or next goal",status:"Active",owner:"Hank + parents",domain:"Family"},
-    {id:"castle-v2",n:"Castle Fund V2 — In-Hank",what:"XP, work-day check-in, money lessons, wishlist search, dual-kid parent dashboard, competition toggle — in existing Hank stack only.",why:"Chat directive 2026-07-29: port V2 behavior without React rewrite or wiping live KV.",next:"Money lessons unlock by level → parent dual polish → competition/wishlist search",status:"Active",owner:"Grok",domain:"Family",
+    {id:"castle",n:"Castle Fund",what:"Kids earn-toward-reward balances (Dagvald / Davikja) inside HANK.",why:"Family module live; loop syncs ledgers from app.",next:"V2 lessons unlock by level; Davikja $217 Diadem met ($67 over) — redeem or next goal",status:"Active",owner:"Hank + parents",domain:"Family"},
+    {id:"castle-v2",n:"Castle Fund V2 — In-Hank",what:"XP, work-day check-in, money lessons, wishlist search, dual-kid parent dashboard, competition toggle — in existing Hank stack only.",why:"Chat directive 2026-07-29 + re-APPROVE 2026-08-03: port V2 behavior without React rewrite or wiping live KV.",next:"Money lessons unlock by level → parent dual polish → competition/wishlist search",status:"Active",owner:"Grok",domain:"Family",
       one:"Port V2 into live castle.js / worker / kid pages. Same core loop (log → pending → PIN → balance). No new React app. No KV wipe.",
       constraints:["Existing Hank stack only (Worker + static HTML/JS)","Do not wipe live KV balances or chore history","Do not redesign Equipment, Bible, or Command Center","Non-destructive defaults for any new fields"],
       preserve:["Kid logs chore → pending → parent 4-digit PIN → balance / Save-Spend-Give","Deduct + Bank of Mom and Dad interest (idempotent per kid+month)","Old bundles must still load (default missing fields)"],
@@ -1802,9 +1802,17 @@ function goDueSoon(){filter="Due soon";syncChips();showView('equip');render();co
 function syncChips(){[...chips.children].forEach(c=>c.classList.toggle('active',c.textContent===filter));}
 let chatMsgs=[];
 function escapeHtml(s){return (s||"").replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+/** Escape first, then turn http(s) URLs into clickable links (Hank chat capability — 2026-08-03). */
+function linkifyHtml(escaped){
+  return (escaped||"").replace(/(https?:\/\/[^\s<&]+)/g,function(url){
+    var clean=url.replace(/[.,);:]+$/g,"");
+    var trail=url.slice(clean.length);
+    return '<a href="'+clean+'" target="_blank" rel="noopener noreferrer" style="color:var(--green);text-decoration:underline;word-break:break-all">'+clean+'</a>'+trail;
+  });
+}
 function renderChat(){
   const l=document.getElementById('chatLog');
-  l.innerHTML=chatMsgs.map(m=>`<div class="cmsg ${m.role}"><div class="bub">${escapeHtml(m.content)}</div></div>`).join("");
+  l.innerHTML=chatMsgs.map(m=>`<div class="cmsg ${m.role}"><div class="bub">${linkifyHtml(escapeHtml(m.content))}</div></div>`).join("");
   l.scrollTop=l.scrollHeight;
 }
 async function sendChat(){

@@ -1,7 +1,33 @@
 {
-  "updated": "2026-08-02T23:21:11Z",
+  "updated": "2026-08-03T11:18:54Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-03_070004",
+      "started": "2026-08-03T07:00:04",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Loop run 2026-08-03 070004",
+      "domain": "",
+      "chats_cleared": null,
+      "deploy": "1c6063a",
+      "log": "logs/loop-2026-08-03_070004.log"
+    },
+    {
+      "id": "2026-08-03_070001",
+      "started": "2026-08-03T07:00:01",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Monday morning \u2014 8 chats filed+cleared (trail habit \u00b7 Strava pipeline \u00b7 leadership Scripture); Castle $600/$172 \u00b7 0 pending; Recipes Traeger Brisket Packer \u25cf; job search 08-03; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0 lint clean.",
+      "domain": "Recipes: Traeger Brisket (Packer Kitchen) \u25cf",
+      "chats_cleared": 8,
+      "deploy": "1c6063a"
+    },
     {
       "id": "2026-08-02_190005",
       "started": "2026-08-02T19:00:05",
@@ -41,34 +67,6 @@
       "domain": "Fitness: Beyond Bodybuilding \u2014 Practice Not Workout Stay Tight (Pavel)",
       "chats_cleared": 0,
       "deploy": "01bd1cb"
-    },
-    {
-      "id": "2026-08-02_070004",
-      "started": "2026-08-02T07:00:04",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Readwise: 972 / pending 0 (Sunday inventory only)",
-      "domain": "Readwise: 972 / pending 0 (Sunday inventory only)",
-      "chats_cleared": 0,
-      "deploy": "2f67915",
-      "log": "logs/loop-2026-08-02_070004.log"
-    },
-    {
-      "id": "2026-08-01_190004",
-      "started": "2026-08-01T19:00:04",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "HANK loop pass complete \u2014 OK (E0)",
-      "domain": "Readwise: 972 / pending 0 (inventory only)",
-      "chats_cleared": null,
-      "deploy": null,
-      "log": "logs/loop-2026-08-01_190004.log"
     }
   ]
 }

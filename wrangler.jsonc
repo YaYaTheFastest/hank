@@ -1,15 +1,15 @@
-// DEPLOY-STALE pin 2026-08-03-afternoon 399c7af → force CF rebuild 2026-08-03T17:12Z
-// DEPLOY-STALE pin 2026-08-03-morning 58dfd33 → force CF rebuild 2026-08-03T11:13Z
-// DEPLOY-STALE pin 2026-08-02-afternoon 01bd1cb → force CF rebuild
-// DEPLOY-STALE pin 2026-08-02-morning 11d53f8 → force CF rebuild
-// deploy-pin 2026-08-01-afternoon-redeploy f463b7a retry
-// DEPLOY-STALE pin 2026-08-01-morning 330974b → force CF rebuild
-// DEPLOY-STALE pin 2026-07-31 evening a57b22f
-// DEPLOY-STALE pin 2026-07-31-afternoon 75cebe2 → force rebuild
-// DEPLOY-STALE pin 2026-07-29-evening 95b0991 → force CF rebuild
+// deploy-pin 2026-08-04-morning 110632Z
+// deploy-pin 2026-08-04-morning 110632Z
+// deploy-pin 2026-08-04-morning 110632Z
+// deploy-pin 2026-08-04-morning 110632Z
+// deploy-pin 2026-08-04-morning 110632Z
+// deploy-pin 2026-08-04-morning 110632Z
+// deploy-pin 2026-08-04-morning 110632Z
+// deploy-pin 2026-08-04-morning 110632Z
+// deploy-pin 2026-08-04-morning 110632Z
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
-  // DEPLOY-STALE pin 2026-07-29-morning b686381
+// deploy-pin 2026-08-04-morning 110632Z
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",

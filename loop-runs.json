@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-03T17:16:48Z",
+  "updated": "2026-08-03T23:10:46Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-03_190005",
+      "started": "2026-08-03T19:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Readwise: 972 / pending 0 (evening; full pipeline already ran this morning)",
+      "domain": "Readwise: 972 / pending 0 (evening; full pipeline already ran this morning)",
+      "chats_cleared": null,
+      "deploy": null,
+      "log": "logs/loop-2026-08-03_190005.log"
+    },
     {
       "id": "2026-08-03_130005",
       "started": "2026-08-03T13:00:05",
@@ -55,20 +69,6 @@
       "chats_cleared": 0,
       "deploy": null,
       "log": "logs/loop-2026-08-02_190005.log"
-    },
-    {
-      "id": "2026-08-02_130548",
-      "started": "2026-08-02T13:05:48",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Fitness: [[Beyond Bodybuilding \u2014 Practice Not Workout Stay Tight (Pavel)]] \u2014 practice not workout \u00b7 stay tight + power breathing \u00b7 70\u201380% perfect \u00b7 never to failure \u00b7 frequent brief",
-      "domain": "Fitness: [[Beyond Bodybuilding \u2014 Practice Not Workout Stay Tight (Pavel)]] \u2014 practice not workout \u00b7 stay tight + power breathing \u00b7 70\u201380% perfect \u00b7 never to failure \u00b7 frequent brief",
-      "chats_cleared": 0,
-      "deploy": null,
-      "log": "logs/loop-2026-08-02_130548.log"
     }
   ]
 }

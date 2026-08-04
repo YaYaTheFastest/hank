@@ -1,15 +1,6 @@
-// deploy-pin 2026-08-04-morning 110632Z
-// deploy-pin 2026-08-04-morning 110632Z
-// deploy-pin 2026-08-04-morning 110632Z
-// deploy-pin 2026-08-04-morning 110632Z
-// deploy-pin 2026-08-04-morning 110632Z
-// deploy-pin 2026-08-04-morning 110632Z
-// deploy-pin 2026-08-04-morning 110632Z
-// deploy-pin 2026-08-04-morning 110632Z
-// deploy-pin 2026-08-04-morning 110632Z
+// deploy-pin 2026-08-04-morning d06da8f
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
-// deploy-pin 2026-08-04-morning 110632Z
   "name": "hank",
   "main": "worker.js",
   "compatibility_date": "2026-06-01",

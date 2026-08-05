@@ -542,25 +542,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-05-afternoon";
+const BUILD_DATE="2026-08-05-evening";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-08-05T17:05:00Z",
+  updated:"2026-08-05T23:05:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+{id:"2026-08-05_190001",started:"2026-08-05T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Wednesday evening — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Finance Presume Ignorance Invite Learning; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Presume Ignorance — Invite Learning Over Blind Certainty",chats_cleared:0,deploy:"pending"},
 {id:"2026-08-05_130001",started:"2026-08-05T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Wednesday afternoon — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Fitness Rafa Quiet the Mind Endure This Point (Nadal); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Fitness: Rafa — Quiet the Mind Endure This Point (Nadal)",chats_cleared:0,deploy:"pending"},
 {id:"2026-08-05_070001",started:"2026-08-05T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Wednesday morning — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Recipes Traeger Juicy Smoked Chicken Breast ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Juicy Smoked Chicken Breast ●",chats_cleared:0,deploy:"fcdbd45"},
 {id:"2026-08-04_190001",started:"2026-08-04T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Tuesday evening — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Finance Life Is What Repeats (get the recurring right); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Life Is What Repeats — Get the Recurring Right",chats_cleared:0,deploy:"73af7ba"},
-{id:"2026-08-04_130001",started:"2026-08-04T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Tuesday afternoon — inbox/queues empty; Castle $600/$217 · 0 pending; Fitness domain review (concept map; tops covered); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Fitness: domain review (no new stub)",chats_cleared:0,deploy:"pending"},
-{id:"2026-08-04_070001",started:"2026-08-04T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Tuesday morning — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Recipes Traeger Smoked Pork Tenderloin Honey-Thyme ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Smoked Pork Tenderloin Honey-Thyme ●",chats_cleared:0,deploy:"pending"}
+{id:"2026-08-04_130001",started:"2026-08-04T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Tuesday afternoon — inbox/queues empty; Castle $600/$217 · 0 pending; Fitness domain review (concept map; tops covered); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Fitness: domain review (no new stub)",chats_cleared:0,deploy:"pending"}
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-08-05 afternoon — inbox/queues empty; Castle $600/$217 · 0 pending; Fitness Rafa Quiet the Mind Endure This Point; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
-  last_success:"2026-08-05T17:05:00Z"
+  summary:"2026-08-05 evening — inbox/queues empty; Castle $600/$217 · 0 pending; Finance Presume Ignorance Invite Learning; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
+  last_success:"2026-08-05T23:05:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};
@@ -613,8 +613,8 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-08-05 afternoon",now:"Castle $600/$217 · 0 pending · Z530R 51h (service@47) · Fitness Rafa Quiet the Mind Endure This Point · fleet 52",nextDomain:"Finance",rotation:"Recipes → Fitness → Finance",dagvald:600,davikja:217,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"2026-08-05 afternoon — empty queues; Castle $600/$217 · 0 pending; Fitness Rafa (Nadal); Gmail E1."},
+const LIVE_STATE={refreshed:"2026-08-05 evening",now:"Castle $600/$217 · 0 pending · Z530R 51h (service@47) · Finance Presume Ignorance Invite Learning · fleet 52",nextDomain:"Recipes",rotation:"Recipes → Fitness → Finance",dagvald:600,davikja:217,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"2026-08-05 evening — empty queues; Castle $600/$217 · 0 pending; Finance Presume Ignorance; Gmail E1."},
   /* doing: string or {t, projectId?} — projectId opens Work project sheet */
   doing:[
     {t:"Morning trail habit — post-travel Saturday Plainfield→Ridgewood + Ragnar",projectId:"morning-trail"},

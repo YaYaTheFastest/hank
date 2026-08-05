@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-04T23:15:00Z",
-  "schedule": "7:00 · 13:00 · 19:00 + chat queue watcher",
+  "updated": "2026-08-04T23:09:31Z",
+  "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-04_190004",
+      "started": "2026-08-04T19:00:04",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Finance: New [[Life Is What Repeats \u2014 Get the Recurring Right]] (Beyond Order L1446 \u00b7 L1395)",
+      "domain": "Finance: New [[Life Is What Repeats \u2014 Get the Recurring Right]] (Beyond Order L1446 \u00b7 L1395)",
+      "chats_cleared": 0,
+      "deploy": "59b8c6e",
+      "log": "logs/loop-2026-08-04_190004.log"
+    },
     {
       "id": "2026-08-04_190001",
       "started": "2026-08-04T19:00:01",
@@ -10,10 +24,10 @@
       "slot": "evening",
       "status": "ok",
       "tier": "E0",
-      "summary": "Tuesday evening — inbox/queues empty; Castle $600/$217 · 0 pending; Finance Life Is What Repeats; Gmail E1; X none; Readwise 972/0.",
-      "domain": "Finance: Life Is What Repeats — Get the Recurring Right",
+      "summary": "Tuesday evening \u2014 inbox/queues empty; Castle $600/$217 \u00b7 0 pending; Finance Life Is What Repeats; Gmail E1; X none; Readwise 972/0.",
+      "domain": "Finance: Life Is What Repeats \u2014 Get the Recurring Right",
       "chats_cleared": 0,
-      "deploy": null,
+      "deploy": "73af7ba",
       "log": "logs/loop-2026-08-04_190001.log"
     },
     {
@@ -24,7 +38,7 @@
       "slot": "afternoon",
       "status": "ok",
       "tier": "E0",
-      "summary": "Tuesday afternoon — Fitness domain review (tops covered); Castle $600/$217 · 0 pending; Gmail E1; X none.",
+      "summary": "Tuesday afternoon \u2014 Fitness domain review (tops covered); Castle $600/$217 \u00b7 0 pending; Gmail E1; X none.",
       "domain": "Fitness: domain review (no new stub)",
       "chats_cleared": 0,
       "deploy": null,
@@ -38,8 +52,8 @@
       "slot": "morning",
       "status": "ok",
       "tier": "E0",
-      "summary": "Recipes: Traeger Smoked Pork Tenderloin Honey-Thyme ●",
-      "domain": "Recipes: Traeger Smoked Pork Tenderloin Honey-Thyme ●",
+      "summary": "Recipes: Traeger Smoked Pork Tenderloin Honey-Thyme \u25cf",
+      "domain": "Recipes: Traeger Smoked Pork Tenderloin Honey-Thyme \u25cf",
       "chats_cleared": 0,
       "deploy": null,
       "log": "logs/loop-2026-08-04_070005.log"
@@ -53,24 +67,10 @@
       "status": "ok",
       "tier": "E0",
       "summary": "Finance: Without Structure Ideas Won't Stand",
-      "domain": "Finance: Without Structure Ideas Won't Stand — Order Out of Chaos",
+      "domain": "Finance: Without Structure Ideas Won't Stand \u2014 Order Out of Chaos",
       "chats_cleared": 0,
       "deploy": "ff77769",
       "log": "logs/loop-2026-08-03_190005.log"
-    },
-    {
-      "id": "2026-08-03_130005",
-      "started": "2026-08-03T13:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (afternoon)",
-      "slot": "afternoon",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Fitness: Spark; Castle Davikja +$45",
-      "domain": "Fitness: Spark — Exercise Structure ADHD & Reward Salience",
-      "chats_cleared": 6,
-      "deploy": "399c7af",
-      "log": "logs/loop-2026-08-03_130005.log"
     }
   ]
 }

@@ -39,13 +39,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-08-05 morning loop)
+## LIVE STATE (refreshed 2026-08-05 afternoon loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$600 / $217** · **0 pending** (unchanged). **Recipes:** Traeger Juicy Smoked Chicken Breast ●. **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-03**. Dyson Air Purifier / Fan ◐. Queues empty.
+**Now (what matters):** Castle **$600 / $217** · **0 pending** (unchanged). **Fitness:** Rafa — Quiet the Mind Endure This Point (Nadal). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-03**. Dyson Air Purifier / Fan ◐. Queues empty.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes.
+**Next domain (rotation):** **Finance** — then Recipes → Fitness.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain · **Leadership transition / new role**. Virtues theme note filed. Do **not** send him to Connections graph for Scripture.
 
@@ -61,7 +61,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$600** (8-day streak 07-25→08-01; **0 pending**), Davikja **$217** (**$150 Diadem goal met**, $67 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-08-05-morning** (Recipes Traeger Juicy Smoked Chicken Breast ● · Castle $600/$217 · Gmail E1 noted).
+**Deploy:** BUILD_DATE **2026-08-05-afternoon** (Fitness Rafa / Nadal · Castle $600/$217 · Gmail E1 noted).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 

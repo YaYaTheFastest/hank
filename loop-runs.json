@@ -1,7 +1,34 @@
 {
-  "updated": "2026-08-05T17:06:04Z",
+  "updated": "2026-08-05T23:07:19Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-05_190004",
+      "started": "2026-08-05T19:00:04",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Finance: [[Presume Ignorance \u2014 Invite Learning Over Blind Certainty]] (Beyond Order L496).",
+      "domain": "Finance: [[Presume Ignorance \u2014 Invite Learning Over Blind Certainty]] (Beyond Order L496).",
+      "chats_cleared": null,
+      "deploy": "3483872",
+      "log": "logs/loop-2026-08-05_190004.log"
+    },
+    {
+      "id": "2026-08-05_190001",
+      "started": "2026-08-05T19:00:01",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Wednesday evening \u2014 inbox/queues empty; Castle $600/$217 \u00b7 0 pending; Finance Presume Ignorance; Gmail E1; X none; Readwise 972/0; live verified a4c0316",
+      "domain": "Finance: Presume Ignorance \u2014 Invite Learning Over Blind Certainty",
+      "chats_cleared": 0,
+      "deploy": "a4c0316"
+    },
     {
       "id": "2026-08-05_130005",
       "started": "2026-08-05T13:00:05",
@@ -43,34 +70,6 @@
       "chats_cleared": 0,
       "deploy": "fcdbd45",
       "log": null
-    },
-    {
-      "id": "2026-08-04_190004",
-      "started": "2026-08-04T19:00:04",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Finance: New [[Life Is What Repeats \u2014 Get the Recurring Right]] (Beyond Order L1446 \u00b7 L1395)",
-      "domain": "Finance: New [[Life Is What Repeats \u2014 Get the Recurring Right]] (Beyond Order L1446 \u00b7 L1395)",
-      "chats_cleared": 0,
-      "deploy": "59b8c6e",
-      "log": "logs/loop-2026-08-04_190004.log"
-    },
-    {
-      "id": "2026-08-04_190001",
-      "started": "2026-08-04T19:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Tuesday evening \u2014 inbox/queues empty; Castle $600/$217 \u00b7 0 pending; Finance Life Is What Repeats; Gmail E1; X none; Readwise 972/0.",
-      "domain": "Finance: Life Is What Repeats \u2014 Get the Recurring Right",
-      "chats_cleared": 0,
-      "deploy": "73af7ba",
-      "log": "logs/loop-2026-08-04_190001.log"
     }
   ]
 }

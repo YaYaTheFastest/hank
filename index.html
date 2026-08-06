@@ -542,25 +542,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-06-morning";
+const BUILD_DATE="2026-08-06-evening";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-08-06T11:10:00Z",
+  updated:"2026-08-06T23:20:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
-{id:"2026-08-06_070001",started:"2026-08-06T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Thursday morning — 1 FILE THIS X (Grok Build XFreeze) filed+cleared; Castle $600/$217 · 0 pending unchanged; Recipes Traeger Smoked Pork Loin ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Smoked Pork Loin ●",chats_cleared:1,deploy:"pending"},
-{id:"2026-08-05_190001",started:"2026-08-05T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Wednesday evening — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Finance Presume Ignorance Invite Learning; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Presume Ignorance — Invite Learning Over Blind Certainty",chats_cleared:0,deploy:"pending"},
-{id:"2026-08-05_130001",started:"2026-08-05T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Wednesday afternoon — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Fitness Rafa Quiet the Mind Endure This Point (Nadal); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Fitness: Rafa — Quiet the Mind Endure This Point (Nadal)",chats_cleared:0,deploy:"pending"},
-{id:"2026-08-05_070001",started:"2026-08-05T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Wednesday morning — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Recipes Traeger Juicy Smoked Chicken Breast ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Juicy Smoked Chicken Breast ●",chats_cleared:0,deploy:"fcdbd45"},
-{id:"2026-08-04_190001",started:"2026-08-04T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Tuesday evening — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Finance Life Is What Repeats (get the recurring right); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Life Is What Repeats — Get the Recurring Right",chats_cleared:0,deploy:"73af7ba"},
+{id:"2026-08-06_190001",started:"2026-08-06T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Thursday evening — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Finance Authority From Competence (Beyond Order L619); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Authority From Competence — Not Compulsion",chats_cleared:0,deploy:"pending"},
+{id:"2026-08-06_130001",started:"2026-08-06T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon — 3 chats filed+cleared (Castle V2 + nav re-APPROVE; Strava folder-drop + GPX parser shipped); Castle $600/$217 · 0 pending; Fitness The Coach (Mouratoglou); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Fitness: The Coach — Reprogram Behavior Want Not Wish (Mouratoglou)",chats_cleared:3,deploy:"pending"},
+{id:"2026-08-06_070001",started:"2026-08-06T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Thursday morning — 1 FILE THIS X (Grok Build XFreeze) filed+cleared; Castle $600/$217 · 0 pending unchanged; Recipes Traeger Smoked Pork Loin ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Smoked Pork Loin ●",chats_cleared:1,deploy:"f9a4ce6"},
+{id:"2026-08-05_190001",started:"2026-08-05T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Wednesday evening — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Finance Presume Ignorance Invite Learning; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Presume Ignorance — Invite Learning Over Blind Certainty",chats_cleared:0,deploy:"a4c0316"},
+{id:"2026-08-05_130001",started:"2026-08-05T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Wednesday afternoon — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Fitness Rafa Quiet the Mind Endure This Point (Nadal); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Fitness: Rafa — Quiet the Mind Endure This Point (Nadal)",chats_cleared:0,deploy:"6a0991b"},
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-08-06 morning — 1 FILE THIS X filed+cleared; Castle $600/$217 · 0 pending; Recipes Traeger Smoked Pork Loin ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
-  last_success:"2026-08-06T11:10:00Z"
+  summary:"2026-08-06 evening — inbox/queues empty; Castle $600/$217 · 0 pending; Finance Authority From Competence (Beyond Order L619); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
+  last_success:"2026-08-06T23:20:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};
@@ -613,13 +613,13 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-08-05 evening",now:"Castle $600/$217 · 0 pending · Z530R 51h (service@47) · Finance Presume Ignorance Invite Learning · fleet 52",nextDomain:"Recipes",rotation:"Recipes → Fitness → Finance",dagvald:600,davikja:217,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"2026-08-05 evening — empty queues; Castle $600/$217 · 0 pending; Finance Presume Ignorance; Gmail E1."},
+const LIVE_STATE={refreshed:"2026-08-06 evening",now:"Castle $600/$217 · 0 pending · Z530R 51h (service@47) · Finance Authority From Competence (L619) · Strava folder-drop live · fleet 52",nextDomain:"Recipes",rotation:"Recipes → Fitness → Finance",dagvald:600,davikja:217,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"2026-08-06 evening — empty inboxes/queues; Castle $600/$217 · 0 pending; Finance Authority From Competence; Gmail E1."},
   /* doing: string or {t, projectId?} — projectId opens Work project sheet */
   doing:[
     {t:"Morning trail habit — post-travel Saturday Plainfield→Ridgewood + Ragnar",projectId:"morning-trail"},
-    {t:"Strava/workout file → Grok analysis (Zone 2 · plan not fully built)",projectId:"strava-pipeline"},
-    {t:"Castle Fund V2 — lessons unlock + parent dual polish (re-approved 08-03)",projectId:"castle-v2"},
+    {t:"Strava/workout file → Grok analysis (folder-drop live; first GPX pending)",projectId:"strava-pipeline"},
+    {t:"Castle Fund V2 — lessons unlock + parent dual polish (re-approved 08-06)",projectId:"castle-v2"},
     {t:"eero 7 gateway swap — Replace eero / modem Ethernet / TrueMesh",projectId:"eero-7"},
     {t:"Jairo handyman list — chat For Jairo:",projectId:"jairo"},
     {t:"Shop org — book Deane 2 hr",projectId:"shop-org"},
@@ -650,9 +650,13 @@ const PROJECTS={
       constraints:["Narrow Plainfield shoulder — face traffic, high-vis, dog inside","Snake awareness — eyes up, short leash in brush; weapons last-ditch only","Do not start mid-travel week"],
       preserve:["Warm-up walk counts","Walk breaks OK early weeks","Alternate drive-to-trailhead if road day is unsafe"],
       steps:["1. Travel week — rest/prep only","2. First Saturday: complete skeleton at easy pace","3. Log Strava; drop GPX if possible for Grok analysis","4. Four-week streak before mileage ego","5. Stack ~30 min strength most non-wrecked days"]},
-    {id:"strava-pipeline",n:"Strava & Workout File → Grok",what:"Get workout files (Strava/Apple Watch) into a path Grok can analyze for trends, Zone 2 honesty, and TrainingPeaks-style next steps.",why:"Darren wants analysis + challenges without manual chat paste forever.",next:"Use folder-drop GPX/FIT (easiest most-data); loop auto-trigger is planned not shipped",status:"Active",owner:"Grok",domain:"Fitness"},
+    {id:"strava-pipeline",n:"Strava & Workout File → Grok",what:"Get workout files (Strava/Apple Watch) into a path Grok can analyze for trends, Zone 2 honesty, and TrainingPeaks-style next steps.",why:"Darren wants analysis + challenges without manual chat paste forever.",next:"Drop Strava GPX into iCloud _HANK Media/workouts/incoming/ — loop parses + analyzes next pass",status:"Active",owner:"Grok",domain:"Fitness",
+      one:"Folder-drop GPX/FIT → loop scan → archive → analysis note. Same Hank loop (not separate watcher yet).",
+      constraints:["No bulk media into vault","Never invent HR zones without file fields","Protect Castle balances (unrelated path)"],
+      preserve:["Zone 2 honesty","TrainingPeaks-style session notes","Uphill Athlete bias"],
+      steps:["1. ✅ Watched path + Loop Ops §Workout folder scan (2026-08-06)","2. ✅ GPX parse helper workout_gpx_parse.py (distance/time/elev)","3. First real analysis after first GPX drop","4. FIT parser optional (prefer Strava GPX)","5. Thin watcher only if 3×/day lag is too slow"]},
     {id:"castle",n:"Castle Fund",what:"Kids earn-toward-reward balances (Dagvald / Davikja) inside HANK.",why:"Family module live; loop syncs ledgers from app.",next:"V2 lessons unlock by level; Davikja $217 Diadem met ($67 over) — redeem or next goal",status:"Active",owner:"Hank + parents",domain:"Family"},
-    {id:"castle-v2",n:"Castle Fund V2 — In-Hank",what:"XP, work-day check-in, money lessons, wishlist search, dual-kid parent dashboard, competition toggle — in existing Hank stack only.",why:"Chat directive 2026-07-29 + re-APPROVE 2026-08-03: port V2 behavior without React rewrite or wiping live KV.",next:"Money lessons unlock by level → parent dual polish → competition/wishlist search",status:"Active",owner:"Grok",domain:"Family",
+    {id:"castle-v2",n:"Castle Fund V2 — In-Hank",what:"XP, work-day check-in, money lessons, wishlist search, dual-kid parent dashboard, competition toggle — in existing Hank stack only.",why:"Chat directive 2026-07-29 + re-APPROVE 2026-08-06: port V2 behavior without React rewrite or wiping live KV.",next:"Money lessons unlock by level → parent dual polish → competition/wishlist search",status:"Active",owner:"Grok",domain:"Family",
       one:"Port V2 into live castle.js / worker / kid pages. Same core loop (log → pending → PIN → balance). No new React app. No KV wipe.",
       constraints:["Existing Hank stack only (Worker + static HTML/JS)","Do not wipe live KV balances or chore history","Do not redesign Equipment, Bible, or Command Center","Non-destructive defaults for any new fields"],
       preserve:["Kid logs chore → pending → parent 4-digit PIN → balance / Save-Spend-Give","Deduct + Bank of Mom and Dad interest (idempotent per kid+month)","Old bundles must still load (default missing fields)"],
@@ -673,8 +677,8 @@ const PROJECTS={
 };
 // Open proposals for Darren to review in-app (no Obsidian). Grok files new ones; you approve/hold via Chat.
 const PROPOSALS=[
-  {id:"castle-v2-2026-07-29",title:"Castle Fund V2 — in existing Hank app",status:"shipping",one:"XP, check-in, lessons, wishlist search, dual parent dashboard, competition toggle — no React rewrite, no KV wipe.",summary:"Chat directive: port V2 into castle.js/worker/kid pages. Preserve log→pending→PIN→balance. §1–§3 core XP/check-in shipped 07-30; lessons + dual polish next.",steps:["1. ✅ Bundle progress + settings defaults","2. ✅ Work-day check-in + XP on approve","3. Money lessons UI (8 lessons)","4. Wishlist search + parent dual dashboard","5. Competition board toggle + ship/verify"],decided:"2026-07-29 — chat directive (implement in Hank)",next:"Lessons unlock by level → parent dual polish — live balances protected."},
-  {id:"nav-ideal-2026-07-21",title:"App navigation — ideal layout & hierarchy",status:"shipping",one:"Job doors, real Work tab, quiet Status, Proposals in-app. You approved ship-in-order.",summary:"Ideal hierarchy: Home (Have·Do·Matter + job doors) → Equipment · Castle · Work · Chat · Bible Guidance · Status/Brief · More. Anti: folder tree, badge spam, chat-only memory, BJJ merge. Re-approved chat 2026-07-30 evening.",steps:["1. Ship Work tab for real (hierarchy + info block + per-project chat)","2. Keep Home clean","3. Grow Bible Guidance from chat captures","4. Do not redesign Equipment card layout","5. Confirm tab renames / new Home tiles before changing"],decided:"2026-07-21 — approve all; re-confirm 2026-07-30 evening",next:"1–4 live; 5 waits on you for any rename."}
+  {id:"castle-v2-2026-07-29",title:"Castle Fund V2 — in existing Hank app",status:"shipping",one:"XP, check-in, lessons, wishlist search, dual parent dashboard, competition toggle — no React rewrite, no KV wipe.",summary:"Chat directive: port V2 into castle.js/worker/kid pages. Preserve log→pending→PIN→balance. §1–§3 core XP/check-in shipped 07-30; lessons + dual polish next.",steps:["1. ✅ Bundle progress + settings defaults","2. ✅ Work-day check-in + XP on approve","3. Money lessons UI (8 lessons)","4. Wishlist search + parent dual dashboard","5. Competition board toggle + ship/verify"],decided:"2026-07-29 — chat directive; re-APPROVE 2026-08-06 afternoon",next:"Lessons unlock by level → parent dual polish — live balances protected."},
+  {id:"nav-ideal-2026-07-21",title:"App navigation — ideal layout & hierarchy",status:"shipping",one:"Job doors, real Work tab, quiet Status, Proposals in-app. You approved ship-in-order.",summary:"Ideal hierarchy: Home (Have·Do·Matter + job doors) → Equipment · Castle · Work · Chat · Bible Guidance · Status/Brief · More. Anti: folder tree, badge spam, chat-only memory, BJJ merge. Re-approved chat 2026-08-06 afternoon.",steps:["1. Ship Work tab for real (hierarchy + info block + per-project chat)","2. Keep Home clean","3. Grow Bible Guidance from chat captures","4. Do not redesign Equipment card layout","5. Confirm tab renames / new Home tiles before changing"],decided:"2026-07-21 — approve all; re-confirm 2026-08-06 afternoon",next:"1–4 live; 5 waits on you for any rename."}
 ];
 let workSeg="projects";
 const CHAT_STARTERS=[

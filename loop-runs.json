@@ -1,7 +1,33 @@
 {
-  "updated": "2026-08-05T23:07:19Z",
+  "updated": "2026-08-06T11:10:31Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-06_070005",
+      "started": "2026-08-06T07:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Recipes: [[Traeger Smoked Pork Loin]] \u25cf (180\u00b0F \u2192 350\u00b0F; cherry). Next: Fitness.",
+      "domain": "Recipes: [[Traeger Smoked Pork Loin]] \u25cf (180\u00b0F \u2192 350\u00b0F; cherry). Next: Fitness.",
+      "chats_cleared": null,
+      "deploy": "2dcd8e2",
+      "log": "logs/loop-2026-08-06_070005.log"
+    },
+    {
+      "id": "2026-08-06_070001",
+      "started": "2026-08-06T07:00:01",
+      "trigger_label": "Scheduled (morning)",
+      "slot": "morning",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Thursday morning \u2014 1 FILE THIS X (Grok Build XFreeze) filed+cleared; Castle $600/$217 \u00b7 0 pending unchanged; Recipes Traeger Smoked Pork Loin \u25cf; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
+      "domain": "Recipes: Traeger Smoked Pork Loin \u25cf",
+      "chats_cleared": 1,
+      "deploy": "f9a4ce6"
+    },
     {
       "id": "2026-08-05_190004",
       "started": "2026-08-05T19:00:04",
@@ -42,34 +68,6 @@
       "chats_cleared": null,
       "deploy": "5743727",
       "log": "logs/loop-2026-08-05_130005.log"
-    },
-    {
-      "id": "2026-08-05_070005",
-      "started": "2026-08-05T07:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Recipes: [[Traeger Juicy Smoked Chicken Breast]] \u25cf \u2014 brine 3 hr \u2192 225\u00b0F Super Smoke \u2192 160\u00b0F (~2\u20133 hr); hickory; Traeger Kitchen. Hub #29. Next domain: Fitness",
-      "domain": "Recipes: [[Traeger Juicy Smoked Chicken Breast]] \u25cf \u2014 brine 3 hr \u2192 225\u00b0F Super Smoke \u2192 160\u00b0F (~2\u20133 hr); hickory; Traeger Kitchen. Hub #29. Next domain: Fitness",
-      "chats_cleared": null,
-      "deploy": null,
-      "log": "logs/loop-2026-08-05_070005.log"
-    },
-    {
-      "id": "2026-08-05_070001",
-      "started": "2026-08-05T07:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Wednesday morning \u2014 inbox/queues empty; Castle $600/$217 \u00b7 0 pending; Recipes Traeger Juicy Smoked Chicken Breast \u25cf; Gmail E1; X none; Readwise 972/0.",
-      "domain": "Recipes: Traeger Juicy Smoked Chicken Breast \u25cf",
-      "chats_cleared": 0,
-      "deploy": "fcdbd45",
-      "log": null
     }
   ]
 }

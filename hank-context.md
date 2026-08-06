@@ -39,21 +39,21 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-08-06 morning loop)
+## LIVE STATE (refreshed 2026-08-06 evening loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$600 / $217** · **0 pending** (unchanged). **Recipes:** Traeger Smoked Pork Loin ●. **FILE THIS X:** Grok Build guide (XFreeze) filed + How to Interact extended. **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-03**. Dyson Air Purifier / Fan ◐. Queues empty after drain.
+**Now (what matters):** Castle **$600 / $217** · **0 pending** (unchanged). **Finance:** Authority From Competence — Not Compulsion (*Beyond Order* L619). **Strava:** folder-drop path live (`_HANK Media/workouts/incoming/` + GPX parser). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-03**. Dyson Air Purifier / Fan ◐. Queues empty. Inbox clean.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes.
+**Next domain (rotation):** **Recipes** — then Fitness → Finance.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain · **Leadership transition / new role**. Virtues theme note filed. Do **not** send him to Connections graph for Scripture.
 
-**Doing (verbs):** **Morning trail habit** (post-travel Saturday · Plainfield → Ridgewood · Ragnar) · **Strava/workout file → Grok analysis** (plan; not fully built) · **Endurance rebuild** (Zone 2 · ~90′ run + 30′ strength goal) · **Castle Fund V2** (lessons unlock next; re-approved 08-03) · **eero 7 gateway swap** · **Jairo** list · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 / leadership transition + week-1 listen tour · Ranch Chores profit-center metric · Shop cat door · **Davikja Diadem redeem or next goal** ($217).
+**Doing (verbs):** **Morning trail habit** (post-travel Saturday · Plainfield → Ridgewood · Ragnar) · **Strava/workout file → Grok analysis** (folder-drop live; drop GPX for first analysis) · **Endurance rebuild** (Zone 2 · ~90′ run + 30′ strength goal) · **Castle Fund V2** (lessons unlock next; re-approved 08-06) · **eero 7 gateway swap** · **Jairo** list · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 / leadership transition + week-1 listen tour · Ranch Chores profit-center metric · Shop cat door · **Davikja Diadem redeem or next goal** ($217).
 
 **Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
 
-**Inbox:** Clean. Queues empty. X bookmarks none in Downloads. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
+**Inbox:** Clean. Queues empty. X bookmarks none in Downloads. Workouts: none in incoming. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
 **Loop:** OK (E0) · Gmail E1 noted (OAuth re-auth when convenient).
 
@@ -61,7 +61,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$600** (8-day streak 07-25→08-01; **0 pending**), Davikja **$217** (**$150 Diadem goal met**, $67 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-08-06-morning** (Recipes Traeger Smoked Pork Loin · FILE THIS X Grok Build · Castle $600/$217 · Gmail E1 noted).
+**Deploy:** BUILD_DATE **2026-08-06-evening** (Finance Authority From Competence · Castle $600/$217 · Gmail E1 noted).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 
@@ -69,7 +69,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Job search:** Last refresh **2026-08-03** — ADUSA Director still 404; TFM VP Merch Ops still live; ADUSA SC Strategy Lead still posting.
 
-**Proposals:** Work → Proposals. Castle Fund V2 **re-approved 2026-08-03 afternoon** (still shipping next: money lessons). Nav still approved.
+**Proposals:** Work → Proposals. Castle Fund V2 **re-approved 2026-08-06 afternoon** (still shipping next: money lessons). Nav **re-approved 2026-08-06 afternoon**.
 
 **CASTLE FUND V2 PLAN (paste this when asked — do not only redirect):**
 - **One line:** Port V2 into live castle.js / worker / kid pages. Same loop: log chore → pending → parent PIN → balance. **No** new React app. **No** KV wipe.

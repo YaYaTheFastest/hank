@@ -1,4 +1,4 @@
-// DEPLOY-STALE pin 2026-08-05T23:05:00Z evening pass 3483872→retry
+// DEPLOY-STALE pin 2026-08-06T11:10:00Z morning pass 2dcd8e2→retry
 {
   // HANK app — Worker + static assets + KV. Password is the secret HANK_PASSWORD (set in the dashboard).
   "name": "hank",

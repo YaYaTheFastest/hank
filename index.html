@@ -219,6 +219,15 @@
   .vchip.do b{color:var(--ok)}.vchip.wait b{color:var(--amber)}.vchip.done b{color:var(--muted)}
 
   .pcard.prop{border-left-color:#5b6fd6}
+  .wcard{background:#fff;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:14px;padding:14px 15px;margin-bottom:12px}
+  .wcard h3{margin:0 0 6px;font-size:17px}
+  .wcard .meta{font-size:12px;color:var(--muted);margin-bottom:10px}
+  .wgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+  .wgrid .cell{background:var(--bg);border-radius:10px;padding:8px 10px}
+  .wgrid .cell b{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  .wgrid .cell span{font-size:14px;font-weight:700}
+  .train-comment{width:100%;box-sizing:border-box;border:2px solid var(--line);border-radius:12px;padding:12px;font-size:16px;min-height:88px;font-family:inherit;margin:8px 0}
+  .train-next{background:#f3f8f1;border:1px solid #c5ddc0;border-radius:12px;padding:12px 14px;margin:12px 0;font-size:13.5px;line-height:1.45;white-space:pre-wrap}
   .pcard .pst{font-size:10.5px;font-weight:800;text-transform:uppercase;margin-top:6px;color:#5b6fd6}
   .pcard.prop.open .pst{color:var(--amber)}
   .pcard.prop.shipped .pst,.pcard.prop.approved .pst{color:var(--ok)}
@@ -326,6 +335,7 @@
       <a class="tile prim" onclick="showView('chat')"><div class="ic">💬</div><div class="tt">Ask Hank</div><div class="ds">one question, straight answer</div></a>
       <a class="tile prim" onclick="showView('equip')"><div class="ic">🚜</div><div class="tt">Equipment</div><div class="ds" id="hEquip">machines, by category</div></a>
       <a class="tile prim" onclick="showView('bible')"><div class="ic">✝</div><div class="tt">Bible Guidance</div><div class="ds">situation → Jesus’ words → next step</div></a>
+      <a class="tile prim" onclick="showView('train')"><div class="ic">🏃</div><div class="tt">Train</div><div class="ds">last workout · review · comments</div></a>
     </div>
     <button type="button" class="bigcta" onclick="document.getElementById('cap').click()">📷 Send a photo to Hank</button>
     <details class="more-wrap">
@@ -334,6 +344,7 @@
         <div class="hgrid">
           <a class="tile" onclick="showView('vault')"><div class="ic">🗺</div><div class="tt">How vault works</div><div class="ds">enter by job — not folders</div></a>
           <a class="tile" onclick="showView('work')"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Work tab · hierarchy + chat</div></a>
+          <a class="tile" onclick="showView('train')"><div class="ic">🏃</div><div class="tt">Train / workouts</div><div class="ds">Strava → review ritual</div></a>
           <a class="tile" onclick="showView('find')"><div class="ic">🔎</div><div class="tt">Find</div><div class="ds">equipment + projects only</div></a>
           <a class="tile" onclick="setWorkSeg('proposals');showView('work')"><div class="ic">📝</div><div class="tt">Proposals</div><div class="ds">review without Obsidian</div></a>
           <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
@@ -357,6 +368,12 @@
     <button id="segProposals" onclick="setWorkSeg('proposals')">Proposals</button>
   </div>
   <div id="workBody" class="work-body"></div>
+</div>
+
+<!-- TRAIN — post-workout ritual (Strava → Hank analysis) -->
+<div id="trainView" class="hide">
+  <div class="prop-ribbon">Finish run → Strava → Hank reviews here. Write comments. Next session is prescribed. intervals.icu = planned structure (not Strava history via API).</div>
+  <div id="trainBody" class="work-body"></div>
 </div>
 
 <!-- FIND — lite search: equipment + projects only (not full vault) -->
@@ -542,7 +559,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-09-morning";
+const BUILD_DATE="2026-08-09-train";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-08-09T14:15:00Z",
@@ -618,7 +635,7 @@ const LIVE_STATE={refreshed:"2026-08-09 morning",now:"Castle $600/$217 · 4 pend
   /* doing: string or {t, projectId?} — projectId opens Work project sheet */
   doing:[
     {t:"Morning trail habit — post-travel Saturday Plainfield→Ridgewood + Ragnar",projectId:"morning-trail"},
-    {t:"Strava/workout file → Grok analysis (folder-drop live; first GPX pending)",projectId:"strava-pipeline"},
+    {t:"Train ritual — Strava → Hank review + comments (near-RT watcher)",projectId:"strava-pipeline"},
     {t:"Castle Fund V2 — lessons unlock + parent dual polish (re-approved 08-06)",projectId:"castle-v2"},
     {t:"eero 7 gateway swap — Replace eero / modem Ethernet / TrueMesh",projectId:"eero-7"},
     {t:"Jairo handyman list — chat For Jairo:",projectId:"jairo"},
@@ -650,7 +667,7 @@ const PROJECTS={
       constraints:["Narrow Plainfield shoulder — face traffic, high-vis, dog inside","Snake awareness — eyes up, short leash in brush; weapons last-ditch only","Do not start mid-travel week"],
       preserve:["Warm-up walk counts","Walk breaks OK early weeks","Alternate drive-to-trailhead if road day is unsafe"],
       steps:["1. Travel week — rest/prep only","2. First Saturday: complete skeleton at easy pace","3. Log Strava; drop GPX if possible for Grok analysis","4. Four-week streak before mileage ego","5. Stack ~30 min strength most non-wrecked days"]},
-    {id:"strava-pipeline",n:"Strava & Workout File → Grok",what:"Get workout files (Strava/Apple Watch) into a path Grok can analyze for trends, Zone 2 honesty, and TrainingPeaks-style next steps.",why:"Darren wants analysis + challenges without manual chat paste forever.",next:"Drop Strava GPX into iCloud _HANK Media/workouts/incoming/ — loop parses + analyzes next pass",status:"Active",owner:"Grok",domain:"Fitness",
+    {id:"strava-pipeline",n:"Strava & Workout → Hank Train",what:"Strava API → near-RT analysis notes + Hank Train ritual (comments) + next-session prescription. intervals.icu for planned structure (not Strava history API).",why:"Post-run review that motivates and drives what’s possible; expandable to lactate/power/form analyzer.",next:"Finish workout on Watch→Strava; open Hank #train within minutes; write comments",status:"Active",owner:"Grok",domain:"Fitness",
       one:"Folder-drop GPX/FIT → loop scan → archive → analysis note. Same Hank loop (not separate watcher yet).",
       constraints:["No bulk media into vault","Never invent HR zones without file fields","Protect Castle balances (unrelated path)"],
       preserve:["Zone 2 honesty","TrainingPeaks-style session notes","Uphill Athlete bias"],
@@ -1279,16 +1296,17 @@ function renderSetupManuals(){
   el.innerHTML=MANUALS_NEEDED.map((x,i)=>`<div class="att"><span class="ic n"></span><div class="body"><b>${i+1}. ${x.eq}</b> — <a class="lk" href="${x.url}" target="_blank" rel="noopener">📄 Open manual PDF ↗</a><div class="sub">${x.note}${x.gated?' <span class="verify">needs a one-time “I agree” tap first</span>':''}</div></div></div>`).join("");
 }
 function showView(v){
-  const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),fi=document.getElementById('findView'),go=document.getElementById('graphView'),bi=document.getElementById('bibleView'),va=document.getElementById('vaultView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),ll=document.getElementById('looplogView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
-  const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup"||v==="graph"||v==="looplog"||v==="vault"||v==="find";
+  const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),tr=document.getElementById('trainView'),fi=document.getElementById('findView'),go=document.getElementById('graphView'),bi=document.getElementById('bibleView'),va=document.getElementById('vaultView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),ll=document.getElementById('looplogView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
+  const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup"||v==="graph"||v==="looplog"||v==="vault"||v==="find"||v==="train";
   const setBnav=(id,on)=>{const el=document.getElementById(id);if(el)el.classList.toggle('on',on);};
   setBnav('bnavHome',v==="home"||v==="bible");setBnav('bnavWork',v==="work");setBnav('bnavChat',v==="chat");
   setBnav('bnavEquip',v==="equip");setBnav('bnavMore',moreTab);
-  ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");if(fi)fi.classList.toggle('hide',v!=="find");go.classList.toggle('hide',v!=="graph");if(bi)bi.classList.toggle('hide',v!=="bible");if(va)va.classList.toggle('hide',v!=="vault");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");ll.classList.toggle('hide',v!=="looplog");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
+  ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");if(tr)tr.classList.toggle('hide',v!=="train");if(fi)fi.classList.toggle('hide',v!=="find");go.classList.toggle('hide',v!=="graph");if(bi)bi.classList.toggle('hide',v!=="bible");if(va)va.classList.toggle('hide',v!=="vault");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");ll.classList.toggle('hide',v!=="looplog");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
   const eh=document.getElementById('equipHint');if(eh)eh.classList.toggle('hide',v!=="equip"||filter!=="Due soon");
   document.body.classList.toggle('no-bar',true);
   if(v==="home"){renderToday();renderAnnounce();}
   if(v==="work"){markAnnounceSeen();renderWork();}
+  if(v==="train")renderTrain();
   if(v==="find"){renderFind();setTimeout(function(){var fq=document.getElementById('findQ');if(fq)fq.focus();},50);}
   if(v==="graph"){markGraphAnnounceSeen();initGraphView();}
   if(v==="bible")renderBible();
@@ -1297,6 +1315,78 @@ function showView(v){
   if(v==="looplog")renderLoopLog();
   if(v==="chat"){if(!chatMsgs.length){chatMsgs.push({role:"assistant",content:"Hey Darren — Hank here. Ask me about the fleet, a project, or what's due. (I capture anything you want filed for the next loop pass.)"});renderChat();}setTimeout(()=>{var ci=document.getElementById('chatInput');if(ci)ci.focus();},50);}
   window.scrollTo(0,0);
+}
+let workoutStateCache=null;
+function fmtWorkoutTime(sec){
+  if(sec==null||sec==="")return "—";
+  sec=+sec;if(!isFinite(sec))return "—";
+  const h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=Math.floor(sec%60);
+  if(h)return h+"h "+String(m).padStart(2,"0")+"m";
+  return m+"m "+String(s).padStart(2,"0")+"s";
+}
+function renderTrain(){
+  const el=document.getElementById('trainBody');if(!el)return;
+  el.innerHTML='<p class="muted">Loading workouts…</p>';
+  const url='workout-state.json?t='+Date.now();
+  fetch(url,{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('no state');return r.json();}).then(function(st){
+    workoutStateCache=st;
+    paintTrain(st);
+  }).catch(function(){
+    el.innerHTML='<div class="wcard"><h3>Train not synced yet</h3><p class="meta">Mac watcher pulls Strava every ~3 min. Hard-refresh after a loop deploy, or wait for the next sync.</p>'+
+      '<button type="button" class="logbtn" onclick="goChatWithDraft(\'Review last Strava workout — numbers, how I felt, next session.\\n\\n\',\'Send to queue review if needed\')">Ask Hank to review last workout</button></div>';
+  });
+}
+function paintTrain(st){
+  const el=document.getElementById('trainBody');if(!el)return;
+  const L=st.latest||null;
+  const recent=st.recent||[];
+  let h='';
+  h+='<p class="muted" style="margin:0 0 10px">Refreshed '+(st.refreshed||'—')+' · source '+(st.source||'strava')+' · '+(st.processed_count||0)+' analyzed</p>';
+  if(!L){
+    h+='<div class="wcard"><h3>No workouts yet</h3><p class="meta">Finish a Watch workout → Strava. Hank picks it up automatically.</p></div>';
+    el.innerHTML=h;return;
+  }
+  const dist=L.distance_mi!=null?L.distance_mi+" mi":"—";
+  const hr=L.avg_hr!=null?Math.round(L.avg_hr):"—";
+  h+='<div class="wcard"><div class="meta">LAST WORKOUT · ritual</div><h3>'+escapeHtml(L.name||"Workout")+'</h3>';
+  h+='<div class="meta">'+escapeHtml((L.start_local||"")+" · "+(L.type||""))+(L.strava_url?' · <a class="lk" href="'+escapeHtml(L.strava_url)+'" target="_blank" rel="noopener">Strava ↗</a>':'')+'</div>';
+  h+='<div class="wgrid">';
+  h+='<div class="cell"><b>Moving</b><span>'+fmtWorkoutTime(L.moving_time_sec)+'</span></div>';
+  h+='<div class="cell"><b>Distance</b><span>'+escapeHtml(String(dist))+'</span></div>';
+  h+='<div class="cell"><b>Avg HR</b><span>'+escapeHtml(String(hr))+'</span></div>';
+  h+='<div class="cell"><b>Guess</b><span style="font-size:12px;font-weight:600">'+escapeHtml(L.session_guess||"—")+'</span></div>';
+  h+='</div>';
+  if(L.zone2_note)h+='<p style="font-size:13.5px;line-height:1.4;margin:8px 0">'+escapeHtml(L.zone2_note)+'</p>';
+  h+='<div class="train-next"><b>Next session (prescription)</b>\n'+escapeHtml(L.next_session_text||"Easy aerobic · conversational · walk warm-up/cool-down")+'</div>';
+  h+='<label class="muted" style="font-size:12px;font-weight:700">Your comments (how it felt)</label>';
+  h+='<textarea id="trainComment" class="train-comment" placeholder="Effort, legs, life context…"></textarea>';
+  h+='<button type="button" class="logbtn" id="trainSaveComment">Save comments → Chat (loop files to note)</button>';
+  h+='<button type="button" class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--green);border:1px solid var(--green)" id="trainReviewChat">Full review in Chat</button>';
+  h+='</div>';
+  h+='<h2 style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px">Recent</h2>';
+  recent.slice(0,8).forEach(function(r,i){
+    h+='<div class="pcard" data-wid="'+escapeHtml(r.id||"")+'"><div class="pt">'+escapeHtml(r.name||r.id||"Activity")+'</div>';
+    h+='<div class="pn">'+escapeHtml((r.start_local||"")+" · "+(r.type||""))+(r.distance_mi!=null?" · "+r.distance_mi+" mi":"")+'</div>';
+    h+='<div class="pm">tap → comment draft</div></div>';
+  });
+  h+='<p class="muted" style="margin-top:12px">Near-RT: Mac workout watcher every 3 min. Deep link: #train</p>';
+  el.innerHTML=h;
+  const save=document.getElementById('trainSaveComment');
+  if(save)save.onclick=function(){
+    const t=(document.getElementById('trainComment')||{}).value||"";
+    if(!t.trim()){toast("Write a comment first");return;}
+    goChatWithDraft("Workout comments for activity "+L.id+":\n\n"+t.trim()+"\n","Send — loop appends to analysis note.");
+  };
+  const rev=document.getElementById('trainReviewChat');
+  if(rev)rev.onclick=function(){
+    goChatWithDraft("Post-workout review — Strava "+L.id+" ("+(L.name||"")+")\nType: "+(L.type||"")+" · "+(L.start_local||"")+"\nMoving: "+fmtWorkoutTime(L.moving_time_sec)+" · Dist: "+dist+" · Avg HR: "+hr+"\nGuess: "+(L.session_guess||"—")+"\n\nHow I felt: ","Add feel, then Send.");
+  };
+  el.querySelectorAll(".pcard[data-wid]").forEach(function(card){
+    card.addEventListener("click",function(){
+      const id=card.getAttribute("data-wid");
+      goChatWithDraft("Workout comments for activity "+id+":\n\n","Type how it felt, then Send.");
+    });
+  });
 }
 function doingText(d){return typeof d==="string"?d:(d&&d.t)||"";}
 function doingProjectId(d){return(typeof d==="object"&&d&&d.projectId)?d.projectId:"";}
@@ -2124,7 +2214,7 @@ checkAnnounceOnLoad();
     if(m)return{kind:"project",id:decodeURIComponent(m[1])};
     m=h.match(/^work\/proposal\/([^/?#]+)/i);
     if(m)return{kind:"proposal",id:decodeURIComponent(m[1])};
-    if(h==="work"||h==="find"||h==="equip"||h==="chat"||h==="bible")return{kind:"view",id:h};
+    if(h==="work"||h==="find"||h==="equip"||h==="chat"||h==="bible"||h==="train")return{kind:"view",id:h};
     return null;
   }
   var deep=parseDeepLink();

@@ -49,7 +49,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain · **Leadership transition / new role**. Virtues theme note filed. Do **not** send him to Connections graph for Scripture.
 
-**Doing (verbs):** **Morning trail habit** (post-travel Saturday · Plainfield → Ridgewood · Ragnar) · **Strava/workout file → Grok analysis** (folder-drop live; drop GPX for first analysis) · **Endurance rebuild** (Zone 2 · ~90′ run + 30′ strength goal) · **Castle Fund V2** (lessons unlock next; re-approved 08-06) · **eero 7 gateway swap** · **Jairo** list · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 / leadership transition + week-1 listen tour · Ranch Chores profit-center metric · Shop cat door · **Davikja Diadem redeem or next goal** ($217) · **Dagvald 4 pending chores** (approve in Kids).
+**Doing (verbs):** **Morning trail habit** (post-travel Saturday · Plainfield → Ridgewood · Ragnar) · **Train ritual live** (Strava API → Hank `#train` · near-RT watcher · comments) · **Endurance rebuild** (Zone 2 · ~90′ run + 30′ strength) · **Castle Fund V2** (lessons unlock next; re-approved 08-06) · **eero 7 gateway swap** · **Jairo** list · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 / leadership transition + week-1 listen tour · Ranch Chores profit-center metric · Shop cat door · **Davikja Diadem redeem or next goal** ($217) · **Dagvald 4 pending chores** (approve in Kids).
 
 **Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
 
@@ -61,7 +61,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$600** (8-day streak 07-25→08-01; **4 pending** ~$35), Davikja **$217** (**$150 Diadem goal met**, $67 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-08-09-morning** (Recipes whole chicken · Castle 4 pending · Gmail E1 noted).
+**Deploy:** BUILD_DATE **2026-08-09-train** (Train/Strava stack · Castle 4 pending · Gmail E1 noted).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 
@@ -85,7 +85,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **eero mesh (quick):** Gateway swap first (Replace eero / modem Ethernet / TrueMesh 1–2 hr), then node quality audit, Outdoor 7 placement, optional barn/loft Ethernet backhaul. Project on Work tab.
 
-**Endurance (quick):** Phase 0–1 easy base. **Trail habit** after travel: next Saturday — walk ~0.75 mi from 441 Plainfield (right) to trailhead with Ragnar → run north toward school → left James Doak → Ridgewood. Narrow-shoulder + snake awareness on project note. Goal shape: Zone 2 first → ~90 min run + ~30 min strength. **Strava set up**; Grok workout-file analysis = plan (folder drop easiest most-data path; not fully auto yet). Run-primary keystone if work focus is peak; rebalance BJJ hard rolls — don’t rage-quit the mat. Protocol: Endurance Rebuild + Running Endurance principle + Morning Trail Habit project.
+**Endurance (quick):** Phase 0–1 easy base. **Train:** https://hank.darren-l-jorgenson.workers.dev/#train — after Watch→Strava, open Train (Mac watcher ~3 min). Write comments there (Chat files to vault). **Strava = completed data for Hank**; intervals.icu = planned structure (ICU API cannot export Strava activities). Future: lactate, power, form analyzer. Trail habit Saturday Plainfield→Ridgewood. Protocol: Endurance Training Stack + Endurance Rebuild.
 
 **Leadership transition (quick):** Boss let go; Darren stepping up. Compassion yes; **not** responsible for the decision. Company needs him and believes in him. Servant lead · feed the sheep · release false burden (John 21:22). Full copy + prayer: Leadership Transition — Compassion Release Strength.
 

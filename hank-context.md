@@ -39,17 +39,17 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-08-06 evening loop)
+## LIVE STATE (refreshed 2026-08-09 morning loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$600 / $217** · **0 pending** (unchanged). **Finance:** Authority From Competence — Not Compulsion (*Beyond Order* L619). **Strava:** folder-drop path live (`_HANK Media/workouts/incoming/` + GPX parser). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-03**. Dyson Air Purifier / Fan ◐. Queues empty. Inbox clean.
+**Now (what matters):** Castle **$600 / $217** · **4 pending** (Dagvald Clean Stalls ×3 + Clean Room 08-08 ~$35 — parent approve in app). **Recipes:** Traeger Whole Smoked Chicken ● + Simple Meals Shortlist. **Youth tennis:** Greensboro 10U options filed for Davikja. **FILE THIS X:** Grok Build v1.0.0. **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-03**. Queues empty. Inbox clean.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance.
+**Next domain (rotation):** **Fitness** — then Finance → Recipes.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain · **Leadership transition / new role**. Virtues theme note filed. Do **not** send him to Connections graph for Scripture.
 
-**Doing (verbs):** **Morning trail habit** (post-travel Saturday · Plainfield → Ridgewood · Ragnar) · **Strava/workout file → Grok analysis** (folder-drop live; drop GPX for first analysis) · **Endurance rebuild** (Zone 2 · ~90′ run + 30′ strength goal) · **Castle Fund V2** (lessons unlock next; re-approved 08-06) · **eero 7 gateway swap** · **Jairo** list · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 / leadership transition + week-1 listen tour · Ranch Chores profit-center metric · Shop cat door · **Davikja Diadem redeem or next goal** ($217).
+**Doing (verbs):** **Morning trail habit** (post-travel Saturday · Plainfield → Ridgewood · Ragnar) · **Strava/workout file → Grok analysis** (folder-drop live; drop GPX for first analysis) · **Endurance rebuild** (Zone 2 · ~90′ run + 30′ strength goal) · **Castle Fund V2** (lessons unlock next; re-approved 08-06) · **eero 7 gateway swap** · **Jairo** list · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 / leadership transition + week-1 listen tour · Ranch Chores profit-center metric · Shop cat door · **Davikja Diadem redeem or next goal** ($217) · **Dagvald 4 pending chores** (approve in Kids).
 
 **Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
 
@@ -59,9 +59,9 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐). Z530R **51 h** (full service @ 47).
 
-**Castle:** Dagvald **$600** (8-day streak 07-25→08-01; **0 pending**), Davikja **$217** (**$150 Diadem goal met**, $67 over; **0 pending**). V2 check-in + XP live — balances protected.
+**Castle:** Dagvald **$600** (8-day streak 07-25→08-01; **4 pending** ~$35), Davikja **$217** (**$150 Diadem goal met**, $67 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-08-06-evening** (Finance Authority From Competence · Castle $600/$217 · Gmail E1 noted).
+**Deploy:** BUILD_DATE **2026-08-09-morning** (Recipes whole chicken · Castle 4 pending · Gmail E1 noted).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 

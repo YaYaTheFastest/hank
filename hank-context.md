@@ -39,13 +39,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-08-09 morning loop)
+## LIVE STATE (refreshed 2026-08-10 afternoon loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$600 / $217** · **4 pending** (Dagvald Clean Stalls ×3 + Clean Room 08-08 ~$35 — parent approve in app). **Recipes:** Traeger Whole Smoked Chicken ● + Simple Meals Shortlist. **Youth tennis:** Greensboro 10U options filed for Davikja. **FILE THIS X:** Grok Build v1.0.0. **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-03**. Queues empty. Inbox clean.
+**Now (what matters):** Castle **$600 / $217** · **4 pending** (Dagvald Clean Stalls ×3 + Clean Room 08-08 ~$35 — parent approve in app). **Fitness:** Flourish — PERMA Strengths & What Went Well (Seligman). **Train:** Strava latest Afternoon Trail Run 08-09. **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-10**. Queues empty. Inbox clean.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes.
+**Next domain (rotation):** **Finance** — then Recipes → Fitness.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain · **Leadership transition / new role**. Virtues theme note filed. Do **not** send him to Connections graph for Scripture.
 
@@ -53,7 +53,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
 
-**Inbox:** Clean. Queues empty. X bookmarks none in Downloads. Workouts: none in incoming. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
+**Inbox:** Clean. Queues empty. X bookmarks none in Downloads. Workouts: GPX incoming empty; Strava API current. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
 **Loop:** OK (E0) · Gmail E1 noted (OAuth re-auth when convenient).
 
@@ -61,15 +61,15 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$600** (8-day streak 07-25→08-01; **4 pending** ~$35), Davikja **$217** (**$150 Diadem goal met**, $67 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-08-09-train** (Train/Strava stack · Castle 4 pending · Gmail E1 noted).
+**Deploy:** BUILD_DATE **2026-08-10-afternoon** (Fitness Flourish · job 08-10 · Castle 4 pending · Gmail E1 noted).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 
 **Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again.
 
-**Job search:** Last refresh **2026-08-03** — ADUSA Director still 404; TFM VP Merch Ops still live; ADUSA SC Strategy Lead still posting.
+**Job search:** Last refresh **2026-08-10** — ADUSA Director still 404; TFM VP Merch Ops still live; ADUSA SC Strategy Lead still posting.
 
-**Proposals:** Work → Proposals. Castle Fund V2 **re-approved 2026-08-06 afternoon** (still shipping next: money lessons). Nav **re-approved 2026-08-06 afternoon**.
+**Proposals:** Work → Proposals. Castle Fund V2 **re-approved 2026-08-06 afternoon** (still shipping next: money lessons). Nav **re-approved 2026-08-10 afternoon**.
 
 **CASTLE FUND V2 PLAN (paste this when asked — do not only redirect):**
 - **One line:** Port V2 into live castle.js / worker / kid pages. Same loop: log chore → pending → parent PIN → balance. **No** new React app. **No** KV wipe.

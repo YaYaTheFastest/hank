@@ -559,25 +559,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-09-train";
+const BUILD_DATE="2026-08-10-afternoon";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-08-09T14:15:00Z",
+  updated:"2026-08-10T18:30:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+{id:"2026-08-10_140001",started:"2026-08-10T14:11:00",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Monday afternoon — 1 chat (nav re-APPROVE) cleared; Castle $600/$217 · 4 pending; Fitness Flourish PERMA (Seligman); job search 08-10; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0; Strava train current.",domain:"Fitness: Flourish — PERMA Strengths & What Went Well (Seligman)",chats_cleared:1,deploy:"pending"},
 {id:"2026-08-09_100001",started:"2026-08-09T10:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Sunday morning — 4 chats filed+cleared (simple meals + FILE THIS X Grok Build v1.0.0 + youth tennis); inbox MOV filed; Castle $600/$217 · 4 pending; Recipes Traeger Whole Smoked Chicken ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Whole Smoked Chicken ●",chats_cleared:4,deploy:"pending"},
 {id:"2026-08-06_190001",started:"2026-08-06T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Thursday evening — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Finance Authority From Competence (Beyond Order L619); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Authority From Competence — Not Compulsion",chats_cleared:0,deploy:"8de2ffe"},
 {id:"2026-08-06_130001",started:"2026-08-06T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Thursday afternoon — 3 chats filed+cleared (Castle V2 + nav re-APPROVE; Strava folder-drop + GPX parser shipped); Castle $600/$217 · 0 pending; Fitness The Coach (Mouratoglou); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Fitness: The Coach — Reprogram Behavior Want Not Wish (Mouratoglou)",chats_cleared:3,deploy:"pending"},
 {id:"2026-08-06_070001",started:"2026-08-06T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Thursday morning — 1 FILE THIS X (Grok Build XFreeze) filed+cleared; Castle $600/$217 · 0 pending unchanged; Recipes Traeger Smoked Pork Loin ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Smoked Pork Loin ●",chats_cleared:1,deploy:"f9a4ce6"},
-{id:"2026-08-05_190001",started:"2026-08-05T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Wednesday evening — inbox/queues empty; Castle $600/$217 · 0 pending unchanged; Finance Presume Ignorance Invite Learning; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",domain:"Finance: Presume Ignorance — Invite Learning Over Blind Certainty",chats_cleared:0,deploy:"a4c0316"},
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-08-09 morning — 4 chats cleared; inbox MOV filed; Castle $600/$217 · 4 pending; Recipes Traeger Whole Smoked Chicken ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
-  last_success:"2026-08-09T14:15:00Z"
+  summary:"2026-08-10 afternoon — 1 chat (nav re-APPROVE) cleared; Castle $600/$217 · 4 pending; Fitness Flourish PERMA (Seligman); job search 08-10; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
+  last_success:"2026-08-10T18:30:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};
@@ -630,8 +630,8 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-08-09 morning",now:"Castle $600/$217 · 4 pending (Dagvald ~$35) · Recipes Traeger Whole Smoked Chicken ● · tennis leagues filed · fleet 52",nextDomain:"Fitness",rotation:"Recipes → Fitness → Finance",dagvald:600,davikja:217,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"2026-08-09 morning — 4 chats cleared; MOV filed; Castle $600/$217 · 4 pending; Recipes whole chicken ●; Gmail E1."},
+const LIVE_STATE={refreshed:"2026-08-10 afternoon",now:"Castle $600/$217 · 4 pending (Dagvald ~$35) · Fitness Flourish PERMA (Seligman) · job search 08-10 · fleet 52 · train Strava current",nextDomain:"Finance",rotation:"Recipes → Fitness → Finance",dagvald:600,davikja:217,fleetTotal:52,fleetFull:47,fleetPart:5,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"2026-08-10 afternoon — 1 chat cleared; Castle $600/$217 · 4 pending; Fitness Flourish; job 08-10; Gmail E1."},
   /* doing: string or {t, projectId?} — projectId opens Work project sheet */
   doing:[
     {t:"Morning trail habit — post-travel Saturday Plainfield→Ridgewood + Ragnar",projectId:"morning-trail"},
@@ -699,6 +699,7 @@ const PROPOSALS=[
 ];
 let workSeg="projects";
 const CHAT_STARTERS=[
+  {label:"Workout done — sync",text:"Workout done — sync Strava and review last activity.\n",send:true,toast:"Queued. When Mac is awake, loop pulls Strava and updates Train."},
   {label:"File this X link",text:"FILE THIS X:\n",send:false,toast:"Paste the x.com / twitter.com link after the line, then Send. Loop reads text, files + deepens, keeps video/post URL."},
   {label:"Paste Grok session — file it",text:"From Grok — file this:\n\n",send:false},
   {label:"I need guidance",text:"I need biblical guidance. I'm feeling:\n\n",send:false},
@@ -1369,7 +1370,7 @@ function paintTrain(st){
     h+='<div class="pn">'+escapeHtml((r.start_local||"")+" · "+(r.type||""))+(r.distance_mi!=null?" · "+r.distance_mi+" mi":"")+'</div>';
     h+='<div class="pm">tap → comment draft</div></div>';
   });
-  h+='<p class="muted" style="margin-top:12px">Near-RT: Mac workout watcher every 3 min. Deep link: #train</p>';
+  h+='<p class="muted" style="margin-top:12px">After a run away from home: Chat → “Workout done — sync Strava…” (queues; Mac loop runs when awake). Deep link: #train</p>';
   el.innerHTML=h;
   const save=document.getElementById('trainSaveComment');
   if(save)save.onclick=function(){

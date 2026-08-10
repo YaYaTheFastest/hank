@@ -5,16 +5,16 @@
   "error": "",
   "proposed_fix": "",
   "owner": "grok",
-  "summary": "2026-08-09 morning — 4 chats cleared; inbox MOV filed; Castle $600/$217 · 4 pending; Recipes Traeger Whole Smoked Chicken ●; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
-  "last_attempt": "2026-08-09T14:15:00Z",
-  "last_success": "2026-08-09T14:15:00Z",
+  "summary": "2026-08-10 afternoon \u2014 1 chat (nav re-APPROVE) cleared; Castle $600/$217 \u00b7 4 pending; Fitness Flourish PERMA (Seligman); job search 08-10; Readwise 972/0; Gmail OAuth invalid_grant (E1); X none; Strava train state current.",
+  "last_attempt": "2026-08-10T18:14:53Z",
+  "last_success": "2026-08-10T18:14:53Z",
   "open_issues": [
     {
       "tier": "E1",
       "component": "gmail",
       "error": "invalid_grant: OAuth token expired or revoked",
       "owner": "darren",
-      "proposed_fix": "Re-auth per HANK Loop — Gmail Setup.md → refresh ~/.config/hank/google_token.json"
+      "proposed_fix": "Re-auth per HANK Loop \u2014 Gmail Setup.md \u2192 refresh ~/.config/hank/google_token.json"
     }
   ]
 }

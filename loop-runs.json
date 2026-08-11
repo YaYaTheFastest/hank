@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-09T14:08:30Z",
+  "updated": "2026-08-10T23:07:13Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-10_190005",
+      "started": "2026-08-10T19:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Finance: New [[Follow Rules Until They Undermine Their Purpose]] (Beyond Order L842 \u00b7 L909). Next domain \u2192 Recipes.",
+      "domain": "Finance: New [[Follow Rules Until They Undermine Their Purpose]] (Beyond Order L842 \u00b7 L909). Next domain \u2192 Recipes.",
+      "chats_cleared": null,
+      "deploy": null,
+      "log": "logs/loop-2026-08-10_190005.log"
+    },
     {
       "id": "2026-08-09_100051",
       "started": "2026-08-09T10:00:51",
@@ -55,19 +69,6 @@
       "chats_cleared": null,
       "deploy": "3483872",
       "log": "logs/loop-2026-08-05_190004.log"
-    },
-    {
-      "id": "2026-08-05_190001",
-      "started": "2026-08-05T19:00:01",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Wednesday evening \u2014 inbox/queues empty; Castle $600/$217 \u00b7 0 pending; Finance Presume Ignorance; Gmail E1; X none; Readwise 972/0; live verified a4c0316",
-      "domain": "Finance: Presume Ignorance \u2014 Invite Learning Over Blind Certainty",
-      "chats_cleared": 0,
-      "deploy": "a4c0316"
     }
   ]
 }

@@ -39,13 +39,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-08-10 evening loop)
+## LIVE STATE (refreshed 2026-08-11 morning loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$600 / $217** · **5 pending** (Dagvald Clean Stalls ×3 + Clean Room 08-08 + Clean Room 08-10 ~$40 — parent approve in app). **Finance:** Follow Rules Until They Undermine Their Purpose (Beyond Order L842/L909). **Train:** Strava latest Afternoon Trail Run 08-09. **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-10**. Queues empty. Inbox clean.
+**Now (what matters):** Castle **$600 / $217** · **5 pending** (Dagvald Clean Stalls ×3 + Clean Room 08-08 + Clean Room 08-10 ~$40 — parent approve in app). **Recipes:** Traeger Smoked Meatloaf (Not Your Mama's) ●. **Train:** last known Afternoon Trail Run 08-09 (Strava keys missing from local .env — re-add when convenient). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-10**. Queues empty. Inbox clean.
 
-**Next domain (rotation):** **Recipes** — then Fitness → Finance.
+**Next domain (rotation):** **Fitness** — then Finance → Recipes.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain · **Leadership transition / new role**. Virtues theme note filed. Do **not** send him to Connections graph for Scripture.
 
@@ -53,19 +53,19 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models.
 
-**Inbox:** Clean. Queues empty. X bookmarks none in Downloads. Workouts: GPX incoming empty; Strava API current. **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
+**Inbox:** Clean. Queues empty. X bookmarks none in Downloads. Workouts: GPX incoming empty; Strava API **BLOCKED** (keys missing in local `.env` — prior ledger still shows 08-09 trail run). **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
-**Loop:** OK (E0) · Gmail E1 noted (OAuth re-auth when convenient).
+**Loop:** OK (E0) · Gmail E1 + Strava E1 noted (re-auth / re-add keys when convenient).
 
 **Fleet:** 52 = **47 Full + 5 ◐** (Dyson Air Purifier / Fan ◐). Z530R **51 h** (full service @ 47).
 
 **Castle:** Dagvald **$600** (8-day streak 07-25→08-01; **5 pending** ~$40), Davikja **$217** (**$150 Diadem goal met**, $67 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-08-10-evening** (Finance Follow Rules · Castle 5 pending · Gmail E1 noted).
+**Deploy:** BUILD_DATE **2026-08-11-morning** (Recipes Traeger meatloaf ● · Castle 5 pending · Gmail E1 · Strava E1 noted).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 
-**Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again.
+**Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again. **Strava API keys** back into `~/.config/hank/.env` if Train sync should resume (client id/secret/refresh).
 
 **Job search:** Last refresh **2026-08-10** — ADUSA Director still 404; TFM VP Merch Ops still live; ADUSA SC Strategy Lead still posting.
 

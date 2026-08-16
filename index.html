@@ -575,7 +575,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-16-evening-pass";
+const BUILD_DATE="2026-08-16-checks";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-08-16T23:05:00Z",
@@ -1836,6 +1836,12 @@ function openSheet(html){
   pan.querySelectorAll("[data-close-sheet]").forEach(function(btn){
     btn.addEventListener("click",function(ev){ev.preventDefault();closeSheet();});
   });
+  pan.querySelectorAll("input[data-pcheck]").forEach(function(inp){
+    inp.addEventListener("change",function(ev){
+      ev.stopPropagation();
+      toggleProjectCheck(inp);
+    });
+  });
 }
 function goChatWithDraft(text,toastMsg){
   closeSheet();
@@ -1846,13 +1852,20 @@ function goChatWithDraft(text,toastMsg){
   try{inp.focus();inp.setSelectionRange(inp.value.length,inp.value.length);}catch(e){try{inp.focus();}catch(e2){}}
   toast(toastMsg||"Chat ready — type and Send.");
 }
-function projectCk(items){
-  return (items||[]).map(function(s){
+function projectCheckKey(pid,kind,idx){
+  return String(pid||"")+":"+String(kind||"list")+":"+String(idx);
+}
+function projectCk(items,pid,kind){
+  kind=kind||"list";
+  return (items||[]).map(function(s,idx){
     var raw=String(s==null?"":s);
     var t=raw.replace(/^\s+/,"");
-    var done=/^(✅|\[x\]|\[X\])/.test(t);
+    var baked=/^(✅|\[x\]|\[X\])/.test(t);
     var label=t.replace(/^(✅\s*|\[x\]\s*|\[X\]\s*|\[\s\]\s*)/i,"");
-    return "<label class=\"ck\"><input type=\"checkbox\""+(done?" checked":"")+"><span>"+escapeHtml(label)+"</span></label>";
+    var id=projectCheckKey(pid,kind,idx);
+    var ov=projectChecksOverlay&&projectChecksOverlay.done&&projectChecksOverlay.done[id];
+    var done=ov?!!ov.done:baked;
+    return "<label class=\"ck\"><input type=\"checkbox\" data-pcheck=\""+escapeHtml(id)+"\""+(done?" checked":"")+"><span>"+escapeHtml(label)+"</span></label>";
   }).join("");
 }
 function openProject(id){
@@ -1866,9 +1879,9 @@ function openProject(id){
     }
   }catch(e){}
   const st=p.status||(p.bucket==="active"?"Active":p.bucket==="ideas"?"Idea":"On hold");
-  const stepsHtml=projectCk(p.steps);
+  const stepsHtml=projectCk(p.steps,p.id,"steps");
   const isList=p.type==="list"||Array.isArray(p.list);
-  const listHtml=projectCk(p.list);
+  const listHtml=projectCk(p.list,p.id,"list");
   const constraints=(p.constraints||[]).map(function(s){return "<li>"+escapeHtml(s)+"</li>";}).join("");
   const preserve=(p.preserve||[]).map(function(s){return "<li>"+escapeHtml(s)+"</li>";}).join("");
   const hasPlan=!!(p.one||stepsHtml||isList||constraints||preserve);
@@ -1897,6 +1910,7 @@ function openProject(id){
       <button type="button" class="logbtn" style="margin-top:8px" data-pid="${pid}" data-pchat="status">Change status / priority…</button>
       <button type="button" class="logbtn" style="margin-top:8px;background:var(--bg);color:var(--ink);border:1px solid var(--line)" data-pid="${pid}" data-pchat="build">Tell Hank: ship next checklist item</button>
     </div>`);
+  ensureProjectChecks().then(function(){applyProjectChecksToSheet();});
 }
 function projectChat(id,kind){
   const p=findProject(id)||{n:id,what:"",next:"",one:""};
@@ -1955,10 +1969,64 @@ function focusHref(h){
 }
 let focusOverlay=null,focusFetchStarted=false;
 const focusRetry=[];
+let projectChecksOverlay=null,projectChecksFetchStarted=false;
+const projectChecksRetry=[];
 function focusHeaders(){
   const h={"Content-Type":"application/json"};
   try{const k=localStorage.getItem("hankKey")||"";if(k)h["X-Hank-Key"]=k;}catch(e){}
   return h;
+}
+function loadProjectChecksOverlay(){
+  return fetch("/api/project-checks",{headers:focusHeaders(),cache:"no-store"}).then(function(r){
+    if(!r.ok)throw new Error("pchecks");
+    return r.json();
+  }).then(function(j){
+    if(j&&j.ok!==false)projectChecksOverlay=j;
+    flushProjectChecksRetry();
+  }).catch(function(){});
+}
+function prefetchProjectChecks(){
+  if(projectChecksFetchStarted)return;
+  projectChecksFetchStarted=true;
+  loadProjectChecksOverlay();
+}
+function ensureProjectChecks(){
+  if(projectChecksOverlay)return Promise.resolve();
+  projectChecksFetchStarted=true;
+  return loadProjectChecksOverlay();
+}
+function flushProjectChecksRetry(){
+  if(!projectChecksRetry.length)return;
+  const q=projectChecksRetry.splice(0);
+  q.forEach(function(body){postProjectCheck(body,true);});
+}
+function postProjectCheck(body,fromQueue){
+  return fetch("/api/project-checks",{method:"POST",headers:focusHeaders(),body:JSON.stringify(body)}).then(function(r){
+    if(!r.ok)throw new Error("post");
+    return r.json();
+  }).then(function(j){
+    if(j&&j.ok!==false)projectChecksOverlay=j;
+  }).catch(function(){
+    if(!fromQueue)projectChecksRetry.push(body);
+  });
+}
+function toggleProjectCheck(el){
+  const id=el.getAttribute("data-pcheck")||"";
+  if(!id)return;
+  const done=!!el.checked;
+  if(!projectChecksOverlay||typeof projectChecksOverlay!=="object")projectChecksOverlay={v:0,updated:"",done:{}};
+  if(!projectChecksOverlay.done||typeof projectChecksOverlay.done!=="object")projectChecksOverlay.done={};
+  projectChecksOverlay.done[id]={done:done,ts:Date.now()};
+  postProjectCheck({id:id,done:done});
+}
+function applyProjectChecksToSheet(){
+  const pan=document.getElementById("panel");
+  if(!pan||!projectChecksOverlay||!projectChecksOverlay.done)return;
+  pan.querySelectorAll("input[data-pcheck]").forEach(function(inp){
+    const id=inp.getAttribute("data-pcheck");
+    const ov=projectChecksOverlay.done[id];
+    if(ov)inp.checked=!!ov.done;
+  });
 }
 function focusIdOf(it){
   if(it&&it.id)return it.id;
@@ -2383,6 +2451,7 @@ document.getElementById('sheet').onclick=function(e){
 document.getElementById('panel').onclick=function(e){e.stopPropagation();};
 
 renderToday();
+prefetchProjectChecks();
 initChatStarters();
 renderDash();
 render();

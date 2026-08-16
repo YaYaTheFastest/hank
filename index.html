@@ -575,7 +575,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-16-toggles";
+const BUILD_DATE="2026-08-16-projects";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-08-11T17:00:00Z",
@@ -700,12 +700,30 @@ const LIVE_STATE={refreshed:"2026-08-11 afternoon",now:"Castle $600/$217 · 9 pe
 // Hierarchical projects — vault-backed fields (what/why/next/status). Loop refreshes this block each deploy.
 const PROJECTS={
   active:[
-    {id:"eero-7",n:"eero 7 Gateway Swap — Mesh",what:"Replace gateway with eero 7; then placement, backhaul, and node audit.",why:"Highest leverage for Outdoor 7s + older nodes (barn/loft/yard).",next:"Swap gateway via Replace eero / modem Ethernet; TrueMesh 1–2 hr",status:"Active",owner:"Darren",domain:"Home"},
-    {id:"jairo",n:"Jairo — Handyman List",what:"Ongoing work list for Jairo (friend + handyman).",why:"Single place for jobs to hand him; chat prefix For Jairo.",next:"Empty list — first For Jairo chat becomes row 1",status:"Active",owner:"Darren",domain:"Home"},
-    {id:"bison-rodent",n:"Bison Trailer — Rodent Exclusion",what:"Seal the Bison Coach horse trailer against rodents without blocking designed vents.",why:"Protect LQ/living space and gear from mice; trailer is on-site and active.",next:"Night daylight inspection — mark gaps (don't block vents)",status:"Active",owner:"Darren",domain:"Ranch"},
-    {id:"shop-org",n:"Shop – Ongoing",what:"Finish shop organization with Deane; keep equipment cards honest.",why:"Shop is the ranch ops hub; clutter slows every job.",next:"Book Deane 2 hr to finish organizing",status:"Active",owner:"Darren",domain:"Shop"},
-    {id:"plainfield",n:"Plainfield Rd Land Purchase",what:"Close clarity on Plainfield Rd land (trust vs probate path).",why:"Property decision blocks clean next legal/money moves.",next:"Resolve trust-vs-probate; engage NC attorney",status:"Active",owner:"Darren",domain:"Property"},
-    {id:"job-search",n:"2026 Job Search",what:"Active search — network strategy / merch ops targets.",why:"Career track alongside ranch OS; weekly Monday refresh.",next:"ADUSA Director still 404; TFM VP Merch Ops live; SC Strategy Lead live — decide apply/pass + cold outreach",status:"Active",owner:"Darren",domain:"Career"},
+    {id:"eero-7",n:"eero 7 Gateway Swap — Mesh",what:"Replace gateway with eero 7; then placement, backhaul, and node audit.",why:"Highest leverage for Outdoor 7s + older nodes (barn/loft/yard).",next:"Swap gateway via Replace eero / modem Ethernet; TrueMesh 1–2 hr",status:"Active",owner:"Darren",domain:"Home",
+      one:"Gateway swap → placement quality → any wired backhaul. Those three deliver most of the available improvement with the current hardware mix.",
+      constraints:["Connect the eero 7 directly to the modem via Ethernet","Let TrueMesh re-optimize 1–2 hours after the swap","Do not skip the node audit after the gateway swap"],
+      steps:["Immediate: Swap the gateway to the new eero 7 — Replace eero flow (or power-cycle modem + new unit); Ethernet to modem; TrueMesh 1–2 hr","Immediate: Audit node connection quality — Barn, BARN, Loft, Back yard, older eero Pro; target Good or Great; reposition Acceptable or Poor","Immediate: Firmware + reboot — confirm current on all units; reboot the new gateway once after the swap","High: Optimize Outdoor 7 placement — mount 6–15 ft high, ports facing down, clearest practical line of sight toward the house or next Outdoor unit","High: Add Ethernet backhaul where feasible — prioritize barn and loft/shop; outdoor-rated cable + weatherproofing; eero 7 2.5 GbE ports","High: Evaluate older eero Pro (Davikja) — temporarily remove; re-test coverage/speeds; leave out if not essential","Medium: Guest network for outdoor cameras, barn IoT, smart lights","Medium: Hardwire high-demand devices (TVs, NAS, workstations, Ethernet-capable cameras)","Medium: Re-test coverage and speeds from main house, barn, loft, backyard"]},
+    {id:"jairo",n:"Jairo — Handyman List",what:"Ongoing work list for Jairo (friend + handyman).",why:"Single place for jobs to hand him; chat prefix For Jairo.",next:"Empty list — first For Jairo chat becomes row 1",status:"Active",owner:"Darren",domain:"Home",
+      type:"list",
+      one:"In Hank Chat, prefix instructions with For Jairo → loop appends to To do for Jairo. When done: For Jairo done: <item>.",
+      list:[],
+      constraints:["Jairo list is person-scoped; Shop is space-scoped — do not merge the queues"]},
+    {id:"bison-rodent",n:"Bison Trailer — Rodent Exclusion",what:"Seal the Bison Coach horse trailer against rodents without blocking designed vents.",why:"Protect LQ/living space and gear from mice; trailer is on-site and active.",next:"Night daylight inspection — mark gaps (don't block vents)",status:"Active",owner:"Darren",domain:"Ranch",
+      one:"Find the gaps first (night daylight test), then seal by location with the right material. Status: Active, not started.",
+      constraints:["Do not fully block designed ventilation — work the gaps, not the vents","Confirm this unit's intended vents before sealing anything that might be an as-built air path","Foam alone is useless — mice chew through it; use only as a cover over steel wool","Steel wool alone rusts and compresses — always combine it with sealant","Hardware cloth is best for ventilation areas that cannot be sealed solid"],
+      steps:["Night daylight inspection — interior light off, mark every gap at floor/wall seams, grommets, door sweeps, utility penetrations; note intended vents","Build the seal list per location from what the inspection found","Buy materials (door sweep, steel wool, Sika/OSI sealant, hardware cloth, sheet metal + screws, foam) — finalize quantities after inspection","Execute the seals — right material per location; leave designed vents open","Done / verify — re-run the night daylight test to confirm no new daylight at sealed points"]},
+    {id:"shop-org",n:"Shop – Ongoing",what:"Finish shop organization with Deane; keep equipment cards honest.",why:"Shop is the ranch ops hub; clutter slows every job.",next:"Book Deane 2 hr to finish organizing",status:"Active",owner:"Darren",domain:"Shop",
+      one:"Living project for ongoing shop maintenance after the initial build. The shop is never done. Need two hours of Deane's time to finish organizing.",
+      steps:["Schedule / book Deane · 2 hr shop-org session","Finish shop organization (tools · workcells · leftover build clutter)","After session: update Open items with what landed vs still open","Open: Switch bedroom chair with basement","Open: Move workout stuff to shop","Open: Move snowmobile stuff to shop","Open: Hang up pics in guest room"]},
+    {id:"plainfield",n:"Plainfield Rd Land Purchase",what:"Close clarity on Plainfield Rd land (trust vs probate path).",why:"Property decision blocks clean next legal/money moves.",next:"Resolve trust-vs-probate; engage NC attorney",status:"Active",owner:"Darren",domain:"Property",
+      one:"Buy the rear (southern) ~75% of parcel 137611 and combine it into adjoining 137608. Resolve trust-vs-probate FIRST — do not negotiate before knowing who can sell.",
+      constraints:["Informational research only — not legal, tax, or financial advice","Owner of record is Virginia L. Kadunce personally (deceased); tax record is not as trustee","Do not negotiate before the post-1987 Kadunce deed search","NC requires an attorney to close","No present-use deferral — total deferred value $0, no rollback-tax risk"],
+      steps:["Register of Deeds search (Kadunce, post-1987) — determine trust vs probate and who has legal authority to sell","Open the CAMA Report / Tax Appraisal Information — homesite vs excess-acre $/acre; Neighborhood Sales comps","Call Guilford County Planning (336-641-3334) — recombination vs minor subdivision, jurisdiction, retained-piece minimums","Measure the rear piece in the GIS viewer to fix exact acreage","Hire a NC real estate attorney — purchase agreement contingent on plat approval","Approach the correct party (personal representative/heirs or trustee) with a written offer anchored to assessed land value"]},
+    {id:"job-search",n:"2026 Job Search",what:"Active search — network strategy / merch ops targets.",why:"Career track alongside ranch OS; weekly Monday refresh.",next:"ADUSA Director still 404; TFM VP Merch Ops live; SC Strategy Lead live — decide apply/pass + cold outreach",status:"Active",owner:"Darren",domain:"Career",
+      one:"Land a VP / Sr Director / Practice Lead / Principal role in supply chain strategy, network design, transportation, or DC operations. Remote or within 45 minutes of Greensboro NC 27455. Base floor $275K. Avoid Big 4 this cycle.",
+      constraints:["Remote OR commute ≤45 min from 27455","Comp: $275K base floor","Avoid: Deloitte, EY, KPMG, PwC","Will not abandon FORTNA until a real offer is in hand"],
+      steps:["Monday: cron 7:00 AM EDT runs new-postings delta across saved searches","Monday: output lands in Weekly Refresh; Morning Cockpit email surfaces the top 3 new postings","Triage each: apply / pass / needs research","If apply: Google Task in Deep Work list + a calendar block for the actual application","Current (last refresh 2026-08-10): ADUSA Director still 404; TFM VP Merch Ops live; SC Strategy Lead live — decide apply/pass + cold outreach"]},
     {id:"morning-trail",n:"Morning Trail Habit — Plainfield→Ridgewood",what:"Post-travel Saturday keystone: driveway warm-up walk ~0.75 mi to trailhead with Ragnar → run north trail → James Doak → Ridgewood; build distance over time.",why:"Empty-mind Zone 2 for work focus + recovery; Strava is the proof log.",next:"First Saturday after this week’s travel — easy only; road shoulder + snake awareness",status:"Active",owner:"Darren",domain:"Fitness",
       one:"Same route skeleton every Saturday morning after travel. Easy effort. Strava every session. Distance grows later.",
       constraints:["Narrow Plainfield shoulder — face traffic, high-vis, dog inside","Snake awareness — eyes up, short leash in brush; weapons last-ditch only","Do not start mid-travel week"],
@@ -722,18 +740,30 @@ const PROJECTS={
       constraints:["Existing Hank stack only (Worker + static HTML/JS)","Do not wipe live KV balances or chore history","Do not redesign Equipment, Bible, or Command Center","Non-destructive defaults for any new fields"],
       preserve:["Kid logs chore → pending → parent 4-digit PIN → balance / Save-Spend-Give","Deduct + Bank of Mom and Dad interest (idempotent per kid+month)","Old bundles must still load (default missing fields)"],
       steps:["1. ✅ Bundle: progress + settings.competitionVisible defaults (shipped 2026-07-30)","2. ✅ Work-day check-in on kid page (+10 XP; once per chore-day) — evening 07-30","3. ✅ XP on approve: 15 + min(40, round(price)); level curve 100+(level-1)×50 — evening 07-30","4. Money lessons UI (8 lessons; unlock by level)","5. Wishlist search + star-as-goal","6. Parent dual-kid dashboard (approvals, PIN, competition toggle, purchase with edit cost)","7. Competition board (hide when toggle off)","8. Ship + verify: log → approve → balance/XP; check-in; hide competition; interest still safe"]},
-    {id:"tax-2026",n:"Tax Strategy 2026",what:"Tax planning reference + action outline (finance stays reference-only until aggregator pick).",why:"Avoid year-end scramble; ranch/entity complexity.",next:"Outline actions from Finance hub",status:"Active",owner:"Darren",domain:"Finance"},
-    {id:"profit-chores",n:"Ranch Chores as Profit Center",what:"Design how ranch chores map to value (metric TBD).",why:"Align kids work + ranch economics without fake rates.",next:"Pick metric (options A–F filed)",status:"Active",owner:"Darren",domain:"Ranch"},
+    {id:"tax-2026",n:"Tax Strategy 2026",what:"Tax planning reference + action outline (finance stays reference-only until aggregator pick).",why:"Avoid year-end scramble; ranch/entity complexity.",next:"Outline actions from Finance hub",status:"Active",owner:"Darren",domain:"Finance",
+      one:"Forward strategy for the 2026 tax year: refine Schedule C/E/F from what actually worked in the 2025 return, activate shop depreciation, and execute Form 5213 election.",
+      steps:["Sch C: Clarify 2025 1099-NEC service basis","Sch C: Set 2026 revenue target and expense ceiling","Sch C: Decide new 1099 clients beyond Continental Resources","Sch C: Home office — still 400 sqft, still dedicated? Document if changed","Sch E: Confirm 2026 royalty deposit cadence from Continental Resources (US Bank)","Sch E: 15% depletion ceiling — monitor vs actual receipts","Sch E: Any new royalty sources?","Sch F: 2026 revenue plan for manure/compost","Sch F: Document equipment used for Sch F (tractors, UTV)","Sch F: Define farm activity vs hobby — tied to 5213 window","Shop depreciation: Confirm basis — 32 x 64 post-frame shop appraisal value","Shop depreciation: Choose MACRS straight-line (39 yr) vs Section 179 vs bonus","Shop depreciation: Determine honest business-use % (Sch C + Sch F + personal)","Shop depreciation: Capture 2026 improvements as additions","Form 5213: Verify 2025 filing status","Form 5213: Track the 5-year profit-motive window start date"]},
+    {id:"profit-chores",n:"Ranch Chores as Profit Center",what:"Design how ranch chores map to value (metric TBD).",why:"Align kids work + ranch economics without fake rates.",next:"Pick metric (options A–F filed)",status:"Active",owner:"Darren",domain:"Ranch",
+      one:"Make chores a quantifiable value — profit center or cost-avoidance — with wishlist motivation similar to Castle. Design phase; pick or mix A–F. Hybrid (F) is the recommended start.",
+      steps:["A. Avoided-cost ledger — log what a pro would charge; monthly balance = avoided costs; wishlist unlock","B. Two-column DIY / Outsource — if a DIY chore sits > N weeks, schedule it or move to Outsource with a booked date","C. Rate card — build a Ranch Rate Card once; pick DIY bill rate × hours OR pro rate as avoided cost (one primary metric)","D. Castle-shaped adult module — chore → pending → approve → balance → wishlist; vault rate card + ledger first","E. Profit center (real cash) — only chores that create cash; keep separate from cost-avoidance","F. Hybrid (recommended start) — Rate Card + monthly Avoided Cost Ledger + 3 adult wishlist items + outsource cap; app module only after 4 weeks paper use"]},
     {id:"cmd-phase2",n:"Command Center Phase 2",what:"Work tab = hierarchical projects + Doing + per-project chat; proposals surface.",why:"You enter by job — not Obsidian. Approved 2026-07-21.",next:"This deploy live; refine from chat",status:"Active",owner:"Grok",domain:"System"}
   ],
   ideas:[
-    {id:"amish-barn",n:"Replace Barn with Amish Barn",what:"Long-horizon barn replacement dream.",why:"Capacity/quality of current barn may limit ranch growth.",next:"Dreaming — Chat to activate",status:"Ideas",owner:"Darren",domain:"Ranch"},
-    {id:"rainwater",n:"Rainwater Irrigation System",what:"Capture and use rain for irrigation.",why:"Water resilience on the ranch.",next:"Dreaming",status:"Ideas",owner:"Darren",domain:"Ranch"},
-    {id:"home-org",n:"Home Organizing",what:"Broader home organization beyond shop.",why:"Household friction.",next:"Dreaming",status:"Ideas",owner:"Darren",domain:"Home"},
-    {id:"cat-door",n:"Shop Cat Door",what:"Install smart/pet door for shop cats (OnlyCat vs DualScan research filed).",why:"Cats + shop access without open door energy loss.",next:"Pick model + install surface photo",status:"Ideas",owner:"Darren",domain:"Shop"}
+    {id:"amish-barn",n:"Replace Barn with Amish Barn",what:"Long-horizon barn replacement dream.",why:"Capacity/quality of current barn may limit ranch growth.",next:"Dreaming — Chat to activate",status:"Ideas",owner:"Darren",domain:"Ranch",
+      one:"Replace existing barn structure with a purpose-built Amish-constructed barn. Vault note is thin — concept + open questions only (scope, size, builder, siding, budget, permitting)."},
+    {id:"rainwater",n:"Rainwater Irrigation System",what:"Capture and use rain for irrigation.",why:"Water resilience on the ranch.",next:"Dreaming",status:"Ideas",owner:"Darren",domain:"Ranch",
+      one:"Capture rainwater off shop + house roofs, store in cisterns, gravity-feed or pump to garden/landscape zones. Vault note is thin — open questions on roof sqft, cistern size, filtration, pump vs gravity, NC permits."},
+    {id:"home-org",n:"Home Organizing",what:"Broader home organization beyond shop.",why:"Household friction.",next:"Dreaming",status:"Ideas",owner:"Darren",domain:"Home",
+      one:"No dedicated vault note found — What / Why / Next on this card is the capture. Chat to activate."},
+    {id:"cat-door",n:"Shop Cat Door",what:"Install smart/pet door for shop cats (OnlyCat vs DualScan research filed).",why:"Cats + shop access without open door energy loss.",next:"Pick model + install surface photo",status:"Ideas",owner:"Darren",domain:"Shop",
+      one:"Give barn/shop cats free access while keeping strays, raccoons, and prey gifts out. Research complete (first pass); not purchased. 1st OnlyCat (prey detection); 2nd SureFlap DualScan Connect.",
+      constraints:["Shop (not house) — confirm door/wall material before order","Quality bar: high quality; not price-sensitive","Live US landed cost for OnlyCat not locked; exact shop door thickness unknown until photo"],
+      steps:["Confirm install surface — photo of wood man-door, steel door, or framed wall cutout (thickness + skin material)","Count cats that need programming + chip IDs if known (ISO FDX-B common)","Pick: OnlyCat (prey detection + dual microchip + app) or SureFlap DualScan Connect if US ship/support is painful","OnlyCat: verify shop Wi-Fi reach and weather exposure","Order OnlyCat or DualScan Connect after ship-to-US check","Cut + install weekend; program chips; set curfews"]}
   ],
   hold:[
-    {id:"kalshi",n:"Kalshi Bot",what:"Trading bot experiment parked.",why:"Not current priority vs ranch/family/command center.",next:"Resume vs archive — decision parked",status:"Hold",owner:"Darren",domain:"Finance"}
+    {id:"kalshi",n:"Kalshi Bot",what:"Trading bot experiment parked.",why:"Not current priority vs ranch/family/command center.",next:"Resume vs archive — decision parked",status:"Hold",owner:"Darren",domain:"Finance",
+      one:"Automated Kalshi prediction-market bot. On hold 2026-04-18 after trading disabled 2026-04-09 (equity ~$172, P&L -$228 / -57%). Simulation overfit.",
+      steps:["Resume criterion: simulation validated against out-of-sample data","Resume criterion: gold/silver daily strategy redesigned OR permanently disabled","Resume criterion: exposed secrets on repo (flagged 2026-04-12) closed","Resume criterion: Morning/Evening check crons — decide keep vs pause while on hold","Decision parked: resume vs archive"]}
   ]
 };
 // Open proposals for Darren to review in-app (no Obsidian). Grok files new ones; you approve/hold via Chat.
@@ -1815,19 +1845,41 @@ function goChatWithDraft(text,toastMsg){
   try{inp.focus();inp.setSelectionRange(inp.value.length,inp.value.length);}catch(e){try{inp.focus();}catch(e2){}}
   toast(toastMsg||"Chat ready — type and Send.");
 }
+function projectCk(items){
+  return (items||[]).map(function(s){
+    var raw=String(s==null?"":s);
+    var t=raw.replace(/^\s+/,"");
+    var done=/^(✅|\[x\]|\[X\])/.test(t);
+    var label=t.replace(/^(✅\s*|\[x\]\s*|\[X\]\s*|\[\s\]\s*)/i,"");
+    return "<label class=\"ck\"><input type=\"checkbox\""+(done?" checked":"")+"><span>"+escapeHtml(label)+"</span></label>";
+  }).join("");
+}
 function openProject(id){
   const p=findProject(id);
   if(!p){toast("Project not found: "+id);return;}
+  try{
+    var want="work/project/"+id;
+    var cur=(location.hash||"").replace(/^#/,"");
+    if((!cur||/^work\/project\//i.test(cur))&&cur!==want){
+      history.replaceState(null,"","#"+want);
+    }
+  }catch(e){}
   const st=p.status||(p.bucket==="active"?"Active":p.bucket==="ideas"?"Idea":"On hold");
-  const steps=(p.steps||[]).map(function(s){return "<li>"+escapeHtml(s)+"</li>";}).join("");
+  const stepsHtml=projectCk(p.steps);
+  const isList=p.type==="list"||Array.isArray(p.list);
+  const listHtml=projectCk(p.list);
   const constraints=(p.constraints||[]).map(function(s){return "<li>"+escapeHtml(s)+"</li>";}).join("");
   const preserve=(p.preserve||[]).map(function(s){return "<li>"+escapeHtml(s)+"</li>";}).join("");
+  const hasPlan=!!(p.one||stepsHtml||isList||constraints||preserve);
+  const hasWyn=!!(p.what||p.why||p.next);
   const planHtml=
     (p.one?`<div class="sec"><h4>Plan (one line)</h4><p class="plan-note" style="color:var(--ink);font-size:14px">${escapeHtml(p.one)}</p></div>`:"")+
     (constraints?`<div class="sec"><h4>Hard constraints</h4><ul class="plan-list">${constraints}</ul></div>`:"")+
     (preserve?`<div class="sec"><h4>Preserve (do not break)</h4><ul class="plan-list">${preserve}</ul></div>`:"")+
-    (steps?`<div class="sec"><h4>Build checklist</h4><ol class="plan-list">${steps}</ol></div>`:"")+
-    (!p.one&&!steps?`<div class="sec"><h4>Plan</h4><p class="plan-note">Summary only on this card. Ask Chat: “Castle V2 plan” for more, or open Proposals for ship order.</p></div>`:"");
+    (stepsHtml?`<div class="sec"><h4>Build checklist</h4><div class="chk">${stepsHtml}</div></div>`:"")+
+    (isList?`<div class="sec"><h4>To do</h4>${listHtml?`<div class="chk">${listHtml}</div>`:`<p class="plan-note">Empty list — first For Jairo chat becomes row 1.</p>`}</div>`:"")+
+    (!hasPlan&&!hasWyn?`<div class="sec"><h4>Plan</h4><p class="plan-note">Summary only on this card. Ask Chat: “Castle V2 plan” for more, or open Proposals for ship order.</p></div>`:"")+
+    (!hasPlan&&hasWyn?`<div class="sec"><h4>Plan</h4><p class="plan-note">Vault note is thin — What / Why / Next above is the processable body.</p></div>`:"");
   const pid=escapeHtml(p.id);
   openSheet(`<div class="ph"><div><h3>${escapeHtml(p.n)}</h3><div class="sub">${escapeHtml(st)} · ${escapeHtml(p.domain||"")} · ${escapeHtml(p.owner||"")}</div></div><button type="button" class="x" data-close-sheet>×</button></div>
     <div class="pib">

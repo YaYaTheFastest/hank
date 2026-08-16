@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-11T11:07:03Z",
+  "updated": "2026-08-11T17:06:41Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-11_130004",
+      "started": "2026-08-11T13:00:04",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Fitness: [[Art of War \u2014 Know Self Put Beyond Defeat Win Before Fight (Sun Tzu)]] \u00b7 beyond defeat first \u00b7 husband strength \u00b7 five general faults. Next domain: Finance.",
+      "domain": "Fitness: [[Art of War \u2014 Know Self Put Beyond Defeat Win Before Fight (Sun Tzu)]] \u00b7 beyond defeat first \u00b7 husband strength \u00b7 five general faults. Next domain: Finance.",
+      "chats_cleared": 0,
+      "deploy": null,
+      "log": "logs/loop-2026-08-11_130004.log"
+    },
     {
       "id": "2026-08-11_070005",
       "started": "2026-08-11T07:00:05",
@@ -57,18 +71,6 @@
       "chats_cleared": null,
       "deploy": "2dcd8e2",
       "log": "logs/loop-2026-08-06_070005.log"
-    },
-    {
-      "id": "2026-08-06_070001",
-      "started": "2026-08-06T07:00:01",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Thursday morning \u2014 1 FILE THIS X (Grok Build XFreeze) filed+cleared; Castle $600/$217 \u00b7 0 pending unchanged; Recipes Traeger Smoked Pork Loin \u25cf; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0.",
-      "domain": "Recipes: Traeger Smoked Pork Loin \u25cf",
-      "chats_cleared": 1,
-      "deploy": "f9a4ce6"
     }
   ]
 }

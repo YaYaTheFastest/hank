@@ -268,6 +268,45 @@ async function saveFocusBundle(env, bundle) {
 function focusSlug(t) {
   return String(t || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
+
+const PROJECT_CHECKS_KEY = "project-checks:bundle";
+function emptyProjectChecksBundle() {
+  return { v: 0, updated: "", done: {} };
+}
+function normalizeProjectChecksBundle(b) {
+  const o = b && typeof b === "object" ? b : {};
+  const done = o.done && typeof o.done === "object" && !Array.isArray(o.done) ? o.done : {};
+  const clean = {};
+  for (const id of Object.keys(done)) {
+    if (!/^[a-z0-9][a-z0-9:_-]{0,199}$/i.test(id)) continue;
+    const row = done[id];
+    if (!row || typeof row !== "object") continue;
+    clean[id] = { done: !!row.done, ts: Number(row.ts) || 0 };
+  }
+  return { v: Number(o.v) || 0, updated: typeof o.updated === "string" ? o.updated : "", done: clean };
+}
+async function loadProjectChecksBundle(env) {
+  const raw = await env.STATE.get(PROJECT_CHECKS_KEY);
+  if (raw) {
+    try { return normalizeProjectChecksBundle(JSON.parse(raw)); }
+    catch (e) { return emptyProjectChecksBundle(); }
+  }
+  return emptyProjectChecksBundle();
+}
+async function saveProjectChecksBundle(env, bundle) {
+  const b = normalizeProjectChecksBundle(bundle);
+  b.v = (b.v || 0) + 1;
+  b.updated = new Date().toISOString();
+  await env.STATE.put(PROJECT_CHECKS_KEY, JSON.stringify(b));
+  return b;
+}
+function projectCheckIdFromBody(body) {
+  if (body && typeof body.id === "string" && body.id.trim()) return body.id.trim();
+  const pid = body && typeof body.pid === "string" ? body.pid.trim() : "";
+  const kind = body && typeof body.kind === "string" ? body.kind.trim() : "";
+  if (pid && kind && body.idx != null && String(body.idx) !== "") return pid + ":" + kind + ":" + String(body.idx);
+  return "";
+}
 function getCookie(request, name) {
   const h = request.headers.get("Cookie") || "";
   for (const c of h.split(";")) {
@@ -632,6 +671,30 @@ async function handleApi(request, env, url, siteAuthed) {
       delete bundle.done[id];
     }
     const saved = await saveFocusBundle(env, bundle);
+    return json({ ok: true, v: saved.v, updated: saved.updated, done: saved.done });
+  }
+
+
+  // Project sheet checks — family cookie OR loop key. Must sit ABOVE the key-only gate (same as /api/focus).
+  if (url.pathname === "/api/project-checks" && request.method === "GET") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const bundle = await loadProjectChecksBundle(env);
+    return json({ ok: true, v: bundle.v, updated: bundle.updated, done: bundle.done });
+  }
+  if (url.pathname === "/api/project-checks" && request.method === "POST") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const body = await request.json().catch(() => ({}));
+    const id = projectCheckIdFromBody(body);
+    if (!id || !/^[a-z0-9][a-z0-9:_-]{0,199}$/i.test(id)) return json({ ok: false, error: "missing-id" }, 400);
+    const bundle = await loadProjectChecksBundle(env);
+    if (body.delete === true) {
+      delete bundle.done[id];
+    } else {
+      bundle.done[id] = { done: body.done !== false, ts: Date.now() };
+    }
+    const saved = await saveProjectChecksBundle(env, bundle);
     return json({ ok: true, v: saved.v, updated: saved.updated, done: saved.done });
   }
 

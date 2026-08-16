@@ -230,6 +230,44 @@ async function saveCaptureBundle(env, bundle) {
   await env.STATE.put(CAPTURE_BUNDLE_KEY, JSON.stringify(bundle));
   return bundle;
 }
+
+const FOCUS_BUNDLE_KEY = "focus:bundle";
+function emptyFocusBundle() {
+  return { v: 0, updated: "", done: {} };
+}
+function normalizeFocusBundle(b) {
+  const o = b && typeof b === "object" ? b : {};
+  const done = o.done && typeof o.done === "object" && !Array.isArray(o.done) ? o.done : {};
+  const clean = {};
+  for (const id of Object.keys(done)) {
+    const row = done[id];
+    if (!row || typeof row !== "object") continue;
+    clean[id] = {
+      done: !!row.done,
+      ts: Number(row.ts) || 0,
+      day: typeof row.day === "string" ? row.day : "",
+    };
+  }
+  return { v: Number(o.v) || 0, updated: typeof o.updated === "string" ? o.updated : "", done: clean };
+}
+async function loadFocusBundle(env) {
+  const raw = await env.STATE.get(FOCUS_BUNDLE_KEY);
+  if (raw) {
+    try { return normalizeFocusBundle(JSON.parse(raw)); }
+    catch (e) { return emptyFocusBundle(); }
+  }
+  return emptyFocusBundle();
+}
+async function saveFocusBundle(env, bundle) {
+  const b = normalizeFocusBundle(bundle);
+  b.v = (b.v || 0) + 1;
+  b.updated = new Date().toISOString();
+  await env.STATE.put(FOCUS_BUNDLE_KEY, JSON.stringify(b));
+  return b;
+}
+function focusSlug(t) {
+  return String(t || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
 function getCookie(request, name) {
   const h = request.headers.get("Cookie") || "";
   for (const c of h.split(";")) {
@@ -571,6 +609,30 @@ async function handleApi(request, env, url, siteAuthed) {
     const entry = { kid: b.kid, chore: "Interest · " + b.period, amount: Number(b.amount) || 0, status: "approved", approver: "Bank of Mom & Dad", kind: "interest", period: b.period, ts: Date.now(), day: new Date().toISOString().slice(0, 10) };
     const row = await persistCastleEntry(env, bundle, id, entry);
     return json({ ok: true, entry: row, v: bundle.v });
+  }
+
+  // Focus overlay — family cookie OR loop key. Must sit ABOVE the key-only gate so phone taps work.
+  if (url.pathname === "/api/focus" && request.method === "GET") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const bundle = await loadFocusBundle(env);
+    return json({ ok: true, v: bundle.v, updated: bundle.updated, done: bundle.done });
+  }
+  if (url.pathname === "/api/focus" && request.method === "POST") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const body = await request.json().catch(() => ({}));
+    const id = (typeof body.id === "string" && body.id.trim()) ? body.id.trim() : focusSlug(body.t);
+    if (!id) return json({ ok: false, error: "missing-id" }, 400);
+    const bundle = await loadFocusBundle(env);
+    const markDone = body.done !== false;
+    if (markDone) {
+      bundle.done[id] = { done: true, ts: Date.now(), day: new Date().toISOString().slice(0, 10) };
+    } else {
+      delete bundle.done[id];
+    }
+    const saved = await saveFocusBundle(env, bundle);
+    return json({ ok: true, v: saved.v, updated: saved.updated, done: saved.done });
   }
 
   // Everything below requires the correct HANK password (chat + tap-to-answer).

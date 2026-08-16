@@ -180,6 +180,9 @@
   .today .acts .p{background:var(--green);color:#fff}
   .today .acts .s{background:var(--bg);color:var(--green);border:2px solid var(--green)}
   #todayCard{scroll-margin-top:72px}
+  #todayCard .ck.frow{display:flex;align-items:flex-start;gap:10px}
+  #todayCard .ck input{min-width:44px;min-height:44px;width:22px;height:22px;margin:0}
+  #todayCard a.fverb{color:var(--ink);text-decoration:none}
   .today .fsec{margin:12px 0 0}
   .today .fsec h3{margin:0 0 6px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:800}
   .today .frow{display:block;padding:11px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);min-height:44px}
@@ -572,7 +575,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-16-evening";
+const BUILD_DATE="2026-08-16-toggles";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-08-11T17:00:00Z",
@@ -669,14 +672,14 @@ const LIVE_STATE={refreshed:"2026-08-11 afternoon",now:"Castle $600/$217 · 9 pe
   focus:{
     updated:"2026-08-16",
     now:[
-      {t:"Approve Castle pending",place:"Kids → Dagvald PIN",href:"dagvald.html",note:"9 chores, ~$75 as of Aug 11"},
-      {t:"Snap the Blackstone plate",place:"Camera → _Cowork Inbox",href:"",note:"model/serial on the 4-burner; cooktop is rusted"}
+      {id:"castle-pending",t:"Approve Castle pending",place:"Kids → Dagvald PIN",href:"dagvald.html",note:"9 chores, ~$75 as of Aug 11"},
+      {id:"blackstone-plate",t:"Snap the Blackstone plate",place:"Camera → _Cowork Inbox",href:"",note:"model/serial on the 4-burner; cooktop is rusted"}
     ],
     next:[
-      {t:"Snap the DR Leaf Vacuum engine plate",place:"Camera → _Cowork Inbox",href:""},
-      {t:"Monday job-search glance",place:"This board",href:"",note:"2026-08-17 — Hank refreshes"},
-      {t:"Book Deane 2 hr shop org",place:"Calendar",href:""},
-      {t:"eero 7 gateway swap",place:"30-min window",href:"",note:"modem Ethernet → replace eero → TrueMesh"}
+      {id:"dr-leaf-plate",t:"Snap the DR Leaf Vacuum engine plate",place:"Camera → _Cowork Inbox",href:""},
+      {id:"job-search-glance",t:"Monday job-search glance",place:"This board",href:"",note:"2026-08-17 — Hank refreshes"},
+      {id:"deane-shop",t:"Book Deane 2 hr shop org",place:"Calendar",href:""},
+      {id:"eero-7-swap",t:"eero 7 gateway swap",place:"30-min window",href:"",note:"modem Ethernet → replace eero → TrueMesh"}
     ],
     waiting:[
       {t:"Gmail loop OAuth",note:"personal Gmail already connected; old loop token can wait"},
@@ -1897,31 +1900,95 @@ function focusHref(h){
   if(/^#[\w/-]+$/.test(h))return h;
   return "";
 }
-function focusRow(it,compact){
+let focusOverlay=null,focusFetchStarted=false;
+const focusRetry=[];
+function focusHeaders(){
+  const h={"Content-Type":"application/json"};
+  try{const k=localStorage.getItem("hankKey")||"";if(k)h["X-Hank-Key"]=k;}catch(e){}
+  return h;
+}
+function focusIdOf(it){
+  if(it&&it.id)return it.id;
+  return String((it&&it.t)||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+}
+function mergeFocusBoard(foc,overlay){
+  const done=(overlay&&overlay.done)||{};
+  function keep(arr){return (arr||[]).filter(function(it){const id=focusIdOf(it);return !(id&&done[id]&&done[id].done);});}
+  const now=keep(foc.now),next=keep(foc.next);
+  while(now.length<3&&next.length)now.push(next.shift());
+  return {now:now,next:next,waiting:foc.waiting||[],later:foc.later||[]};
+}
+function loadFocusOverlay(){
+  return fetch("/api/focus",{headers:focusHeaders(),cache:"no-store"}).then(function(r){
+    if(!r.ok)throw new Error("focus");
+    return r.json();
+  }).then(function(j){
+    if(j&&j.ok!==false)focusOverlay=j;
+    flushFocusRetry();
+  }).catch(function(){});
+}
+function flushFocusRetry(){
+  if(!focusRetry.length)return;
+  const q=focusRetry.splice(0);
+  q.forEach(function(body){postFocusDone(body,true);});
+}
+function postFocusDone(body,fromQueue){
+  return fetch("/api/focus",{method:"POST",headers:focusHeaders(),body:JSON.stringify(body)}).then(function(r){
+    if(!r.ok)throw new Error("post");
+    return r.json();
+  }).then(function(j){
+    if(j&&j.ok!==false)focusOverlay=j;
+  }).catch(function(){
+    if(!fromQueue)focusRetry.push(body);
+  });
+}
+function toggleFocusDone(el){
+  const id=el.getAttribute("data-focus-id")||"";
+  const t=el.getAttribute("data-focus-t")||"";
+  const bucket=el.getAttribute("data-focus-bucket")||"";
+  if(!focusOverlay||typeof focusOverlay!=="object")focusOverlay={v:0,updated:"",done:{}};
+  if(!focusOverlay.done||typeof focusOverlay.done!=="object")focusOverlay.done={};
+  const key=id||focusIdOf({t:t});
+  focusOverlay.done[key]={done:true,ts:Date.now(),day:new Date().toISOString().slice(0,10)};
+  renderToday();
+  postFocusDone({id:key,t:t,bucket:bucket,done:true});
+}
+function focusRow(it,compact,bucket){
   const t=escapeHtml((it&&it.t)||"");
+  const id=escapeHtml((it&&it.id)||focusIdOf(it));
   const place=it&&it.place?`<div class="fplace">${escapeHtml(it.place)}</div>`:"";
   const note=(!compact&&it&&it.note)?`<div class="fnote">${escapeHtml(it.note)}</div>`:"";
-  const inner=`<div class="fverb">${t}</div>${place}${note}`;
   const href=focusHref(it&&it.href);
-  if(href)return `<a class="frow" href="${escapeHtml(href)}">${inner}</a>`;
-  return `<div class="frow">${inner}</div>`;
+  const showToggle=bucket==="now"||bucket==="next";
+  if(!showToggle){
+    const inner=`<div class="fverb">${t}</div>${place}${note}`;
+    if(href)return `<a class="frow" href="${escapeHtml(href)}">${inner}</a>`;
+    return `<div class="frow">${inner}</div>`;
+  }
+  const verb=href?`<a class="fverb" href="${escapeHtml(href)}">${t}</a>`:`<div class="fverb">${t}</div>`;
+  return `<div class="ck frow"><input type="checkbox" data-focus-id="${id}" data-focus-t="${t}" data-focus-bucket="${escapeHtml(bucket||"")}" onclick="event.stopPropagation();toggleFocusDone(this)"><span>${verb}${place}${note}</span></div>`;
 }
 function renderToday(){
+  if(!focusFetchStarted){
+    focusFetchStarted=true;
+    loadFocusOverlay().then(function(){renderToday();});
+  }
   const mn=(typeof MANUALS_NEEDED!=="undefined")?MANUALS_NEEDED.length:0,wn=NEEDS.length;
   const el=document.getElementById('todayCard');if(!el)return;
   const foc=LIVE_STATE.focus||{};
-  const now=(foc.now||[]).slice(0,3);
-  const nextAll=foc.next||[];
+  const board=mergeFocusBoard(foc,focusOverlay);
+  const now=(board.now||[]).slice(0,3);
+  const nextAll=board.next||[];
   const nextShow=nextAll.slice(0,4);
   const nextMore=Math.max(0,nextAll.length-nextShow.length);
-  const waiting=foc.waiting||[];
-  const later=foc.later||[];
-  const nowHtml=now.length?now.map(function(it){return focusRow(it,false);}).join(""):`<p class="fempty">Nothing in NOW.</p>`;
-  const nextHtml=nextShow.length?nextShow.map(function(it){return focusRow(it,true);}).join("")+(nextMore?`<div class="fmore">+${nextMore} more</div>`:""):`<p class="fempty">Nothing in NEXT.</p>`;
+  const waiting=board.waiting||[];
+  const later=board.later||[];
+  const nowHtml=now.length?now.map(function(it){return focusRow(it,false,"now");}).join(""):`<p class="fempty">Nothing in NOW.</p>`;
+  const nextHtml=nextShow.length?nextShow.map(function(it){return focusRow(it,true,"next");}).join("")+(nextMore?`<div class="fmore">+${nextMore} more</div>`:""):`<p class="fempty">Nothing in NEXT.</p>`;
   const waitFirst=waiting[0]?escapeHtml(waiting[0].t):"";
   const waitSum=waiting.length?(waiting.length+(waitFirst?" — "+waitFirst:"")):"none";
-  const waitHtml=waiting.length?waiting.map(function(it){return focusRow(it,true);}).join(""):`<p class="fempty">Nothing waiting.</p>`;
-  const laterHtml=later.length?later.map(function(it){return focusRow(it,true);}).join(""):`<p class="fempty">Nothing later.</p>`;
+  const waitHtml=waiting.length?waiting.map(function(it){return focusRow(it,true,"waiting");}).join(""):`<p class="fempty">Nothing waiting.</p>`;
+  const laterHtml=later.length?later.map(function(it){return focusRow(it,true,"later");}).join(""):`<p class="fempty">Nothing later.</p>`;
   el.innerHTML=`<h2>Right now</h2>
     <div class="fsec"><h3>Now</h3>${nowHtml}</div>
     <div class="fsec"><h3>Next</h3>${nextHtml}</div>

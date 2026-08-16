@@ -179,6 +179,19 @@
   .today .acts button{flex:1;border:0;border-radius:12px;padding:14px;font-size:16px;font-weight:800;cursor:pointer;min-height:var(--touch)}
   .today .acts .p{background:var(--green);color:#fff}
   .today .acts .s{background:var(--bg);color:var(--green);border:2px solid var(--green)}
+  #todayCard{scroll-margin-top:72px}
+  .today .fsec{margin:12px 0 0}
+  .today .fsec h3{margin:0 0 6px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:800}
+  .today .frow{display:block;padding:11px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);min-height:44px}
+  .today .frow:last-child{border:0}
+  .today a.frow{color:var(--ink)}
+  .today .fverb{font-weight:800;font-size:16px;line-height:1.3}
+  .today .fplace{font-size:13px;color:var(--green);font-weight:700;margin-top:3px}
+  .today .fnote{font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.35}
+  .today .fempty{font-size:15px;color:var(--muted);margin:4px 0 0}
+  .today .fmore{font-size:13px;color:var(--muted);font-weight:700;margin-top:6px}
+  .today details.fsec{border:0;border-radius:0;margin:12px 0 0;background:transparent;padding:0}
+  .today details.fsec summary{padding:8px 0;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:800}
   .more-wrap{margin-top:10px}
   .more-wrap summary{list-style:none;padding:12px 14px;font-weight:700;font-size:14px;color:var(--green);background:#fff;border:1px solid var(--line);border-radius:14px;cursor:pointer}
   .more-wrap summary::-webkit-details-marker{display:none}
@@ -559,13 +572,13 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-11-afternoon";
+const BUILD_DATE="2026-08-16-evening";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-08-11T17:00:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
-{id:"2026-08-11_130001",started:"2026-08-11T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Tuesday afternoon — inbox/queues empty; Castle $600/$217 · 9 pending (+4 08-11); Fitness Art of War (Sun Tzu); Gmail OAuth invalid_grant (E1); Strava keys missing (E1); X none; Readwise 972/0.",domain:"Fitness: Art of War — Know Self Put Beyond Defeat Win Before Fight (Sun Tzu)",chats_cleared:0,deploy:"pending"},
+{id:"2026-08-11_130001",started:"2026-08-11T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Tuesday afternoon — inbox/queues empty; Castle $600/$217 · 9 pending (+4 08-11); Fitness Art of War (Sun Tzu); Gmail OAuth invalid_grant (E1); Strava keys missing (E1); X none; Readwise 972/0.",domain:"Fitness: Art of War — Know Self Put Beyond Defeat Win Before Fight (Sun Tzu)",chats_cleared:0,deploy:"aaa400c"},
 {id:"2026-08-11_070001",started:"2026-08-11T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Tuesday morning — inbox/queues empty; Castle $600/$217 · 5 pending unchanged; Recipes Traeger Smoked Meatloaf ●; Gmail OAuth invalid_grant (E1); Strava keys missing (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Smoked Meatloaf (Not Your Mama's) ●",chats_cleared:0,deploy:"56260a5"},
 {id:"2026-08-10_190001",started:"2026-08-10T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Monday evening — inbox/queues empty; Castle $600/$217 · 5 pending (+1 Clean Room 08-10); Finance Follow Rules Until They Undermine Their Purpose (Beyond Order L842/L909); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0; Strava train current.",domain:"Finance: Follow Rules Until They Undermine Their Purpose",chats_cleared:0,deploy:"4718ba4"},
 {id:"2026-08-10_140001",started:"2026-08-10T14:11:00",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Monday afternoon — 1 chat (nav re-APPROVE) cleared; Castle $600/$217 · 4 pending; Fitness Flourish PERMA (Seligman); job search 08-10; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0; Strava train current.",domain:"Fitness: Flourish — PERMA Strengths & What Went Well (Seligman)",chats_cleared:1,deploy:"f401768"},
@@ -652,7 +665,35 @@ const LIVE_STATE={refreshed:"2026-08-11 afternoon",now:"Castle $600/$217 · 9 pe
     {t:"Davikja Diadem redeem or next goal (parent — $217, goal met $67 over)",projectId:"castle"},
     {t:"Profit-center metric pick (options A–F)",projectId:"profit-chores"},
     {t:"Dyson label photos → _Cowork Inbox"}
-  ]};
+  ],
+  focus:{
+    updated:"2026-08-16",
+    now:[
+      {t:"Approve Castle pending",place:"Kids → Dagvald PIN",href:"dagvald.html",note:"9 chores, ~$75 as of Aug 11"},
+      {t:"Snap the Blackstone plate",place:"Camera → _Cowork Inbox",href:"",note:"model/serial on the 4-burner; cooktop is rusted"}
+    ],
+    next:[
+      {t:"Snap the DR Leaf Vacuum engine plate",place:"Camera → _Cowork Inbox",href:""},
+      {t:"Monday job-search glance",place:"This board",href:"",note:"2026-08-17 — Hank refreshes"},
+      {t:"Book Deane 2 hr shop org",place:"Calendar",href:""},
+      {t:"eero 7 gateway swap",place:"30-min window",href:"",note:"modem Ethernet → replace eero → TrueMesh"}
+    ],
+    waiting:[
+      {t:"Gmail loop OAuth",note:"personal Gmail already connected; old loop token can wait"},
+      {t:"Plainfield Rd",note:"NC attorney / trust-vs-probate"},
+      {t:"Finance aggregator pick"},
+      {t:"Bison owner packet"},
+      {t:"Sig OMs + serials"}
+    ],
+    later:[
+      {t:"Home domain tiles layout"},
+      {t:"Shop cat door (OnlyCat)"},
+      {t:"Ranch chores metric"},
+      {t:"BJJ Brain quality pass — only if asked"},
+      {t:"Build a business — parked"}
+    ]
+  }
+};
 // Hierarchical projects — vault-backed fields (what/why/next/status). Loop refreshes this block each deploy.
 const PROJECTS={
   active:[
@@ -772,6 +813,7 @@ const MANUALS_NEEDED=[
  {eq:"Sig Sauer P365 X-MACRO — model OM PDF",url:"https://www.sigsauer.com/owner-manuals.html",note:"Factory linked; portal only. Download X-MACRO manual → _Cowork Inbox → host → Full.",gated:true},
  {eq:"Sig Sauer P365XC — model OM PDF",url:"https://www.sigsauer.com/owner-manuals.html",note:"Factory linked; confirm SKU on slide, then download matching P365 manual from portal → _Cowork Inbox → host → Full.",gated:true},
  {eq:"Dyson Air Purifier / Fan — model OM + filter P/N",url:"https://www.dyson.com/support",note:"Inducted 2026-07-23 (chat). Factory air-treatment linked. Need base/rear label photo for exact TP/HP/PH model → download matching OM + sealed filter part # from dyson.com/support → _Cowork Inbox. Filter-life reset after replace is documented on the card (remote Standby ~6s or app).",gated:false},
+ {eq:"Blackstone 4-Burner Griddle — unit OM (model unknown)",url:"https://blackstoneproducts.com/pages/product-manuals",note:"Inducted 2026-08-16 from inbox image.jpg (landed 2026-08-12). Factory + OEM manuals portal + help-center index linked. Need silver origin label photo (bottom shelf on 28/36 cart units) → matching PDF from help.blackstoneproducts.com/en_us/manuals-SJqF3Rjp. Do not guess a 36-inch SKU. Rust/season articles already on the card.",gated:false},
  // Toro 22" Recycler Max (21485) — DONE 2026-07-04 (rebuilt manual-first from the interactive Operator's Manual manuals.toro.com/268899: blade 82 N·m, plug 20 N·m, oil 0.44 L/15 oz, air filter 25 h/no-oil, 3-sec stop, 4 job cards). HTML manual = no PDF to host; manualUrl points to the interactive manual; figure PNGs not embedded (toro.com media proxy-blocked + screen locked this pass).
  // Brower MK32HE — DONE 2026-07-04 (built to Full; brower-waterer.pdf on file + hosted, 4 figures).
  // Bison Coach Horse Trailer — running gear DONE 2026-07-04 (built to Full; Dexter running-gear manual bison-dexter-running-gear.pdf on file + hosted, 4 figures). VIN 51Y3C6J23F2004517 · mfg 10/2014 (MY2015) on the card + specs. 2026-07-05: re-checked _Cowork Inbox — the only Bison manual present is a re-drop of the same Dexter running-gear PDF (already hosted); no new Bison manuals landed. The coach/body owner packet (floorplan/LQ, options) is still missing → now tracked as a MANUALS_NEEDED entry above (dealer/VIN lookup, no public PDF) + the card's "Confirm" spec row. Not a maintenance blocker.
@@ -818,6 +860,7 @@ const URLS={
 "Timber Tuff Chain Sharpener":"https://www.timbertuff.com",
 "Dyson Cordless #1 & #2":"https://www.dyson.com",
 "Dyson Air Purifier / Fan":"https://www.dyson.com/air-treatment",
+"Blackstone 4-Burner Griddle":"https://blackstoneproducts.com/",
 "KitchenAid Fridge (20cf)":"https://www.kitchenaid.com",
 "LG Fridge (top-freezer)":"https://www.lg.com/us/refrigerators/lg-lt09s2000w-top-freezer-refrigerator",
 "Litter-Robot 4 (×2)":"https://www.litter-robot.com",
@@ -1072,7 +1115,13 @@ const DATA = [
      sched:[["Rinse pre-filter / skimmer","weekly","g","quick rinse"],["Replace 2.5\"×10\" cartridge","~monthly","r","clarity + flow"],["Sanitize (H₂O₂ / ozone)","ongoing","g","shower first"],["Clean chiller coil / airflow","monthly","r","keep clearance"],["Full water change + deep clean","every few months","g","fresh cartridge"]],
      manual:"BoxPlunge — official site + filtration product page",manualUrl:"https://www.boxplunge.com/",
      jobs:[{t:"Filter & Water Care",s:["Pre-use: water clear, skimmer seated, showered, unit on GFCI (unplug before plunging)","Weekly: slip out the pre-filter/skimmer basket, rinse, reseat","Monthly (or if flow drops/clouds): swap the 2.5\"×10\" cartridge","Clean skimmer housing + cartridge with H₂O₂ for crystal-clear water","Maintain sanitation (ozone + peroxide); shower before every plunge"]},
-           {t:"Chiller Care & Water Change",s:["UNPLUG the unit (off the GFCI) before any service","Dust the chiller condenser coil; confirm airflow clearance","Full change: drain tub, wipe shell, clean skimmer/pump inlet","Install fresh 2.5\"×10\" cartridge; refill clean water; restore GFCI power","Re-establish sanitation; circulate before first use (refrigerant = pro only)"]}]}]}
+           {t:"Chiller Care & Water Change",s:["UNPLUG the unit (off the GFCI) before any service","Dust the chiller condenser coil; confirm airflow clearance","Full change: drain tub, wipe shell, clean skimmer/pump inlet","Install fresh 2.5\"×10\" cartridge; refill clean water; restore GFCI power","Re-establish sanitation; circulate before first use (refrigerant = pro only)"]}]},
+   {n:"Blackstone 4-Burner Griddle",power:"Gas",loc:"House",basis:"As-needed",st:"part",
+     specs:[["Type","Outdoor propane 4-burner cart griddle with hinged hood"],["Model","unknown — no origin label in 2026-08-12 photo"],["Serial","unknown"],["BTU / size","not invented; 4-burner carts are commonly 36-inch class (unverified)"],["Factory","https://blackstoneproducts.com/"],["Cooktop (photo)","Rusted + flaking seasoning; knobs Off; spatula on left shelf; tank + grease cup visible"]],
+     sched:[["Restore rusted cooktop + re-season","now (photo 2026-08-12)","r","OEM rust then season articles"],["After-cook scrape + thin oil","every cook","g","OEM prevent-rust"],["Empty grease cup","each cook / as needed","g","OK"],["Cover / hood so water cannot pool","whenever it sits","g","tent a soft cover"],["Leak-check hose / regulator","before first light after sitting","r","confirm vs unit OM"]],
+     manual:"Blackstone OEM manuals portal (model unknown — no unit PDF)",manualUrl:"https://blackstoneproducts.com/pages/product-manuals",
+     jobs:[{t:"Restore / Clean / Re-season Rusted Cooktop",s:["Scrape rust and seasoning chips with a metal scraper","Thin oil; scrub rusted areas (steel wool / sandpaper / griddle stone)","Wipe debris; minimal-water rinse; dry fully","Re-season: heat on high until plate discolors; thin oil on surface and walls; let smoke stop; repeat 3–5 layers","Do not cook on rust — first cooks after restore may stick"]},
+           {t:"After-Cook Clean & Oil",s:["Scrape food/grease to the trap while warm","Wipe the plate clean","Thin oil film so steel is not left bare","Empty grease cup; knobs Off; tank Off","Hood down; tent a soft cover so water runs off"]}]}]}
 ,
  {g:"Wood Processing", items:[
    {n:"CountyLine 40-Ton Log Splitter",power:"Gas",loc:"Barn",basis:"As-needed",st:"full",
@@ -1209,6 +1258,7 @@ const PREUSE={
 "Battery Charger":["Well-ventilated area; eye protection","ON/OFF switch OFF before connecting","Clean terminals; confirm 6V/12V & type (STD/AGM/GEL)","Connect + first, then ground AWAY from the battery","Plug in AC after clamps are on","Keep clamps apart (they spark when energized)"],
 "Dyson Cordless #1 & #2":["Battery charged (check gauge)","Filter clean, dry & seated","Bin below max line; airway clear","Correct head/attachment fitted"],
 "Dyson Air Purifier / Fan":["Unit upright; intake/outlet clear","Filter cover fully latched","No filter light (or plan reset after change)","Remote batteries OK / app linked if needed"],
+"Blackstone 4-Burner Griddle":["Outdoors; lid open to light","All knobs Off until lighting; tank valve closed when idle","Grease cup seated and not full","Cooktop: if rust/bare steel showing, restore + re-season before cooking","Hose/regulator seated; no obvious damage"],
 "KitchenAid Fridge (20cf)":["Doors seal fully; gaskets clean","Water filter light not lit; water tastes clean","Grille/vents clear for airflow","Temps holding (~37°F / ~0°F — confirm)"],
 "LG Fridge (top-freezer)":["Door seals fully; gasket supple","Rear coils/vents clear of dust","No excessive frost in freezer","Unit level; temps holding"],
 "Litter-Robot 4 (×2)":["Drawer not full (Light Bar solid blue = ready; flashing blue = empty it)","Litter at the MAX Fill Line (not above)","Bezel + curtain-sensor holes clear of fur/dust","Unit on hard level surface, NOT touching a wall, plugged in, app connected","After any drawer-empty / litter top-up / move: press Reset to zero the Weight Scale"],
@@ -1841,24 +1891,42 @@ function workDirective(st,text){
   document.getElementById('chatInput').value="Directive — "+text+":\n\n";showView('chat');document.getElementById('chatInput').focus();
   toast("Captured as a directive for the loop.");
 }
+function focusHref(h){
+  if(!h)return "";
+  if(/^[a-z0-9][\w./-]*\.html(?:#[\w./-]*)?$/i.test(h))return h;
+  if(/^#[\w/-]+$/.test(h))return h;
+  return "";
+}
+function focusRow(it,compact){
+  const t=escapeHtml((it&&it.t)||"");
+  const place=it&&it.place?`<div class="fplace">${escapeHtml(it.place)}</div>`:"";
+  const note=(!compact&&it&&it.note)?`<div class="fnote">${escapeHtml(it.note)}</div>`:"";
+  const inner=`<div class="fverb">${t}</div>${place}${note}`;
+  const href=focusHref(it&&it.href);
+  if(href)return `<a class="frow" href="${escapeHtml(href)}">${inner}</a>`;
+  return `<div class="frow">${inner}</div>`;
+}
 function renderToday(){
-  const a=attention(),mn=(typeof MANUALS_NEEDED!=="undefined")?MANUALS_NEEDED.length:0,wn=NEEDS.length,due=dueSoonCount();
+  const mn=(typeof MANUALS_NEEDED!=="undefined")?MANUALS_NEEDED.length:0,wn=NEEDS.length;
   const el=document.getElementById('todayCard');if(!el)return;
-  const doing=(LIVE_STATE.doing||[]).slice(0,2).map(function(d){return escapeHtml(doingText(d));}).join(" · ")||"—";
-  let lead="You're clear — pick Work or Equip.";
-  if(wn)lead=`${wn} thing${wn>1?"s":""} need you first`;
-  else if(mn)lead=`Save ${mn} manual${mn>1?"s":""} when you have a minute`;
-  else if(due)lead=`${due} machine${due>1?"s":""} due soon`;
+  const foc=LIVE_STATE.focus||{};
+  const now=(foc.now||[]).slice(0,3);
+  const nextAll=foc.next||[];
+  const nextShow=nextAll.slice(0,4);
+  const nextMore=Math.max(0,nextAll.length-nextShow.length);
+  const waiting=foc.waiting||[];
+  const later=foc.later||[];
+  const nowHtml=now.length?now.map(function(it){return focusRow(it,false);}).join(""):`<p class="fempty">Nothing in NOW.</p>`;
+  const nextHtml=nextShow.length?nextShow.map(function(it){return focusRow(it,true);}).join("")+(nextMore?`<div class="fmore">+${nextMore} more</div>`:""):`<p class="fempty">Nothing in NEXT.</p>`;
+  const waitFirst=waiting[0]?escapeHtml(waiting[0].t):"";
+  const waitSum=waiting.length?(waiting.length+(waitFirst?" — "+waitFirst:"")):"none";
+  const waitHtml=waiting.length?waiting.map(function(it){return focusRow(it,true);}).join(""):`<p class="fempty">Nothing waiting.</p>`;
+  const laterHtml=later.length?later.map(function(it){return focusRow(it,true);}).join(""):`<p class="fempty">Nothing later.</p>`;
   el.innerHTML=`<h2>Right now</h2>
-    <p class="lead">${lead}</p>
-    <div class="scan">
-      <div class="pill ${wn?'warn':''}" onclick="showView('dash')"><b>${wn}</b><span>Needs you</span></div>
-      <div class="pill ${mn?'warn':''}" onclick="showView('dash')"><b>${mn}</b><span>Manuals</span></div>
-      <div class="pill ${due?'warn':''}" onclick="goDueSoon()"><b>${due}</b><span>Due soon</span></div>
-      <div class="pill" onclick="showView('work')"><b>${(PROJECTS.active||[]).length}</b><span>Projects</span></div>
-    </div>
-    <p class="line"><b>Now:</b> ${escapeHtml(LIVE_STATE.now||LIVE_STATE.nextDomain)}</p>
-    <p class="line"><b>Doing:</b> ${doing}</p>
+    <div class="fsec"><h3>Now</h3>${nowHtml}</div>
+    <div class="fsec"><h3>Next</h3>${nextHtml}</div>
+    <details class="fsec"><summary>Waiting · ${waitSum}</summary>${waitHtml}</details>
+    <details class="fsec"><summary>Later</summary>${laterHtml}</details>
     <div class="acts"><button class="p" onclick="wn||mn?showView('dash'):showView('work')">${wn||mn?"Open Status":"Open Work"}</button><button class="s" onclick="showView('chat')">Ask Hank</button><button class="s" onclick="showView('find')">Find</button></div>`;
   const nb=document.getElementById('bnavNeedsBadge');if(nb){const n=wn+mn;if(n){nb.textContent=n>9?"9+":n;nb.classList.remove('hide');}else nb.classList.add('hide');}
 }
@@ -2208,6 +2276,7 @@ checkAnnounceOnLoad();
       if(o.indexOf("project:")===0)return{kind:"project",id:o.slice(8)};
       if(o.indexOf("proposal:")===0)return{kind:"proposal",id:o.slice(9)};
       if(o==="find"||o==="work"||o==="equip")return{kind:"view",id:o};
+      if(o==="focus")return{kind:"focus"};
     }catch(e){}
     var h=(location.hash||"").replace(/^#/,"");
     if(!h)return null;
@@ -2216,6 +2285,7 @@ checkAnnounceOnLoad();
     m=h.match(/^work\/proposal\/([^/?#]+)/i);
     if(m)return{kind:"proposal",id:decodeURIComponent(m[1])};
     if(h==="work"||h==="find"||h==="equip"||h==="chat"||h==="bible"||h==="train")return{kind:"view",id:h};
+    if(h==="focus"||h==="home")return{kind:"focus"};
     return null;
   }
   var deep=parseDeepLink();
@@ -2227,6 +2297,9 @@ checkAnnounceOnLoad();
   }else if(deep&&deep.kind==="proposal"){
     showView('work');setWorkSeg('proposals');
     setTimeout(function(){openProposal(deep.id);},80);
+  }else if(deep&&deep.kind==="focus"){
+    showView('home');
+    setTimeout(function(){var tc=document.getElementById('todayCard');if(tc)tc.scrollIntoView({behavior:"smooth",block:"start"});},40);
   }else if(deep&&deep.kind==="view"){
     showView(deep.id);
   }else if(open==='bible'||open==='equip'||open==='work'||open==='chat'||open==='graph'||open==='vault'||open==='find'){
@@ -2238,6 +2311,7 @@ checkAnnounceOnLoad();
     if(!d)return;
     if(d.kind==="project"){showView('work');setWorkSeg('projects');setTimeout(function(){openProject(d.id);},40);}
     else if(d.kind==="proposal"){showView('work');setWorkSeg('proposals');setTimeout(function(){openProposal(d.id);},40);}
+    else if(d.kind==="focus"){showView('home');setTimeout(function(){var tc=document.getElementById('todayCard');if(tc)tc.scrollIntoView({behavior:"smooth",block:"start"});},40);}
     else if(d.kind==="view")showView(d.id);
   });
 })();

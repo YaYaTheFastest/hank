@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-16T23:10:38Z",
+  "updated": "2026-08-17T17:10:19Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-17_130002",
+      "started": "2026-08-17T13:00:02",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Loop run 2026-08-17 130002",
+      "domain": "",
+      "chats_cleared": 0,
+      "deploy": "24b4c3f",
+      "log": "logs/loop-2026-08-17_130002.log"
+    },
     {
       "id": "2026-08-16_190002",
       "started": "2026-08-16T19:00:02",
@@ -57,20 +71,6 @@
       "chats_cleared": null,
       "deploy": null,
       "log": "logs/loop-2026-08-10_190005.log"
-    },
-    {
-      "id": "2026-08-09_100051",
-      "started": "2026-08-09T10:00:51",
-      "trigger": "on-demand",
-      "trigger_label": "on-demand",
-      "slot": "on-demand",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Loop pass complete \u2014 OK (E0).",
-      "domain": "Recipes: [[Traeger Whole Smoked Chicken]] \u25cf \u2192 next Fitness",
-      "chats_cleared": null,
-      "deploy": "f87a2fe",
-      "log": "logs/loop-2026-08-09_100051.log"
     }
   ]
 }

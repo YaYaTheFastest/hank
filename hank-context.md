@@ -39,13 +39,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-08-17 afternoon loop)
+## LIVE STATE (refreshed 2026-08-17 evening loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$745 / $217** · **4 pending** (Dagvald 08-17 Clean Room $5 + Stalls $10×3). **Fitness:** Heart of the Buddha's Teaching — Suffering Shows the Path Stop the Habit Horse (Nhat Hanh). **Train:** last Afternoon Trail Run 08-09 (Strava sync **OK** this pass — 0 new). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-17** (ADUSA Director still 404; TFM VP still live; SC Lead still posting; A&M Director URLs dead). Queues empty. Inbox clean. Blackstone 4-burner ◐ — still need origin-label photo.
+**Now (what matters):** Castle **$745 / $217** · **4 pending** (Dagvald 08-17 Clean Room $5 + Stalls $10×3). **Finance:** Don't Say To Hell With It — Deceit and Omission Compound (Peterson). **Train:** last Afternoon Trail Run 08-09 (Strava sync **OK** this pass — 0 new). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-17** (ADUSA Director still 404; TFM VP still live; SC Lead still posting; A&M Director URLs dead). Queues empty. Inbox clean. Blackstone 4-burner ◐ — still need origin-label photo.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness.
+**Next domain (rotation):** **Recipes** — then Fitness → Finance.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain · **Leadership transition / new role**. Virtues theme note filed. Do **not** send him to Connections graph for Scripture.
 
@@ -61,7 +61,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$745** (2-day streak 08-15→08-16; **4 pending** ~$35), Davikja **$217** (**$150 Diadem goal met**, $67 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-08-17-afternoon** (Fitness Heart of the Buddha's Teaching · Castle $745/$217 · 4 pending · Gmail E1 noted).
+**Deploy:** BUILD_DATE **2026-08-17-evening** (Finance Don't Say To Hell With It · Castle $745/$217 · 4 pending · Gmail E1 noted).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 

@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-11T17:06:41Z",
+  "updated": "2026-08-16T23:10:38Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-16_190002",
+      "started": "2026-08-16T19:00:02",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Loop run 2026-08-16 190002",
+      "domain": "",
+      "chats_cleared": 0,
+      "deploy": null,
+      "log": "logs/loop-2026-08-16_190002.log"
+    },
     {
       "id": "2026-08-11_130004",
       "started": "2026-08-11T13:00:04",
@@ -57,20 +71,6 @@
       "chats_cleared": null,
       "deploy": "f87a2fe",
       "log": "logs/loop-2026-08-09_100051.log"
-    },
-    {
-      "id": "2026-08-06_070005",
-      "started": "2026-08-06T07:00:05",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Recipes: [[Traeger Smoked Pork Loin]] \u25cf (180\u00b0F \u2192 350\u00b0F; cherry). Next: Fitness.",
-      "domain": "Recipes: [[Traeger Smoked Pork Loin]] \u25cf (180\u00b0F \u2192 350\u00b0F; cherry). Next: Fitness.",
-      "chats_cleared": null,
-      "deploy": "2dcd8e2",
-      "log": "logs/loop-2026-08-06_070005.log"
     }
   ]
 }

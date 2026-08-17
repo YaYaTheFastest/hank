@@ -575,25 +575,25 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-16-checks";
+const BUILD_DATE="2026-08-17-morning";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
-  updated:"2026-08-16T23:05:00Z",
+  updated:"2026-08-17T11:15:00Z",
   schedule:"7:00 · 13:00 · 19:00 + chat queue watcher",
   runs:[
+{id:"2026-08-17_070001",started:"2026-08-17T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Monday morning — inbox/queues empty; Castle $745/$217 · 0 pending; Recipes Traeger Smoked Burgers ●; job search 08-17; Gmail OAuth invalid_grant (E1); Strava OK; X none; Readwise 972/0.",domain:"Recipes: Traeger Smoked Burgers ●",chats_cleared:0,deploy:"pending"},
 {id:"2026-08-16_190001",started:"2026-08-16T19:00:03",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Sunday evening — inbox/queues empty; Castle $745/$217 · 0 pending (9 approved + 7 new); Finance Admit Error (Peterson); Gmail OAuth invalid_grant (E1); Strava OK; X none; Readwise 972/0.",domain:"Finance: Admit Error — Let Outdated Maps Burn",chats_cleared:0,deploy:"pending"},
 {id:"2026-08-11_130001",started:"2026-08-11T13:00:01",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Tuesday afternoon — inbox/queues empty; Castle $600/$217 · 9 pending (+4 08-11); Fitness Art of War (Sun Tzu); Gmail OAuth invalid_grant (E1); Strava keys missing (E1); X none; Readwise 972/0.",domain:"Fitness: Art of War — Know Self Put Beyond Defeat Win Before Fight (Sun Tzu)",chats_cleared:0,deploy:"aaa400c"},
 {id:"2026-08-11_070001",started:"2026-08-11T07:00:01",trigger_label:"Scheduled (morning)",slot:"morning",status:"ok",tier:"E0",summary:"Tuesday morning — inbox/queues empty; Castle $600/$217 · 5 pending unchanged; Recipes Traeger Smoked Meatloaf ●; Gmail OAuth invalid_grant (E1); Strava keys missing (E1); X none; Readwise 972/0.",domain:"Recipes: Traeger Smoked Meatloaf (Not Your Mama's) ●",chats_cleared:0,deploy:"56260a5"},
 {id:"2026-08-10_190001",started:"2026-08-10T19:00:01",trigger_label:"Scheduled (evening)",slot:"evening",status:"ok",tier:"E0",summary:"Monday evening — inbox/queues empty; Castle $600/$217 · 5 pending (+1 Clean Room 08-10); Finance Follow Rules Until They Undermine Their Purpose (Beyond Order L842/L909); Gmail OAuth invalid_grant (E1); X none; Readwise 972/0; Strava train current.",domain:"Finance: Follow Rules Until They Undermine Their Purpose",chats_cleared:0,deploy:"4718ba4"},
-{id:"2026-08-10_140001",started:"2026-08-10T14:11:00",trigger_label:"Scheduled (afternoon)",slot:"afternoon",status:"ok",tier:"E0",summary:"Monday afternoon — 1 chat (nav re-APPROVE) cleared; Castle $600/$217 · 4 pending; Fitness Flourish PERMA (Seligman); job search 08-10; Gmail OAuth invalid_grant (E1); X none; Readwise 972/0; Strava train current.",domain:"Fitness: Flourish — PERMA Strengths & What Went Well (Seligman)",chats_cleared:1,deploy:"f401768"},
   ]
 };
 // Loop operator health — mirrored from vault loop-health.json on each deploy/pass (Darren-facing; Loop Escalation.md)
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-08-16 evening — inbox/queues empty; Castle $745/$217 · 0 pending; Finance Admit Error (Peterson); Gmail OAuth invalid_grant (E1); Strava OK; X none; Readwise 972/0.",
-  last_success:"2026-08-16T23:05:00Z"
+  summary:"2026-08-17 morning — inbox/queues empty; Castle $745/$217 · 0 pending; Recipes Traeger Smoked Burgers ●; job search 08-17; Gmail OAuth invalid_grant (E1); Strava OK; X none; Readwise 972/0.",
+  last_success:"2026-08-17T11:15:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};
@@ -646,8 +646,8 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-08-16 evening",now:"Castle $745/$217 · 0 pending · Finance Admit Error (Peterson) · fleet 53 · train last 08-09 (Strava OK)",nextDomain:"Recipes",rotation:"Recipes → Fitness → Finance",dagvald:745,davikja:217,fleetTotal:53,fleetFull:47,fleetPart:6,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"2026-08-16 evening — Castle $745/$217 · 0 pending; Finance Admit Error; Gmail E1; Strava OK."},
+const LIVE_STATE={refreshed:"2026-08-17 morning",now:"Castle $745/$217 · 0 pending · Recipes Traeger Smoked Burgers ● · job search 08-17 · fleet 53 · train last 08-09 (Strava OK)",nextDomain:"Fitness",rotation:"Recipes → Fitness → Finance",dagvald:745,davikja:217,fleetTotal:53,fleetFull:47,fleetPart:6,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"2026-08-17 morning — Castle $745/$217 · 0 pending; Recipes Traeger Smoked Burgers ●; job search 08-17; Gmail E1; Strava OK."},
   /* doing: string or {t, projectId?} — projectId opens Work project sheet */
   doing:[
     {t:"Morning trail habit — post-travel Saturday Plainfield→Ridgewood + Ragnar",projectId:"morning-trail"},
@@ -678,7 +678,7 @@ const LIVE_STATE={refreshed:"2026-08-16 evening",now:"Castle $745/$217 · 0 pend
     ],
     next:[
       {id:"dr-leaf-plate",t:"Snap the DR Leaf Vacuum engine plate",place:"Camera → _Cowork Inbox",href:""},
-      {id:"job-search-glance",t:"Monday job-search glance",place:"This board",href:"",note:"2026-08-17 — Hank refreshes"},
+      {id:"job-search-glance",t:"Monday job-search glance",place:"This board",href:"",note:"Refreshed 08-17 — ADUSA Director still 404; TFM VP still live; SC Lead still posting"},
       {id:"deane-shop",t:"Book Deane 2 hr shop org",place:"Calendar",href:""},
       {id:"eero-7-swap",t:"eero 7 gateway swap",place:"30-min window",href:"",note:"modem Ethernet → replace eero → TrueMesh"}
     ],
@@ -721,10 +721,10 @@ const PROJECTS={
       one:"Buy the rear (southern) ~75% of parcel 137611 and combine it into adjoining 137608. Resolve trust-vs-probate FIRST — do not negotiate before knowing who can sell.",
       constraints:["Informational research only — not legal, tax, or financial advice","Owner of record is Virginia L. Kadunce personally (deceased); tax record is not as trustee","Do not negotiate before the post-1987 Kadunce deed search","NC requires an attorney to close","No present-use deferral — total deferred value $0, no rollback-tax risk"],
       steps:["Register of Deeds search (Kadunce, post-1987) — determine trust vs probate and who has legal authority to sell","Open the CAMA Report / Tax Appraisal Information — homesite vs excess-acre $/acre; Neighborhood Sales comps","Call Guilford County Planning (336-641-3334) — recombination vs minor subdivision, jurisdiction, retained-piece minimums","Measure the rear piece in the GIS viewer to fix exact acreage","Hire a NC real estate attorney — purchase agreement contingent on plat approval","Approach the correct party (personal representative/heirs or trustee) with a written offer anchored to assessed land value"]},
-    {id:"job-search",n:"2026 Job Search",what:"Active search — network strategy / merch ops targets.",why:"Career track alongside ranch OS; weekly Monday refresh.",next:"ADUSA Director still 404; TFM VP Merch Ops live; SC Strategy Lead live — decide apply/pass + cold outreach",status:"Active",owner:"Darren",domain:"Career",
+    {id:"job-search",n:"2026 Job Search",what:"Active search — network strategy / merch ops targets.",why:"Career track alongside ranch OS; weekly Monday refresh.",next:"ADUSA Director still 404; TFM VP Merch Ops live; SC Strategy Lead live; A&M Director URLs dead — decide apply/pass + cold outreach",status:"Active",owner:"Darren",domain:"Career",
       one:"Land a VP / Sr Director / Practice Lead / Principal role in supply chain strategy, network design, transportation, or DC operations. Remote or within 45 minutes of Greensboro NC 27455. Base floor $275K. Avoid Big 4 this cycle.",
       constraints:["Remote OR commute ≤45 min from 27455","Comp: $275K base floor","Avoid: Deloitte, EY, KPMG, PwC","Will not abandon FORTNA until a real offer is in hand"],
-      steps:["Monday: cron 7:00 AM EDT runs new-postings delta across saved searches","Monday: output lands in Weekly Refresh; Morning Cockpit email surfaces the top 3 new postings","Triage each: apply / pass / needs research","If apply: Google Task in Deep Work list + a calendar block for the actual application","Current (last refresh 2026-08-10): ADUSA Director still 404; TFM VP Merch Ops live; SC Strategy Lead live — decide apply/pass + cold outreach"]},
+      steps:["Monday: cron 7:00 AM EDT runs new-postings delta across saved searches","Monday: output lands in Weekly Refresh; Morning Cockpit email surfaces the top 3 new postings","Triage each: apply / pass / needs research","If apply: Google Task in Deep Work list + a calendar block for the actual application","Current (last refresh 2026-08-17): ADUSA Director still 404; TFM VP Merch Ops live; SC Strategy Lead live; A&M Director URLs redirected — decide apply/pass + cold outreach"]},
     {id:"morning-trail",n:"Morning Trail Habit — Plainfield→Ridgewood",what:"Post-travel Saturday keystone: driveway warm-up walk ~0.75 mi to trailhead with Ragnar → run north trail → James Doak → Ridgewood; build distance over time.",why:"Empty-mind Zone 2 for work focus + recovery; Strava is the proof log.",next:"First Saturday after this week’s travel — easy only; road shoulder + snake awareness",status:"Active",owner:"Darren",domain:"Fitness",
       one:"Same route skeleton every Saturday morning after travel. Easy effort. Strava every session. Distance grows later.",
       constraints:["Narrow Plainfield shoulder — face traffic, high-vis, dog inside","Snake awareness — eyes up, short leash in brush; weapons last-ditch only","Do not start mid-travel week"],
@@ -2355,7 +2355,7 @@ async function renderDash(){
     </div>
     <div class="bar"><i class="bg" style="width:${c.ver/c.tot*100}%"></i><i class="ba" style="width:${(c.tot-c.ver)/c.tot*100}%"></i></div>
     <div class="barlbl">${c.ver}/${c.tot} manual-backed · loop upgrades the rest.</div></div>`;
-  h+=`<div class="dsec"><h3>Job search</h3><p class="lead"><b>Wk 07-06:</b> ADUSA <b>Director, Network Strategy</b> (Salisbury) open · $860M Burlington DC breaking ground. <b>Next:</b> apply + warm note to CSCO Sanja Krajnovic.</p></div>`;
+  h+=`<div class="dsec"><h3>Job search</h3><p class="lead"><b>Wk 08-17:</b> ADUSA <b>Director, Network Strategy</b> still <b>404</b> · TFM VP Merch Ops still live · ADUSA SC Strategy Lead still posting · A&M Director URLs dead (Manager-level still posting). <b>Next:</b> apply/pass TFM + cold outreach ADUSA CSCO.</p></div>`;
   h+=`<div class="dsec"><h3>Supplies</h3><p class="lead">Shop reorder reference from Full cards.</p>`;
   SUPPLIES.forEach(s=>{h+=`<div class="sup"><span class="k">${s[0]}</span><span class="v">${s[1]}</span></div>`;});
   h+=`<div class="note">Quantities not tracked — snap when low. <span class="verify">confirm fitment</span></div></div>`;

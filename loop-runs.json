@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-19T12:49:49Z",
+  "updated": "2026-08-19T17:08:39Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-19_130003",
+      "started": "2026-08-19T13:00:03",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (afternoon)",
+      "slot": "afternoon",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Loop run 2026-08-19 130003",
+      "domain": "",
+      "chats_cleared": 0,
+      "deploy": "8a2606e",
+      "log": "logs/loop-2026-08-19_130003.log"
+    },
     {
       "id": "2026-08-19_070218",
       "started": "2026-08-19T07:02:18",
@@ -57,20 +71,6 @@
       "chats_cleared": 0,
       "deploy": "793403e",
       "log": "logs/loop-2026-08-18_071315.log"
-    },
-    {
-      "id": "2026-08-17_190004",
-      "started": "2026-08-17T19:00:04",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (evening)",
-      "slot": "evening",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Loop run 2026-08-17 190004",
-      "domain": "",
-      "chats_cleared": null,
-      "deploy": "18f9941",
-      "log": "logs/loop-2026-08-17_190004.log"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "ok": true,
   "source": "strava",
-  "refreshed": "2026-08-18T23:07:55Z",
+  "refreshed": "2026-08-19T11:02:28Z",
   "athlete_note": "Completed workouts via Strava API. ICU API cannot export Strava-sourced activities.",
   "latest": {
     "id": "19672753742",

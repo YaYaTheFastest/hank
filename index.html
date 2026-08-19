@@ -575,7 +575,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-18-evening";
+const BUILD_DATE="2026-08-19-morning";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-08-17T11:15:00Z",
@@ -592,8 +592,8 @@ const LOOP_RUNS={
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-08-18 evening — inbox/queues empty; Castle $745/$217 · 8 pending (0 new); Finance Who Could You Be (Peterson); Gmail OAuth invalid_grant (E1); Strava OK; X none; Readwise 972/0.",
-  last_success:"2026-08-18T23:15:00Z"
+  summary:"2026-08-19 morning — inbox/queues empty; Castle $815/$217 · 0 pending (8 Dagvald approved); Recipes Traeger Brats in Beer ●; Gmail OAuth invalid_grant (E1); Strava OK; X none; Readwise 972/0.",
+  last_success:"2026-08-19T11:55:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};
@@ -646,8 +646,8 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-08-18 evening",now:"Castle $745/$217 · 8 pending · Finance Who Could You Be · job search 08-17 · fleet 53 · train last 08-09 (Strava OK)",nextDomain:"Recipes",rotation:"Recipes → Fitness → Finance",dagvald:745,davikja:217,fleetTotal:53,fleetFull:47,fleetPart:6,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"2026-08-18 evening — Castle $745/$217 · 8 pending; Finance Who Could You Be; Gmail E1; Strava OK."},
+const LIVE_STATE={refreshed:"2026-08-19 morning",now:"Castle $815/$217 · 0 pending · Recipes Traeger Brats in Beer ● · job search 08-17 · fleet 53 · train last 08-09 (Strava OK)",nextDomain:"Fitness",rotation:"Recipes → Fitness → Finance",dagvald:815,davikja:217,fleetTotal:53,fleetFull:47,fleetPart:6,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"2026-08-19 morning — Castle $815/$217 · 0 pending; Recipes Traeger Brats in Beer ●; Gmail E1; Strava OK."},
   /* doing: string or {t, projectId?} — projectId opens Work project sheet */
   doing:[
     {t:"Morning trail habit — post-travel Saturday Plainfield→Ridgewood + Ragnar",projectId:"morning-trail"},
@@ -664,7 +664,6 @@ const LIVE_STATE={refreshed:"2026-08-18 evening",now:"Castle $745/$217 · 8 pend
     {t:"The Bible domain — deepen Scene/Character when prioritized"}
   ],
   waiting:[
-    {t:"Approve Castle pending — Dagvald 08-17 + 08-18 Clean Room $5 + Stalls $10×3 each (~$70)",projectId:"castle"},
     {t:"Home domain tiles layout (B2 — Darren confirm)"},
     {t:"Davikja Diadem redeem or next goal (parent — $217, goal met $67 over)",projectId:"castle"},
     {t:"Blackstone origin-label photo → _Cowork Inbox"},
@@ -674,7 +673,6 @@ const LIVE_STATE={refreshed:"2026-08-18 evening",now:"Castle $745/$217 · 8 pend
   focus:{
     updated:"2026-08-16",
     now:[
-      {id:"castle-pending-0817",t:"Approve Castle pending",place:"Kids → parent PIN",href:"",note:"Dagvald 08-17 + 08-18 · Clean Room $5 + Clean Stalls $10×3 each · ~$70"},
       {id:"blackstone-plate",t:"Snap the Blackstone plate",place:"Camera → _Cowork Inbox",href:"",note:"model/serial on the 4-burner; cooktop is rusted"},
       {id:"davikja-diadem",t:"Davikja Diadem — redeem or next goal",place:"Kids → parent",href:"davikja.html",note:"$217 · $150 goal met · $67 over"}
     ],

@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-19T17:08:39Z",
+  "updated": "2026-08-19T23:11:12Z",
   "schedule": "7:00 \u00b7 13:00 \u00b7 19:00 + chat queue watcher",
   "runs": [
+    {
+      "id": "2026-08-19_190005",
+      "started": "2026-08-19T19:00:05",
+      "trigger": "scheduled",
+      "trigger_label": "Scheduled (evening)",
+      "slot": "evening",
+      "status": "ok",
+      "tier": "E0",
+      "summary": "Loop run 2026-08-19 190005",
+      "domain": "",
+      "chats_cleared": null,
+      "deploy": "2ca7d59",
+      "log": "logs/loop-2026-08-19_190005.log"
+    },
     {
       "id": "2026-08-19_130003",
       "started": "2026-08-19T13:00:03",
@@ -57,20 +71,6 @@
       "chats_cleared": 0,
       "deploy": "93fa25f",
       "log": "logs/loop-2026-08-18_130004.log"
-    },
-    {
-      "id": "2026-08-18_071315",
-      "started": "2026-08-18T07:13:15",
-      "trigger": "scheduled",
-      "trigger_label": "Scheduled (morning)",
-      "slot": "morning",
-      "status": "ok",
-      "tier": "E0",
-      "summary": "Recipes: New \u25cf [[Traeger Smoked Chicken Quarters]] \u2014 oil + rub under skin \u2192 fridge 1\u20132 hr \u2192 180\u00b0F Super Smoke 1 hr \u2192 350\u00b0F to 165\u00b0F. Next domain Fitness.",
-      "domain": "Recipes: New \u25cf [[Traeger Smoked Chicken Quarters]] \u2014 oil + rub under skin \u2192 fridge 1\u20132 hr \u2192 180\u00b0F Super Smoke 1 hr \u2192 350\u00b0F to 165\u00b0F. Next domain Fitness.",
-      "chats_cleared": 0,
-      "deploy": "793403e",
-      "log": "logs/loop-2026-08-18_071315.log"
     }
   ]
 }

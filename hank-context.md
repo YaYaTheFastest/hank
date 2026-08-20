@@ -39,13 +39,13 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-08-20 afternoon loop)
+## LIVE STATE (refreshed 2026-08-20 evening loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$815 / $217** · **1 pending** (Dagvald Clean Room $5 · 08-19). **Fitness:** When Buddhists Attack — Train for Training Seize Suki. **Train:** last Afternoon Trail Run 08-09 (Strava sync **OK** this pass — 0 new). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-17** (ADUSA Director still 404; TFM VP still live; SC Lead still posting; A&M Director URLs dead). Queues empty. Inbox clean. Blackstone 4-burner ◐ — still need origin-label photo.
+**Now (what matters):** Castle **$815 / $217** · **1 pending** (Dagvald Clean Room $5 · 08-19). **Finance:** Treasure House Guarded by Predator — Bargain With Polarity. **Train:** Strava **OK** this pass — **1 new** Afternoon Trail Run 08-20 (**4s / 0.01 mi — not a training session**; last *real* run still 08-09). **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-17** (ADUSA Director still 404; TFM VP still live; SC Lead still posting; A&M Director URLs dead). Queues empty. Inbox clean. Blackstone 4-burner ◐ — still need origin-label photo.
 
-**Next domain (rotation):** **Finance** — then Recipes → Fitness.
+**Next domain (rotation):** **Recipes** — then Fitness → Finance.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain · **Leadership transition / new role**. Virtues theme note filed. Do **not** send him to Connections graph for Scripture.
 
@@ -53,7 +53,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models · **Davikja Diadem redeem or next goal** ($217).
 
-**Inbox:** Clean. Queues empty. X bookmarks none in Downloads. Workouts: GPX incoming empty; Strava API **OK** (keys present; last activity still 08-09 Afternoon Trail Run). **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
+**Inbox:** Clean. Queues empty. X bookmarks none in Downloads. Workouts: GPX incoming empty; Strava API **OK** (keys present; 1 new 08-20 4s blip; last real run 08-09). **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
 **Loop:** OK (E0) · Gmail E1 noted (re-auth when convenient). Strava E1 **cleared**.
 
@@ -61,7 +61,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$815** (4-day streak 08-15→08-18; **1 pending** Clean Room $5), Davikja **$217** (**$150 Diadem goal met**, $67 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-08-20-afternoon** (Fitness When Buddhists Attack · Castle $815/$217 · 1 pending · Gmail E1 noted).
+**Deploy:** BUILD_DATE **2026-08-20-evening** (Finance Treasure House Guarded by Predator · Castle $815/$217 · 1 pending · Train 08-20 blip honesty · Gmail E1 noted).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 

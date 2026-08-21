@@ -575,7 +575,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-21-morning";
+const BUILD_DATE="2026-08-21-afternoon";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-08-17T11:15:00Z",
@@ -592,8 +592,8 @@ const LOOP_RUNS={
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-08-21 morning — inbox/queues empty; Castle $815/$217 · 1 pending (Dagvald Clean Room $5); Recipes Traeger Cajun Broil ●; Gmail OAuth invalid_grant (E1); Strava OK (4s blip honesty); X none; Readwise 972/0.",
-  last_success:"2026-08-21T12:00:00Z"
+  summary:"2026-08-21 afternoon — inbox/queues empty; Castle $815/$217 · 1 pending (Dagvald Clean Room $5); Fitness Zen in the Art of Archery; Gmail OAuth invalid_grant (E1); Strava OK (4s blip honesty); X none; Readwise 972/0.",
+  last_success:"2026-08-21T18:00:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};
@@ -646,10 +646,11 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-08-21 morning",now:"Castle $815/$217 · 1 pending · Recipes Traeger Cajun Broil ● · job search 08-17 · fleet 53 · train 08-20 4s blip (last real 08-09)",nextDomain:"Fitness",rotation:"Recipes → Fitness → Finance",dagvald:815,davikja:217,fleetTotal:53,fleetFull:47,fleetPart:6,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"2026-08-21 morning — Castle $815/$217 · 1 pending; Recipes Traeger Cajun Broil ●; Gmail E1; Strava OK (4s blip honesty)."},
+const LIVE_STATE={refreshed:"2026-08-21 afternoon",now:"Castle $815/$217 · 1 pending · Fitness Zen in the Art of Archery · job search 08-17 · fleet 53 · train 08-20 4s blip (last real 08-09)",nextDomain:"Finance",rotation:"Recipes → Fitness → Finance",dagvald:815,davikja:217,fleetTotal:53,fleetFull:47,fleetPart:6,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"2026-08-21 afternoon — Castle $815/$217 · 1 pending; Fitness Zen in the Art of Archery; Gmail E1; Strava OK (4s blip honesty)."},
   /* doing: string or {t, projectId?} — projectId opens Work project sheet */
   doing:[
+    {t:"Cut subscriptions — Cancel Netflix (Work project; not Home NOW)",projectId:"cut-subs"},
     {t:"Morning trail habit — post-travel Saturday Plainfield→Ridgewood + Ragnar",projectId:"morning-trail"},
     {t:"Train ritual — Strava → Hank review + comments (near-RT watcher)",projectId:"strava-pipeline"},
     {t:"Castle Fund V2 — lessons unlock + parent dual polish (re-approved 08-06)",projectId:"castle-v2"},
@@ -671,11 +672,10 @@ const LIVE_STATE={refreshed:"2026-08-21 morning",now:"Castle $815/$217 · 1 pend
     {t:"Dyson label photos → _Cowork Inbox"}
   ],
   focus:{
-    updated:"2026-08-16",
+    updated:"2026-08-21-action-miss",
     now:[
       {id:"castle-pending",t:"Approve Castle pending",place:"Kids → parent PIN",href:"dagvald.html",note:"Dagvald Clean Room $5 · 08-19"},
-      {id:"blackstone-plate",t:"Snap the Blackstone plate",place:"Camera → _Cowork Inbox",href:"",note:"model/serial on the 4-burner; cooktop is rusted"},
-      {id:"davikja-diadem",t:"Davikja Diadem — redeem or next goal",place:"Kids → parent",href:"davikja.html",note:"$217 · $150 goal met · $67 over"}
+      {id:"blackstone-plate",t:"Snap the Blackstone plate",place:"Camera → _Cowork Inbox",href:"",note:"model/serial on the 4-burner; cooktop is rusted"}
     ],
     next:[
       {id:"dr-leaf-plate",t:"Snap the DR Leaf Vacuum engine plate",place:"Camera → _Cowork Inbox",href:""},
@@ -702,6 +702,10 @@ const LIVE_STATE={refreshed:"2026-08-21 morning",now:"Castle $815/$217 · 1 pend
 // Hierarchical projects — vault-backed fields (what/why/next/status). Loop refreshes this block each deploy.
 const PROJECTS={
   active:[
+    {id:"cut-subs",n:"Cut subscriptions",what:"Cancel stacked subscriptions. Titles from Keeper. No dollar amounts. No third money app.",why:"Chat cannot be acted on. One cancel at a time. Home NOW holds the next cancel.",next:"Cancel Netflix — same job as Disney+ and HBO. One screen, one bill.",status:"Active",owner:"Darren",domain:"Finance",
+      one:"Cancel Netflix. Check it. Hank puts the next one on Home NOW.",
+      constraints:["Do not invent spend","Do not start a third money app","Keep AT&T, utilities, insurance, Keeper, Gracie Barra, Life Time","Castle and Blackstone NOW stay"],
+      steps:["Cancel Netflix","Cancel Disney+","Cancel HBO Max","Then the rest of the video / news / fitness / app stack on the project page"]},
     {id:"eero-7",n:"eero 7 Gateway Swap — Mesh",what:"Replace gateway with eero 7; then placement, backhaul, and node audit.",why:"Highest leverage for Outdoor 7s + older nodes (barn/loft/yard).",next:"Swap gateway via Replace eero / modem Ethernet; TrueMesh 1–2 hr",status:"Active",owner:"Darren",domain:"Home",
       one:"Gateway swap → placement quality → any wired backhaul. Those three deliver most of the available improvement with the current hardware mix.",
       constraints:["Connect the eero 7 directly to the modem via Ethernet","Let TrueMesh re-optimize 1–2 hours after the swap","Do not skip the node audit after the gateway swap"],

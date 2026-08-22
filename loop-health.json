@@ -5,9 +5,9 @@
   "error": "",
   "proposed_fix": "",
   "owner": "grok",
-  "summary": "2026-08-22 morning — inbox/queues empty; Castle $815/$217 · 1 pending (Dagvald Clean Room $5); Recipes reverse-sear rib-eye ●; wiki lint OK; job search 08-17; Readwise 972/0; Gmail OAuth invalid_grant (E1); Strava OK (4s blip honesty); X none; GPX README only.",
-  "last_attempt": "2026-08-22T11:00:06Z",
-  "last_success": "2026-08-22T11:30:00Z",
+  "summary": "2026-08-22 afternoon — Blackstone 2310 plate filed; Castle $815/$217 · 1 pending; Fitness Kushner; Gmail OAuth invalid_grant (E1); Strava OK (4s blip honesty); X none; Readwise 972/0.",
+  "last_attempt": "2026-08-22T17:00:06Z",
+  "last_success": "2026-08-22T17:30:00Z",
   "open_issues": [
     {
       "tier": "E1",

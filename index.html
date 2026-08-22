@@ -575,7 +575,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-22-morning";
+const BUILD_DATE="2026-08-22-afternoon";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-08-17T11:15:00Z",
@@ -592,8 +592,8 @@ const LOOP_RUNS={
 const LOOP_HEALTH={
   status:"ok",tier:"E0",component:"full-pass",
   error:"",proposed_fix:"",owner:"grok",
-  summary:"2026-08-22 morning — inbox/queues empty; Castle $815/$217 · 1 pending (Dagvald Clean Room $5); Recipes reverse-sear rib-eye ●; wiki lint OK; Gmail OAuth invalid_grant (E1); Strava OK (4s blip honesty); X none; Readwise 972/0.",
-  last_success:"2026-08-22T11:30:00Z"
+  summary:"2026-08-22 afternoon — Blackstone 2310 plate filed; Castle $815/$217 · 1 pending; Fitness Kushner; Gmail E1; Strava OK (4s blip honesty); X none; Readwise 972/0.",
+  last_success:"2026-08-22T17:30:00Z"
 };
 const ANNOUNCE={id:"proposals-ship-2026-07-21",title:"Work tab + Proposals are live",body:"Projects show what / why / next. Proposals tab: review Grok ideas without Obsidian — approve or hold in Chat.",cta:"Open Work"};
 const GRAPH_ANNOUNCE={id:"graph-mock-2026-07-09",title:"Domain graph preview",body:"Scoped network view (Finance + Bison project) — More → Connections. Scripture = Bible Guidance.",cta:"Open graph"};
@@ -646,8 +646,8 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-08-22 morning",now:"Castle $815/$217 · 1 pending · Recipes reverse-sear rib-eye ● · job search 08-17 · fleet 53 · train 08-20 4s blip (last real 08-09)",nextDomain:"Fitness",rotation:"Recipes → Fitness → Finance",dagvald:815,davikja:217,fleetTotal:53,fleetFull:47,fleetPart:6,inbox:"Clean",
-  loop:{status:"ok",tier:"E0",summary:"2026-08-22 morning — Castle $815/$217 · 1 pending; Recipes reverse-sear rib-eye ●; wiki lint OK; Gmail E1; Strava OK (4s blip honesty)."},
+const LIVE_STATE={refreshed:"2026-08-22 afternoon",now:"Castle $815/$217 · 1 pending · Blackstone 2310 plate filed · Fitness Kushner · job search 08-17 · fleet 53 · train 08-20 4s blip (last real 08-09)",nextDomain:"Finance",rotation:"Recipes → Fitness → Finance",dagvald:815,davikja:217,fleetTotal:53,fleetFull:47,fleetPart:6,inbox:"Clean",
+  loop:{status:"ok",tier:"E0",summary:"2026-08-22 afternoon — Blackstone 2310 plate; Castle $815/$217 · 1 pending; Fitness Kushner; Gmail E1; Strava OK (4s blip honesty)."},
   /* doing: string or {t, projectId?} — projectId opens Work project sheet */
   doing:[
     {t:"Cut subscriptions — Cancel Netflix (Work project; not Home NOW)",projectId:"cut-subs"},
@@ -667,15 +667,14 @@ const LIVE_STATE={refreshed:"2026-08-22 morning",now:"Castle $815/$217 · 1 pend
   waiting:[
     {t:"Home domain tiles layout (B2 — Darren confirm)"},
     {t:"Davikja Diadem redeem or next goal (parent — $217, goal met $67 over)",projectId:"castle"},
-    {t:"Blackstone origin-label photo → _Cowork Inbox"},
+    {t:"Blackstone 2310 restore cooktop (plate filed 08-22)"},
     {t:"Profit-center metric pick (options A–F)",projectId:"profit-chores"},
     {t:"Dyson label photos → _Cowork Inbox"}
   ],
   focus:{
     updated:"2026-08-21-action-miss",
     now:[
-      {id:"castle-pending",t:"Approve Castle pending",place:"Kids → parent PIN",href:"dagvald.html",note:"Dagvald Clean Room $5 · 08-19"},
-      {id:"blackstone-plate",t:"Snap the Blackstone plate",place:"Camera → _Cowork Inbox",href:"",note:"model/serial on the 4-burner; cooktop is rusted"}
+      {id:"castle-pending",t:"Approve Castle pending",place:"Kids → parent PIN",href:"dagvald.html",note:"Dagvald Clean Room $5 · 08-19"}
     ],
     next:[
       {id:"dr-leaf-plate",t:"Snap the DR Leaf Vacuum engine plate",place:"Camera → _Cowork Inbox",href:""},
@@ -704,7 +703,7 @@ const PROJECTS={
   active:[
     {id:"cut-subs",n:"Cut subscriptions",what:"Cancel stacked subscriptions. Titles from Keeper. No dollar amounts. No third money app.",why:"Chat cannot be acted on. One cancel at a time. Home NOW holds the next cancel.",next:"Cancel Netflix — same job as Disney+ and HBO. One screen, one bill.",status:"Active",owner:"Darren",domain:"Finance",
       one:"Cancel Netflix. Check it. Hank puts the next one on Home NOW.",
-      constraints:["Do not invent spend","Do not start a third money app","Keep AT&T, utilities, insurance, Keeper, Gracie Barra, Life Time","Castle and Blackstone NOW stay"],
+      constraints:["Do not invent spend","Do not start a third money app","Keep AT&T, utilities, insurance, Keeper, Gracie Barra, Life Time","Castle pending stays on Home NOW"],
       steps:["Cancel Netflix","Cancel Disney+","Cancel HBO Max","Then the rest of the video / news / fitness / app stack on the project page"]},
     {id:"eero-7",n:"eero 7 Gateway Swap — Mesh",what:"Replace gateway with eero 7; then placement, backhaul, and node audit.",why:"Highest leverage for Outdoor 7s + older nodes (barn/loft/yard).",next:"Swap gateway via Replace eero / modem Ethernet; TrueMesh 1–2 hr",status:"Active",owner:"Darren",domain:"Home",
       one:"Gateway swap → placement quality → any wired backhaul. Those three deliver most of the available improvement with the current hardware mix.",
@@ -852,7 +851,7 @@ const MANUALS_NEEDED=[
  {eq:"Sig Sauer P365 X-MACRO — model OM PDF",url:"https://www.sigsauer.com/owner-manuals.html",note:"Factory linked; portal only. Download X-MACRO manual → _Cowork Inbox → host → Full.",gated:true},
  {eq:"Sig Sauer P365XC — model OM PDF",url:"https://www.sigsauer.com/owner-manuals.html",note:"Factory linked; confirm SKU on slide, then download matching P365 manual from portal → _Cowork Inbox → host → Full.",gated:true},
  {eq:"Dyson Air Purifier / Fan — model OM + filter P/N",url:"https://www.dyson.com/support",note:"Inducted 2026-07-23 (chat). Factory air-treatment linked. Need base/rear label photo for exact TP/HP/PH model → download matching OM + sealed filter part # from dyson.com/support → _Cowork Inbox. Filter-life reset after replace is documented on the card (remote Standby ~6s or app).",gated:false},
- {eq:"Blackstone 4-Burner Griddle — unit OM (model unknown)",url:"https://blackstoneproducts.com/pages/product-manuals",note:"Inducted 2026-08-16 from inbox image.jpg (landed 2026-08-12). Factory + OEM manuals portal + help-center index linked. Need silver origin label photo (bottom shelf on 28/36 cart units) → matching PDF from help.blackstoneproducts.com/en_us/manuals-SJqF3Rjp. Do not guess a 36-inch SKU. Rust/season articles already on the card.",gated:false},
+ {eq:"Blackstone 2310 — host unit OM PDF",url:"https://cdn.shopify.com/s/files/1/0312/7695/7740/files/2310_Manual_V4_English.pdf?v=1705350998",note:"Plate filed 2026-08-22: Model 2310 · serial B26251123102.240 · 4×9,500 / 38,000 BTU. OEM 2310 Owner's Manual v04 (20 pp, Iron Forged) found — direct CDN. Archived in _HANK Media (~19 MB). Host under manuals/ + extract figures to take the card to Full. Lighting/leak-test already cited from the OM.",gated:false},
  // Toro 22" Recycler Max (21485) — DONE 2026-07-04 (rebuilt manual-first from the interactive Operator's Manual manuals.toro.com/268899: blade 82 N·m, plug 20 N·m, oil 0.44 L/15 oz, air filter 25 h/no-oil, 3-sec stop, 4 job cards). HTML manual = no PDF to host; manualUrl points to the interactive manual; figure PNGs not embedded (toro.com media proxy-blocked + screen locked this pass).
  // Brower MK32HE — DONE 2026-07-04 (built to Full; brower-waterer.pdf on file + hosted, 4 figures).
  // Bison Coach Horse Trailer — running gear DONE 2026-07-04 (built to Full; Dexter running-gear manual bison-dexter-running-gear.pdf on file + hosted, 4 figures). VIN 51Y3C6J23F2004517 · mfg 10/2014 (MY2015) on the card + specs. 2026-07-05: re-checked _Cowork Inbox — the only Bison manual present is a re-drop of the same Dexter running-gear PDF (already hosted); no new Bison manuals landed. The coach/body owner packet (floorplan/LQ, options) is still missing → now tracked as a MANUALS_NEEDED entry above (dealer/VIN lookup, no public PDF) + the card's "Confirm" spec row. Not a maintenance blocker.
@@ -1156,11 +1155,12 @@ const DATA = [
      jobs:[{t:"Filter & Water Care",s:["Pre-use: water clear, skimmer seated, showered, unit on GFCI (unplug before plunging)","Weekly: slip out the pre-filter/skimmer basket, rinse, reseat","Monthly (or if flow drops/clouds): swap the 2.5\"×10\" cartridge","Clean skimmer housing + cartridge with H₂O₂ for crystal-clear water","Maintain sanitation (ozone + peroxide); shower before every plunge"]},
            {t:"Chiller Care & Water Change",s:["UNPLUG the unit (off the GFCI) before any service","Dust the chiller condenser coil; confirm airflow clearance","Full change: drain tub, wipe shell, clean skimmer/pump inlet","Install fresh 2.5\"×10\" cartridge; refill clean water; restore GFCI power","Re-establish sanitation; circulate before first use (refrigerant = pro only)"]}]},
    {n:"Blackstone 4-Burner Griddle",power:"Gas",loc:"House",basis:"As-needed",st:"part",
-     specs:[["Type","Outdoor propane 4-burner cart griddle with hinged hood"],["Model","unknown — no origin label in 2026-08-12 photo"],["Serial","unknown"],["BTU / size","not invented; 4-burner carts are commonly 36-inch class (unverified)"],["Factory","https://blackstoneproducts.com/"],["Cooktop (photo)","Rusted + flaking seasoning; knobs Off; spatula on left shelf; tank + grease cup visible"]],
-     sched:[["Restore rusted cooktop + re-season","now (photo 2026-08-12)","r","OEM rust then season articles"],["After-cook scrape + thin oil","every cook","g","OEM prevent-rust"],["Empty grease cup","each cook / as needed","g","OK"],["Cover / hood so water cannot pool","whenever it sits","g","tent a soft cover"],["Leak-check hose / regulator","before first light after sitting","r","confirm vs unit OM"]],
-     manual:"Blackstone OEM manuals portal (model unknown — no unit PDF)",manualUrl:"https://blackstoneproducts.com/pages/product-manuals",
+     specs:[["Type","Outdoor propane 4-burner 36\" cart griddle with hood + extendable shelf"],["Model","2310 (Iron Forged family — origin label 2026-08-22)"],["Serial","B26251123102.240"],["BTU","4 × 9,500 / 38,000 max (plate)"],["Factory","https://blackstoneproducts.com/"],["Cooktop (photo)","Rusted + flaking seasoning; knobs Off; spatula on left shelf; tank + grease cup visible"]],
+     sched:[["Restore rusted cooktop + re-season","now (photo 2026-08-12)","r","OM p.14 rust then season"],["After-cook scrape + thin oil","every cook","g","OM p.15 no soap on seasoned top"],["Empty grease cup","each cook once cool","g","OM p.15"],["Cover / hood so water cannot pool","whenever it sits","g","OM p.16 + tent a soft cover"],["Leak-check hose / regulator","new/exchanged cylinder + after sitting","r","OM p.11–12 soap solution"]],
+     manual:"Blackstone 2310 Owner's Manual v04 (OEM PDF — host pending)",manualUrl:"https://cdn.shopify.com/s/files/1/0312/7695/7740/files/2310_Manual_V4_English.pdf?v=1705350998",
      jobs:[{t:"Restore / Clean / Re-season Rusted Cooktop",s:["Scrape rust and seasoning chips with a metal scraper","Thin oil; scrub rusted areas (steel wool / sandpaper / griddle stone)","Wipe debris; minimal-water rinse; dry fully","Re-season: heat on high until plate discolors; thin oil on surface and walls; let smoke stop; repeat 3–5 layers","Do not cook on rust — first cooks after restore may stick"]},
-           {t:"After-Cook Clean & Oil",s:["Scrape food/grease to the trap while warm","Wipe the plate clean","Thin oil film so steel is not left bare","Empty grease cup; knobs Off; tank Off","Hood down; tent a soft cover so water runs off"]}]}]}
+           {t:"After-Cook Clean & Oil",s:["Scrape food/grease to the trap while warm","Wipe the plate clean (no soap on seasoned top)","Thin oil film so steel is not left bare","Empty grease cup after it cools; knobs Off; tank Off","Hood down; tent a soft cover so water runs off"]},
+           {t:"Light / Leak Test — Model 2310",s:["Hood open; knobs Off; 1 AA in the ignitor","Leak-test new/exchanged cylinder with 10/90 soap — growing bubbles = stop","Hang 20 lb Type-1/OPD tank on the LPG hook; hand-tighten regulator (no tools)","Tank on 1–3 turns; hold ignitor; push-and-turn one knob to HIGH","No light in 5 seconds: Off, wait 5 min, retry (match-light fallback p.17)"]}]}]}
 ,
  {g:"Wood Processing", items:[
    {n:"CountyLine 40-Ton Log Splitter",power:"Gas",loc:"Barn",basis:"As-needed",st:"full",
@@ -1297,7 +1297,7 @@ const PREUSE={
 "Battery Charger":["Well-ventilated area; eye protection","ON/OFF switch OFF before connecting","Clean terminals; confirm 6V/12V & type (STD/AGM/GEL)","Connect + first, then ground AWAY from the battery","Plug in AC after clamps are on","Keep clamps apart (they spark when energized)"],
 "Dyson Cordless #1 & #2":["Battery charged (check gauge)","Filter clean, dry & seated","Bin below max line; airway clear","Correct head/attachment fitted"],
 "Dyson Air Purifier / Fan":["Unit upright; intake/outlet clear","Filter cover fully latched","No filter light (or plan reset after change)","Remote batteries OK / app linked if needed"],
-"Blackstone 4-Burner Griddle":["Outdoors; lid open to light","All knobs Off until lighting; tank valve closed when idle","Grease cup seated and not full","Cooktop: if rust/bare steel showing, restore + re-season before cooking","Hose/regulator seated; no obvious damage"],
+"Blackstone 4-Burner Griddle":["Outdoors; hood open to light (must stay open while lit)","All knobs Off until lighting; tank valve closed when idle","36 in from combustibles; grease cup seated","Cooktop: if rust/bare steel showing, restore + re-season before cooking","Hose/regulator seated; leak-test after sitting (OM p.11–12)"],
 "KitchenAid Fridge (20cf)":["Doors seal fully; gaskets clean","Water filter light not lit; water tastes clean","Grille/vents clear for airflow","Temps holding (~37°F / ~0°F — confirm)"],
 "LG Fridge (top-freezer)":["Door seals fully; gasket supple","Rear coils/vents clear of dust","No excessive frost in freezer","Unit level; temps holding"],
 "Litter-Robot 4 (×2)":["Drawer not full (Light Bar solid blue = ready; flashing blue = empty it)","Litter at the MAX Fill Line (not above)","Bezel + curtain-sensor holes clear of fur/dust","Unit on hard level surface, NOT touching a wall, plugged in, app connected","After any drawer-empty / litter top-up / move: press Reset to zero the Weight Scale"],

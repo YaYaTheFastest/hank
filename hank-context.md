@@ -39,21 +39,21 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-08-22 morning loop)
+## LIVE STATE (refreshed 2026-08-22 afternoon loop)
 
 **Operator:** Grok sole.
 
-**Now (what matters):** Castle **$815 / $217** · **1 pending** (Dagvald Clean Room $5 · 08-19). **Recipes:** Traeger Reverse Seared Rib-Eye Steaks ●. **Train:** Strava **OK** this pass — 08-20 Afternoon Trail Run still **4s / 0.01 mi — not a training session**; last *real* run still 08-09. **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-17** (ADUSA Director still 404; TFM VP still live; SC Lead still posting; A&M Director URLs dead). Queues empty. Inbox clean. Blackstone 4-burner ◐ — still need origin-label photo.
+**Now (what matters):** Castle **$815 / $217** · **1 pending** (Dagvald Clean Room $5 · 08-19). **Fitness:** When Bad Things Happen to Good People — Wrong Question Then What (Kushner). **Train:** Strava **OK** this pass — 08-20 Afternoon Trail Run still **4s / 0.01 mi — not a training session**; last *real* run still 08-09. **Z530R** meter **51** · full service + blades @ **47**. Job search weekly **08-17** (ADUSA Director still 404; TFM VP still live; SC Lead still posting; A&M Director URLs dead). Queues empty. Inbox clean. **Blackstone 2310** plate filed (serial B26251123102.240 · 38,000 BTU) — restore cooktop still due; OM v04 found, not hosted.
 
-**Next domain (rotation):** **Fitness** — then Finance → Recipes.
+**Next domain (rotation):** **Finance** — then Recipes → Fitness.
 
 **The Bible domain:** Bible Guidance is the front door. Situations: Lost in addiction · Need courage/get after it · Marriage under strain · **Leadership transition / new role**. Virtues theme note filed. Do **not** send him to Connections graph for Scripture.
 
-**Doing (verbs):** **Cut subscriptions** (Home NOW = Cancel Netflix; Castle + Blackstone stay) · **Morning trail habit** (post-travel Saturday · Plainfield → Ridgewood · Ragnar) · **Train ritual live** (Strava API → Hank `#train` · near-RT watcher · comments) · **Endurance rebuild** (Zone 2 · ~90′ run + 30′ strength) · **Castle Fund V2** (lessons unlock next; re-approved 08-06) · **eero 7 gateway swap** · **Jairo** list · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 / leadership transition + week-1 listen tour · Ranch Chores profit-center metric · Shop cat door · **Davikja Diadem redeem or next goal** ($217).
+**Doing (verbs):** **Cut subscriptions** (Home NOW = Cancel Netflix; Castle pending stays) · **Morning trail habit** (post-travel Saturday · Plainfield → Ridgewood · Ragnar) · **Train ritual live** (Strava API → Hank `#train` · near-RT watcher · comments) · **Endurance rebuild** (Zone 2 · ~90′ run + 30′ strength) · **Castle Fund V2** (lessons unlock next; re-approved 08-06) · **eero 7 gateway swap** · **Jairo** list · Book Deane 2 hr shop org · Equipment quality audit · Sig OMs + serials · Fortna Tier-1 / leadership transition + week-1 listen tour · Ranch Chores profit-center metric · Shop cat door · **Davikja Diadem redeem or next goal** ($217).
 
 **Waiting:** Home domain tiles (B2 — confirm before shipping) · Profit-center metric pick · Dyson vacuum + purifier label photos (`_Cowork Inbox`) to lock models · **Davikja Diadem redeem or next goal** ($217).
 
-**Inbox:** Clean. Queues empty. X bookmarks none in Downloads. Workouts: GPX incoming README only; Strava API **OK** (keys present; 0 new this pass; 08-20 4s blip still not a session; last real run 08-09). **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
+**Inbox:** Clean (IMG_3053.jpeg filed this pass). Queues empty. X bookmarks none in Downloads. Workouts: GPX incoming README only; Strava API **OK** (keys present; 0 new this pass; 08-20 4s blip still not a session; last real run 08-09). **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
 **Loop:** OK (E0) · Gmail E1 noted (re-auth when convenient). Strava E1 **cleared**.
 
@@ -61,11 +61,11 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Castle:** Dagvald **$815** (4-day streak 08-15→08-18; **1 pending** Clean Room $5), Davikja **$217** (**$150 Diadem goal met**, $67 over; **0 pending**). V2 check-in + XP live — balances protected.
 
-**Deploy:** BUILD_DATE **2026-08-22-morning** (Recipes reverse-sear rib-eye ● · Castle $815/$217 · 1 pending · Train 08-20 blip honesty · Gmail E1 noted).
+**Deploy:** BUILD_DATE **2026-08-22-afternoon** (Blackstone 2310 plate · Fitness Kushner · Castle $815/$217 · 1 pending · Train 08-20 blip honesty · Gmail E1 noted).
 
 **Find:** More → Find (or Home Today → Find). Equipment names + project titles only.
 
-**Needs From You:** **Blackstone origin-label photo** (model/serial). DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again.
+**Needs From You:** DR Leaf Vacuum engine plate. Bison VIN packet (nice-to-have). AP10F OM. Sig model OMs + handgun serials when convenient. **Dyson labels** (vacuums + purifier/fan) → `_Cowork Inbox`. **Gmail OAuth re-auth** if tagged mail should flow again. Blackstone origin label **done** (2310).
 
 **Job search:** Last refresh **2026-08-17** — ADUSA Director still 404; TFM VP Merch Ops still live; ADUSA SC Strategy Lead still posting; A&M Director URLs redirected (Manager-level still posting).
 

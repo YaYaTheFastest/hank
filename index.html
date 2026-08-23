@@ -575,7 +575,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-22-afternoon";
+const BUILD_DATE="2026-08-23-pasture";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-08-17T11:15:00Z",
@@ -646,7 +646,7 @@ const GRAPH_DOMAINS={
   }
 };
 let graphDomain="finance",graphReturnTo="more",graphPan={x:0,y:0},graphDrag=null,graphSel=null;
-const LIVE_STATE={refreshed:"2026-08-22 afternoon",now:"Castle $815/$217 · 1 pending · Blackstone 2310 plate filed · Fitness Kushner · job search 08-17 · fleet 53 · train 08-20 4s blip (last real 08-09)",nextDomain:"Finance",rotation:"Recipes → Fitness → Finance",dagvald:815,davikja:217,fleetTotal:53,fleetFull:47,fleetPart:6,inbox:"Clean",
+const LIVE_STATE={refreshed:"2026-08-23 pasture",now:"Castle $815/$217 · 1 pending · Blackstone 2310 plate filed · Fitness Kushner · job search 08-17 · fleet 53 · train 08-20 4s blip (last real 08-09)",nextDomain:"Finance",rotation:"Recipes → Fitness → Finance",dagvald:815,davikja:217,fleetTotal:53,fleetFull:47,fleetPart:6,inbox:"Clean",
   loop:{status:"ok",tier:"E0",summary:"2026-08-22 afternoon — Blackstone 2310 plate; Castle $815/$217 · 1 pending; Fitness Kushner; Gmail E1; Strava OK (4s blip honesty)."},
   /* doing: string or {t, projectId?} — projectId opens Work project sheet */
   doing:[
@@ -672,11 +672,12 @@ const LIVE_STATE={refreshed:"2026-08-22 afternoon",now:"Castle $815/$217 · 1 pe
     {t:"Dyson label photos → _Cowork Inbox"}
   ],
   focus:{
-    updated:"2026-08-21-action-miss",
+    updated:"2026-08-23",
     now:[
       {id:"castle-pending",t:"Approve Castle pending",place:"Kids → parent PIN",href:"dagvald.html",note:"Dagvald Clean Room $5 · 08-19"}
     ],
     next:[
+      {id:"pasture-soil",t:"Pick up Guilford NCDA soil boxes / submit PAST1+GATE",place:"After travel · Extension weekday",href:"",note:"Flourishing Pasture — promote NOW when home (Aug 23–27 ATL→SMF)"},
       {id:"dr-leaf-plate",t:"Snap the DR Leaf Vacuum engine plate",place:"Camera → _Cowork Inbox",href:""},
       {id:"job-search-glance",t:"Monday job-search glance",place:"This board",href:"",note:"Refreshed 08-17 — ADUSA Director still 404; TFM VP still live; SC Lead still posting"},
       {id:"deane-shop",t:"Book Deane 2 hr shop org",place:"Calendar",href:""},
@@ -701,6 +702,7 @@ const LIVE_STATE={refreshed:"2026-08-22 afternoon",now:"Castle $815/$217 · 1 pe
 // Hierarchical projects — vault-backed fields (what/why/next/status). Loop refreshes this block each deploy.
 const PROJECTS={
   active:[
+    {id:"flourishing-pasture",n:"Flourishing Pasture",what:"South pasture ~1.65 ac + north arena ~0.31 ac (Lane A locked) — soil test is the gate. 3 horses; dry lot exists; manure drag done 23 Aug 2026. Vault aisle: Shop-Property-Ranch/Pasture/.",why:"Ranch pasture renovation without inventing product stack. Picture + next verb on Work.",next:"NEXT: Pick up Guilford NCDA soil boxes / submit PAST1+GATE after travel (promote NOW when home + Extension weekday). Related: tree-line shade trim; arena Lane A — not separate NOW cards.",status:"Active",owner:"Darren",domain:"Ranch"},
     {id:"cut-subs",n:"Cut subscriptions",what:"Cancel stacked subscriptions. Titles from Keeper. No dollar amounts. No third money app.",why:"Chat cannot be acted on. One cancel at a time. Home NOW holds the next cancel.",next:"Cancel Netflix — same job as Disney+ and HBO. One screen, one bill.",status:"Active",owner:"Darren",domain:"Finance",
       one:"Cancel Netflix. Check it. Hank puts the next one on Home NOW.",
       constraints:["Do not invent spend","Do not start a third money app","Keep AT&T, utilities, insurance, Keeper, Gracie Barra, Life Time","Castle pending stays on Home NOW"],

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First Principles · HANK</title>
+<style>
+  :root{--bg:#f3f5f8;--card:#fff;--ink:#1a2332;--slate:#4a5568;--mist:#e4eaf1;--indigo:#3d4f8f;--indigo-d:#2a3870;--gold:#c4a35a;--line:#d5dde6;--serif:"Iowan Old Style",Palatino,"Times New Roman",serif}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  header{background:linear-gradient(135deg,var(--indigo),var(--indigo-d));color:#fff;padding:22px 22px 18px}
+  header .kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.8;font-weight:800}
+  header h1{margin:6px 0 0;font-size:28px;line-height:1.15;font-family:var(--serif)}
+  header p{margin:8px 0 0;opacity:.92;max-width:42em}
+  nav{display:flex;gap:8px;overflow-x:auto;padding:10px 16px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:8}
+  nav a{white-space:nowrap;text-decoration:none;color:var(--indigo);font-size:13px;font-weight:800;padding:8px 12px;border-radius:999px;background:var(--mist)}
+  .wrap{max-width:920px;margin:0 auto;padding:18px 16px 80px}
+  h2{font-family:var(--serif);font-size:24px;margin:28px 0 10px;color:var(--indigo-d)}
+  h3{font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--slate);margin:22px 0 8px}
+  .lead{font-size:18px;line-height:1.45}
+  .fig{margin:14px 0 6px;border-radius:16px;overflow:hidden;border:2px solid var(--line);background:#0f141c}
+  .fig img{display:block;width:100%;height:auto}
+  .cap{font-size:13px;color:var(--slate);margin:0 0 18px}
+  .split,.gate{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:720px){.split{grid-template-columns:1fr 1fr}.gate{grid-template-columns:1fr 1fr 1fr}}
+  .card{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:16px}
+  .card.bad{border-left:6px solid #8b3a3a}
+  .card.good{border-left:6px solid var(--indigo)}
+  .card h3{margin-top:0}
+  .ex{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px 16px;margin:10px 0}
+  .ex b{color:var(--indigo-d)}
+  .q{background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin:10px 0}
+  .q label{display:block;font-weight:800;margin-bottom:6px}
+  .q .why{font-size:13px;color:var(--slate);margin:0 0 8px}
+  textarea{width:100%;min-height:72px;border:2px solid var(--mist);border-radius:10px;padding:10px;font:inherit;resize:vertical;background:#fbfcfe}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  button{border:0;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer;background:var(--indigo);color:#fff}
+  button.ghost{background:var(--mist);color:var(--indigo-d)}
+  .src{font-size:13px;color:var(--slate)} .src a{color:var(--indigo)}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0;padding:14px;background:#fff;border:2px solid var(--line);border-radius:16px}
+  .flow span{background:var(--mist);color:var(--indigo-d);font-weight:800;padding:10px 12px;border-radius:10px}
+  .flow i{color:var(--gold);font-style:normal;font-weight:900}
+  footer{margin-top:36px;font-size:13px;color:var(--slate)}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">Window · Mental models</div>
+  <h1>First principles.<br>See what everyone else copies.</h1>
+  <p>Start with what is true in this problem. Strip the inherited story. Rebuild. Test. Analogy is a cook’s recipe. This is a chef’s kitchen.</p>
+</header>
+<nav>
+  <a href="./">← HANK</a>
+  <a href="#what">What it is</a>
+  <a href="#moves">Five moves</a>
+  <a href="#when">When</a>
+  <a href="#worked">Worked</a>
+  <a href="#ask">Questions</a>
+  <a href="#traps">Traps</a>
+  <a href="#src">Sources</a>
+</nav>
+<div class="wrap">
+
+<section id="what">
+  <p class="lead">A first principle is a truth you cannot usefully break down further <em>in this problem</em>. Not a slogan. Not “how we do it.” The bedrock. Then you reason up.</p>
+  <div class="fig"><img src="fp-split.jpg" alt="Left: finished house copied as ghosts. Right: house exploded into raw bricks and wire."></div>
+  <p class="cap">Left: analogy — copy the house, iterate the trim. Right: first principles — take it to bricks, then decide if you even want a house.</p>
+  <div class="split">
+    <div class="card bad">
+      <h3>Reasoning by analogy</h3>
+      <p>“This worked for them.” “That’s how it’s always been done.” “Everyone does X.” You start with what exists and make a small variation. Fast. Cheap. Mentally easy. Bound by someone else’s furniture.</p>
+    </div>
+    <div class="card good">
+      <h3>Reasoning from first principles</h3>
+      <p>Name what you are sure is true. Discard the rest as assumption until proven. Build a new structure from those pieces. Slow. Expensive in attention. The only way to get a non-linear answer.</p>
+    </div>
+  </div>
+  <p>Jay (@jaynitx) put it simply: you don’t start with what exists or what others are doing. You start with what’s fundamentally true and work forward. His own miss: after dropping out he assumed he had to be on every platform. First-principles cut: what am I trying to do, who actually cares, where do those people already spend time? Mostly X. Maybe YouTube. Not Instagram for that niche.</p>
+  <p>Tim Urban’s picture (Wait But Why): the <b>cook</b> follows a recipe. The <b>chef</b> starts from raw ingredients. Most of life should be cook work. The chef is for the problem that will punish a copied recipe.</p>
+</section>
+
+<section id="moves">
+  <h2>The five moves</h2>
+  <div class="fig"><img src="fp-five-moves.jpg" alt="Five stone tablets: path, fog, bedrock crystals, rebuilt arch, red seal."></div>
+  <p class="cap">I name the problem · II strip the fog · III keep only bedrock · IV rebuild · V seal it with a test.</p>
+  <div class="flow">
+    <span>1 Name the job</span><i>→</i>
+    <span>2 Strip assumptions</span><i>→</i>
+    <span>3 Keep irreducibles</span><i>→</i>
+    <span>4 Rebuild</span><i>→</i>
+    <span>5 Falsify</span>
+  </div>
+  <ol>
+    <li><b>Name the job</b> in one sentence with no jargon. If you cannot, you are still in someone else’s frame.</li>
+    <li><b>Strip assumptions.</b> Write every “because.” Circle the ones that are tradition, status, or fear.</li>
+    <li><b>Keep irreducibles.</b> Physics, cash, time, a named person, a law, a customer truth you can point at. One or two levels deeper than the room is usually enough. You do not need atoms.</li>
+    <li><b>Rebuild</b> from those pieces only. What would you construct if the current product did not exist?</li>
+    <li><b>Falsify.</b> What observation would kill this rebuild? If you cannot name one, you built a belief, not a model.</li>
+  </ol>
+  <p>Two tools for the strip: <b>Socratic questions</b> (below) and the <b>Five Whys</b> — keep asking until you hit “I don’t know, let’s look it up” instead of “because I said so.”</p>
+</section>
+
+<section id="when">
+  <h2>When to spend the energy</h2>
+  <p>Musk: it takes more mental energy. Jay is honest that it is not always the right method. Use the gate.</p>
+  <div class="gate">
+    <div class="card"><h3>Cook / analogy</h3><p>Reversible. Cheap if wrong. The recipe is known. Speed matters more than originality. Daily ops, a known meeting, a proven form.</p></div>
+    <div class="card good"><h3>Chef / first principles</h3><p>Non-linear payoff. High cost of being wrong. The industry story feels stale. You are inventing, not iterating. Someone is about to spend real money or years.</p></div>
+    <div class="card"><h3>Do not fake it</h3><p>Calling a preference a “first principle” is cosplay. If it cannot survive “what would change my mind,” it is branding.</p></div>
+  </div>
+</section>
+
+<section id="worked">
+  <h2>Worked cuts</h2>
+  <div class="ex"><b>Rockets (SpaceX).</b> Analogy: rockets cost what they have always cost. First principles: what is a rocket made of — aerospace aluminum, some titanium, copper, carbon fiber — and what do those materials cost on the commodity market? Musk’s figure: about <b>2%</b> of the typical rocket price. The gap is process, tradition, and markup, not physics. Source: Musk, as quoted by Farnam Street / Wired.</div>
+  <div class="ex"><b>Batteries (Tesla, 2012 Kevin Rose interview).</b> Analogy: “packs are $600/kWh and always will be.” First principles: cobalt, nickel, aluminum, carbon, polymer separator, steel can — London Metal Exchange spot. His number then: about <b>$80/kWh</b> in materials. The work is clever combination, not accepting history as a law. Treat $600 and $80 as his 2012 working numbers, not today’s quote.</div>
+  <div class="ex"><b>Distribution (jaynitx).</b> Analogy: be on every platform. First principles: what am I trying to achieve, who is the audience, where do they already spend time? Cut Instagram. Keep the channel that matches the physics of attention.</div>
+  <div class="ex"><b>BuzzFeed / CD Baby (Farnam Street).</b> Peretti: the irreducible of a web hit is distribution people will actually share, not “articles they should read.” Sivers: the irreducible of the business was a thrilled customer, not the office or the raise.</div>
+  <div class="ex"><b>Feynman’s warning.</b> People learn by rote. Knowledge that cannot be rebuilt from pieces is fragile. If you cannot explain it to a child without the slogan, you do not have a principle. You have a costume.</div>
+</section>
+
+<section id="ask">
+  <h2>Questions to answer</h2>
+  <p>Pick <b>one live problem</b>. Write it. Then answer in order. Answers stay on this device.</p>
+  <div class="q"><label for="problem">0. The problem, one sentence. No jargon.</label><p class="why">If this takes a paragraph, you are still in the analogy.</p><textarea id="problem" data-k="fp.problem"></textarea></div>
+  <h3>Gate</h3>
+  <div class="q"><label for="q1">1. If I am wrong, what does it cost — time, cash, reputation, a person?</label><p class="why">Cheap and reversible → cook. Expensive or one-way → chef.</p><textarea id="q1" data-k="fp.q1"></textarea></div>
+  <div class="q"><label for="q2">2. Whose recipe am I following, and did they solve this problem?</label><p class="why">Name the person or firm. If you cannot, you are copying a ghost.</p><textarea id="q2" data-k="fp.q2"></textarea></div>
+  <h3>Strip</h3>
+  <div class="q"><label for="q3">3. What do I believe because someone said it, not because I can point at it?</label><p class="why">List them. Be unkind to your own sentences.</p><textarea id="q3" data-k="fp.q3"></textarea></div>
+  <div class="q"><label for="q4">4. What would I still believe if I had never seen this industry?</label><p class="why">This is the Socratic “what if I thought the opposite.”</p><textarea id="q4" data-k="fp.q4"></textarea></div>
+  <div class="q"><label for="q5">5. Why? Why? Why? Why? Why? Stop at “I don’t know — look it up.”</label><p class="why">Five Whys. The last honest line is the one that matters.</p><textarea id="q5" data-k="fp.q5"></textarea></div>
+  <h3>Bedrock</h3>
+  <div class="q"><label for="q6">6. What cannot be decomposed further here? Physics, cash, time, a named person, a law, a customer truth.</label><p class="why">Farnam Street: irreducibles in context. Not the atom unless you need the atom.</p><textarea id="q6" data-k="fp.q6"></textarea></div>
+  <div class="q"><label for="q7">7. What is the material / constraint version of this — the rocket-metal question?</label><p class="why">What is it made of, what does that actually cost, who actually has to show up?</p><textarea id="q7" data-k="fp.q7"></textarea></div>
+  <h3>Rebuild and test</h3>
+  <div class="q"><label for="q8">8. If the current thing did not exist, what would I build from those truths only?</label><p class="why">Keep a piece only if it survives, not because it is familiar.</p><textarea id="q8" data-k="fp.q8"></textarea></div>
+  <div class="q"><label for="q9">9. What observation would kill this rebuild? Who has the next verb?</label><p class="why">No falsifier = belief. No named owner = theater.</p><textarea id="q9" data-k="fp.q9"></textarea></div>
+  <div class="row">
+    <button type="button" onclick="saveAll()">Save on this device</button>
+    <button type="button" class="ghost" onclick="clearAll()">Clear</button>
+    <button type="button" class="ghost" onclick="exportTxt()">Copy as text</button>
+  </div>
+</section>
+
+<section id="traps">
+  <h2>Traps</h2>
+  <ul>
+    <li><b>First-principles theater.</b> Fancy words, same copy of last year’s plan.</li>
+    <li><b>Going to atoms when Lego is enough.</b> One or two layers deeper than the room. Stop there unless the physics demands more.</li>
+    <li><b>Confusing preference with principle.</b> “I like this vendor” is not bedrock.</li>
+    <li><b>Using it on reversible chores.</b> You will burn the day and call it rigor.</li>
+    <li><b>Inventing numbers to look like Musk.</b> If you do not have the material cost, you do not have the cut. Write “unknown” and go get it.</li>
+    <li><b>Because I said so.</b> That is the moment the room is hiding ignorance. Stay in the question.</li>
+  </ul>
+  <p>Related, not the same: Musk’s later five-step algorithm (make requirements less dumb, delete, simplify, accelerate, automate — in that order). That is operations after the principle is found. Do not automate a lie.</p>
+</section>
+
+<section id="src">
+  <h2>Sources</h2>
+  <p class="src">Seed: <a href="https://x.com/jaynitx/status/2052734499319091384">@jaynitx — first principles thinking: how to see what everyone else misses</a> (X blocked a direct pull; core claims checked against a public cache).</p>
+  <p class="src">Shane Parrish, Farnam Street, “What is First Principles Thinking?” — Socratic list, Five Whys, Lego / rocket / BuzzFeed / Sivers. <a href="https://fs.blog/first-principles/">fs.blog/first-principles</a></p>
+  <p class="src">Elon Musk with Kevin Rose, Foundation interview, Sep 2012 — analogy vs physics; battery $600 vs about $80/kWh materials. <a href="https://www.youtube.com/watch?v=L-s_3b5fRd8">video</a></p>
+  <p class="src">Tim Urban, “The Cook and the Chef: Musk’s Secret Sauce,” Wait But Why, Nov 2015. <a href="https://waitbutwhy.com/2015/11/the-cook-and-the-chef-musks-secret-sauce.html">waitbutwhy.com</a></p>
+  <p class="src">Aristotle, Physics 184a10–21; Metaphysics 1013a14–15. Feynman on fragile rote knowledge. Harrington Emerson: principles few, methods many.</p>
+  <footer>Filed as a window, not a board card. Answers stay local. No invented dollars. Door: this file plus the two pictures in the same folder.</footer>
+</section>
+</div>
+<script>
+
+function saveAll(){document.querySelectorAll("textarea[data-k]").forEach(el=>localStorage.setItem(el.dataset.k,el.value))}
+function loadAll(){document.querySelectorAll("textarea[data-k]").forEach(el=>{const v=localStorage.getItem(el.dataset.k);if(v)el.value=v})}
+function clearAll(){document.querySelectorAll("textarea[data-k]").forEach(el=>{el.value="";localStorage.removeItem(el.dataset.k)})}
+function exportTxt(){const bits=[];document.querySelectorAll(".q").forEach(q=>{const lab=q.querySelector("label");const ta=q.querySelector("textarea");bits.push((lab?lab.innerText:"")+"\n"+(ta?ta.value:"")+"\n")});navigator.clipboard.writeText(bits.join("\n")).catch(()=>{});saveAll()}
+document.querySelectorAll("textarea[data-k]").forEach(el=>el.addEventListener("input",saveAll));
+loadAll();
+
+</script>
+</body>
+</html>

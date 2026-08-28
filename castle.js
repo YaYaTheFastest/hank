@@ -149,12 +149,12 @@
   // ---- Styles ----
   var css = "" +
     ":root{--ink:#1d2733;--muted:#7c8694;--line:#e7e9ee;--kid:" + BASE[KID].color + "}" +
-    "*{box-sizing:border-box}body{margin:0;font-family:-apple-system,system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink);background:#f5f6f8}" +
-    ".chead{background:linear-gradient(135deg,#367C2B,#2a5f22);color:#fff;padding:calc(14px + env(safe-area-inset-top)) 16px 0}" +
+    "*{box-sizing:border-box}body{margin:0;font-family:-apple-system,system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink);background:#f3f5f8}" +
+    ".chead{background:linear-gradient(135deg,#3d4f8f,#2a3870);color:#fff;padding:calc(14px + env(safe-area-inset-top)) 16px 0}" +
     ".cbar{display:flex;align-items:center;justify-content:space-between;gap:10px}.chead h1{margin:0;font-size:19px;font-weight:700}" +
     ".csub{margin:2px 0 0;opacity:.85;font-size:12.5px}" +
-    ".pbtn{background:rgba(255,255,255,.18);border:0;color:#fff;font-size:13px;font-weight:600;padding:8px 12px;border-radius:10px;cursor:pointer}" +
-    ".tabs{display:flex;gap:6px;margin-top:12px}.tab{color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:9px 14px;border-radius:10px 10px 0 0;opacity:.72}.tab.active{background:#f5f6f8;color:#367C2B;opacity:1}" +
+    ".pbtn{background:rgba(255,255,255,.18);border:0;color:#fff;font-size:13px;font-weight:600;padding:8px 12px;border-radius:10px;cursor:pointer}.backchip{display:inline-flex;text-decoration:none;color:#fff;font-size:13px;font-weight:800;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.18);margin:0 8px 0 0}" +
+    ".tabs{display:flex;gap:6px;margin-top:12px}.tab{color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:9px 14px;border-radius:10px 10px 0 0;opacity:.72}.tab.active{background:#f3f5f8;color:#3d4f8f;opacity:1}" +
     ".wrap{max-width:540px;margin:0 auto;padding:16px 16px 60px}" +
     ".hero{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;margin:10px 0;box-shadow:0 1px 3px rgba(0,0,0,.05)}" +
     ".bal{font-size:40px;font-weight:800;letter-spacing:-1px}.sub{color:var(--muted);font-size:14px;margin-top:2px}" +
@@ -344,10 +344,12 @@
   function render() {
     var C = cfg(), bal = balance(), ag = activeGoal(), goal = ag.goal, pct = goal ? Math.min(1, bal / goal) : 0;
     var pend = pending(), bk = buckets();
-    var html = '<header class="chead"><div class="cbar"><h1>HANK · ' + KID + '</h1>' +
+    var html = '<header class="chead"><div class="cbar"><div><a class="backchip" href="./">← HANK</a><h1 style="display:inline;margin-left:8px">' + KID + '</h1></div>' +
       '<button id="parentBtn" class="pbtn">🔑 Parent</button></div>' +
       '<p class="csub">Castle Fund — chores &amp; reward</p>' +
-      '<div class="tabs"><a class="tab" href="./#equip">Equipment</a><a class="tab" href="./#work">Work</a><a class="tab active" href="castle.html">Kids</a></div></header>';
+      '<div class="tabs"><a class="tab" href="./">Home</a><a class="tab" href="castle.html">Castle</a>' +
+      '<a class="tab' + (KID==="Dagvald"?" active":"") + '" href="dagvald.html">Dagvald</a>' +
+      '<a class="tab' + (KID==="Davikja"?" active":"") + '" href="davikja.html">Davikja</a></div></header>';
     html += '<div class="wrap">';
 
     html += '<div class="hero">';

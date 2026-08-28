@@ -318,11 +318,11 @@ function getCookie(request, name) {
 function loginPage(toPath, wrong) {
   const to = encodeURIComponent(toPath || "/");
   const body = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HANK — sign in</title>
-<style>body{font-family:-apple-system,system-ui,sans-serif;background:#f6f7f3;color:#1c2419;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0}
-.card{background:#fff;border:1px solid #e4e7df;border-radius:14px;padding:28px;max-width:340px;width:90%;box-shadow:0 6px 24px rgba(0,0,0,.06)}
-h1{font-size:20px;margin:0 0 4px;color:#367C2B}p{color:#6b7464;font-size:14px;margin:0 0 18px}
-input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #cfd6c8;border-radius:9px;font-size:16px;margin-bottom:12px}
-button{width:100%;padding:12px;border:0;border-radius:9px;background:#367C2B;color:#fff;font-size:16px;font-weight:600}
+<style>body{font-family:-apple-system,system-ui,sans-serif;background:#f3f5f8;color:#1a2332;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0}
+.card{background:#fff;border:1px solid #d5dde6;border-radius:14px;padding:28px;max-width:340px;width:90%;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+h1{font-size:20px;margin:0 0 4px;color:#3d4f8f}p{color:#4a5568;font-size:14px;margin:0 0 18px}
+input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #d5dde6;border-radius:9px;font-size:16px;margin-bottom:12px}
+button{width:100%;padding:12px;border:0;border-radius:9px;background:#3d4f8f;color:#fff;font-size:16px;font-weight:600}
 .err{color:#d24b3e;font-size:13px;margin:-6px 0 12px}</style></head>
 <body><form class="card" method="POST" action="/__login?to=${to}">
 <h1>HANK</h1><p>Home &amp; Ranch. Enter the family password to continue.</p>

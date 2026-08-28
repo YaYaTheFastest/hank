@@ -6,14 +6,15 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="theme-color" content="#367C2B">
+<meta name="theme-color" content="#3d4f8f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="HANK">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>HANK</title>
 <style>
-  :root{--green:#367C2B;--green-d:#2a5f22;--ink:#1c2419;--muted:#5c6658;--line:#dde2d8;
-    --bg:#f4f6f1;--card:#fff;--red:#c73d32;--amber:#d4920f;--ok:#2d8a3e;--chip:#eef1ea;
+  :root{--green:#367C2B;--green-d:#2a5f22;--ink:#1a2332;--muted:#4a5568;--line:#d5dde6;
+    --bg:#f3f5f8;--card:#fff;--red:#c73d32;--amber:#d4920f;--ok:#2d8a3e;--chip:#e4eaf1;
+    --indigo:#3d4f8f;--indigo-d:#2a3870;--mist:#e4eaf1;--slate:#4a5568;--gold:#c4a35a;
     --space:16px;--radius:16px;--touch:48px;--lh:1.55;--fs:16px}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -23,7 +24,7 @@
     -webkit-font-smoothing:antialiased;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
   button,input,select,textarea{font:inherit}
   button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--green);outline-offset:2px}
-  header{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;
+  header{background:linear-gradient(135deg,var(--indigo),var(--indigo-d));color:#fff;
     padding:calc(14px + env(safe-area-inset-top)) 18px 14px;position:sticky;top:0;z-index:10;
     box-shadow:0 2px 12px rgba(28,36,25,.12)}
   header h1{margin:0;font-size:22px;letter-spacing:.01em;font-weight:800}
@@ -36,7 +37,7 @@
     min-height:var(--touch);border:0;border-radius:12px;background:transparent;color:var(--muted);
     font-size:11px;font-weight:700;cursor:pointer;padding:4px 2px;position:relative}
   .bnav button .bi{font-size:22px;line-height:1}
-  .bnav button.on{background:var(--chip);color:var(--green)}
+  .bnav button.on{background:var(--mist);color:var(--indigo)}
   .bnav .nbadge{position:absolute;top:2px;right:calc(50% - 22px);background:var(--amber);color:#fff;
     font-size:9px;font-weight:800;min-width:16px;height:16px;border-radius:8px;padding:0 4px;line-height:16px}
   .search{margin:14px var(--space) 0;display:flex;gap:8px}
@@ -74,14 +75,14 @@
   .tile{background:#fff;border:2px solid var(--line);border-radius:var(--radius);padding:18px 16px;text-align:left;cursor:pointer;
     box-shadow:0 2px 4px rgba(0,0,0,.04);text-decoration:none;color:var(--ink);display:block;min-height:108px}
   .tile:active{transform:scale(.98)}
-  .tile.prim{border-color:var(--green);background:linear-gradient(180deg,#fff 0%,#f8faf6 100%)}
+  .tile.prim{border-color:var(--indigo);background:linear-gradient(180deg,#fff 0%,#f4f6fb 100%)}
   .tile .ic{font-size:28px}
   .tile .tt{font-weight:800;font-size:17px;margin-top:10px}
   .tile .ds{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.4}
   .bigcta{display:block;width:100%;margin-top:14px;border:0;border-radius:var(--radius);padding:16px;
-    background:var(--green);color:#fff;font-size:17px;font-weight:800;cursor:pointer;min-height:var(--touch);
-    box-shadow:0 3px 10px rgba(54,124,43,.25)}
-  .bigcta.sec{background:#fff;color:var(--green);border:2px solid var(--green);box-shadow:none}
+    background:var(--indigo);color:#fff;font-size:17px;font-weight:800;cursor:pointer;min-height:var(--touch);
+    box-shadow:0 3px 10px rgba(61,79,143,.25)}
+  .bigcta.sec{background:#fff;color:var(--indigo);border:2px solid var(--indigo);box-shadow:none}
   /* chat */
   .chatlog{padding:14px 16px;min-height:46vh}
   .cmsg{margin-bottom:10px;display:flex}
@@ -162,8 +163,8 @@
     margin-bottom:8px;padding:6px 8px;text-align:center;word-break:break-word}
   .thumb span{color:#9aa291;font-weight:600}
   .hide{display:none}
-  .today{background:#fff;border:3px solid var(--green);border-radius:var(--radius);padding:18px;margin-bottom:16px;box-shadow:0 4px 14px rgba(54,124,43,.14)}
-  .today h2{margin:0 0 6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);font-weight:800}
+  .today{background:#fff;border:2px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:16px;box-shadow:0 2px 8px rgba(26,35,50,.06)}
+  .today h2{margin:0 0 6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo);font-weight:800}
   .today .lead{font-size:20px;font-weight:800;line-height:1.3;margin:0 0 14px;color:var(--ink)}
   .today .scan{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
   .today .pill{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:14px 10px;text-align:center;cursor:pointer;min-height:72px;display:flex;flex-direction:column;justify-content:center}
@@ -177,8 +178,8 @@
   .today .line b{color:var(--green)}
   .today .acts{display:flex;gap:10px;margin-top:16px}
   .today .acts button{flex:1;border:0;border-radius:12px;padding:14px;font-size:16px;font-weight:800;cursor:pointer;min-height:var(--touch)}
-  .today .acts .p{background:var(--green);color:#fff}
-  .today .acts .s{background:var(--bg);color:var(--green);border:2px solid var(--green)}
+  .today .acts .p{background:var(--indigo);color:#fff}
+  .today .acts .s{background:var(--mist);color:var(--indigo-d);border:2px solid var(--mist)}
   #todayCard{scroll-margin-top:72px}
   #todayCard .ck.frow{display:flex;align-items:flex-start;gap:10px}
   #todayCard .ck input{min-width:44px;min-height:44px;width:22px;height:22px;margin:0}
@@ -189,7 +190,7 @@
   .today .frow:last-child{border:0}
   .today a.frow{color:var(--ink)}
   .today .fverb{font-weight:800;font-size:16px;line-height:1.3}
-  .today .fplace{font-size:13px;color:var(--green);font-weight:700;margin-top:3px}
+  .today .fplace{font-size:13px;color:var(--indigo);font-weight:700;margin-top:3px}
   .today .fnote{font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.35}
   .today .fempty{font-size:15px;color:var(--muted);margin:4px 0 0}
   .today .fmore{font-size:13px;color:var(--muted);font-weight:700;margin-top:6px}
@@ -334,51 +335,55 @@
   .vrung .vn{width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
   .vbad{background:#fff8f0;border:1px solid #f0d9b0;border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.45;margin-top:8px}
   .vgood{background:#f4faf5;border:1px solid #c5dfc4;border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.45}
+
+  .backchip{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--indigo);font-size:13px;font-weight:800;
+    padding:8px 12px;border-radius:999px;background:var(--mist);border:0;cursor:pointer;margin:0 0 12px}
+  .path{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px;padding:12px 14px;background:#fff;border:2px solid var(--line);border-radius:16px}
+  .path span,.path a{background:var(--mist);color:var(--indigo-d);font-weight:800;padding:8px 12px;border-radius:10px;text-decoration:none;font-size:13px;cursor:pointer;border:0}
+  .path span.on{background:var(--indigo);color:#fff}
+  .path i{color:var(--gold);font-style:normal;font-weight:900}
+  .hdm-kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);font-weight:800;margin:0 0 8px}
+  .kidsrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}
+  .kidsrow .tile{min-height:92px;padding:14px 12px}
+  .home-talk{margin-top:8px}
+  .more-lead{font-size:15px;color:var(--slate);margin:0 0 14px}
+  .prop-ribbon{background:var(--mist);border-color:var(--line);color:var(--indigo-d)}
 </style>
 </head>
 <body>
 <header>
   <h1>HANK</h1>
-  <p id="count">Command center</p>
+  <p id="count">Have · Do · Matter</p>
 </header>
 
-<!-- HOME VIEW -->
+<!-- HOME VIEW — doing: Have · Do · Matter. One path. No leftover rooms. -->
 <div id="homeView">
   <div class="home">
+    <div class="path" aria-label="HANK path">
+      <span class="on">Home</span><i>→</i>
+      <a onclick="showView('equip')">Equip</a><i>→</i>
+      <a onclick="showView('work')">Work</a><i>→</i>
+      <a onclick="showView('more')">More</a>
+    </div>
     <div id="announceBanner" class="hide"></div>
     <div id="todayCard" class="today"></div>
-    <div class="hgrid">
-      <a class="tile prim" onclick="showView('chat')"><div class="ic">💬</div><div class="tt">Ask Hank</div><div class="ds">one question, straight answer</div></a>
-      <a class="tile prim" onclick="showView('equip')"><div class="ic">🚜</div><div class="tt">Equipment</div><div class="ds" id="hEquip">machines, by category</div></a>
-      <a class="tile prim" onclick="showView('bible')"><div class="ic">✝</div><div class="tt">Bible Guidance</div><div class="ds">situation → Jesus’ words → next step</div></a>
-      <a class="tile prim" onclick="showView('train')"><div class="ic">🏃</div><div class="tt">Train</div><div class="ds">last workout · review · comments</div></a>
+    <p class="hdm-kicker">Kids · out of sight is out of mind</p>
+    <div class="kidsrow">
+      <a class="tile prim" href="castle.html"><div class="ic">🏰</div><div class="tt">Castle</div><div class="ds">both kids</div></a>
+      <a class="tile prim" href="dagvald.html"><div class="ic">⚔️</div><div class="tt">Dagvald</div><div class="ds">chores &amp; reward</div></a>
+      <a class="tile prim" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">chores &amp; goal</div></a>
     </div>
-    <button type="button" class="bigcta" onclick="document.getElementById('cap').click()">📷 Send a photo to Hank</button>
-    <details class="more-wrap">
-      <summary>More areas</summary>
-      <div class="more-in">
-        <div class="hgrid">
-          <a class="tile" onclick="showView('vault')"><div class="ic">🗺</div><div class="tt">How vault works</div><div class="ds">enter by job — not folders</div></a>
-          <a class="tile" onclick="showView('work')"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Work tab · hierarchy + chat</div></a>
-          <a class="tile" onclick="showView('train')"><div class="ic">🏃</div><div class="tt">Train / workouts</div><div class="ds">Strava → review ritual</div></a>
-          <a class="tile" onclick="showView('find')"><div class="ic">🔎</div><div class="tt">Find</div><div class="ds">equipment + projects only</div></a>
-          <a class="tile" onclick="setWorkSeg('proposals');showView('work')"><div class="ic">📝</div><div class="tt">Proposals</div><div class="ds">review without Obsidian</div></a>
-          <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
-          <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
-          <a class="tile" href="first-principles.html"><div class="ic">🧱</div><div class="tt">First Principles</div><div class="ds">see what everyone else copies</div></a>
-          <a class="tile" onclick="showView('bible')"><div class="ic">✝</div><div class="tt">Bible Guidance</div><div class="ds">I need… · scenes · people</div></a>
-          <a class="tile" onclick="showView('dash')"><div class="ic">📊</div><div class="tt">Status</div><div class="ds">build, maintenance, supplies</div></a>
-          <a class="tile" onclick="showView('brief')"><div class="ic">🧭</div><div class="tt">Brief</div><div class="ds">copy context for Grok Build</div></a>
-          <a class="tile" onclick="showView('setup')"><div class="ic">🔌</div><div class="tt">Setup</div><div class="ds" id="hSetup">connect the backend</div></a>
-        </div>
-      </div>
-    </details>
+    <div class="home-talk">
+      <button type="button" class="bigcta" onclick="showView('chat')">Ask Hank</button>
+      <button type="button" class="bigcta sec" onclick="document.getElementById('cap').click()">Send a photo</button>
+    </div>
   </div>
 </div>
 
 <!-- WORK VIEW — hierarchical projects + Doing + Proposals -->
 <div id="workView" class="hide">
-  <div class="prop-ribbon">Work = real projects &amp; verbs. Open proposals live here — review without Obsidian. Change via Chat; loop files.</div>
+  <div class="home" style="padding-bottom:0"><a class="backchip" href="./" onclick="showView('home');return false;">← HANK</a></div>
+  <div class="prop-ribbon">Work = project sheets. What / why / next / status. Some projects are lists.</div>
   <div class="seg">
     <button id="segProjects" class="on" onclick="setWorkSeg('projects')">Projects</button>
     <button id="segDoing" onclick="setWorkSeg('doing')">Doing</button>
@@ -419,8 +424,9 @@
 <!-- BIBLE GUIDANCE — primary interaction for The Bible domain -->
 <div id="bibleView" class="hide">
   <div class="bible-head">
+    <a class="backchip" href="./" onclick="showView('home');return false;">← HANK</a>
     <h2>Bible Guidance</h2>
-    <p>Pick how you feel → Jesus’ words + one next step. Deeper scenes &amp; people when you want them.</p>
+    <p>Pick how you feel → Jesus’ words + one next step. Sermon on the Mount lives in Scenes.</p>
   </div>
   <div class="bible-seg" id="bibleSeg">
     <button type="button" class="on" id="bibleSegSit" onclick="setBibleSeg('sit')">I need…</button>
@@ -458,24 +464,17 @@
   </div>
 </div>
 
-<!-- MORE VIEW -->
+<!-- MORE VIEW — live extra doors only -->
 <div id="moreView" class="hide">
   <div class="home">
+    <a class="backchip" href="./" onclick="showView('home');return false;">← HANK</a>
+    <p class="more-lead">Live doors. Nothing else.</p>
     <div class="hgrid">
-      <a class="tile" onclick="showView('dash')"><div class="ic">📊</div><div class="tt">Status</div><div class="ds" id="hNeeds">build, maintenance, supplies</div></a>
-      <a class="tile" onclick="setWorkSeg('proposals');showView('work')"><div class="ic">📝</div><div class="tt">Proposals</div><div class="ds">review &amp; approve without Obsidian</div></a>
-      <a class="tile" onclick="showView('looplog')"><div class="ic">🔄</div><div class="tt">Loop log</div><div class="ds">last 5 passes</div></a>
-      <a class="tile" onclick="showView('brief')"><div class="ic">🧭</div><div class="tt">Brief</div><div class="ds">copy context for Grok Build</div></a>
-      <a class="tile" onclick="showView('setup')"><div class="ic">🔌</div><div class="tt">Setup</div><div class="ds">password &amp; connection</div></a>
-      <a class="tile" onclick="showView('work')"><div class="ic">🗂️</div><div class="tt">Projects</div><div class="ds">Work tab · hierarchical</div></a>
-      <a class="tile" onclick="showView('find')"><div class="ic">🔎</div><div class="tt">Find</div><div class="ds">equipment + projects</div></a>
-      <a class="tile" href="dagvald.html"><div class="ic">🏰</div><div class="tt">Dagvald</div><div class="ds">Castle Fund — chores &amp; reward</div></a>
-      <a class="tile" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">Castle Fund — chores &amp; $100 goal</div></a>
-          <a class="tile" href="first-principles.html"><div class="ic">🧱</div><div class="tt">First Principles</div><div class="ds">see what everyone else copies</div></a>
-      <a class="tile" onclick="document.getElementById('cap').click()"><div class="ic">📷</div><div class="tt">Send to Hank</div><div class="ds">drop a photo to the inbox</div></a>
-      <a class="tile" onclick="showView('vault')"><div class="ic">🗺</div><div class="tt">How vault works</div><div class="ds">four doors · depth ladder</div></a>
-      <a class="tile" onclick="showView('bible')"><div class="ic">✝</div><div class="tt">Bible Guidance</div><div class="ds">situation → Jesus’ words</div></a>
-      <a class="tile" onclick="openGraph('finance','more')"><div class="ic">🕸️</div><div class="tt">Connections</div><div class="ds">label map (not Scripture)</div></a>
+      <a class="tile prim" href="castle.html"><div class="ic">🏰</div><div class="tt">Castle</div><div class="ds">Kids · both doors</div></a>
+      <a class="tile prim" href="dagvald.html"><div class="ic">⚔️</div><div class="tt">Dagvald</div><div class="ds">chores &amp; reward</div></a>
+      <a class="tile prim" href="davikja.html"><div class="ic">⭐</div><div class="tt">Davikja</div><div class="ds">chores &amp; goal</div></a>
+      <a class="tile prim" href="first-principles.html"><div class="ic">🧱</div><div class="tt">First Principles</div><div class="ds">see what everyone else copies</div></a>
+      <a class="tile prim" onclick="showView('bible')"><div class="ic">✝</div><div class="tt">Bible</div><div class="ds">Sermon on the Mount · verse cards</div></a>
     </div>
   </div>
 </div>
@@ -497,6 +496,7 @@
 
 <!-- EQUIPMENT VIEW -->
 <div id="equipView" class="hide">
+  <div class="home" style="padding-bottom:0"><a class="backchip" href="./" onclick="showView('home');return false;">← HANK</a></div>
   <div id="equipHint" class="equip-hint"><b>Start here:</b> Due soon shows what needs attention first. Tap any card for job steps.</div>
   <div class="search"><input id="q" type="search" placeholder="Search by name…" autocomplete="off" aria-label="Search equipment"></div>
   <div class="chips" id="chips"></div>
@@ -536,6 +536,7 @@
 
 <!-- CHAT VIEW -->
 <div id="chatView" class="hide">
+  <div class="home" style="padding-bottom:0"><a class="backchip" href="./" onclick="showView('home');return false;">← HANK</a></div>
   <div id="chatLog" class="chatlog"></div>
   <div class="chat-starters" id="chatStarters"></div>
   <div class="chatbar">
@@ -568,16 +569,15 @@
 <input id="cap" type="file" accept="image/*" multiple style="display:none">
 <nav class="bnav" id="bnav" aria-label="Main navigation">
   <button type="button" id="bnavHome" class="on" onclick="showView('home')"><span class="bi">🏠</span><span class="bl">Home</span></button>
-  <button type="button" id="bnavWork" onclick="showView('work')"><span class="bi">📋</span><span class="bl">Work</span><span id="bnavWorkBadge" class="nbadge hide">!</span></button>
-  <button type="button" id="bnavChat" onclick="showView('chat')"><span class="bi">💬</span><span class="bl">Chat</span></button>
   <button type="button" id="bnavEquip" onclick="showView('equip')"><span class="bi">🚜</span><span class="bl">Equip</span></button>
-  <button type="button" id="bnavMore" onclick="showView('more')"><span class="bi">⋯</span><span class="bl">More</span><span id="bnavNeedsBadge" class="nbadge hide"></span></button>
+  <button type="button" id="bnavWork" onclick="showView('work')"><span class="bi">📋</span><span class="bl">Work</span></button>
+  <button type="button" id="bnavMore" onclick="showView('more')"><span class="bi">⋯</span><span class="bl">More</span></button>
 </nav>
 <div class="site-foot">powered by Grok</div>
 <div class="toast" id="toast"></div>
 
 <script>
-const BUILD_DATE="2026-08-23-pasture";
+const BUILD_DATE="2026-08-27-path";
 // Loop runs — mirrored from vault loop-runs.json on each pass (hank-loop-runs.sh)
 const LOOP_RUNS={
   updated:"2026-08-17T11:15:00Z",
@@ -1391,9 +1391,9 @@ function renderSetupManuals(){
 }
 function showView(v){
   const ho=document.getElementById('homeView'),wo=document.getElementById('workView'),tr=document.getElementById('trainView'),fi=document.getElementById('findView'),go=document.getElementById('graphView'),bi=document.getElementById('bibleView'),va=document.getElementById('vaultView'),mo=document.getElementById('moreView'),d=document.getElementById('dashView'),ll=document.getElementById('looplogView'),e=document.getElementById('equipView'),b=document.getElementById('briefView'),su=document.getElementById('setupView'),ch=document.getElementById('chatView');
-  const moreTab=v==="more"||v==="dash"||v==="brief"||v==="setup"||v==="graph"||v==="looplog"||v==="vault"||v==="find"||v==="train";
+  const moreTab=v==="more"||v==="bible";
   const setBnav=(id,on)=>{const el=document.getElementById(id);if(el)el.classList.toggle('on',on);};
-  setBnav('bnavHome',v==="home"||v==="bible");setBnav('bnavWork',v==="work");setBnav('bnavChat',v==="chat");
+  setBnav('bnavHome',v==="home"||v==="chat");setBnav('bnavWork',v==="work");
   setBnav('bnavEquip',v==="equip");setBnav('bnavMore',moreTab);
   ho.classList.toggle('hide',v!=="home");wo.classList.toggle('hide',v!=="work");if(tr)tr.classList.toggle('hide',v!=="train");if(fi)fi.classList.toggle('hide',v!=="find");go.classList.toggle('hide',v!=="graph");if(bi)bi.classList.toggle('hide',v!=="bible");if(va)va.classList.toggle('hide',v!=="vault");mo.classList.toggle('hide',v!=="more");d.classList.toggle('hide',v!=="dash");ll.classList.toggle('hide',v!=="looplog");e.classList.toggle('hide',v!=="equip");b.classList.toggle('hide',v!=="brief");su.classList.toggle('hide',v!=="setup");ch.classList.toggle('hide',v!=="chat");
   const eh=document.getElementById('equipHint');if(eh)eh.classList.toggle('hide',v!=="equip"||filter!=="Due soon");
@@ -1581,17 +1581,6 @@ function markAnnounceSeen(){try{localStorage.setItem(announceKey(),"1");}catch(e
 function dismissAnnounce(){markAnnounceSeen();renderAnnounce();toast("Got it — Work has Projects, Doing, and Proposals.");}
 function renderAnnounce(){
   const el=document.getElementById('announceBanner');if(!el)return;
-  if(!announceSeen()){
-    el.classList.remove('hide');
-    el.innerHTML=`<button class="xbtn" onclick="dismissAnnounce()" aria-label="Dismiss">×</button><b>${ANNOUNCE.title}</b><p>${ANNOUNCE.body}</p><div class="go"><button class="p" onclick="showView('work')">${ANNOUNCE.cta}</button><button class="s" onclick="dismissAnnounce()">Later</button></div>`;
-    const b=document.getElementById('bnavWorkBadge');if(b)b.classList.remove('hide');
-    return;
-  }
-  if(!graphAnnounceSeen()){
-    el.classList.remove('hide');
-    el.innerHTML=`<button class="xbtn" onclick="dismissGraphAnnounce()" aria-label="Dismiss">×</button><b>${GRAPH_ANNOUNCE.title}</b><p>${GRAPH_ANNOUNCE.body}</p><div class="go"><button class="p" onclick="openGraph('finance','home')">${GRAPH_ANNOUNCE.cta}</button><button class="s" onclick="dismissGraphAnnounce()">Later</button></div>`;
-    return;
-  }
   el.classList.add('hide');el.innerHTML="";
 }
 function graphAnnounceKey(){return"hankSeenAnnounce:"+GRAPH_ANNOUNCE.id;}
@@ -1600,8 +1589,6 @@ function markGraphAnnounceSeen(){try{localStorage.setItem(graphAnnounceKey(),"1"
 function dismissGraphAnnounce(){markGraphAnnounceSeen();renderAnnounce();toast("Graph preview — More → Connections or Work → Explore.");}
 function checkAnnounceOnLoad(){
   renderAnnounce();
-  if(!announceSeen())setTimeout(()=>toast(ANNOUNCE.title+" — tap Work or the banner."),900);
-  else if(!graphAnnounceSeen())setTimeout(()=>toast(GRAPH_ANNOUNCE.title+" — More → Connections."),2400);
 }
 function openGraph(domain,ret){graphDomain=domain||"finance";graphReturnTo=ret||"more";graphPan={x:0,y:0};graphSel=null;showView("graph");}
 function graphBack(){showView(graphReturnTo||"more");}
@@ -2114,19 +2101,16 @@ function renderToday(){
   const waiting=board.waiting||[];
   const later=board.later||[];
   const nowHtml=now.length?now.map(function(it){return focusRow(it,false,"now");}).join(""):`<p class="fempty">Nothing in NOW.</p>`;
-  const nextHtml=nextShow.length?nextShow.map(function(it){return focusRow(it,true,"next");}).join("")+(nextMore?`<div class="fmore">+${nextMore} more</div>`:""):`<p class="fempty">Nothing in NEXT.</p>`;
-  const waitFirst=waiting[0]?escapeHtml(waiting[0].t):"";
-  const waitSum=waiting.length?(waiting.length+(waitFirst?" — "+waitFirst:"")):"none";
-  const waitHtml=waiting.length?waiting.map(function(it){return focusRow(it,true,"waiting");}).join(""):`<p class="fempty">Nothing waiting.</p>`;
-  const laterHtml=later.length?later.map(function(it){return focusRow(it,true,"later");}).join(""):`<p class="fempty">Nothing later.</p>`;
-  el.innerHTML=`<h2>Right now</h2>
-    <div class="fsec"><h3>Now</h3>${nowHtml}</div>
-    <div class="fsec"><h3>Next</h3>${nextHtml}</div>
-    <details class="fsec"><summary>Waiting · ${waitSum}</summary>${waitHtml}</details>
-    <details class="fsec"><summary>Later</summary>${laterHtml}</details>
-    <div class="acts"><button class="p" onclick="wn||mn?showView('dash'):showView('work')">${wn||mn?"Open Status":"Open Work"}</button><button class="s" onclick="showView('chat')">Ask Hank</button><button class="s" onclick="showView('find')">Find</button></div>`;
-  const nb=document.getElementById('bnavNeedsBadge');if(nb){const n=wn+mn;if(n){nb.textContent=n>9?"9+":n;nb.classList.remove('hide');}else nb.classList.add('hide');}
+  el.innerHTML=`<p class="hdm-kicker">Have · Do · Matter</p>
+    <div class="fsec"><h3>Have</h3>
+      <a class="frow" onclick="showView('equip')"><div class="fverb">Equipment</div><div class="fplace">knowing · tap a machine</div></a>
+      <a class="frow" href="castle.html"><div class="fverb">Castle · Dagvald · Davikja</div><div class="fplace">kids in sight</div></a>
+    </div>
+    <div class="fsec"><h3>Do · NOW</h3>${nowHtml}</div>
+    <div class="fsec"><h3>Matter</h3><p class="fempty">Kids in sight. Machines known. Work on a sheet.</p></div>
+    <div class="acts"><button class="p" onclick="showView('work')">Open Work</button><button class="s" onclick="showView('chat')">Ask Hank</button></div>`;
 }
+
 function initChatStarters(){
   const el=document.getElementById('chatStarters');if(!el)return;
   el.innerHTML=CHAT_STARTERS.map((s,i)=>{
@@ -2482,7 +2466,7 @@ checkAnnounceOnLoad();
     if(m)return{kind:"project",id:decodeURIComponent(m[1])};
     m=h.match(/^work\/proposal\/([^/?#]+)/i);
     if(m)return{kind:"proposal",id:decodeURIComponent(m[1])};
-    if(h==="work"||h==="find"||h==="equip"||h==="chat"||h==="bible"||h==="train")return{kind:"view",id:h};
+    if(h==="work"||h==="find"||h==="equip"||h==="chat"||h==="bible"||h==="train"||h==="more")return{kind:"view",id:h};
     if(h==="focus"||h==="home")return{kind:"focus"};
     return null;
   }

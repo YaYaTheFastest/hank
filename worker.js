@@ -17,7 +17,7 @@ async function sha256hex(s) {
 const CASTLE_BUNDLE_KEY = "castle:bundle";
 const CASTLE_KIDS = ["Dagvald", "Davikja"];
 
-/** V2 progress defaults — never wipe; fill missing fields only. */
+// V2 progress defaults — fill missing fields only; never wipe.
 function defaultProgress() {
   return { xp: 0, level: 1, lessonsUnlocked: [], workDays: [], lastCheckIn: null };
 }
@@ -40,12 +40,10 @@ function normalizeCastleSettings(s) {
     competitionVisible: typeof o.competitionVisible === "boolean" ? o.competitionVisible : true,
   };
 }
-/** V2 XP curve: need = 100 + (level-1)×50 */
-function xpToNext(level) {
+function xpToNext(level) { // need = 100 + (level-1)×50
   return 100 + (Math.max(1, level) - 1) * 50;
 }
-/** Add XP and level up; never touches balances/entries. */
-function addXp(progress, amount) {
+function addXp(progress, amount) { // levels only; never touches balances/entries
   const p = normalizeProgress(progress);
   const gain = Math.max(0, Math.round(Number(amount) || 0));
   if (!gain) return p;
@@ -58,8 +56,7 @@ function addXp(progress, amount) {
   }
   return p;
 }
-/** Approved-chore XP: 15 + min(40, round(price)) */
-function approveXpGain(amount) {
+function approveXpGain(amount) { // 15 + min(40, round(price))
   const price = Math.max(0, Math.round(Number(amount) || 0));
   return 15 + Math.min(40, price);
 }
@@ -72,8 +69,7 @@ function ensureWorkDay(progress, day) {
   }
   return { progress: p, workDay: wd };
 }
-/** Non-destructive: ensure progress + settings exist; do not reset balances/entries. */
-function ensureCastleV2Defaults(bundle) {
+function ensureCastleV2Defaults(bundle) { // non-destructive; do not reset balances/entries
   if (!bundle || typeof bundle !== "object") return emptyCastleBundle();
   if (!bundle.entries) bundle.entries = [];
   if (!bundle.catalogs || typeof bundle.catalogs !== "object") bundle.catalogs = {};
@@ -84,7 +80,6 @@ function ensureCastleV2Defaults(bundle) {
   for (const kid of CASTLE_KIDS) {
     bundle.progress[kid] = normalizeProgress(bundle.progress[kid]);
   }
-  // Keep any extra kid keys normalized too
   for (const kid of Object.keys(bundle.progress)) {
     if (!CASTLE_KIDS.includes(kid)) bundle.progress[kid] = normalizeProgress(bundle.progress[kid]);
   }
@@ -146,6 +141,7 @@ async function loadCastleBundle(env) {
       return null;
     }
   }
+  // Rare: bundle missing (first deploy / quota). Not on every cold request.
   try {
     return ensureCastleV2Defaults(await migrateCastleBundle(env));
   } catch (e) {
@@ -167,7 +163,6 @@ async function persistCastleEntry(env, bundle, key, entry) {
   const i = bundle.entries.findIndex((e) => e.key === key);
   if (i >= 0) bundle.entries[i] = row;
   else bundle.entries.push(row);
-  await env.STATE.put(key, JSON.stringify(entry));
   await saveCastleBundle(env, bundle);
   return row;
 }
@@ -218,6 +213,7 @@ async function migrateCaptureBundle(env) {
 async function loadCaptureBundle(env) {
   const raw = await env.STATE.get(CAPTURE_BUNDLE_KEY);
   if (raw) return JSON.parse(raw);
+  // Rare: bundle missing. Not on every cold request.
   try {
     return await migrateCaptureBundle(env);
   } catch (e) {
@@ -231,75 +227,57 @@ async function saveCaptureBundle(env, bundle) {
   return bundle;
 }
 
+function doneMapStore(kvKey, { idOk, fields }) {
+  const empty = () => ({ v: 0, updated: "", done: {} });
+  function normalize(b) {
+    const o = b && typeof b === "object" ? b : {};
+    const done = o.done && typeof o.done === "object" && !Array.isArray(o.done) ? o.done : {};
+    const clean = {};
+    for (const id of Object.keys(done)) {
+      if (idOk && !idOk(id)) continue;
+      const row = done[id];
+      if (!row || typeof row !== "object") continue;
+      clean[id] = fields(row);
+    }
+    return { v: Number(o.v) || 0, updated: typeof o.updated === "string" ? o.updated : "", done: clean };
+  }
+  return {
+    async load(env) {
+      const raw = await env.STATE.get(kvKey);
+      if (raw) {
+        try { return normalize(JSON.parse(raw)); }
+        catch (e) { return empty(); }
+      }
+      return empty();
+    },
+    async save(env, bundle) {
+      const b = normalize(bundle);
+      b.v = (b.v || 0) + 1;
+      b.updated = new Date().toISOString();
+      await env.STATE.put(kvKey, JSON.stringify(b));
+      return b;
+    },
+  };
+}
+
 const FOCUS_BUNDLE_KEY = "focus:bundle";
-function emptyFocusBundle() {
-  return { v: 0, updated: "", done: {} };
-}
-function normalizeFocusBundle(b) {
-  const o = b && typeof b === "object" ? b : {};
-  const done = o.done && typeof o.done === "object" && !Array.isArray(o.done) ? o.done : {};
-  const clean = {};
-  for (const id of Object.keys(done)) {
-    const row = done[id];
-    if (!row || typeof row !== "object") continue;
-    clean[id] = {
-      done: !!row.done,
-      ts: Number(row.ts) || 0,
-      day: typeof row.day === "string" ? row.day : "",
-    };
-  }
-  return { v: Number(o.v) || 0, updated: typeof o.updated === "string" ? o.updated : "", done: clean };
-}
-async function loadFocusBundle(env) {
-  const raw = await env.STATE.get(FOCUS_BUNDLE_KEY);
-  if (raw) {
-    try { return normalizeFocusBundle(JSON.parse(raw)); }
-    catch (e) { return emptyFocusBundle(); }
-  }
-  return emptyFocusBundle();
-}
-async function saveFocusBundle(env, bundle) {
-  const b = normalizeFocusBundle(bundle);
-  b.v = (b.v || 0) + 1;
-  b.updated = new Date().toISOString();
-  await env.STATE.put(FOCUS_BUNDLE_KEY, JSON.stringify(b));
-  return b;
-}
+const focusStore = doneMapStore(FOCUS_BUNDLE_KEY, {
+  fields: (row) => ({
+    done: !!row.done,
+    ts: Number(row.ts) || 0,
+    day: typeof row.day === "string" ? row.day : "",
+  }),
+});
 function focusSlug(t) {
   return String(t || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
 const PROJECT_CHECKS_KEY = "project-checks:bundle";
-function emptyProjectChecksBundle() {
-  return { v: 0, updated: "", done: {} };
-}
-function normalizeProjectChecksBundle(b) {
-  const o = b && typeof b === "object" ? b : {};
-  const done = o.done && typeof o.done === "object" && !Array.isArray(o.done) ? o.done : {};
-  const clean = {};
-  for (const id of Object.keys(done)) {
-    if (!/^[a-z0-9][a-z0-9:_-]{0,199}$/i.test(id)) continue;
-    const row = done[id];
-    if (!row || typeof row !== "object") continue;
-    clean[id] = { done: !!row.done, ts: Number(row.ts) || 0 };
-  }
-  return { v: Number(o.v) || 0, updated: typeof o.updated === "string" ? o.updated : "", done: clean };
-}
-async function loadProjectChecksBundle(env) {
-  const raw = await env.STATE.get(PROJECT_CHECKS_KEY);
-  if (raw) {
-    try { return normalizeProjectChecksBundle(JSON.parse(raw)); }
-    catch (e) { return emptyProjectChecksBundle(); }
-  }
-  return emptyProjectChecksBundle();
-}
-async function saveProjectChecksBundle(env, bundle) {
-  const b = normalizeProjectChecksBundle(bundle);
-  b.v = (b.v || 0) + 1;
-  b.updated = new Date().toISOString();
-  await env.STATE.put(PROJECT_CHECKS_KEY, JSON.stringify(b));
-  return b;
-}
+const PROJECT_CHECK_ID = /^[a-z0-9][a-z0-9:_-]{0,199}$/i;
+const projectChecksStore = doneMapStore(PROJECT_CHECKS_KEY, {
+  idOk: (id) => PROJECT_CHECK_ID.test(id),
+  fields: (row) => ({ done: !!row.done, ts: Number(row.ts) || 0 }),
+});
 function projectCheckIdFromBody(body) {
   if (body && typeof body.id === "string" && body.id.trim()) return body.id.trim();
   const pid = body && typeof body.pid === "string" ? body.pid.trim() : "";
@@ -337,7 +315,7 @@ export default {
     const url = new URL(request.url);
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
 
-    // Family password gate (protects pages + manuals + kids' data). Cookie lasts 30 days per device.
+    // Family cookie lasts 30 days per device.
     const gateToken = env.HANK_PASSWORD ? await sha256hex("hankgate:" + env.HANK_PASSWORD) : "";
     const siteAuthed = !env.HANK_PASSWORD || getCookie(request, "hank_site") === gateToken;
 
@@ -357,7 +335,6 @@ export default {
 
     if (url.pathname.startsWith("/api/")) return handleApi(request, env, url, siteAuthed);
 
-    // static app + manuals — require the family password
     if (!siteAuthed) return loginPage(url.pathname + url.search, false);
     return env.ASSETS.fetch(request);
   },
@@ -370,11 +347,30 @@ async function handleApi(request, env, url, siteAuthed) {
   const expected = env.HANK_PASSWORD || "";
   const configured = expected.length > 0;
   const authed = configured && provided === expected;
-  // Castle data is readable/writable by the loop (key) OR a signed-in family device (site cookie), never anonymously.
   const familyOrLoop = authed || !!siteAuthed;
   const kv = !!env.STATE;
 
-  // Health/check-connection — safe to call without auth; reports what's working.
+  const deny = (error, status = 401) => json({ ok: false, error }, status);
+  const requireFamily = () => (familyOrLoop ? null : deny("auth"));
+  const requireLoop = (error = "auth") => (authed ? null : deny(error));
+  const requireKv = () => (kv ? null : deny("kv-not-bound", 500));
+  // Existing PIN modes: orLoop (deduct/wishlist/purchase/accrue), parent (approve/decline), catalog (catalog/config).
+  async function requirePin(body, mode = "orLoop") {
+    const saved = await env.STATE.get("castle:pin");
+    if (mode === "parent") {
+      if (!saved) return deny("no-pin-set", 409);
+      if (String(body.pin || "") !== saved && !authed) return deny("bad-pin");
+      return null;
+    }
+    if (mode === "catalog") {
+      if (!saved && !authed) return deny("no-pin-set", 409);
+      if (!authed && String(body.pin || "") !== saved) return deny("bad-pin");
+      return null;
+    }
+    if (authed || (saved && String(body.pin || "") === saved)) return null;
+    return deny("bad-pin");
+  }
+
   if (url.pathname === "/api/health") {
     return json({
       ok: true,
@@ -386,17 +382,10 @@ async function handleApi(request, env, url, siteAuthed) {
     });
   }
 
-  // ---- Castle Fund (kids' chore→reward) ----
-  // Read state + log a chore require a signed-in family device (site cookie) or the loop key — never anonymous
-  // (this keeps the kids' names/balances private). Parent approve/decline are additionally gated by the 4-digit PIN.
-
-  // Read-only token (2026-07-02): lets the autonomous loop (which can't send auth headers) sync Castle data
-  // via GET /api/castle?rt=<token>. Scope = this ONE read endpoint. It can never approve, log, edit, or read
-  // anything else, and it is NOT the family password. Stored in KV (castle:readtoken).
-  // Set/rotate: POST /api/castle/readtoken from a signed-in family device or with the HANK key.
+  // readtoken scope: GET /api/castle?rt= only — not the family password.
   if (url.pathname === "/api/castle/readtoken" && request.method === "POST") {
-    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const denied = requireFamily() || requireKv();
+    if (denied) return denied;
     const b = await request.json().catch(() => ({}));
     const token = (typeof b.token === "string" && b.token.length >= 24)
       ? b.token
@@ -405,10 +394,10 @@ async function handleApi(request, env, url, siteAuthed) {
     return json({ ok: true, token });
   }
 
-  // Loop-only: seed bundle without KV list() — use when list quota exhausted or first deploy.
+  // Loop-only seed without list() — first deploy / list quota exhausted.
   if (url.pathname === "/api/castle/seed-bundle" && request.method === "POST") {
-    if (!authed) return json({ ok: false, error: "auth" }, 401);
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const denied = requireLoop() || requireKv();
+    if (denied) return denied;
     const b = await request.json().catch(() => ({}));
     const bundle = ensureCastleV2Defaults({
       v: Number(b.v) || 1,
@@ -427,8 +416,9 @@ async function handleApi(request, env, url, siteAuthed) {
     let rtOk = false;
     const rt = url.searchParams.get("rt") || "";
     if (rt && kv) { const saved = await env.STATE.get("castle:readtoken"); rtOk = !!saved && rt === saved; }
-    if (!familyOrLoop && !rtOk) return json({ ok: false, error: "auth" }, 401);
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    if (!familyOrLoop && !rtOk) return deny("auth");
+    const denied = requireKv();
+    if (denied) return denied;
     const bundle = await loadCastleBundle(env);
     if (!bundle) return castleMissing();
     const clientV = parseInt(url.searchParams.get("v") || "0", 10);
@@ -436,8 +426,8 @@ async function handleApi(request, env, url, siteAuthed) {
     return json(castleBundleResponse(bundle));
   }
   if (url.pathname === "/api/castle/log" && request.method === "POST") {
-    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const denied = requireFamily() || requireKv();
+    if (denied) return denied;
     const b = await request.json().catch(() => ({}));
     if (!b.kid || !b.chore) return json({ ok: false, error: "missing-fields" }, 400);
     const day = (typeof b.day === "string" && b.day) ? b.day : new Date().toISOString().slice(0, 10);
@@ -452,15 +442,16 @@ async function handleApi(request, env, url, siteAuthed) {
     const row = await persistCastleEntry(env, bundle, id, entry);
     return json({ ok: true, id, entry: row, v: bundle.v });
   }
-  // Is a parent PIN set yet?
   if (url.pathname === "/api/castle/pinset" && request.method === "GET") {
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const denied = requireKv();
+    if (denied) return denied;
     const p = await env.STATE.get("castle:pin");
     return json({ ok: true, set: !!p });
   }
-  // Set the PIN once (first run). Won't overwrite an existing PIN.
+  // Set PIN once; will not overwrite.
   if (url.pathname === "/api/castle/setpin" && request.method === "POST") {
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const denied = requireKv();
+    if (denied) return denied;
     const b = await request.json().catch(() => ({}));
     const pin = String(b.pin || "");
     if (!/^\d{4}$/.test(pin)) return json({ ok: false, error: "bad-pin-format" }, 400);
@@ -468,18 +459,16 @@ async function handleApi(request, env, url, siteAuthed) {
     await env.STATE.put("castle:pin", pin);
     return json({ ok: true, set: true });
   }
-  async function pinOkFor(b) { const sp = await env.STATE.get("castle:pin"); return authed || (sp && String(b.pin || "") === sp); }
   function newCastleEntry(kid, chore, amount, extra) {
     return Object.assign({ kid, chore, amount, status: "approved", approver: "parent", ts: Date.now(), day: new Date().toISOString().slice(0, 10) }, extra || {});
   }
 
-  // Parent decision — gated by the 4-digit PIN. Approving splits an earning into buckets.
   if ((url.pathname === "/api/castle/approve" || url.pathname === "/api/castle/decline") && request.method === "POST") {
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const deniedKv = requireKv();
+    if (deniedKv) return deniedKv;
     const b = await request.json().catch(() => ({}));
-    const savedPin = await env.STATE.get("castle:pin");
-    if (!savedPin) return json({ ok: false, error: "no-pin-set" }, 409);
-    if (String(b.pin || "") !== savedPin && !authed) return json({ ok: false, error: "bad-pin" }, 401);
+    const denied = await requirePin(b, "parent");
+    if (denied) return denied;
     const bundle = await loadCastleBundle(env);
     if (!bundle) return castleMissing();
     const hit = bundle.entries.find((e) => e.key === b.key);
@@ -493,7 +482,6 @@ async function handleApi(request, env, url, siteAuthed) {
     if (e.status === "approved" && !e.buckets && (e.amount || 0) > 0 && e.kind !== "interest") {
       e.buckets = bucketsForCfg(bundle.configs, e.kid, e.amount);
     }
-    // V2 §3: XP on approve (positive chore earnings only — never deductions/interest)
     let xpGain = 0;
     let progressOut = null;
     if (
@@ -509,7 +497,6 @@ async function handleApi(request, env, url, siteAuthed) {
       const { progress: p0, workDay } = ensureWorkDay(bundle.progress[e.kid], day);
       workDay.choresDone = (Number(workDay.choresDone) || 0) + 1;
       progressOut = addXp(p0, xpGain);
-      // re-attach mutated workDay into progressOut.workDays
       const idx = progressOut.workDays.findIndex((w) => w && w.day === day);
       if (idx >= 0) progressOut.workDays[idx] = workDay;
       else progressOut.workDays.push(workDay);
@@ -519,10 +506,9 @@ async function handleApi(request, env, url, siteAuthed) {
     return json({ ok: true, entry: row, v: bundle.v, xpGain, progress: progressOut || bundle.progress[e.kid] });
   }
 
-  // V2 §2: work-day check-in — once per chore-day, +10 XP (family cookie; no balance touch)
   if (url.pathname === "/api/castle/checkin" && request.method === "POST") {
-    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const denied = requireFamily() || requireKv();
+    if (denied) return denied;
     const b = await request.json().catch(() => ({}));
     if (!b.kid || !CASTLE_KIDS.includes(b.kid)) return json({ ok: false, error: "missing-fields" }, 400);
     const day = typeof b.day === "string" && b.day ? b.day : new Date().toISOString().slice(0, 10);
@@ -544,11 +530,12 @@ async function handleApi(request, env, url, siteAuthed) {
     return json({ ok: true, day, xpGain: 10, progress: progressOut, v: bundle.v });
   }
 
-  // Manual deduction / penalty (PIN) — negative entry against the Spend bucket.
   if (url.pathname === "/api/castle/deduct" && request.method === "POST") {
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const deniedKv = requireKv();
+    if (deniedKv) return deniedKv;
     const b = await request.json().catch(() => ({}));
-    if (!(await pinOkFor(b))) return json({ ok: false, error: "bad-pin" }, 401);
+    const denied = await requirePin(b);
+    if (denied) return denied;
     const amt = Math.abs(Number(b.amount) || 0);
     if (!b.kid || !amt) return json({ ok: false, error: "missing-fields" }, 400);
     const bundle = await loadCastleBundle(env);
@@ -559,39 +546,40 @@ async function handleApi(request, env, url, siteAuthed) {
     return json({ ok: true, entry: row, v: bundle.v });
   }
 
-  // Parent sets a kid's wishlist array (PIN): [{id,name,price,url,goal,purchased}]
   if (url.pathname === "/api/castle/wishlist" && request.method === "POST") {
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const deniedKv = requireKv();
+    if (deniedKv) return deniedKv;
     const b = await request.json().catch(() => ({}));
-    if (!(await pinOkFor(b))) return json({ ok: false, error: "bad-pin" }, 401);
+    const denied = await requirePin(b);
+    if (denied) return denied;
     if (!b.kid || !Array.isArray(b.wishlist)) return json({ ok: false, error: "missing-fields" }, 400);
     const bundle = await loadCastleBundle(env);
     if (!bundle) return castleMissing();
     bundle.wishlists[b.kid] = b.wishlist;
-    await env.STATE.put("castle:wish:" + b.kid, JSON.stringify(b.wishlist));
     await saveCastleBundle(env, bundle);
     return json({ ok: true, v: bundle.v });
   }
 
-  // Kid stars one wishlist item as the active goal (no PIN — low-stakes).
+  // Star wishlist item — no PIN (low-stakes).
   if (url.pathname === "/api/castle/star" && request.method === "POST") {
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const denied = requireKv();
+    if (denied) return denied;
     const b = await request.json().catch(() => ({}));
     const bundle = await loadCastleBundle(env);
     if (!bundle) return castleMissing();
     const arr = bundle.wishlists[b.kid];
     if (!arr) return json({ ok: false, error: "no-wishlist" }, 404);
     arr.forEach((it) => { it.goal = (it.id === b.id && !it.purchased); });
-    await env.STATE.put("castle:wish:" + b.kid, JSON.stringify(arr));
     await saveCastleBundle(env, bundle);
     return json({ ok: true, wishlist: arr, v: bundle.v });
   }
 
-  // Parent marks a wishlist item purchased (PIN) — negative Spend entry + flag it.
   if (url.pathname === "/api/castle/purchase" && request.method === "POST") {
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const deniedKv = requireKv();
+    if (deniedKv) return deniedKv;
     const b = await request.json().catch(() => ({}));
-    if (!(await pinOkFor(b))) return json({ ok: false, error: "bad-pin" }, 401);
+    const denied = await requirePin(b);
+    if (denied) return denied;
     const bundle = await loadCastleBundle(env);
     if (!bundle) return castleMissing();
     const arr = bundle.wishlists[b.kid];
@@ -603,41 +591,36 @@ async function handleApi(request, env, url, siteAuthed) {
     const entry = newCastleEntry(b.kid, "Bought: " + it.name, -price, { kind: "purchase", buckets: { save: 0, spend: -price, give: 0 } });
     it.purchased = true; it.goal = false;
     const row = await persistCastleEntry(env, bundle, id, entry);
-    await env.STATE.put("castle:wish:" + b.kid, JSON.stringify(arr));
     return json({ ok: true, entry: row, v: bundle.v });
   }
 
-  // Parent edits the chore list or settings (goal/reward/interest) — PIN-gated, or loop key (authed) for operator directives.
   if ((url.pathname === "/api/castle/catalog" || url.pathname === "/api/castle/config") && request.method === "POST") {
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const deniedKv = requireKv();
+    if (deniedKv) return deniedKv;
     const b = await request.json().catch(() => ({}));
-    const savedPin = await env.STATE.get("castle:pin");
-    if (!savedPin && !authed) return json({ ok: false, error: "no-pin-set" }, 409);
-    if (!authed && String(b.pin || "") !== savedPin) return json({ ok: false, error: "bad-pin" }, 401);
+    const denied = await requirePin(b, "catalog");
+    if (denied) return denied;
     if (!b.kid) return json({ ok: false, error: "missing-kid" }, 400);
     const bundle = await loadCastleBundle(env);
     if (!bundle) return castleMissing();
     if (url.pathname.endsWith("catalog")) {
       if (!Array.isArray(b.catalog)) return json({ ok: false, error: "missing-catalog" }, 400);
       bundle.catalogs[b.kid] = b.catalog;
-      await env.STATE.put("castle:cat:" + b.kid, JSON.stringify(b.catalog));
     } else {
       if (typeof b.config !== "object" || !b.config) return json({ ok: false, error: "missing-config" }, 400);
       bundle.configs[b.kid] = b.config;
-      await env.STATE.put("castle:cfg:" + b.kid, JSON.stringify(b.config));
     }
     await saveCastleBundle(env, bundle);
     return json({ ok: true, v: bundle.v });
   }
 
-  // Parent-paid interest. Authorized by the parent PIN (in-app, no loop needed) OR the HANK password (loop).
-  // Idempotent per kid+period so repeated calls in a month don't double-credit.
+  // Accrue is idempotent per kid+period.
   if (url.pathname === "/api/castle/accrue" && request.method === "POST") {
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const deniedKv = requireKv();
+    if (deniedKv) return deniedKv;
     const b = await request.json().catch(() => ({}));
-    const savedPin = await env.STATE.get("castle:pin");
-    const pinOk = savedPin && String(b.pin || "") === savedPin;
-    if (!authed && !pinOk) return json({ ok: false, error: "bad-pin" }, 401);
+    const denied = await requirePin(b);
+    if (denied) return denied;
     if (!b.kid || b.amount == null || !b.period) return json({ ok: false, error: "missing-fields" }, 400);
     const bundle = await loadCastleBundle(env);
     if (!bundle) return castleMissing();
@@ -650,71 +633,65 @@ async function handleApi(request, env, url, siteAuthed) {
     return json({ ok: true, entry: row, v: bundle.v });
   }
 
-  // Focus overlay — family cookie OR loop key. Must sit ABOVE the key-only gate so phone taps work.
+  // Family/loop routes must sit above the loop-key wall so phone taps work.
   if (url.pathname === "/api/focus" && request.method === "GET") {
-    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
-    const bundle = await loadFocusBundle(env);
+    const denied = requireFamily() || requireKv();
+    if (denied) return denied;
+    const bundle = await focusStore.load(env);
     return json({ ok: true, v: bundle.v, updated: bundle.updated, done: bundle.done });
   }
   if (url.pathname === "/api/focus" && request.method === "POST") {
-    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const denied = requireFamily() || requireKv();
+    if (denied) return denied;
     const body = await request.json().catch(() => ({}));
     const id = (typeof body.id === "string" && body.id.trim()) ? body.id.trim() : focusSlug(body.t);
     if (!id) return json({ ok: false, error: "missing-id" }, 400);
-    const bundle = await loadFocusBundle(env);
+    const bundle = await focusStore.load(env);
     const markDone = body.done !== false;
     if (markDone) {
       bundle.done[id] = { done: true, ts: Date.now(), day: new Date().toISOString().slice(0, 10) };
     } else {
       delete bundle.done[id];
     }
-    const saved = await saveFocusBundle(env, bundle);
+    const saved = await focusStore.save(env, bundle);
     return json({ ok: true, v: saved.v, updated: saved.updated, done: saved.done });
   }
 
-
-  // Project sheet checks — family cookie OR loop key. Must sit ABOVE the key-only gate (same as /api/focus).
   if (url.pathname === "/api/project-checks" && request.method === "GET") {
-    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
-    const bundle = await loadProjectChecksBundle(env);
+    const denied = requireFamily() || requireKv();
+    if (denied) return denied;
+    const bundle = await projectChecksStore.load(env);
     return json({ ok: true, v: bundle.v, updated: bundle.updated, done: bundle.done });
   }
   if (url.pathname === "/api/project-checks" && request.method === "POST") {
-    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
-    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const denied = requireFamily() || requireKv();
+    if (denied) return denied;
     const body = await request.json().catch(() => ({}));
     const id = projectCheckIdFromBody(body);
-    if (!id || !/^[a-z0-9][a-z0-9:_-]{0,199}$/i.test(id)) return json({ ok: false, error: "missing-id" }, 400);
-    const bundle = await loadProjectChecksBundle(env);
+    if (!id || !PROJECT_CHECK_ID.test(id)) return json({ ok: false, error: "missing-id" }, 400);
+    const bundle = await projectChecksStore.load(env);
     if (body.delete === true) {
       delete bundle.done[id];
     } else {
       bundle.done[id] = { done: body.done !== false, ts: Date.now() };
     }
-    const saved = await saveProjectChecksBundle(env, bundle);
+    const saved = await projectChecksStore.save(env, bundle);
     return json({ ok: true, v: saved.v, updated: saved.updated, done: saved.done });
   }
 
-  // Everything below requires the correct HANK password (chat + tap-to-answer).
-  if (!authed) return json({ ok: false, error: configured ? "wrong-password" : "no-password-set" }, 401);
-  if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+  const loopDenied = requireLoop(configured ? "wrong-password" : "no-password-set") || requireKv();
+  if (loopDenied) return loopDenied;
 
-  // Save a tapped answer / captured input.
   if (url.pathname === "/api/answer" && request.method === "POST") {
     const body = await request.json().catch(() => ({}));
     const id = "ans:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
     const row = { ...body, ts: Date.now() };
-    await env.STATE.put(id, JSON.stringify(row));
     const bundle = await loadCaptureBundle(env);
     bundle.answers.push({ key: id, ...row });
     await saveCaptureBundle(env, bundle);
     return json({ ok: true, stored: id });
   }
 
-  // In-app Hank chat — xAI Grok API; context bundle = system prompt (refreshed on deploy).
   if (url.pathname === "/api/chat" && request.method === "POST") {
     if (!env.XAI_API_KEY) return json({ ok: false, error: "no-xai-key" }, 400);
     const body = await request.json().catch(() => ({}));
@@ -730,7 +707,6 @@ async function handleApi(request, env, url, siteAuthed) {
       if (last && last.role === "user") {
         const id = "chat:" + Date.now();
         const row = { text: last.content, ts: Date.now() };
-        await env.STATE.put(id, JSON.stringify(row));
         const cb = await loadCaptureBundle(env);
         cb.chat.push({ key: id, ...row });
         await saveCaptureBundle(env, cb);
@@ -759,7 +735,6 @@ async function handleApi(request, env, url, siteAuthed) {
     return json({ ok: true, reply });
   }
 
-  // List pending captures (the daily loop reads + clears these): tapped answers (ans:) AND in-app chat turns (chat:).
   if (url.pathname === "/api/answers" && request.method === "GET") {
     const bundle = await loadCaptureBundle(env);
     const answers = bundle.answers || [];
@@ -767,7 +742,6 @@ async function handleApi(request, env, url, siteAuthed) {
     return json({ ok: true, count: answers.length + chat.length, answers, chat, v: bundle.v || 0 });
   }
 
-  // Clear captures (used by the loop after ingesting): a single key, or ALL ans: + chat:.
   if (url.pathname === "/api/clear" && request.method === "POST") {
     const body = await request.json().catch(() => ({}));
     const bundle = await loadCaptureBundle(env);

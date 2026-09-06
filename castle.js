@@ -1,4 +1,4 @@
-/* HANK · Castle Fund — kid page (shared by dagvald.html / davikja.html).
+/* HANK · Castle Fund — one client for castle.html (hub) and dagvald.html / davikja.html (kid).
    Loop: kid taps a chore -> Pending -> either parent approves with a 4-digit PIN -> balance credits.
    Financial literacy: full transaction history, parent-paid interest (FamZoo-style), savings-growth chart.
    Per-kid chore lists + goal/interest are editable by a parent (PIN-gated) and stored in KV via the Worker. */
@@ -20,41 +20,96 @@
     ]
   };
   var BASE = {
-    Dagvald: { dob: "2015-09-17", reward: "LEGO Hogwarts Castle", goal: 250, seed: 85, interestPct: 5, interestOn: false, theme: "castle", color: "#7c3aed" },
-    Davikja: { dob: "2017-01-20", reward: "$100 reward (TBD)",    goal: 100, seed: 20, interestPct: 5, interestOn: false, theme: "jar",    color: "#db2777" }
+    Dagvald: { page: "dagvald.html", dob: "2015-09-17", reward: "LEGO Hogwarts Castle", goal: 250, seed: 85, interestPct: 5, interestOn: false, theme: "castle", color: "#7c3aed", av: "D" },
+    Davikja: { page: "davikja.html", dob: "2017-01-20", reward: "$100 reward (TBD)",    goal: 100, seed: 20, interestPct: 5, interestOn: false, theme: "jar",    color: "#db2777", av: "D" }
   };
+
+  function money(n) { var s = (n < 0 ? "-" : "") + "$" + Math.abs(Math.round(n * 100) / 100).toFixed(Math.abs(n) % 1 ? 2 : 0); return s.replace(/\.00$/, ""); }
+  function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function mergeCfg(kid, configs) {
+    var o = {}, b = BASE[kid]; if (!b) return o;
+    for (var k in b) o[k] = b[k];
+    var a = (configs && configs[kid]) || {};
+    for (var k2 in a) o[k2] = a[k2];
+    return o;
+  }
+  function approvedBalance(kid, C, list) {
+    var bal = C.seed;
+    (list || []).forEach(function (e) { if (e.kid === kid && e.status === "approved") bal += e.amount; });
+    return bal;
+  }
+  function pad2(n) { return (n < 10 ? "0" : "") + n; }
+  function isoDay(dt) { return dt.getFullYear() + "-" + pad2(dt.getMonth() + 1) + "-" + pad2(dt.getDate()); }
+  // Local "chore day" with a ~4am rollover (so a late-evening chore counts for the right day, not UTC's next day).
+  function choreDay(now) { return isoDay(new Date((now != null ? now : Date.now()) - 4 * 3600 * 1000)); }
+
+  window.Castle = { BASE: BASE, money: money, esc: esc, cfg: mergeCfg, balance: approvedBalance, choreDay: choreDay, isoDay: isoDay };
+
+  // Hub (castle.html): same BASE / cfg / balance as the kid pages — no second copy.
+  function bootHub() {
+    var box = document.getElementById("kids");
+    if (!box) return;
+    function render(configs, entries, stale) {
+      var html = "";
+      if (stale) html += '<p class="stale">⚠︎ Couldn\'t reach Hank — showing starting balances. Pull to refresh.</p>';
+      Object.keys(BASE).forEach(function (kid) {
+        var C = mergeCfg(kid, configs), bal = approvedBalance(kid, C, entries), goal = C.goal || 0;
+        var pct = goal ? Math.max(0, Math.min(1, bal / goal)) : 0;
+        var togo = Math.max(0, goal - bal);
+        html += '<a class="kid" href="' + BASE[kid].page + '">' +
+          '<div class="av" style="background:' + BASE[kid].color + '">' + BASE[kid].av + '</div>' +
+          '<div class="kbody">' +
+            '<div class="kn">' + esc(kid) + '</div>' +
+            '<div class="kd">Goal: ' + esc(C.reward || "Saving up") + (goal ? ' (' + money(goal) + ')' : '') + '</div>' +
+            '<div class="kbal">' + money(bal) + (goal ? ' <span class="togo">of ' + money(goal) + ' · ' + money(togo) + ' to go</span>' : ' <span class="togo">saved</span>') + '</div>' +
+            (goal ? '<div class="bar"><span style="width:' + Math.round(pct * 100) + '%;background:' + BASE[kid].color + '"></span></div>' : '') +
+          '</div>' +
+          '<div class="chev">›</div>' +
+        '</a>';
+      });
+      box.innerHTML = html;
+    }
+    var castleV = 0;
+    function load(force) {
+      var url = "/api/castle" + (castleV && !force ? "?v=" + castleV : "");
+      fetch(url).then(function (r) { return r.json(); }).then(function (j) {
+        if (j && j.unchanged) return;
+        if (typeof j.v === "number") castleV = j.v;
+        render((j && j.configs) || {}, (j && j.entries) || [], false);
+      }).catch(function () { render({}, [], true); });
+    }
+    render({}, [], false);
+    load(true);
+    document.addEventListener("visibilitychange", function () { if (!document.hidden) load(true); });
+    setInterval(function () { if (!document.hidden) load(false); }, 30000);
+  }
+
+  if (typeof document === "undefined") return;
+  if (!window.CASTLE_KID) { bootHub(); return; }
 
   var KID = window.CASTLE_KID;
   if (!BASE[KID]) { document.body.innerHTML = "<p style='padding:24px;font-family:system-ui'>Unknown kid.</p>"; return; }
 
-  var entries = [], apiCat = {}, apiCfg = {}, apiWish = {}, apiProgress = {}, apiSettings = {}, lastPin = "", editCat = null, editWish = null;
-  function cfg() { var o = {}; var b = BASE[KID]; for (var k in b) o[k] = b[k]; var a = apiCfg[KID] || {}; for (var k2 in a) o[k2] = a[k2]; return o; }
-  // V2 progress/settings — client defaults if Worker omits fields (old bundles still load)
-  function defaultProgress() { return { xp: 0, level: 1, lessonsUnlocked: [], workDays: [], lastCheckIn: null }; }
+  var entries = [], apiCat = {}, apiCfg = {}, apiWish = {}, apiProgress = {}, lastPin = "", editCat = null, editWish = null;
+  function cfg() { return mergeCfg(KID, apiCfg); }
+  // V2 progress — client defaults if Worker omits fields (old bundles still load). lessonsUnlocked stays Worker-only until lessons UI ships.
   function progressOf(kid) {
-    var p = apiProgress[kid || KID] || {}, d = defaultProgress();
+    var p = apiProgress[kid || KID] || {};
     var xp = Number(p.xp), level = Number(p.level);
     return {
       xp: isFinite(xp) && xp >= 0 ? xp : 0,
       level: isFinite(level) && level >= 1 ? Math.floor(level) : 1,
-      lessonsUnlocked: Array.isArray(p.lessonsUnlocked) ? p.lessonsUnlocked : [],
       workDays: Array.isArray(p.workDays) ? p.workDays : [],
       lastCheckIn: typeof p.lastCheckIn === "string" ? p.lastCheckIn : null
     };
   }
   function progress() { return progressOf(KID); }
-  function castleSettings() {
-    return { competitionVisible: apiSettings.competitionVisible !== false };
-  }
   function xpToNext(level) { return 100 + (Math.max(1, level) - 1) * 50; }
   function catalog() { return (apiCat[KID] && apiCat[KID].length) ? apiCat[KID] : DEFAULT_CAT[KID]; }
-  function money(n) { var s = (n < 0 ? "-" : "") + "$" + Math.abs(Math.round(n * 100) / 100).toFixed(Math.abs(n) % 1 ? 2 : 0); return s.replace(/\.00$/, ""); }
   function mine() { return entries.filter(function (e) { return e.kid === KID; }); }
   function approved() { return mine().filter(function (e) { return e.status === "approved"; }); }
   function pending() { return mine().filter(function (e) { return e.status === "pending"; }); }
-  function balance() { var b = cfg().seed; approved().forEach(function (e) { b += e.amount; }); return b; }
-  // Local "chore day" with a ~4am rollover (so a late-evening chore counts for the right day, not UTC's next day).
-  function choreDay() { var d = new Date(Date.now() - 4 * 3600 * 1000); function p(n) { return (n < 10 ? "0" : "") + n; } return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()); }
+  function balance() { return approvedBalance(KID, cfg(), entries); }
   function usedToday(name) { return mine().filter(function (e) { return e.chore === name && e.day === choreDay() && e.status !== "declined"; }).length; }
   function usedEver(name) { return mine().filter(function (e) { return e.chore === name && e.status !== "declined"; }).length; }
   function monthlyContribution() {
@@ -96,10 +151,9 @@
     var days = {};
     approved().forEach(function (e) { if ((e.amount || 0) > 0 && e.kind !== "interest" && e.day) days[e.day] = 1; });
     (progress().workDays || []).forEach(function (w) { if (w && w.checkedIn && w.day) days[w.day] = 1; });
-    function ds(dt) { function p(x) { return (x < 10 ? "0" : "") + x; } return dt.getFullYear() + "-" + p(dt.getMonth() + 1) + "-" + p(dt.getDate()); }
     var d = new Date(Date.now() - 4 * 3600 * 1000), n = 0;
-    if (!days[ds(d)]) d.setDate(d.getDate() - 1);
-    while (days[ds(d)]) { n++; d.setDate(d.getDate() - 1); }
+    if (!days[isoDay(d)]) d.setDate(d.getDate() - 1);
+    while (days[isoDay(d)]) { n++; d.setDate(d.getDate() - 1); }
     return n;
   }
   function checkedInToday() {
@@ -110,10 +164,9 @@
   function workTotals() {
     var day = choreDay();
     var now = new Date(Date.now() - 4 * 3600 * 1000);
-    function iso(dt) { function p(x) { return (x < 10 ? "0" : "") + x; } return dt.getFullYear() + "-" + p(dt.getMonth() + 1) + "-" + p(dt.getDate()); }
     var weekStart = new Date(now); weekStart.setDate(weekStart.getDate() - ((weekStart.getDay() + 6) % 7)); // Mon
-    var weekIso = iso(weekStart);
-    var monthIso = iso(now).slice(0, 7);
+    var weekIso = isoDay(weekStart);
+    var monthIso = isoDay(now).slice(0, 7);
     var earn = approved().filter(function (e) { return (e.amount || 0) > 0 && e.kind !== "interest" && e.kind !== "deduction" && e.kind !== "purchase"; });
     function pack(list) {
       return { chores: list.length, dollars: list.reduce(function (s, e) { return s + (e.amount || 0); }, 0) };
@@ -379,7 +432,6 @@
     html += '<div style="display:flex;align-items:center;gap:8px;margin:6px 2px 2px;flex-wrap:wrap">' +
       '<span class="chip">⭐ Level ' + pr.level + '</span>' +
       '<span class="chip">' + pr.xp + ' / ' + need + ' XP</span>' +
-      (castleSettings().competitionVisible ? '' : '<span class="cap" style="margin:0">Competition board hidden</span>') +
       '</div>';
     html += '<div style="margin:8px 2px 4px">';
     if (cin) {
@@ -486,7 +538,6 @@
     }).join("");
   }
 
-  function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function toast(msg) { var t = document.getElementById("toast"); if (!t) return; t.textContent = msg; t.classList.add("on"); setTimeout(function () { t.classList.remove("on"); }, 2200); }
 
   function wishlistSection(bal) {
@@ -733,9 +784,8 @@
   // Parent-paid interest, applied in-app while a parent is active (no loop/password needed).
   // Idempotent per kid+month (the Worker skips a period already credited).
   function balanceOf(kid) {
-    var c = {}; var bs = BASE[kid]; for (var k in bs) c[k] = bs[k]; var a = apiCfg[kid] || {}; for (var k2 in a) c[k2] = a[k2];
-    var bal = c.seed; entries.forEach(function (e) { if (e.kid === kid && e.status === "approved") bal += e.amount; });
-    return { bal: bal, c: c };
+    var c = mergeCfg(kid, apiCfg);
+    return { bal: approvedBalance(kid, c, entries), c: c };
   }
   function maybeAccrue(pin) {
     var period = new Date().toISOString().slice(0, 7), jobs = [];
@@ -758,8 +808,7 @@
       + "#" + JSON.stringify(apiCat[KID] || "")
       + "#" + JSON.stringify(apiCfg[KID] || "")
       + "#" + JSON.stringify(apiWish[KID] || "")
-      + "#" + JSON.stringify(apiProgress[KID] || "")
-      + "#" + JSON.stringify(apiSettings || "");
+      + "#" + JSON.stringify(apiProgress[KID] || "");
   }
   function applyCastlePayload(j, force) {
     if (j && j.unchanged) return;
@@ -768,7 +817,6 @@
     apiCfg = (j && j.configs) || {};
     apiWish = (j && j.wishlists) || {};
     apiProgress = (j && j.progress) || {};
-    apiSettings = (j && j.settings) || {};
     if (typeof j.v === "number") castleV = j.v;
     loadedOnce = true;
     var s = sig(); if (!force && s === lastSig) return; lastSig = s; render();

@@ -92,7 +92,7 @@
 
   var entries = [], apiCat = {}, apiCfg = {}, apiWish = {}, apiProgress = {}, lastPin = "", editCat = null, editWish = null;
   function cfg() { return mergeCfg(KID, apiCfg); }
-  // V2 progress — client defaults if Worker omits fields (old bundles still load). lessonsUnlocked stays Worker-only until lessons UI ships.
+  // V2 progress — client defaults if Worker omits fields (old bundles still load).
   function progressOf(kid) {
     var p = apiProgress[kid || KID] || {};
     var xp = Number(p.xp), level = Number(p.level);

@@ -1,0 +1,5370 @@
+[
+  {
+    "g": "Tractors & Loaders",
+    "items": [
+      {
+        "n": "John Deere 4044M",
+        "power": "Diesel",
+        "loc": "Barn",
+        "basis": "Hours",
+        "st": "full",
+        "specs": [
+          [
+            "PIN",
+            "1LV4044MLPR122420 (confirmed from plate 2026-07-05)"
+          ],
+          [
+            "Engine",
+            "Yanmar 4TNV88C, 2.2L diesel (133.6 in³)"
+          ],
+          [
+            "Power",
+            "43 hp @ 2,600 rpm"
+          ],
+          [
+            "Crankcase oil",
+            "5.3 L (5.6 qt) w/ filter"
+          ],
+          [
+            "Trans/Hydraulic",
+            "47.3 L (12.5 gal) Hy-Gard J20D/J20C"
+          ],
+          [
+            "Cooling",
+            "6.4 L (6.8 qt); 7.6 L cab"
+          ],
+          [
+            "Front axle",
+            "5.0 L (5.3 qt)"
+          ]
+        ],
+        "sched": [
+          [
+            "Engine oil & filter",
+            "400 hr",
+            "r",
+            "No hours set"
+          ],
+          [
+            "Trans oil & filter",
+            "400 hr (or 1200/3yr)",
+            "r",
+            "No hours set"
+          ],
+          [
+            "Primary + final fuel filters",
+            "400 hr / annual",
+            "r",
+            "—"
+          ],
+          [
+            "Engine air filter elements",
+            "per restriction light",
+            "r",
+            "—"
+          ],
+          [
+            "Grease/lube + front axle + cab filter",
+            "50 hr",
+            "r",
+            "—"
+          ],
+          [
+            "Belts + wheel-bolt torque",
+            "200 hr",
+            "r",
+            "—"
+          ],
+          [
+            "Daily pre-use",
+            "Daily",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "JD 4044M Operator's Manual (PDF)",
+        "manualUrl": "manuals/jd-4044m-manual.pdf",
+        "jobs": [
+          {
+            "t": "Engine Oil & Filter — 400 hr (manual p.131)",
+            "s": [
+              "Run to warm the oil; park safe & level; key out",
+              "Drain pan under drain plug Ⓐ (underside of engine); remove plug",
+              "Wipe around oil filter Ⓑ; turn CCW to remove",
+              "Light coat of clean oil on new filter gasket; install CW until gasket contacts + ½ turn",
+              "Install drain plug (don't overtighten); fill via cap to dipstick range — 5.3 L (5.6 qt) Plus-50 II — don't overfill",
+              "Run, check leaks, recheck level"
+            ],
+            "img": [
+              "manuals/img/jd4044m-oil-p131.png"
+            ]
+          },
+          {
+            "t": "Trans & Hydraulic Oil + Filter — 400 hr",
+            "s": [
+              "Level ground, implements down, relieve pressure",
+              "Drain case (~47.3 L / 12.5 gal)",
+              "Replace filter, clean magnetic plug",
+              "Refill ~12.5 gal Hy-Gard J20D/J20C",
+              "Cycle hydraulics, recheck, check leaks"
+            ]
+          },
+          {
+            "t": "Fuel Filters — primary + final (manual p.138)",
+            "s": [
+              "Engine off & cool; move fuel shutoff valve Ⓐ to CLOSED Ⓑ",
+              "Drain pan under sediment bowl Ⓒ; wipe; turn bowl CCW to remove; clean",
+              "Discard old fuel filter Ⓓ; fit new filter to head; refit sediment bowl",
+              "Replace primary (water-separator) + final filter (CW until gasket contacts + ½ turn)",
+              "Open fuel valve; key ON 10–15 s to self-bleed; start, idle, check leaks"
+            ],
+            "img": [
+              "manuals/img/jd4044m-fuelfilter-p138.png"
+            ]
+          },
+          {
+            "t": "Engine Air Filter Elements (manual p.133)",
+            "s": [
+              "Open air cleaner; release hold-down strap Ⓐ",
+              "Remove primary element; clean or replace per the restriction indicator",
+              "Inspect the secondary/safety element — replace, never clean it",
+              "Check the air-intake hose for cracks/looseness",
+              "Reseat elements; cover latched and sealed"
+            ],
+            "img": [
+              "manuals/img/jd4044m-airfilter-p133.png"
+            ]
+          },
+          {
+            "t": "Lubricate / Grease — 50 hr (manual p.158)",
+            "s": [
+              "Grease all lube points per the manual diagram",
+              "Check front axle oil level",
+              "Clean or replace the cab air filter",
+              "Check ROPS & front-hitch hardware torque",
+              "Wipe fittings; note any worn zerks"
+            ],
+            "img": [
+              "manuals/img/jd4044m-lube-p158.png"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "1987 John Deere 2150",
+        "power": "Diesel",
+        "loc": "Barn",
+        "basis": "Hours",
+        "st": "full"
+      },
+      {
+        "n": "John Deere X580 (54\")",
+        "power": "Gas",
+        "loc": "Shop",
+        "basis": "Hours",
+        "st": "full",
+        "specs": [
+          [
+            "Engine",
+            "Kawasaki FS730V V-twin, 726 cm³ (44.3 cu in), OHV air-cooled, carburetor (corrected from web \"FR730V\")"
+          ],
+          [
+            "Engine oil",
+            "2.1 L (2.2 qt) w/ filter; JD Turf-Gard/Plus-4 or API SJ+ (10W-30 typ.) per temp chart (p.43)"
+          ],
+          [
+            "Fuel",
+            "16.7 L (4.4 gal), 87 oct ≤10% ethanol (Specs)"
+          ],
+          [
+            "Deck",
+            "54\" Accel Deep, 3 blades; blade bolt 68 N·m (50 lb-ft)"
+          ],
+          [
+            "Trans",
+            "K72 hydrostatic; JD Low-Visc Hy-Gard (J20D)"
+          ],
+          [
+            "Spark plug",
+            "gap 0.75 mm (0.030 in); torque 15 N·m/11 lb-ft (proc p.48; Specs table shows 20 N·m — confirm)"
+          ],
+          [
+            "Tires",
+            "F 97 kPa/14 psi · R 69 kPa/10 psi"
+          ],
+          [
+            "Wheel bolt",
+            "rear 84 N·m (62 lb-ft)"
+          ]
+        ],
+        "sched": [
+          [
+            "Engine oil & filter",
+            "100 hr / annual (break-in 8 hr)",
+            "r",
+            "No hours set · 2.1 L"
+          ],
+          [
+            "Air filter (foam + paper)",
+            "100 hr / annual",
+            "r",
+            "don't oil pre-cleaner"
+          ],
+          [
+            "Fuel filter",
+            "100 hr / annual",
+            "r",
+            "paper element"
+          ],
+          [
+            "Spark plugs",
+            "100 hr / annual",
+            "r",
+            "gap 0.75 mm"
+          ],
+          [
+            "Grease pts (axle pivot, spindles, idler, lift)",
+            "50 hr / annual",
+            "g",
+            "JD HD Lithium"
+          ],
+          [
+            "Transaxle oil + filter",
+            "50 hr break-in, then 200 hr",
+            "r",
+            "Low-Visc Hy-Gard"
+          ],
+          [
+            "Valve clearance (JD dealer)",
+            "200 hr",
+            "g",
+            "—"
+          ],
+          [
+            "Deck blades & belt",
+            "seasonal",
+            "g",
+            "OK"
+          ],
+          [
+            "Daily pre-use",
+            "Daily",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "JD Select Series X570/X580/X584/X590 Operator's Manual (OMM174377, PDF on file) — manual-backed",
+        "manualUrl": "manuals/jd-x580.pdf",
+        "jobs": [
+          {
+            "t": "Engine Oil & Filter — 100 hr (OMM174377 p.43)",
+            "s": [
+              "Run to warm oil; park level, PTO off, brake set, key out; lift hood",
+              "Put pan under drain valve (A); remove drain cap (B), drain fully",
+              "Remove dipstick (C); wipe around oil filter (D)",
+              "Spin filter off; oil new gasket; install CW to gasket contact + ½ turn",
+              "Reinstall drain cap (B); begin refill ~2.1 L (2.2 qt) — add slowly, no higher than FULL, do not overfill",
+              "Install dipstick; idle, check leaks; stop, recheck; log at meter"
+            ],
+            "img": [
+              "manuals/img/jd-x580-oil-p43.png"
+            ]
+          },
+          {
+            "t": "Air Filter · Spark Plugs · Fuel Filter — 100 hr (OMM174377 p.47–48)",
+            "s": [
+              "Cool engine, key out. Lift out foam pre-cleaner (D) + paper element (E); replace paper if dirty (never wash it)",
+              "Clean air-cleaner base (F) carefully — no dirt into intake tube (G); do NOT oil the foam pre-cleaner",
+              "Reinstall onto intake tube (G); align clamp; cover thumbscrews (A) ¼ turn CW",
+              "Spark plugs: pull wire (A) each side, remove, wire-brush; gap (B) 0.75 mm (0.030 in)",
+              "Install plugs, torque 15 N·m (11 lb-ft) per procedure (Specs table shows 20 N·m — confirm); reconnect wires",
+              "Fuel filter: slide hose clamps off, swap paper filter same flow direction, check for leaks"
+            ],
+            "img": [
+              "manuals/img/jd-x580-plug-p48.png"
+            ]
+          },
+          {
+            "t": "Mower Deck · Blades · Grease — seasonal / 50 hr (OMM174377 p.39–40)",
+            "s": [
+              "Key out, PTO off, pull plug leads; block deck",
+              "Grease 3 spindle zerks (B) + idler arm pivot (C) + front axle pivot — 2 pumps JD HD Lithium (p.40)",
+              "Remove 3 blades (note sail dir); sharpen to bevel, balance each; replace if cracked",
+              "Check spindles + belt; scrape deck underside",
+              "Reinstall blades, torque 68 N·m (50 lb-ft); rear wheel bolt 84 N·m (62 lb-ft) if pulled"
+            ],
+            "img": [
+              "manuals/img/jd-x580-sched-p39.png"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "Mowers & Cutting Decks",
+    "items": [
+      {
+        "n": "72\" Woods Mower (PTO)",
+        "power": "—",
+        "loc": "Barn",
+        "basis": "Hours",
+        "st": "full",
+        "specs": [
+          [
+            "Type",
+            "72\" rear-discharge finish mower, 3 spindles"
+          ],
+          [
+            "Model",
+            "likely Woods RD7200 / RD7200-2 (confirm from plate)"
+          ],
+          [
+            "Drive",
+            "tractor PTO 540 rpm → gearbox → belt"
+          ],
+          [
+            "Gearbox oil",
+            "SAE 80W or 90W gear lube (80W-90)"
+          ],
+          [
+            "Grease",
+            "spindle zerks + driveline U-joints/slip yoke"
+          ]
+        ],
+        "sched": [
+          [
+            "Grease spindles + driveline",
+            "8 hr",
+            "r",
+            "—"
+          ],
+          [
+            "Blade sharpen & balance",
+            "20–25 hr",
+            "g",
+            "OK"
+          ],
+          [
+            "Gearbox oil level (80W-90)",
+            "seasonal",
+            "r",
+            "watch vent for weeping"
+          ],
+          [
+            "Belt & shields inspect",
+            "seasonal",
+            "g",
+            "OK"
+          ],
+          [
+            "Pre-use walk-around",
+            "each use",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "Woods RD6000-2/RD7200-2/RD8400-2 Operator's Manual",
+        "manualUrl": "https://cdn-assets.colemanequip.com/manuals/Woods-RD6000-2_RD7200-2_RD8400-2.pdf",
+        "jobs": [
+          {
+            "t": "Grease & Driveline (8 hr)",
+            "s": [
+              "Lower deck or block; tractor off, PTO disengaged",
+              "Grease all 3 spindle zerks",
+              "Grease driveline U-joints + slip yoke",
+              "Check driveline shield spins free",
+              "Check blade bolts + hardware tight"
+            ]
+          },
+          {
+            "t": "Blade Sharpen & Balance (20–25 hr)",
+            "s": [
+              "Block deck; remove the 3 blades",
+              "Sharpen to original bevel",
+              "Balance each blade — unbalanced kills spindles",
+              "Reinstall, torque blade bolts to spec (confirm)",
+              "Spin-check; confirm no contact"
+            ]
+          },
+          {
+            "t": "Gearbox Oil Check & Winterize (seasonal)",
+            "s": [
+              "Park level; clean around the gearbox",
+              "Check level at the level/breather plug — top up SAE 80W/90W",
+              "If vent weeps oil, replace breather/level plug (known issue)",
+              "Clean deck underside; touch up bare metal",
+              "Grease all fittings; store deck-down on blocks"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "2024 John Deere Z530R",
+        "power": "Gas",
+        "loc": "Shop",
+        "basis": "Hours",
+        "st": "full",
+        "specs": [
+          [
+            "Engine",
+            "Kawasaki FR730V V-twin, 726cc, 24hp @3600"
+          ],
+          [
+            "Engine oil",
+            "10W-30 (API SP/SN/SM), 2.1 L / 2.2 qt w/ filter (OM p.60)"
+          ],
+          [
+            "Fuel",
+            "17 L (4.5 gal)"
+          ],
+          [
+            "Spark plug",
+            "gap 0.75 mm (0.029 in); torque 20 N·m"
+          ],
+          [
+            "Tires",
+            "front 15 psi / rear 10 psi; wheel-nut 24 N·m"
+          ],
+          [
+            "Deck",
+            "54\" Accel Deep, 3 blades"
+          ],
+          [
+            "Trans",
+            "Dual hydrostatic"
+          ],
+          [
+            "Hours",
+            "51 meter (2026-07-31) · full service + blades @ 47"
+          ],
+          [
+            "Note",
+            "Maint. logged 10 h behind meter"
+          ]
+        ],
+        "sched": [
+          [
+            "Engine oil & filter",
+            "~97 meter hr",
+            "g",
+            "Full service @ 47 · next ~97 · 2.2 qt 10W-30"
+          ],
+          [
+            "Air filter + plugs + fuel filter",
+            "~147 meter hr",
+            "g",
+            "If covered at 47 full service"
+          ],
+          [
+            "Blade sharpen & balance",
+            "as needed",
+            "g",
+            "Sharpened @ 47"
+          ],
+          [
+            "Valve lash (JD dealer)",
+            "200 hr",
+            "r",
+            "—"
+          ],
+          [
+            "Daily pre-use",
+            "Daily",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "JD Z515E/Z530M/Z530R Operator's Manual (PDF, on file) — manual-backed",
+        "manualUrl": "manuals/jd-z530r.pdf",
+        "jobs": [
+          {
+            "t": "Engine Oil & Filter — 50 hr (manual pp.35–36)",
+            "s": [
+              "Warm oil; park level, park brake on, PTO off, key out",
+              "Clean around dipstick; disconnect drain hose Ⓑ, route down behind trans reservoir",
+              "Remove drain cap Ⓑ, drain fully; wipe & remove oil filter Ⓒ/Ⓓ",
+              "Light coat clean oil on new filter gasket; install CW to contact + ½ turn",
+              "Refit drain cap + re-attach drain hose to engine",
+              "Refill 2.1 L (2.2 qt) 10W-30 to FULL — don't overfill; idle, check leaks; log at meter −10h"
+            ],
+            "img": [
+              "manuals/img/jd-z530r-oil-p36.png"
+            ]
+          },
+          {
+            "t": "Air Filter · Plugs · Fuel Filter — 100 hr (manual pp.37–38, 41)",
+            "s": [
+              "Cool engine, key out, leads off. Remove flywheel screen Ⓐ/Ⓑ (3 screws), clean debris",
+              "Remove shroud Ⓒ/Ⓓ (6 screws); clean fan area + cooling fins; reinstall aligning slots to intake ridge (screen 3.0 N·m)",
+              "Air filter: lift cover, replace paper element Ⓔ (never wash/blow); seat onto intake tube Ⓕ, tighten thumbscrew Ⓖ, close cover Ⓗ",
+              "Spark plugs: gap 0.75 mm (0.029 in), torque 20 N·m",
+              "Fuel filter (p.41): pinch hose clamps, swap filter same flow direction, check for leaks"
+            ],
+            "img": [
+              "manuals/img/jd-z530r-air-p38.png"
+            ]
+          },
+          {
+            "t": "Blade Sharpen & Deck Clean — 100 hr",
+            "s": [
+              "Key out, PTO off, pull plug leads, block deck",
+              "Remove 3 blades, note sail direction",
+              "Sharpen to bevel, balance each",
+              "Scrape deck underside, check spindles & belt",
+              "Reinstall, anti-seize; wheel-nut torque 24 N·m"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Toro 22\" Recycler Max",
+        "power": "Gas",
+        "loc": "Shop",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Model",
+            "21485 / 21485CA — self-propel auto-pace (S/N 416586324)"
+          ],
+          [
+            "Size",
+            "36 kg (80 lb); 151 / 59 / 109 cm"
+          ],
+          [
+            "Cut",
+            "22\" Recycler; bag-on-demand recycle/bag; don't cut below 51 mm (2\")"
+          ],
+          [
+            "Engine",
+            "Briggs & Stratton 725EXi 163cc"
+          ],
+          [
+            "Engine oil",
+            "0.44 L (15 fl oz), SAE 30 or 10W-30, API SJ+ (fill ~3/4 then dipstick — residual oil)"
+          ],
+          [
+            "Blade bolt",
+            "82 N·m (60 ft-lb) — torque wrench req"
+          ],
+          [
+            "Spark plug",
+            "reinstall 20 N·m (15 ft-lb); Toro 130-8167 (gap = engine manual)"
+          ],
+          [
+            "Air filter",
+            "Toro 130-8165 — tap-clean, no oil"
+          ],
+          [
+            "Fuel",
+            "87 oct, ≤10% ethanol, fresh <30 days"
+          ]
+        ],
+        "sched": [
+          [
+            "Oil level + 3-sec blade-stop",
+            "each use",
+            "g",
+            "OK"
+          ],
+          [
+            "Clean under deck",
+            "after each use",
+            "g",
+            "OK"
+          ],
+          [
+            "Air filter service",
+            "25 hr",
+            "r",
+            "tap-clean/replace"
+          ],
+          [
+            "Air filter replace + blade + engine clean",
+            "yearly",
+            "r",
+            "—"
+          ],
+          [
+            "Oil change (optional)",
+            "yearly",
+            "g",
+            "0.44 L"
+          ],
+          [
+            "Empty fuel tank",
+            "yearly/storage",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "Toro 22in Recycler Max Interactive Operator's Manual — Model 21485/21485CA (online interactive manual; figures render inline by Fig #)",
+        "manualUrl": "https://manuals.toro.com/268899/index.html",
+        "jobs": [
+          {
+            "t": "Pre-Use & Safe Start — 3-sec blade stop (manual)",
+            "s": [
+              "Check engine oil on level ground, top to Full (Fig 10)",
+              "Fuel fresh <30 days, stabilized (Fig 9)",
+              "Air filter clean; deck + area clear of throwable objects",
+              "Blade bolt tight, edge sharp, not cracked",
+              "Start holding blade-control bar; release → engine + blade STOP within 3 sec (else stop, see dealer)",
+              "PPE: eye/hearing protection, long pants, slip-resistant shoes"
+            ]
+          },
+          {
+            "t": "Blade Replacement & Deck Cleaning (manual)",
+            "s": [
+              "Engine off, parts stopped, disconnect spark-plug wire (Fig 23)",
+              "Run tank dry / hand-pump fuel; tip onto side, air filter UP (Fig 27)",
+              "Block blade with wood; remove bolt, save all hardware",
+              "Install blade — curved ends toward housing (Fig 28)",
+              "Torque blade bolt to 82 N·m (60 ft-lb) with a torque wrench",
+              "After each use: clean clippings from under the deck (Fig 18), run to dry"
+            ]
+          },
+          {
+            "t": "Engine Oil Service & Storage (manual)",
+            "s": [
+              "Warm engine, stop, pull spark-plug wire; level surface",
+              "Remove dipstick — Full/High/Low (Fig 25)",
+              "Tip on side, air-filter UP, drain via fill tube (Fig 26)",
+              "Refill ~3/4 of 0.44 L (15 fl oz) SAE 30/10W-30 API SJ+; wait 3 min; set by dipstick — don't overfill (residual oil)",
+              "Storage: stabilizer + run dry; remove plug, add 30 ml (1 fl oz) oil, pull rope to coat",
+              "From storage: install plug, torque 20 N·m (15 ft-lb); check oil; fresh fuel"
+            ]
+          },
+          {
+            "t": "Air Filter Service — 25 hr / yearly (manual, Fig 24)",
+            "s": [
+              "Engine off/cool, spark-plug wire off",
+              "Unclip top of air-filter cover, open (Fig 24)",
+              "Remove filter; if excessively dirty, replace",
+              "Otherwise tap gently on a hard surface — DO NOT oil",
+              "Reinstall filter, re-clip cover"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "Loader Attachments",
+    "items": [
+      {
+        "n": "Frontier AP10F Pallet Fork",
+        "power": "Manual",
+        "loc": "Barn",
+        "basis": "As-needed",
+        "st": "part",
+        "specs": [
+          [
+            "Type",
+            "fixed-tine loader pallet fork (Frontier/Deere AP10 series)"
+          ],
+          [
+            "PIN",
+            "1XFAP10FAR0030841 (confirmed from plate 2026-07-05)"
+          ],
+          [
+            "Rated capacity",
+            "567 kg / 1,250 lb tines — LOADER lift limit governs, not this"
+          ],
+          [
+            "Tine length",
+            "36.0 in — confirmed JD_AP10F_SpecSheet 2026-07-09"
+          ],
+          [
+            "Tine section",
+            "1.0×3.0 in (36-in config)"
+          ],
+          [
+            "Carrier",
+            "Deere style 100 global carrier, Quick-Change pin lock"
+          ],
+          [
+            "Weight",
+            "~170 lb operational (36-in; sheet 170/198)"
+          ],
+          [
+            "Dims",
+            "H 24.5 in · L 45.0 in · W 49.24 in"
+          ],
+          [
+            "Fluids",
+            "none — structural/wear inspection only"
+          ]
+        ],
+        "sched": [
+          [
+            "Tines/welds/frame + pin-lock inspect",
+            "each use",
+            "g",
+            "OK"
+          ],
+          [
+            "Set-screw / tine-lock tight",
+            "each use",
+            "g",
+            "confirm torque from OM"
+          ],
+          [
+            "Tine carriage bar lube",
+            "periodic",
+            "g",
+            "confirm lube from OM"
+          ],
+          [
+            "Weld & carrier-hook inspect",
+            "periodic",
+            "g",
+            "OK"
+          ],
+          [
+            "Clean + touch-up (storage)",
+            "seasonal",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "Spec sheet on file (frontier-ap10f-specsheet.pdf); AP10F/AP11F OM (PC13380) still needed for grease/torque",
+        "manualUrl": "manuals/frontier-ap10f-specsheet.pdf",
+        "jobs": [
+          {
+            "t": "Mount & Pre-Use Inspection (each use)",
+            "s": [
+              "Line the 4044M loader carrier to the fork frame; seat on the hooks",
+              "Pick up slightly and ENGAGE the pin-lock — confirm both locks fully seated",
+              "Tines straight (not spread/bent); no cracks at heels or welds",
+              "Set screws / tine locks tight; forks set to the pallet width (3 positions, no tools)",
+              "Confirm loader lift capacity ≥ intended load (1,250 lb tine rating is NOT the lift limit)",
+              "Load path clear of people; keep load low & tilted back"
+            ]
+          },
+          {
+            "t": "Tine, Weld & Carriage Service (periodic)",
+            "s": [
+              "Support forks on flat ground; tractor off",
+              "Inspect each tine straight + tine heel/shank for cracks (cracked/bent tine = replace, don't weld-repair)",
+              "Inspect all frame welds + backrest for cracks; carrier-hook holes for wear",
+              "Confirm set screws hold tines rigid (torque — confirm from OM)",
+              "Wipe tine-carriage bar; light lube so forks reposition (lube — confirm from OM)",
+              "Clean off mud; touch up bare metal for storage"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "Ground-Engaging Attachments",
+    "items": [
+      {
+        "n": "Woods BB600-2 Box Blade",
+        "power": "Manual",
+        "loc": "Barn",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Type",
+            "3-pt box blade — front+rear cutting edges + scarifier shanks"
+          ],
+          [
+            "Width",
+            "6 ft / 7 ft family (confirm from plate)"
+          ],
+          [
+            "Hitch",
+            "Cat. 1 three-point"
+          ],
+          [
+            "Wear items",
+            "reversible cutting edges; replaceable scarifier points"
+          ],
+          [
+            "Fluids",
+            "none — no engine"
+          ]
+        ],
+        "sched": [
+          [
+            "Inspect edges/shanks + hardware",
+            "each use",
+            "g",
+            "OK"
+          ],
+          [
+            "Re-torque edge/shank bolts",
+            "after first sessions",
+            "r",
+            "they seat & loosen"
+          ],
+          [
+            "Flip/replace cutting edges",
+            "when rounded",
+            "g",
+            "OK"
+          ],
+          [
+            "Replace scarifier points",
+            "when worn",
+            "g",
+            "keep spares"
+          ],
+          [
+            "Clean + oil edges (storage)",
+            "seasonal",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "Woods box-blade parts/manual (Messick's BB600-2)",
+        "manualUrl": "https://www.messicks.com/catalogs/woods/bb600-2-box-blade",
+        "jobs": [
+          {
+            "t": "Mount & Pre-Use",
+            "s": [
+              "Back tractor square to the blade",
+              "Connect lower arms + lynch pins",
+              "Connect top link; set length for level vs. dig",
+              "Confirm all pins seated",
+              "Check edges/shanks tight; raise to transport"
+            ]
+          },
+          {
+            "t": "Cutting Edge & Scarifier Service",
+            "s": [
+              "Lower/block the blade; tractor off",
+              "Flip reversible edges if rounded one side; replace if both worn",
+              "Re-torque edge bolts; re-check next session",
+              "Replace worn scarifier points; set depth",
+              "Wire-wheel rust, oil edges for storage"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Husqvarna CRT900 Tiller",
+        "power": "Gas",
+        "loc": "Shop",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Type",
+            "counter-rotating rear-tine tiller (CRT)"
+          ],
+          [
+            "Engine oil",
+            "SAE 30 (>32°F), API SG–SL; ~0.6 L / 20 oz (confirm)"
+          ],
+          [
+            "Fuel",
+            "~3 qt (2.8 L) fresh unleaded"
+          ],
+          [
+            "Engine",
+            "Briggs-class OHV — confirm model from plate"
+          ],
+          [
+            "Tine gearbox oil",
+            "type & qty — confirm from manual"
+          ]
+        ],
+        "sched": [
+          [
+            "Check engine oil",
+            "each use",
+            "r",
+            "SAE 30"
+          ],
+          [
+            "Break-in oil change",
+            "first 5 hr",
+            "r",
+            "—"
+          ],
+          [
+            "Air filter clean/replace",
+            "25 hr/seasonal",
+            "r",
+            "—"
+          ],
+          [
+            "Tine gearbox oil level",
+            "seasonal",
+            "r",
+            "confirm spec"
+          ],
+          [
+            "Stabilize fuel + annual oil",
+            "yearly",
+            "g",
+            "gums easily"
+          ]
+        ],
+        "manual": "Husqvarna CRT900 Owner's Manual",
+        "manualUrl": "https://www.husqvarna.com/us/support/crt900/",
+        "jobs": [
+          {
+            "t": "Engine Oil Change",
+            "s": [
+              "Warm, shut off, disconnect spark plug",
+              "Drain fully (plug or tip-drain per engine manual)",
+              "Reinstall drain plug",
+              "Refill SAE 30 to FULL (~0.6 L/20 oz — confirm)",
+              "Reconnect plug; run; recheck; check leaks"
+            ]
+          },
+          {
+            "t": "Pre-Use & Seasonal Service",
+            "s": [
+              "Pre-use: oil level, fresh fuel, tines clear, belt cover on",
+              "Air filter: clean or replace — never run without it",
+              "Spark plug: inspect/clean/replace; gap per manual (confirm)",
+              "Drive belt: inspect; tine gearbox: check oil level (confirm spec)",
+              "Storage: stabilize fuel or run carb dry; oil bare metal"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "Chainsaws & Pole Tools",
+    "items": [
+      {
+        "n": "Husqvarna 460 Rancher 24\"",
+        "power": "2-Stroke",
+        "loc": "Shop",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Engine",
+            "60.3 cm³ 2-stroke, idle 2700 rpm — man. p.42"
+          ],
+          [
+            "Bar/chain",
+            "24\" bar, 3/8\" .050\" (84 DL); manual covers 13–24\" — bar-stamp IMG_1107"
+          ],
+          [
+            "Fuel mix",
+            "50:1 (2%), unleaded 87+ octane — p.19"
+          ],
+          [
+            "Plug",
+            "NGK BPMR 7A / Champion RCJ 7Y, gap 0.020\"/0.5mm — p.36,42"
+          ],
+          [
+            "Oiler",
+            "adjustable pump; factory pos 2; 20–24\" bar → pos 3 — p.36"
+          ],
+          [
+            "Air filter",
+            "clean (brush/wash) or replace — p.35"
+          ]
+        ],
+        "sched": [
+          [
+            "Chain file/sharpen",
+            "1–3 tanks",
+            "g",
+            "OK"
+          ],
+          [
+            "Air filter clean/replace",
+            "weekly/as needed — p.38",
+            "r",
+            "—"
+          ],
+          [
+            "Spark plug (gap 0.5mm)",
+            "monthly — p.36,38",
+            "r",
+            "—"
+          ],
+          [
+            "Bar turn + oiler check",
+            "daily — p.38",
+            "g",
+            "OK"
+          ],
+          [
+            "Chain-brake band wear",
+            "replace <0.6mm — p.38",
+            "g",
+            "OK"
+          ],
+          [
+            "Chain brake test",
+            "each use",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "Husqvarna 455/460 Rancher Operator's Manual (PDF, on file — doc 1153137-95)",
+        "manualUrl": "manuals/husqvarna-460.pdf",
+        "jobs": [
+          {
+            "t": "Air Filter, Spark Plug & Oiler (man. p.35–36)",
+            "s": [
+              "Brake on, engine cool. Remove air-filter cover; lift out filter",
+              "Clean by brushing/shaking; or wash in water + detergent; dry. Replace if damaged/old",
+              "Spark plug: check gap 0.020\"/0.5mm (NGK BPMR 7A); replace ~monthly. Suppressor plug only",
+              "Bar tip sprocket: grease each refuel with grease gun",
+              "Oiler adjust: factory pos 2; set pos 3 for the 24\" bar (screw anti-clockwise = more oil)"
+            ],
+            "img": [
+              "manuals/img/husq460-airfilter-p35.png",
+              "manuals/img/husq460-plug-oilpump-p36.png"
+            ]
+          },
+          {
+            "t": "Maintenance Schedule — daily/weekly/monthly (man. p.38)",
+            "s": [
+              "DAILY: clean saw; check throttle lock & chain brake; turn bar, clean groove & oiler hole; check chain & sprocket; sharpen; tight nuts/screws; no fuel leaks",
+              "WEEKLY: check cooling system, starter cord & return spring, vibration dampers; deburr bar; clean spark-arrestor screen; clean carb compartment",
+              "MONTHLY: check brake band (replace <0.024\"/0.6mm), clutch centre/drum/spring; clean spark plug; check fuel hose & filter; empty & clean fuel + oil tanks; check cables"
+            ],
+            "img": [
+              "manuals/img/husq460-maint-p38.png"
+            ]
+          },
+          {
+            "t": "Bar & Chain Service + Winterize",
+            "s": [
+              "Remove bar/chain, clean groove & oiler holes",
+              "Dress rails square, deburr, flip bar for even wear",
+              "Reinstall (cutters forward), tension, top bar oil",
+              "Storage: empty fuel & oil tanks, run carb dry; coat bar in oil; relieve tension; bar guard on"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Husqvarna 545 Mark II 20\"",
+        "power": "2-Stroke",
+        "loc": "Shop",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Engine",
+            "50.1 cm³ X-Torq, 2.7/3.6 kW/hp @ 9900, idle 2800 — man. p.33"
+          ],
+          [
+            "Bar/chain",
+            "20\" bar, .325\" .050\" (per saw); drive sprocket Rim/7 — p.33"
+          ],
+          [
+            "Fuel",
+            "50:1 quality 2-stroke oil; octane ≥90 RON/87 AKI"
+          ],
+          [
+            "Plug",
+            "NGK CMR6H, gap 0.5mm — p.33"
+          ],
+          [
+            "Capacities",
+            "fuel 0.53 L (1.12 pt); bar-oil 0.32 L (0.68 pt); wt 5.3 kg — p.33"
+          ],
+          [
+            "Air filter",
+            "clean mesh — p.26"
+          ]
+        ],
+        "sched": [
+          [
+            "Chain file/sharpen",
+            "1–3 tanks",
+            "g",
+            "OK"
+          ],
+          [
+            "Air filter clean/replace",
+            "weekly — p.21,26",
+            "r",
+            "—"
+          ],
+          [
+            "Spark plug (gap 0.5mm)",
+            "monthly — p.21,26",
+            "r",
+            "—"
+          ],
+          [
+            "Bar deburr + guide-bar check",
+            "weekly — p.21,30",
+            "g",
+            "OK"
+          ],
+          [
+            "Brake band check",
+            "monthly — p.21,23",
+            "g",
+            "OK"
+          ],
+          [
+            "Chain brake test",
+            "each use",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "Husqvarna 545 Mark II Operator's Manual (PDF, on file — doc 1159727-95 / 544-005)",
+        "manualUrl": "manuals/husqvarna-545.pdf",
+        "jobs": [
+          {
+            "t": "Maintenance Schedule — daily/weekly/monthly (man. p.21)",
+            "s": [
+              "DAILY: clean saw (no oil on handles); check throttle trigger & lockout, vibration dampers, chain brake & chain catcher",
+              "WEEKLY: clean cooling system (p.31); check starter/rope/spring; lubricate needle bearing (p.29); deburr guide bar (p.30); clean spark-arrestor mesh",
+              "MONTHLY: check brake band (p.23), clutch centre/drum/spring; clean spark plug (p.26); clean carburettor externals; check fuel filter & hose",
+              "Winter (<-5°C/23°F): fit winter cover P/N 595 96 76-01; remove above -5°C"
+            ],
+            "img": [
+              "manuals/img/husq545-maint-p21.png"
+            ]
+          },
+          {
+            "t": "Air Filter & Spark Plug (man. p.26)",
+            "s": [
+              "Engine cool, chain brake engaged, remove spark-plug cap",
+              "Air filter: remove cover, lift mesh filter; clean; refit so it seals — keep clean (AutoTune reads fueling)",
+              "Spark plug: check NGK CMR6H, gap 0.5 mm; replace if fouled — wrong plug can damage piston/cylinder",
+              "Reassemble; verify stop switch & throttle before use"
+            ],
+            "img": [
+              "manuals/img/husq545-airfilter-p26.png"
+            ]
+          },
+          {
+            "t": "Chain Filing & Sharpening + Bar (man. p.27–30)",
+            "s": [
+              "Brake on, engine off, clamp bar",
+              "Use .325\" .050\" round file + Husqvarna file gauge (not the 460's 3/8\")",
+              "Equal strokes per cutter, both sides; keep filing angle",
+              "Lower depth gauges (rakers) as cutters shorten",
+              "Deburr bar rails, clean groove & oiler, flip bar; re-tension, oil"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Stihl HT 131 Z Pole Pruner",
+        "power": "2-Stroke",
+        "loc": "Shop",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Engine",
+            "STIHL 4-MIX 36.3cc, 1.4 kW (1.90 hp), max 10,200 rpm (p.43)"
+          ],
+          [
+            "Fuel/oil tanks",
+            "fuel 0.53 L (17.9 oz) · bar oil 0.22 L (7.4 oz) (p.43)"
+          ],
+          [
+            "Bar/chain",
+            "10/12 in bar · 3/8\" P PMM3, gauge 1.1 mm (.043) (p.43)"
+          ],
+          [
+            "Plug",
+            "NGK CMR 6H, gap 0.5 mm, replace ~100 h (p.36/43)"
+          ],
+          [
+            "Valve (4-MIX)",
+            "dealer check if power low — OM prints no value (p.39)"
+          ],
+          [
+            "Note",
+            "No chain brake; run 50:1"
+          ]
+        ],
+        "sched": [
+          [
+            "Complete machine — inspect/clean",
+            "before + end of work",
+            "g",
+            "OK"
+          ],
+          [
+            "Chain — sharpen/tension/oil",
+            "each use / as req",
+            "g",
+            "OK"
+          ],
+          [
+            "Guide bar — clean & turn",
+            "weekly",
+            "g",
+            "OK"
+          ],
+          [
+            "Air filter — clean",
+            "weekly (replace if power low)",
+            "g",
+            "OK"
+          ],
+          [
+            "Spark plug — gap/replace",
+            "gap yearly / 100 h",
+            "r",
+            "CMR 6H 0.5mm"
+          ],
+          [
+            "Idle — chain must not turn",
+            "before + end of work",
+            "g",
+            "OK"
+          ],
+          [
+            "Valve clearance (4-MIX)",
+            "dealer if power low",
+            "r",
+            "OM no value"
+          ],
+          [
+            "Pre-use (high-reach safety)",
+            "each use",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "STIHL HT 131 Instruction Manual (PDF, on file)",
+        "manualUrl": "manuals/stihl-ht131.pdf",
+        "jobs": [
+          {
+            "t": "Chain/Bar/Air Filter Service (man. pp.23,33,34,41–42)",
+            "s": [
+              "Stop switch off, engine cool",
+              "File chain 3/8\" P PMM3 at factory angle, 2–3 strokes/cutter",
+              "Lower depth gauges (rakers) as cutters shorten",
+              "Chain tension: sits on bar underside but pulls freely by hand (p.33)",
+              "Clean bar groove & oiler hole, check 6/7-T sprocket",
+              "Clean air filter (replace only if power low, p.34); top bar oil 0.22 L"
+            ],
+            "img": [
+              "manuals/img/stihl-ht131-chain-filing.png",
+              "manuals/img/stihl-ht131-depth-gauge.png",
+              "manuals/img/stihl-ht131-air-filter.png",
+              "manuals/img/stihl-ht131-chain-tension.png"
+            ]
+          },
+          {
+            "t": "Pre-Use & Safe Start (man. p.27)",
+            "s": [
+              "Full PPE before fueling/assembling",
+              "Inspect head, chain sharpness/tension, bar",
+              "Extension locks fully seated",
+              "Fill 50:1 fuel + bar oil",
+              "NO chain brake — verify stop switch; chain must not turn at idle",
+              "Clear fall zone; spotter for high work"
+            ],
+            "img": [
+              "manuals/img/stihl-ht131-starting-controls.png"
+            ]
+          },
+          {
+            "t": "Spark Plug & Storage (man. p.36)",
+            "s": [
+              "Remove cover, pull boot, unscrew plug (p.36)",
+              "Clean plug; check/adjust electrode gap 0.5 mm (p.43)",
+              "Replace after ~100 operating hours or if eroded",
+              "Storage ≥30 days: drain & clean fuel tank, dispose fuel properly",
+              "Refit plug + cover firmly; press boot on snugly"
+            ],
+            "img": [
+              "manuals/img/stihl-ht131-spark-plug.png",
+              "manuals/img/stihl-ht131-storage-sprocket.png"
+            ]
+          },
+          {
+            "t": "Valve Check (4-MIX) — dealer",
+            "s": [
+              "4-MIX has valves that need periodic check",
+              "OM prints NO clearance value — dealer/service item (p.39)",
+              "Symptom: low power or very high cranking effort",
+              "Have STIHL dealer check/adjust valve clearance",
+              "Winterize: stabilize or drain fuel, run dry"
+            ],
+            "video": "https://www.youtube.com/watch?v=3x4tVC1vib8"
+          }
+        ]
+      },
+      {
+        "n": "Stihl KM 110 R-Z KombiSystem",
+        "power": "2-Stroke",
+        "loc": "Shop",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Engine",
+            "STIHL 4-MIX (4-stroke on mix), 31.4 cc, bore 40 × stroke 25 mm (p.23)"
+          ],
+          [
+            "Power",
+            "1.05 kW (1.4 bhp) @ 7,000 rpm; idle 2,800 (p.23)"
+          ],
+          [
+            "Fuel",
+            "50:1 STIHL mix — no separate oil fill; tank 0.53 L (17.9 oz) (p.23)"
+          ],
+          [
+            "Valve clearance",
+            "0.10 mm intake & exhaust — dealer @ first 139 hr (p.20/23)"
+          ],
+          [
+            "Plug",
+            "Bosch USR 7AC (resistor), gap 0.5 mm; replace @100 hr (p.20/23)"
+          ],
+          [
+            "Weight",
+            "4.5 kg (9.9 lb) dry, no KombiTool (p.23)"
+          ]
+        ],
+        "sched": [
+          [
+            "Air filter clean / replace if damaged",
+            "monthly visual (p.16/20)",
+            "r",
+            "—"
+          ],
+          [
+            "Spark plug gap / replace",
+            "gap monthly; replace 100 hr (p.20)",
+            "r",
+            "Bosch USR 7AC 0.5mm"
+          ],
+          [
+            "Valve clearance (dealer)",
+            "first 139 hr then per symptoms (p.20)",
+            "g",
+            "0.10mm — dealer task"
+          ],
+          [
+            "Combustion chamber (dealer, CARB)",
+            "139 hr then every 150 hr (p.20)",
+            "g",
+            "—"
+          ],
+          [
+            "Grease attachment gearheads",
+            "seasonal",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "STIHL KM 110 R Instruction Manual (PDF, on file)",
+        "manualUrl": "manuals/stihl-km110.pdf",
+        "jobs": [
+          {
+            "t": "Air Filter, Plug & Fuel Pickup (p.16/17)",
+            "s": [
+              "Clean around filter cover; open cover; remove + clean/replace filter (p.16)",
+              "Never run without the air filter",
+              "Plug: inspect; correct plug = Bosch USR 7AC, gap 0.5 mm (p.23); replace @100 hr",
+              "Fuel-pickup body = dealer item (chart p.20)",
+              "Always run fresh 50:1; stabilize/run dry for storage (p.18)"
+            ],
+            "img": [
+              "manuals/img/stihl-km110-air-filter.png",
+              "manuals/img/stihl-km110-spark-plug.png"
+            ]
+          },
+          {
+            "t": "Valve Clearance (4-MIX) — DEALER task (p.20/23)",
+            "s": [
+              "Manual assigns valve check to a STIHL dealer after first 139 hr",
+              "Confirmed clearance value: 0.10 mm intake & exhaust (p.23)",
+              "No user rocker-adjust procedure printed for KM 110 R",
+              "If DIY: engine COLD, TDC compression, 0.10 mm feeler, ¼-turn adjust",
+              "Warranty on 4-MIX repairs needs dealer + genuine parts (p.24)"
+            ],
+            "video": "https://www.youtube.com/watch?v=3x4tVC1vib8"
+          },
+          {
+            "t": "Attachment Change & Gearhead Grease",
+            "s": [
+              "Engine off; loosen coupler wing screw",
+              "Press lock button; pull attachment shaft out",
+              "Insert new attachment until it clicks + locks",
+              "Tighten clamp; tug to confirm; fit correct guard",
+              "Grease attachment gearhead (Stihl gear grease) seasonally"
+            ],
+            "img": [
+              "manuals/img/stihl-km110-approved-kombitools.png"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "Power, Water & Cleaning",
+    "items": [
+      {
+        "n": "Honda EU2000i Generator",
+        "power": "Gas",
+        "loc": "Shop",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Engine",
+            "Honda GX100T, 98.5cc 4-stroke OHC single (manual p.71)"
+          ],
+          [
+            "Output",
+            "2.0 kVA max / 1.6 kVA rated, 120V 13.3A; DC 12V 8A (p.71)"
+          ],
+          [
+            "Fuel",
+            "0.95 US gal (3.6 L) (p.71)"
+          ],
+          [
+            "Engine oil",
+            "SAE 10W-30 API SJ+, 13 oz (0.40 L), no filter (p.48/71)"
+          ],
+          [
+            "Plug",
+            "NGK CR5HSB, gap 0.024–0.028 in / 0.6–0.7 mm (p.52/71)"
+          ]
+        ],
+        "sched": [
+          [
+            "Engine oil change",
+            "first 20 hr, then 100 hr / 6 mo (p.42)",
+            "r",
+            "No hours set"
+          ],
+          [
+            "Air cleaner clean",
+            "50 hr / 3 mo (p.42/51)",
+            "r",
+            "—"
+          ],
+          [
+            "Spark plug check-adjust / replace",
+            "100 hr / 200 hr (p.42/52)",
+            "r",
+            "—"
+          ],
+          [
+            "Pre-use (oil, CO clearance)",
+            "each use",
+            "g",
+            "OK"
+          ],
+          [
+            "Stabilize/drain fuel for storage",
+            ">30 days (p.58)",
+            "r",
+            "—"
+          ]
+        ],
+        "manual": "Honda EU2000i Owner's Manual 00X31Z396030 (PDF, on file)",
+        "manualUrl": "manuals/honda-eu2000i.pdf",
+        "jobs": [
+          {
+            "t": "Engine Oil Change (p.47)",
+            "s": [
+              "Warm 1–2 min, stop engine, fuel valve OFF",
+              "Remove maintenance cover; place drain pan",
+              "Remove oil filler cap; tip toward fill neck, drain fully",
+              "Refill to upper limit ~13 oz (0.40 L) 10W-30, don't overfill",
+              "Reinstall caps/cover; run, recheck level"
+            ],
+            "img": [
+              "manuals/img/eu2000i-oil-p47.png",
+              "manuals/img/eu2000i-maint-p42.png"
+            ]
+          },
+          {
+            "t": "Air Cleaner Service (p.49)",
+            "s": [
+              "Engine off/cool, fuel OFF; remove maintenance cover",
+              "Remove air-cleaner cover screw + cover",
+              "Remove main + outer filters; clean if dirty (p.51), replace if damaged",
+              "Reinstall filters; seat rubber seal in cover groove",
+              "Refit both covers tight — never run without filters"
+            ],
+            "img": [
+              "manuals/img/eu2000i-air-p49.png"
+            ]
+          },
+          {
+            "t": "Spark Plug Service (p.52)",
+            "s": [
+              "Engine cool; remove plug maintenance cover + cap",
+              "Clean around base; remove plug with wrench",
+              "Inspect/replace with CR5HSB if fouled/cracked",
+              "Set gap 0.6–0.7 mm (0.024–0.028 in), bend side electrode only",
+              "Hand-start to avoid cross-thread, seat, refit cap + cover"
+            ],
+            "img": [
+              "manuals/img/eu2000i-plug-p52.png",
+              "manuals/img/eu2000i-specs-p71.png"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "NorthStar Pressure Washer",
+        "power": "Gas",
+        "loc": "Shop",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Engine",
+            "Honda GC190, 187cc OHC (engine manual)"
+          ],
+          [
+            "Output",
+            "~3000–3100 PSI @ ~2.5 GPM (confirm NorthStar model plate)"
+          ],
+          [
+            "Engine oil",
+            "SAE 10W-30 API SJ+, 20 oz (0.58 L), drain plug + washer, no filter (GC190 p.7)"
+          ],
+          [
+            "Pump oil",
+            "non-detergent pump oil (NorthStar pump manual — confirm grade)"
+          ],
+          [
+            "Plug",
+            "NGK BPR6ES, gap 0.028–0.030 in / 0.70–0.80 mm (GC190 p.8)"
+          ]
+        ],
+        "sched": [
+          [
+            "Engine oil change",
+            "first 5 hr, then 50 hr / 6 mo (25 hr heavy load) (GC190 p.6)",
+            "r",
+            "—"
+          ],
+          [
+            "Air filter clean / replace",
+            "25 hr / 200 hr (GC190 p.6/7)",
+            "r",
+            "—"
+          ],
+          [
+            "Spark plug check-adjust / replace",
+            "100 hr / 200 hr (GC190 p.6/8)",
+            "r",
+            "—"
+          ],
+          [
+            "Pump oil check/change",
+            "each use / per pump manual",
+            "r",
+            "—"
+          ],
+          [
+            "Winterize pump (pump saver)",
+            "before freeze",
+            "g",
+            "✓ Done 3/1/26"
+          ],
+          [
+            "Pre-use (purge air, water on)",
+            "each use",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "Honda GC190 Engine Owner's Manual (PDF, on file) + NorthStar model manual",
+        "manualUrl": "manuals/honda-gc190.pdf",
+        "jobs": [
+          {
+            "t": "Engine Oil Change (GC190 p.7)",
+            "s": [
+              "Warm engine, stop, fuel off",
+              "Remove oil filler cap/dipstick [1], drain plug [2] + washer [3]",
+              "Drain fully; reinstall drain plug with NEW washer, tighten",
+              "Refill to upper limit ~20 oz (0.58 L) 10W-30, don't overfill",
+              "Run, recheck level, check for leaks"
+            ],
+            "img": [
+              "manuals/img/gc190-oil-air-p7.png",
+              "manuals/img/gc190-maint-p6.png"
+            ]
+          },
+          {
+            "t": "Air Cleaner Service (GC190 p.7)",
+            "s": [
+              "Press latch tabs [1], remove air cleaner cover [2]",
+              "Check paper filter [3]; clean or replace",
+              "Clean: tap on hard surface, or blow ≤30 psi from clean side out — never brush",
+              "Wipe air cleaner body [4] + cover with moist rag",
+              "Reinstall filter + cover; replace filter every 200 hr"
+            ],
+            "img": [
+              "manuals/img/gc190-oil-air-p7.png"
+            ]
+          },
+          {
+            "t": "Spark Plug Service (GC190 p.8)",
+            "s": [
+              "Engine cool; remove plug cap, clean around base",
+              "Remove plug; inspect/replace with NGK BPR6ES",
+              "Set gap 0.70–0.80 mm (0.028–0.030 in)",
+              "Hand-thread to avoid cross-thread, then seat",
+              "Refit cap; check-adjust 100 hr, replace 200 hr"
+            ],
+            "img": [
+              "manuals/img/gc190-plug-p8.png"
+            ]
+          },
+          {
+            "t": "Pump Service & Winterize",
+            "s": [
+              "Engine off, relieve pressure",
+              "Disconnect, drain water",
+              "Run pump saver through until it exits",
+              "Check/change pump oil (non-detergent, per pump manual)",
+              "Stabilize fuel, store dry/above freezing"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "DR Power Leaf Cyclone",
+        "power": "Gas",
+        "loc": "Yard",
+        "basis": "Hours",
+        "st": "full",
+        "specs": [
+          [
+            "Model",
+            "Premier / Pro / Pro-XL — confirm from serial label"
+          ],
+          [
+            "Impeller",
+            "welded steel, 3,400 rpm"
+          ],
+          [
+            "Vacuum",
+            "1,562 CFM · 90 MPH suction"
+          ],
+          [
+            "Chipper (Pro/XL)",
+            "D2 tool steel 52–56 RC, 4.12×1.25×.25\", 2\" branches"
+          ],
+          [
+            "Collector",
+            "306 gal / 500 lb (Pro/XL); 50° dump tilt"
+          ],
+          [
+            "Tires",
+            "tubeless pneumatic 4.10/3.50-5"
+          ],
+          [
+            "Engine",
+            "B&S (Premier/Pro) or Subaru (Pro-XL) — oil/plug per engine manual (confirm)"
+          ]
+        ],
+        "sched": [
+          [
+            "Check engine oil / condition / tires / hoses",
+            "before each use",
+            "g",
+            "OK (p.23)"
+          ],
+          [
+            "Clean engine air filter",
+            "25 h",
+            "r",
+            "p.23"
+          ],
+          [
+            "Change engine oil",
+            "1st @5h, then 25h",
+            "r",
+            "qty per engine man."
+          ],
+          [
+            "Lube impeller + wheel bearings",
+            "100 h",
+            "g",
+            "auto grease (p.23)"
+          ],
+          [
+            "Replace plug + air filter + coupling sleeve",
+            "100 h",
+            "g",
+            "p.23"
+          ]
+        ],
+        "manual": "DR Leaf & Lawn Vacuum Manual (PDF, on file)",
+        "manualUrl": "manuals/dr-power-leaf-cyclone.pdf",
+        "jobs": [
+          {
+            "t": "Lubrication — Wheel & Impeller Bearings (100h, man. p.23–24)",
+            "s": [
+              "Both engines OFF, wait 5 min, disconnect vac plug wire (p.23)",
+              "Grease gun + Multipurpose Automotive Grease; 1/2\" wrench",
+              "Wheel bearings: pump grease into each wheel fitting (Fig 38)",
+              "Impeller: remove RH coupling cover (1/2\" socket, bolts+washers)",
+              "Pump grease onto the impeller-bearing fitting (Fig 39–40)",
+              "Reinstall the coupling cover"
+            ],
+            "img": [
+              "manuals/img/dr-cyclone-maint-p23.png",
+              "manuals/img/dr-cyclone-lube-p24.png"
+            ]
+          },
+          {
+            "t": "Engine Oil & Air Filter (man. p.16, p.23)",
+            "s": [
+              "Level surface; B&S dipstick screwed down, Subaru not (p.16)",
+              "Oil: 1st change @5h, then every 25h — grade/qty per engine manual",
+              "Use high-detergent oil only; do not overfill (p.16)",
+              "Air filter: clean every 25h, replace every 100h — no flammable solvent (p.4)",
+              "Spark plug: replace every 100h — part # per engine manual",
+              "Dispose used oil safely (p.24)"
+            ],
+            "img": [
+              "manuals/img/dr-cyclone-maint-p23.png"
+            ]
+          },
+          {
+            "t": "Chipper Blade Replacement — Pro/XL (man. p.26)",
+            "s": [
+              "NEVER re-sharpen — unbalances impeller; always fit a NEW blade",
+              "Both engines OFF, 5 min, disconnect plug wire",
+              "Tools: 1/2\" wrench, 3/16\" Allen, awl — don't drop parts in housing",
+              "Remove 4 hopper locknuts; lift hopper (Fig 45)",
+              "Unscrew Hand Knob; slide inlet duct off housing lip (Fig 46)",
+              "Unbolt worn blade; fit new D2 blade 4.12×1.25×.25\"; reassemble in reverse"
+            ],
+            "img": [
+              "manuals/img/dr-cyclone-chipper-p26.png"
+            ]
+          },
+          {
+            "t": "Pre-Use Checklist (man. p.23, p.18)",
+            "s": [
+              "Engine oil level, general condition, tire pressure, hoses",
+              "Clean engine exterior & cooling fins",
+              "Fuel OK; gas shut-off OPEN; inlet adapter in place (safety switch)",
+              "Clear site of stones/metal/glass; people/animals clear",
+              "Never hand-clear hose/hopper running — stop + disconnect plug",
+              "Eye & ear protection"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "UTVs & Powersports",
+    "items": [
+      {
+        "n": "Honda CRF110F",
+        "power": "4-Stroke",
+        "loc": "Shop",
+        "basis": "Hours",
+        "st": "full",
+        "specs": [
+          [
+            "Engine",
+            "Air-cooled 109cc 4-stroke (50×55.6mm), 9.0:1, idle 1400rpm"
+          ],
+          [
+            "Trans",
+            "4-speed, automatic clutch, e+kick start"
+          ],
+          [
+            "Engine oil",
+            "10W-30 API SJ+ JASO MA, 1.0 L (drain) / 1.15 L (disassembly); drain bolt 24 N·m — p.61–66,143"
+          ],
+          [
+            "Plug",
+            "NGK CPR6EA-9S, gap 0.8–0.9mm — p.145"
+          ],
+          [
+            "Valve clr (cold)",
+            "Intake 0.10 · Exhaust 0.15 mm — p.78,145"
+          ],
+          [
+            "Tires",
+            "F 70/100-14, R 80/100-12; both 15 psi cold — p.146"
+          ],
+          [
+            "Fuel",
+            "3.7 L, unleaded 86+ octane — p.143"
+          ]
+        ],
+        "sched": [
+          [
+            "Engine oil change",
+            "init 100mi/1mo, then 600mi/6mo",
+            "r",
+            "set hours"
+          ],
+          [
+            "Valve clearance inspect",
+            "each interval",
+            "r",
+            "IN 0.10 / EX 0.15 cold"
+          ],
+          [
+            "Air filter clean & re-oil",
+            "each interval (more in dust)",
+            "r",
+            "—"
+          ],
+          [
+            "Spark plug inspect",
+            "each interval",
+            "r",
+            "CPR6EA-9S"
+          ],
+          [
+            "Drive chain I&L",
+            "300mi / 500km / 3mo",
+            "g",
+            "slack 10–20mm"
+          ],
+          [
+            "Fuel filter replace (dealer)",
+            "4,800 mi / 8,000 km",
+            "r",
+            "—"
+          ],
+          [
+            "Pre-ride",
+            "each ride",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "2024 Honda CRF110F Owner's Manual (PDF, on file)",
+        "manualUrl": "manuals/honda-crf110f.pdf",
+        "jobs": [
+          {
+            "t": "Engine Oil Change (man. p.65–66)",
+            "s": [
+              "Warm: idle 3–5 min, stop, wait 2–3 min; park level",
+              "Clean around & remove oil fill cap/dipstick; drain pan under crankcase",
+              "Unscrew oil drain bolt (1) — do NOT touch the cam-chain push-rod bolt (3)",
+              "Tilt side to side to finish draining",
+              "Fit a NEW sealing washer; install drain bolt → 24 N·m (18 lbf·ft)",
+              "Refill ~1.0 L 10W-30 JASO MA; idle 3–5 min; check level to upper mark",
+              "Check for leaks; dispose of used oil properly"
+            ],
+            "img": [
+              "manuals/img/honda-crf110f-oil.png"
+            ]
+          },
+          {
+            "t": "Valve Clearance Inspect (man. p.76–78)",
+            "s": [
+              "Engine COLD. Remove head cover (bolts+mount rubbers) & gasket",
+              "Remove crankshaft & timing hole caps (O-rings)",
+              "Rotate flywheel CCW until T mark (8) aligns with index mark (9)",
+              "Confirm TDC compression — rockers free (both valves closed); if tight rotate 360°",
+              "Feeler-gauge each valve: Intake 0.10±0.02 · Exhaust 0.15±0.02 mm",
+              "Adjust: loosen lock nut (12), set slight drag, retighten while holding screw; recheck",
+              "Oil new O-rings; refit caps, new head-cover gasket (mount rubbers UP-mark out)"
+            ],
+            "img": [
+              "manuals/img/honda-crf110f-valve.png"
+            ]
+          },
+          {
+            "t": "Air Cleaner Service (man. p.68–69)",
+            "s": [
+              "Remove bolts (1) & housing cover (2); remove air cleaner (3)",
+              "Wash gently in high-flash solvent (kerosene) — NOT gasoline; squeeze, don't wring",
+              "Inspect foam for tears — replace if damaged; dry THOROUGHLY",
+              "Work in Pro Honda Foam Filter Oil evenly; squeeze out excess",
+              "Clean housing; refit aligning hole (4) to boss (5); refit cover"
+            ],
+            "img": [
+              "manuals/img/honda-crf110f-air.png"
+            ]
+          },
+          {
+            "t": "Spark Plug & Drive Chain (man. p.79–80,103)",
+            "s": [
+              "Plug: clean base, remove; inspect electrodes/insulator",
+              "Gap to 0.8–0.9 mm (NGK CPR6EA-9S); reinstall, don't over-torque alloy head",
+              "Chain: slack 10–20 mm; inspect rollers/pins/sprockets",
+              "Clean & lube with Pro Honda HP Chain Lube; confirm axle alignment marks"
+            ],
+            "img": [
+              "manuals/img/honda-crf110f-plug.png"
+            ]
+          },
+          {
+            "t": "Pre-Ride Inspection (man. p.25)",
+            "s": [
+              "Engine oil to upper mark",
+              "Chain slack 10–20 mm, lubed; tires 15 psi F&R",
+              "Brakes firm; throttle snaps closed; kill switch works",
+              "Throttle limiter set for rider; fuel fresh, cap secure",
+              "Helmet + PPE every rider, every ride"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Arctic Cat Prowler Pro UTV",
+        "power": "Gas",
+        "loc": "Barn",
+        "basis": "Hours",
+        "st": "full",
+        "specs": [
+          [
+            "Engine",
+            "812cc liquid-cooled 4-cycle triple (bore 72×stroke 66.5)"
+          ],
+          [
+            "Engine oil",
+            "API SM 0W-40 synthetic, 2.37 L / 2.5 qt (man. p.20,39)"
+          ],
+          [
+            "Coolant",
+            "5.67 L / 6 qt, 60/40 mix"
+          ],
+          [
+            "Front diff",
+            "198 mL 80W-90 hypoid"
+          ],
+          [
+            "Transaxle",
+            "1.21 L EP fluid"
+          ],
+          [
+            "Plug",
+            "F6RTC (p/n 3040-031), gap 1.0mm"
+          ],
+          [
+            "Tires",
+            "F 12 psi / R 14 psi (16 w/cargo); lug 100 ft-lb"
+          ],
+          [
+            "VIN",
+            "4UF1R4KBXNT300613"
+          ]
+        ],
+        "sched": [
+          [
+            "Engine oil & filter",
+            "break-in 50h, then 200h/2000mi",
+            "r",
+            "set hours"
+          ],
+          [
+            "Fluid levels check",
+            "100h/1000mi",
+            "r",
+            "coolant/diff/transaxle"
+          ],
+          [
+            "Air filter outer",
+            "100h/1000mi",
+            "r",
+            "more often in dust"
+          ],
+          [
+            "Diff + transaxle fluid",
+            "400h/4000mi",
+            "r",
+            "—"
+          ],
+          [
+            "CVT belt — inspect",
+            "200h/2000mi",
+            "r",
+            "check glaze/wear"
+          ],
+          [
+            "Spark plug",
+            "200h/2000mi",
+            "r",
+            "F6RTC, 1.0mm"
+          ],
+          [
+            "Valve lash (dealer)",
+            "500h/5000mi",
+            "r",
+            "—"
+          ],
+          [
+            "Brake fluid + coolant",
+            "24 months",
+            "r",
+            "—"
+          ]
+        ],
+        "manual": "2022 Prowler Pro Operator's Manual (PDF)",
+        "manualUrl": "manuals/prowler-pro.pdf",
+        "jobs": [
+          {
+            "t": "Engine Oil & Filter (man. p.45–46)",
+            "s": [
+              "Warm engine, OFF, level ground, PARK, key out",
+              "Remove middle seat + maintenance cover to reach filter",
+              "Tilt cargo box; loosen oil fill cap",
+              "Remove drain plug (bottom of engine); drain fully",
+              "Oil filter wrench: remove old filter (don't reuse); clean up",
+              "Oil the new filter O-ring; install; torque 20–25 N·m (14.8–18.4 ft-lb)",
+              "Install drain plug → 50 N·m (36.9 ft-lb); add 2.5 qt 0W-40 synthetic",
+              "Idle a few min; wait 1 min; recheck level on oil stick (don't overfill)",
+              "Check drain plug + filter for leaks; refit cover/seat; lower cargo box",
+              "Reset 200h interval + log"
+            ],
+            "img": [
+              "manuals/img/prowler-oil-p45.png",
+              "manuals/img/prowler-oil-p46.png",
+              "manuals/img/prowler-maint-p42.png"
+            ]
+          },
+          {
+            "t": "Front Diff & Transaxle Fluid (man. p.46)",
+            "s": [
+              "Level ground, engine OFF, PARK",
+              "Remove fill plugs: (A) front differential, (C) transaxle",
+              "To change: drain each, reinstall drain plugs",
+              "Refill front diff 198 mL (6.7 oz) 80W-90 hypoid",
+              "Refill transaxle 1.21 L (41 oz) EP fluid",
+              "Reinstall fill plugs; check for leaks; reset 400h interval"
+            ],
+            "img": [
+              "manuals/img/prowler-maint-p42.png"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "KTM 350 EXC-F",
+        "power": "4-Stroke",
+        "loc": "Shop",
+        "basis": "Hours",
+        "st": "full",
+        "specs": [
+          [
+            "Engine",
+            "350cc DOHC 4-stroke, liquid-cooled"
+          ],
+          [
+            "Engine oil",
+            "10W/50 full synth, 1.0 L"
+          ],
+          [
+            "Coolant",
+            "0.95 L, to −25°C"
+          ],
+          [
+            "Fuel",
+            "8.5 L, ROZ 95 premium"
+          ],
+          [
+            "Plug",
+            "NGK LMAR9AI-10, gap 1.0mm"
+          ],
+          [
+            "Drive",
+            "14:48, 520 chain; fork oil SAE 4, 175ml/leg"
+          ]
+        ],
+        "sched": [
+          [
+            "Engine oil & filter",
+            "~15 h / 3000km",
+            "r",
+            "set hours"
+          ],
+          [
+            "Air filter clean",
+            "each dusty ride",
+            "r",
+            "—"
+          ],
+          [
+            "Chain clean/lube + sprockets",
+            "each ride",
+            "g",
+            "OK"
+          ],
+          [
+            "Valve clearance check",
+            "~40–50 h",
+            "r",
+            "—"
+          ],
+          [
+            "Brake/clutch fluid + fuel filter",
+            "6000km/24mo",
+            "r",
+            "—"
+          ]
+        ],
+        "manual": "KTM 350 EXC-F Operator's Manual (PDF)",
+        "manualUrl": "manuals/ktm-350-excf-owners-manual.pdf",
+        "jobs": [
+          {
+            "t": "Engine Oil & Filter — exact (manual §18.3, p.138–141)",
+            "s": [
+              "Warm to operating temp, shut off; bike upright on stand; remove skid plate (Championship Ed.)",
+              "Remove screw plug ① (oil screen)+O-rings; remove magnetic drain plug ② (with seal ring)",
+              "Remove screw plug ③ (O-ring) — do NOT remove screw ④; drain fully; clean screens & sealing surfaces",
+              "Refit plug ③ with NEW O-ring → torque 15 Nm (M20×1.5)",
+              "Push oil screen ⑤ fully home; refit plug ① with O-ring → 15 Nm",
+              "Refit magnetic drain plug ② with NEW seal ring → 20 Nm (M12×1.5)",
+              "Remove 6 cover screws, take off filter cover; pull cartridge filter ⑦ with lock-ring pliers (KTM 51012011000)",
+              "Lay bike on its side; fill filter housing ⅓ full with oil; insert new filter; oil the cover O-ring",
+              "Refit cover → screws 10 Nm (M6); stand upright; remove filler plug ⑨; add 1.0 L 10W/50 full synthetic",
+              "Refit filler plug; run briefly; check sight glass (engine off, wait 1 min); top up if below lower edge; refit skid plate"
+            ],
+            "img": [
+              "manuals/img/ktm-oil-p139.png",
+              "manuals/img/ktm-oil-p140.png"
+            ]
+          },
+          {
+            "t": "Air Filter Service (manual §12.24–12.26, p.79–80)",
+            "s": [
+              "Remove air filter box cover (pull at area A, push forward)",
+              "Detach tab ①; remove the air filter with its support",
+              "Wash the filter in cleaner and dry fully — never run the engine without a filter",
+              "Grease the sealing edge (area A) with long-life grease",
+              "Mount filter on support; seat retaining pin in bushing; secure with the holding tab",
+              "Refit the air-box cover. Clean every dusty ride"
+            ],
+            "img": [
+              "manuals/img/ktm-airfilter-p79.png",
+              "manuals/img/ktm-airfilter-p80.png"
+            ]
+          },
+          {
+            "t": "Chain & Sprocket — clean/lube/tension (manual §12.35–12.38, p.88–91)",
+            "s": [
+              "On lift stand: rinse loose dirt (gentle jet); remove old grease with chain cleaner; dry",
+              "Apply off-road chain spray; wipe excess — keep off tires & brake discs",
+              "Check tension at the lower run: target 58–61 mm; measure at several spots (uneven wear)",
+              "If out of spec: loosen axle, turn adjusters EQUALLY (watch alignment marks), reset 58–61 mm, torque axle",
+              "Inspect chain, rear + front sprocket and chain guide for wear; replace as a set if worn"
+            ],
+            "img": [
+              "manuals/img/ktm-chain-p90.png",
+              "manuals/img/ktm-chain-p91.png"
+            ]
+          },
+          {
+            "t": "Valve Clearance Check (~40–50 h) — video + workshop spec",
+            "s": [
+              "Engine COLD (overnight); remove seat/tank/shrouds to reach the valve cover",
+              "Remove valve cover; rotate to TDC on compression (cam lobes off the valves)",
+              "Measure intake & exhaust with feeler gauges; RECORD each reading",
+              "Compare to the KTM Repair-Manual spec — NOT printed in the operator manual (confirm; don't guess)",
+              "If out of spec → shim adjustment (workshop job); refit cover w/ gasket, torque, check leaks"
+            ],
+            "video": "https://www.youtube.com/watch?v=rMDbPnq0ByA"
+          }
+        ]
+      },
+      {
+        "n": "Yamaha TT-R110E",
+        "power": "4-Stroke",
+        "loc": "Shop",
+        "basis": "Hours",
+        "st": "full",
+        "specs": [
+          [
+            "Engine",
+            "Air-cooled 110cc 4-stroke SOHC, 51×54mm, 9.3:1"
+          ],
+          [
+            "Trans",
+            "4-speed, wet auto centrifugal clutch (no lever), e-start"
+          ],
+          [
+            "Engine oil",
+            "YAMALUBE 10W-40 API SG+/JASO MA · 0.80 L change · drain 20 N·m"
+          ],
+          [
+            "Plug",
+            "NGK CR6HSA, gap 0.6–0.7mm (.024–.028\"), 13 N·m"
+          ],
+          [
+            "Carb",
+            "Mikuni VM16, idle 1600–1800 rpm"
+          ],
+          [
+            "Tires",
+            "15 psi F/R (cold)"
+          ],
+          [
+            "Chain slack",
+            "40–56 mm"
+          ],
+          [
+            "Fuel",
+            "Regular/E10 · 3.8 L tank"
+          ]
+        ],
+        "sched": [
+          [
+            "Engine oil change",
+            "init 30h, then 90h/6mo",
+            "r",
+            "0.80 L 10W-40 MA · 20 N·m"
+          ],
+          [
+            "Air filter clean/oil",
+            "90h/6mo",
+            "r",
+            "wet foam element"
+          ],
+          [
+            "Chain — slack/lube",
+            "every ride",
+            "g",
+            "40–56 mm"
+          ],
+          [
+            "Spark plug",
+            "per schedule",
+            "r",
+            "CR6HSA .024–.028\""
+          ],
+          [
+            "Carb clean/drain",
+            "90h/seasonal",
+            "r",
+            "ethanol gums it"
+          ],
+          [
+            "Valve clearance (dealer)",
+            "per schedule, cold",
+            "r",
+            "OM omits value — confirm"
+          ]
+        ],
+        "manual": "Yamaha TT-R110E Owner's Manual UB5115E0 (B51-28199-15, PDF on file)",
+        "manualUrl": "manuals/yamaha-ttr110e.pdf",
+        "jobs": [
+          {
+            "t": "Engine Oil Change (manual p.7-9)",
+            "s": [
+              "Warm engine, then off; oil pan under crankcase",
+              "Remove filler cap + drain bolt ① and gasket ②; drain",
+              "New gasket; torque drain bolt 20 N·m (15 lb·ft)",
+              "Refill 0.80 L YAMALUBE 10W-40 (API SG+/JASO MA)",
+              "Idle & check leaks; dipstick to max engine off — MA oil only (wet clutch)"
+            ],
+            "img": [
+              "manuals/img/ttr110e-oil-p41.png"
+            ]
+          },
+          {
+            "t": "Air Filter Cleaning (manual p.7-10)",
+            "s": [
+              "Remove panel A; remove air-filter case cover ① (screws ②)",
+              "Pull sponge ① and mesh ② out",
+              "Clean mesh with solvent, wipe off; clean+squeeze sponge",
+              "Re-oil sponge with Yamaha foam air-filter oil; squeeze out excess",
+              "Reinstall; clean more often in wet/dusty riding"
+            ],
+            "img": [
+              "manuals/img/ttr110e-airfilter-p42.png"
+            ]
+          },
+          {
+            "t": "Drive Chain Maintenance (manual p.7-21)",
+            "s": [
+              "Sidestand, neutral, no weight on bike",
+              "Measure slack ① mid-run: spec 40.0–56.0 mm (1.57–2.20 in)",
+              "Clean + lube chain thoroughly; wipe excess",
+              "Adjust (dealer-advised): loosen axle nut ①/locknut ②, turn adjuster ③ equally L/R",
+              "Push wheel forward, re-torque, verify alignment marks"
+            ],
+            "img": [
+              "manuals/img/ttr110e-chain-p53.png"
+            ]
+          },
+          {
+            "t": "Pre-Ride Inspection + Plug (manual p.7-7)",
+            "s": [
+              "Tires 15 psi F/R cold; chain 40–56 mm; oil to dipstick FULL",
+              "Throttle free play 4–6 mm, snaps closed; drum brakes F/R firm",
+              "No clutch lever — automatic clutch; kill switch works",
+              "Fuel fresh (E10 OK), petcock on, no leaks",
+              "If hard-starting: check plug NGK CR6HSA gap 0.6–0.7 mm"
+            ],
+            "img": [
+              "manuals/img/ttr110e-plug-p39.png"
+            ]
+          },
+          {
+            "t": "Carb Cleaning (Mikuni VM16)",
+            "s": [
+              "Fuel petcock off, remove carb",
+              "Drop float bowl, clean jets w/ cleaner+air",
+              "Reassemble, set idle 1600–1800 rpm",
+              "Reinstall, test run",
+              "Drain bowl if storing to prevent gumming"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "Shop & Bench",
+    "items": [
+      {
+        "n": "Battery Charger",
+        "power": "Electric",
+        "loc": "Shop",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Type",
+            "Automatic 6V/12V charger + engine starter"
+          ],
+          [
+            "Battery types",
+            "STD · AGM · GEL (lead-acid)"
+          ],
+          [
+            "Charge rates",
+            "2 / 6 / 8 / 10 A + Boost + Engine Start"
+          ],
+          [
+            "Display",
+            "Voltage / Amps / Battery %"
+          ],
+          [
+            "Output cable",
+            "6-ga (AWG), per manual"
+          ],
+          [
+            "Model #",
+            "confirm from label (man. 0099002329E-00)"
+          ]
+        ],
+        "sched": [
+          [
+            "Clean clamps",
+            "each use",
+            "g",
+            "OK"
+          ],
+          [
+            "Inspect cords & plug",
+            "each use",
+            "g",
+            "OK"
+          ],
+          [
+            "Wipe case / clear vents",
+            "as needed",
+            "g",
+            "OK"
+          ],
+          [
+            "Store upright, clamps free",
+            "each use",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "Automatic Battery Charger Owner's Manual (PDF)",
+        "manualUrl": "manuals/battery-charger-manual.pdf",
+        "jobs": [
+          {
+            "t": "Charge / Maintain a Battery (manual p.7–9)",
+            "s": [
+              "Ventilated area, eye protection; ON/OFF to OFF; clean terminals",
+              "Connect + clamp first, then ground AWAY from the battery; plug in AC after",
+              "Set Boost/Charge-Maintain; pick battery type (STD/AGM/GEL) + rate (2/6/8/10A)",
+              "Press START — under 12.7V it auto-Boosts then finishes on Charge/Maintain",
+              "Green Charged/Maintaining LED = full (holds float); STOP → OFF → unplug → remove clamps"
+            ],
+            "img": [
+              "manuals/img/batterycharger-panel-p7.png",
+              "manuals/img/batterycharger-charge-p9.png"
+            ]
+          },
+          {
+            "t": "Boost & Engine Start / Jump (manual p.9–10)",
+            "s": [
+              "Battery MUST be installed in the vehicle (no-battery start damages the electrical system)",
+              "Boost: Rate Selection → Boost LED; for cold/near-dead, boost 10–15 min first",
+              "Engine Start: switch to Engine Start; '0.0' = check connection; pick Engine Start rate",
+              "Press START → wait for 'Rdy', crank ≤5 s, then wait 45 s between tries (180 s cool-down after 3 min)",
+              "After start: STOP → OFF → unplug AC → disconnect clamps; if it cranks but won't start, stop & diagnose elsewhere"
+            ],
+            "img": [
+              "manuals/img/batterycharger-charge-p9.png"
+            ]
+          },
+          {
+            "t": "Care, Cleaning & Storage (manual §12)",
+            "s": [
+              "Unplug from AC first (controls-off isn't enough)",
+              "Clean clamps each use; wipe off battery fluid to stop corrosion",
+              "Wipe the case; coil cords neatly",
+              "Store unplugged, upright, indoors, cool & dry",
+              "Never store clamps clipped together, on metal, or on the handle"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Bambu Labs 3D Printer",
+        "power": "Electric",
+        "loc": "Shop",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Type",
+            "FDM 3D printer (Bambu Lab)"
+          ],
+          [
+            "Model",
+            "confirm — CoreXY P1/X1 (A1 differs: no carbon rods)"
+          ],
+          [
+            "Carbon rods",
+            "clean w/ IPA ONLY — never grease"
+          ],
+          [
+            "Z lead screws",
+            "silicone-PTFE or white-lithium grease"
+          ],
+          [
+            "Build plate",
+            "wash soap+water; IPA between prints"
+          ],
+          [
+            "Nozzle",
+            "clear clogs; replace when worn"
+          ]
+        ],
+        "sched": [
+          [
+            "Clean X-axis carbon rods (IPA, no grease)",
+            "monthly",
+            "r",
+            "—"
+          ],
+          [
+            "Grease Z lead screws",
+            "~3 mo",
+            "r",
+            "—"
+          ],
+          [
+            "Belt-tension check (X & Y)",
+            "quarterly",
+            "r",
+            "belts stretch"
+          ],
+          [
+            "Clean build plate",
+            "each use/between prints",
+            "g",
+            "OK"
+          ],
+          [
+            "Firmware + dry filament",
+            "periodic",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "Bambu Lab Wiki — maintenance (confirm model page)",
+        "manualUrl": "https://wiki.bambulab.com/en/general/carbon-rods-clearance",
+        "jobs": [
+          {
+            "t": "Routine Maint — Carbon Rods, Lead Screws & Belts",
+            "s": [
+              "Power off; let nozzle/bed cool",
+              "Monthly: wipe X-axis carbon rods with IPA on microfiber — NEVER grease them",
+              "~3 mo: clean then thin-coat Z lead screws (silicone-PTFE or white lithium)",
+              "Quarterly: check X & Y belt tension per Bambu's procedure",
+              "Verify smooth/quiet X motion; free Z; clean prints"
+            ]
+          },
+          {
+            "t": "Build Plate & Nozzle Care",
+            "s": [
+              "Handle plate by EDGES only (oils kill adhesion)",
+              "Between prints: IPA wipe; periodically wash soap+water, dry",
+              "Pick correct plate type in slicer; re-seat squarely",
+              "Under-extrusion/clog → guided nozzle clean / cold-pull; replace worn nozzle",
+              "Re-run flow calibration after a nozzle swap"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Rabaconda Tire Changer",
+        "power": "Manual",
+        "loc": "Shop",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Type",
+            "manual tire changer — bead breaker + drop-center post"
+          ],
+          [
+            "Works on",
+            "tubeless, mousse, Tubliss, tube"
+          ],
+          [
+            "Spindle",
+            "20 mm standard; 12 mm for small hubs"
+          ],
+          [
+            "Gen",
+            "Gen4+ (rubber feet, post-2017)"
+          ],
+          [
+            "Fluids",
+            "none — manual tool; lifetime warranty"
+          ]
+        ],
+        "sched": [
+          [
+            "Wipe down / clean grit",
+            "each use",
+            "g",
+            "OK"
+          ],
+          [
+            "Inspect post/arm for nicks & burrs",
+            "each use",
+            "r",
+            "dress any found"
+          ],
+          [
+            "Light oil bead-breaker pivot",
+            "as needed",
+            "g",
+            "OK"
+          ],
+          [
+            "Use rim protectors (alloy)",
+            "each use",
+            "g",
+            "OK"
+          ],
+          [
+            "Store dry indoors",
+            "always",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "Rabaconda USA — FAQ & how-to",
+        "manualUrl": "https://us.rabaconda.com/pages/faq",
+        "jobs": [
+          {
+            "t": "Tire Change Procedure",
+            "s": [
+              "Deflate fully; remove valve core",
+              "Mount wheel on post (right spindle; rim protectors for alloy)",
+              "Break both beads with the arm — steady, not jerky",
+              "Lube beads; keep far bead in the DROP-CENTER; lever near bead off",
+              "Mount new tire (drop-center again); seat beads, set PSI, refit core"
+            ]
+          },
+          {
+            "t": "Care, Inspection & Storage",
+            "s": [
+              "Wipe post/arm/base clean of grit + soap each use",
+              "Inspect contact surfaces for nicks/burrs; dress with fine file",
+              "Light oil on the bead-breaker pivot; check it swings free",
+              "Confirm hardware tight; correct spindle on hand",
+              "Store indoors, dry; keep rim protectors with it"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Timber Tuff Chain Sharpener",
+        "power": "Electric",
+        "loc": "Shop",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Type",
+            "Bench/wall-mount electric chain grinder (CS-BWM)"
+          ],
+          [
+            "Motor",
+            "120V/60Hz, 230W, ~3,600 rpm"
+          ],
+          [
+            "Wheels incl.",
+            "1/8\" · 3/16\" · 1/4\" (5/32\"/7/32\" extra)"
+          ],
+          [
+            "Chain range",
+            "1/4\"–3/4\" pitch (match wheel to pitch)"
+          ],
+          [
+            "Angles",
+            "top-plate ~30°; head tilt ~60° (confirm per chain)"
+          ],
+          [
+            "Extras",
+            "15W work light; thermal overload"
+          ]
+        ],
+        "sched": [
+          [
+            "Inspect wheel (cracks/glaze/round)",
+            "each use",
+            "r",
+            "dress/replace if suspect"
+          ],
+          [
+            "Verify wheel matches chain pitch",
+            "each use",
+            "g",
+            "OK"
+          ],
+          [
+            "Blow/brush grit off head & vise",
+            "each use",
+            "g",
+            "OK"
+          ],
+          [
+            "Check cord/plug + guard",
+            "as needed",
+            "g",
+            "OK"
+          ],
+          [
+            "Replace worn grinding wheel",
+            "when worn/glazed",
+            "r",
+            "keep spares"
+          ]
+        ],
+        "manual": "Timber Tuff Tools — CS-BWM product page",
+        "manualUrl": "https://www.timbertufftools.com/product3-chainsaw-sharpeners-s-upright-bench-mount.php",
+        "jobs": [
+          {
+            "t": "Sharpen a Chain",
+            "s": [
+              "Eye/face + gloves; fit wheel to chain pitch (3/16\" suits 3/8\"/.325\" — confirm)",
+              "Set top-plate ~30° + head tilt; clamp chain, seat cutter to stop",
+              "Set depth/length stop so wheel just kisses the cutter at the gullet",
+              "Light passes — don't dwell; STOP before steel blues (overheat = ruined cutter)",
+              "Grind all same-hand cutters; flip vise + RESET length stop for the other hand",
+              "Lower depth gauges (rakers) separately to chain spec (~.025–.030\", confirm); re-tension + oil on saw"
+            ]
+          },
+          {
+            "t": "Wheel Change, Dressing & Storage",
+            "s": [
+              "UNPLUG before touching the wheel",
+              "Note flange order; fit correct-thickness wheel for the pitch; snug nut — don't overtighten",
+              "Refit guard; run 30–60s with no chain to confirm it runs true",
+              "Glazed wheel: lightly dress with a stone to expose fresh abrasive",
+              "Blow grit off head/vise/stops; store dry; keep spare wheels flat & unbroken"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "Household",
+    "items": [
+      {
+        "n": "Dyson Cordless #1 & #2",
+        "power": "Battery",
+        "loc": "House",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Type",
+            "Cordless cyclonic stick (V-series), ×2"
+          ],
+          [
+            "Washable parts",
+            "Filter + fluffy/soft-roller brush bar ONLY"
+          ],
+          [
+            "Battery",
+            "Removable Li-ion (model-dependent)"
+          ],
+          [
+            "Model",
+            "confirm from label (V8/V10/V11/V15…)"
+          ]
+        ],
+        "sched": [
+          [
+            "Wash filter",
+            "~monthly",
+            "r",
+            "warm water, dry ≥24h"
+          ],
+          [
+            "Clear brush bar (hair)",
+            "as needed",
+            "g",
+            "OK"
+          ],
+          [
+            "Check/clear blockages",
+            "suction drop",
+            "g",
+            "OK"
+          ],
+          [
+            "Empty bin",
+            "at max line",
+            "g",
+            "OK"
+          ],
+          [
+            "Replace filter set",
+            "~12–24 mo",
+            "r",
+            "confirm part #"
+          ]
+        ],
+        "manual": "Dyson support — clean your Dyson vacuum",
+        "manualUrl": "https://www.dyson.com/discover/insights/cleaning/tips/how-to-clean-your-dyson-vacuum-cleaner",
+        "jobs": [
+          {
+            "t": "Wash the Filter (~monthly)",
+            "s": [
+              "Remove the filter from the machine",
+              "Rinse under WARM tap water; squeeze; repeat until water runs clear",
+              "Shake out excess; dry COMPLETELY ≥24 h in good airflow (no heat source)",
+              "Refit only when fully dry — a damp filter causes mold + motor damage",
+              "Still weak? Check wand/head/bin for a blockage"
+            ]
+          },
+          {
+            "t": "Brush Bar & Blockage Clearing",
+            "s": [
+              "Remove the head; release the brush bar per your model",
+              "Cut/pull hair & fiber off the bar",
+              "Only the fluffy/soft-roller bar may be washed — COLD water, dry upright fully",
+              "Check bin (empty at max line), wand, and head inlets for clogs",
+              "Wipe head/bin/wand clean — do NOT wash these parts"
+            ],
+            "video": "https://www.dyson.com/discover/insights/cleaning/tips/how-to-clean-your-dyson-vacuum-cleaner"
+          }
+        ]
+      },
+      {
+        "n": "Dyson Air Purifier / Fan",
+        "power": "Electric",
+        "loc": "House",
+        "basis": "Seasonal",
+        "st": "part",
+        "specs": [
+          [
+            "Type",
+            "Tower purifier / fan (Pure Cool / Hot+Cool / Purifier line)"
+          ],
+          [
+            "Model",
+            "confirm from base/rear label (TP / HP / PH…)"
+          ],
+          [
+            "Filter",
+            "Sealed HEPA (+ carbon on most) — model-specific P/N"
+          ],
+          [
+            "Factory",
+            "https://www.dyson.com/air-treatment"
+          ],
+          [
+            "Filter light after change",
+            "Does NOT auto-clear — must reset filter life"
+          ]
+        ],
+        "sched": [
+          [
+            "Replace sealed filter",
+            "on filter light / F / app %",
+            "r",
+            "OEM only"
+          ],
+          [
+            "Reset filter life",
+            "after every install",
+            "r",
+            "remote Standby ~6s or app"
+          ],
+          [
+            "Clean outer mesh / loop",
+            "as needed",
+            "g",
+            "per model OM"
+          ],
+          [
+            "Remote batteries / app link",
+            "as needed",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "Dyson support — filter replace + life reset (model OM pending label)",
+        "manualUrl": "https://www.dyson.com/support",
+        "jobs": [
+          {
+            "t": "Filter Replace & Life Reset",
+            "s": [
+              "Open filter cover / loop; remove spent sealed filter",
+              "Install correct OEM filter for this model; latch cover fully",
+              "Standby mode",
+              "Remote: hold Standby ON/OFF ≈ 6 seconds until indicator resets — OR app: Settings → Filter life / Filter management → Reset filter life",
+              "Confirm filter light / F is gone"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "KitchenAid Fridge (20cf)",
+        "power": "Electric",
+        "loc": "House",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Model",
+            "KitchenAid KRFC136RPS, French door, counter-depth"
+          ],
+          [
+            "Capacity",
+            "~20 cu ft; interior water dispenser"
+          ],
+          [
+            "Water filter",
+            "EveryDrop EDRARXD1 (confirm from label)"
+          ],
+          [
+            "Air filter",
+            "FreshFlow (confirm part #)"
+          ]
+        ],
+        "sched": [
+          [
+            "Replace water filter",
+            "~6 mo / filter light",
+            "r",
+            "flush 3–4 gal after"
+          ],
+          [
+            "Clean condenser / grille",
+            "~6 mo",
+            "r",
+            "unplug first"
+          ],
+          [
+            "Clean & check door gaskets",
+            "periodic",
+            "g",
+            "OK"
+          ],
+          [
+            "Replace FreshFlow air filter",
+            "per indicator",
+            "r",
+            "confirm #"
+          ],
+          [
+            "Clean drip pan / under-unit",
+            "periodic",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "KitchenAid Owners Center — KRFC136RPS",
+        "manualUrl": "https://www.kitchenaid.com/owners-center-pdp.KRFC136RPS.html",
+        "jobs": [
+          {
+            "t": "Water Filter Replacement (~6 mo)",
+            "s": [
+              "Locate the filter (interior — confirm location in manual)",
+              "Release/turn out the old filter (minor spill is normal)",
+              "Insert + lock the new EveryDrop filter (EDRARXD1 — confirm #)",
+              "FLUSH ~3–4 gallons through the dispenser to clear carbon fines + air",
+              "Reset the filter indicator; check for leaks + clean taste"
+            ]
+          },
+          {
+            "t": "Condenser / Grille Clean + Seal Check",
+            "s": [
+              "Unplug or switch off at the breaker",
+              "Remove the base grille; vacuum/brush dust from condenser/coils + fan",
+              "Wipe the drip pan if accessible; confirm vents are clear",
+              "Clean door gaskets (warm soapy water); check tight seal/close",
+              "Refit grille; restore power. (Confirm if coils are accessible vs sealed)"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "LG Fridge (top-freezer)",
+        "power": "Electric",
+        "loc": "House",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Model",
+            "LG LT09S2000W, compact top-freezer"
+          ],
+          [
+            "Capacity",
+            "LG lists 9.0 cu ft (Index 8.6 — confirm)"
+          ],
+          [
+            "Water",
+            "No dispenser / no filter"
+          ],
+          [
+            "Defrost",
+            "Manual defrost (per LG guide)"
+          ]
+        ],
+        "sched": [
+          [
+            "Clean condenser / rear coils",
+            "~6 mo",
+            "r",
+            "unplug first"
+          ],
+          [
+            "Clean & check door gasket",
+            "periodic",
+            "g",
+            "OK"
+          ],
+          [
+            "Manual defrost",
+            "frost buildup",
+            "r",
+            "let melt — no sharp tools"
+          ],
+          [
+            "Check level + interior clean",
+            "periodic",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "LG support — LT09S2000W (manual + defrost guide)",
+        "manualUrl": "https://www.lg.com/us/support/product/lg-LT09S2000W.ASWCNA0",
+        "jobs": [
+          {
+            "t": "Manual Defrost (LG guide)",
+            "s": [
+              "Move food to a cooler",
+              "Turn off and UNPLUG the refrigerator",
+              "Open doors; let frost MELT naturally — towels to catch water",
+              "Do NOT chip ice with knives/picks (can puncture the liner/coil)",
+              "Wipe interior dry; plug in; reach temp before reloading food"
+            ],
+            "video": "https://www.lg.com/us/support/help-library/lg-refrigerator-how-to-manually-defrost--20152275056930"
+          },
+          {
+            "t": "Condenser / Coil Clean + Seal Check",
+            "s": [
+              "Unplug; pull the unit out to reach the back",
+              "Vacuum/brush dust off the rear condenser coils; clear vents",
+              "Wipe the gasket; check the seal; confirm the unit is level",
+              "Restore power"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Litter-Robot 4 (×2)",
+        "power": "Electric",
+        "loc": "House",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Model",
+            "Whisker Litter-Robot 4, ×2 (Wi-Fi app) · 15 V DC (p.35)"
+          ],
+          [
+            "Washable",
+            "Globe + bonnet + drawer — NO electronics inside globe (p.35); NEVER wet base/control panel (p.32)"
+          ],
+          [
+            "Litter",
+            "Clumping clay to MAX Fill Line ≈ 3.6–4.5 kg / 4 L (p.12); no wood/pine/non-clumping"
+          ],
+          [
+            "Cat min weight",
+            "1.36 kg for Automatic Mode (p.5, p.34)"
+          ],
+          [
+            "Sensors",
+            "Optical Curtain Sensors + Base Weight Scale — NOT lasers, NO rake (p.21, p.35)"
+          ],
+          [
+            "Odor",
+            "Carbon filter ~1 mo (globe underside, p.30); Base Seal Strips replace as worn (p.30)"
+          ]
+        ],
+        "sched": [
+          [
+            "Empty waste drawer + press Reset to zero",
+            "when Light Bar flashes blue (~2×/wk 2 cats, ~1×/wk 1)",
+            "g",
+            "OK"
+          ],
+          [
+            "Check/top-up litter to MAX line + Reset",
+            "weekly",
+            "g",
+            "OK"
+          ],
+          [
+            "Replace carbon filter",
+            "~monthly",
+            "g",
+            "OK"
+          ],
+          [
+            "Deep clean (globe + drawer + base + bezel)",
+            "≥ every 3 mo",
+            "g",
+            "OK"
+          ],
+          [
+            "Wipe bezel / curtain-sensor holes (dry towel)",
+            "not cycling",
+            "g",
+            "OK"
+          ],
+          [
+            "Replace base seal strips",
+            "as worn",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "Litter-Robot 4 Instruction Manual (PDF, on file)",
+        "manualUrl": "manuals/litter-robot-4.pdf",
+        "jobs": [
+          {
+            "t": "Empty Waste Drawer & Re-Zero (manual p.15)",
+            "s": [
+              "Light Bar flashing blue (or app alert) = drawer full — pull the Waste Drawer out",
+              "Gather the liner edges and dispose",
+              "Install a new liner (or any 37–49 L bag): wrap over the drawer flange, push rest to bottom",
+              "Slide the drawer back — keep the unit OFF walls for accurate weight sensing",
+              "Press RESET to zero the Weight Scale (watch for blue Light Bar to flash)",
+              "Check litter level; top up to MAX line if low, then Reset again"
+            ]
+          },
+          {
+            "t": "Deep Clean — Globe, Drawer, Base, Bezel (manual pp.30–33)",
+            "s": [
+              "Press Empty to dump all litter; return globe Home; remove ALL litter (wet litter = clay)",
+              "Turn OFF and unplug",
+              "Open bonnet (hold both release buttons); lift globe off by handle; remove carbon filter",
+              "Wash the GLOBE with Cleaner Spray/Wipes or mild soap+water (soak/hose OK — no electronics); dry fully",
+              "Clean the waste drawer; wipe bezel + curtain-sensor holes with a DRY towel; clear the anti-pinch bars",
+              "Wipe the BASE with disinfectant on a cloth — NEVER spray/soak it, NO bleach (p.32)",
+              "Reinstall globe (seat rear bearing pocket + gear track); latch bonnet; power on; press RESET to zero"
+            ],
+            "img": [
+              "manuals/img/lr4-carbon-sealstrips-p30.png"
+            ]
+          },
+          {
+            "t": "Bezel / Curtain-Sensor & Not-Cycling Fix (manual p.21)",
+            "s": [
+              "Unit not cycling / cat-sensor error = debris on bezel/curtain sensors (most common cause)",
+              "Turn off + unplug; remove globe, bonnet, and waste drawer",
+              "Lean the unit back to see the bezel holes",
+              "Wipe the bezel + each curtain-sensor hole with a DRY towel (optional compressed air)",
+              "Clear the dual anti-pinch bars of litter (p.28)",
+              "Reassemble, run a clean cycle, press RESET to zero; if jam/overload persists → check gear/motor for obstruction"
+            ],
+            "img": [
+              "manuals/img/lr4-sensors-p21.png"
+            ],
+            "video": "https://www.litter-robot.com/support/article/litter-robot-4-laser-sensor-cleaning-instructions/"
+          }
+        ]
+      },
+      {
+        "n": "NordicTrack X32i",
+        "power": "Electric",
+        "loc": "House",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Model",
+            "Commercial X32i — NTL39221"
+          ],
+          [
+            "Motor",
+            "4.25 CHP DurX Commercial Plus"
+          ],
+          [
+            "Incline",
+            "+40% / -6% decline"
+          ],
+          [
+            "Display",
+            "32\" rotating HD touchscreen, iFIT"
+          ],
+          [
+            "Belt",
+            "self-lubricating — DO NOT lube (service rep only)"
+          ],
+          [
+            "Adjust tool",
+            "stored hex/Allen key; power on surge suppressor"
+          ]
+        ],
+        "sched": [
+          [
+            "Wipe belt + frame (damp, mild soap), dry",
+            "after each session",
+            "g",
+            "OK"
+          ],
+          [
+            "Observe belt alignment; center if drifted",
+            "each use/monthly",
+            "r",
+            "left idler screw ½ turn"
+          ],
+          [
+            "Check belt tension",
+            "periodic/after high incline",
+            "r",
+            "lift edge 3–4in = correct"
+          ],
+          [
+            "Firmware + incline calibration",
+            "periodic",
+            "g",
+            "console Maint. menu"
+          ],
+          [
+            "Inspect/tighten hardware",
+            "periodic",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "NordicTrack X32i User's Manual (NTL39221)",
+        "manualUrl": "https://www.nordictrack.com/support",
+        "jobs": [
+          {
+            "t": "Belt Centering & Tension (manual p.30)",
+            "s": [
+              "Remove key + UNPLUG cord; use stored hex key",
+              "Centering: belt drifted LEFT → left idler screw CW ½ turn; RIGHT → CCW ½ turn (don't overtighten)",
+              "Tension too tight (belt slows): both idler screws CCW ¼ turn; slipping: both CW ¼ turn",
+              "Correct tension = lift each belt edge 3–4 in (8–10 cm) off the platform",
+              "Plug in, key in, walk a few min, re-check; repeat. NEVER lubricate the belt"
+            ]
+          },
+          {
+            "t": "Clean, Storage Recovery & Console Maint.",
+            "s": [
+              "Power off + UNPLUG; wipe belt/frame with damp cloth + mild soap, dry (never spray the unit)",
+              "Inspect/tighten hardware; check belt for stiffness/fraying",
+              "After storage: check belt centering + tension; confirm breaker set (tripped→wait 5 min, press in)",
+              "Console ≡ → Settings → Maintenance: update firmware + calibrate incline",
+              "Slow test walk on the handrails; confirm tracking + incline"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Frigidaire Fridge (22.1cf)",
+        "power": "Electric",
+        "loc": "House",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Model",
+            "Frigidaire Gallery GRMG2272CF, 4-door French-door, counter-depth"
+          ],
+          [
+            "Capacity",
+            "22.1 cu ft; interior door-edge water dispenser"
+          ],
+          [
+            "Water filter",
+            "PurePour PWF-2 / FPPWFU02 (confirm)"
+          ],
+          [
+            "Air filter",
+            "PureAir carbon (confirm part #)"
+          ],
+          [
+            "Features",
+            "Sabbath mode, Energy Star, filter indicators"
+          ]
+        ],
+        "sched": [
+          [
+            "Replace water filter (PWF-2/FPPWFU02)",
+            "~6 mo / filter light",
+            "r",
+            "flush 2–3 gal after; reset"
+          ],
+          [
+            "Replace PureAir air filter",
+            "~6 mo",
+            "r",
+            "confirm #"
+          ],
+          [
+            "Vacuum condenser / toe grille",
+            "~2×/yr",
+            "r",
+            "unplug first"
+          ],
+          [
+            "Clean & check door gaskets",
+            "quarterly",
+            "g",
+            "OK"
+          ],
+          [
+            "Check temps & ice maker",
+            "monthly",
+            "g",
+            "~37°F / ~0°F (confirm)"
+          ]
+        ],
+        "manual": "Frigidaire Owner Center — GRMG2272CF",
+        "manualUrl": "https://support.frigidaire.com/Owner-Center/Product-Support/GRMG2272CF",
+        "jobs": [
+          {
+            "t": "Water & Air Filter Replacement (~6 mo)",
+            "s": [
+              "Water filter: release the interior cartridge; pull the old one",
+              "Insert + lock the new PWF-2 / FPPWFU02 (confirm #)",
+              "FLUSH 2–3 gallons through the dispenser to clear air + carbon fines",
+              "Reset the water-filter indicator (hold filter/reset per manual)",
+              "Air filter: open PureAir housing, swap carbon filter, reset its indicator; log date"
+            ]
+          },
+          {
+            "t": "Condenser, Seals & Ice-Maker Care",
+            "s": [
+              "Unplug or breaker off",
+              "Remove toe grille; vacuum/brush condenser coils + fan (more with pets)",
+              "Wipe door gaskets (warm soapy water); dollar-bill drag test the seal",
+              "Confirm water supply valve open; check fill line for kinks/drips",
+              "Restore power; verify cooling + ice over 24h (blocked toe grille = #1 'runs warm')"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Whirlpool Upright Freezer",
+        "power": "Electric",
+        "loc": "House",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Model",
+            "Whirlpool WZF34X20DW07 (UL 20UFCR6), ~20 cu ft upright, white"
+          ],
+          [
+            "Serial",
+            "UE4506196 · mfg 2025-11"
+          ],
+          [
+            "Type",
+            "Frost-free (auto-defrost, 160W heater) — no manual defrost"
+          ],
+          [
+            "Electrical",
+            "115 VAC, 60 Hz, 3 A"
+          ],
+          [
+            "Refrigerant",
+            "R600a (flammable — sealed system = pro only)"
+          ],
+          [
+            "Clearance",
+            "3\" sides/top, 1\" rear"
+          ]
+        ],
+        "sched": [
+          [
+            "Clean condenser coils",
+            "6–12 mo",
+            "r",
+            "unplug; keep clear of ignition"
+          ],
+          [
+            "Door gasket check (dollar-bill test)",
+            "seasonal",
+            "g",
+            "OK"
+          ],
+          [
+            "Level check (slight rear tilt)",
+            "seasonal",
+            "g",
+            "OK"
+          ],
+          [
+            "Interior clean / defrost-drain verify",
+            "annual",
+            "g",
+            "OK"
+          ],
+          [
+            "Vent clearance",
+            "ongoing",
+            "g",
+            "3\"/1\""
+          ]
+        ],
+        "manual": "Whirlpool Owner Center — WZF34X20DW07",
+        "manualUrl": "https://www.whirlpool.com/services/manuals.html",
+        "jobs": [
+          {
+            "t": "Coil Clean & Gasket Care",
+            "s": [
+              "Unplug (R600a is flammable — no sealed-system work)",
+              "Access condenser coils (rear/base grille); vacuum + brush dust",
+              "Dollar-bill test the door gasket; clean/replace if not sealing",
+              "Set slight rearward tilt so the door self-closes",
+              "Confirm 3\" side/top + 1\" rear clearance; restore power"
+            ]
+          },
+          {
+            "t": "Interior Clean & Defrost Verify (annual)",
+            "s": [
+              "Empty + unplug; wipe interior with mild solution",
+              "Confirm auto-defrost drain is clear (no standing water/ice at base)",
+              "Restore power; let it return to temp before reloading"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Primo Water Dispenser",
+        "power": "Electric",
+        "loc": "House",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Type",
+            "Bottom-loading hot/cold, 5-gal bottle (item 4141740)"
+          ],
+          [
+            "Tanks",
+            "Separate hot + cold; rear hot/cold switches"
+          ],
+          [
+            "Hygiene",
+            "Wipe probe + spouts each bottle swap"
+          ],
+          [
+            "Safety",
+            "Scalding hot tap — keep child lock on"
+          ],
+          [
+            "Model",
+            "confirm exact line (Deluxe / Home Series)"
+          ]
+        ],
+        "sched": [
+          [
+            "Wipe probe, spouts & surrounds",
+            "every bottle change",
+            "r",
+            "food-grade sanitizer"
+          ],
+          [
+            "Empty & clean drip tray",
+            "weekly / as needed",
+            "g",
+            "prevents overflow"
+          ],
+          [
+            "Descale / deep-sanitize tanks",
+            "~3 mo",
+            "r",
+            "citric/vinegar; rinse well"
+          ],
+          [
+            "Self-sanitization cycle (if equipped)",
+            "per indicator",
+            "g",
+            "confirm this unit"
+          ],
+          [
+            "Wipe exterior",
+            "as needed",
+            "g",
+            "damp cloth only"
+          ]
+        ],
+        "manual": "Primo Brands — dispenser manuals",
+        "manualUrl": "https://primowater.com/manuals/",
+        "jobs": [
+          {
+            "t": "Bottle Change & Surface Sanitizing",
+            "s": [
+              "Unplug or stop dispensing; remove the empty bottle",
+              "Wipe probe, both spouts + surrounds with food-grade sanitizer; clean-water wipe",
+              "Seat the full bottle; restore power; let it prime",
+              "Dispense a cup from EACH tap to confirm flow",
+              "Empty, wash + dry the drip tray; reinsert"
+            ]
+          },
+          {
+            "t": "Tank Descale / Deep Sanitize (~quarterly)",
+            "s": [
+              "UNPLUG; turn rear HOT switch OFF; remove bottle",
+              "Drain BOTH hot + cold tanks (rear drains per manual)",
+              "Make descaler (citric acid or white vinegar ~1:3); pour in; sit ~30 min",
+              "Drain; rinse several times until no smell",
+              "Reinstall bottle, restore power, hot switch ON; discard first cup each tap (never re-energize hot tank empty)"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Hyperice Hypervolt",
+        "power": "Battery",
+        "loc": "House",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Type",
+            "Handheld percussion massager (recovery), Li-ion brushless"
+          ],
+          [
+            "Model",
+            "Hypervolt 2 Black (confirmed 2026-07-09)"
+          ],
+          [
+            "Charger",
+            "Supplied Hyperice charger ONLY for this unit"
+          ],
+          [
+            "First charge",
+            "Up to ~4 h before first use"
+          ],
+          [
+            "Duty cycle",
+            "Max ~1 h continuous; rest 30 min"
+          ],
+          [
+            "Manual",
+            "Darren: no separate OM required — product page is the reference"
+          ]
+        ],
+        "sched": [
+          [
+            "Charge (supplied charger only)",
+            "as needed",
+            "g",
+            "no overnight/unattended"
+          ],
+          [
+            "Wipe device + heads after use",
+            "each use",
+            "g",
+            "power off, damp cloth"
+          ],
+          [
+            "Inspect heads & threads",
+            "monthly",
+            "g",
+            "seat fully; replace cracked"
+          ],
+          [
+            "Store cool/dry, off charger",
+            "ongoing",
+            "g",
+            "out of direct sun"
+          ]
+        ],
+        "manual": "Hypervolt 2 Black product page (no separate OM required)",
+        "manualUrl": "https://hyperice.com/products/hypervolt-2-black",
+        "jobs": [
+          {
+            "t": "Charging & Battery Care",
+            "s": [
+              "Use ONLY the supplied Hyperice charger (confirm model for your variant)",
+              "First charge up to ~4 h before first use",
+              "Do NOT charge overnight or leave unattended while charging/running",
+              "Store at partial charge if idle long; recharge before use",
+              "End of life: recycle the battery at e-waste (never open/incinerate)"
+            ]
+          },
+          {
+            "t": "Cleaning & Storage",
+            "s": [
+              "Power OFF; remove the charger",
+              "Wipe body + attachment head with a damp, clean cloth (no submerging/solvents)",
+              "Let dry; reseat or remove the head",
+              "Store clean, cool, dry, out of direct sun; not on the charger long-term",
+              "Observe the ~1 h duty cycle — rest 30 min before reusing"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "BoxPlunge Cold Plunge",
+        "power": "Electric",
+        "loc": "House",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Type",
+            "Cold plunge w/ integrated chiller + skimmer + circulation pump"
+          ],
+          [
+            "Filter cartridge",
+            "standard 2.5\" × 10\" cartridge"
+          ],
+          [
+            "Pre-filter",
+            "removable skimmer (can hold mineral/pH media)"
+          ],
+          [
+            "Chiller",
+            "electric, continuous-run (confirm HP/voltage from label)"
+          ],
+          [
+            "Sanitation",
+            "ozone + hydrogen peroxide (H₂O₂) recommended"
+          ],
+          [
+            "Safety",
+            "on a GFCI; UNPLUG before plunging"
+          ]
+        ],
+        "sched": [
+          [
+            "Rinse pre-filter / skimmer",
+            "weekly",
+            "g",
+            "quick rinse"
+          ],
+          [
+            "Replace 2.5\"×10\" cartridge",
+            "~monthly",
+            "r",
+            "clarity + flow"
+          ],
+          [
+            "Sanitize (H₂O₂ / ozone)",
+            "ongoing",
+            "g",
+            "shower first"
+          ],
+          [
+            "Clean chiller coil / airflow",
+            "monthly",
+            "r",
+            "keep clearance"
+          ],
+          [
+            "Full water change + deep clean",
+            "every few months",
+            "g",
+            "fresh cartridge"
+          ]
+        ],
+        "manual": "BoxPlunge — official site + filtration product page",
+        "manualUrl": "https://www.boxplunge.com/",
+        "jobs": [
+          {
+            "t": "Filter & Water Care",
+            "s": [
+              "Pre-use: water clear, skimmer seated, showered, unit on GFCI (unplug before plunging)",
+              "Weekly: slip out the pre-filter/skimmer basket, rinse, reseat",
+              "Monthly (or if flow drops/clouds): swap the 2.5\"×10\" cartridge",
+              "Clean skimmer housing + cartridge with H₂O₂ for crystal-clear water",
+              "Maintain sanitation (ozone + peroxide); shower before every plunge"
+            ]
+          },
+          {
+            "t": "Chiller Care & Water Change",
+            "s": [
+              "UNPLUG the unit (off the GFCI) before any service",
+              "Dust the chiller condenser coil; confirm airflow clearance",
+              "Full change: drain tub, wipe shell, clean skimmer/pump inlet",
+              "Install fresh 2.5\"×10\" cartridge; refill clean water; restore GFCI power",
+              "Re-establish sanitation; circulate before first use (refrigerant = pro only)"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Blackstone 4-Burner Griddle",
+        "power": "Gas",
+        "loc": "House",
+        "basis": "As-needed",
+        "st": "part",
+        "specs": [
+          [
+            "Type",
+            "Outdoor propane 4-burner 36\" cart griddle with hood + extendable shelf"
+          ],
+          [
+            "Model",
+            "2310 (Iron Forged family — origin label 2026-08-22)"
+          ],
+          [
+            "Serial",
+            "B26251123102.240"
+          ],
+          [
+            "BTU",
+            "4 × 9,500 / 38,000 max (plate)"
+          ],
+          [
+            "Factory",
+            "https://blackstoneproducts.com/"
+          ],
+          [
+            "Cooktop (photo)",
+            "Rusted + flaking seasoning; knobs Off; spatula on left shelf; tank + grease cup visible"
+          ]
+        ],
+        "sched": [
+          [
+            "Restore rusted cooktop + re-season",
+            "now (photo 2026-08-12)",
+            "r",
+            "OM p.14 rust then season"
+          ],
+          [
+            "After-cook scrape + thin oil",
+            "every cook",
+            "g",
+            "OM p.15 no soap on seasoned top"
+          ],
+          [
+            "Empty grease cup",
+            "each cook once cool",
+            "g",
+            "OM p.15"
+          ],
+          [
+            "Cover / hood so water cannot pool",
+            "whenever it sits",
+            "g",
+            "OM p.16 + tent a soft cover"
+          ],
+          [
+            "Leak-check hose / regulator",
+            "new/exchanged cylinder + after sitting",
+            "r",
+            "OM p.11–12 soap solution"
+          ]
+        ],
+        "manual": "Blackstone 2310 Owner's Manual v04 (OEM PDF — host pending)",
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0312/7695/7740/files/2310_Manual_V4_English.pdf?v=1705350998",
+        "jobs": [
+          {
+            "t": "Restore / Clean / Re-season Rusted Cooktop",
+            "s": [
+              "Scrape rust and seasoning chips with a metal scraper",
+              "Thin oil; scrub rusted areas (steel wool / sandpaper / griddle stone)",
+              "Wipe debris; minimal-water rinse; dry fully",
+              "Re-season: heat on high until plate discolors; thin oil on surface and walls; let smoke stop; repeat 3–5 layers",
+              "Do not cook on rust — first cooks after restore may stick"
+            ]
+          },
+          {
+            "t": "After-Cook Clean & Oil",
+            "s": [
+              "Scrape food/grease to the trap while warm",
+              "Wipe the plate clean (no soap on seasoned top)",
+              "Thin oil film so steel is not left bare",
+              "Empty grease cup after it cools; knobs Off; tank Off",
+              "Hood down; tent a soft cover so water runs off"
+            ]
+          },
+          {
+            "t": "Light / Leak Test — Model 2310",
+            "s": [
+              "Hood open; knobs Off; 1 AA in the ignitor",
+              "Leak-test new/exchanged cylinder with 10/90 soap — growing bubbles = stop",
+              "Hang 20 lb Type-1/OPD tank on the LPG hook; hand-tighten regulator (no tools)",
+              "Tank on 1–3 turns; hold ignitor; push-and-turn one knob to HIGH",
+              "No light in 5 seconds: Off, wait 5 min, retry (match-light fallback p.17)"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "Wood Processing",
+    "items": [
+      {
+        "n": "CountyLine 40-Ton Log Splitter",
+        "power": "Gas",
+        "loc": "Barn",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Engine",
+            "Kohler Command PRO CH440, 14 hp, 429cc"
+          ],
+          [
+            "Engine oil",
+            "SAE 10W-30 · 1.16 qt (1.1 L)"
+          ],
+          [
+            "Pump",
+            "25 GPM gear, 3,800 PSI, 9.5 s cycle"
+          ],
+          [
+            "Cylinder",
+            "5⅛\" bore × 23¾\" stroke"
+          ],
+          [
+            "Hydraulic fluid",
+            "AW32 factory (AW46/univ OK) · 9.8 gal"
+          ],
+          [
+            "Filters",
+            "25-micron spin-on + 154-micron screen"
+          ],
+          [
+            "Spark plug",
+            "gap 0.030 in / 0.76 mm (confirm part #)"
+          ]
+        ],
+        "sched": [
+          [
+            "Engine oil (Kohler)",
+            "first 5h, then 100h/yr",
+            "r",
+            "10W-30, 1.16 qt"
+          ],
+          [
+            "Hydraulic filter",
+            "first 25h, then 100h",
+            "r",
+            "25-micron spin-on"
+          ],
+          [
+            "Hydraulic breather cap",
+            "every 25h",
+            "g",
+            "more in dust"
+          ],
+          [
+            "Air cleaner (precleaner/element)",
+            "50h / 100h · 300h replace",
+            "g",
+            "Kohler p.6"
+          ],
+          [
+            "Spark plug",
+            "500h/yr",
+            "g",
+            "0.030 in, 20 ft·lb"
+          ],
+          [
+            "Hoses/fittings & wedge",
+            "each use",
+            "r",
+            "high-pressure"
+          ],
+          [
+            "Pre-use",
+            "each use",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "CountyLine 40-Ton Operator's Manual + Kohler CH440 (PDFs on file)",
+        "manualUrl": "manuals/countyline-40ton.pdf",
+        "jobs": [
+          {
+            "t": "Hydraulic Fluid & Filter (first 25h, then 100h — manual p.11/14/17)",
+            "s": [
+              "Warm fluid; STOP engine & let it COOL; controls to neutral (never open reservoir hot/running)",
+              "Drain via plug on bottom of tank, just right of the filter (~9.8 gal)",
+              "Spin off old 25-micron external filter; oil new gasket; hand-tight + spec turn",
+              "Refill AW32 (or AW46/universal) to level mark, wedge retracted",
+              "Bleed: extend/retract cylinder several full strokes until speed is constant; recheck level; inspect for leaks"
+            ],
+            "img": [
+              "manuals/img/countyline-hyd-check-p11.png",
+              "manuals/img/countyline-maint-p14.png",
+              "manuals/img/countyline-specs-p17.png"
+            ]
+          },
+          {
+            "t": "Engine Oil & Pre-Use — Kohler CH440 (first 5h, then 100h/yr — manual p.6/11)",
+            "s": [
+              "Pre-use: engine oil + fuel; hydraulic level; scan for leaks; wedge edge + mode pins",
+              "Warm engine, STOP, fuel valve OFF",
+              "Drain via engine drain plug; reinstall — torque 13 ft·lb (17.6 N·m)",
+              "Refill SAE 10W-30 to 1.16 qt (1.1 L); check to FULL, don't overfill",
+              "Run, recheck level, check for leaks (max angle 25°)"
+            ],
+            "img": [
+              "manuals/img/kohler-ch440-maint-schedule-p6.png",
+              "manuals/img/kohler-ch440-oil-viscosity-p7.png",
+              "manuals/img/kohler-ch440-specs-p11.png"
+            ]
+          },
+          {
+            "t": "Air Filter & Spark Plug — Kohler CH440 (manual p.4/6)",
+            "s": [
+              "Precleaner: wash in warm soapy water, dry, DO NOT oil; service every 50h",
+              "Element: clean 100h, replace 300h; never run without both in place",
+              "Cover: sun decal out (normal) / snowflake out (cold)",
+              "Spark plug: gap 0.030 in (0.76 mm), torque 20 ft·lb (27 N·m); replace 500h/yr",
+              "Confirm exact plug part # from Kohler dealer (OM prints gap only)"
+            ],
+            "img": [
+              "manuals/img/kohler-ch440-air-cleaner-p4.png"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "Power Tools",
+    "items": [
+      {
+        "n": "Milwaukee M18 Kit",
+        "power": "Battery",
+        "loc": "Shop",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Chainsaw 2727-20",
+            "M18 FUEL 16\"/14\" bar · 18V DC · 6,600 rpm · chain 2,440 ft/min (12.4 m/s) (p.4)"
+          ],
+          [
+            "Chain",
+            "3/8\" pitch · .043\" (1.1 mm) gauge · low-kickback · 56 dl (16\") / 52 dl (14\") (p.4)"
+          ],
+          [
+            "Chain oil",
+            "std bar & chain oil · tank 6.7 oz (200 mL) · keep >¼ full (p.6)"
+          ],
+          [
+            "Bar/chain parts",
+            "16\": bar 48-09-3001 + chain 49-16-2715 · 14\": bar 49-16-2756 + chain 49-16-2749 (p.4)"
+          ],
+          [
+            "Charger",
+            "48-59-1808 M18/M12 rapid — no serviceable parts"
+          ],
+          [
+            "Other tools",
+            "blower 2724-20 · vac 0970-20 · impact 2953-20 (web-sourced)"
+          ]
+        ],
+        "sched": [
+          [
+            "Chainsaw — check/refill bar-chain oil",
+            "before every cut",
+            "r",
+            ">¼ full; tank 6.7 oz (p.6)"
+          ],
+          [
+            "Sharpen chain 30° top / 80° side, gauge .025\"",
+            "as it dulls",
+            "g",
+            "11/64\" (4.4 mm) file (pp.12–13)"
+          ],
+          [
+            "Clean bar groove + oiler hole; flip bar",
+            "every few hrs use",
+            "g",
+            "soft brush (p.12)"
+          ],
+          [
+            "Lube sprocket-tip bar (grease syringe)",
+            "weekly",
+            "g",
+            "lube hole (p.13)"
+          ],
+          [
+            "Battery/charger care",
+            "ongoing",
+            "g",
+            "store 40–80%, vents clear"
+          ],
+          [
+            "Return for service inspection",
+            "6–12 mo",
+            "g",
+            "Milwaukee service ctr (p.12)"
+          ]
+        ],
+        "manual": "Milwaukee M18 FUEL 2727-20 Chainsaw Operator's Manual (PDF, on file)",
+        "manualUrl": "manuals/milwaukee-2727-manual.pdf",
+        "jobs": [
+          {
+            "t": "Chainsaw Bar & Chain Service (man. pp.5–7)",
+            "s": [
+              "REMOVE the battery; push hand-guard/chain brake forward to LOCK",
+              "Remove drive-cover nuts (adjustment tool, bottom of saw); loosen tension screw CCW",
+              "Pull bar off bolts, unloop chain; clean bar groove + oiler hole; flip bar to even wear",
+              "Fit chain (correct direction), loop around hub, set in bar groove; refit drive cover",
+              "Tension screw CW until snug — correct = chain snaps back after pulling 1/8\" (3 mm), no sag (p.6)",
+              "Tighten bar nuts; refill bar & chain oil (>¼ full, tank 6.7 oz); check first 2 hrs of a new chain"
+            ],
+            "img": [
+              "manuals/img/milwaukee-2727-parts-p5.png",
+              "manuals/img/milwaukee-2727-chain-tension-p6.png"
+            ]
+          },
+          {
+            "t": "Chain Sharpening & Guide-Bar Maintenance (man. pp.12–13)",
+            "s": [
+              "Battery out, gloves on; tension chain first, file at mid-bar",
+              "Top-plate file angle 30° (guide marks on holder); side-plate 80°; use 11/64\" (4.4 mm) round file + holder",
+              "File all left-hand cutters one way, then right-hand cutters the other; equal length on all",
+              "Depth gauge (raker) clearance .025\" — check every sharpening with a .025\" jointer; round the front after lowering",
+              "Bar: clean daily, lube sprocket-tip weekly via grease syringe in the lube hole",
+              "Replace bar if rails are worn/spread, bent, or cracked"
+            ],
+            "img": [
+              "manuals/img/milwaukee-2727-sharpen-p13.png"
+            ]
+          },
+          {
+            "t": "Battery, Charger & Tool Care",
+            "s": [
+              "Charge on 48-59-1808, ventilated, 15–25°C, vents clear",
+              "Li-Ion: top off anytime; no need to fully discharge",
+              "Store idle batteries ~40–80%, cool/dry",
+              "Clean tool intakes after dusty work; vac filter when suction drops",
+              "Inspect for damage; never charge a damaged pack"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "DeWalt 20V Saws",
+        "power": "Battery",
+        "loc": "Shop",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Circular saw",
+            "DCS391/393 — 6-1/2\" (165mm), 5,250 RPM, 0–50° bevel (N382847 p.1)"
+          ],
+          [
+            "Blade mounting (circular)",
+            "Clamping screw H = LEFT-HAND thread (CCW tighten, CW loosen); O flat-in, P bevel-out (p.12)"
+          ],
+          [
+            "Circular blades (p.14)",
+            "DW9155 18T · DW9154 24T · DW9153 90T plywood/vinyl"
+          ],
+          [
+            "Miter saw",
+            "DCS361 — 7-1/4\" (184mm) sliding compound — N599912 ON FILE 2026-07-09"
+          ],
+          [
+            "Miter blades",
+            "7-1/4\" only · 5/8\" round arbor · max kerf 2.1 mm · blade ≥4000 RPM · 40T gen / 60T fine"
+          ],
+          [
+            "Miter capacity (manual)",
+            "Nested crown up to 9/16\"×3-5/8\"; hands ≥4\" from blade"
+          ],
+          [
+            "Platform",
+            "20V MAX Li-ion (DeWalt-only); fuel-gauge on some packs"
+          ],
+          [
+            "Motor/brushes",
+            "Brush service = DEWALT service center both tools; sealed/self-lube bearings"
+          ],
+          [
+            "Cleaning",
+            "Blow vents weekly (Z87.1); clear miter dust duct; no liquid inside"
+          ]
+        ],
+        "sched": [
+          [
+            "Check/replace blade (sharp, correct type)",
+            "as it dulls",
+            "r",
+            "battery out; circular = left-hand screw; miter match 5/8\" arbor + ≥4000 RPM"
+          ],
+          [
+            "Blow air vents + guards + miter dust duct",
+            "weekly / after dusty use",
+            "g",
+            "dry air, Z87.1; never liquid inside"
+          ],
+          [
+            "Check cut accuracy (square/bevel/miter)",
+            "periodic / if drift",
+            "g",
+            "circular depth = ½ tooth; miter fence/bevel"
+          ],
+          [
+            "Rail play (miter)",
+            "periodic",
+            "g",
+            "4 mm hex set screw — reduce play, keep slide free"
+          ],
+          [
+            "Brush service (if sparking/power drop)",
+            "as needed",
+            "g",
+            "DEWALT service center — not DIY"
+          ],
+          [
+            "Battery & charger care",
+            "ongoing",
+            "g",
+            "store 40–80%, vents clear"
+          ]
+        ],
+        "manual": "DCS391 N382847 + DCS361 N599912 (both PDFs on file)",
+        "manualUrl": "manuals/dewalt-dcs361.pdf",
+        "jobs": [
+          {
+            "t": "Blade Change & Cut-Accuracy Check (circular + miter)",
+            "img": [
+              "manuals/img/dewalt-dcs391-blade-p12.png",
+              "manuals/img/dewalt-dcs391-adjust-p15.png",
+              "manuals/img/dewalt-dcs361-blades.png"
+            ],
+            "s": [
+              "REMOVE the battery",
+              "Circular: blade lock; screw H is LEFT-HAND — CW to loosen; O flat-in, P bevel-out; tighten CCW; depth = ½ tooth; blades DW9155/9154/9153",
+              "Miter: only 7-1/4\" / 5/8\" round arbor / kerf ≤2.1 mm / blade ≥4000 RPM; 40T general or 60T fine; hands ≥4\" from blade; clamp work",
+              "Test square/bevel/miter on scrap before finish cuts"
+            ]
+          },
+          {
+            "t": "Battery, Brush & Cleaning Care",
+            "img": [
+              "manuals/img/dewalt-dcs391-parts-p1.png",
+              "manuals/img/dewalt-dcs361-parts-figa.png",
+              "manuals/img/dewalt-dcs361-maint-cleaning.png"
+            ],
+            "s": [
+              "Battery out. Blow all air vents WEEKLY (Z87.1); miter: clear dust duct with low-pressure air or dowel, head raised",
+              "Wipe non-metal with water + mild soap only; NEVER solvents on miter guard polycarbonate; never liquid inside",
+              "Bearings sealed/self-lube — no user grease",
+              "Heavy sparking / power loss → DEWALT SERVICE CENTER (both tools)",
+              "Charge packs ventilated; store idle ~40–80% cool/dry. Keep miter detents clear = true square"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "HVAC",
+    "items": [
+      {
+        "n": "Home A/C — Nordyne Air Handler",
+        "power": "Electric",
+        "loc": "House",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Model",
+            "Nordyne/Maytag air handler PAH2VMX25KA (S/N PAD080904293)"
+          ],
+          [
+            "System",
+            "Central heat-pump air handler (indoor coil + blower) + outdoor condenser"
+          ],
+          [
+            "Filter",
+            "Standard return-air filter — confirm size (measure slot)"
+          ],
+          [
+            "Power",
+            "240V hard-wired (confirm)"
+          ],
+          [
+            "Refrigerant",
+            "Pro-only — do not open the sealed system"
+          ]
+        ],
+        "sched": [
+          [
+            "Replace/clean return-air filter",
+            "monthly check / 1–3 mo",
+            "r",
+            "confirm size; more with pets"
+          ],
+          [
+            "Flush condensate drain line",
+            "seasonally / spring",
+            "r",
+            "clear clog; verify flow"
+          ],
+          [
+            "Clear & rinse outdoor coil",
+            "spring + as needed",
+            "r",
+            "power off; don't bend fins"
+          ],
+          [
+            "Professional tune-up",
+            "annual",
+            "r",
+            "licensed tech (refrigerant/electrical)"
+          ],
+          [
+            "Check thermostat / airflow",
+            "season start",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "Nordyne air handler owner's manual",
+        "manualUrl": "https://www.manualslib.com/manual/669518/Nordyne-Air-Conditioner-Heat-Pump-Air-Handler.html",
+        "jobs": [
+          {
+            "t": "Filter & Condensate Care",
+            "s": [
+              "Find the return/filter slot; note size on the frame (confirm — measure if unmarked)",
+              "Slide out old filter (note airflow arrow); slide new one in arrow TOWARD the unit",
+              "Condensate drain: clear PVC line with wet/dry vac at the outside termination, or flush vinegar/tablets at the access tee",
+              "Confirm water flows out the termination; drain pan dry",
+              "Restore power; verify airflow + conditioned air (clogged drain = #1 indoor leak)"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "DELLA Mini-Split",
+        "power": "Electric",
+        "loc": "House/Shop",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Model",
+            "DELLA, indoor head 048-TL-12K2VB-23S-IN (~12,000 BTU)"
+          ],
+          [
+            "Type",
+            "Ductless inverter mini-split (indoor head + outdoor unit)"
+          ],
+          [
+            "Filters",
+            "Reusable, WASHABLE mesh (don't discard)"
+          ],
+          [
+            "Power",
+            "115 / 208–230V (confirm)"
+          ],
+          [
+            "Refrigerant",
+            "Pro-only — sealed system"
+          ]
+        ],
+        "sched": [
+          [
+            "Wash reusable mesh filters",
+            "~2 wk–month in use",
+            "r",
+            "rinse, DRY fully, reinstall"
+          ],
+          [
+            "Wipe indoor coil / blower wheel",
+            "seasonally",
+            "g",
+            "kills musty smell; power off"
+          ],
+          [
+            "Clear & rinse outdoor coil",
+            "spring + as needed",
+            "r",
+            "~2 ft clearance; don't bend fins"
+          ],
+          [
+            "Professional service",
+            "as needed",
+            "r",
+            "refrigerant = licensed tech"
+          ]
+        ],
+        "manual": "DELLA mini-split support (confirm link for 048-TL-12K2VB-23S-IN)",
+        "manualUrl": "https://www.dellaproducts.com/pages/support",
+        "jobs": [
+          {
+            "t": "Filter Wash & Coil Care",
+            "s": [
+              "POWER OFF at the breaker/disconnect",
+              "Open the indoor head's front cover; lift out the reusable mesh filters",
+              "Rinse with lukewarm water (mild soap if greasy); DRY COMPLETELY before reinstalling",
+              "Gently vacuum/wipe the coil + blower-wheel area (don't bend fins)",
+              "Outdoor unit: clear leaves/grass, rinse coil; reinstall filters, restore power, run a cooling cycle"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "Home & Property Infrastructure",
+    "items": [
+      {
+        "n": "LiftMaster Wall-Mount Openers",
+        "power": "Electric",
+        "loc": "Garage",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Type",
+            "Wall-mount (jackshaft) DC, battery backup, Wi-Fi"
+          ],
+          [
+            "98032",
+            "Premium HD DC battery-backup"
+          ],
+          [
+            "98022",
+            "Elite DC battery-backup (no Cable Tension Monitor)"
+          ],
+          [
+            "Safety",
+            "photo-eyes + mechanical safety reversal"
+          ],
+          [
+            "Backup",
+            "replaceable battery (confirm part #)"
+          ],
+          [
+            "Control",
+            "myQ app / remotes / wall control"
+          ]
+        ],
+        "sched": [
+          [
+            "Safety-reversal test (2×4)",
+            "monthly",
+            "r",
+            "must reverse on contact"
+          ],
+          [
+            "Photo-eye test + alignment",
+            "monthly",
+            "r",
+            "LEDs steady = aligned"
+          ],
+          [
+            "Lubricate door hardware",
+            "~2×/yr",
+            "g",
+            "rollers/hinges/springs, not tracks"
+          ],
+          [
+            "Backup battery check/replace",
+            "6mo / 1–3yr",
+            "r",
+            "confirm part #"
+          ],
+          [
+            "Door balance & hardware",
+            "annual",
+            "g",
+            "OK"
+          ]
+        ],
+        "manual": "LiftMaster 98032 / 98022 Owner's Manuals",
+        "manualUrl": "https://www.liftmaster.com/customer-support",
+        "jobs": [
+          {
+            "t": "Monthly Safety Test & Lubrication",
+            "s": [
+              "Safety reversal: 2×4 flat on floor, close — door must REVERSE on contact",
+              "Photo-eyes: wave object through beam closing — must reverse; re-aim until LEDs steady",
+              "Lubricate rollers/hinges/springs (NOT the tracks); wipe excess",
+              "Cycle several times; confirm smooth, quiet travel",
+              "If a test fails: adjust force/travel per manual or service"
+            ]
+          },
+          {
+            "t": "Backup Battery & Photo-Eye Service",
+            "s": [
+              "Check backup-battery status in myQ / on the unit",
+              "If it won't hold, order correct battery (confirm # per model)",
+              "Power down per manual; swap battery; restore power; verify indicator clears",
+              "Wipe + re-aim photo-eyes until LEDs steady",
+              "Re-run safety tests; inspect door cables (98022 dropped the tension monitor)"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Square D Load Center",
+        "power": "Electric",
+        "loc": "Shop/House",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Make",
+            "Square D (Schneider) load center — confirm QO vs Homeline + amperage from label"
+          ],
+          [
+            "Devices",
+            "standard + GFCI + AFCI + Dual-Function breakers (each has a TEST button)"
+          ],
+          [
+            "Maintenance",
+            "virtually maintenance-free — testing + inspection only"
+          ],
+          [
+            "AFCI codes",
+            "newer Square D AFCI/DF breakers blink a trip-code"
+          ],
+          [
+            "Breakers",
+            "series-specific — QO ≠ Homeline (confirm before buying)"
+          ],
+          [
+            "Rule",
+            "deadfront stays LIVE even with the main off — electrician only"
+          ]
+        ],
+        "sched": [
+          [
+            "GFCI/AFCI breaker test-button check",
+            "monthly",
+            "r",
+            "must trip; reset"
+          ],
+          [
+            "Test downstream GFCI receptacles",
+            "monthly",
+            "r",
+            "Test→off, Reset→on"
+          ],
+          [
+            "Visual/odor inspection (heat/buzz/scorch)",
+            "monthly",
+            "r",
+            "any = electrician"
+          ],
+          [
+            "Verify clearance + directory",
+            "quarterly",
+            "g",
+            "30\"+ clear; legible"
+          ],
+          [
+            "Pro inspection / lug-torque",
+            "as needed",
+            "r",
+            "electrician only"
+          ]
+        ],
+        "manual": "Square D / Schneider — load center + breaker docs",
+        "manualUrl": "https://www.se.com/us/en/work/products/explore/dual-function-circuit-breakers/",
+        "jobs": [
+          {
+            "t": "Monthly GFCI/AFCI Test & Inspection",
+            "s": [
+              "Open the panel DOOR only — never the deadfront (bus + lugs live even with main off)",
+              "Press TEST on each GFCI/AFCI/Dual-Function breaker — it should trip; push OFF then ON to reset",
+              "Test each downstream GFCI receptacle: Test (power cuts) → Reset (power returns)",
+              "Inspect/listen/smell: no buzzing, warmth, discoloration, scorch, or burning odor; no moisture",
+              "Won't trip/reset, or heat/scorch/odor → leave OFF and call a licensed electrician"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Ceiling Fans (HVLS + Merwry)",
+        "power": "Electric",
+        "loc": "Shop/House",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "HVLS",
+            "high-volume/low-speed shop fan — confirm brand/model/diameter; usually sealed gearbox"
+          ],
+          [
+            "Merwry",
+            "Home Decorators SW1422-BN, 52\" LED, 120V, dimmable, remote"
+          ],
+          [
+            "Merwry speeds",
+            "Low ~15W/94CFM · Med ~28W/136CFM · High ~52W/176CFM"
+          ],
+          [
+            "Merwry mount",
+            "downrod 4.5\"–72\"; slope ≤18°; NO flush mount"
+          ],
+          [
+            "HVLS maint",
+            "annual inspect; lube bearings only if maker specifies"
+          ],
+          [
+            "Safety",
+            "power off at breaker; HVLS mount + balance are high-consequence"
+          ]
+        ],
+        "sched": [
+          [
+            "Dust/clean blades (both)",
+            "seasonal",
+            "g",
+            "even = no wobble"
+          ],
+          [
+            "Check mount + blade hardware",
+            "seasonal",
+            "r",
+            "wobble = loose/imbalance"
+          ],
+          [
+            "Merwry — seasonal direction + test remote",
+            "2×/yr",
+            "g",
+            "down/CCW cool, up warm"
+          ],
+          [
+            "HVLS — full annual inspection",
+            "annual",
+            "r",
+            "blades/hub/mount/safety cable"
+          ],
+          [
+            "HVLS — gearbox/bearing per maker",
+            "per maker",
+            "g",
+            "often sealed — don't grease"
+          ]
+        ],
+        "manual": "Merwry SW1422 Use & Care Guide (Home Depot) + HVLS maker manual",
+        "manualUrl": "https://images.thdstatic.com/catalog/pdfImages/6f/6f8fb4e7-1bb4-437b-83f3-4cdf7882ae57.pdf",
+        "jobs": [
+          {
+            "t": "Seasonal Clean & Mount Check (both fans)",
+            "s": [
+              "POWER OFF at the breaker/wall; wait for full stop",
+              "Dust/wipe each blade EVENLY (uneven dust → wobble)",
+              "Check downrod/mount + blade-arm hardware — snug anything loose",
+              "Merwry: set seasonal direction (summer down/CCW, winter up); test remote + LED dimming; new battery if dead",
+              "Run on low; if it wobbles, balance before normal use (Merwry: no flush mount; use LED-compatible wall control)"
+            ]
+          },
+          {
+            "t": "HVLS Annual Inspection — Shop Fan",
+            "s": [
+              "LOCK OUT power at the breaker; confirm fully stopped; use proper lift/fall protection",
+              "Inspect blades + hub for cracks; clean accumulated dust (weight = imbalance risk)",
+              "Verify mounting structure, all bolts/brackets, and the safety cable are secure + un-corroded",
+              "Listen/feel for grinding or play in the motor/gearbox",
+              "Lube bearings ONLY if the maker specifies (many are sealed); check controller; log it"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "Firearms",
+    "items": [
+      {
+        "n": "Heckler & Koch MR556A1",
+        "power": "Manual",
+        "loc": "Secure",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Caliber",
+            "5.56×45 / .223"
+          ],
+          [
+            "System",
+            "HK gas piston (piston + solid pusher rod)"
+          ],
+          [
+            "Platform",
+            "AR-style semi-auto, removable mag"
+          ],
+          [
+            "Cleaning",
+            "standard HK 5.56 kit; no special cleaner/lube"
+          ],
+          [
+            "Records",
+            "log model + serial for insurance (store securely)"
+          ]
+        ],
+        "sched": [
+          [
+            "Clear & safety-check",
+            "every handling",
+            "r",
+            "mag out, bolt back, chamber empty"
+          ],
+          [
+            "Field strip, clean & lube",
+            "after each session",
+            "r",
+            "piston/pusher rod + bolt; light lube"
+          ],
+          [
+            "Detailed clean & inspect",
+            "periodic / high round count",
+            "r",
+            "piston, rings, springs"
+          ],
+          [
+            "Function check (unloaded)",
+            "after reassembly",
+            "g",
+            "safety, bolt, trigger reset"
+          ],
+          [
+            "Storage check",
+            "ongoing",
+            "g",
+            "secured, unloaded, dry"
+          ]
+        ],
+        "manual": "HK MR556A1 Operator's Manual (hk-usa.com)",
+        "manualUrl": "https://hk-usa.com/wp-content/uploads/2025/01/MR556A1-Operators-Manual.pdf",
+        "jobs": [
+          {
+            "t": "Field Strip, Clean & Lube",
+            "s": [
+              "CLEAR the rifle — mag out, bolt back, chamber visually + physically empty; no ammo in area",
+              "Field strip per manual (upper/lower; bolt carrier; piston/operating rod)",
+              "Clean bore with solvent + brush/patches until clean; wipe chamber",
+              "Clean bolt, carrier & piston/pusher rod of carbon (HK kit, nylon brush)",
+              "LIGHTLY lube per manual; reassemble; function-check UNLOADED"
+            ]
+          },
+          {
+            "t": "Safe-Handling & Storage Checklist",
+            "s": [
+              "Treat as loaded; muzzle safe; finger off trigger",
+              "Remove magazine; lock bolt back; check chamber empty",
+              "Store UNLOADED in a secured safe",
+              "Control humidity; periodic light wipe-down vs corrosion",
+              "Keep serial record secured for insurance; comply with all laws"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Sig Sauer P365XL",
+        "power": "Manual",
+        "loc": "Secure",
+        "basis": "As-needed",
+        "st": "part",
+        "specs": [
+          [
+            "Caliber",
+            "9mm"
+          ],
+          [
+            "Type",
+            "handgun · P365XL"
+          ],
+          [
+            "Qty",
+            "1"
+          ],
+          [
+            "Factory",
+            "sigsauer.com → P365XL"
+          ],
+          [
+            "Tier",
+            "◐ Provisional — manual hunt 2026-07-10"
+          ],
+          [
+            "Needs",
+            "model-specific OM PDF; serial; mags/holster/optics"
+          ]
+        ],
+        "sched": [
+          [
+            "Clear & safety-check",
+            "every handling",
+            "r",
+            "mag out, slide back, chamber empty"
+          ],
+          [
+            "Field strip, clean & lube",
+            "after each session",
+            "r",
+            "per OM once on file"
+          ],
+          [
+            "Storage check",
+            "ongoing",
+            "g",
+            "secured, unloaded, dry"
+          ]
+        ],
+        "manual": "Sig Owner Manuals portal (🌐 — download model PDF, save to _Cowork Inbox)",
+        "manualUrl": "https://www.sigsauer.com/owner-manuals.html",
+        "jobs": [
+          {
+            "t": "Safe-Handling & Storage",
+            "s": [
+              "Treat as loaded; muzzle safe; finger off trigger",
+              "Mag out; slide locked; chamber empty visual+physical",
+              "Store UNLOADED in secured safe",
+              "Serial record for insurance"
+            ]
+          },
+          {
+            "t": "Field Strip, Clean & Lube",
+            "s": [
+              "CLEAR first — no ammo in area",
+              "Field strip only per official OM",
+              "Clean bore/slide/rails; light lube; function-check unloaded"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Sig Sauer P365 X-MACRO",
+        "power": "Manual",
+        "loc": "Secure",
+        "basis": "As-needed",
+        "st": "part",
+        "specs": [
+          [
+            "Caliber",
+            "9mm"
+          ],
+          [
+            "Type",
+            "handgun · P365 X-MACRO"
+          ],
+          [
+            "Qty",
+            "1"
+          ],
+          [
+            "Factory",
+            "sigsauer.com → P365 X-MACRO"
+          ],
+          [
+            "Tier",
+            "◐ Provisional — manual hunt 2026-07-10"
+          ],
+          [
+            "Needs",
+            "model-specific OM PDF; serial; accessories"
+          ]
+        ],
+        "sched": [
+          [
+            "Clear & safety-check",
+            "every handling",
+            "r",
+            "mag out, slide back, chamber empty"
+          ],
+          [
+            "Field strip, clean & lube",
+            "after each session",
+            "r",
+            "per OM once on file"
+          ],
+          [
+            "Storage check",
+            "ongoing",
+            "g",
+            "secured, unloaded, dry"
+          ]
+        ],
+        "manual": "Sig Owner Manuals portal (🌐 — download model PDF)",
+        "manualUrl": "https://www.sigsauer.com/owner-manuals.html",
+        "jobs": [
+          {
+            "t": "Safe-Handling & Storage",
+            "s": [
+              "Treat as loaded; muzzle safe; finger off trigger",
+              "Mag out; slide locked; chamber empty",
+              "Store UNLOADED in secured safe"
+            ]
+          },
+          {
+            "t": "Field Strip, Clean & Lube",
+            "s": [
+              "CLEAR first",
+              "Field strip only per official OM",
+              "Clean + light lube; function-check unloaded"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Sig Sauer P365XC",
+        "power": "Manual",
+        "loc": "Secure",
+        "basis": "As-needed",
+        "st": "part",
+        "specs": [
+          [
+            "Caliber",
+            "9mm"
+          ],
+          [
+            "Type",
+            "handgun · P365XC (confirm SKU on slide)"
+          ],
+          [
+            "Qty",
+            "1"
+          ],
+          [
+            "Factory",
+            "sigsauer.com → P365 family"
+          ],
+          [
+            "Tier",
+            "◐ Provisional — manual hunt 2026-07-10"
+          ],
+          [
+            "Needs",
+            "confirm SKU; model OM PDF; serial"
+          ]
+        ],
+        "sched": [
+          [
+            "Clear & safety-check",
+            "every handling",
+            "r",
+            "mag out, slide back, chamber empty"
+          ],
+          [
+            "Field strip, clean & lube",
+            "after each session",
+            "r",
+            "per OM once on file"
+          ],
+          [
+            "Storage check",
+            "ongoing",
+            "g",
+            "secured, unloaded, dry"
+          ]
+        ],
+        "manual": "Sig Owner Manuals portal (🌐 — confirm P365XC PDF)",
+        "manualUrl": "https://www.sigsauer.com/owner-manuals.html",
+        "jobs": [
+          {
+            "t": "Safe-Handling & Storage",
+            "s": [
+              "Treat as loaded; muzzle safe; finger off trigger",
+              "Mag out; slide locked; chamber empty",
+              "Store UNLOADED in secured safe"
+            ]
+          },
+          {
+            "t": "Field Strip, Clean & Lube",
+            "s": [
+              "CLEAR first",
+              "Field strip only per official OM",
+              "Clean + light lube; function-check unloaded"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Glock 45",
+        "power": "Manual",
+        "loc": "Secure",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Caliber",
+            "9×19"
+          ],
+          [
+            "Type",
+            "handgun · Glock 45 Compact Crossover"
+          ],
+          [
+            "Qty",
+            "1"
+          ],
+          [
+            "Factory",
+            "us.glock.com → G45"
+          ],
+          [
+            "Barrel (OM p.55)",
+            "~102 mm / 4.02 in"
+          ],
+          [
+            "Mag capacity (OM)",
+            "17 std"
+          ],
+          [
+            "Weight empty mag (OM)",
+            "~694 g / 24.5 oz"
+          ],
+          [
+            "Trigger",
+            "Safe Action® — no manual safety; ~26 N"
+          ],
+          [
+            "Needs",
+            "serial; mags/holster/optics on hand"
+          ]
+        ],
+        "sched": [
+          [
+            "Clear & safety-check",
+            "every handling",
+            "r",
+            "mag out, slide lock open, visual+physical chamber"
+          ],
+          [
+            "Field strip, clean & lube",
+            "after each session",
+            "r",
+            "OM Ch. IX–X; light lube only"
+          ],
+          [
+            "Detailed inspect",
+            "high round / annual",
+            "r",
+            "sights, mags, springs"
+          ],
+          [
+            "Storage check",
+            "ongoing",
+            "g",
+            "unloaded, cable lock, safe"
+          ]
+        ],
+        "manual": "GLOCK Instructions for Use G17–G48 (ON FILE)",
+        "manualUrl": "manuals/glock-g17-g48-owners-manual.pdf",
+        "jobs": [
+          {
+            "t": "Safe-Handling & Storage",
+            "s": [
+              "Treat as loaded; muzzle safe; finger off trigger",
+              "Mag out; slide locked open; chamber empty visual+physical",
+              "Store UNLOADED + cable lock in secured safe",
+              "Serial on file for insurance (secure)"
+            ]
+          },
+          {
+            "t": "Field Strip, Clean & Lube",
+            "s": [
+              "CLEAR first — no ammo in area; safety glasses",
+              "Mag out → eject → lock open → visual+physical chamber + mag well",
+              "Trigger rear; retract slide ~1/8 in; slide lock down both sides; slide off",
+              "Recoil spring + barrel out; stop (no further strip)",
+              "Clean bore from chamber end; light lube rails/hood; function-check unloaded"
+            ],
+            "img": [
+              "manuals/img/glock-g17-g48-p19.png"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Glock 19",
+        "power": "Manual",
+        "loc": "Secure",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Caliber",
+            "9×19"
+          ],
+          [
+            "Type",
+            "handgun · Glock 19 compact"
+          ],
+          [
+            "Qty",
+            "1"
+          ],
+          [
+            "Factory",
+            "us.glock.com → G19"
+          ],
+          [
+            "Barrel (OM p.54)",
+            "~102 mm / 4.02 in"
+          ],
+          [
+            "Mag capacity (OM)",
+            "15 std"
+          ],
+          [
+            "Weight empty mag (OM)",
+            "~670–675 g"
+          ],
+          [
+            "Trigger",
+            "Safe Action® — no manual safety"
+          ],
+          [
+            "Needs",
+            "confirm Gen on slide; serial; mags/holster/optics"
+          ]
+        ],
+        "sched": [
+          [
+            "Clear & safety-check",
+            "every handling",
+            "r",
+            "mag out, slide lock open, visual+physical chamber"
+          ],
+          [
+            "Field strip, clean & lube",
+            "after each session",
+            "r",
+            "OM Ch. IX–X; light lube only"
+          ],
+          [
+            "Detailed inspect",
+            "high round / annual",
+            "r",
+            "sights, mags, springs"
+          ],
+          [
+            "Storage check",
+            "ongoing",
+            "g",
+            "unloaded, cable lock, safe"
+          ]
+        ],
+        "manual": "GLOCK Instructions for Use G17–G48 (ON FILE)",
+        "manualUrl": "manuals/glock-g17-g48-owners-manual.pdf",
+        "jobs": [
+          {
+            "t": "Safe-Handling & Storage",
+            "s": [
+              "Treat as loaded; muzzle safe; finger off trigger",
+              "Mag out; slide locked open; chamber empty visual+physical",
+              "Store UNLOADED + cable lock in secured safe",
+              "Serial on file for insurance (secure)"
+            ]
+          },
+          {
+            "t": "Field Strip, Clean & Lube",
+            "s": [
+              "CLEAR first — no ammo in area; safety glasses",
+              "Mag out → eject → lock open → visual+physical chamber + mag well",
+              "Trigger rear; retract slide ~1/8 in; slide lock down both sides; slide off",
+              "Recoil spring + barrel out; stop (no further strip)",
+              "Clean bore from chamber end; light lube rails/hood; function-check unloaded"
+            ],
+            "img": [
+              "manuals/img/glock-g17-g48-p19.png",
+              "manuals/img/glock-g17-g48-p17.png"
+            ]
+          }
+        ]
+      },
+      {
+        "n": "Glock 44",
+        "power": "Manual",
+        "loc": "Secure",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "Caliber",
+            ".22 LR commercial only"
+          ],
+          [
+            "Type",
+            "handgun · Glock 44 V blowback ×2"
+          ],
+          [
+            "Qty",
+            "2"
+          ],
+          [
+            "Factory",
+            "us.glock.com → G44"
+          ],
+          [
+            "Ammo",
+            "no reloads/handloads (OM)"
+          ],
+          [
+            "Mag load",
+            "assist tabs; one round at a time"
+          ],
+          [
+            "Trigger",
+            "Safe Action® — no manual safety"
+          ],
+          [
+            "Needs",
+            "both serials; mags on hand"
+          ]
+        ],
+        "sched": [
+          [
+            "Clear & safety-check",
+            "every handling",
+            "r",
+            "mag out, slide lock open, visual+physical chamber"
+          ],
+          [
+            "Field strip, clean & lube",
+            "after each session",
+            "r",
+            "G44 V OM; dry bore before fire"
+          ],
+          [
+            "Detailed inspect",
+            "high round / annual",
+            "r",
+            "sights, mags, springs"
+          ],
+          [
+            "Storage check",
+            "ongoing",
+            "g",
+            "unloaded, cable lock, safe"
+          ]
+        ],
+        "manual": "GLOCK Instructions for Use G44 V (ON FILE)",
+        "manualUrl": "manuals/glock-g44-owners-manual.pdf",
+        "jobs": [
+          {
+            "t": "Safe-Handling & Storage",
+            "s": [
+              "Treat as loaded; muzzle safe; finger off trigger",
+              "Mag out; slide locked open; chamber empty visual+physical",
+              "Store UNLOADED + cable lock in secured safe",
+              "Both serials on file for insurance (secure)"
+            ]
+          },
+          {
+            "t": "Field Strip, Clean & Lube",
+            "s": [
+              "CLEAR first — no ammo; safety glasses; .22 LR commercial only",
+              "Mag out → eject → lock open → visual+physical chamber + mag well",
+              "Trigger rear; retract ~1/8 in; slide lock down; slide off; spring + barrel out",
+              "Clean bore from chamber end; dry until no oil before fire",
+              "Light lube only; function-check unloaded"
+            ],
+            "img": [
+              "manuals/img/glock-g44-p18.png",
+              "manuals/img/glock-g44-p16.png"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "Trailers",
+    "items": [
+      {
+        "n": "Bison Coach Horse Trailer",
+        "power": "—",
+        "loc": "Yard",
+        "basis": "As-needed",
+        "st": "full",
+        "specs": [
+          [
+            "VIN",
+            "51Y3C6J23F2004517 · Bison Coach · mfg 10/2014 (MY2015)"
+          ],
+          [
+            "GVWR",
+            "8,208 kg (18,096 lb)"
+          ],
+          [
+            "GAWR/axle",
+            "3,266 kg (7,200 lb) — tandem"
+          ],
+          [
+            "Cargo capacity",
+            "3,708 kg (8,175 lb) — never exceed"
+          ],
+          [
+            "Tires",
+            "215/75R17.5 (H) — 125 psi cold, all incl. spare"
+          ],
+          [
+            "Rim / studs",
+            "17.5 × 6.75 single; 5/8\"-18 hub-pilot"
+          ],
+          [
+            "Axles",
+            "Dexter (confirmed, manual p.4) — 7k class"
+          ],
+          [
+            "Lug torque (p.73)",
+            "staged 50-60 → 100-120 → 190-210 ft-lb (cone nut); flange 275-325 / swivel 150-175 — confirm nut type"
+          ],
+          [
+            "Bearing grease (p.53)",
+            "Lithium-complex NLGI No.2 EP, drop pt ≥419°F"
+          ],
+          [
+            "Confirm",
+            "Needs: pull Bison unit owner packet by VIN (floorplan/LQ, options) via Bison Trailer/dealer; Dexter axle-tag model (sets bearing/seal/magnet #s); drum vs disc"
+          ]
+        ],
+        "sched": [
+          [
+            "Pre-trip inspection",
+            "every trip",
+            "g",
+            "tires/lugs/lights/brakes/breakaway/coupler"
+          ],
+          [
+            "Wheel bearings — inspect/repack",
+            "12,000 mi / 12 mo",
+            "r",
+            "seat 50 ft-lb → back-off end-play; new seals (p.52/56)"
+          ],
+          [
+            "Brakes — adjust/inspect",
+            "first 200 mi, then 3,000 mi",
+            "r",
+            "electric drum star-wheel (p.14; self-adjust = none)"
+          ],
+          [
+            "Lug torque check",
+            "after 10/25/50 mi off, + long hauls",
+            "r",
+            "50-60→100-120→190-210 ft-lb star, 17.5\" cone nut (p.73)"
+          ],
+          [
+            "Tires — pressure/age",
+            "cold, every haul",
+            "g",
+            "125 psi; replace by DOT date"
+          ],
+          [
+            "Breakaway test + battery",
+            "every trip",
+            "g",
+            "pull-pin test; keep charged"
+          ]
+        ],
+        "manual": "Dexter Trailer Axle Service Manual (ON FILE) — axles confirmed Dexter; running-gear service + figures",
+        "manualUrl": "manuals/bison-dexter-running-gear.pdf",
+        "jobs": [
+          {
+            "t": "Pre-Trip Inspection",
+            "s": [
+              "Tires (cold) all four + spare at 125 psi; tread + sidewalls OK; note DOT date",
+              "Lug nuts seated; torque-check before long hauls (and after 10/25/50 mi if a wheel was off)",
+              "Coupler seated + latched + pinned; safety chains crossed; correct ball size (confirm 2-5/16\")",
+              "Breakaway cable to tow vehicle; battery charged; pull-test the switch",
+              "Lights + brakes + signals work; controller grabs; jack fully up & pinned",
+              "Floor/mats sound; load within 8,175 lb & 7,200 lb/axle, secured"
+            ],
+            "img": [
+              "manuals/img/bison-maint-schedule-p83.png"
+            ]
+          },
+          {
+            "t": "Wheel Bearing Repack & Brake Inspection (Dexter p.52/56/14)",
+            "s": [
+              "Chock; support axle on rated stands; break lugs loose first; pull wheel, dust cap, cotter pin, nut, hub",
+              "Clean + inspect bearings/races/seal — replace bearing AND race as a set if pitted/blue/spalled",
+              "Repack each bearing fully — Lithium-complex NLGI No.2 EP, drop pt ≥419°F (p.53); install NEW seal square/flush (flatness within .010\")",
+              "Seat & adjust (p.56): rotate hub while torquing spindle nut to ~50 ft-lb → back off to remove torque → finger-snug → back to first castellation; new cotter pin, free-turning",
+              "Brakes: inspect magnet/shoes/drum; adjust star wheel to light drag; re-check after 200 mi then 3,000 mi (p.14)",
+              "Reassemble; re-torque lugs star pattern 50-60→100-120→190-210 ft-lb after 10/25/50 mi (p.73)"
+            ],
+            "img": [
+              "manuals/img/bison-bearing-adjust-p56.png",
+              "manuals/img/bison-grease-spec-p53.png",
+              "manuals/img/bison-brake-adjust-p14.png"
+            ]
+          },
+          {
+            "t": "Tire, Lug & Coupler Care (Dexter p.73)",
+            "s": [
+              "Cold 125 psi all positions incl. spare; same size/LR only (215/75R17.5 H)",
+              "Age out tires by DOT date (~5–7 yr) regardless of tread",
+              "Re-torque lugs after 10/25/50 mi when a wheel is off — 50-60→100-120→190-210 ft-lb star (17.5\" hub-pilot cone nut; confirm nut type)",
+              "Grease coupler ball socket + latch; safety chains crossed w/ slack",
+              "Breakaway cable to frame (not chains); test pull-pin; charge battery",
+              "Grease + cycle the jack/landing gear"
+            ],
+            "img": [
+              "manuals/img/bison-wheel-torque-p73.png"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "g": "Livestock & Watering",
+    "items": [
+      {
+        "n": "Brower MK32HE Heated Waterer",
+        "power": "Electric",
+        "loc": "Pasture",
+        "basis": "Seasonal",
+        "st": "full",
+        "specs": [
+          [
+            "Model",
+            "Brower (Hawkeye Steel) MK32HE — plate 'MK3-2HE', super-insulated (Exhibit E, p.5)"
+          ],
+          [
+            "Heater",
+            "Model 77 Utility — 500 W, 120 V; knob 15–500 W; ~40°F preset; NOT immersible (p.7)"
+          ],
+          [
+            "Electric unit",
+            "HE1035A base 250 W (p.12/14); this unit fitted w/ Model 77 500 W per plate"
+          ],
+          [
+            "Valve",
+            "VP126 — VP114 5/32\" orifice, 20–60 psi; options 5/32(VP1-14)/1/4(VP1-6)/3/8(VP1-7) (p.5/6)"
+          ],
+          [
+            "Float",
+            "OP286 — 4\" round poly (corrected); arm VA225P, screw VP115 (p.5)"
+          ],
+          [
+            "Electrical",
+            "115 V AC; fused switch box; #14 AWG min (Table 3, p.8); ground rod 5/8\" copper — electrician only"
+          ]
+        ],
+        "sched": [
+          [
+            "Daily winter check (ice-free/clean/valve/heater)",
+            "daily, heating season",
+            "g",
+            "keep trough free of mud/silt (p.9)"
+          ],
+          [
+            "Fall pre-season startup",
+            "each fall",
+            "r",
+            "inspect wiring/element; reinstall heater; calibrate ~40°F (p.7/10)"
+          ],
+          [
+            "Off-season heater removal & storage",
+            "each spring",
+            "r",
+            "remove Model 77, store dry (or min. cut power) (p.7)"
+          ],
+          [
+            "Float/valve service + orifice tune",
+            "as needed",
+            "g",
+            "level won't hold / chatter / leaks (p.5/6)"
+          ],
+          [
+            "Grounding & electrical inspection",
+            "annual (fall)",
+            "r",
+            "tight ground + connections; electrician for wiring"
+          ]
+        ],
+        "manual": "Brower Super Insulated Livestock Waterer — Instructions & Repair Parts (ON FILE)",
+        "manualUrl": "manuals/brower-waterer.pdf",
+        "jobs": [
+          {
+            "t": "Fall Startup & Daily Winter Check (p.7/9/10)",
+            "s": [
+              "Fall: power OFF at disconnect; inspect element/wiring/insulation + ground; clean trough of mud/silt",
+              "Reinstall Model 77 heater (stored dry over summer); not submerged",
+              "Restore power; calibrate thermostat ~40°F — bulb in 40°F water, indicator light should come on (adjust screw; 1/4 turn ≈ 4°F)",
+              "Daily: water ice-free + clean; float holds level; heater indicator light works",
+              "If freezing: verify 115 V + tight connections, clear mud off element; still no heat → replace Model 77",
+              "Don't run above ~40°F (no benefit, just cost); keep lid closing fully"
+            ],
+            "img": [
+              "manuals/img/brower-wiring-p10.png"
+            ]
+          },
+          {
+            "t": "Off-Season Heater Removal & Storage (p.7)",
+            "s": [
+              "Power OFF at the fused disconnect; confirm dead",
+              "Disconnect Model 77 per its wiring (green = ground; Black-Red-Green or Red-White-Green)",
+              "Remove heater; wipe + dry fully",
+              "Store in a dry, protected area for summer (not immersible)",
+              "Drain trough if unused; note Model 77 serial (below knob) for 2-yr warranty",
+              "Fall: inspect element/wiring before reinstalling"
+            ]
+          },
+          {
+            "t": "Float / Valve Service & Orifice Tuning (p.5/6)",
+            "s": [
+              "Float: loosen wing screw, reposition to set level, retighten; drain/refill so arm moves free",
+              "Won't hold level = supply pressure varying >20 psi — fix supply, not float",
+              "Valve: shut supply; open cover; inspect/clean VP126 diaphragm(VP113)/plunger(VP18)/orifice(VP114); flush pipe of grit",
+              "Orifice by pressure: 5/32\" std (2.44 gpm@20psi) · 1/4\" low/gravity (3.70@20) · 3/8\" highest (5.00@20) — Table 1",
+              "High pressure (>60 psi) or chatter/pounding → smaller orifice; severe → add pressure regulator"
+            ],
+            "img": [
+              "manuals/img/brower-valve-vp126-p5.png",
+              "manuals/img/brower-valve-orifice-p6.png",
+              "manuals/img/brower-fuse-wire-p8.png"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

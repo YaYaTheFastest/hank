@@ -366,7 +366,7 @@ export default {
 async function handleApi(request, env, url, siteAuthed) {
   if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
 
-  const provided = request.headers.get("X-Hank-Key") || url.searchParams.get("key") || "";
+  const provided = request.headers.get("X-Hank-Key") || "";
   const expected = env.HANK_PASSWORD || "";
   const configured = expected.length > 0;
   const authed = configured && provided === expected;
@@ -374,16 +374,19 @@ async function handleApi(request, env, url, siteAuthed) {
   const familyOrLoop = authed || !!siteAuthed;
   const kv = !!env.STATE;
 
-  // Health/check-connection — safe to call without auth; reports what's working.
+  // Health/check-connection — anonymous callers get operational flags only (no auth-verification).
   if (url.pathname === "/api/health") {
-    return json({
+    const body = {
       ok: true,
-      passwordSetInCloudflare: configured,
-      passwordMatches: authed,
       kvConnected: kv,
       xaiApiKeySet: !!(env.XAI_API_KEY && String(env.XAI_API_KEY).length > 0),
       time: new Date().toISOString(),
-    });
+    };
+    if (authed) {
+      body.passwordSetInCloudflare = configured;
+      body.passwordMatches = true;
+    }
+    return json(body);
   }
 
   // ---- Castle Fund (kids' chore→reward) ----
@@ -454,12 +457,14 @@ async function handleApi(request, env, url, siteAuthed) {
   }
   // Is a parent PIN set yet?
   if (url.pathname === "/api/castle/pinset" && request.method === "GET") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const p = await env.STATE.get("castle:pin");
     return json({ ok: true, set: !!p });
   }
   // Set the PIN once (first run). Won't overwrite an existing PIN.
   if (url.pathname === "/api/castle/setpin" && request.method === "POST") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const b = await request.json().catch(() => ({}));
     const pin = String(b.pin || "");
@@ -573,8 +578,9 @@ async function handleApi(request, env, url, siteAuthed) {
     return json({ ok: true, v: bundle.v });
   }
 
-  // Kid stars one wishlist item as the active goal (no PIN — low-stakes).
+  // Kid stars one wishlist item as the active goal (no PIN — low-stakes). Family cookie or loop key required.
   if (url.pathname === "/api/castle/star" && request.method === "POST") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
     if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const b = await request.json().catch(() => ({}));
     const bundle = await loadCastleBundle(env);

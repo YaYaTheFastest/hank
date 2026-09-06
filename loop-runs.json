@@ -4,7 +4,7 @@
   "runs": [
     {
       "id": "2026-08-22_070005",
-      "started": "2026-08-22T07:00:05",
+      "started": "2026-08-22T07:00:05Z",
       "trigger": "scheduled",
       "trigger_label": "Scheduled (morning)",
       "slot": "morning",
@@ -18,7 +18,7 @@
     },
     {
       "id": "2026-08-21_190005",
-      "started": "2026-08-21T19:00:05",
+      "started": "2026-08-21T19:00:05Z",
       "trigger": "scheduled",
       "trigger_label": "Scheduled (evening)",
       "slot": "evening",
@@ -32,7 +32,7 @@
     },
     {
       "id": "2026-08-21_130005",
-      "started": "2026-08-21T13:00:05",
+      "started": "2026-08-21T13:00:05Z",
       "trigger": "scheduled",
       "trigger_label": "Scheduled (afternoon)",
       "slot": "afternoon",
@@ -46,7 +46,7 @@
     },
     {
       "id": "2026-08-21_071622",
-      "started": "2026-08-21T07:16:22",
+      "started": "2026-08-21T07:16:22Z",
       "trigger": "scheduled",
       "trigger_label": "Scheduled (morning)",
       "slot": "morning",
@@ -60,7 +60,7 @@
     },
     {
       "id": "2026-08-20_190005",
-      "started": "2026-08-20T19:00:05",
+      "started": "2026-08-20T19:00:05Z",
       "trigger": "scheduled",
       "trigger_label": "Scheduled (evening)",
       "slot": "evening",

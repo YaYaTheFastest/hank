@@ -1,11 +1,24 @@
 # Wrangler must not upload these as static assets (25 MiB/file limit).
 # See: https://developers.cloudflare.com/workers/static-assets/binding/#ignoring-assets
+# Root is the assets directory — ignore server/config/docs so they are not served after login.
 
 .git
 .git/**
 node_modules
 node_modules/**
-package.json
-package-lock.json
+.wrangler
+.wrangler/**
+.dev.vars
 .env
 .DS_Store
+
+worker.js
+wrangler.jsonc
+.gitignore
+.assetsignore
+
+README*
+package.json
+package-lock.json
+docs/
+docs/**

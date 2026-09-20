@@ -1,5 +1,6 @@
 window.PLAY_DATA = (function(){
 "use strict";
+  // GUIDE_DIAGRAMS v1b
   var GAMES = {
     minecraft: {
       id: "minecraft",

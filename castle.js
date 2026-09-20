@@ -349,6 +349,7 @@
       '<p class="csub">Castle Fund — chores &amp; reward</p>' +
       '<div class="tabs"><a class="tab" href="./">Home</a><a class="tab" href="castle.html">Castle</a>' +
       '<a class="tab' + (KID==="Dagvald"?" active":"") + '" href="dagvald.html">Dagvald</a>' +
+      '<a class="tab" href="play.html">Play</a>' +
       '<a class="tab' + (KID==="Davikja"?" active":"") + '" href="davikja.html">Davikja</a></div></header>';
     html += '<div class="wrap">';
 

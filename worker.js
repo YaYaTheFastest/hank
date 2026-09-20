@@ -336,7 +336,7 @@ const KID_ALLOW = new Set([
   "/kids.html", "/kids", "/play.html", "/play", "/play.js", "/play-data.js",
   "/dagvald.html", "/dagvald", "/davikja.html", "/davikja",
   "/castle.html", "/castle", "/castle.js",
-  "/__kid_login", "/api/session", "/api/answer",
+  "/__kid_login", "/api/session", "/api/answer", "/api/kid-search",
   "/api/castle",
 ]);
 
@@ -359,7 +359,10 @@ function kidStaticAllowed(pathname) {
 }
 
 function kidApiAllowed(pathname) {
-  if (pathname === "/api/session" || pathname === "/api/answer") return true;
+  if (pathname === "/api/session" || pathname === "/api/answer" || pathname === "/api/kid-search") return true;
+  if (pathname === "/api/play/search-history" || pathname === "/api/play/spark-drafts") return true;
+  if (pathname === "/api/play/spark-drafts/approve") return true; // handler enforces parent
+  if (pathname === "/api/play/sparks") return true;
   if (pathname === "/api/castle" || pathname.startsWith("/api/castle/")) return true;
   return false;
 }
@@ -462,6 +465,177 @@ async function handleApi(request, env, url, siteAuthed, kidAuthed) {
       time: new Date().toISOString(),
     });
   }
+
+
+  // Kid-safe Google Programmable Search (CSE). Secrets never reach the browser.
+  // Logs every query to KV play:search:{kid} (cap 100). Parent uses history to draft Fire cards.
+  if (url.pathname === "/api/kid-search" && request.method === "GET") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
+    const kid = String(url.searchParams.get("kid") || "Dagvald").slice(0, 32);
+    const qRaw = (url.searchParams.get("q") || "").trim().slice(0, 120);
+    const topic = (url.searchParams.get("topic") || "").trim().slice(0, 40);
+    if (!qRaw && !topic) return json({ ok: false, error: "empty-query" }, 400);
+    const cx = env.GOOGLE_CSE_ID || "";
+    const key = env.GOOGLE_CSE_KEY || env.GOOGLE_API_KEY || "";
+    if (!cx || !key) {
+      return json({
+        ok: false,
+        error: "search-not-connected",
+        message: "Dad must connect Google search: create a Programmable Search Engine (control panel), turn on SafeSearch, copy cx → wrangler secret GOOGLE_CSE_ID; create API key with Custom Search API → GOOGLE_CSE_KEY.",
+        results: [],
+      });
+    }
+    const topicPrefix = {
+      jokic: "Nikola Jokic Denver Nuggets",
+      nba: "NBA basketball skills kids",
+      jones: "Chris Jones Kansas City Chiefs defensive tackle",
+      minecraft: "Minecraft Java Edition",
+      hogwarts: "Hogwarts Legacy",
+    };
+    const prefix = topicPrefix[topic] || "";
+    const q = [prefix, qRaw].filter(Boolean).join(" ").trim();
+    const api = new URL("https://www.googleapis.com/customsearch/v1");
+    api.searchParams.set("key", key);
+    api.searchParams.set("cx", cx);
+    api.searchParams.set("q", q);
+    api.searchParams.set("safe", "active");
+    api.searchParams.set("num", "6");
+    try {
+      const r = await fetch(api.toString());
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) {
+        return json({ ok: false, error: "upstream", status: r.status, message: (data && data.error && data.error.message) || "search failed", results: [] }, 502);
+      }
+      const results = (data.items || []).slice(0, 6).map((it) => ({
+        title: String(it.title || "").slice(0, 120),
+        snippet: String(it.snippet || "").slice(0, 180),
+        link: String(it.link || ""),
+        displayLink: String(it.displayLink || ""),
+      })).filter((it) => it.link.startsWith("https://"));
+      // Log search history (newest first, dedupe by normalized query, cap 100)
+      if (kv) {
+        try {
+          const histKey = "play:search:" + kid;
+          let hist = [];
+          try { hist = JSON.parse(await env.STATE.get(histKey) || "[]"); } catch (e) { hist = []; }
+          if (!Array.isArray(hist)) hist = [];
+          const norm = q.toLowerCase().replace(/\s+/g, " ").trim();
+          hist = hist.filter((h) => (h.norm || "") !== norm);
+          hist.unshift({
+            kid, topic, q, norm, ts: Date.now(),
+            tops: results.slice(0, 3).map((x) => ({ title: x.title, link: x.link })),
+          });
+          if (hist.length > 100) hist.length = 100;
+          await env.STATE.put(histKey, JSON.stringify(hist));
+        } catch (e) {}
+      }
+      return json({ ok: true, q, topic, results });
+    } catch (e) {
+      return json({ ok: false, error: "fetch-failed", message: "search unavailable", results: [] }, 502);
+    }
+  }
+
+  // Search history — kid or parent
+  if (url.pathname === "/api/play/search-history" && request.method === "GET") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const kid = String(url.searchParams.get("kid") || "Dagvald").slice(0, 32);
+    let hist = [];
+    try { hist = JSON.parse(await env.STATE.get("play:search:" + kid) || "[]"); } catch (e) { hist = []; }
+    if (!Array.isArray(hist)) hist = [];
+    return json({ ok: true, kid, items: hist.slice(0, 40) });
+  }
+
+  // Spark drafts — POST creates draft (parent or kid); GET lists; approve is parent-only
+  if (url.pathname === "/api/play/spark-drafts" && request.method === "GET") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    let drafts = [];
+    try { drafts = JSON.parse(await env.STATE.get("play:spark-drafts") || "[]"); } catch (e) { drafts = []; }
+    if (!Array.isArray(drafts)) drafts = [];
+    // Kids never see approve UI — still can GET empty for safety: only return to parent
+    if (!siteAuthed && !authed) return json({ ok: true, drafts: [] });
+    return json({ ok: true, drafts: drafts.filter((d) => d && d.status !== "approved").slice(0, 40) });
+  }
+
+  if (url.pathname === "/api/play/spark-drafts" && request.method === "POST") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    // Prefer parent creating drafts from history; allow familyOrLoop so Dad-on-device works
+    if (!siteAuthed && !authed) return json({ ok: false, error: "parent-only" }, 403);
+    const b = await request.json().catch(() => ({}));
+    const title = String(b.title || "").trim().slice(0, 80);
+    const why = String(b.why || "").trim().slice(0, 140);
+    const link = String(b.link || "").trim().slice(0, 300);
+    const topic = String(b.topic || "nba").trim().slice(0, 40);
+    const q = String(b.q || "").trim().slice(0, 120);
+    if (!title) return json({ ok: false, error: "need-title" }, 400);
+    let drafts = [];
+    try { drafts = JSON.parse(await env.STATE.get("play:spark-drafts") || "[]"); } catch (e) { drafts = []; }
+    if (!Array.isArray(drafts)) drafts = [];
+    const id = "draft-" + Date.now().toString(36);
+    const draft = {
+      id, title, why, link, topic, q,
+      image: "", youtubeId: "", facts: [],
+      status: "draft", ts: Date.now(), kid: String(b.kid || "Dagvald").slice(0, 32),
+    };
+    drafts.unshift(draft);
+    if (drafts.length > 80) drafts.length = 80;
+    await env.STATE.put("play:spark-drafts", JSON.stringify(drafts));
+    return json({ ok: true, draft });
+  }
+
+  if (url.pathname === "/api/play/spark-drafts/approve" && request.method === "POST") {
+    if (!siteAuthed && !authed) return json({ ok: false, error: "parent-only" }, 403);
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
+    const b = await request.json().catch(() => ({}));
+    const id = String(b.id || "");
+    if (!id) return json({ ok: false, error: "need-id" }, 400);
+    let drafts = [];
+    try { drafts = JSON.parse(await env.STATE.get("play:spark-drafts") || "[]"); } catch (e) { drafts = []; }
+    if (!Array.isArray(drafts)) drafts = [];
+    const idx = drafts.findIndex((d) => d && d.id === id);
+    if (idx < 0) return json({ ok: false, error: "not-found" }, 404);
+    const draft = drafts[idx];
+    draft.status = "approved";
+    drafts[idx] = draft;
+    // Merge into KV overlay SPARKS
+    let overlay = [];
+    try { overlay = JSON.parse(await env.STATE.get("play:sparks-overlay") || "[]"); } catch (e) { overlay = []; }
+    if (!Array.isArray(overlay)) overlay = [];
+    const spark = {
+      id: "kv-" + draft.id,
+      tag: draft.topic || "nba",
+      title: draft.title,
+      why: draft.why || "From Dagvald's search — Dad approved.",
+      image: draft.image || "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200&q=80",
+      youtubeId: draft.youtubeId || "",
+      facts: Array.isArray(draft.facts) && draft.facts.length ? draft.facts.slice(0, 3) : [
+        "Dad approved this from your search.",
+        "Try one idea tonight.",
+        "Tell Dad what worked.",
+      ],
+      link: draft.link || "",
+      sourceQuery: draft.q || "",
+    };
+    overlay = overlay.filter((s) => s && s.id !== spark.id);
+    overlay.unshift(spark);
+    if (overlay.length > 60) overlay.length = 60;
+    await env.STATE.put("play:sparks-overlay", JSON.stringify(overlay));
+    await env.STATE.put("play:spark-drafts", JSON.stringify(drafts));
+    return json({ ok: true, spark });
+  }
+
+  // Live Fire overlay (approved drafts) — merge client-side with play-data SPARKS
+  if (url.pathname === "/api/play/sparks" && request.method === "GET") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
+    if (!kv) return json({ ok: true, overlay: [] });
+    let overlay = [];
+    try { overlay = JSON.parse(await env.STATE.get("play:sparks-overlay") || "[]"); } catch (e) { overlay = []; }
+    if (!Array.isArray(overlay)) overlay = [];
+    return json({ ok: true, overlay: overlay.slice(0, 40) });
+  }
+
 
   // ---- Castle Fund (kids' chore→reward) ----
   // Read state + log a chore require a signed-in family device (site cookie) or the loop key — never anonymous

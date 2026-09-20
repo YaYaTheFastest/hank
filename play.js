@@ -92,15 +92,21 @@
   var view = "play";
 
   function header() {
-    return '<header class="chead"><div class="cbar"><div><a class="backchip" href="dagvald.html">← Castle</a> <h1 style="display:inline;margin-left:6px">Play</h1></div></div>' +
+    return '<header class="chead"><div class="cbar"><div><a class="backchip" href="kids.html">← Kids</a> <h1 style="display:inline;margin-left:6px">Play</h1></div>' +
+      '<a id="dadExit" class="backchip" href="./" style="display:none">Dad · HANK home</a></div>' +
       '<p class="csub">Your board · Dad runs Grok · you build and explore</p>' +
       '<div class="tabs">' +
-      '<a class="tab" href="./">Home</a>' +
-      '<a class="tab" href="castle.html">Castle</a>' +
-      '<a class="tab" href="dagvald.html">Fund</a>' +
+      '<a class="tab" href="kids.html">Kids</a>' +
       '<a class="tab active" href="play.html">Play</a>' +
+      '<a class="tab" href="dagvald.html">Dagvald Fund</a>' +
       '<a class="tab" href="davikja.html">Davikja</a>' +
       "</div></header>";
+  }
+  function showDadExitIfParent() {
+    fetch("/api/session", { credentials: "same-origin" }).then(function (r) { return r.json(); }).then(function (j) {
+      var el = document.getElementById("dadExit");
+      if (el && j && j.parent) el.style.display = "inline-flex";
+    }).catch(function () {});
   }
 
   function toast(msg) {
@@ -225,6 +231,7 @@
       '<button class="sw ' + (view === "inbox" ? "on-mc" : "off") + '" data-view="inbox">Sent</button></div>';
     var body = view === "play" ? renderPlay() : view === "love" ? renderInterests() : view === "ideas" ? renderIdeas() : renderInbox();
     document.body.innerHTML = header() + '<div class="wrap">' + nav + body + '</div><div class="toast" id="toast"></div>';
+    showDadExitIfParent();
     bind();
   }
 

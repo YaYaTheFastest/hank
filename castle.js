@@ -340,16 +340,23 @@
     return svg + '<div class="cap"><b style="color:var(--kid)">' + money(pts[months].w) + '</b> in 6 months if you save about ' + money(c) + '/month' + (r > 0 ? ' — the solid line is with Bank of Mom &amp; Dad interest (' + cfg().interestPct + '%/mo), the dotted line is without. That gap is the power of saving.' : '. Turn on interest in parent settings to grow it faster.') + '</div>';
   }
 
+  function showDadExitIfParent() {
+    fetch("/api/session", { credentials: "same-origin" }).then(function (r) { return r.json(); }).then(function (j) {
+      var el = document.getElementById("dadExit");
+      if (el && j && j.parent) el.style.display = "inline-flex";
+    }).catch(function () {});
+  }
+
   // ---- Render ----
   function render() {
     var C = cfg(), bal = balance(), ag = activeGoal(), goal = ag.goal, pct = goal ? Math.min(1, bal / goal) : 0;
     var pend = pending(), bk = buckets();
-    var html = '<header class="chead"><div class="cbar"><div><a class="backchip" href="./">← HANK</a><h1 style="display:inline;margin-left:8px">' + KID + '</h1></div>' +
-      '<button id="parentBtn" class="pbtn">🔑 Parent</button></div>' +
+    var html = '<header class="chead"><div class="cbar"><div><a class="backchip" href="kids.html">← Kids</a><h1 style="display:inline;margin-left:8px">' + KID + '</h1></div>' +
+      '<span style="display:flex;gap:8px;align-items:center"><a id="dadExit" class="pbtn" href="./" style="display:none;text-decoration:none">Dad · HANK home</a><button id="parentBtn" class="pbtn">🔑 Parent</button></span></div>' +
       '<p class="csub">Castle Fund — chores &amp; reward</p>' +
-      '<div class="tabs"><a class="tab" href="./">Home</a><a class="tab" href="castle.html">Castle</a>' +
-      '<a class="tab' + (KID==="Dagvald"?" active":"") + '" href="dagvald.html">Dagvald</a>' +
+      '<div class="tabs"><a class="tab" href="kids.html">Kids</a>' +
       '<a class="tab" href="play.html">Play</a>' +
+      '<a class="tab' + (KID==="Dagvald"?" active":"") + '" href="dagvald.html">Dagvald</a>' +
       '<a class="tab' + (KID==="Davikja"?" active":"") + '" href="davikja.html">Davikja</a></div></header>';
     html += '<div class="wrap">';
 
@@ -444,6 +451,7 @@
     Array.prototype.forEach.call(document.querySelectorAll("[data-star]"), function (b) { b.addEventListener("click", function () { star(b.dataset.star); }); });
     var cinBtn = document.getElementById("checkInBtn");
     if (cinBtn && !cinBtn.disabled) cinBtn.addEventListener("click", checkIn);
+    showDadExitIfParent();
     document.getElementById("parentBtn").addEventListener("click", function () { openParent(); });
     document.getElementById("pmClose").addEventListener("click", function () { lastPin = ""; editCat = null; editWish = null; document.getElementById("pm").classList.remove("on"); });
   }

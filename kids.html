@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3d4f8f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Kids">
+<title>Kids · HANK</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,system-ui,Segoe UI,Roboto,sans-serif;color:#1a2332;background:#f3f5f8;min-height:100vh}
+  header{background:linear-gradient(135deg,#3d4f8f,#2a3870);color:#fff;padding:calc(16px + env(safe-area-inset-top)) 18px 18px}
+  header h1{margin:0;font-size:22px;font-weight:800}
+  header p{margin:4px 0 0;opacity:.85;font-size:13px}
+  .wrap{max-width:420px;margin:0 auto;padding:20px 16px 48px}
+  .hide{display:none!important}
+  .dadchip{display:inline-flex;text-decoration:none;color:#fff;font-size:12px;font-weight:800;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.18);margin-top:12px}
+  .tiles{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+  .tile{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid #e7e9ee;border-radius:22px;padding:22px 18px;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(0,0,0,.05);min-height:88px;-webkit-tap-highlight-color:transparent}
+  .tile:active{transform:scale(.98)}
+  .av{width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;font-weight:800;flex-shrink:0}
+  .tn{font-weight:800;font-size:22px}
+  .td{font-size:14px;color:#7c8694;margin-top:3px}
+  .chev{margin-left:auto;color:#c2c8d0;font-size:24px}
+  .playlink{display:block;text-align:center;margin-top:14px;font-size:15px;font-weight:700;color:#3d4f8f;text-decoration:none;padding:12px}
+  /* PIN pad */
+  .padcard{background:#fff;border:1px solid #e7e9ee;border-radius:24px;padding:28px 20px 24px;box-shadow:0 4px 20px rgba(0,0,0,.06);text-align:center}
+  .padcard h2{margin:0 0 6px;font-size:20px;color:#3d4f8f}
+  .padcard .hint{margin:0 0 22px;font-size:14px;color:#7c8694}
+  .dots{display:flex;justify-content:center;gap:16px;margin-bottom:22px}
+  .dot{width:14px;height:14px;border-radius:50%;border:2px solid #3d4f8f;background:transparent;transition:background .12s}
+  .dot.on{background:#3d4f8f}
+  .pad{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:280px;margin:0 auto}
+  .key{appearance:none;border:0;background:#eef1f6;border-radius:50%;width:72px;height:72px;margin:0 auto;font-size:28px;font-weight:600;color:#1a2332;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;justify-content:center}
+  .key:active{background:#dce3ee}
+  .key.ghost{background:transparent;font-size:15px;font-weight:700;color:#3d4f8f}
+  .key.empty{visibility:hidden;pointer-events:none}
+  .err{color:#d24b3e;font-size:14px;font-weight:600;margin:0 0 14px;min-height:1.2em}
+  .shake{animation:shake .45s ease}
+  @keyframes shake{
+    0%,100%{transform:translateX(0)}
+    20%{transform:translateX(-10px)}
+    40%{transform:translateX(10px)}
+    60%{transform:translateX(-8px)}
+    80%{transform:translateX(8px)}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Kids · HANK</h1>
+  <p>Dagvald &amp; Davikja</p>
+  <a id="dadChip" class="dadchip hide" href="./">Dad · HANK home</a>
+</header>
+<div class="wrap">
+  <div id="padView" class="hide">
+    <div id="padCard" class="padcard">
+      <h2>Enter PIN</h2>
+      <p class="hint">Shared kid unlock</p>
+      <div id="err" class="err"></div>
+      <div class="dots" aria-hidden="true">
+        <span class="dot" data-i="0"></span>
+        <span class="dot" data-i="1"></span>
+        <span class="dot" data-i="2"></span>
+        <span class="dot" data-i="3"></span>
+      </div>
+      <div class="pad" id="pad" role="group" aria-label="PIN keypad">
+        <button type="button" class="key" data-d="1">1</button>
+        <button type="button" class="key" data-d="2">2</button>
+        <button type="button" class="key" data-d="3">3</button>
+        <button type="button" class="key" data-d="4">4</button>
+        <button type="button" class="key" data-d="5">5</button>
+        <button type="button" class="key" data-d="6">6</button>
+        <button type="button" class="key" data-d="7">7</button>
+        <button type="button" class="key" data-d="8">8</button>
+        <button type="button" class="key" data-d="9">9</button>
+        <button type="button" class="key empty" tabindex="-1" aria-hidden="true"></button>
+        <button type="button" class="key" data-d="0">0</button>
+        <button type="button" class="key ghost" id="delBtn" aria-label="Delete">⌫</button>
+      </div>
+    </div>
+    <form id="pinForm" method="POST" action="/__kid_login" class="hide">
+      <input type="hidden" name="pin" id="pinField" value="">
+    </form>
+  </div>
+  <div id="tilesView" class="hide">
+    <div class="tiles">
+      <a class="tile" href="dagvald.html">
+        <div class="av" style="background:#7c3aed">D</div>
+        <div><div class="tn">Dagvald</div><div class="td">Castle Fund · chores &amp; reward</div></div>
+        <span class="chev">›</span>
+      </a>
+      <a class="tile" href="davikja.html">
+        <div class="av" style="background:#db2777">★</div>
+        <div><div class="tn">Davikja</div><div class="td">Castle Fund · chores &amp; goal</div></div>
+        <span class="chev">›</span>
+      </a>
+    </div>
+    <a class="playlink" href="play.html">Play board →</a>
+  </div>
+</div>
+<script>
+(function () {
+  var pin = "";
+  var busy = false;
+  var padView = document.getElementById("padView");
+  var tilesView = document.getElementById("tilesView");
+  var padCard = document.getElementById("padCard");
+  var errEl = document.getElementById("err");
+  var dadChip = document.getElementById("dadChip");
+  var dots = Array.prototype.slice.call(document.querySelectorAll(".dot"));
+  var wrong = /[?&]wrong=1(?:&|$)/.test(location.search);
+
+  function paintDots() {
+    dots.forEach(function (d, i) {
+      d.className = "dot" + (i < pin.length ? " on" : "");
+    });
+  }
+
+  function showPad(msg) {
+    padView.classList.remove("hide");
+    tilesView.classList.add("hide");
+    errEl.textContent = msg || "";
+    pin = "";
+    paintDots();
+    if (msg) {
+      padCard.classList.remove("shake");
+      void padCard.offsetWidth;
+      padCard.classList.add("shake");
+    }
+  }
+
+  function showTiles() {
+    padView.classList.add("hide");
+    tilesView.classList.remove("hide");
+    if (wrong) {
+      try { history.replaceState(null, "", "kids.html"); } catch (e) {}
+    }
+  }
+
+  function submitPin() {
+    if (busy || pin.length !== 4) return;
+    busy = true;
+    document.getElementById("pinField").value = pin;
+    document.getElementById("pinForm").submit();
+  }
+
+  document.getElementById("pad").addEventListener("click", function (e) {
+    var btn = e.target.closest(".key");
+    if (!btn || busy) return;
+    if (btn.id === "delBtn") {
+      pin = pin.slice(0, -1);
+      paintDots();
+      return;
+    }
+    var d = btn.getAttribute("data-d");
+    if (d == null || pin.length >= 4) return;
+    pin += d;
+    paintDots();
+    if (pin.length === 4) setTimeout(submitPin, 80);
+  });
+
+  fetch("/api/session", { credentials: "same-origin" })
+    .then(function (r) { return r.json(); })
+    .then(function (j) {
+      if (j && j.parent) dadChip.classList.remove("hide");
+      if (j && (j.kid || j.parent)) showTiles();
+      else showPad(wrong ? "Wrong PIN — try again" : "");
+    })
+    .catch(function () {
+      showPad(wrong ? "Wrong PIN — try again" : "");
+    });
+})();
+</script>
+</body>
+</html>

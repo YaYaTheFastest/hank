@@ -332,6 +332,38 @@ ${wrong ? '<div class="err">Wrong password — try again.</div>' : ""}
   return new Response(body, { status: wrong ? 401 : 200, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" } });
 }
 
+const KID_ALLOW = new Set([
+  "/kids.html", "/kids", "/play.html", "/play", "/play.js", "/play-data.js",
+  "/dagvald.html", "/dagvald", "/davikja.html", "/davikja",
+  "/castle.html", "/castle", "/castle.js",
+  "/__kid_login", "/api/session", "/api/answer",
+  "/api/castle",
+]);
+
+function normalizeKidPath(pathname) {
+  let p = pathname || "/";
+  if (p.length > 1 && p.endsWith("/")) p = p.slice(0, -1);
+  const aliases = {
+    "/kids": "/kids.html",
+    "/play": "/play.html",
+    "/dagvald": "/dagvald.html",
+    "/davikja": "/davikja.html",
+    "/castle": "/castle.html",
+  };
+  return aliases[p] || p;
+}
+
+function kidStaticAllowed(pathname) {
+  const n = normalizeKidPath(pathname);
+  return KID_ALLOW.has(pathname) || KID_ALLOW.has(n);
+}
+
+function kidApiAllowed(pathname) {
+  if (pathname === "/api/session" || pathname === "/api/answer") return true;
+  if (pathname === "/api/castle" || pathname.startsWith("/api/castle/")) return true;
+  return false;
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -340,6 +372,8 @@ export default {
     // Family password gate (protects pages + manuals + kids' data). Cookie lasts 30 days per device.
     const gateToken = env.HANK_PASSWORD ? await sha256hex("hankgate:" + env.HANK_PASSWORD) : "";
     const siteAuthed = !env.HANK_PASSWORD || getCookie(request, "hank_site") === gateToken;
+    const kidToken = env.HANK_KID_PIN ? await sha256hex("hankkid:" + env.HANK_KID_PIN) : "";
+    const kidAuthed = !!(kidToken && getCookie(request, "hank_kid") === kidToken);
 
     if (url.pathname === "/__login" && request.method === "POST") {
       const form = await request.formData().catch(() => null);
@@ -355,23 +389,66 @@ export default {
       return loginPage(dest, true);
     }
 
-    if (url.pathname.startsWith("/api/")) return handleApi(request, env, url, siteAuthed);
+    if (url.pathname === "/__kid_login" && request.method === "POST") {
+      if (!env.HANK_KID_PIN) {
+        return new Response("<!doctype html><html><body><p>Kid PIN not set — ask Dad</p></body></html>", {
+          status: 503,
+          headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" },
+        });
+      }
+      const form = await request.formData().catch(() => null);
+      const pin = form ? String(form.get("pin") || "") : "";
+      if (pin === env.HANK_KID_PIN) {
+        return new Response(null, { status: 302, headers: {
+          "Set-Cookie": `hank_kid=${kidToken}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax`,
+          "Location": "/kids.html",
+        } });
+      }
+      return new Response(null, { status: 302, headers: { "Location": "/kids.html?wrong=1" } });
+    }
 
-    // static app + manuals — require the family password
-    if (!siteAuthed) return loginPage(url.pathname + url.search, false);
+    if (url.pathname === "/api/session" && request.method === "GET") {
+      const parent = !!(env.HANK_PASSWORD && getCookie(request, "hank_site") === gateToken);
+      const kid = !!(env.HANK_KID_PIN && getCookie(request, "hank_kid") === kidToken);
+      return json({ parent, kid });
+    }
+
+    if (url.pathname.startsWith("/api/")) {
+      if (siteAuthed) return handleApi(request, env, url, siteAuthed, kidAuthed);
+      if (kidAuthed && kidApiAllowed(url.pathname)) return handleApi(request, env, url, siteAuthed, kidAuthed);
+      return json({ ok: false, error: "auth" }, 401);
+    }
+
+    // Unauthenticated: kids front door is open so the PIN pad can load.
+    const path = url.pathname;
+    if (!siteAuthed && !kidAuthed) {
+      if (path === "/kids.html" || path === "/kids") return env.ASSETS.fetch(request);
+      if (kidStaticAllowed(path)) {
+        return new Response(null, { status: 302, headers: { Location: "/kids.html" } });
+      }
+      return loginPage(url.pathname + url.search, false);
+    }
+
+    // Kid cookie only — stay inside the kid world.
+    if (!siteAuthed && kidAuthed) {
+      if (kidStaticAllowed(path)) return env.ASSETS.fetch(request);
+      return new Response(null, { status: 302, headers: { Location: "/kids.html" } });
+    }
+
+    // Family password (or no password configured) — full app.
     return env.ASSETS.fetch(request);
   },
 };
 
-async function handleApi(request, env, url, siteAuthed) {
+async function handleApi(request, env, url, siteAuthed, kidAuthed) {
   if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
 
   const provided = request.headers.get("X-Hank-Key") || url.searchParams.get("key") || "";
   const expected = env.HANK_PASSWORD || "";
   const configured = expected.length > 0;
   const authed = configured && provided === expected;
-  // Castle data is readable/writable by the loop (key) OR a signed-in family device (site cookie), never anonymously.
-  const familyOrLoop = authed || !!siteAuthed;
+  // Castle + kid APIs: loop key, family cookie, OR kid cookie. Focus/project stay family-only via fetch gate.
+  const familyOrLoop = authed || !!siteAuthed || !!kidAuthed;
   const kv = !!env.STATE;
 
   // Health/check-connection — safe to call without auth; reports what's working.
@@ -698,12 +775,10 @@ async function handleApi(request, env, url, siteAuthed) {
     return json({ ok: true, v: saved.v, updated: saved.updated, done: saved.done });
   }
 
-  // Everything below requires the correct HANK password (chat + tap-to-answer).
-  if (!authed) return json({ ok: false, error: configured ? "wrong-password" : "no-password-set" }, 401);
-  if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
-
-  // Save a tapped answer / captured input.
+  // Play / capture notes — family cookie OR kid cookie OR loop key (not anonymous).
   if (url.pathname === "/api/answer" && request.method === "POST") {
+    if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
+    if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
     const body = await request.json().catch(() => ({}));
     const id = "ans:" + Date.now() + ":" + Math.random().toString(36).slice(2, 7);
     const row = { ...body, ts: Date.now() };
@@ -713,6 +788,10 @@ async function handleApi(request, env, url, siteAuthed) {
     await saveCaptureBundle(env, bundle);
     return json({ ok: true, stored: id });
   }
+
+  // Everything below requires the correct HANK password (chat + tap-to-answer).
+  if (!authed) return json({ ok: false, error: configured ? "wrong-password" : "no-password-set" }, 401);
+  if (!kv) return json({ ok: false, error: "kv-not-bound" }, 500);
 
   // In-app Hank chat — xAI Grok API; context bundle = system prompt (refreshed on deploy).
   if (url.pathname === "/api/chat" && request.method === "POST") {

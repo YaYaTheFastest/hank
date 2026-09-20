@@ -34,10 +34,13 @@
 </head>
 <body>
 <header>
-  <a class="backchip" href="./">← HANK</a>
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+    <a class="backchip" href="kids.html">← Kids</a>
+    <a id="dadExit" class="backchip" href="./" style="display:none">Dad · HANK home</a>
+  </div>
   <h1>Castle Fund</h1>
   <p>Chores → approve → reward</p>
-  <div class="tabs"><a class="tab" href="./">Home</a><a class="tab active" href="castle.html">Castle</a><a class="tab" href="dagvald.html">Dagvald</a><a class="tab" href="play.html">Play</a><a class="tab" href="davikja.html">Davikja</a></div>
+  <div class="tabs"><a class="tab" href="kids.html">Kids</a><a class="tab" href="play.html">Play</a><a class="tab" href="dagvald.html">Dagvald</a><a class="tab" href="davikja.html">Davikja</a></div>
 </header>
 <div class="wrap">
   <p class="sub">Do a chore → tap to log it → Mom or Dad approves → it adds to your balance.</p>
@@ -115,6 +118,12 @@
   document.addEventListener("visibilitychange", function () { if (!document.hidden) load(true); });
   setInterval(function () { if (!document.hidden) load(false); }, 30000);
 })();
+</script>
+<script>
+fetch("/api/session",{credentials:"same-origin"}).then(function(r){return r.json()}).then(function(j){
+  var el=document.getElementById("dadExit");
+  if(el&&j&&j.parent) el.style.display="inline-flex";
+}).catch(function(){});
 </script>
 </body>
 </html>

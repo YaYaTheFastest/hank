@@ -226,7 +226,7 @@
     });
     html += "</div>";
     html += '<div class="searchbar">' +
-      '<input type="search" id="kidSearch" placeholder="Search Jokić, Jones, Minecraft…" enterkeyhint="search" autocomplete="off">' +
+      '<input type="search" id="kidSearch" placeholder="Search paused — Fire cards below" enterkeyhint="search" autocomplete="off">' +
       '<button type="button" id="kidSearchGo">Go</button></div>' +
       '<div id="kidSearchOut" class="sres"></div>' +
       '<div class="spark-grid">';
@@ -593,6 +593,8 @@
     var input = document.getElementById("kidSearch");
     var out = document.getElementById("kidSearchOut");
     if (!out) return;
+    out.innerHTML = '<p class="sempty">Google search retired. Fire cards still work. Grokopedia coming.</p>';
+    return;
     var q = (qOverride != null ? qOverride : (input && input.value || "")).trim();
     var topic = fireFilter === "all" ? "" : fireFilter;
     if (!q && !topic) {
@@ -606,7 +608,7 @@
       .then(function (r) { return r.json().catch(function () { return {}; }); })
       .then(function (j) {
         if (!j || j.error === "search-not-connected") {
-          out.innerHTML = '<p class="sempty">Dad: create Google Programmable Search (SafeSearch on) → secrets GOOGLE_CSE_ID + GOOGLE_CSE_KEY. Fire cards still work.</p>';
+          out.innerHTML = '<p class="sempty">Google search retired. Fire cards still work. Grokopedia coming.</p>';
           return;
         }
         if (!j.ok) {

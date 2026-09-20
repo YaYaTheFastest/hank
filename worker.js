@@ -467,72 +467,15 @@ async function handleApi(request, env, url, siteAuthed, kidAuthed) {
   }
 
 
-  // Kid-safe Google Programmable Search (CSE). Secrets never reach the browser.
-  // Logs every query to KV play:search:{kid} (cap 100). Parent uses history to draft Fire cards.
+  // Google CSE retired (Darren 2026-09-19 — "Forget google"). Grokopedia coming via Horus.
   if (url.pathname === "/api/kid-search" && request.method === "GET") {
     if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
-    const kid = String(url.searchParams.get("kid") || "Dagvald").slice(0, 32);
-    const qRaw = (url.searchParams.get("q") || "").trim().slice(0, 120);
-    const topic = (url.searchParams.get("topic") || "").trim().slice(0, 40);
-    if (!qRaw && !topic) return json({ ok: false, error: "empty-query" }, 400);
-    const cx = env.GOOGLE_CSE_ID || "";
-    const key = env.GOOGLE_CSE_KEY || env.GOOGLE_API_KEY || "";
-    if (!cx || !key) {
-      return json({
-        ok: false,
-        error: "search-not-connected",
-        message: "Dad must connect Google search: create a Programmable Search Engine (control panel), turn on SafeSearch, copy cx → wrangler secret GOOGLE_CSE_ID; create API key with Custom Search API → GOOGLE_CSE_KEY.",
-        results: [],
-      });
-    }
-    const topicPrefix = {
-      jokic: "Nikola Jokic Denver Nuggets",
-      nba: "NBA basketball skills kids",
-      jones: "Chris Jones Kansas City Chiefs defensive tackle",
-      minecraft: "Minecraft Java Edition",
-      hogwarts: "Hogwarts Legacy",
-    };
-    const prefix = topicPrefix[topic] || "";
-    const q = [prefix, qRaw].filter(Boolean).join(" ").trim();
-    const api = new URL("https://www.googleapis.com/customsearch/v1");
-    api.searchParams.set("key", key);
-    api.searchParams.set("cx", cx);
-    api.searchParams.set("q", q);
-    api.searchParams.set("safe", "active");
-    api.searchParams.set("num", "6");
-    try {
-      const r = await fetch(api.toString());
-      const data = await r.json().catch(() => ({}));
-      if (!r.ok) {
-        return json({ ok: false, error: "upstream", status: r.status, message: (data && data.error && data.error.message) || "search failed", results: [] }, 502);
-      }
-      const results = (data.items || []).slice(0, 6).map((it) => ({
-        title: String(it.title || "").slice(0, 120),
-        snippet: String(it.snippet || "").slice(0, 180),
-        link: String(it.link || ""),
-        displayLink: String(it.displayLink || ""),
-      })).filter((it) => it.link.startsWith("https://"));
-      // Log search history (newest first, dedupe by normalized query, cap 100)
-      if (kv) {
-        try {
-          const histKey = "play:search:" + kid;
-          let hist = [];
-          try { hist = JSON.parse(await env.STATE.get(histKey) || "[]"); } catch (e) { hist = []; }
-          if (!Array.isArray(hist)) hist = [];
-          const norm = q.toLowerCase().replace(/\s+/g, " ").trim();
-          hist = hist.filter((h) => (h.norm || "") !== norm);
-          hist.unshift({
-            kid, topic, q, norm, ts: Date.now(),
-            tops: results.slice(0, 3).map((x) => ({ title: x.title, link: x.link })),
-          });
-          if (hist.length > 100) hist.length = 100;
-          await env.STATE.put(histKey, JSON.stringify(hist));
-        } catch (e) {}
-      }
-      return json({ ok: true, q, topic, results });
-    } catch (e) {
-      return json({ ok: false, error: "fetch-failed", message: "search unavailable", results: [] }, 502);
-    }
+    return json({
+      ok: false,
+      error: "search-retired",
+      message: "Google search retired. Fire cards still work. Grokopedia coming.",
+      results: [],
+    });
   }
 
   // Search history — kid or parent

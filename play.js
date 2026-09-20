@@ -34,7 +34,7 @@
   }
   function esc(s) {
     return String(s == null ? "" : s)
-      .replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">").replace(/"/g, """);
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
 
   var css = "" +
@@ -297,3 +297,4 @@
 
   render();
 })();
+/* BLANK-FIX-2026-09-19 */

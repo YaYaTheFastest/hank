@@ -4,20 +4,14 @@ window.PLAY_DATA = (function(){
     minecraft: {
       id: "minecraft",
       name: "Minecraft",
-      short: "Java",
       emoji: "🟩",
-      tag: "Java Edition · survival + build",
-      ink: "#e8f6e4",
-      accent: "#3d8c3a"
+      tag: "Java Edition · survival + build"
     },
     hogwarts: {
       id: "hogwarts",
       name: "Hogwarts Legacy",
-      short: "Hogwarts",
       emoji: "🏰",
-      tag: "Story-light · explore + room + beasts",
-      ink: "#f6ead4",
-      accent: "#8a5a12"
+      tag: "Story-light · explore + room + beasts"
     }
   };
 

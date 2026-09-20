@@ -56,7 +56,7 @@
   }
 
   var css = "" +
-    ":root{--ink:#e8f0e4;--muted:#8a9a88;--line:#1e2a20;--paper:#121814;--lime:#b8ff3c;--bg:#0b0f0c;--mc:#3d8c3a;--hw:#c9923d}" +
+    ":root{--ink:#e8f0e4;--muted:#8a9a88;--paper:#121814;--lime:#b8ff3c;--bg:#0b0f0c}" +
     "*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:-apple-system,system-ui,Segoe UI,Roboto,sans-serif;-webkit-tap-highlight-color:transparent}" +
     ".chead{background:linear-gradient(165deg,#0d1510 0%,#0b0f0c 60%,#121a10 100%);color:#fff;padding:calc(12px + env(safe-area-inset-top)) 14px 0;border-bottom:1px solid #1a241c}" +
     ".cbar{display:flex;align-items:center;justify-content:space-between;gap:10px}" +
@@ -108,9 +108,6 @@
     ".hero p{margin:6px 0 0;font-size:13.5px;line-height:1.45;opacity:.92}" +
     ".switch{display:flex;gap:8px;margin:0 0 12px}" +
     ".card{background:#121814;border:1px solid #243028;border-radius:18px;padding:14px;margin:0 0 12px}" +
-    ".meta{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 8px}" +
-    ".pill{font-size:11px;font-weight:700;padding:3px 8px;border-radius:99px;background:#1e2a20;color:#a8bda6}" +
-    ".why{font-size:13.5px;line-height:1.45;margin:0 0 8px;color:#c5d4c2}" +
     ".card-face{display:flex;flex-direction:column;gap:10px}" +
     ".card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}" +
     ".ctitle{font-weight:900;font-size:18px;letter-spacing:-.3px;line-height:1.25}" +
@@ -125,7 +122,6 @@
     ".overflow.open .overflow-menu{display:block}" +
     ".overflow-menu button{display:block;width:100%;text-align:left;border:0;background:transparent;color:var(--ink);font-weight:700;font-size:14px;padding:12px 12px;border-radius:10px;cursor:pointer}" +
     ".overflow-menu button:active{background:#1e2a20}" +
-    ".pack{font-size:12.5px;color:var(--muted);margin:8px 0 0}" +
     ".actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}" +
     ".btnp{background:var(--lime);color:#0b0f0c;border:0;border-radius:11px;padding:11px 14px;font-weight:900;font-size:13px;cursor:pointer}" +
     ".btns{background:#1e2a20;color:var(--ink);border:1px solid #2a382c;border-radius:11px;padding:11px 14px;font-weight:700;font-size:13px;cursor:pointer}" +
@@ -162,7 +158,7 @@
     ".idea:first-child{border-top:0}" +
     ".st{font-size:11px;color:var(--muted)}" +
     ".parent{font-size:12.5px;background:#1a1810;border:1px solid #3a3420;border-radius:14px;padding:12px;line-height:1.45;color:#d4c89a}" +
-    ".searchbar{display:flex;gap:8px;margin:0 0 12px}.searchbar input{flex:1;border:0;border-radius:14px;padding:14px 14px;font:inherit;font-size:16px;font-weight:700;background:#151b16;color:#f2f7ef}.searchbar button{border:0;border-radius:14px;padding:14px 16px;font-weight:900;background:var(--neon);color:#0b0f0c;cursor:pointer}.sres{display:flex;flex-direction:column;gap:10px;margin:0 0 16px}.sres a{display:block;background:#151b16;border:1px solid #243028;border-radius:16px;padding:14px;text-decoration:none;color:#f2f7ef}.sres .stitle{font-weight:900;font-size:15px;margin:0 0 4px}.sres .ssnip{font-size:13px;color:#9aa89c;line-height:1.35}.sres .sact{margin-top:8px}.sempty{font-size:13px;color:#9aa89c;padding:8px 2px 14px}";
+    ".searchbar{display:flex;gap:8px;margin:0 0 12px}.searchbar input{flex:1;border:0;border-radius:14px;padding:14px 14px;font:inherit;font-size:16px;font-weight:700;background:#151b16;color:#f2f7ef}.searchbar button{border:0;border-radius:14px;padding:14px 16px;font-weight:900;background:var(--lime);color:#0b0f0c;cursor:pointer}.sres{display:flex;flex-direction:column;gap:10px;margin:0 0 16px}.sres a{display:block;background:#151b16;border:1px solid #243028;border-radius:16px;padding:14px;text-decoration:none;color:#f2f7ef}.sres .stitle{font-weight:900;font-size:15px;margin:0 0 4px}.sres .ssnip{font-size:13px;color:#9aa89c;line-height:1.35}.sres .sact{margin-top:8px}.sempty{font-size:13px;color:#9aa89c;padding:8px 2px 14px}";
 
   var st = document.createElement("style");
   st.textContent = css;
@@ -525,7 +521,6 @@
     var sin = document.getElementById("kidSearch");
     if (go) go.onclick = function () { runKidSearch(); };
     if (sin) sin.onkeydown = function (e) { if (e.key === "Enter") { e.preventDefault(); runKidSearch(); } };
-    // Prefill from chip topic when Fire filter changes — optional soft search
     document.querySelectorAll("[data-g]").forEach(function (b) {
       b.onclick = function () { game = b.getAttribute("data-g"); view = "play"; openSpark = null; render(); };
     });
@@ -713,16 +708,6 @@
     }
   }
 
-  var TOPIC_Q = {
-    all: "",
-    jokic: "Nikola Jokic Nuggets",
-    nba: "NBA skills",
-    jones: "Chris Jones Chiefs defensive tackle",
-    minecraft: "Minecraft Java",
-    hogwarts: "Hogwarts Legacy"
-  };
-
-
   function loadDadPlayPanel() {
     var panel = document.getElementById("dadSearchPanel");
     if (!panel) return;
@@ -799,55 +784,10 @@
     }).catch(function () {});
   }
 
-  function runKidSearch(qOverride) {
-    var input = document.getElementById("kidSearch");
+  function runKidSearch() {
     var out = document.getElementById("kidSearchOut");
     if (!out) return;
     out.innerHTML = '<p class="sempty">Google search retired. Fire cards still work. Grokopedia coming.</p>';
-    return;
-    var q = (qOverride != null ? qOverride : (input && input.value || "")).trim();
-    var topic = fireFilter === "all" ? "" : fireFilter;
-    if (!q && !topic) {
-      out.innerHTML = '<p class="sempty">Pick a chip or type a search.</p>';
-      return;
-    }
-    if (!q && topic) q = TOPIC_Q[topic] || topic;
-    out.innerHTML = '<p class="sempty">Searching…</p>';
-    var url = "/api/kid-search?kid=" + encodeURIComponent(KID) + "&q=" + encodeURIComponent(q) + (topic ? "&topic=" + encodeURIComponent(topic) : "");
-    fetch(url, { credentials: "same-origin" })
-      .then(function (r) { return r.json().catch(function () { return {}; }); })
-      .then(function (j) {
-        if (!j || j.error === "search-not-connected") {
-          out.innerHTML = '<p class="sempty">Google search retired. Fire cards still work. Grokopedia coming.</p>';
-          return;
-        }
-        if (!j.ok) {
-          out.innerHTML = '<p class="sempty">' + esc(j.message || "Search unavailable") + "</p>";
-          return;
-        }
-        var rows = j.results || [];
-        if (!rows.length) {
-          out.innerHTML = '<p class="sempty">No results. Try another word.</p>';
-          return;
-        }
-        out.innerHTML = rows.map(function (it) {
-          return '<a href="' + esc(it.link) + '" target="_blank" rel="noopener noreferrer">' +
-            '<div class="stitle">' + esc(it.title) + "</div>" +
-            '<div class="ssnip">' + esc(it.snippet) + "</div>" +
-            '<div class="sact"><button type="button" class="btns" data-send-result="' + esc(it.title) + '" data-send-url="' + esc(it.link) + '">Send to Dad</button></div>' +
-            "</a>";
-        }).join("");
-        out.querySelectorAll("[data-send-result]").forEach(function (b) {
-          b.onclick = function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            fileNote("search-share", fireFilter, b.getAttribute("data-send-result") + " · " + b.getAttribute("data-send-url"), {});
-          };
-        });
-      })
-      .catch(function () {
-        out.innerHTML = '<p class="sempty">Search unavailable right now.</p>';
-      });
   }
 
   loadSparkOverlay();

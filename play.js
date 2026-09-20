@@ -139,7 +139,7 @@
     ".guide-pic{flex:1;min-height:180px;border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:64px;font-weight:900;color:#0b0f0c;position:relative;overflow:hidden;border:1px solid #243028}" +
     ".guide-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}" +
     ".guide-pic .ph{position:relative;z-index:1;text-align:center;padding:20px}" +
-    ".guide-pic .ph small{display:block;font-size:13px;font-weight:800;opacity:.7;margin-top:8px}" +
+    ".guide-pic .ph small{display:block;font-size:13px;font-weight:800;opacity:.7;margin-top:8px}.guide-pic.has-diagram{padding:0;background:#0f1410!important}.guide-pic .diagram{position:absolute;inset:0;display:flex}.guide-pic .diagram svg{width:100%;height:100%;display:block}" +
     ".guide-cap{margin:16px 0 0;font-size:22px;font-weight:900;letter-spacing:-.4px;line-height:1.25;text-align:center;min-height:2.6em}" +
     ".guide-nav{display:flex;gap:10px;margin-top:16px}" +
     ".guide-nav button{flex:1;border:0;border-radius:16px;padding:16px;font-weight:900;font-size:16px;cursor:pointer}" +
@@ -265,6 +265,185 @@
     return null;
   }
 
+
+  // Inline SVG diagrams for guide sheets (no external images; kid-safe).
+  var DIAGRAMS = {
+    site: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#1a2e14"/>' +
+        '<ellipse cx="100" cy="110" rx="70" ry="22" fill="#3d6b2a"/>' +
+        '<ellipse cx="40" cy="100" rx="28" ry="14" fill="#2b6cb0" opacity=".85"/>' +
+        '<rect x="118" y="48" width="18" height="55" fill="#5d4037"/>' +
+        '<circle cx="127" cy="42" r="22" fill="#2e7d32"/>' +
+        '<circle cx="145" cy="55" r="16" fill="#388e3c"/>' +
+        '<path d="M30 120 L170 120" stroke="#8d6e63" stroke-width="3" stroke-dasharray="6 4"/>' +
+        '<text x="100" y="148" text-anchor="middle" fill="#c8e6c9" font-size="11" font-family="system-ui" font-weight="700">pick the spot</text>' +
+        '</svg>';
+    },
+    footprint: function () {
+      var cells = '';
+      for (var r = 0; r < 11; r++) {
+        for (var c = 0; c < 11; c++) {
+          var x = 28 + c * 13, y = 18 + r * 11;
+          var edge = r === 0 || r === 10 || c === 0 || c === 10;
+          cells += '<rect x="' + x + '" y="' + y + '" width="12" height="10" rx="1" fill="' +
+            (edge ? '#8d6e63' : '#3e2723') + '" stroke="#1b120e" stroke-width=".5"/>';
+        }
+      }
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#1a1410"/>' + cells +
+        '<text x="100" y="152" text-anchor="middle" fill="#efdcc3" font-size="11" font-family="system-ui" font-weight="700">11 × 11 dirt</text>' +
+        '</svg>';
+    },
+    walls: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#1a1410"/>' +
+        '<rect x="40" y="30" width="120" height="100" fill="none" stroke="#a1887f" stroke-width="10"/>' +
+        '<rect x="88" y="100" width="24" height="30" fill="#ffb300"/>' +
+        '<text x="100" y="28" text-anchor="middle" fill="#ffe082" font-size="10" font-family="system-ui" font-weight="700">sunrise →</text>' +
+        '<text x="100" y="152" text-anchor="middle" fill="#efdcc3" font-size="11" font-family="system-ui" font-weight="700">walls 4 high · door</text>' +
+        '</svg>';
+    },
+    room: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#1a1410"/>' +
+        '<rect x="30" y="25" width="140" height="110" fill="#2c2118" stroke="#6d4c41" stroke-width="4"/>' +
+        '<rect x="42" y="100" width="36" height="22" rx="3" fill="#5c6bc0"/>' +
+        '<text x="60" y="115" text-anchor="middle" fill="#fff" font-size="8" font-family="system-ui">bed</text>' +
+        '<rect x="90" y="95" width="22" height="28" fill="#795548"/>' +
+        '<rect x="116" y="95" width="22" height="28" fill="#6d4c41"/>' +
+        '<rect x="142" y="88" width="18" height="35" fill="#757575"/>' +
+        '<circle cx="151" cy="82" r="6" fill="#ff7043"/>' +
+        '<text x="100" y="152" text-anchor="middle" fill="#efdcc3" font-size="11" font-family="system-ui" font-weight="700">bed · chests · furnace</text>' +
+        '</svg>';
+    },
+    torches: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#0d1117"/>' +
+        '<rect x="50" y="40" width="100" height="70" fill="none" stroke="#78909c" stroke-width="3"/>' +
+        '<g fill="#ffca28">' +
+        '<circle cx="50" cy="40" r="6"/><circle cx="150" cy="40" r="6"/>' +
+        '<circle cx="50" cy="110" r="6"/><circle cx="150" cy="110" r="6"/>' +
+        '<circle cx="100" cy="40" r="5"/><circle cx="100" cy="110" r="5"/>' +
+        '<circle cx="50" cy="75" r="5"/><circle cx="150" cy="75" r="5"/>' +
+        '</g>' +
+        '<text x="100" y="148" text-anchor="middle" fill="#ffe082" font-size="11" font-family="system-ui" font-weight="700">torch the edge</text>' +
+        '</svg>';
+    },
+    storage: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#1a1410"/>' +
+        (function(){
+          var s=''; var labels=['wood','stone','ores','food','drops','redstone'];
+          for (var i=0;i<6;i++){
+            var x=22+i*28;
+            s+='<rect x="'+x+'" y="40" width="24" height="36" fill="#5d4037" stroke="#3e2723"/>';
+            s+='<rect x="'+x+'" y="80" width="24" height="36" fill="#4e342e" stroke="#3e2723"/>';
+            s+='<text x="'+(x+12)+'" y="130" text-anchor="middle" fill="#d7ccc8" font-size="7" font-family="system-ui">'+labels[i].slice(0,4)+'</text>';
+          }
+          return s;
+        })() +
+        '<text x="100" y="28" text-anchor="middle" fill="#efdcc3" font-size="11" font-family="system-ui" font-weight="700">labeled chest wall</text>' +
+        '</svg>';
+    },
+    night: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#0a0e1a"/>' +
+        '<circle cx="160" cy="36" r="14" fill="#eceff1"/>' +
+        '<rect x="70" y="70" width="60" height="50" fill="#37474f"/>' +
+        '<rect x="92" y="95" width="16" height="25" fill="#ffb300"/>' +
+        '<circle cx="50" cy="100" r="8" fill="#66bb6a" opacity=".5"/>' +
+        '<text x="100" y="148" text-anchor="middle" fill="#cfd8dc" font-size="11" font-family="system-ui" font-weight="700">light up · stay in</text>' +
+        '</svg>';
+    },
+    enchant: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#12081c"/>' +
+        '<rect x="85" y="70" width="30" height="30" fill="#5e35b1"/>' +
+        '<rect x="55" y="45" width="14" height="18" fill="#6d4c41"/><rect x="131" y="45" width="14" height="18" fill="#6d4c41"/>' +
+        '<rect x="55" y="100" width="14" height="18" fill="#6d4c41"/><rect x="131" y="100" width="14" height="18" fill="#6d4c41"/>' +
+        '<rect x="40" y="70" width="14" height="18" fill="#6d4c41"/><rect x="146" y="70" width="14" height="18" fill="#6d4c41"/>' +
+        '<text x="100" y="148" text-anchor="middle" fill="#e1bee7" font-size="11" font-family="system-ui" font-weight="700">table + bookshelves</text>' +
+        '</svg>';
+    },
+    village: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#1b2a1b"/>' +
+        '<rect x="40" y="70" width="40" height="40" fill="#8d6e63"/><polygon points="40,70 60,50 80,70" fill="#c62828"/>' +
+        '<rect x="100" y="75" width="50" height="35" fill="#a1887f"/><polygon points="100,75 125,55 150,75" fill="#6d4c41"/>' +
+        '<circle cx="70" cy="115" r="6" fill="#ffcc80"/>' +
+        '<text x="100" y="148" text-anchor="middle" fill="#c8e6c9" font-size="11" font-family="system-ui" font-weight="700">fair trade · workshop</text>' +
+        '</svg>';
+    },
+    brief: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#141a14"/>' +
+        '<rect x="45" y="35" width="110" height="80" rx="8" fill="#263226" stroke="#8fd18a" stroke-width="2"/>' +
+        '<text x="100" y="70" text-anchor="middle" fill="#c8e6c9" font-size="14" font-family="system-ui" font-weight="800">ask Dad</text>' +
+        '<text x="100" y="92" text-anchor="middle" fill="#9aa89c" font-size="11" font-family="system-ui">custom build card</text>' +
+        '<text x="100" y="148" text-anchor="middle" fill="#8fd18a" font-size="11" font-family="system-ui" font-weight="700">note → Sent</text>' +
+        '</svg>';
+    },
+    hw_room: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#1a1030"/>' +
+        '<rect x="35" y="40" width="130" height="80" rx="6" fill="#2a1b4a" stroke="#9575cd" stroke-width="3"/>' +
+        '<circle cx="100" cy="80" r="18" fill="#7e57c2" opacity=".7"/>' +
+        '<text x="100" y="148" text-anchor="middle" fill="#e1bee7" font-size="11" font-family="system-ui" font-weight="700">claim · organize · leave</text>' +
+        '</svg>';
+    },
+    hw_book: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#1a1030"/>' +
+        '<rect x="55" y="40" width="90" height="70" rx="4" fill="#5e35b1"/>' +
+        '<rect x="60" y="45" width="80" height="60" fill="#ede7f6"/>' +
+        '<path d="M100 45 V105" stroke="#5e35b1" stroke-width="2"/>' +
+        '<text x="100" y="148" text-anchor="middle" fill="#e1bee7" font-size="11" font-family="system-ui" font-weight="700">Field Guide habit</text>' +
+        '</svg>';
+    },
+    hw_combat: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#1a1030"/>' +
+        '<circle cx="70" cy="80" r="22" fill="#4527a0" stroke="#b39ddb" stroke-width="3"/>' +
+        '<circle cx="130" cy="80" r="22" fill="#6a1b9a" stroke="#ce93d8" stroke-width="3"/>' +
+        '<path d="M90 70 L110 90 M110 70 L90 90" stroke="#ffe082" stroke-width="3"/>' +
+        '<text x="100" y="148" text-anchor="middle" fill="#e1bee7" font-size="11" font-family="system-ui" font-weight="700">dodge · cast · reset</text>' +
+        '</svg>';
+    },
+    hw_beasts: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#1a1030"/>' +
+        '<ellipse cx="100" cy="95" rx="40" ry="22" fill="#6d4c41"/>' +
+        '<circle cx="85" cy="70" r="12" fill="#8d6e63"/><circle cx="115" cy="70" r="12" fill="#8d6e63"/>' +
+        '<text x="100" y="148" text-anchor="middle" fill="#e1bee7" font-size="11" font-family="system-ui" font-weight="700">feed · brush · rest</text>' +
+        '</svg>';
+    },
+    hw_broom: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#0d1b2a"/>' +
+        '<path d="M30 110 Q100 40 170 70" fill="none" stroke="#90caf9" stroke-width="3" stroke-dasharray="6 4"/>' +
+        '<line x1="60" y1="95" x2="140" y2="55" stroke="#a1887f" stroke-width="5"/>' +
+        '<circle cx="145" cy="52" r="8" fill="#ffe082"/>' +
+        '<text x="100" y="148" text-anchor="middle" fill="#bbdefb" font-size="11" font-family="system-ui" font-weight="700">broom loop</text>' +
+        '</svg>';
+    },
+    hw_story: function () {
+      return '<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<rect width="200" height="160" fill="#1a1030"/>' +
+        '<rect x="40" y="50" width="50" height="60" rx="4" fill="#5e35b1"/><text x="65" y="85" text-anchor="middle" fill="#fff" font-size="10" font-family="system-ui">story</text>' +
+        '<rect x="110" y="50" width="50" height="60" rx="4" fill="#00897b"/><text x="135" y="85" text-anchor="middle" fill="#fff" font-size="10" font-family="system-ui">explore</text>' +
+        '<text x="100" y="148" text-anchor="middle" fill="#e1bee7" font-size="11" font-family="system-ui" font-weight="700">pick one night</text>' +
+        '</svg>';
+    }
+  };
+
+  function diagramHtml(id) {
+    var fn = DIAGRAMS[id];
+    if (!fn) return '';
+    try { return fn(); } catch (e) { return ''; }
+  }
+
+
   function guideStepsFor(card) {
     if (!card) return [];
     var boardEmoji = (GAMES[game] && GAMES[game].emoji) || "🎮";
@@ -272,6 +451,7 @@
       return card.guide.map(function (g, i) {
         return {
           img: g.img || null,
+          diagram: g.diagram || "",
           caption: shortCaption(g.caption || "", 8),
           emoji: g.emoji || boardEmoji || GUIDE_EMOJIS[i % GUIDE_EMOJIS.length],
           color: g.bg || g.color || GUIDE_COLORS[i % GUIDE_COLORS.length]
@@ -281,6 +461,7 @@
     return (card.steps || []).map(function (s, i) {
       return {
         img: null,
+        diagram: "",
         caption: shortCaption(s, 8),
         emoji: boardEmoji || GUIDE_EMOJIS[i % GUIDE_EMOJIS.length],
         color: GUIDE_COLORS[i % GUIDE_COLORS.length]
@@ -496,11 +677,13 @@
       var step = steps[guideIdx];
       html += '<p class="guide-progress">Step ' + (guideIdx + 1) + " of " + steps.length + "</p>";
       html += '<div class="guide-stage" id="guideStage">';
-      html += '<div class="guide-pic" style="background:' + esc(step.color) + '">';
+      html += '<div class="guide-pic' + (step.diagram ? " has-diagram" : "") + '" style="background:' + esc(step.diagram ? "#0f1410" : step.color) + '">';
       if (step.img) {
         html += '<img src="' + esc(step.img) + '" alt="">';
+      } else if (step.diagram && diagramHtml(step.diagram)) {
+        html += '<div class="diagram">' + diagramHtml(step.diagram) + "</div>";
       } else {
-        html += '<div class="ph">' + (step.emoji || "👉") + "<small>Visual guide</small></div>";
+        html += '<div class="ph">' + (step.emoji || "👉") + "<small>Step " + (guideIdx + 1) + "</small></div>";
       }
       html += "</div>";
       html += '<p class="guide-cap">' + esc(step.caption) + "</p>";

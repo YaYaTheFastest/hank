@@ -39,7 +39,9 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 ---
 
-## LIVE STATE (refreshed 2026-08-22 afternoon loop)
+## LIVE STATE (last in-repo loop 2026-08-22 afternoon — stale as of 2026-09-06)
+
+**As of 2026-09-06:** No newer loop artifacts in this repo. Figures below are the last filed pass (`loop-health` last_success `2026-08-22T17:30:00Z`; `workout-state` refreshed `2026-08-22T17:00:15Z`). `loop-runs.json` ledger stops at morning `2026-08-22T07:00:05Z` (`updated` `2026-08-22T11:08:11Z`). Next scheduled loop should restamp these — do not treat as live.
 
 **Operator:** Grok sole.
 
@@ -55,7 +57,7 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 
 **Inbox:** Clean (IMG_3053.jpeg filed this pass). Queues empty. X bookmarks none in Downloads. Workouts: GPX incoming README only; Strava API **OK** (keys present; 0 new this pass; 08-20 4s blip still not a session; last real run 08-09). **Gmail:** OAuth token expired/revoked — re-auth when convenient (`HANK Loop — Gmail Setup.md`).
 
-**Loop:** OK (E0) · Gmail E1 noted (re-auth when convenient). Strava E1 **cleared**.
+**Loop:** Last filed pass OK (E0) at `2026-08-22T17:30:00Z`. Gmail E1 still open in `loop-health` (re-auth when convenient). Strava E1 cleared that pass. No later `loop-health` / `loop-runs` in git.
 
 **Fleet:** 53 = **47 Full + 6 ◐** (Blackstone 4-burner + Dyson Air + 3 Sig + AP10F). Z530R **51 h** (full service @ 47).
 

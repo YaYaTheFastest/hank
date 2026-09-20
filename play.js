@@ -81,7 +81,7 @@
     ".vibe.fade{opacity:.35}" +
     ".fchips{display:flex;gap:8px;overflow:auto;margin:0 0 14px;padding-bottom:2px;-webkit-overflow-scrolling:touch}" +
     ".fchip{flex:0 0 auto;border:1px solid #2a382c;background:#121814;color:#c5d4c2;border-radius:999px;padding:10px 14px;font-weight:800;font-size:13px;cursor:pointer}" +
-    ".fchip.on{background:var(--lime);color:#0b0f0c;border-color:var(--lime)}" +
+    ".fchip.on{background:rgba(143,209,138,.16);color:#e8ffe6;border-color:var(--lime)}" +
     ".spark{background:#121814;border:1px solid #243028;border-radius:20px;margin:0 0 14px;overflow:hidden;cursor:pointer;transition:transform .15s ease,border-color .15s}" +
     ".spark:active{transform:scale(.99)}" +
     ".spark.open{border-color:var(--lime);cursor:default}" +
@@ -90,7 +90,7 @@
     ".spark-title{font-weight:900;font-size:20px;letter-spacing:-.4px;line-height:1.2;margin:0 0 6px}" +
     ".spark-why{font-size:14px;line-height:1.4;color:var(--muted);margin:0}" +
     ".spark-tag{display:inline-block;font-size:10px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;color:var(--lime);margin:0 0 8px}" +
-    ".spark-x{display:none;width:100%;margin:0 0 10px;border:0;border-radius:14px;padding:14px;font-weight:900;font-size:16px;background:#1e2a20;color:var(--ink);cursor:pointer}" +
+    ".spark-media{position:relative}.spark-x{display:none;position:absolute;top:10px;right:10px;z-index:3;width:40px;height:40px;margin:0;border:0;border-radius:999px;padding:0;font-weight:900;font-size:20px;line-height:40px;background:rgba(11,15,12,.72);color:#f2f7ef;cursor:pointer;backdrop-filter:blur(6px)}.spark-take{position:sticky;bottom:0;z-index:2;margin:14px -14px -16px;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,#121814 28%);border-top:1px solid #243028}.spark-take .btnp{width:100%}.spark-take textarea{margin:0 0 8px}" +
     ".spark.open .spark-x{display:block}" +
     ".spark-more{display:none;margin-top:12px}" +
     ".spark.open .spark-more{display:block}" +
@@ -128,7 +128,7 @@
     ".pack{font-size:12.5px;color:var(--muted);margin:8px 0 0}" +
     ".actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}" +
     ".btnp{background:var(--lime);color:#0b0f0c;border:0;border-radius:11px;padding:11px 14px;font-weight:900;font-size:13px;cursor:pointer}" +
-    ".btns{background:#1e2a20;color:var(--ink);border:1px solid #2a382c;border-radius:11px;padding:11px 14px;font-weight:700;font-size:13px;cursor:pointer}" +
+    ".btns{background:#1e2a20;color:var(--ink);border:1px solid #2a382c;border-radius:11px;padding:11px 14px;font-weight:700;font-size:13px;cursor:pointer}a.btns{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}" +
     ".done{outline:2px solid var(--lime);background:#142018}" +
     ".guide-sheet{position:fixed;inset:0;z-index:80;background:#0b0f0c;display:flex;flex-direction:column;padding:calc(10px + env(safe-area-inset-top)) 14px calc(14px + env(safe-area-inset-bottom));max-width:560px;margin:0 auto}" +
     ".guide-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}" +
@@ -506,23 +506,13 @@
       minecraft: { title: "Minecraft", url: "https://grokipedia.com/page/Minecraft" },
       hogwarts: { title: "Hogwarts Legacy", url: "https://grokipedia.com/page/Hogwarts_Legacy" }
     };
-    if (fireFilter !== "search" && GP[fireFilter]) {
-      var gp = GP[fireFilter];
-      html += '<div class="gpedia-card">' +
-        '<div class="gpedia-kicker">Grokopedia</div>' +
-        '<div class="gpedia-title">' + esc(gp.title) + "</div>" +
-        '<p class="gpedia-note">Kid-safe article. Opens in a new tab — then come back here.</p>' +
-        '<div class="actions">' +
-        '<a class="btnp" href="' + esc(gp.url) + '" target="_blank" rel="noopener noreferrer" data-gp-open="' + esc(gp.url) + '" data-gp-title="' + esc(gp.title) + '">Open article</a>' +
-        '<button type="button" class="btns" data-pin-result="' + esc(gp.title) + '" data-pin-url="' + esc(gp.url) + '">Pin to Fire</button>' +
-        "</div></div>";
-    }
     if (fireFilter === "search") {
       html += '<div class="searchbar">' +
         '<input type="search" id="kidSearch" placeholder="Jokić, Jones, Minecraft, Hogwarts…" enterkeyhint="search" autocomplete="off">' +
         '<button type="button" id="kidSearchGo">Go</button></div>' +
         '<div id="kidSearchOut" class="sres"></div>';
     }
+    // Lesson/sparks first; Grokopedia after (Critiquito #4)
     html += '<div class="spark-grid">';
 
     var list = SPARKS.filter(function (s) {
@@ -535,13 +525,15 @@
     list.forEach(function (s) {
       var open = openSpark === s.id;
       html += '<article class="spark' + (open ? " open" : "") + '" data-spark="' + esc(s.id) + '">';
+      html += '<div class="spark-media">';
       if (s.image) {
         html += '<img class="spark-img" src="' + esc(s.image) + '" alt="" loading="lazy" onerror="this.onerror=null;this.remove();">';
       } else {
         html += '<div class="spark-fallback">' + esc((s.title || '?').charAt(0)) + "</div>";
       }
+      if (open) html += '<button type="button" class="spark-x" data-close-spark aria-label="Close">×</button>';
+      html += "</div>";
       html += '<div class="spark-body">';
-      if (open) html += '<button type="button" class="spark-x" data-close-spark>Close</button>';
       html += '<div class="spark-tag">' + esc(s.tag) + "</div>";
       html += '<div class="spark-title">' + esc(s.title) + "</div>";
       html += '<p class="spark-why">' + esc(s.why) + "</p>";
@@ -557,12 +549,25 @@
         html += '<button type="button" class="linkboard" data-goto-board="' + esc(s.linkBoard) + '">Open ' +
           esc(s.linkBoard === "minecraft" ? "Minecraft board" : "Hogwarts board") + " →</button>";
       }
-      html += '<div class="h" style="margin-top:14px">Send Dad a take</div>' +
+      html += '<div class="spark-take">' +
+        '<div class="h">Send Dad a take</div>' +
         '<textarea id="sparkTake-' + esc(s.id) + '" placeholder="What clicked for you?"></textarea>' +
-        '<div class="actions"><button type="button" class="btnp" data-spark-take="' + esc(s.id) + '">Send Dad a take</button></div>';
+        '<button type="button" class="btnp" data-spark-take="' + esc(s.id) + '">Send Dad a take</button>' +
+        "</div>";
       html += "</div></div></article>";
     });
     html += "</div>";
+    if (fireFilter !== "search" && GP[fireFilter]) {
+      var gp = GP[fireFilter];
+      html += '<div class="gpedia-card">' +
+        '<div class="gpedia-kicker">Grokopedia · dig deeper</div>' +
+        '<div class="gpedia-title">' + esc(gp.title) + "</div>" +
+        '<p class="gpedia-note">Kid-safe article. Opens in a new tab — then come back here.</p>' +
+        '<div class="actions">' +
+        '<a class="btns" href="' + esc(gp.url) + '" target="_blank" rel="noopener noreferrer" data-gp-open="' + esc(gp.url) + '" data-gp-title="' + esc(gp.title) + '">Open article</a>' +
+        '<button type="button" class="btns" data-pin-result="' + esc(gp.title) + '" data-pin-url="' + esc(gp.url) + '">Pin to Fire</button>' +
+        "</div></div>";
+    }
     return html;
   }
 

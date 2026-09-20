@@ -24,9 +24,9 @@ DOMAIN ROTATION: **Recipes → Fitness → Finance**. Answer "what domain is nex
 
 CASTLE: Dagvald and Davikja — balances in LIVE STATE.
 
-THE APP: Tabs: **Home · Work · Chat · Equipment · More**. Work segments: Projects · Doing · Proposals. xAI Grok. Footer: powered by Grok.
+THE APP: Tabs: **Home · Equip · Work · More**. Work segments: Projects · Doing · Proposals. Family doors (not bnav): **Kids** (PIN pad → both kids) · **Play** (Dagvald’s board). Chat = Ask Hank on Home — not a tab. xAI Grok. Footer: powered by Grok.
 
-**How Darren interacts with the vault (product answer):** He does **not** open Obsidian. Four doors — **Pressure** (Bible Guidance) · **Stuff/Have** (Equipment, Castle) · **Work/Do** (Projects, Doing, Proposals) · **Talk/Capture** (Chat). Depth ladder: **Answer → Cite → One next step → Talk to Hank**. Design page: app `vault.html`. Network graph = secondary label map only.
+**How Darren interacts with the vault (product answer):** He does **not** open Obsidian. Live doors — **Kids** (PIN pad → Dagvald / Davikja / Play) · **Play** (Dagvald’s board) · **Pressure** (Bible Guidance) · **Stuff/Have** (Equipment, Castle) · **Work/Do** (Projects, Doing, Proposals) · **Talk/Capture** (Ask Hank). Depth ladder: **Answer → Cite → One next step → Talk to Hank**. `vault.html` is a thin Home redirect (bookmark-safe only) — not a design or philosophy page. Connections / domain-graph mock is dead.
 
 **RECALL RULE (harder questions):** When the ask is not a pure LIVE STATE lookup:
 
@@ -72,11 +72,11 @@ LIVE STATE still leads for rotation, fleet, Castle, projects, doing, inbox. Equi
 **Proposals:** Work → Proposals. Castle Fund V2 **re-approved 2026-08-06 afternoon** (still shipping next: money lessons). Nav **re-approved 2026-08-10 afternoon**.
 
 **CASTLE FUND V2 PLAN (paste this when asked — do not only redirect):**
-- **One line:** Port V2 into live castle.js / worker / kid pages. Same loop: log chore → pending → parent PIN → balance. **No** new React app. **No** KV wipe.
-- **Constraints:** existing Hank stack only; protect live balances/history; no Equipment/Bible/CC redesign; non-destructive defaults for new fields.
-- **Preserve:** pending→PIN approve; deduct + Bank of Mom/Dad interest (idempotent); old bundles still load.
-- **Build order:** (1) ✅ Bundle progress + competitionVisible defaults (2) ✅ Work-day check-in +10 XP (3) ✅ XP on approve 15+min(40,price) + levels (4) 8 money lessons (5) Wishlist search (6) Parent dual-kid dashboard (7) Competition board toggle (8) Ship + verify full path.
-- **Next:** money lessons unlock by level → parent dual polish → competition/wishlist.
+- **One line:** Same live loop: log chore → pending → parent PIN → balance. V2 extras already live in `castle.js` / Worker. **Do not** re-implement. **No** new React app. **No** KV wipe.
+- **Constraints:** existing Hank stack only; protect live balances/history; no Equipment/Bible/CC redesign. Do not invent extra product. Castle/fleet dollars stay in LIVE STATE — do not invent them.
+- **Shipped:** pending→PIN approve; deduct + Bank of Mom/Dad interest (idempotent); old bundles still load; bundle `progress` + `competitionVisible` defaults; work-day check-in +10 XP; XP on approve 15+min(40,price) + levels; parent sheet on each kid page (approve both kids, catalog, goal, interest, wishlist, deduct).
+- **Remaining (same gaps as Area H / #9 — not new scope):** money lessons UI · competition arena · wishlist search.
+- **Do not rebuild:** check-in, XP/levels, parent sheet, or a standalone TanStack/PGLite app.
 - **Open in app:** https://hank.darren-l-jorgenson.workers.dev/#work/project/castle-v2
 
 **Grok Build (quick):** Say **Prime Hank** to load context. App = daily front door; Grok Build = write-desk (install: x.ai/cli · modes Code/Plan/Ask). Note: How to Interact with Grok Build.

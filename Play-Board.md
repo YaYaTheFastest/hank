@@ -17,10 +17,7 @@ Castle balances are untouched.
 
 ## Deploy
 1. Commit `play.html`, `play.js`, `play-data.js` (this folder).
-2. In `castle.js` header tabs, add:
-   `'<a class="tab" href="play.html">Play</a>'`
-3. Same link on `castle.html` tabs.
-4. `npx wrangler deploy` as usual.
+2. `npx wrangler deploy` as usual.
 
 ## Your loop when he sends a note
 1. Open Hank captures / next Grok loop answers with `source: play`.

@@ -339,7 +339,7 @@ var SPARKS = [
       tag: "jokic",
       title: "IQ plus quiet confidence",
       why: "Nuggets star plays smart, stays calm, lets the game come to him.",
-      image: "https://images.unsplash.com/photo-1504450753142-0ea1a8a0e7e0?w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200&q=80",
       youtubeId: "",
       facts: [
         "Talk less on the floor; see more.",
@@ -391,7 +391,7 @@ var SPARKS = [
       tag: "minecraft",
       title: "Build with a plan",
       why: "Great Minecraft bases start with a footprint, not random blocks.",
-      image: "https://images.unsplash.com/photo-1587573089734-198028c0a8c1?w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200&q=80",
       youtubeId: "",
       facts: [
         "Sketch rooms before you dig.",
@@ -419,7 +419,7 @@ var SPARKS = [
       tag: "jones",
       title: "Chris Jones · leverage first",
       why: "Chiefs DT wins with pad level and angles, not just size.",
-      image: "https://images.unsplash.com/photo-1566577739112-ce14e5bd0c0b?w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200&q=80",
       youtubeId: "",
       facts: [
         "Low pads beat tall pads at the snap.",
@@ -432,7 +432,7 @@ var SPARKS = [
       tag: "jones",
       title: "Hands + film study",
       why: "Jones uses violent hands and knows blockers' habits.",
-      image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200&q=80",
       youtubeId: "",
       facts: [
         "Hand fight early — swipe, swim, rip.",

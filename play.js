@@ -85,7 +85,7 @@
     ".spark{background:#121814;border:1px solid #243028;border-radius:20px;margin:0 0 14px;overflow:hidden;cursor:pointer;transition:transform .15s ease,border-color .15s}" +
     ".spark:active{transform:scale(.99)}" +
     ".spark.open{border-color:var(--lime);cursor:default}" +
-    ".spark-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#1a2218}" +
+    ".spark-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#1a2218}.spark-fallback{height:140px;display:flex;align-items:center;justify-content:center;font-size:48px;font-weight:900;background:linear-gradient(135deg,#1e2a20,#0b0f0c);color:var(--lime);border-bottom:1px solid #243028}" +
     ".spark-body{padding:14px 14px 16px}" +
     ".spark-title{font-weight:900;font-size:20px;letter-spacing:-.4px;line-height:1.2;margin:0 0 6px}" +
     ".spark-why{font-size:14px;line-height:1.4;color:var(--muted);margin:0}" +
@@ -514,14 +514,16 @@
         '<p class="gpedia-note">Kid-safe article. Opens in a new tab — then come back here.</p>' +
         '<div class="actions">' +
         '<a class="btnp" href="' + esc(gp.url) + '" target="_blank" rel="noopener noreferrer" data-gp-open="' + esc(gp.url) + '" data-gp-title="' + esc(gp.title) + '">Open article</a>' +
-        '<button type="button" class="btns" data-ff="search">Search</button>' +
+        '<button type="button" class="btns" data-pin-result="' + esc(gp.title) + '" data-pin-url="' + esc(gp.url) + '">Pin to Fire</button>' +
         "</div></div>";
     }
-    html += '<div class="searchbar">' +
-      '<input type="search" id="kidSearch" placeholder="Search allowed topics only" enterkeyhint="search" autocomplete="off">' +
-      '<button type="button" id="kidSearchGo">Go</button></div>' +
-      '<div id="kidSearchOut" class="sres"></div>' +
-      '<div class="spark-grid">';
+    if (fireFilter === "search") {
+      html += '<div class="searchbar">' +
+        '<input type="search" id="kidSearch" placeholder="Jokić, Jones, Minecraft, Hogwarts…" enterkeyhint="search" autocomplete="off">' +
+        '<button type="button" id="kidSearchGo">Go</button></div>' +
+        '<div id="kidSearchOut" class="sres"></div>';
+    }
+    html += '<div class="spark-grid">';
 
     var list = SPARKS.filter(function (s) {
       if (fireFilter === "all" || fireFilter === "search") return true;
@@ -534,7 +536,9 @@
       var open = openSpark === s.id;
       html += '<article class="spark' + (open ? " open" : "") + '" data-spark="' + esc(s.id) + '">';
       if (s.image) {
-        html += '<img class="spark-img" src="' + esc(s.image) + '" alt="" loading="lazy">';
+        html += '<img class="spark-img" src="' + esc(s.image) + '" alt="" loading="lazy" onerror="this.onerror=null;this.remove();">';
+      } else {
+        html += '<div class="spark-fallback">' + esc((s.title || '?').charAt(0)) + "</div>";
       }
       html += '<div class="spark-body">';
       if (open) html += '<button type="button" class="spark-x" data-close-spark>Close</button>';
@@ -731,8 +735,38 @@
         fileNote("grokipedia-open", fireFilter, (a.getAttribute("data-gp-title") || "") + " · " + a.getAttribute("data-gp-open"), {});
       });
     });
-    if (view === "fire" && fireFilter && fireFilter !== "search" && fireFilter !== "all") {
-      runKidSearch("");
+
+    document.querySelectorAll("[data-pin-result]").forEach(function (b) {
+      if (b._pinBound) return;
+      b._pinBound = true;
+      b.onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var topic = (fireFilter === "all" || fireFilter === "search") ? "nba" : fireFilter;
+        fetch("/api/play/spark-drafts", {
+          method: "POST",
+          credentials: "same-origin",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            title: b.getAttribute("data-pin-result"),
+            why: "From Grokopedia — needs Dad approve",
+            link: b.getAttribute("data-pin-url"),
+            topic: topic,
+            q: b.getAttribute("data-pin-result") || "",
+            kid: KID,
+          }),
+        }).then(function (r) { return r.json(); }).then(function (x) {
+          toast(x && x.ok ? "Pinned for Dad" : "Pin failed");
+        }).catch(function () { toast("Pin failed"); });
+      };
+    });
+
+    // Topic chips use Grokopedia card only — search runs when user hits Go or Search chip.
+    if (view === "fire" && fireFilter === "search") {
+      var out = document.getElementById("kidSearchOut");
+      if (out && !out.innerHTML) {
+        out.innerHTML = '<p class="sempty">Type a allowed topic (Jokić, Jones, Minecraft, Hogwarts).</p>';
+      }
     }
     // Prefill from chip topic when Fire filter changes — optional soft search
     document.querySelectorAll("[data-g]").forEach(function (b) {

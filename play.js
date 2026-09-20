@@ -108,17 +108,48 @@
     ".hero p{margin:6px 0 0;font-size:13.5px;line-height:1.45;opacity:.92}" +
     ".switch{display:flex;gap:8px;margin:0 0 12px}" +
     ".card{background:#121814;border:1px solid #243028;border-radius:18px;padding:14px;margin:0 0 12px}" +
-    ".ctitle{font-weight:800;font-size:17px}" +
     ".meta{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 8px}" +
     ".pill{font-size:11px;font-weight:700;padding:3px 8px;border-radius:99px;background:#1e2a20;color:#a8bda6}" +
     ".why{font-size:13.5px;line-height:1.45;margin:0 0 8px;color:#c5d4c2}" +
-    ".steps{margin:0;padding:0 0 0 18px}" +
-    ".steps li{margin:0 0 6px;font-size:14px;line-height:1.4}" +
+    ".card-face{display:flex;flex-direction:column;gap:10px}" +
+    ".card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}" +
+    ".ctitle{font-weight:900;font-size:18px;letter-spacing:-.3px;line-height:1.25}" +
+    ".card-vibe{font-size:14px;line-height:1.35;color:#c5d4c2;margin:0}" +
+    ".card-time{font-size:12px;font-weight:800;color:var(--muted)}" +
+    ".card-cta{width:100%;border:0;border-radius:16px;padding:16px 18px;font-weight:900;font-size:17px;letter-spacing:-.2px;cursor:pointer;background:var(--lime);color:#0b0f0c;-webkit-tap-highlight-color:transparent}" +
+    ".card-cta:active{transform:scale(.985)}" +
+    ".card-chrome{display:flex;align-items:center;gap:8px;margin-top:2px}" +
+    ".morebtn{flex:0 0 auto;width:44px;height:44px;border-radius:14px;border:1px solid #2a382c;background:#1e2a20;color:var(--ink);font-weight:900;font-size:18px;cursor:pointer}" +
+    ".overflow{position:relative}" +
+    ".overflow-menu{display:none;position:absolute;right:0;bottom:calc(100% + 6px);min-width:180px;background:#121814;border:1px solid #2a382c;border-radius:14px;padding:6px;z-index:20;box-shadow:0 8px 24px rgba(0,0,0,.45)}" +
+    ".overflow.open .overflow-menu{display:block}" +
+    ".overflow-menu button{display:block;width:100%;text-align:left;border:0;background:transparent;color:var(--ink);font-weight:700;font-size:14px;padding:12px 12px;border-radius:10px;cursor:pointer}" +
+    ".overflow-menu button:active{background:#1e2a20}" +
     ".pack{font-size:12.5px;color:var(--muted);margin:8px 0 0}" +
     ".actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}" +
     ".btnp{background:var(--lime);color:#0b0f0c;border:0;border-radius:11px;padding:11px 14px;font-weight:900;font-size:13px;cursor:pointer}" +
     ".btns{background:#1e2a20;color:var(--ink);border:1px solid #2a382c;border-radius:11px;padding:11px 14px;font-weight:700;font-size:13px;cursor:pointer}" +
     ".done{outline:2px solid var(--lime);background:#142018}" +
+    ".guide-sheet{position:fixed;inset:0;z-index:80;background:#0b0f0c;display:flex;flex-direction:column;padding:calc(10px + env(safe-area-inset-top)) 14px calc(14px + env(safe-area-inset-bottom));max-width:560px;margin:0 auto}" +
+    ".guide-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}" +
+    ".guide-bar h2{margin:0;font-size:16px;font-weight:900;letter-spacing:-.2px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}" +
+    ".guide-x{border:0;background:#1e2a20;color:var(--ink);border-radius:12px;padding:10px 14px;font-weight:900;font-size:14px;cursor:pointer}" +
+    ".guide-progress{font-size:12px;font-weight:800;color:var(--muted);margin:0 0 12px}" +
+    ".guide-stage{flex:1;min-height:0;display:flex;flex-direction:column;touch-action:pan-y}" +
+    ".guide-pic{flex:1;min-height:180px;border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:64px;font-weight:900;color:#0b0f0c;position:relative;overflow:hidden;border:1px solid #243028}" +
+    ".guide-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}" +
+    ".guide-pic .ph{position:relative;z-index:1;text-align:center;padding:20px}" +
+    ".guide-pic .ph small{display:block;font-size:13px;font-weight:800;opacity:.7;margin-top:8px}" +
+    ".guide-cap{margin:16px 0 0;font-size:22px;font-weight:900;letter-spacing:-.4px;line-height:1.25;text-align:center;min-height:2.6em}" +
+    ".guide-nav{display:flex;gap:10px;margin-top:16px}" +
+    ".guide-nav button{flex:1;border:0;border-radius:16px;padding:16px;font-weight:900;font-size:16px;cursor:pointer}" +
+    ".guide-nav .back{background:#1e2a20;color:var(--ink);border:1px solid #2a382c}" +
+    ".guide-nav .next{background:var(--lime);color:#0b0f0c}" +
+    ".guide-nav .next:disabled,.guide-nav .back:disabled{opacity:.35}" +
+    ".guide-end{flex:1;display:flex;flex-direction:column;justify-content:center;gap:12px;text-align:center}" +
+    ".guide-end h3{margin:0 0 6px;font-size:26px;font-weight:900;letter-spacing:-.6px}" +
+    ".guide-end p{margin:0 0 18px;color:var(--muted);font-size:15px}" +
+    ".guide-end .btnp,.guide-end .btns{width:100%;padding:16px;border-radius:16px;font-size:16px}" +
     ".h{font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin:18px 4px 8px}" +
     ".chips{display:flex;flex-wrap:wrap;gap:8px}" +
     ".chip{border:1px solid #2a382c;background:#121814;border-radius:999px;padding:8px 12px;font-weight:700;font-size:13px;cursor:pointer;color:#c5d4c2}" +
@@ -145,6 +176,14 @@
   var openSpark = null;
   var vibeIdx = 0;
   var vibeTimer = null;
+  var guideCardId = null;
+  var guideIdx = 0;
+  var guideEnd = false;
+  var overflowId = null;
+  var guideTouchX = null;
+
+  var GUIDE_COLORS = ["#b8ff3c", "#7bc36a", "#c9923d", "#6ec6ff", "#e8a0ff", "#ffb86c", "#8ad4a0", "#f0e68c"];
+  var GUIDE_EMOJIS = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣"];
 
   function header() {
     return '<header class="chead"><div class="cbar"><div><a class="backchip" href="kids.html">← Kids</a> <h1 style="display:inline;margin-left:6px">Play</h1></div>' +
@@ -206,6 +245,61 @@
         el.classList.remove("fade");
       }, 280);
     }, 4200);
+  }
+
+
+  function shortCaption(text, maxWords) {
+    var words = String(text || "").trim().split(/\s+/).filter(Boolean);
+    if (!words.length) return "";
+    if (words.length <= maxWords) return words.join(" ");
+    return words.slice(0, maxWords).join(" ") + "…";
+  }
+
+  function findCard(id) {
+    var lists = [CARDS.minecraft || [], CARDS.hogwarts || []];
+    for (var i = 0; i < lists.length; i++) {
+      for (var j = 0; j < lists[i].length; j++) {
+        if (lists[i][j].id === id) return lists[i][j];
+      }
+    }
+    return null;
+  }
+
+  function guideStepsFor(card) {
+    if (!card) return [];
+    if (card.guide && card.guide.length) {
+      return card.guide.map(function (g, i) {
+        return {
+          img: g.img || null,
+          caption: shortCaption(g.caption || "", 7),
+          emoji: GUIDE_EMOJIS[i % GUIDE_EMOJIS.length],
+          color: GUIDE_COLORS[i % GUIDE_COLORS.length]
+        };
+      });
+    }
+    return (card.steps || []).map(function (s, i) {
+      return {
+        img: null,
+        caption: shortCaption(s, 7),
+        emoji: GUIDE_EMOJIS[i % GUIDE_EMOJIS.length],
+        color: GUIDE_COLORS[i % GUIDE_COLORS.length]
+      };
+    });
+  }
+
+  function openGuide(id) {
+    guideCardId = id;
+    guideIdx = 0;
+    guideEnd = false;
+    overflowId = null;
+    render();
+  }
+
+  function closeGuide() {
+    guideCardId = null;
+    guideIdx = 0;
+    guideEnd = false;
+    render();
   }
 
   function renderFire() {
@@ -282,18 +376,21 @@
 
     cards.forEach(function (c) {
       var on = !!state.done[c.id];
-      html += '<article class="card' + (on ? " done" : "") + '" id="' + c.id + '">' +
-        '<div class="ctitle">' + esc(c.title) + (on ? " · done" : "") + "</div>" +
-        '<div class="meta"><span class="pill">' + esc(c.vibe) + '</span><span class="pill">' + esc(c.mins) + "</span></div>" +
-        '<p class="why">' + esc(c.why) + "</p>" +
-        "<ol class=\"steps\">" + c.steps.map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("") + "</ol>" +
-        '<p class="pack"><b>Bring:</b> ' + esc(c.pack) + "<br><b>After that:</b> " + esc(c.next) + "</p>" +
-        '<div class="actions">' +
-        '<button class="btnp" data-done="' + c.id + '">' + (on ? "Undo done" : "Mark done") + "</button>" +
-        '<button class="btns" data-fb="' + c.id + '" data-tag="useful">This helped</button>' +
-        '<button class="btns" data-fb="' + c.id + '" data-tag="confusing">Confusing</button>' +
-        '<button class="btns" data-fb="' + c.id + '" data-tag="more">Want more like this</button>' +
-        "</div></article>";
+      var emoji = (GAMES[game] && GAMES[game].emoji) || "🎮";
+      html += '<article class="card' + (on ? " done" : "") + '" id="' + esc(c.id) + '">' +
+        '<div class="card-face">' +
+        '<div class="card-top"><div class="ctitle">' + emoji + " " + esc(c.title) + (on ? " · done" : "") + "</div></div>" +
+        '<p class="card-vibe">' + esc(c.why || c.vibe || "") + "</p>" +
+        '<div class="card-time">⏱ ' + esc(c.mins || "") + (c.vibe ? " · " + esc(c.vibe) : "") + "</div>" +
+        '<div class="card-chrome">' +
+        '<button type="button" class="card-cta" data-guide="' + esc(c.id) + '">Show me how</button>' +
+        '<div class="overflow' + (overflowId === c.id ? " open" : "") + '">' +
+        '<button type="button" class="morebtn" data-overflow="' + esc(c.id) + '" aria-label="More">…</button>' +
+        '<div class="overflow-menu">' +
+        '<button type="button" data-fb="' + esc(c.id) + '" data-tag="ask-dad">Send Dad</button>' +
+        '<button type="button" data-fb="' + esc(c.id) + '" data-tag="confusing">Confusing</button>' +
+        '<button type="button" data-fb="' + esc(c.id) + '" data-tag="more">Want more like this</button>' +
+        "</div></div></div></div></article>";
     });
 
     html += '<div class="h">Stuck or want a custom card?</div><div class="card">' +
@@ -355,6 +452,50 @@
     return html;
   }
 
+
+  function renderGuideSheet() {
+    if (!guideCardId) return "";
+    var card = findCard(guideCardId);
+    if (!card) return "";
+    var steps = guideStepsFor(card);
+    var on = !!state.done[card.id];
+    var html = '<div class="guide-sheet" id="guideSheet">';
+    html += '<div class="guide-bar"><h2>' + esc(card.title) + "</h2>" +
+      '<button type="button" class="guide-x" data-guide-close>Close</button></div>';
+
+    if (guideEnd || !steps.length) {
+      html += '<div class="guide-end">' +
+        "<h3>Nice work</h3>" +
+        "<p>How did this card feel?</p>" +
+        '<button type="button" class="btnp" data-done="' + esc(card.id) + '">' + (on ? "Undo done" : "Mark done") + "</button>" +
+        '<button type="button" class="btns" data-fb="' + esc(card.id) + '" data-tag="useful" data-guide-close-after>This helped</button>' +
+        '<button type="button" class="btns" data-fb="' + esc(card.id) + '" data-tag="confusing" data-guide-close-after>Confusing</button>' +
+        '<button type="button" class="btns" data-guide-close>Done</button>' +
+        "</div>";
+    } else {
+      if (guideIdx < 0) guideIdx = 0;
+      if (guideIdx >= steps.length) guideIdx = steps.length - 1;
+      var step = steps[guideIdx];
+      html += '<p class="guide-progress">Step ' + (guideIdx + 1) + " of " + steps.length + "</p>";
+      html += '<div class="guide-stage" id="guideStage">';
+      html += '<div class="guide-pic" style="background:' + esc(step.color) + '">';
+      if (step.img) {
+        html += '<img src="' + esc(step.img) + '" alt="">';
+      } else {
+        html += '<div class="ph">' + (step.emoji || "👉") + "<small>Visual guide</small></div>";
+      }
+      html += "</div>";
+      html += '<p class="guide-cap">' + esc(step.caption) + "</p>";
+      html += "</div>";
+      html += '<div class="guide-nav">' +
+        '<button type="button" class="back" data-guide-back' + (guideIdx === 0 ? " disabled" : "") + ">Back</button>" +
+        '<button type="button" class="next" data-guide-next>' +
+        (guideIdx >= steps.length - 1 ? "Finish" : "Next") + "</button></div>";
+    }
+    html += "</div>";
+    return html;
+  }
+
   function render() {
     document.body.className = openSpark && view === "fire" ? "chrome-hide" : "";
     var nav = '<div class="lane">' +
@@ -368,9 +509,11 @@
       : view === "love" ? renderInterests()
       : view === "ideas" ? renderIdeas()
       : renderInbox();
-    document.body.innerHTML = header() + '<div class="wrap">' + nav + body + '</div><div class="toast" id="toast"></div>';
+    document.body.innerHTML = header() + '<div class="wrap">' + nav + body + '</div>' +
+      renderGuideSheet() + '<div class="toast" id="toast"></div>';
     showDadExitIfParent();
     bind();
+    bindGuide();
     if (view === "fire") startVibeCycle();
     else if (vibeTimer) { clearInterval(vibeTimer); vibeTimer = null; }
     if (view === "inbox") loadDadPlayPanel();
@@ -453,10 +596,17 @@
       };
     });
     document.querySelectorAll("[data-fb]").forEach(function (b) {
-      b.onclick = function () {
+      b.onclick = function (e) {
+        e.stopPropagation();
         var id = b.getAttribute("data-fb");
         var tag = b.getAttribute("data-tag");
-        fileNote("card-feedback", game, tag + " · " + id, { card: id, tag: tag });
+        if (tag === "ask-dad") {
+          fileNote("ask", game, "Help with card: " + id, { card: id, tag: tag });
+        } else {
+          fileNote("card-feedback", game, tag + " · " + id, { card: id, tag: tag });
+        }
+        overflowId = null;
+        if (!b.hasAttribute("data-guide-close-after")) render();
       };
     });
     var send = document.getElementById("sendAsk");
@@ -502,6 +652,66 @@
     };
   }
 
+
+
+  function bindGuide() {
+    document.querySelectorAll("[data-guide]").forEach(function (b) {
+      b.onclick = function (e) {
+        e.stopPropagation();
+        openGuide(b.getAttribute("data-guide"));
+      };
+    });
+    document.querySelectorAll("[data-overflow]").forEach(function (b) {
+      b.onclick = function (e) {
+        e.stopPropagation();
+        var id = b.getAttribute("data-overflow");
+        overflowId = overflowId === id ? null : id;
+        render();
+      };
+    });
+    document.querySelectorAll("[data-guide-close]").forEach(function (b) {
+      b.onclick = function () { closeGuide(); };
+    });
+    document.querySelectorAll("[data-guide-close-after]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        setTimeout(closeGuide, 200);
+      });
+    });
+    var back = document.querySelector("[data-guide-back]");
+    if (back) back.onclick = function () {
+      if (guideIdx > 0) { guideIdx -= 1; guideEnd = false; render(); }
+    };
+    var next = document.querySelector("[data-guide-next]");
+    if (next) next.onclick = function () {
+      var card = findCard(guideCardId);
+      var steps = guideStepsFor(card);
+      if (guideIdx >= steps.length - 1) { guideEnd = true; render(); }
+      else { guideIdx += 1; render(); }
+    };
+    var stage = document.getElementById("guideStage");
+    if (stage) {
+      stage.ontouchstart = function (e) {
+        if (!e.changedTouches || !e.changedTouches.length) return;
+        guideTouchX = e.changedTouches[0].clientX;
+      };
+      stage.ontouchend = function (e) {
+        if (guideTouchX == null || !e.changedTouches || !e.changedTouches.length) return;
+        var dx = e.changedTouches[0].clientX - guideTouchX;
+        guideTouchX = null;
+        if (Math.abs(dx) < 48) return;
+        var card = findCard(guideCardId);
+        var steps = guideStepsFor(card);
+        if (dx < 0) {
+          if (guideIdx >= steps.length - 1) guideEnd = true;
+          else guideIdx += 1;
+        } else if (guideIdx > 0) {
+          guideIdx -= 1;
+          guideEnd = false;
+        }
+        render();
+      };
+    }
+  }
 
   var TOPIC_Q = {
     all: "",

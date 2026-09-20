@@ -489,9 +489,9 @@ async function handleApi(request, env, url, siteAuthed, kidAuthed) {
       if (!t) return false;
       return STEMS.some((s) => t.includes(s));
     }
-    const isKidOnly = !!kidAuthed && !siteAuthed && !authed;
     if (topic && TOPIC_PAGE[topic] && !q) q = TOPIC_PAGE[topic].fallbackQ;
-    if (isKidOnly && !TOPIC_PAGE[topic] && !allowedQuery(q)) {
+    // Play search is kid-facing even with parent cookie — enforce allowlist always.
+    if (!TOPIC_PAGE[topic] && !allowedQuery(q)) {
       return json({
         ok: false,
         error: "not-allowed",
@@ -531,7 +531,7 @@ async function handleApi(request, env, url, siteAuthed, kidAuthed) {
           const title = String(r.title || r.slug).slice(0, 120);
           const snippet = String(r.snippet || "").slice(0, 220);
           const hay = (title + " " + snippet + " " + r.slug).toLowerCase();
-          if (isKidOnly && !allowedQuery(hay) && !(topic && TOPIC_PAGE[topic])) continue;
+          if (!allowedQuery(hay) && !(topic && TOPIC_PAGE[topic])) continue;
           const link = "https://grokipedia.com/page/" + String(r.slug).split("/").map(encodeURIComponent).join("/");
           if (results.some((x) => x.link === link)) continue;
           results.push({ title, link, snippet, source: "grokipedia" });

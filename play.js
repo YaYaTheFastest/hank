@@ -162,7 +162,7 @@
     ".idea:first-child{border-top:0}" +
     ".st{font-size:11px;color:var(--muted)}" +
     ".parent{font-size:12.5px;background:#1a1810;border:1px solid #3a3420;border-radius:14px;padding:12px;line-height:1.45;color:#d4c89a}" +
-    ".searchbar{display:flex;gap:8px;margin:0 0 12px}.searchbar input{flex:1;border:0;border-radius:14px;padding:14px 14px;font:inherit;font-size:16px;font-weight:700;background:#151b16;color:#f2f7ef}.searchbar button{border:0;border-radius:14px;padding:14px 16px;font-weight:900;background:var(--neon);color:#0b0f0c;cursor:pointer}.sres{display:flex;flex-direction:column;gap:10px;margin:0 0 16px}.sres a{display:block;background:#151b16;border:1px solid #243028;border-radius:16px;padding:14px;text-decoration:none;color:#f2f7ef}.sres .stitle{font-weight:900;font-size:15px;margin:0 0 4px}.sres .ssnip{font-size:13px;color:#9aa89c;line-height:1.35}.sres .sact{margin-top:8px}.sempty{font-size:13px;color:#9aa89c;padding:8px 2px 14px}";
+    ".searchbar{display:flex;gap:8px;margin:0 0 12px}.searchbar input{flex:1;border:0;border-radius:14px;padding:14px 14px;font:inherit;font-size:16px;font-weight:700;background:#151b16;color:#f2f7ef}.searchbar button{border:0;border-radius:14px;padding:14px 16px;font-weight:900;background:var(--neon);color:#0b0f0c;cursor:pointer}.sres{display:flex;flex-direction:column;gap:10px;margin:0 0 16px}.sres a{display:block;background:#151b16;border:1px solid #243028;border-radius:16px;padding:14px;text-decoration:none;color:#f2f7ef}.sres .stitle{font-weight:900;font-size:15px;margin:0 0 4px}.sres .ssnip{font-size:13px;color:#9aa89c;line-height:1.35}.sres .sact{margin-top:8px}.sempty{font-size:13px;color:#9aa89c;padding:8px 2px 14px}.gpedia-card{background:#121814;border:1px solid #2a382c;border-radius:18px;padding:14px;margin:0 0 12px}.gpedia-kicker{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#8fd18a;margin:0 0 4px}.gpedia-title{font-size:18px;font-weight:900;margin:0 0 6px}.gpedia-note{font-size:13px;color:var(--muted);margin:0 0 12px;line-height:1.35}.srow{background:#151b16;border:1px solid #243028;border-radius:14px;padding:12px;margin:0 0 8px}.srow .stitle{font-weight:900;font-size:15px;margin:0 0 4px}.srow .ssnip{font-size:13px;color:#9aa89c;line-height:1.35}.srow .sact{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px}";
 
   var st = document.createElement("style");
   st.textContent = css;
@@ -172,7 +172,7 @@
 
   var game = "minecraft";
   var view = "fire";
-  var fireFilter = "all";
+  var fireFilter = "jokic";
   var openSpark = null;
   var vibeIdx = 0;
   var vibeTimer = null;
@@ -267,21 +267,22 @@
 
   function guideStepsFor(card) {
     if (!card) return [];
+    var boardEmoji = (GAMES[game] && GAMES[game].emoji) || "🎮";
     if (card.guide && card.guide.length) {
       return card.guide.map(function (g, i) {
         return {
           img: g.img || null,
-          caption: shortCaption(g.caption || "", 7),
-          emoji: GUIDE_EMOJIS[i % GUIDE_EMOJIS.length],
-          color: GUIDE_COLORS[i % GUIDE_COLORS.length]
+          caption: shortCaption(g.caption || "", 8),
+          emoji: g.emoji || boardEmoji || GUIDE_EMOJIS[i % GUIDE_EMOJIS.length],
+          color: g.bg || g.color || GUIDE_COLORS[i % GUIDE_COLORS.length]
         };
       });
     }
     return (card.steps || []).map(function (s, i) {
       return {
         img: null,
-        caption: shortCaption(s, 7),
-        emoji: GUIDE_EMOJIS[i % GUIDE_EMOJIS.length],
+        caption: shortCaption(s, 8),
+        emoji: boardEmoji || GUIDE_EMOJIS[i % GUIDE_EMOJIS.length],
         color: GUIDE_COLORS[i % GUIDE_COLORS.length]
       };
     });
@@ -304,12 +305,11 @@
 
   function renderFire() {
     var chips = [
-      { id: "all", label: "Fire" },
       { id: "jokic", label: "Jokić" },
-      { id: "nba", label: "NBA" },
-      { id: "jones", label: "DT / Jones" },
+      { id: "jones", label: "Chris Jones" },
       { id: "minecraft", label: "Minecraft" },
-      { id: "hogwarts", label: "Hogwarts" }
+      { id: "hogwarts", label: "Hogwarts" },
+      { id: "search", label: "Search" }
     ];
     var html = '<div class="fire-hero"><div class="fire-kicker">Inspiration</div>' +
       "<h2>Fire</h2>" +
@@ -319,14 +319,32 @@
       html += '<button type="button" class="fchip' + (fireFilter === c.id ? " on" : "") + '" data-ff="' + c.id + '">' + esc(c.label) + "</button>";
     });
     html += "</div>";
+    var GP = {
+      jokic: { title: "Nikola Jokić", url: "https://grokipedia.com/page/Nikola_Joki%C4%87" },
+      jones: { title: "Chris Jones", url: "https://grokipedia.com/page/Chris_Jones" },
+      minecraft: { title: "Minecraft", url: "https://grokipedia.com/page/Minecraft" },
+      hogwarts: { title: "Hogwarts Legacy", url: "https://grokipedia.com/page/Hogwarts_Legacy" }
+    };
+    if (fireFilter !== "search" && GP[fireFilter]) {
+      var gp = GP[fireFilter];
+      html += '<div class="gpedia-card">' +
+        '<div class="gpedia-kicker">Grokopedia</div>' +
+        '<div class="gpedia-title">' + esc(gp.title) + "</div>" +
+        '<p class="gpedia-note">Kid-safe article. Opens in a new tab — then come back here.</p>' +
+        '<div class="actions">' +
+        '<a class="btnp" href="' + esc(gp.url) + '" target="_blank" rel="noopener noreferrer" data-gp-open="' + esc(gp.url) + '" data-gp-title="' + esc(gp.title) + '">Open article</a>' +
+        '<button type="button" class="btns" data-ff="search">Search</button>' +
+        "</div></div>";
+    }
     html += '<div class="searchbar">' +
-      '<input type="search" id="kidSearch" placeholder="Search paused — Fire cards below" enterkeyhint="search" autocomplete="off">' +
+      '<input type="search" id="kidSearch" placeholder="Search allowed topics only" enterkeyhint="search" autocomplete="off">' +
       '<button type="button" id="kidSearchGo">Go</button></div>' +
       '<div id="kidSearchOut" class="sres"></div>' +
       '<div class="spark-grid">';
 
     var list = SPARKS.filter(function (s) {
-      return fireFilter === "all" || s.tag === fireFilter;
+      if (fireFilter === "all" || fireFilter === "search") return true;
+      return s.tag === fireFilter;
     });
     if (!list.length) {
       html += '<p class="note">No sparks in this lane yet.</p>';
@@ -525,6 +543,14 @@
     var sin = document.getElementById("kidSearch");
     if (go) go.onclick = function () { runKidSearch(); };
     if (sin) sin.onkeydown = function (e) { if (e.key === "Enter") { e.preventDefault(); runKidSearch(); } };
+    document.querySelectorAll("[data-gp-open]").forEach(function (a) {
+      a.addEventListener("click", function () {
+        fileNote("grokipedia-open", fireFilter, (a.getAttribute("data-gp-title") || "") + " · " + a.getAttribute("data-gp-open"), {});
+      });
+    });
+    if (view === "fire" && fireFilter && fireFilter !== "search" && fireFilter !== "all") {
+      runKidSearch("");
+    }
     // Prefill from chip topic when Fire filter changes — optional soft search
     document.querySelectorAll("[data-g]").forEach(function (b) {
       b.onclick = function () { game = b.getAttribute("data-g"); view = "play"; openSpark = null; render(); };
@@ -803,46 +829,62 @@
     var input = document.getElementById("kidSearch");
     var out = document.getElementById("kidSearchOut");
     if (!out) return;
-    out.innerHTML = '<p class="sempty">Google search retired. Fire cards still work. Grokopedia coming.</p>';
-    return;
+    var TOPIC_Q = { jokic: "Nikola Jokic", jones: "Chris Jones Chiefs", minecraft: "Minecraft", hogwarts: "Hogwarts Legacy" };
     var q = (qOverride != null ? qOverride : (input && input.value || "")).trim();
-    var topic = fireFilter === "all" ? "" : fireFilter;
+    var topic = (fireFilter === "all" || fireFilter === "search") ? "" : fireFilter;
     if (!q && !topic) {
-      out.innerHTML = '<p class="sempty">Pick a chip or type a search.</p>';
+      out.innerHTML = '<p class="sempty">Pick a chip or ask Dad.</p>';
       return;
     }
     if (!q && topic) q = TOPIC_Q[topic] || topic;
-    out.innerHTML = '<p class="sempty">Searching…</p>';
+    out.innerHTML = '<p class="sempty">Searching Grokopedia…</p>';
     var url = "/api/kid-search?kid=" + encodeURIComponent(KID) + "&q=" + encodeURIComponent(q) + (topic ? "&topic=" + encodeURIComponent(topic) : "");
     fetch(url, { credentials: "same-origin" })
       .then(function (r) { return r.json().catch(function () { return {}; }); })
       .then(function (j) {
-        if (!j || j.error === "search-not-connected") {
-          out.innerHTML = '<p class="sempty">Google search retired. Fire cards still work. Grokopedia coming.</p>';
-          return;
-        }
-        if (!j.ok) {
-          out.innerHTML = '<p class="sempty">' + esc(j.message || "Search unavailable") + "</p>";
+        if (!j || !j.ok) {
+          out.innerHTML = '<p class="sempty">' + esc((j && j.message) || "Pick a chip or ask Dad.") + "</p>";
           return;
         }
         var rows = j.results || [];
         if (!rows.length) {
-          out.innerHTML = '<p class="sempty">No results. Try another word.</p>';
+          out.innerHTML = '<p class="sempty">Nothing in the allowlist. Pick a chip or ask Dad.</p>';
           return;
         }
         out.innerHTML = rows.map(function (it) {
-          return '<a href="' + esc(it.link) + '" target="_blank" rel="noopener noreferrer">' +
+          return '<div class="srow">' +
             '<div class="stitle">' + esc(it.title) + "</div>" +
-            '<div class="ssnip">' + esc(it.snippet) + "</div>" +
-            '<div class="sact"><button type="button" class="btns" data-send-result="' + esc(it.title) + '" data-send-url="' + esc(it.link) + '">Send to Dad</button></div>' +
-            "</a>";
+            '<div class="ssnip">' + esc(it.snippet || "") + "</div>" +
+            '<div class="sact">' +
+            '<a class="btnp" href="' + esc(it.link) + '" target="_blank" rel="noopener noreferrer" data-gp-open="' + esc(it.link) + '" data-gp-title="' + esc(it.title) + '">Open article</a>' +
+            '<button type="button" class="btns" data-pin-result="' + esc(it.title) + '" data-pin-url="' + esc(it.link) + '">Pin to Fire</button>' +
+            "</div></div>";
         }).join("");
-        out.querySelectorAll("[data-send-result]").forEach(function (b) {
+        out.querySelectorAll("[data-pin-result]").forEach(function (b) {
           b.onclick = function (e) {
             e.preventDefault();
             e.stopPropagation();
-            fileNote("search-share", fireFilter, b.getAttribute("data-send-result") + " · " + b.getAttribute("data-send-url"), {});
+            fetch("/api/play/spark-drafts", {
+              method: "POST",
+              credentials: "same-origin",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                title: b.getAttribute("data-pin-result"),
+                why: "From Grokopedia — needs Dad approve",
+                link: b.getAttribute("data-pin-url"),
+                topic: topic || "nba",
+                q: q,
+                kid: KID,
+              }),
+            }).then(function (r) { return r.json(); }).then(function (x) {
+              toast(x && x.ok ? "Pinned for Dad" : "Pin failed");
+            }).catch(function () { toast("Pin failed"); });
           };
+        });
+        out.querySelectorAll("[data-gp-open]").forEach(function (a) {
+          a.addEventListener("click", function () {
+            fileNote("grokipedia-open", topic || "search", a.getAttribute("data-gp-title") + " · " + a.getAttribute("data-gp-open"), {});
+          });
         });
       })
       .catch(function () {

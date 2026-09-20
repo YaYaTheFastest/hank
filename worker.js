@@ -467,15 +467,103 @@ async function handleApi(request, env, url, siteAuthed, kidAuthed) {
   }
 
 
-  // Google CSE retired (Darren 2026-09-19 — "Forget google"). Grokopedia coming via Horus.
+  // Grokopedia scoped search (no Google). Allowlist + typeahead proxy.
   if (url.pathname === "/api/kid-search" && request.method === "GET") {
     if (!familyOrLoop) return json({ ok: false, error: "auth" }, 401);
-    return json({
-      ok: false,
-      error: "search-retired",
-      message: "Google search retired. Fire cards still work. Grokopedia coming.",
-      results: [],
-    });
+    const kid = String(url.searchParams.get("kid") || "Dagvald").slice(0, 32);
+    const topic = String(url.searchParams.get("topic") || "").trim().toLowerCase().slice(0, 40);
+    let q = String(url.searchParams.get("q") || "").trim().slice(0, 120);
+
+    const TOPIC_PAGE = {
+      jokic: { slug: "Nikola_Joki%C4%87", title: "Nikola Jokić", fallbackQ: "Nikola Jokic" },
+      jones: { slug: "Chris_Jones", title: "Chris Jones", fallbackQ: "Chris Jones Chiefs" },
+      minecraft: { slug: "Minecraft", title: "Minecraft", fallbackQ: "Minecraft" },
+      hogwarts: { slug: "Hogwarts_Legacy", title: "Hogwarts Legacy", fallbackQ: "Hogwarts Legacy" },
+    };
+    const STEMS = [
+      "jokic", "jokić", "nuggets", "chris jones", "chiefs", "defensive tackle",
+      "minecraft", "hogwarts", "hogwarts legacy",
+    ];
+    function allowedQuery(text) {
+      const t = String(text || "").toLowerCase();
+      if (!t) return false;
+      return STEMS.some((s) => t.includes(s));
+    }
+    const isKidOnly = !!kidAuthed && !siteAuthed && !authed;
+    if (topic && TOPIC_PAGE[topic] && !q) q = TOPIC_PAGE[topic].fallbackQ;
+    if (isKidOnly && !TOPIC_PAGE[topic] && !allowedQuery(q)) {
+      return json({
+        ok: false,
+        error: "not-allowed",
+        message: "Pick a chip or ask Dad.",
+        results: [],
+      });
+    }
+    if (!q && !TOPIC_PAGE[topic]) {
+      return json({ ok: false, error: "need-query", message: "Pick a chip or ask Dad.", results: [] });
+    }
+
+    const results = [];
+    if (topic && TOPIC_PAGE[topic]) {
+      const tp = TOPIC_PAGE[topic];
+      results.push({
+        title: tp.title,
+        link: "https://grokipedia.com/page/" + tp.slug,
+        snippet: "Open the Grokopedia article for this Fire topic.",
+        source: "topic",
+      });
+    }
+
+    try {
+      const taUrl = "https://grokipedia.com/api/typeahead?query=" + encodeURIComponent(q || topic);
+      const taRes = await fetch(taUrl, {
+        headers: {
+          "User-Agent": "HANK-Play/1.0",
+          Accept: "application/json",
+          Referer: "https://grokipedia.com/",
+        },
+      });
+      if (taRes.ok) {
+        const body = await taRes.json().catch(() => ({}));
+        const rows = Array.isArray(body.results) ? body.results : [];
+        for (const r of rows.slice(0, 8)) {
+          if (!r || !r.slug) continue;
+          const title = String(r.title || r.slug).slice(0, 120);
+          const snippet = String(r.snippet || "").slice(0, 220);
+          const hay = (title + " " + snippet + " " + r.slug).toLowerCase();
+          if (isKidOnly && !allowedQuery(hay) && !(topic && TOPIC_PAGE[topic])) continue;
+          const link = "https://grokipedia.com/page/" + String(r.slug).split("/").map(encodeURIComponent).join("/");
+          if (results.some((x) => x.link === link)) continue;
+          results.push({ title, link, snippet, source: "grokipedia" });
+        }
+      }
+    } catch (e) {}
+
+    if (!results.length) {
+      const fq = encodeURIComponent(q || (TOPIC_PAGE[topic] && TOPIC_PAGE[topic].fallbackQ) || "");
+      results.push({
+        title: "Search Grokopedia",
+        link: "https://grokipedia.com/search?q=" + fq,
+        snippet: "Open search on Grokopedia (new tab). Come back to Fire when done.",
+        source: "search-fallback",
+      });
+    }
+
+    if (kv) {
+      try {
+        let hist = JSON.parse(await env.STATE.get("play:search:" + kid) || "[]");
+        if (!Array.isArray(hist)) hist = [];
+        hist.unshift({
+          q, topic, ts: Date.now(),
+          links: results.slice(0, 5).map((r) => ({ title: r.title, link: r.link })),
+          source: "grokipedia",
+        });
+        if (hist.length > 40) hist.length = 40;
+        await env.STATE.put("play:search:" + kid, JSON.stringify(hist));
+      } catch (e) {}
+    }
+
+    return json({ ok: true, q, topic, results: results.slice(0, 10) });
   }
 
   // Search history — kid or parent

@@ -73,7 +73,7 @@ window.PLAY_DATA = (function(){
           "Put a barrel or hopper under the crafting table for 'just mined' overflow.",
           "Item frames or signs on every column. Ugly signs beat lost iron.",
           "Once a week: empty the overflow barrel into the right column."
-        ],,
+        ],
         guide: [
           { emoji: "\ud83d\udfe9", bg: "#7cb342", caption: "Build a double-chest wall, 2 high, 6 wide" },
           { emoji: "\ud83d\udfe9", bg: "#558b2f", caption: "Left to right: junk wood \u00b7 cobble/stone \u00b7" },
@@ -96,7 +96,7 @@ window.PLAY_DATA = (function(){
           "If you hear a creeper and cannot see it, pillar up 3 or run around a corner.",
           "Sleep through night once you have a bed in a lit room.",
           "Keep a 'oops chest' at spawn with spare tools + bread + a bed."
-        ],,
+        ],
         guide: [
           { emoji: "\ud83d\udfe9", bg: "#7cb342", caption: "Before sunset: food in hotbar slot 1, sword/axe" },
           { emoji: "\ud83d\udfe9", bg: "#558b2f", caption: "Never mine straight down. Never swim in unknown" },
@@ -119,7 +119,7 @@ window.PLAY_DATA = (function(){
           "Do not put torches between table and shelves — that kills the power.",
           "Lapis stays in a barrel under the table.",
           "Enchant tools you will keep. Do not burn diamonds on a throwaway pick."
-        ],,
+        ],
         guide: [
           { emoji: "\ud83d\udfe9", bg: "#7cb342", caption: "Room at least 5\u00d75. Table in the center." },
           { emoji: "\ud83d\udfe9", bg: "#558b2f", caption: "15 bookshelves: ring the table one block away," },
@@ -142,7 +142,7 @@ window.PLAY_DATA = (function(){
           "Farmer + composter near your crop rows. Librarian + lectern near the enchant nook.",
           "Trade only what you actually need this week.",
           "If a raid starts, get inside, light up, and wait it out or fight from a window."
-        ],,
+        ],
         guide: [
           { emoji: "\ud83d\udfe9", bg: "#7cb342", caption: "Fence a small yard. Light it. Two-block-high walls" },
           { emoji: "\ud83d\udfe9", bg: "#558b2f", caption: "Give each villager one workstation and one bed." },
@@ -165,7 +165,7 @@ window.PLAY_DATA = (function(){
           "He brings back: name, footprint, block palette, first 5 steps.",
           "You build step 1 only tonight. Mark it done here.",
           "If a step is confusing, tap Tell Dad — that is how the board grows."
-        ],,
+        ],
         guide: [
           { emoji: "\ud83d\udfe9", bg: "#7cb342", caption: "Tell Dad the vibe in one sentence. Example:" },
           { emoji: "\ud83d\udfe9", bg: "#558b2f", caption: "Say survival or creative, and about how big" },
@@ -190,7 +190,7 @@ window.PLAY_DATA = (function(){
           "Put potion stations where you walk first. You will brew more if it is in the path.",
           "Keep one clear floor path so you are not climbing furniture to leave.",
           "Once a session: sell or store junk gear so new drops are easy to see."
-        ],,
+        ],
         guide: [
           { emoji: "\ud83c\udff0", bg: "#7e57c2", caption: "Make three zones: potions, gear/upgrades, beasts/plants." },
           { emoji: "\ud83c\udff0", bg: "#5e35b1", caption: "Chests by color or label: ingredients \u00b7 gear" },
@@ -213,7 +213,7 @@ window.PLAY_DATA = (function(){
           "If a page is annoying, pin the area in your head and come back after the story beat.",
           "Do not watch a full-quest video that ruins the next castle surprise.",
           "Celebrate sets (a wing, a hamlet), not '100% tonight.'"
-        ],,
+        ],
         guide: [
           { emoji: "\ud83c\udff0", bg: "#7e57c2", caption: "When you enter a new interior: stop, look" },
           { emoji: "\ud83c\udff0", bg: "#5e35b1", caption: "Revelio is a pulse, not a sprint. Pulse," },
@@ -236,7 +236,7 @@ window.PLAY_DATA = (function(){
           "Dodge when a big enemy winds up. Standing still is how elites flatten you.",
           "After a fight: drink or wait before opening the next door.",
           "Respec later is allowed. Early points in defense and a reliable damage spell are enough."
-        ],,
+        ],
         guide: [
           { emoji: "\ud83c\udff0", bg: "#7e57c2", caption: "Default rule: protect first. If you eat three" },
           { emoji: "\ud83c\udff0", bg: "#5e35b1", caption: "Yellow flash = change color. Match the color" },
@@ -259,7 +259,7 @@ window.PLAY_DATA = (function(){
           "Do not hoard every species on day one. Two or three well-kept pens beat a zoo you ignore.",
           "Use materials for gear you wear, not a pile of 'maybe.'",
           "If a pen is cramped, expand before adding more."
-        ],,
+        ],
         guide: [
           { emoji: "\ud83c\udff0", bg: "#7e57c2", caption: "Rescue only when you have a pen and" },
           { emoji: "\ud83c\udff0", bg: "#5e35b1", caption: "Feed and brush when you visit the room" },
@@ -282,7 +282,7 @@ window.PLAY_DATA = (function(){
           "If combat is too hard, leave. Come back when your gear level matches the number on the map.",
           "Merlin puzzles are snacks. Skip if you are tired.",
           "End at the room. Dump loot. That close is the habit."
-        ],,
+        ],
         guide: [
           { emoji: "\ud83c\udff0", bg: "#7e57c2", caption: "Pick one region. Fly a triangle: hamlet \u2192" },
           { emoji: "\ud83c\udff0", bg: "#5e35b1", caption: "Land for anything that glows or looks built" },
@@ -305,7 +305,7 @@ window.PLAY_DATA = (function(){
           "Hard quest? Drop difficulty or leave and train combat / gear first.",
           "Ask Dad before watching a story video. Most of them spoil the next hour.",
           "Write one sentence about what you discovered. That is your lore book."
-        ],,
+        ],
         guide: [
           { emoji: "\ud83c\udff0", bg: "#7e57c2", caption: "Pick the night's job: one main quest OR" },
           { emoji: "\ud83c\udff0", bg: "#5e35b1", caption: "If a cutscene is long, that is the" },
